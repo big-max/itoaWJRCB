@@ -195,5 +195,8 @@ public class AutoSwitchController {
 	public String postStop(HttpServletRequest request, HttpSession session) {
 		return null;
 	}
-
+	
+	public void test(){
+		System.out.println("test");
+	}
 }
