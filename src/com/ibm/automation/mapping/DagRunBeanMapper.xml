@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.automation.core.dao.DagRunBeanMapper">
+  <resultMap id="DagRunResultMap" type="com.ibm.automation.domain.DagRunBean">
+    <result column="dag_id" jdbcType="VARCHAR" property="dag_id" />
+    <result column="execution_date" jdbcType="TIMESTAMP" property="execution_date" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="run_id" jdbcType="VARCHAR" property="run_id" />
+  </resultMap>
+ 
+ <select id="selectDagRunTime" parameterType="string" resultMap="DagRunResultMap">
+ 	select dag_id,execution_date,state,run_id from dag_run where dag_id = #{dag_id} order by execution_date desc
+ </select>
+ 
+
+ 
+</mapper>
