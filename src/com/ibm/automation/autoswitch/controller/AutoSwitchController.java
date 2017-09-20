@@ -109,28 +109,28 @@ public class AutoSwitchController {
 	public ObjectNode daghistory_data(HttpServletRequest request, HttpSession session) {
 		Map<String, String> map = new HashMap<String, String>();
 		String dag_id = request.getParameter("dag_id");
-		String execution_date = request.getParameter("execution_date");
+		// 2016-01-01T12:12:12 to 2016-01-01 12:12:12
+		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
 		map.put("dag_id", dag_id);
 		map.put("execution_date", execution_date);// "2017-09-13
-													// 19:42:47.000000"
 		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
 		JSONArray array = JSONArray.fromObject(taskInstanceList);
-		System.out.println(array);
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
+		System.out.println(on.toString());
 		return on;
 	}
 
 	// 到历史记录页面
 	@RequestMapping("/historyPage.do")
 	public String daghistoryPage(@RequestParam Map<String, String> dag, Model model) {
-		String dagid = dag.get("dagid");
-		String dagtime = dag.get("dagtime");
-		model.addAttribute("dagid", dagid);
-		model.addAttribute("dagtime", dagtime);
+		String dag_id = dag.get("dag_id");
+		String execution_date = dag.get("execution_date");
+		model.addAttribute("dag_id", dag_id);
+		model.addAttribute("execution_date", execution_date);
 		String link = null;
-		switch (dagid) {
+		switch (dag_id) {
 		case "pprc_go":
 			link = "instance_autoswitch_pprc_go_history";
 			break;

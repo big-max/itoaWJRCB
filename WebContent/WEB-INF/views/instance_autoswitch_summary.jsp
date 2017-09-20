@@ -221,11 +221,11 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	
 	//历史记录的跳转
 	$("._history").click(function(){
-		var dagid = $(this).parents("tr").find("#dag_id").text()
-		var dagtime = $(this).parents("tr").find("#dag_time").text()
+		var dag_id = $(this).parents("tr").find("#dag_id").text()
+		var execution_date = $(this).parents("tr").find("#dag_time").text()
 		//console.log(dagid+";"+dagtime)
 		//alert(dagid+";"+dagtime)
-		window.open("historyPage.do?dagid="+ dagid +"&dagtime="+dagtime);
+		window.open("historyPage.do?dag_id="+ dag_id +"&execution_date="+execution_date.replace(" ","T"));
 	})
 	
 	//运行记录的跳转
