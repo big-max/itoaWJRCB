@@ -57,7 +57,7 @@ body{margin:0;padding:0;}
 	<div class="content">
 		<div style="margin:20px auto;width:320px;">
 			<select style="display:inline;width:200px;">
-				<option value="">2017-09-18 15:20:30</option>
+				<option value="">${dagtime}</option>
 				<option value="">2017-09-17 15:20:30</option>
 				<option value="">2017-09-16 15:20:30</option>
 			</select>
@@ -127,6 +127,24 @@ body{margin:0;padding:0;}
 		var newvalue = tipcontent.split(",").join("<br>");
 		$("#pprc_go_workdb_backup").attr("data-original-title",newvalue);
 	})
+	
+//description:	获取所有任务块的相关信息
+	$.ajax({  
+           url:'<%=path%>/getDagrunByDagID.do',  
+           type:"get",  
+           dataType:"json",  
+           data:{  
+               userID:"1"  
+           },  
+           success:function(response){  
+ 
+           },  
+           error:function() {  
+           }  
+       }); 
+	
+		
+		
 </script>
 
 <script>

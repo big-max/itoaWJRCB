@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -121,7 +123,12 @@ public class AutoSwitchController {
 
 	// 到历史记录页面
 	@RequestMapping("/historyPage.do")
-	public String daghistoryPage(HttpServletRequest request, HttpSession session) {
+	public String daghistoryPage(@RequestParam Map<String, String> dag, Model model) {
+		String dagid = dag.get("dagid");
+        String dagtime = dag.get("dagtime"); 
+        model.addAttribute("dagid", dagid);
+        model.addAttribute("dagtime", dagtime);
+        
 		return "instance_autoswitch_history";
 	}
 
