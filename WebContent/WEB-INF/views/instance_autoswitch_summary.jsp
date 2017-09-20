@@ -230,7 +230,7 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	
 	//运行记录的跳转
 	$("._running").click(function(){
-		window.open("runningPage.do");
+		window.open("runningPage.do?dag_id=pprc_go&execution_date=2017-09-15T14:48:12");
 	})
 	
 	
