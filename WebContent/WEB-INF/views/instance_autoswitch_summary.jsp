@@ -98,23 +98,23 @@ i:hover{
 										<td id="dag_id" hidden="">${task.dag_id }</td>
 										<td style="text-align: center;">${task.dag_alias }</td>
 										<td style="text-align: center;">${task.owners }</td>
-										<td style="text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"  value="${task.last_run_date }"/></td>
+										<td id="dag_time" style="text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"  value="${task.last_run_date }"/></td>
 										<td style="text-align: center;">${task.last_run_status }</td>
 										<td>
 										<c:if test="${ task.dag_status eq 0}"> <!--0 未开始 -->
 											<div style="margin-left:18%;">
 												<div class="linkexpre" >
-													<i id="${task.dag_id}_play" class="fa fa-play-circle" style="font-size:26px;color:#0066FF"></i>
+													<i id="${task.dag_id}_play" class="_play fa fa-play-circle" style="font-size:26px;color:#0066FF"></i>
 												</div>
 												
 												<div class="linkexpre">
-													<i id="${task.dag_id}_stop" class="fa fa-stop-circle" style="font-size:26px;color:#bebebe"></i>
+													<i id="${task.dag_id}_stop" class="_stop fa fa-stop-circle" style="font-size:26px;color:#bebebe"></i>
 												</div>
 												<div class="linkexpre" style="margin-top:2px;">
-													<i id="${task.dag_id}_running" class="fa fa-telegram" style="font-size:23px;color:#bebebe"></i>
+													<i id="${task.dag_id}_running" class="_running fa fa-telegram" style="font-size:23px;color:#bebebe"></i>
 												</div>
 												<div class="linkexpre">
-													<i id="${task.dag_id}_history" class="fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
+													<i id="${task.dag_id}_history" class="_history fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
 												</div>
 																																																				
 											</div>
@@ -123,17 +123,17 @@ i:hover{
 											<c:if test="${ task.dag_status eq 1}"> <!-- 1运行中 -->
 											<div style="margin-left:18%;">
 												<div class="linkexpre" >
-													<i id="${task.dag_id}_play" class="fa fa-pause-circle" style="font-size:26px;color:#0066FF"></i>
+													<i id="${task.dag_id}_play" class="_play fa fa-pause-circle" style="font-size:26px;color:#0066FF"></i>
 												</div>
 												
 												<div class="linkexpre">
-													<i id="${task.dag_id}_stop" class="fa fa-stop-circle" style="font-size:26px;color:red"></i>
+													<i id="${task.dag_id}_stop" class="_stop fa fa-stop-circle" style="font-size:26px;color:red"></i>
 												</div>
 												<div class="linkexpre" style="margin-top:2px;">
-													<i id="${task.dag_id}_running" class="fa fa-telegram" style="font-size:23px;color:#0066FF"></i>
+													<i id="${task.dag_id}_running" class="_running fa fa-telegram" style="font-size:23px;color:#0066FF"></i>
 												</div>
 												<div class="linkexpre">
-													<i id="${task.dag_id}_history" class="fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
+													<i id="${task.dag_id}_history" class="_history fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
 												</div>
 																																																				
 											</div>
@@ -142,17 +142,17 @@ i:hover{
 											<c:if test="${ task.dag_status eq 2}"> <!-- 2暂停 -->
 											<div style="margin-left:18%;">
 												<div class="linkexpre" >
-													<i id="${task.dag_id}_play" class="fa fa-pause-circle" style="font-size:26px;color:#0066FF"></i>
+													<i id="${task.dag_id}_play" class="_play fa fa-pause-circle" style="font-size:26px;color:#0066FF"></i>
 												</div>
 												
 												<div class="linkexpre">
-													<i id="${task.dag_id}_stop" class="fa fa-stop-circle" style="font-size:26px;color:#bebebe"></i>
+													<i id="${task.dag_id}_stop" class="_stop fa fa-stop-circle" style="font-size:26px;color:#bebebe"></i>
 												</div>
 												<div class="linkexpre" style="margin-top:2px;">
-													<i id="${task.dag_id}_running" class="fa fa-telegram" style="font-size:23px;color:#bebebe"></i>
+													<i id="${task.dag_id}_running" class="_running fa fa-telegram" style="font-size:23px;color:#bebebe"></i>
 												</div>
 												<div class="linkexpre">
-													<i id="${task.dag_id}_history" class="fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
+													<i id="${task.dag_id}_history" class="_history fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
 												</div>
 																																																				
 											</div>
@@ -160,17 +160,17 @@ i:hover{
 											<c:if test="${ task.dag_status eq 3}"> <!-- 3 失败|停止 -->
 											<div style="margin-left:18%;">
 												<div class="linkexpre" >
-													<i id="${task.dag_id}_play" class="fa fa-pause-circle" style="font-size:26px;color:#0066FF"></i>
+													<i id="${task.dag_id}_play" class="_play fa fa-pause-circle" style="font-size:26px;color:#0066FF"></i>
 												</div>
 												
 												<div class="linkexpre">
-													<i id="${task.dag_id}_stop" class="fa fa-stop-circle" style="font-size:26px;color:#bebebe"></i>
+													<i id="${task.dag_id}_stop" class="_stop fa fa-stop-circle" style="font-size:26px;color:#bebebe"></i>
 												</div>
 												<div class="linkexpre" style="margin-top:2px;">
-													<i id="${task.dag_id}_running" class="fa fa-telegram" style="font-size:23px;color:#bebebe"></i>
+													<i id="${task.dag_id}_running" class="_running fa fa-telegram" style="font-size:23px;color:#bebebe"></i>
 												</div>
 												<div class="linkexpre">
-													<i id="${task.dag_id}_history" class="fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
+													<i id="${task.dag_id}_history" class="_history fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
 												</div>
 																																																				
 											</div>
@@ -178,17 +178,17 @@ i:hover{
 											<c:if test="${ task.dag_status eq 4}"> <!--4 成功 -->
 											<div style="margin-left:18%;">
 												<div class="linkexpre" >
-													<i id="${task.dag_id}_play" class="fa fa-pause-circle" style="font-size:26px;color:#0066FF"></i>
+													<i id="${task.dag_id}_play" class="_play fa fa-pause-circle" style="font-size:26px;color:#0066FF"></i>
 												</div>
 												
 												<div class="linkexpre">
-													<i id="${task.dag_id}_stop" class="fa fa-stop-circle" style="font-size:26px;color:#bebebe"></i>
+													<i id="${task.dag_id}_stop" class="_stop fa fa-stop-circle" style="font-size:26px;color:#bebebe"></i>
 												</div>
 												<div class="linkexpre" style="margin-top:2px;">
-													<i id="${task.dag_id}_running" class="fa fa-telegram" style="font-size:23px;color:#bebebe"></i>
+													<i id="${task.dag_id}_running" class="_running fa fa-telegram" style="font-size:23px;color:#bebebe"></i>
 												</div>
 												<div class="linkexpre">
-													<i id="${task.dag_id}_history" class="fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
+													<i id="${task.dag_id}_history" class="_history fa fa-clock-o" style="font-size:26px;color:#D4237A"></i>
 												</div>
 																																																				
 											</div>
@@ -220,21 +220,22 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 
 	
 	//历史记录的跳转
-	$("#pprc_go_history").click(function(thisObj){
-		var str = $(thisObj).parents("tr").find("#dag_id").text()
-		console.log(str)
-		var location = "historyPage.do?"
-		window.open("historyPage.do");
+	$("._history").click(function(){
+		var dagid = $(this).parents("tr").find("#dag_id").text()
+		var dagtime = $(this).parents("tr").find("#dag_time").text()
+		//console.log(dagid+";"+dagtime)
+		//alert(dagid+";"+dagtime)
+		window.open("historyPage.do?dagid="+ dagid +"&dagtime="+dagtime);
 	})
 	
 	//运行记录的跳转
-	$("#pprc_go_running").click(function(){
+	$("._running").click(function(){
 		window.open("runningPage.do");
 	})
 	
 	
     //启动和暂停按钮的处理
-	$("#pprc_go_play").click(function(){
+	$("._play").click(function(){
 		swal({
             title: "",
             text: "请再次确认是否立即启动此灾备切换流程？",

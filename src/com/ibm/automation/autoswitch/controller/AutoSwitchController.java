@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +31,7 @@ import com.ibm.automation.core.service.ServerService;
 import com.ibm.automation.core.service.Task_InstanceService;
 import com.ibm.automation.core.util.HttpClientUtil;
 import com.ibm.automation.core.util.PropertyUtil;
+import com.ibm.automation.core.util.UtilDateTime;
 import com.ibm.automation.domain.DagDomainBean;
 import com.ibm.automation.domain.DagRunBean;
 import com.ibm.automation.domain.Task_InstanceBean;
@@ -87,16 +90,16 @@ public class AutoSwitchController {
 	public ObjectNode dagrunning_data(HttpServletRequest request, HttpSession session) {
 		Map<String, String> map = new HashMap<String, String>();
 		String dag_id = request.getParameter("dag_id");
-		String execution_date = request.getParameter("execution_date");
+		//2016-01-01T12:12:12 to 2016-01-01 12:12:12
+		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
 		map.put("dag_id", dag_id);
 		map.put("execution_date", execution_date);// "2017-09-13
-													// 19:42:47.000000"
 		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
 		JSONArray array = JSONArray.fromObject(taskInstanceList);
-		System.out.println(array);
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
+		System.out.println(on.toString());
 		return on;
 	}
 
@@ -121,7 +124,12 @@ public class AutoSwitchController {
 
 	// 到历史记录页面
 	@RequestMapping("/historyPage.do")
-	public String daghistoryPage(HttpServletRequest request, HttpSession session) {
+	public String daghistoryPage(@RequestParam Map<String, String> dag, Model model) {
+		String dagid = dag.get("dagid");
+        String dagtime = dag.get("dagtime"); 
+        model.addAttribute("dagid", dagid);
+        model.addAttribute("dagtime", dagtime);
+        
 		return "instance_autoswitch_history";
 	}
 
@@ -195,8 +203,10 @@ public class AutoSwitchController {
 	public String postStop(HttpServletRequest request, HttpSession session) {
 		return null;
 	}
-	
-	public void test(){
+
+	public void test() {
 		System.out.println("test");
 	}
+
 }
+

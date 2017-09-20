@@ -6,9 +6,9 @@ import java.util.Date;
 public class Task_InstanceBean {
 	private String task_id;
 	private String dag_id;
-	private Date execution_date;
-    private Date start_Date;
-    private Date end_Date;
+	private String execution_date;
+    private String start_Date;
+    private String end_Date;
     private Float duration;
     private String state;
     private Integer try_number;
@@ -19,7 +19,7 @@ public class Task_InstanceBean {
     private String queue;
     private Integer priority_weight;
     private String operator;
-    private Date queued_dttm;
+    private String queued_dttm;
     private Integer pid;
 	public String getTask_id() {
 		return task_id;
@@ -34,28 +34,29 @@ public class Task_InstanceBean {
 		this.dag_id = dag_id;
 	}
 	
-	public Date getExecution_date() {
+	
+	public String getExecution_date() {
 		return execution_date;
 	}
-	public void setExecution_date(Date execution_date) {
+	public void setExecution_date(String execution_date) {
 		this.execution_date = execution_date;
 	}
-	public Date getStart_Date() {
+	public String getStart_Date() {
 		return start_Date;
 	}
-	public void setStart_Date(Date start_Date) {
+	public void setStart_Date(String start_Date) {
 		this.start_Date = start_Date;
 	}
-	public Date getEnd_Date() {
+	public String getEnd_Date() {
 		return end_Date;
 	}
-	public void setEnd_Date(Date end_Date) {
+	public void setEnd_Date(String end_Date) {
 		this.end_Date = end_Date;
 	}
-	public Date getQueued_dttm() {
+	public String getQueued_dttm() {
 		return queued_dttm;
 	}
-	public void setQueued_dttm(Date queued_dttm) {
+	public void setQueued_dttm(String queued_dttm) {
 		this.queued_dttm = queued_dttm;
 	}
 	public Float getDuration() {

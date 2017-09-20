@@ -105,7 +105,7 @@ body{margin:0;padding:0;}
 			$("g.node").eq(i).attr("id",idname);
 		}
 	})
-	
+/*	
 	$(document).ready(function(){
 		var virstrtime = "xxxxxxxx"; //预计开始时间
 		var virendtime = "xxxxxxxx"; //预计结束时间
@@ -121,6 +121,7 @@ body{margin:0;padding:0;}
 		var newvalue = tipcontent.split(",").join("<br>");
 		$("#pprc_go_workdb_backup").attr("data-original-title",newvalue);
 	})
+*/
 </script>
 
 <script>
@@ -581,34 +582,13 @@ body{margin:0;padding:0;}
 	  }
 	};
 	
-    var task_instances = {
-	  "pprc_go_workdb_backup": {
-		"hostname": "automas", 
-		"task_id": "pprc_go_workdb_backup", 
-		"end_date": "2017-09-11T15:04:20.701897", 
-		"execution_date": "2017-09-11T00:00:00", 
-		"queued_dttm": "2017-09-11T15:03:59.773084", 
-		"job_id": 4, 
-		"try_number": 1, 
-		"queue": "default", 
-		"operator": "PythonOperator", 
-		"state": "failed", 
-		"pool": null, 
-		"duration": 8.6541, 
-		"priority_weight": 22, 
-		"start_date": "2017-09-11T15:04:12.047795", 
-		"dag_id": "pprc_go", 
-		"unixname": "root"
-	  }
-	};
-    
     var arrange = "LR";
     var g = dagreD3.json.decode(nodes, edges);
     var layout = dagreD3.layout().rankDir(arrange).nodeSep(15).rankSep(15);
     var renderer = new dagreD3.Renderer();
     renderer.layout(layout).run(g, d3.select("#dig"));
     inject_node_ids(tasks);
-    update_nodes_states(task_instances);
+    //update_nodes_states(task_instances);
 
 
     function highlight_nodes(nodes, color) {
@@ -617,7 +597,7 @@ body{margin:0;padding:0;}
             my_node.style("stroke", color) ;
         })
     }
-
+/*
     d3.selectAll("g.node").on("mouseover", function(d){
         d3.select(this).selectAll("rect").style("stroke", highlight_color) ;
         highlight_nodes(g.predecessors(d), upstream_color)
@@ -630,7 +610,7 @@ body{margin:0;padding:0;}
         highlight_nodes(g.predecessors(d), null)
         highlight_nodes(g.successors(d), null)
     });   
-
+*/
     $("g.node").tooltip({
       html: true,
       container: "body",
@@ -644,29 +624,90 @@ body{margin:0;padding:0;}
         });
     }
 
-    // Assigning css classes based on state to nodes
-    function update_nodes_states(task_instances) {
-        $.each(task_instances, function(task_id, ti) {
-          $('tspan').filter(function(index) { return $(this).text() === task_id; })
-            .parent().parent().parent()
-            .attr("class", "node enter " + ti.state)
-            .attr("data-toggle", "tooltip")
-            .attr("data-original-title", function(d) {
-              // Tooltip
-              task = tasks[task_id];
-              tt =  "Task_id: " + ti.task_id + "<br>";
-              tt += "Run: " + ti.execution_date + "<br>";
-              if(ti.run_id != undefined){
-                tt += "run_id: <nobr>" + ti.run_id + "</nobr><br>";
-              }
-              tt += "Operator: " + task.task_type + "<br>";
-              tt += "Started: " + ti.start_date + "<br>";
-              tt += "Ended: " + ti.end_date + "<br>";
-              tt += "Duration: " + ti.duration + "<br>";
-              tt += "State: " + ti.state + "<br>";
-              return tt;
-            });
-        });
-    }
+    
+    
+
 </script>
+
+
+<script type="text/javascript">
+<!-- 这个ajax 是更新实时状态 -->
+var dag_id = getUrlParam('dag_id');
+var execution_date = getUrlParam('execution_date');
+var data ={"dag_id":dag_id,"execution_date":execution_date};
+
+//handleAjax("runningData.do",data,"post");
+
+setInterval(function(){getAjax("runningData.do",data,"post")},3000);
+function update_nodes_states(task_instances) {
+		$.each(task_instances,function(idx,obj){
+			
+          
+            var mynode = d3.select('#' + obj.task_id + ' rect');
+            if(obj.state == 'failed') //如果失败
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：失败";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+                mynode.style("stroke", "red") ;
+            }else if (obj.state == 'success') //如果成功
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：成功";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+                 mynode.style("stroke", "green") ;
+            }else if (obj.state == 'skipped' || obj.state == 'undefined')//未开始
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+            	mynode.style("stroke", "white") ; 
+            }else if (obj.state == 'running')
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+            	mynode.style("stroke", "blue") ; 
+            }
+		})
+    }
+    
+//获取url中的参数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+
+function ajax(url, param, type) {
+    return $.ajax({
+    url: url,
+    data: param || {},
+    type: type || 'GET',
+    cache:false
+    });
+}
+function getAjax(url,param,type){
+	function handleAjax(url, param, type) {
+	 return ajax(url, param, type).then(function(resp){
+			// 成功回调
+			if(resp){
+				update_nodes_states(resp.dag_tasks)
+			}
+			else{
+				return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
+			}
+		}, function(err){
+	//失败回调
+			console.log(err); // 打印状态码
+			});
+		}
+	handleAjax(url,param,type);
+}
+</script>
+
+
+
+
+
 </html>

@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="com.ibm.automation.domain.Task_InstanceBean">
     <id column="task_id" jdbcType="VARCHAR" property="task_id" />
     <id column="dag_id" jdbcType="VARCHAR" property="dag_id" />
-    <id column="execution_date" jdbcType="TIMESTAMP" property="execution_date" />
-    <result column="start_date" jdbcType="TIMESTAMP" property="start_date" />
-    <result column="end_date" jdbcType="TIMESTAMP" property="end_date" />
+    <id column="execution_date" jdbcType="VARCHAR" property="execution_date" />
+    <result column="start_date" jdbcType="VARCHAR" property="start_date" />
+    <result column="end_date" jdbcType="VARCHAR" property="end_date" />
     <result column="duration" jdbcType="REAL" property="duration" />
     <result column="state" jdbcType="VARCHAR" property="state" />
     <result column="try_number" jdbcType="INTEGER" property="try_number" />
@@ -17,17 +17,17 @@
     <result column="queue" jdbcType="VARCHAR" property="queue" />
     <result column="priority_weight" jdbcType="INTEGER" property="priority_weight" />
     <result column="operator" jdbcType="VARCHAR" property="operator" />
-    <result column="queued_dttm" jdbcType="TIMESTAMP" property="queued_dttm" />
+    <result column="queued_dttm" jdbcType="VARCHAR" property="queued_dttm" />
     <result column="pid" jdbcType="INTEGER" property="pid" /> 
   </resultMap>
   
  <select id="selectRunningTaskInstance" parameterType="hashmap" resultType="com.ibm.automation.domain.Task_InstanceBean">
   		select 
-  		task_id,dag_id,execution_date,
-  		start_date,end_date,duration,state,
+  		task_id,dag_id,date_format(execution_date,'%Y-%m-%d %H:%m:%s')  execution_date,
+  		date_format(start_date,'%Y-%m-%d %H:%m:%s')  start_date,date_format(end_date,'%Y-%m-%d %H:%m:%s')  end_date,duration,state,
   		try_number,hostname,unixname,job_id,
-  		pool,queue,priority_weight,operator,queued_dttm,pid
-  		from task_instance where dag_id = #{dag_id} and execution_date=#{execution_date}
+  		pool,queue,priority_weight,operator,date_format(queued_dttm,'%Y-%m-%d %H:%m:%s')  queued_dttm,pid
+  		from task_instance where dag_id = #{dag_id} and date_format(execution_date,'%Y-%m-%d %H:%m:%s')=DATE_FORMAT(#{execution_date},'%Y-%m-%d %H:%m:%s')
   </select>
   
  <select id="selectHistoryTaskInstance" parameterType="hashmap" resultType="com.ibm.automation.domain.Task_InstanceBean">
