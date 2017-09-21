@@ -7,7 +7,7 @@
     <id column="execution_date" jdbcType="VARCHAR" property="execution_date" />
     <result column="start_date" jdbcType="VARCHAR" property="start_date" />
     <result column="end_date" jdbcType="VARCHAR" property="end_date" />
-    <result column="duration" jdbcType="REAL" property="duration" />
+    <result column="duration" jdbcType="VARCHAR" property="duration" />
     <result column="state" jdbcType="VARCHAR" property="state" />
     <result column="try_number" jdbcType="INTEGER" property="try_number" />
     <result column="hostname" jdbcType="VARCHAR" property="hostname" />
@@ -33,7 +33,7 @@
  <select id="selectHistoryTaskInstance" parameterType="hashmap" resultType="com.ibm.automation.domain.Task_InstanceBean">
   		select 
   		task_id,dag_id,execution_date,
-  		start_date,end_date,duration,state,
+  		start_date,end_date,cast(format(duration,2) as char ) duration ,state,
   		try_number,hostname,unixname,job_id,
   		pool,queue,priority_weight,operator,queued_dttm,pid
   		from task_instance where dag_id = #{dag_id} and execution_date=#{execution_date}

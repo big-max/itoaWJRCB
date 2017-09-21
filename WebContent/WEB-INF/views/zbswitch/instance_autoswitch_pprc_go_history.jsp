@@ -12,7 +12,7 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<jsp:include page="header3.jsp" flush="true" />  
+<jsp:include page="../header3.jsp" flush="true" />  
 <title>自动化部署平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
@@ -679,7 +679,7 @@ function update_nodes_states(task_instances) {
             	mynode.style("stroke", "white") ; 
             }else if (obj.state == 'running')
             {
-            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：运行中";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
             	mynode.style("stroke", "blue") ; 

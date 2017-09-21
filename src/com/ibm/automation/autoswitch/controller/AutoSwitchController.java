@@ -62,7 +62,7 @@ public class AutoSwitchController {
 		DagDomainBean ddb = dagDomainService.getDagDomain("pprc");
 		System.out.println(ddb);
 		request.setAttribute("taskList", dagDomainList);
-		return "instance_autoswitch_summary";
+		return "zbswitch/instance_autoswitch_summary";
 	}
 
 	// 到运行时页面
@@ -72,10 +72,10 @@ public class AutoSwitchController {
 		String link = null;
 		switch (dag_id) {
 		case "pprc_go":
-			link = "instance_autoswitch_pprc_go_running";
+			link = "zbswitch/instance_autoswitch_pprc_go_running";
 			break;
 		case "pprc_back":
-			link = "instance_autoswitch_pprc_back_running";
+			link = "zbswitch/instance_autoswitch_pprc_back_running";
 			break;
 		default:
 			link = null;
@@ -132,7 +132,7 @@ public class AutoSwitchController {
 		String link = null;
 		switch (dag_id) {
 		case "pprc_go":
-			link = "instance_autoswitch_pprc_go_history";
+			link = "zbswitch/instance_autoswitch_pprc_go_history";
 			break;
 		default:
 			break;
@@ -213,8 +213,6 @@ public class AutoSwitchController {
 		return null;
 	}
 
-	public void test() {
-		System.out.println("test");
-	}
+	
 
 }
