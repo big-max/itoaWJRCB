@@ -56,13 +56,11 @@ body{margin:0;padding:0;}
 	<!--content start-->
 	<div class="content">
 		<div style="margin:20px auto;width:320px;">
-			<select style="display:inline;width:200px;">
-				<option value="">${execution_date}</option>
-				<option value="">2017-09-17 15:20:30</option>
-				<option value="">2017-09-16 15:20:30</option>
+			<select id="hisdatetime" style="display:inline;width:200px;">
+				<option value="${dag_id}">${execution_date}</option>
 			</select>
 			<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
-			<button class="btn btn-sm" style="background-color: #448FC8;">
+			<button id="showlog" class="btn btn-sm" style="background-color: #448FC8;">
 				<font color="white">查看历史</font>
 			</button>
 		</div>
@@ -70,15 +68,15 @@ body{margin:0;padding:0;}
 		<div style="float:left;font-size:14px;margin-top:5px;margin-left:20px;">
 			<span><b>流程名：</b></span>
 			<span>PPRC+LVM 切换</span>
-			<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
+			<!-- <span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
 			<span><b>责任人：</b></span>
-			<span>root</span>
+			<span>root</span> -->
 			
 		</div>
 		<!-- 图例说明 -->
-		<div class="explogo" style="margin-right:10px;margin-top:5px;border:2px solid red;">
+		<!-- <div class="explogo" style="margin-right:10px;margin-top:5px;border:2px solid red;">
 			<font color="white">超时任务</font>
-		</div>
+		</div> -->
 		
 		<div id="svg_container" style="margin-left:10px;">
 			<svg width="100%" height="350">
@@ -722,13 +720,42 @@ function getAjax(url,param,type){
 	handleAjax(url,param,type);
 }
 $(document).ready(function(){
-	//编写代码
+	//更新最新一次的流程跑跑的数据
 	getAjax("historyData.do",data,"post");
+	//更新下拉框的日期数据
+	getDagHisRecord("historyDatatime.do",data,"get");
 });
 
-/* Window.onload=function(){
-	//编写代码
-		getAjax("historyData.do",data,"post");
-	} */
+function getDagHisRecord(url,param,type){
+	 $.ajax({
+	        timeout: 3000,
+	        async: false,
+	        url: url,
+	        dataType: "json",
+	        data: param || {},
+	        type: type || 'GET',
+	        cache:false,
+	        success: function (data) {
+	        	var array = data.dag_hisdatetime;
+	            for (var i = 0; i < array.length; i++) {
+	                $("#hisdatetime").append("<option>" + array[i] + "</option>");
+	            }
+	        }
+	    });
+}
+
+//查看历史操作
+$("#showlog").click(function(){
+		//首先获取下拉框的值
+		var curDatetime = $("#hisdatetime").val();
+		curdata={"dag_id":"pprc_go","execution_date":curDatetime};
+		getAjax("historyData.do",curdata,"post");
+		
+	})
+
+
+
+
+
 </script>
 </html>
