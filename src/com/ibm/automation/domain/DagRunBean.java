@@ -1,13 +1,12 @@
 package com.ibm.automation.domain;
 
-import java.util.Date;
 
 //每跑一次DAG会产生一条条目
 public class DagRunBean {
 
     private String dag_id;
 
-    private Date execution_date;
+    private String execution_date;
 
     private String state;
 
@@ -21,11 +20,12 @@ public class DagRunBean {
 		this.dag_id = dag_id;
 	}
 
-	public Date getExecution_date() {
+	
+	public String getExecution_date() {
 		return execution_date;
 	}
 
-	public void setExecution_date(Date execution_date) {
+	public void setExecution_date(String execution_date) {
 		this.execution_date = execution_date;
 	}
 
