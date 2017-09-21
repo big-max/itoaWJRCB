@@ -76,7 +76,7 @@ public class AutoSwitchController {
 		case "pprc_back":
 			link = "instance_autoswitch_pprc_back_running";
 			break;
-		default :
+		default:
 			link = null;
 		}
 
@@ -125,9 +125,8 @@ public class AutoSwitchController {
 	@RequestMapping("/historyPage.do")
 	public String daghistoryPage(@RequestParam Map<String, String> dag, Model model) {
 		String dagid = dag.get("dagid");
-        String dagtime = dag.get("dagtime"); 
+
         model.addAttribute("dagid", dagid);
-        model.addAttribute("dagtime", dagtime);
         
 		return "instance_autoswitch_history";
 	}
