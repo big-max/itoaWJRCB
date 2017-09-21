@@ -31,6 +31,7 @@ import com.ibm.automation.core.service.ServerService;
 import com.ibm.automation.core.service.Task_InstanceService;
 import com.ibm.automation.core.util.HttpClientUtil;
 import com.ibm.automation.core.util.PropertyUtil;
+import com.ibm.automation.core.util.UtilDateTime;
 import com.ibm.automation.domain.DagDomainBean;
 import com.ibm.automation.domain.DagRunBean;
 import com.ibm.automation.domain.Task_InstanceBean;
@@ -89,16 +90,16 @@ public class AutoSwitchController {
 	public ObjectNode dagrunning_data(HttpServletRequest request, HttpSession session) {
 		Map<String, String> map = new HashMap<String, String>();
 		String dag_id = request.getParameter("dag_id");
-		String execution_date = request.getParameter("execution_date");
+		// 2016-01-01T12:12:12 to 2016-01-01 12:12:12
+		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
 		map.put("dag_id", dag_id);
 		map.put("execution_date", execution_date);// "2017-09-13
-													// 19:42:47.000000"
 		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
 		JSONArray array = JSONArray.fromObject(taskInstanceList);
-		System.out.println(array);
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
+		System.out.println(on.toString());
 		return on;
 	}
 
@@ -108,27 +109,36 @@ public class AutoSwitchController {
 	public ObjectNode daghistory_data(HttpServletRequest request, HttpSession session) {
 		Map<String, String> map = new HashMap<String, String>();
 		String dag_id = request.getParameter("dag_id");
-		String execution_date = request.getParameter("execution_date");
+		// 2016-01-01T12:12:12 to 2016-01-01 12:12:12
+		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
 		map.put("dag_id", dag_id);
 		map.put("execution_date", execution_date);// "2017-09-13
-													// 19:42:47.000000"
 		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
 		JSONArray array = JSONArray.fromObject(taskInstanceList);
-		System.out.println(array);
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
+		System.out.println(on.toString());
 		return on;
 	}
 
 	// 到历史记录页面
 	@RequestMapping("/historyPage.do")
 	public String daghistoryPage(@RequestParam Map<String, String> dag, Model model) {
-		String dagid = dag.get("dagid");
+		String dag_id = dag.get("dag_id");
+		String execution_date = dag.get("execution_date");
+		model.addAttribute("dag_id", dag_id);
+		model.addAttribute("execution_date", UtilDateTime.T2Datetime(execution_date));
+		String link = null;
+		switch (dag_id) {
+		case "pprc_go":
+			link = "instance_autoswitch_pprc_go_history";
+			break;
+		default:
+			break;
 
-        model.addAttribute("dagid", dagid);
-        
-		return "instance_autoswitch_history";
+		}
+		return link;
 	}
 
 	// 获取历史数据的某个dig的所有执行时间
@@ -140,11 +150,12 @@ public class AutoSwitchController {
 		List<DagRunBean> allDatetimeList = dagRunService.getDagRunTime(dag_id);
 		ObjectNode on = om.createObjectNode();
 		ArrayNode an = om.createArrayNode();
-		for (int i = 0; i < allDatetimeList.size(); i++) {
+		for (int i = 1; i < allDatetimeList.size(); i++) {     //这里需要从1开始，因为最靠近的时间已经在hispage中定义了
 			an.addPOJO(allDatetimeList.get(i).getExecution_date());
 		}
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_hisdatetime", an);
+		System.out.println(on.toString());
 		return on;
 	}
 	/*
@@ -201,8 +212,9 @@ public class AutoSwitchController {
 	public String postStop(HttpServletRequest request, HttpSession session) {
 		return null;
 	}
-	
-	public void test(){
+
+	public void test() {
 		System.out.println("test");
 	}
+
 }
