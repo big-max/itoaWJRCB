@@ -57,7 +57,7 @@ body{margin:0;padding:0;}
 	<div class="content">
 		<div style="margin:20px auto;width:320px;">
 			<select style="display:inline;width:200px;">
-				<option value="">${dagtime}</option>
+				<option value="">2017-09-15 15:20:30</option>
 				<option value="">2017-09-17 15:20:30</option>
 				<option value="">2017-09-16 15:20:30</option>
 			</select>
