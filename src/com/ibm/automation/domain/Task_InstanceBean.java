@@ -9,7 +9,7 @@ public class Task_InstanceBean {
 	private String execution_date;
     private String start_Date;
     private String end_Date;
-    private Float duration;
+    private String duration;
     private String state;
     private Integer try_number;
     private String hostname;
@@ -59,10 +59,10 @@ public class Task_InstanceBean {
 	public void setQueued_dttm(String queued_dttm) {
 		this.queued_dttm = queued_dttm;
 	}
-	public Float getDuration() {
+	public String getDuration() {
 		return duration;
 	}
-	public void setDuration(Float duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 	public String getState() {
