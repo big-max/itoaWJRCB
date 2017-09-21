@@ -588,6 +588,7 @@ body{margin:0;padding:0;}
     renderer.layout(layout).run(g, d3.select("#dig"));
     inject_node_ids(tasks);
     //update_nodes_states(task_instances);
+
     function highlight_nodes(nodes, color) {
         nodes.forEach (function (nodeid) {
             my_node = d3.select('#' + nodeid + ' rect');
@@ -617,8 +618,6 @@ body{margin:0;padding:0;}
                     .attr("id", task_id);
         });
     }
-    
-    
 </script>
 
 
@@ -668,6 +667,50 @@ function getUrlParam(name) {
     var r = window.location.search.substr(1).match(reg);  //匹配目标参数
     if (r != null) return unescape(r[2]); return null; //返回参数值
 }
+
+//handleAjax("runningData.do",data,"post");
+
+setInterval(function(){getAjax("runningData.do",data,"post")},3000);
+function update_nodes_states(task_instances) {
+		$.each(task_instances,function(idx,obj){
+			
+          
+            var mynode = d3.select('#' + obj.task_id + ' rect');
+            if(obj.state == 'failed') //如果失败
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：失败";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+                mynode.style("stroke", "red") ;
+            }else if (obj.state == 'success') //如果成功
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：成功";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+                 mynode.style("stroke", "green") ;
+            }else if (obj.state == 'skipped' || obj.state == 'undefined')//未开始
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+            	mynode.style("stroke", "white") ; 
+            }else if (obj.state == 'running')
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+            	mynode.style("stroke", "blue") ; 
+            }
+		})
+    }
+    
+//获取url中的参数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+
 function ajax(url, param, type) {
     return $.ajax({
     url: url,
@@ -694,9 +737,6 @@ function getAjax(url,param,type){
 	handleAjax(url,param,type);
 }
 </script>
-
-
-
 
 
 </html>

@@ -602,12 +602,16 @@ public class UtilDateTime {
 		Date curDate = new Date();
 		return sdf.format(curDate);
 	}
-	
+	//将2017-09-20T12:12:12 转换成2017-09-20 12:12:12
+	public static String T2Datetime(String T)
+	{
+		if (T != null)
+			return T.replace("T", " ");
+		return null;
+	}
 	public static void main(String[] args) {
 		
-		//String ss = UtilDateTime.getDateFromMilles();
-		//System.out.println(UtilDateTime.nowDate());
-		String d = UtilDateTime.getFormatCurrentDate();
-		System.out.println(d);
+		String s= T2Datetime("2017-09-20T12:12:12"); 
+		System.out.println(s);
 	}
 }
