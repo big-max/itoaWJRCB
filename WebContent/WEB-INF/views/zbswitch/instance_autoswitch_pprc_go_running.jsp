@@ -12,7 +12,19 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<jsp:include page="header3.jsp" flush="true" />  
+<%--  <jsp:include page="header2.jsp" flush="true" />  --%>
+<!-- 灾备running页面 -->
+<link type="text/css" title="www" rel="stylesheet" href="css/bootstrap.min.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="css/dagre.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="css/graph.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="css/main.css"/>
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min3.js"></script>
+<script type="text/javascript" src="js/d3.v3.min.js"></script>
+<script type="text/javascript" src="js/dagre-d3.min.js"></script>
 <title>自动化部署平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
@@ -28,10 +40,10 @@ body{margin:0;padding:0;}
 	background-color:#F5F3F4;
 }
 .explogo{
-	float:right;
+	float:left;
 	width:70px;
 	height:40px;
-	background-color:rgb(255,0,0);
+	background-color:#F0EDE4;
 	border-radius:10px;
 	text-align:center;
 	line-height:35px;
@@ -55,32 +67,18 @@ body{margin:0;padding:0;}
 	
 	<!--content start-->
 	<div class="content">
-		<div style="margin:20px auto;width:320px;">
-			<select id="hisdatetime" style="display:inline;width:200px;">
-				<option value="${execution_date}">${execution_date}</option>
-			</select>
-			<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
-			<button id="showlog" class="btn btn-sm" style="background-color: #448FC8;">
-				<font color="white">查看历史</font>
-			</button>
-		</div>
-	
-		<div style="float:left;font-size:14px;margin-top:5px;margin-left:20px;">
-			<span><b>流程名：</b></span>
-			<span>PPRC+LVM 切换</span>
-			<!-- <span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
-			<span><b>责任人：</b></span>
-			<span>root</span> -->
-			
-		</div>
 		<!-- 图例说明 -->
-		<!-- <div class="explogo" style="margin-right:10px;margin-top:5px;border:2px solid red;">
-			<font color="white">超时任务</font>
-		</div> -->
+		<div style="height:60px;width:300px;margin-top:10px;">
+			<div class="explogo" style="border:2px solid white;position:fixed;">未开始</div>
+			<div class="explogo" style="margin-left:75px;border:2px solid #0000ff;position:fixed;">运行中</div>
+			<div class="explogo" style="margin-left:150px;border:2px solid #00ff00;position:fixed;">成功</div>
+			<div class="explogo" style="margin-left:225px;border:2px solid red;position:fixed;">失败</div>
+		</div>
+		<div style="margin-bottom:60px;"></div>
 		
-		<div id="svg_container" style="margin-left:10px;">
-			<svg width="100%" height="350">
-				<g id='dig' transform="translate(20,50)"/>  
+		<div id="svg_container">
+			<svg width="100%" height="450">
+				<g id='dig' transform="translate(20,90)"/>  
 			</svg>
 		</div>
 	</div>
@@ -123,24 +121,7 @@ body{margin:0;padding:0;}
 		var newvalue = tipcontent.split(",").join("<br>");
 		$("#pprc_go_workdb_backup").attr("data-original-title",newvalue);
 	})
-*/	
-//description:	获取所有任务块的相关信息
-	$.ajax({  
-           url:'<%=path%>/getDagrunByDagID.do',  
-           type:"get",  
-           dataType:"json",  
-           data:{  
-               userID:"1"  
-           },  
-           success:function(response){  
- 
-           },  
-           error:function() {  
-           }  
-       }); 
-	
-		
-		
+*/
 </script>
 
 <script>
@@ -601,15 +582,13 @@ body{margin:0;padding:0;}
 	  }
 	};
 	
-  
-    
     var arrange = "LR";
     var g = dagreD3.json.decode(nodes, edges);
     var layout = dagreD3.layout().rankDir(arrange).nodeSep(15).rankSep(15);
     var renderer = new dagreD3.Renderer();
     renderer.layout(layout).run(g, d3.select("#dig"));
     inject_node_ids(tasks);
-   //update_nodes_states(task_instances);
+    //update_nodes_states(task_instances);
 
 
     function highlight_nodes(nodes, color) {
@@ -645,7 +624,12 @@ body{margin:0;padding:0;}
         });
     }
 
+    
+    
+
 </script>
+
+
 <script type="text/javascript">
 <!-- 这个ajax 是更新实时状态 -->
 var dag_id = getUrlParam('dag_id');
@@ -654,10 +638,11 @@ var data ={"dag_id":dag_id,"execution_date":execution_date};
 
 //handleAjax("runningData.do",data,"post");
 
-
-//setInterval(function(){getAjax("historyData.do",data,"post")},3000);
+setInterval(function(){getAjax("runningData.do",data,"post")},3000);
 function update_nodes_states(task_instances) {
 		$.each(task_instances,function(idx,obj){
+			
+          
             var mynode = d3.select('#' + obj.task_id + ' rect');
             if(obj.state == 'failed') //如果失败
             {
@@ -679,7 +664,7 @@ function update_nodes_states(task_instances) {
             	mynode.style("stroke", "white") ; 
             }else if (obj.state == 'running')
             {
-            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：运行中";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
             	mynode.style("stroke", "blue") ; 
@@ -719,39 +704,10 @@ function getAjax(url,param,type){
 		}
 	handleAjax(url,param,type);
 }
-$(document).ready(function(){
-	//更新最新一次的流程跑跑的数据
-	getAjax("historyData.do",data,"post");
-	//更新下拉框的日期数据
-	getDagHisRecord("historyDatatime.do",data,"get");
-});
-
-function getDagHisRecord(url,param,type){
-	 $.ajax({
-	        timeout: 3000,
-	        async: false,
-	        url: url,
-	        dataType: "json",
-	        data: param || {},
-	        type: type || 'GET',
-	        cache:false,
-	        success: function (data) {
-	        	var array = data.dag_hisdatetime;
-	            for (var i = 0; i < array.length; i++) {
-	                $("#hisdatetime").append("<option>" + array[i] + "</option>");
-	            }
-	        }
-	    });
-}
-
-//查看历史操作
-$("#showlog").click(function(){
-		//首先获取下拉框的值
-		var curDatetime = $("#hisdatetime").val();
-		curdata={"dag_id":"pprc_go","execution_date":curDatetime};
-		getAjax("historyData.do",curdata,"post");
-		
-	})
-
 </script>
+
+
+
+
+
 </html>
