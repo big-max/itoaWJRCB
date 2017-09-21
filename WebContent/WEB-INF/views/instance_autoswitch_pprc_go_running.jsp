@@ -19,12 +19,15 @@
 <link type="text/css" title="www" rel="stylesheet" href="css/dagre.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="css/graph.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="css/main.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="css/sweetalert.css" />
 
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min3.js"></script>
 <script type="text/javascript" src="js/d3.v3.min.js"></script>
 <script type="text/javascript" src="js/dagre-d3.min.js"></script>
+<script type="text/javascript" src="js/sweetalert.min.js"></script>
+<script type="text/javascript" src="js/sweetalert-dev.js"></script>
 <title>自动化部署平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
@@ -81,7 +84,32 @@ body{margin:0;padding:0;}
 				<g id='dig' transform="translate(20,90)"/>  
 			</svg>
 		</div>
-	</div>
+	
+		<!-- 模态框（Modal） -->
+<div class="modal fade" id="pprc_go_start" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					模态框（Modal）标题
+				</h4>
+			</div>
+			<div class="modal-body">
+				在这里添加一些文本
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
 </body>
 
 
@@ -103,6 +131,8 @@ body{margin:0;padding:0;}
 		{
 			var idname = arrIdVal[i];
 			$("g.node").eq(i).attr("id",idname);
+			$("g.node").eq(i).attr("data-toggle","modal");
+			$("g.node").eq(i).attr("data-target",idname);
 		}
 	})
 /*	
@@ -736,6 +766,15 @@ function getAjax(url,param,type){
 		}
 	handleAjax(url,param,type);
 }
+</script>
+
+<script>
+	$(document).ready(function(){
+		$("g.node").click(function(){
+			var nodename = $(this).find("tspan").text();
+			var idname = 
+		})
+	})
 </script>
 
 
