@@ -23,11 +23,11 @@
   
  <select id="selectRunningTaskInstance" parameterType="hashmap" resultType="com.ibm.automation.domain.Task_InstanceBean">
   		select 
-  		task_id,dag_id,date_format(execution_date,'%Y-%m-%d %H:%m:%s')  execution_date,
-  		date_format(start_date,'%Y-%m-%d %H:%m:%s')  start_date,date_format(end_date,'%Y-%m-%d %H:%m:%s')  end_date,duration,state,
+  		task_id,dag_id,date_format(execution_date,'%Y-%m-%d %T')  execution_date,
+  		date_format(start_date,'%Y-%m-%d %T')  start_date,date_format(end_date,'%Y-%m-%d %T')  end_date,duration,state,
   		try_number,hostname,unixname,job_id,
-  		pool,queue,priority_weight,operator,date_format(queued_dttm,'%Y-%m-%d %H:%m:%s')  queued_dttm,pid
-  		from task_instance where dag_id = #{dag_id} and date_format(execution_date,'%Y-%m-%d %H:%m:%s')=DATE_FORMAT(#{execution_date},'%Y-%m-%d %H:%m:%s')
+  		pool,queue,priority_weight,operator,date_format(queued_dttm,'%Y-%m-%d %T')  queued_dttm,pid
+  		from task_instance where dag_id = #{dag_id} and date_format(execution_date,'%Y-%m-%d %T')=DATE_FORMAT(#{execution_date},'%Y-%m-%d %T')
   </select>
   
  <select id="selectHistoryTaskInstance" parameterType="hashmap" resultType="com.ibm.automation.domain.Task_InstanceBean">

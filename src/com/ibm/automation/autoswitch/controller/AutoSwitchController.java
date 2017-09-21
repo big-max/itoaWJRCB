@@ -128,7 +128,7 @@ public class AutoSwitchController {
 		String dag_id = dag.get("dag_id");
 		String execution_date = dag.get("execution_date");
 		model.addAttribute("dag_id", dag_id);
-		model.addAttribute("execution_date", execution_date);
+		model.addAttribute("execution_date", UtilDateTime.T2Datetime(execution_date));
 		String link = null;
 		switch (dag_id) {
 		case "pprc_go":
@@ -150,11 +150,12 @@ public class AutoSwitchController {
 		List<DagRunBean> allDatetimeList = dagRunService.getDagRunTime(dag_id);
 		ObjectNode on = om.createObjectNode();
 		ArrayNode an = om.createArrayNode();
-		for (int i = 0; i < allDatetimeList.size(); i++) {
+		for (int i = 1; i < allDatetimeList.size(); i++) {     //这里需要从1开始，因为最靠近的时间已经在hispage中定义了
 			an.addPOJO(allDatetimeList.get(i).getExecution_date());
 		}
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_hisdatetime", an);
+		System.out.println(on.toString());
 		return on;
 	}
 	/*
