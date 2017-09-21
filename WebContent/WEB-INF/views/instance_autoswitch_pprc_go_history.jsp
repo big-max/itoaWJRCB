@@ -57,7 +57,7 @@ body{margin:0;padding:0;}
 	<div class="content">
 		<div style="margin:20px auto;width:320px;">
 			<select id="hisdatetime" style="display:inline;width:200px;">
-				<option value="${dag_id}">${execution_date}</option>
+				<option value="${execution_date}">${execution_date}</option>
 			</select>
 			<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
 			<button id="showlog" class="btn btn-sm" style="background-color: #448FC8;">
