@@ -242,11 +242,11 @@ public class AutoSwitchController {
 	@RequestMapping("getTaskLog.do")
 	@ResponseBody
 	public JSONObject getTaskLog(HttpServletRequest request, HttpSession session) {
-		String dag_id = request.getParameter("dag_id");//流程id
+		String dag_id1 = request.getParameter("dag_id");//流程id
 		String task_id = request.getParameter("task_id");//任务id
 		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));//整个任务的发起时间
 		ObjectNode postJson = om.createObjectNode();
-		postJson.put("dag_id", dag_id);
+		postJson.put("dag_id", dag_id1);
 		postJson.put("task_id",task_id);
 		postJson.put("operation", 9); // 9 代表 获取task 日志
 		postJson.put("execution_date", execution_date);

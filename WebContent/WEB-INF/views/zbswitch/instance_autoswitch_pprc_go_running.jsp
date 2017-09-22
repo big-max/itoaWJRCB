@@ -828,16 +828,15 @@ function getTagsInfo($doms){   //获取点击按钮的顶层容器的id
     }).get();
 }
 
-<<<<<<< HEAD
+
 function confirmMakeSuccess(task_id){
           return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
       }
-=======
+
 /* function confirmMakeSuccess(task_id){
      return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
 } */ 
  
  $(function () { $("[data-toggle='tooltip']").tooltip(); });
->>>>>>> branch 'master' of https://github.com:443/superTSS/itoaWJRCB.git
 </script>
 </html>
