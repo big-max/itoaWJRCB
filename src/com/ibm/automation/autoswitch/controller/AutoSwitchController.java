@@ -207,12 +207,34 @@ public class AutoSwitchController {
 		return null;
 	}
 
+	
+	
 	// 发出灾备切换停止请求
 	@RequestMapping("/postStopAirflow.do")
 	public String postStop(HttpServletRequest request, HttpSession session) {
 		return null;
 	}
 
-	
-
+	// 将任务标记位成功
+	@RequestMapping("/markTaskSuccess.do")
+	@ResponseBody
+	public JSONObject markTaskSuccess(HttpServletRequest request, HttpSession session) {
+		String dag_id = request.getParameter("dag_id");//流程id
+		String task_id = request.getParameter("task_id");//任务id
+		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));//整个任务的发起时间
+		ObjectNode postJson = om.createObjectNode();
+		postJson.put("dag_id", dag_id);
+		postJson.put("task_id",task_id);
+		postJson.put("operation", 7); // 7代表标记任务为成功
+		postJson.put("execution_date", execution_date);
+		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
+		try {
+			String response = HttpClientUtil.postMethod(url, postJson.toString());
+			return JSONObject.fromObject(response);
+		} catch (NetWorkException | IOException e) {
+			e.printStackTrace();
+			logger.error("标记任务成功，IO错误");
+		}
+		return null;
+	}
 }

@@ -63,21 +63,26 @@ body{margin:0;padding:0;}
 
 <body>
 	<!-- 模态框（Modal） -->
-	<div class="modal fade modalframe" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade modalframe" id=""  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabel"></h4>
 				</div>
 				<div class="modal-body">
-					在这里添加一些文本
+					  <button id="btn_log" type="button" class="btn btn-primary">查看日志 </button><br />
+					   <div style="margin-top: 5px;"></div>
+					  <button id="btn_clear" type="button" class="btn btn-primary" title="清理当前出错任务，并让调度器重新发起此任务">清理&续作</button>
+					  <div style="margin-top: 5px;"></div>
+           			  <button id="btn_success" type="button" class="btn btn-primary">确认成功</button>
+         
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 					</button>
-					<button type="button" class="btn btn-primary">
+					<!-- <button type="button" class="btn btn-primary">
 						提交更改
-					</button>
+					</button> -->
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal -->
@@ -745,5 +750,50 @@ function getAjax(url,param,type){
 }
 </script>
 
+<script type="text/javascript">
+<!-- 模态对话框的所有操作方法在这里-->
+$("#btn_success").click(function(){    //将任务标记位成功的ajax
+	var task_id = getTaskID($(this));
+	var task_name = getTaskName($(this));
+	var execution_date = getUrlParam('execution_date'); //获取url 的值
+	var boolena = confirmMakeSuccess(task_name);
+	if(boolena) //点击 yes
+	{
+		var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		$.ajax({
+			url : '<%=path%>/markTaskSuccess.do',
+			data:data,
+			type : 'post',
+			dataType : 'json',
+			success:function(result)
+			{
+				alert(result);
+			},
+		})
+	}
+})
 
+function getTaskID(dom) //获取当前模态框的任务id
+{
+	var reg = new RegExp(",","g");  //将逗号删掉， g代表全局
+	var parents1 = $(dom).parents();  //获取父类所有div+id
+	var task_id_array = getTagsInfo(parents1);
+	var task_id = task_id_array.join(",").replace(reg,""); //将task_id_array 转换为字符串，然后删除,
+	return task_id;
+}
+function getTaskName(dom){ //获取当前模态框的任务中文名
+	var text = $(dom).parent().prev().find(".modal-title").text();  //获取标题名称
+	//alert(text);
+	return text;
+}
+function getTagsInfo($doms){   //获取点击按钮的顶层容器的id
+    return $doms.map(function(){
+        return  this.id ;
+    }).get();
+}
+
+ function confirmMakeSuccess(task_id){
+          return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
+      }
+</script>
 </html>
