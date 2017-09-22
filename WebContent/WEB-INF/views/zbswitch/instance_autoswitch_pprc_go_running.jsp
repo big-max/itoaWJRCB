@@ -779,28 +779,6 @@ $("#btn_success").click(function(){    //将任务标记位成功的ajax
 	var task_id = getTaskID($(this));
 	var task_name = getTaskName($(this));
 	var execution_date = getUrlParam('execution_date'); //获取url 的值
-	var boolena = confirmMakeSuccess(task_name);
-	
-	if(boolena) //点击 yes
-	{
-		var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		$.ajax({
-			url : '<%=path%>/markTaskSuccess.do',
-			data:data,
-			type : 'post',
-			dataType : 'json',
-			success:function(result)
-			{
-				alert(result.msg);
-			},
-		})
-	}
-}) 
-
-$("#btn_success").click(function(){    //将任务标记位成功的ajax
-	var task_id = getTaskID($(this));
-	var task_name = getTaskName($(this));
-	var execution_date = getUrlParam('execution_date'); //获取url 的值
 	swal({ 
 	    title: "", 
 	    text: "您确定要将任务： '"+task_name+"' 置为成功?", 
