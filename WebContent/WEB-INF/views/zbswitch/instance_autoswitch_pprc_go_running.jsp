@@ -12,7 +12,6 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%--  <jsp:include page="header2.jsp" flush="true" />  --%>
 <!-- 灾备running页面 -->
 <link type="text/css" title="www" rel="stylesheet" href="css/bootstrap.min.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="css/bootstrap-theme.min.css"/>
@@ -52,6 +51,10 @@ body{margin:0;padding:0;}
 	line-height:35px;
 	font-size:14px;
 }
+.btn_block{
+	width:80%;
+	margin:0 auto;
+}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -70,19 +73,14 @@ body{margin:0;padding:0;}
 					<h4 class="modal-title" id="myModalLabel"></h4>
 				</div>
 				<div class="modal-body">
-					  <button id="btn_log" type="button" class="btn btn-primary">查看日志 </button><br />
+					  <button id="btn_log" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);"><font color="white">查看日志</font></button>
 					   <div style="margin-top: 5px;"></div>
-					  <button id="btn_clear" type="button" class="btn btn-primary" title="清理当前出错任务，并让调度器重新发起此任务">清理&续作</button>
+					  <button id="btn_clear" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);" data-toggle="tooltip" data-placement="top" title="清理当前出错任务，并让调度器重新发起此任务"><font color="white">清理&续作</font></button>
 					  <div style="margin-top: 5px;"></div>
-           			  <button id="btn_success" type="button" class="btn btn-primary">确认成功</button>
-         
+           			  <button id="btn_success" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);"><font color="white">确认成功</font></button>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-					</button>
-					<!-- <button type="button" class="btn btn-primary">
-						提交更改
-					</button> -->
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal -->
@@ -667,10 +665,6 @@ body{margin:0;padding:0;}
                     .attr("id", task_id);
         });
     }
-
-    
-    
-
 </script>
 
 
@@ -685,8 +679,6 @@ var data ={"dag_id":dag_id,"execution_date":execution_date};
 setInterval(function(){getAjax("runningData.do",data,"post")},3000);
 function update_nodes_states(task_instances) {
 		$.each(task_instances,function(idx,obj){
-			
-          
             var mynode = d3.select('#' + obj.task_id + ' rect');
             if(obj.state == 'failed') //如果失败
             {
@@ -694,19 +686,22 @@ function update_nodes_states(task_instances) {
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
                 mynode.style("stroke", "red") ;
-            }else if (obj.state == 'success') //如果成功
+            }
+            else if (obj.state == 'success') //如果成功
             {
             	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：成功";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
                  mynode.style("stroke", "green") ;
-            }else if (obj.state == 'skipped' || obj.state == 'undefined')//未开始
+            }
+            else if (obj.state == 'skipped' || obj.state == 'undefined')//未开始
             {
             	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
             	mynode.style("stroke", "white") ; 
-            }else if (obj.state == 'running')
+            }
+            else if (obj.state == 'running')
             {
             	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：运行中";
                 var format_content = tipcontent.split(",").join("<br>");
@@ -752,11 +747,12 @@ function getAjax(url,param,type){
 
 <script type="text/javascript">
 <!-- 模态对话框的所有操作方法在这里-->
-$("#btn_success").click(function(){    //将任务标记位成功的ajax
+<%-- $("#btn_success").click(function(){    //将任务标记位成功的ajax
 	var task_id = getTaskID($(this));
 	var task_name = getTaskName($(this));
 	var execution_date = getUrlParam('execution_date'); //获取url 的值
 	var boolena = confirmMakeSuccess(task_name);
+	
 	if(boolena) //点击 yes
 	{
 		var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
@@ -767,11 +763,47 @@ $("#btn_success").click(function(){    //将任务标记位成功的ajax
 			dataType : 'json',
 			success:function(result)
 			{
-				alert(result);
+				alert(result.msg);
 			},
 		})
 	}
-})
+}) --%>
+
+$("#btn_success").click(function(){    //将任务标记位成功的ajax
+	var task_id = getTaskID($(this));
+	var task_name = getTaskName($(this));
+	var execution_date = getUrlParam('execution_date'); //获取url 的值
+	swal({ 
+	    title: "", 
+	    text: "您确定要将任务： '"+task_name+"' 置为成功?", 
+	    type: "warning", 
+	    showCancelButton: true, 
+	    closeOnConfirm: false, 
+	    confirmButtonText: "确认",  
+	    confirmButtonColor: "#ec6c62" 
+	}, function(isConfirm) { 
+		if(isConfirm)
+		{
+			var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+			$.ajax({
+				url : '<%=path%>/markTaskSuccess.do',
+				data:data,
+				type : 'post',
+				dataType : 'json',
+				success:function(result)
+				{
+					if(result.msg == "0")
+					{
+						swal.close();
+						$(".modalframe").modal("hide");
+						$("#"+task_id).children("rect").style("stroke", "green");
+					} 
+				},
+			})
+		}
+	});
+});
+
 
 function getTaskID(dom) //获取当前模态框的任务id
 {
@@ -783,7 +815,6 @@ function getTaskID(dom) //获取当前模态框的任务id
 }
 function getTaskName(dom){ //获取当前模态框的任务中文名
 	var text = $(dom).parent().prev().find(".modal-title").text();  //获取标题名称
-	//alert(text);
 	return text;
 }
 function getTagsInfo($doms){   //获取点击按钮的顶层容器的id
@@ -792,8 +823,10 @@ function getTagsInfo($doms){   //获取点击按钮的顶层容器的id
     }).get();
 }
 
- function confirmMakeSuccess(task_id){
-          return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
-      }
+/* function confirmMakeSuccess(task_id){
+     return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
+} */ 
+ 
+ $(function () { $("[data-toggle='tooltip']").tooltip(); });
 </script>
 </html>
