@@ -747,7 +747,36 @@ function getAjax(url,param,type){
 
 <script type="text/javascript">
 <!-- 模态对话框的所有操作方法在这里-->
+<<<<<<< HEAD
 <%-- $("#btn_success").click(function(){    //将任务标记位成功的ajax
+=======
+
+$("#btn_log").click(function(){   //查看该失败任务的日志
+	var task_id = getTaskID($(this));
+	var task_name = getTaskName($(this));
+	var execution_date = getUrlParam('execution_date'); //获取url 的值
+//	var boolena = confirmMakeSuccess(task_name);
+	
+		var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		$.ajax({
+			url : '<%=path%>/getTaskLog.do',
+			data:data,
+			type : 'get',
+			dataType : 'json',
+			success:function(result)
+			{
+				alert(result);
+			},
+		})
+	
+});
+ 
+$("#btn_clear").click(function(){   //将出错任务进行清理
+	
+});
+
+$("#btn_success").click(function(){    //将任务标记位成功的ajax
+>>>>>>> branch 'master' of https://github.com/superTSS/itoaWJRCB.git
 	var task_id = getTaskID($(this));
 	var task_name = getTaskName($(this));
 	var execution_date = getUrlParam('execution_date'); //获取url 的值
