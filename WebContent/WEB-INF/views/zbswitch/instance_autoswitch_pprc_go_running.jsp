@@ -758,16 +758,15 @@ $("#btn_log").click(function(){   //查看该失败任务的日志
 	var task_name = getTaskName($(this));
 	var execution_date = getUrlParam('execution_date'); //获取url 的值
 //	var boolena = confirmMakeSuccess(task_name);
-	
-		var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
 		$.ajax({
 			url : '<%=path%>/getTaskLog.do',
 			data:data,
-			type : 'get',
+			type : 'post',
 			dataType : 'json',
 			success:function(result)
 			{
-				alert(result);
+				alert(result.status);
 			},
 		})
 	
@@ -817,7 +816,7 @@ function getTagsInfo($doms){   //获取点击按钮的顶层容器的id
     }).get();
 }
 
- function confirmMakeSuccess(task_id){
+function confirmMakeSuccess(task_id){
           return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
       }
 </script>

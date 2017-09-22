@@ -240,6 +240,7 @@ public class AutoSwitchController {
 	
 	//获取task 日志
 	@RequestMapping("getTaskLog.do")
+	@ResponseBody
 	public JSONObject getTaskLog(HttpServletRequest request, HttpSession session) {
 		String dag_id = request.getParameter("dag_id");//流程id
 		String task_id = request.getParameter("task_id");//任务id
