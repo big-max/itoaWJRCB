@@ -19,12 +19,15 @@
 <link type="text/css" title="www" rel="stylesheet" href="css/dagre.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="css/graph.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="css/main.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="css/sweetalert.css" />
 
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min3.js"></script>
 <script type="text/javascript" src="js/d3.v3.min.js"></script>
 <script type="text/javascript" src="js/dagre-d3.min.js"></script>
+<script type="text/javascript" src="js/sweetalert.min.js"></script>
+<script type="text/javascript" src="js/sweetalert-dev.js"></script>
 <title>自动化部署平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
@@ -59,6 +62,27 @@ body{margin:0;padding:0;}
 </head>
 
 <body>
+	<!-- 模态框（Modal） -->
+	<div class="modal fade modalframe" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel"></h4>
+				</div>
+				<div class="modal-body">
+					在这里添加一些文本
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					</button>
+					<button type="button" class="btn btn-primary">
+						提交更改
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
+	
 	<!--header start-->
 	<div class="header">
 		<%--  <jsp:include page="topleft_close.jsp" flush="true" /> --%>
@@ -82,6 +106,7 @@ body{margin:0;padding:0;}
 			</svg>
 		</div>
 	</div>
+
 </body>
 
 
@@ -102,9 +127,23 @@ body{margin:0;padding:0;}
 		for(var i = 0 ; i < nodelen ; i++)
 		{
 			var idname = arrIdVal[i];
+			var datatar = "#" + idname;
 			$("g.node").eq(i).attr("id",idname);
+			$("g.node").eq(i).attr("data-toggle","modal");
+			$("g.node").eq(i).attr("data-target",datatar);
 		}
 	})
+	
+	//模态框处理 
+	$(document).ready(function(){
+		$("g.node").click(function(){
+			var nodename = $(this).find("tspan").text();//获取任务中文名
+			var nodeid = $(this).attr("id");//获取任务id
+			$(".modalframe").attr("id",nodeid);//给模态框动态赋值id
+			$("#myModalLabel").text(nodename);//每个模态框获取该任务名 
+		})
+	})
+
 /*	
 	$(document).ready(function(){
 		var virstrtime = "xxxxxxxx"; //预计开始时间
@@ -705,9 +744,6 @@ function getAjax(url,param,type){
 	handleAjax(url,param,type);
 }
 </script>
-
-
-
 
 
 </html>
