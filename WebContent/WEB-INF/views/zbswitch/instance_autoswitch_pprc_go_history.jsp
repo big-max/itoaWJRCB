@@ -18,24 +18,10 @@
 body{margin:0;padding:0;}
 .content {
 	position:relative;
-	float:right;
-	/* width:calc(100% - 57px); */
-	 width:100%;
-	margin:0px;
-	/* height:calc(100vh - 70px); */
-	height:100%;
-	overflow-y:scroll;
+	width:calc(100% - 1px); 
+	margin-top:50px;
+	height:calc(100vh - 50px); 
 	background-color:#F5F3F4;
-}
-.explogo{
-	float:right;
-	width:70px;
-	height:40px;
-	background-color:rgb(255,0,0);
-	border-radius:10px;
-	text-align:center;
-	line-height:35px;
-	font-size:14px;
 }
 </style>
 <script>
@@ -49,13 +35,13 @@ body{margin:0;padding:0;}
 <body>
 	<!--header start-->
 	<div class="header">
-		<%--  <jsp:include page="topleft_close.jsp" flush="true" /> --%>
+		<jsp:include page="../topnav.jsp" flush="true" /> 
 	</div>
 	<!--header end-->
 	
 	<!--content start-->
 	<div class="content">
-		<div style="margin:20px auto;width:320px;">
+		<div style="margin:20px auto;width:320px;height:70px;line-height:70px;">
 			<select id="hisdatetime" style="display:inline;width:200px;">
 				<option value="${execution_date}">${execution_date}</option>
 			</select>
@@ -68,17 +54,9 @@ body{margin:0;padding:0;}
 		<div style="float:left;font-size:14px;margin-top:5px;margin-left:20px;">
 			<span><b>流程名：</b></span>
 			<span>PPRC+LVM 切换</span>
-			<!-- <span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
-			<span><b>责任人：</b></span>
-			<span>root</span> -->
-			
 		</div>
-		<!-- 图例说明 -->
-		<!-- <div class="explogo" style="margin-right:10px;margin-top:5px;border:2px solid red;">
-			<font color="white">超时任务</font>
-		</div> -->
 		
-		<div id="svg_container" style="margin-left:10px;">
+		<div id="svg_container" style="margin-left:10px;margin-right:10px;"> 
 			<svg width="100%" height="350">
 				<g id='dig' transform="translate(20,50)"/>  
 			</svg>

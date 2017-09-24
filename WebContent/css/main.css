@@ -28,9 +28,9 @@ a.navbar-brand span {
     z-index: 5;
 }
 nav{
-    -webkit-box-shadow: 0px 3px 3px #AAA;
-    -moz-box-shadow:    0px 3px 3px #AAA;
-    box-shadow:         0px 3px 3px #AAA;
+    -webkit-box-shadow: 0px -50px 3px #AAA;
+    -moz-box-shadow:    0px -50px 3px #AAA;
+    box-shadow:         0px -50px 3px #AAA;
     z-index:999;
 }
 a.navbar-brand {

@@ -12,33 +12,15 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!-- 灾备running页面 -->
-<link type="text/css" title="www" rel="stylesheet" href="css/bootstrap.min.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="css/bootstrap-theme.min.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="css/dagre.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="css/graph.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="css/main.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="css/sweetalert.css" />
-
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min3.js"></script>
-<script type="text/javascript" src="js/d3.v3.min.js"></script>
-<script type="text/javascript" src="js/dagre-d3.min.js"></script>
-<script type="text/javascript" src="js/sweetalert.min.js"></script>
-<script type="text/javascript" src="js/sweetalert-dev.js"></script>
+<jsp:include page="../header3.jsp" flush="true" /> 
 <title>自动化部署平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
 .content {
 	position:relative;
-	float:right;
-	/* width:calc(100% - 57px); */
-	 width:100%;
-	margin:0px;
-	/* height:calc(100vh - 70px); */
-	height:100%;
-	overflow-y:scroll;
+	width:calc(100% - 1px); 
+	margin-top:50px;
+	height:calc(100vh - 50px); 
 	background-color:#F5F3F4;
 }
 .explogo{
@@ -50,6 +32,7 @@ body{margin:0;padding:0;}
 	text-align:center;
 	line-height:35px;
 	font-size:14px;
+	margin-top:15px;
 }
 .btn_block{
 	width:80%;
@@ -88,28 +71,27 @@ body{margin:0;padding:0;}
 	
 	<!--header start-->
 	<div class="header">
-		<%--  <jsp:include page="topleft_close.jsp" flush="true" /> --%>
+		<jsp:include page="../topnav.jsp" flush="true" />
 	</div>
 	<!--header end-->
 	
 	<!--content start-->
 	<div class="content">
 		<!-- 图例说明 -->
-		<div style="height:60px;width:300px;margin-top:10px;">
+		<div style="height:70px;width:300px;margin-left:10px;">
 			<div class="explogo" style="border:2px solid white;position:fixed;">未开始</div>
 			<div class="explogo" style="margin-left:75px;border:2px solid #0000ff;position:fixed;">运行中</div>
 			<div class="explogo" style="margin-left:150px;border:2px solid #00ff00;position:fixed;">成功</div>
 			<div class="explogo" style="margin-left:225px;border:2px solid red;position:fixed;">失败</div>
 		</div>
-		<div style="margin-bottom:60px;"></div>
+		<div style="margin-bottom:10px;"></div>
 		
-		<div id="svg_container">
-			<svg width="100%" height="450">
-				<g id='dig' transform="translate(20,90)"/>  
+		<div id="svg_container" style="margin-left:10px;margin-right:10px;">
+			<svg width="100%" height="350">
+				<g id='dig' transform="translate(20,60)"/>  
 			</svg>
 		</div>
 	</div>
-
 </body>
 
 
@@ -747,10 +729,6 @@ function getAjax(url,param,type){
 
 <script type="text/javascript">
 <!-- 模态对话框的所有操作方法在这里-->
-
- 
-
-
 $("#btn_log").click(function(){   //查看该失败任务的日志
 	var task_id = getTaskID($(this));
 	var task_name = getTaskName($(this));
@@ -800,6 +778,7 @@ $("#btn_success").click(function(){    //将任务标记位成功的ajax
 	    showCancelButton: true, 
 	    closeOnConfirm: false, 
 	    confirmButtonText: "确认",  
+	    cancelButtonText: "取消",  
 	    confirmButtonColor: "#ec6c62" 
 	}, function(isConfirm) { 
 		if(isConfirm)
