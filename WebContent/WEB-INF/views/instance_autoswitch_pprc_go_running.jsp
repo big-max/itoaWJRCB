@@ -19,12 +19,15 @@
 <link type="text/css" title="www" rel="stylesheet" href="css/dagre.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="css/graph.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="css/main.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="css/sweetalert.css" />
 
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min3.js"></script>
 <script type="text/javascript" src="js/d3.v3.min.js"></script>
 <script type="text/javascript" src="js/dagre-d3.min.js"></script>
+<script type="text/javascript" src="js/sweetalert.min.js"></script>
+<script type="text/javascript" src="js/sweetalert-dev.js"></script>
 <title>自动化部署平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
@@ -81,7 +84,32 @@ body{margin:0;padding:0;}
 				<g id='dig' transform="translate(20,90)"/>  
 			</svg>
 		</div>
-	</div>
+	
+		<!-- 模态框（Modal） -->
+<div class="modal fade" id="pprc_go_start" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					模态框（Modal）标题
+				</h4>
+			</div>
+			<div class="modal-body">
+				在这里添加一些文本
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
 </body>
 
 
@@ -103,6 +131,8 @@ body{margin:0;padding:0;}
 		{
 			var idname = arrIdVal[i];
 			$("g.node").eq(i).attr("id",idname);
+			$("g.node").eq(i).attr("data-toggle","modal");
+			$("g.node").eq(i).attr("data-target",idname);
 		}
 	})
 /*	
@@ -128,7 +158,6 @@ body{margin:0;padding:0;}
     var highlight_color = "#000000";
     var upstream_color = "#2020A0";
     var downstream_color = "#0000FF";
-
     var nodes = [
 	  {
 		"id": "pprc_go_start", 
@@ -590,7 +619,6 @@ body{margin:0;padding:0;}
     inject_node_ids(tasks);
     //update_nodes_states(task_instances);
 
-
     function highlight_nodes(nodes, color) {
         nodes.forEach (function (nodeid) {
             my_node = d3.select('#' + nodeid + ' rect');
@@ -602,9 +630,7 @@ body{margin:0;padding:0;}
         d3.select(this).selectAll("rect").style("stroke", highlight_color) ;
         highlight_nodes(g.predecessors(d), upstream_color)
         highlight_nodes(g.successors(d), downstream_color)
-
     });
-
     d3.selectAll("g.node").on("mouseout", function(d){
         d3.select(this).selectAll("rect").style("stroke", null) ;
         highlight_nodes(g.predecessors(d), null)
@@ -615,7 +641,6 @@ body{margin:0;padding:0;}
       html: true,
       container: "body",
     });
-
     function inject_node_ids(tasks) {
         $.each(tasks, function(task_id, task) {
             $('tspan').filter(function(index) { return $(this).text() === task_id; })
@@ -623,10 +648,6 @@ body{margin:0;padding:0;}
                     .attr("id", task_id);
         });
     }
-
-    
-    
-
 </script>
 
 
@@ -635,6 +656,47 @@ body{margin:0;padding:0;}
 var dag_id = getUrlParam('dag_id');
 var execution_date = getUrlParam('execution_date');
 var data ={"dag_id":dag_id,"execution_date":execution_date};
+//handleAjax("runningData.do",data,"post");
+setInterval(function(){getAjax("runningData.do",data,"post")},3000);
+function update_nodes_states(task_instances) {
+		$.each(task_instances,function(idx,obj){
+			
+          
+            var mynode = d3.select('#' + obj.task_id + ' rect');
+            if(obj.state == 'failed') //如果失败
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：失败";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+                mynode.style("stroke", "red") ;
+            }else if (obj.state == 'success') //如果成功
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：成功";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+                 mynode.style("stroke", "green") ;
+            }else if (obj.state == 'skipped' || obj.state == 'undefined')//未开始
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+            	mynode.style("stroke", "white") ; 
+            }else if (obj.state == 'running')
+            {
+            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+            	mynode.style("stroke", "blue") ; 
+            }
+		})
+    }
+    
+//获取url中的参数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
 
 //handleAjax("runningData.do",data,"post");
 
@@ -706,8 +768,14 @@ function getAjax(url,param,type){
 }
 </script>
 
-
-
+<script>
+	$(document).ready(function(){
+		$("g.node").click(function(){
+			var nodename = $(this).find("tspan").text();
+			var idname = 
+		})
+	})
+</script>
 
 
 </html>

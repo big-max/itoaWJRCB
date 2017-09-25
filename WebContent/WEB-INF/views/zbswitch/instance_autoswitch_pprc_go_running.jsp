@@ -12,31 +12,15 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%--  <jsp:include page="header2.jsp" flush="true" />  --%>
-<!-- 灾备running页面 -->
-<link type="text/css" title="www" rel="stylesheet" href="css/bootstrap.min.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="css/bootstrap-theme.min.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="css/dagre.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="css/graph.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="css/main.css"/>
-
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min3.js"></script>
-<script type="text/javascript" src="js/d3.v3.min.js"></script>
-<script type="text/javascript" src="js/dagre-d3.min.js"></script>
+<jsp:include page="../header3.jsp" flush="true" /> 
 <title>自动化部署平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
 .content {
 	position:relative;
-	float:right;
-	/* width:calc(100% - 57px); */
-	 width:100%;
-	margin:0px;
-	/* height:calc(100vh - 70px); */
-	height:100%;
-	overflow-y:scroll;
+	width:calc(100% - 1px); 
+	margin-top:50px;
+	height:calc(100vh - 50px); 
 	background-color:#F5F3F4;
 }
 .explogo{
@@ -48,6 +32,11 @@ body{margin:0;padding:0;}
 	text-align:center;
 	line-height:35px;
 	font-size:14px;
+	margin-top:15px;
+}
+.btn_block{
+	width:80%;
+	margin:0 auto;
 }
 </style>
 <script>
@@ -59,26 +48,47 @@ body{margin:0;padding:0;}
 </head>
 
 <body>
+	<!-- 模态框（Modal） -->
+	<div class="modal fade modalframe" id=""  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel"></h4>
+				</div>
+				<div class="modal-body">
+					  <button id="btn_log" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);"><font color="white">查看日志</font></button>
+					   <div style="margin-top: 5px;"></div>
+					  <button id="btn_clear" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);" data-toggle="tooltip" data-placement="top" title="清理当前出错任务，并让调度器重新发起此任务"><font color="white">清理&续作</font></button>
+					  <div style="margin-top: 5px;"></div>
+           			  <button id="btn_success" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);"><font color="white">确认成功</font></button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
+	
 	<!--header start-->
 	<div class="header">
-		<%--  <jsp:include page="topleft_close.jsp" flush="true" /> --%>
+		<jsp:include page="../topnav.jsp" flush="true" />
 	</div>
 	<!--header end-->
 	
 	<!--content start-->
 	<div class="content">
 		<!-- 图例说明 -->
-		<div style="height:60px;width:300px;margin-top:10px;">
+		<div style="height:70px;width:300px;margin-left:10px;">
 			<div class="explogo" style="border:2px solid white;position:fixed;">未开始</div>
 			<div class="explogo" style="margin-left:75px;border:2px solid #0000ff;position:fixed;">运行中</div>
 			<div class="explogo" style="margin-left:150px;border:2px solid #00ff00;position:fixed;">成功</div>
 			<div class="explogo" style="margin-left:225px;border:2px solid red;position:fixed;">失败</div>
 		</div>
-		<div style="margin-bottom:60px;"></div>
+		<div style="margin-bottom:10px;"></div>
 		
-		<div id="svg_container">
-			<svg width="100%" height="450">
-				<g id='dig' transform="translate(20,90)"/>  
+		<div id="svg_container" style="margin-left:10px;margin-right:10px;">
+			<svg width="100%" height="350">
+				<g id='dig' transform="translate(20,60)"/>  
 			</svg>
 		</div>
 	</div>
@@ -102,9 +112,24 @@ body{margin:0;padding:0;}
 		for(var i = 0 ; i < nodelen ; i++)
 		{
 			var idname = arrIdVal[i];
+			var datatar = "#" + idname;
 			$("g.node").eq(i).attr("id",idname);
+			$("g.node").eq(i).attr("data-toggle","modal");
+			$("g.node").eq(i).attr("data-target",datatar);
 		}
 	})
+	
+	//模态框处理 
+	$(document).ready(function(){
+		$("g.node").click(function(){
+			var nodename = $(this).find("tspan").text();//获取任务中文名
+			var nodeid = $(this).attr("id");//获取任务id
+			$(".modalframe").attr("id",nodeid);//给模态框动态赋值id
+			$("#myModalLabel").text(nodename);//每个模态框获取该任务名 
+		});
+
+	})
+
 /*	
 	$(document).ready(function(){
 		var virstrtime = "xxxxxxxx"; //预计开始时间
@@ -623,10 +648,6 @@ body{margin:0;padding:0;}
                     .attr("id", task_id);
         });
     }
-
-    
-    
-
 </script>
 
 
@@ -641,8 +662,6 @@ var data ={"dag_id":dag_id,"execution_date":execution_date};
 setInterval(function(){getAjax("runningData.do",data,"post")},3000);
 function update_nodes_states(task_instances) {
 		$.each(task_instances,function(idx,obj){
-			
-          
             var mynode = d3.select('#' + obj.task_id + ' rect');
             if(obj.state == 'failed') //如果失败
             {
@@ -650,19 +669,22 @@ function update_nodes_states(task_instances) {
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
                 mynode.style("stroke", "red") ;
-            }else if (obj.state == 'success') //如果成功
+            }
+            else if (obj.state == 'success') //如果成功
             {
             	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：成功";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
                  mynode.style("stroke", "green") ;
-            }else if (obj.state == 'skipped' || obj.state == 'undefined')//未开始
+            }
+            else if (obj.state == 'skipped' || obj.state == 'undefined')//未开始
             {
             	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
             	mynode.style("stroke", "white") ; 
-            }else if (obj.state == 'running')
+            }
+            else if (obj.state == 'running')
             {
             	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：运行中";
                 var format_content = tipcontent.split(",").join("<br>");
@@ -706,8 +728,110 @@ function getAjax(url,param,type){
 }
 </script>
 
+<script type="text/javascript">
+<!-- 模态对话框的所有操作方法在这里-->
+$("#btn_log").click(function(){   //查看该失败任务的日志
+	var task_id = getTaskID($(this));
+	var task_name = getTaskName($(this));
+	var execution_date = getUrlParam('execution_date'); //获取url 的值
+//	var boolena = confirmMakeSuccess(task_name);
+	var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		$.ajax({
+			url : '<%=path%>/getTaskLog.do',
+			data:data,
+			type : 'post',
+			dataType : 'json',
+			success:function(result)
+			{
+				alert(result.msg);
+			},
+		})
+	
+});
+ 
+$("#btn_clear").click(function(){   //将出错任务进行清理
+	var task_id = getTaskID($(this));
+	var task_name = getTaskName($(this));
+	var execution_date = getUrlParam('execution_date'); //获取url 的值
+//	var boolena = confirmMakeSuccess(task_name);
+	var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		$.ajax({
+			url : '<%=path%>/makeNodeClear.do',
+			data:data,
+			type : 'post',
+			dataType : 'json',
+			success:function(result)
+			{
+				//alert(result.msg);
+			},
+		})
+	
+});
+
+$("#btn_success").click(function(){    //将任务标记位成功的ajax
+	var task_id = getTaskID($(this));
+	var task_name = getTaskName($(this));
+	var execution_date = getUrlParam('execution_date'); //获取url 的值
+	swal({ 
+	    title: "", 
+	    text: "您确定要将任务： '"+task_name+"' 置为成功?", 
+	    type: "warning", 
+	    showCancelButton: true, 
+	    closeOnConfirm: false, 
+	    confirmButtonText: "确认",  
+	    cancelButtonText: "取消",  
+	    confirmButtonColor: "#ec6c62" 
+	}, function(isConfirm) { 
+		if(isConfirm)
+		{
+			var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+			$.ajax({
+				url : '<%=path%>/markTaskSuccess.do',
+				data:data,
+				type : 'post',
+				dataType : 'json',
+				success:function(result)
+				{
+					if(result.status == 0)
+					{
+						swal.close();
+						$(".modalframe").modal("hide");
+						$("#"+task_id).children("rect").style("stroke", "green");
+					} 
+				},
+			})
+		}
+	});
+});
 
 
+function getTaskID(dom) //获取当前模态框的任务id
+{
+	var reg = new RegExp(",","g");  //将逗号删掉， g代表全局
+	var parents1 = $(dom).parents();  //获取父类所有div+id
+	var task_id_array = getTagsInfo(parents1);
+	var task_id = task_id_array.join(",").replace(reg,""); //将task_id_array 转换为字符串，然后删除,
+	return task_id;
+}
+function getTaskName(dom){ //获取当前模态框的任务中文名
+	var text = $(dom).parent().prev().find(".modal-title").text();  //获取标题名称
+	return text;
+}
+function getTagsInfo($doms){   //获取点击按钮的顶层容器的id
+    return $doms.map(function(){
+        return  this.id ;
+    }).get();
+}
 
 
+function confirmMakeSuccess(task_id){
+          return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
+      }
+
+/* function confirmMakeSuccess(task_id){
+     return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
+} */ 
+ 
+ $(function () { $("[data-toggle='tooltip']").tooltip(); });
+</script>
 </html>
