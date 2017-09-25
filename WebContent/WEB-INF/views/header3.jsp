@@ -15,8 +15,8 @@
 <script type="text/javascript" src="${root}/js/bootstrap.min3.js"></script>
 <script type="text/javascript" src="${root}/js/d3.v3.min.js"></script>
 <script type="text/javascript" src="${root}/js/dagre-d3.min.js"></script>
-<script type="text/javascript" src="js/sweetalert.min.js"></script>
-<script type="text/javascript" src="js/sweetalert-dev.js"></script>
+<script type="text/javascript" src="${root}/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="${root}/js/sweetalert-dev.js"></script>
 
 
 

@@ -126,7 +126,8 @@ body{margin:0;padding:0;}
 			var nodeid = $(this).attr("id");//获取任务id
 			$(".modalframe").attr("id",nodeid);//给模态框动态赋值id
 			$("#myModalLabel").text(nodename);//每个模态框获取该任务名 
-		})
+		});
+
 	})
 
 /*	

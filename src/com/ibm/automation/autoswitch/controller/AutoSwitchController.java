@@ -68,7 +68,8 @@ public class AutoSwitchController {
 	// 到运行时页面
 	@RequestMapping("/runningPage.do")
 	public String dagrunning_page(HttpServletRequest request, HttpSession session) {
-		String dag_id = "pprc_go";
+		//String dag_id = "pprc_go";
+		String dag_id = "pprc_back";
 		String link = null;
 		switch (dag_id) {
 		case "pprc_go":
@@ -134,9 +135,11 @@ public class AutoSwitchController {
 		case "pprc_go":
 			link = "zbswitch/instance_autoswitch_pprc_go_history";
 			break;
+		case "pprc_back":
+			link = "zbswitch/instance_autoswitch_pprc_back_history";
+			break;
 		default:
 			break;
-
 		}
 		return link;
 	}
