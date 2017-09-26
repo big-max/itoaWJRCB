@@ -5,16 +5,17 @@
     <result column="dag_id" jdbcType="VARCHAR" property="dag_id" />
     <result column="dag_alias" jdbcType="VARCHAR" property="dag_alias" />
     <result column="owners" jdbcType="VARCHAR" property="owners" />
-    <result column="last_run_date" jdbcType="TIMESTAMP" property="last_run_date" />
+    <result column="last_run_date" jdbcType="VARCHAR" property="last_run_date" />
     <result column="last_run_status" jdbcType="VARCHAR" property="last_run_status" />
     <result column="dag_hispage" jdbcType="VARCHAR" property="dag_hispage" />
     <result column="dag_runpage" jdbcType="VARCHAR" property="dag_runpage" />
     <result column="dag_status" jdbcType="INTEGER" property="dag_status" />
     <result column="dag_refresh" jdbcType="VARCHAR" property="dag_refresh" />
+    <result column="is_paused" jdbcType="INTEGER" property="is_paused" />
   </resultMap>
   
   <select id="selectAllDagDomain" resultType="com.ibm.automation.domain.DagDomainBean">
-  		select dag_id ,dag_alias,owners ,last_run_date, last_run_status, dag_hispage, dag_runpage,dag_status,dag_refresh from dag_domain_v
+  		select dag_id ,dag_alias,ifnull(owners,'') owners ,ifnull(date_format(last_run_date,'%Y-%m-%d %T'),'') last_run_date, ifnull(last_run_status,'') last_run_status, dag_hispage, dag_runpage,dag_status,dag_refresh,is_paused from dag_domain_v
   </select>
   
   <select id="selectDagByID" resultType="com.ibm.automation.domain.DagDomainBean">

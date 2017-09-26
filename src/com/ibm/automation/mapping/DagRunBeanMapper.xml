@@ -12,6 +12,11 @@
  	select dag_id,date_format(execution_date,'%Y-%m-%d %T') execution_date,state,run_id from dag_run where dag_id = #{dag_id} order by execution_date desc
  </select>
  
+ 
+ <select id="selectLastDagRunInstance"  resultMap="DagRunResultMap">
+ 	select a.dag_id dag_id, a.run_id run_id , a.execution_date execution_date , a.state state from dag_run a where execution_date = (select max(execution_date) from dag_run b  where dag_id = a.dag_id) order by a.dag_id
+ </select>
+ 
 
  
 </mapper>

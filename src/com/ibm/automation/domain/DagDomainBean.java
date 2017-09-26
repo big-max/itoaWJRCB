@@ -3,7 +3,6 @@ package com.ibm.automation.domain;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class DagDomainBean {
 	private String dag_id;
 
@@ -11,7 +10,7 @@ public class DagDomainBean {
 
 	private String owners;
 
-	private Date last_run_date;
+	private String last_run_date;
 
 	private String last_run_status;
 
@@ -22,6 +21,8 @@ public class DagDomainBean {
 	private Integer dag_status;
 
 	private String dag_refresh;
+
+	private int is_paused;
 
 	public String getDag_id() {
 		return dag_id;
@@ -47,12 +48,12 @@ public class DagDomainBean {
 		this.owners = owners;
 	}
 
-	public Date getLast_run_date() {
+	public String getLast_run_date() {
 
 		return last_run_date;
 	}
 
-	public void setLast_run_date(Date last_run_date) {
+	public void setLast_run_date(String last_run_date) {
 		this.last_run_date = last_run_date;
 	}
 
@@ -96,18 +97,26 @@ public class DagDomainBean {
 		this.dag_refresh = dag_refresh;
 	}
 
+	public int getIs_paused() {
+		return is_paused;
+	}
+
+	public void setIs_paused(int is_paused) {
+		this.is_paused = is_paused;
+	}
+
 	@Override
 	public String toString() {
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String formatDateString="";
-		if(last_run_date!=null)
-		{
+		String formatDateString = "";
+		if (last_run_date != null) {
 			formatDateString = sdf.format(last_run_date);
 		}
 		return "DagDomainBean [dag_id=" + dag_id + ", dag_alias=" + dag_alias + ", owners=" + owners
-				+ ", last_run_date=" + formatDateString + ", last_run_status=" + last_run_status + ", dag_hispage=" + dag_hispage
-				+ ", dag_runpage=" + dag_runpage + ", dag_status=" + dag_status + ", dag_refresh=" + dag_refresh + "]";
+				+ ", last_run_date=" + formatDateString + ", last_run_status=" + last_run_status + ", dag_hispage="
+				+ dag_hispage + ", dag_runpage=" + dag_runpage + ", dag_status=" + dag_status + ", dag_refresh="
+				+ dag_refresh + ",is_paused = " + is_paused + "]";
 	}
 
 }

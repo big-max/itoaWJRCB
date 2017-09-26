@@ -6,4 +6,5 @@ import com.ibm.automation.domain.DagRunBean;
 
 public interface DagRunService {
 	public List<DagRunBean> getDagRunTime(String dag_id);
+	public List<DagRunBean> selectLastDagRunInstance();
 }
