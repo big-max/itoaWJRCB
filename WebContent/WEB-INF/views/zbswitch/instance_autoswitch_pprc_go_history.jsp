@@ -629,10 +629,27 @@ body{margin:0;padding:0;}
 var dag_id = getUrlParam('dag_id');
 var execution_date = getUrlParam('execution_date');
 var data ={"dag_id":dag_id,"execution_date":execution_date};
+//模态框处理 
+$(document).ready(function(){
+	$("g.node").click(function(){
+		//var nodename = $(this).find("tspan").text();//获取任务中文名
+		var task_id = $(this).attr("id");//获取任务id
+		var execution_date = getUrlParam('execution_date'); //获取url 的值
+		var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		$.ajax({
+			url : '<%=path%>/getTaskLog.do',
+			data:data,
+			type : 'post',
+			dataType : 'json',
+			success:function(result)
+			{
+				alert(result.msg);
+			},
+		})
+	});
 
+})
 //handleAjax("runningData.do",data,"post");
-
-
 //setInterval(function(){getAjax("historyData.do",data,"post")},3000);
 function update_nodes_states(task_instances) {
 		$.each(task_instances,function(idx,obj){
