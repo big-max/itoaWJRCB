@@ -140,7 +140,7 @@ function update_summary_table_state()
 					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\"  style=\"font-size:23px;color:#bebebe\"></i>"
 						+"</div>"
 						+"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:23px;color:#D4237A\"></i>"
+						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"></i>"
 						+"</div>"
 		         }else if (data[i].last_run_status == 'running')  //如果是运行中
 		         {
@@ -165,7 +165,7 @@ function update_summary_table_state()
 					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\" style=\"font-size:23px;color:#0066FF\"></i>"
 						+"</div>"
 						+"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:23px;color:#D4237A\"></i>"
+						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"></i>"
 						+"</div>"
 		         }
 		         html += "</td></tr>";
