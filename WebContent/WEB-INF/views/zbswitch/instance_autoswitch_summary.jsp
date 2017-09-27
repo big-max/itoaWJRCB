@@ -126,7 +126,7 @@ function update_summary_table_state()
 		         html +=     "<td id=\"execution_date\" style=\"text-align: center;\">" + data[i].last_run_date + "</td>"
 		         html +=     "<td id=\"dag_state\" style=\"text-align: center;\">" + data[i].last_run_status + "</td>"
 		         + "<td>" 
-		         if(data[i].last_run_status == '' || data[i].last_run_status == 'failed' )  //表示当前没有发起的任务 或者任务有结束的
+		         if(data[i].last_run_status == '' || data[i].last_run_status == 'failed' || data[i].last_run_status == 'success' )  //表示当前没有发起的任务 或者任务有结束的
 		         {
 		        	  html +=    "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
 			         	"<div class=\"linkexpre\">"+
@@ -178,7 +178,7 @@ $(document).ready(function(){
 	update_summary_table_state();//页面初始化的时候更新一次
 }); 	
 
-setInterval('update_summary_table_state()',2000*5);
+setInterval('update_summary_table_state()',2000);
 
 $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	 var id =  $(e.target).attr("id");       // e.target表示被点击的目标
@@ -214,20 +214,24 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		var is_start = $(this).hasClass("fa-play-circle");  //是否有开始元素
 		var Message = "";
 		var url = "";   //发给哪个地址
+		var isshowBtn=0; //确定在ajax回调成功后修改ICON
 		if(is_pause == true && current_dag_state == 'running' ){  //如果是暂停按钮亮着，说明在跑，按了以后要变开始就是暂停状态
 			Message="请再次确认是否立即暂停"+current_dag_alias+"流程？";
-			$("#"+current_dag_id+"_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
+			isshowBtn = 1;
+			//$("#"+current_dag_id+"_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
 			url="postPauseAirflow.do";
 			
 		}else if (is_start == true && current_dag_state == 'running' ) //按了继续，但是dag是运行态
 		{
 			Message="请再次确认是否立即恢复"+current_dag_alias+"流程？";
-			$("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+			//$("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+			isshowBtn=2;
 			url="postResumeAirflow.do";
 		}
-		if(is_start == true && (current_dag_state == 'failed' ||  current_dag_state == '' ) ){ //发起新任务
+		if(is_start == true && (current_dag_state == 'failed' ||  current_dag_state == '' || current_dag_state == 'success'  ) ){ //发起新任务
 			Message = "请再次确认是否立即启动"+current_dag_alias+"流程？";
-			$("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+			//$("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+			isshowBtn=3;
 			url = "postRunAirflow.do";
 		}
 		swal({
@@ -252,9 +256,22 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	        					  if(result != 'undefined' || result != null){
 	        					  		$("#"+current_dag_id+"_stop").css("color","red");
 	        					  		$("#"+current_dag_id+"_running").attr("style","font-size:23px;color:#0066FF");
-	        					}else{
-	        						alert("发生IO异常");
-	        					}
+	        					  }
+	        					  else{
+		        						alert("发生IO异常");
+		        					}
+	        					  if (isshowBtn == 1)
+	        					  {
+	        						  $("#"+current_dag_id+"_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
+	        					  }else if ( isshowBtn == 2 )
+	        					  {
+	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+	        					  }else if ( isshowBtn == 3 )
+	        					  {
+	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+	        					  }
+	        					  
+	        					  
 	        				},
 	        				error : function(errmsg) {
 
