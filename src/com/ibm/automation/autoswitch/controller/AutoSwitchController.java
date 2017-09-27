@@ -34,6 +34,7 @@ import com.ibm.automation.core.util.PropertyUtil;
 import com.ibm.automation.core.util.UtilDateTime;
 import com.ibm.automation.domain.DagDomainBean;
 import com.ibm.automation.domain.DagRunBean;
+import com.ibm.automation.domain.Task_All_InfoBean;
 import com.ibm.automation.domain.Task_InstanceBean;
 
 import net.sf.json.JSONArray;
@@ -69,7 +70,7 @@ public class AutoSwitchController {
 	public JSONArray autoswitch_data(HttpServletRequest request, HttpSession session) {
 		List<DagDomainBean> dagDomainList = dagDomainService.getAllDagDomain();
 		JSONArray array = JSONArray.fromObject(dagDomainList);
-		System.out.println(array);
+		//System.out.println(array);
 		return array;
 	}
 
@@ -124,12 +125,12 @@ public class AutoSwitchController {
 		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
 		map.put("dag_id", dag_id);
 		map.put("execution_date", execution_date);// "2017-09-13
-		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
+		List<Task_All_InfoBean> taskInstanceList = task_InstanceService.getHistoryTaskInstance(map);
 		JSONArray array = JSONArray.fromObject(taskInstanceList);
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
-		//System.out.println(on.toString());
+		System.out.println(on.toString());
 		return on;
 	}
 

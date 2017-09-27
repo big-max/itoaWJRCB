@@ -21,6 +21,8 @@ public class Task_InstanceBean {
     private String operator;
     private String queued_dttm;
     private Integer pid;
+
+  
 	public String getTask_id() {
 		return task_id;
 	}
@@ -33,7 +35,6 @@ public class Task_InstanceBean {
 	public void setDag_id(String dag_id) {
 		this.dag_id = dag_id;
 	}
-	
 	
 	public String getExecution_date() {
 		return execution_date;

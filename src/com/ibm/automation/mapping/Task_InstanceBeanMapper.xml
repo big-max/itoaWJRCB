@@ -30,13 +30,40 @@
   		from task_instance where dag_id = #{dag_id} and date_format(execution_date,'%Y-%m-%d %T')=DATE_FORMAT(#{execution_date},'%Y-%m-%d %T')
   </select>
   
- <select id="selectHistoryTaskInstance" parameterType="hashmap" resultType="com.ibm.automation.domain.Task_InstanceBean">
-  		select 
-  		a.task_id,a.dag_id,a.execution_date,
-  		a.start_date,a.end_date,cast(format(duration,2) as char ) a.duration ,a.state,
-  		a.try_number,a.hostname,a.unixname,a.job_id,
-  		a.pool,a.queue,a.priority_weight,a.operator,a.queued_dttm,a.pid,b.expected_starttime,b.expected_endtime,b.expected_duration
-  		from task_instance a where a.dag_id = #{dag_id} and a.execution_date=#{execution_date} inner join task_info b where 
+ <select id="selectHistoryTaskInstance" parameterType="hashmap" resultType="com.ibm.automation.domain.Task_All_InfoBean">
+	select 
+  		task_instance.task_id,
+  		task_instance.dag_id,
+  		task_instance.execution_date,
+  		task_instance.start_date,
+  		task_instance.end_date,
+  		task_instance.duration ,
+  		task_instance.state,
+  		task_instance.try_number,
+  		task_instance.hostname,
+  		task_instance.unixname,
+  		task_instance.job_id,
+  		task_instance.pool,
+  		task_instance.queue,
+  		task_instance.priority_weight,
+  		task_instance.operator,
+  		task_instance.queued_dttm,
+  		task_instance.pid,
+  		task_info.expected_starttime expected_starttime,
+  		task_info.expected_endtime expected_endtime,
+  		task_info.expected_duration expected_duration
+	from 
+		task_instance	
+	inner join 
+		task_info  
+	on
+		task_instance.dag_id = task_info.dag_id   
+	and 
+		task_instance.task_id = task_info.task_id
+	where 
+		task_instance.dag_id = #{dag_id,jdbcType=VARCHAR} 
+	and 
+		DATE_FORMAT(task_instance.execution_date,'%Y-%m-%D-%H-%M-%S') = DATE_FORMAT(#{execution_date,jdbcType=TIMESTAMP},'%Y-%m-%D-%H-%M-%S') 
   </select>
   
   
