@@ -20,4 +20,11 @@ public class DagRunServiceImpl implements DagRunService {
 		return dagRunBeanMapper.selectDagRunTime(dag_id);
 	}
 
+	@Override
+	public List<DagRunBean> selectLastDagRunInstance() {
+		return dagRunBeanMapper.selectLastDagRunInstance();
+	}
+	
+	
+
 }

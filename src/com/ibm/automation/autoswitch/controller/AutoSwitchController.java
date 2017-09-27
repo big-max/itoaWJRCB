@@ -57,16 +57,29 @@ public class AutoSwitchController {
 
 	@RequestMapping("/autoswitch.do")
 	public String autoswitch(HttpServletRequest request, HttpSession session) {
-		List<DagDomainBean> dagDomainList = dagDomainService.getAllDagDomain();
-		request.setAttribute("taskList", dagDomainList);
+		//List<DagDomainBean> dagDomainList = dagDomainService.getAllDagDomain();
+		//DagDomainBean ddb = dagDomainService.getDagDomain("pprc");
+		//System.out.println(ddb);
+		//request.setAttribute("taskList", dagDomainList);
 		return "zbswitch/instance_autoswitch_summary";
 	}
+	
+	@RequestMapping("/autoswitchData.do")
+	@ResponseBody
+	public JSONArray autoswitch_data(HttpServletRequest request, HttpSession session) {
+		List<DagDomainBean> dagDomainList = dagDomainService.getAllDagDomain();
+		JSONArray array = JSONArray.fromObject(dagDomainList);
+		System.out.println(array);
+		return array;
+	}
 
+	
+	
+	
 	// 到运行时页面
 	@RequestMapping("/runningPage.do")
 	public String dagrunning_page(HttpServletRequest request, HttpSession session) {
-		//String dag_id = "pprc_go";
-		String dag_id = "pprc_back";
+		String dag_id = request.getParameter("dag_id");
 		String link = null;
 		switch (dag_id) {
 		case "pprc_go":
@@ -97,7 +110,7 @@ public class AutoSwitchController {
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
-		System.out.println(on.toString());
+		//System.out.println(on.toString());
 		return on;
 	}
 
@@ -116,7 +129,7 @@ public class AutoSwitchController {
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
-		System.out.println(on.toString());
+		//System.out.println(on.toString());
 		return on;
 	}
 
@@ -155,7 +168,7 @@ public class AutoSwitchController {
 		}
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_hisdatetime", an);
-		System.out.println(on.toString());
+		//System.out.println(on.toString());
 		return on;
 	}
 	/*
@@ -169,9 +182,7 @@ public class AutoSwitchController {
 	@ResponseBody
 	public JSONObject postRun(HttpServletRequest request, HttpSession session) {
 		String dag_id = request.getParameter("dag_id");
-
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");// 设置日期格式
-
 		ObjectNode postJson = om.createObjectNode();
 		postJson.put("dag_id", dag_id);
 		postJson.put("execution_date", df.format(new Date()));
@@ -187,15 +198,13 @@ public class AutoSwitchController {
 		return null;
 	}
 
-	// 发出灾备切换暂停/继续请求
+	// 发出灾备切换暂停
 	@RequestMapping("/postPauseAirflow.do")
 	public JSONObject postPause(HttpServletRequest request, HttpSession session) {
 		String dag_id = request.getParameter("dag_id");
-		int onoff = Integer.valueOf(request.getParameter("switch"));// 0 打开1暂停
 		ObjectNode postJson = om.createObjectNode();
 		postJson.put("dag_id", dag_id);
 		postJson.put("operation", 5); // 5代表暂停指定airflow
-		postJson.put("switch", onoff);
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
@@ -206,6 +215,24 @@ public class AutoSwitchController {
 		}
 		return null;
 	}
+	
+	// 发出灾备切换继续请求
+		@RequestMapping("/postResumeAirflow.do")
+		public JSONObject postResume(HttpServletRequest request, HttpSession session) {
+			String dag_id = request.getParameter("dag_id");
+			ObjectNode postJson = om.createObjectNode();
+			postJson.put("dag_id", dag_id);
+			postJson.put("operation", 6); // 6代表恢复airflow
+			String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
+			try {
+				String response = HttpClientUtil.postMethod(url, postJson.toString());
+				return JSONObject.fromObject(response);
+			} catch (NetWorkException | IOException e) {
+				e.printStackTrace();
+				logger.error("发起灾备过程中IO错误");
+			}
+			return null;
+		}
 
 	// 发出灾备切换停止请求
 	@RequestMapping("/postStopAirflow.do")
@@ -261,6 +288,7 @@ public class AutoSwitchController {
 		return null;
 	}
 
+	// 将流程节点标记为成功
 	@RequestMapping("makeNodeClear.do")
 	@ResponseBody
 	public JSONObject makeNodeClear(HttpServletRequest request, HttpSession session) {
@@ -283,6 +311,20 @@ public class AutoSwitchController {
 			logger.error("清理任务IO错误");
 		}
 		return null;
+	}
+
+	// 汇总页使用，获取所有的最近的8个流程的状态
+	@RequestMapping("getLastDagRunInstance.do")
+	@ResponseBody
+	public JSONArray getLastDagRunInstance(HttpServletRequest request, HttpSession session) {
+		List<DagRunBean> dagRunList = dagRunService.selectLastDagRunInstance();
+		if(dagRunList == null) //如果一条记录都没跑
+		{
+			return null;
+		}
+		JSONArray array = JSONArray.fromObject(dagRunList);
+		return array;
+		
 	}
 
 }

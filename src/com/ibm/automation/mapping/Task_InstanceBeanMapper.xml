@@ -32,11 +32,11 @@
   
  <select id="selectHistoryTaskInstance" parameterType="hashmap" resultType="com.ibm.automation.domain.Task_InstanceBean">
   		select 
-  		task_id,dag_id,execution_date,
-  		start_date,end_date,cast(format(duration,2) as char ) duration ,state,
-  		try_number,hostname,unixname,job_id,
-  		pool,queue,priority_weight,operator,queued_dttm,pid
-  		from task_instance where dag_id = #{dag_id} and execution_date=#{execution_date}
+  		a.task_id,a.dag_id,a.execution_date,
+  		a.start_date,a.end_date,cast(format(duration,2) as char ) a.duration ,a.state,
+  		a.try_number,a.hostname,a.unixname,a.job_id,
+  		a.pool,a.queue,a.priority_weight,a.operator,a.queued_dttm,a.pid,b.expected_starttime,b.expected_endtime,b.expected_duration
+  		from task_instance a where a.dag_id = #{dag_id} and a.execution_date=#{execution_date} inner join task_info b where 
   </select>
   
   
