@@ -58,9 +58,6 @@ public class AutoSwitchController {
 	@RequestMapping("/autoswitch.do")
 	public String autoswitch(HttpServletRequest request, HttpSession session) {
 		List<DagDomainBean> dagDomainList = dagDomainService.getAllDagDomain();
-
-		DagDomainBean ddb = dagDomainService.getDagDomain("pprc");
-		System.out.println(ddb);
 		request.setAttribute("taskList", dagDomainList);
 		return "zbswitch/instance_autoswitch_summary";
 	}
