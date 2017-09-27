@@ -188,8 +188,8 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	
 	//历史记录的跳转
 	$("._history").live('click',function(){
-		var dag_id = $(this).parents("tr").find("#dag_id").text()
-		var execution_date = $(this).parents("tr").find("#execution_date").text()
+		var dag_id = $(this).parents("tr").find("#dag_id").text();
+		var execution_date = $(this).parents("tr").find("#execution_date").text();
 		window.open("historyPage.do?dag_id="+ dag_id +"&execution_date="+execution_date.replace(" ","T"));
 	})
 	
@@ -204,6 +204,36 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		}
 	})
 	
+	//停止一个流
+	$("._stop").live('click',function(){
+		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
+		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
+		var current_execution_date = $(this).parents("tr").find("#execution_date").text();//获取执行时间
+		swal({
+            title: "",
+            text: "请再次确认是否立即停止"+current_dag_alias+"流程？",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "是",
+            cancelButtonText: "否", 
+            confirmButtonColor:"#ec6c62"
+        }, function(isConfirm){
+        	if(isConfirm)
+        	{
+        		 $.ajax({
+     				url :  'postStopAirflow.do',
+     				type : 'post',
+     				data:{"dag_id":current_dag_id,"execution_date":current_execution_date},
+     				dataType : 'json',
+     				success : function(result) {
+     					
+     				},
+     				error : function(errmsg) {
+     				}
+     			})
+        	}
+        });
+	})
 	
     //启动和暂停按钮的处理
 	$("._play").live('click',function(){
