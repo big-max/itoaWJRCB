@@ -57,13 +57,14 @@ public class AutoSwitchController {
 
 	@RequestMapping("/autoswitch.do")
 	public String autoswitch(HttpServletRequest request, HttpSession session) {
-		//List<DagDomainBean> dagDomainList = dagDomainService.getAllDagDomain();
-		//DagDomainBean ddb = dagDomainService.getDagDomain("pprc");
-		//System.out.println(ddb);
-		//request.setAttribute("taskList", dagDomainList);
+		// List<DagDomainBean> dagDomainList =
+		// dagDomainService.getAllDagDomain();
+		// DagDomainBean ddb = dagDomainService.getDagDomain("pprc");
+		// System.out.println(ddb);
+		// request.setAttribute("taskList", dagDomainList);
 		return "zbswitch/instance_autoswitch_summary";
 	}
-	
+
 	@RequestMapping("/autoswitchData.do")
 	@ResponseBody
 	public JSONArray autoswitch_data(HttpServletRequest request, HttpSession session) {
@@ -73,9 +74,6 @@ public class AutoSwitchController {
 		return array;
 	}
 
-	
-	
-	
 	// 到运行时页面
 	@RequestMapping("/runningPage.do")
 	public String dagrunning_page(HttpServletRequest request, HttpSession session) {
@@ -110,7 +108,7 @@ public class AutoSwitchController {
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
-		//System.out.println(on.toString());
+		// System.out.println(on.toString());
 		return on;
 	}
 
@@ -129,7 +127,7 @@ public class AutoSwitchController {
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
-		//System.out.println(on.toString());
+		// System.out.println(on.toString());
 		return on;
 	}
 
@@ -168,7 +166,7 @@ public class AutoSwitchController {
 		}
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_hisdatetime", an);
-		//System.out.println(on.toString());
+		// System.out.println(on.toString());
 		return on;
 	}
 	/*
@@ -215,28 +213,42 @@ public class AutoSwitchController {
 		}
 		return null;
 	}
-	
-	// 发出灾备切换继续请求
-		@RequestMapping("/postResumeAirflow.do")
-		public JSONObject postResume(HttpServletRequest request, HttpSession session) {
-			String dag_id = request.getParameter("dag_id");
-			ObjectNode postJson = om.createObjectNode();
-			postJson.put("dag_id", dag_id);
-			postJson.put("operation", 6); // 6代表恢复airflow
-			String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
-			try {
-				String response = HttpClientUtil.postMethod(url, postJson.toString());
-				return JSONObject.fromObject(response);
-			} catch (NetWorkException | IOException e) {
-				e.printStackTrace();
-				logger.error("发起灾备过程中IO错误");
-			}
-			return null;
-		}
 
-	// 发出灾备切换停止请求
+	// 发出灾备切换继续请求
+	@RequestMapping("/postResumeAirflow.do")
+	public JSONObject postResume(HttpServletRequest request, HttpSession session) {
+		String dag_id = request.getParameter("dag_id");
+		ObjectNode postJson = om.createObjectNode();
+		postJson.put("dag_id", dag_id);
+		postJson.put("operation", 6); // 6代表恢复airflow
+		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
+		try {
+			String response = HttpClientUtil.postMethod(url, postJson.toString());
+			return JSONObject.fromObject(response);
+		} catch (NetWorkException | IOException e) {
+			e.printStackTrace();
+			logger.error("发起灾备过程中IO错误");
+		}
+		return null;
+	}
+
+	// 发出灾备切换停止流
 	@RequestMapping("/postStopAirflow.do")
-	public String postStop(HttpServletRequest request, HttpSession session) {
+	public JSONObject postStop(HttpServletRequest request, HttpSession session) {
+		String dag_id = request.getParameter("dag_id");
+		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
+		ObjectNode postJson = om.createObjectNode();
+		postJson.put("dag_id", dag_id);
+		postJson.put("execution_date", execution_date);
+		postJson.put("operation", 10); // 10为stop airflow
+		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
+		try {
+			String response = HttpClientUtil.postMethod(url, postJson.toString());
+			return JSONObject.fromObject(response);
+		} catch (NetWorkException | IOException e) {
+			e.printStackTrace();
+			logger.error("发起灾备过程中IO错误");
+		}
 		return null;
 	}
 
@@ -318,13 +330,13 @@ public class AutoSwitchController {
 	@ResponseBody
 	public JSONArray getLastDagRunInstance(HttpServletRequest request, HttpSession session) {
 		List<DagRunBean> dagRunList = dagRunService.selectLastDagRunInstance();
-		if(dagRunList == null) //如果一条记录都没跑
+		if (dagRunList == null) // 如果一条记录都没跑
 		{
 			return null;
 		}
 		JSONArray array = JSONArray.fromObject(dagRunList);
 		return array;
-		
+
 	}
 
 }
