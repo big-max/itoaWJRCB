@@ -712,6 +712,7 @@ body{margin:0;padding:0;}
     var g = dagreD3.json.decode(nodes, edges);
     var layout = dagreD3.layout().rankDir(arrange).nodeSep(15).rankSep(15);
     var renderer = new dagreD3.Renderer();
+    
     renderer.layout(layout).run(g, d3.select("#dig"));
     inject_node_ids(tasks);
 

@@ -18,6 +18,3 @@
 <script type="text/javascript" src="${root}/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="${root}/js/sweetalert-dev.js"></script>
 
-
-
-
