@@ -115,7 +115,7 @@ body{margin:0;padding:0;}
 			var datatar = "#" + idname;
 			$("g.node").eq(i).attr("id",idname);
 			$("g.node").eq(i).attr("data-toggle","modal");
-			$("g.node").eq(i).attr("data-target",datatar);
+			/* $("g.node").eq(i).attr("data-target",datatar); */
 		}
 	})
 	
