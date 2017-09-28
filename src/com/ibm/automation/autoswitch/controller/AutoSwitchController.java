@@ -40,6 +40,7 @@ import com.ibm.automation.domain.Task_InstanceBean;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+
 @Controller
 public class AutoSwitchController {
 	@Autowired

@@ -35,9 +35,9 @@
   		task_instance.task_id,
   		task_instance.dag_id,
   		task_instance.execution_date,
-  		task_instance.start_date,
-  		task_instance.end_date,
-  		task_instance.duration ,
+  		date_format(task_instance.start_date, '%Y-%m-%d %H:%i:%s' ) start_date,
+  		date_format(task_instance.end_date,'%Y-%m-%d %H:%i:%s') end_date,
+  		cast(format(task_instance.duration,2) as char ) duration,
   		task_instance.state,
   		task_instance.try_number,
   		task_instance.hostname,
@@ -49,9 +49,9 @@
   		task_instance.operator,
   		task_instance.queued_dttm,
   		task_instance.pid,
-  		task_info.expected_starttime expected_starttime,
-  		task_info.expected_endtime expected_endtime,
-  		task_info.expected_duration expected_duration
+  		date_format(task_info.expected_starttime,'%Y-%m-%d %H:%i:%s') expected_starttime,
+  		date_format(task_info.expected_endtime,'%Y-%m-%d %H:%i:%s') expected_endtime,
+  		cast(format(task_info.expected_duration,2) as char ) expected_duration
 	from 
 		task_instance	
 	inner join 
