@@ -722,25 +722,49 @@ function update_nodes_states(task_instances) {
             var mynode = d3.select('#' + obj.task_id + ' rect');
             if(obj.state == 'failed') //如果失败
             {
-            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：失败";
+            	var tipcontent ="预计开始时间：" + obj.expected_starttime + "," +
+            					"实际开始时间：" + obj.start_Date         + "," +
+            					"预计结束时间：" + obj.expected_endtime   + "," + 
+            					"实际结束时间：" + obj.end_Date           + "," +
+            					"预计持续时间：" + obj.expected_duration  + "," + 
+            					"实际持续时间：" + obj.duration           + "," +
+            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
                 mynode.style("stroke", "red") ;
             }else if (obj.state == 'success') //如果成功
             {
-            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：成功";
+            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+								 "实际开始时间：" + obj.start_Date         + "," +
+								 "预计结束时间：" + obj.expected_endtime   + "," + 
+								 "实际结束时间：" + obj.end_Date           + "," +
+								 "预计持续时间：" + obj.expected_duration  + "," + 
+								 "实际持续时间：" + obj.duration           + "," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
                  mynode.style("stroke", "green") ;
             }else if (obj.state == 'skipped' || obj.state == 'undefined')//未开始
             {
-            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：未开始";
+            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+								 "实际开始时间：" + obj.start_Date         + "," +
+								 "预计结束时间：" + obj.expected_endtime   + "," + 
+								 "实际结束时间：" + obj.end_Date           + "," +
+								 "预计持续时间：" + obj.expected_duration  + "," + 
+								 "实际持续时间：" + obj.duration           + "," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
             	mynode.style("stroke", "white") ; 
             }else if (obj.state == 'running')
             {
-            	var tipcontent = "开始时间："+obj.start_Date+","+"结束时间："+obj.end_Date+","+"持续时间："+obj.duration+","+"任务状态：运行中";
+            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+								 "实际开始时间：" + obj.start_Date         + "," +
+								 "预计结束时间：" + obj.expected_endtime   + "," + 
+								 "实际结束时间：" + obj.end_Date           + "," +
+								 "预计持续时间：" + obj.expected_duration  + "," + 
+								 "实际持续时间：" + obj.duration           + "," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
             	mynode.style("stroke", "blue") ; 
