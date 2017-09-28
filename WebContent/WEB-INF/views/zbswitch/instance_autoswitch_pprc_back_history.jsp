@@ -89,21 +89,6 @@ body{margin:0;padding:0;}
 		}
 	})
 	
-//description:	获取所有任务块的相关信息
-	$.ajax({  
-           url:'<%=path%>/getDagrunByDagID.do',  
-           type:"get",  
-           dataType:"json",  
-           data:{  
-               userID:"1"  
-           },  
-           success:function(response){  
- 
-           },  
-           error:function() {  
-           }  
-       }); 
-	
 		
 		
 </script>
