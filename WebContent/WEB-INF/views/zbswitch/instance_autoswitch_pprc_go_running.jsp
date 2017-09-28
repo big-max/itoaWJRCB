@@ -37,7 +37,7 @@ body{margin:0;padding:0;}
 .btn_block{
 	width:80%;
 	margin:0 auto;
-}
+} 
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -49,7 +49,7 @@ body{margin:0;padding:0;}
 
 <body>
 	<!-- 模态框（Modal） -->
-	<div class="modal fade modalframe" id=""  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- 	<div class="modal fade modalframe" id=""  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -65,9 +65,9 @@ body{margin:0;padding:0;}
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal -->
-	</div>
+			</div>/.modal-content
+		</div>/.modal
+	</div> -->
 	
 	<!--header start-->
 	<div class="header">
@@ -120,33 +120,93 @@ body{margin:0;padding:0;}
 	})
 	
 	//模态框处理 
-	$(document).ready(function(){
+	/* $(document).ready(function(){
 		$("g.node").click(function(){
 			var nodename = $(this).find("tspan").text();//获取任务中文名
 			var nodeid = $(this).attr("id");//获取任务id
 			$(".modalframe").attr("id",nodeid);//给模态框动态赋值id
 			$("#myModalLabel").text(nodename);//每个模态框获取该任务名 
 		});
-
-	})
-
-/*	
+	}) */ 
+	var taskid;
 	$(document).ready(function(){
-		var virstrtime = "xxxxxxxx"; //预计开始时间
-		var virendtime = "xxxxxxxx"; //预计结束时间
-		var virdurtime = "xxxxxxxx"; //预计持续时间
-		var relstrtime = "xxxxxxxx"; //实际开始时间
-		var relendtime = "xxxxxxxx"; //实际结束时间
-		var reldurtime = "xxxxxxxx"; //实际持续时间
-		var taskstatus = "success"; //任务状态
+
+		$("g.node").on("mouseover",function(e){
+			taskid = $(this).attr("id");//获取要点击任务框的id 
+		})
 		
-		var tipcontent = "预计开始时间："+virstrtime+","+"预计结束时间："+virendtime+","+"预计持续时间："+virdurtime+","+
-						 "实际开始时间："+relstrtime+","+"实际结束时间："+relendtime+","+"实际持续时间："+reldurtime+","+
-						 "任务状态："+taskstatus;
-		var newvalue = tipcontent.split(",").join("<br>");
-		$("#pprc_go_workdb_backup").attr("data-original-title",newvalue);
+		$('g.node').contextPopup({
+          items: [
+            {label:'查看日志', icon:'img/viewlog.png', action:function() 
+            	{ 
+            		var execution_date = getUrlParam('execution_date'); //获取url 的值
+            		var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+            			$.ajax({
+            				url : '<%=path%>/getTaskLog.do',
+            				data:data,
+            				type : 'post',
+            				dataType : 'json',
+            				success:function(result)
+            				{
+            					alert(result.msg);
+            				},
+            			})
+            	} 
+            },
+            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
+            	{ 
+	            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+	            	var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	            		$.ajax({
+	            			url : '<%=path%>/makeNodeClear.do',
+	            			data:data,
+	            			type : 'post',
+	            			dataType : 'json',
+	            			success:function(result)
+	            			{
+	            				//alert(result.msg);
+	            			},
+	            		})
+            	} 
+            },
+            {label:'确认成功', icon:'img/comsucc.png', action:function() 
+            	{ 
+	            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+	            	swal({ 
+	            	    title: "", 
+	            	    text: "您确定要将任务置为成功?", 
+	            	    type: "warning", 
+	            	    showCancelButton: true, 
+	            	    closeOnConfirm: false, 
+	            	    confirmButtonText: "确认",  
+	            	    cancelButtonText: "取消",  
+	            	    confirmButtonColor: "#ec6c62" 
+	            	}, function(isConfirm) { 
+	            		if(isConfirm)
+	            		{
+	            			var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	            			$.ajax({
+	            				url : '<%=path%>/markTaskSuccess.do',
+	            				data:data,
+	            				type : 'post',
+	            				dataType : 'json',
+	            				success:function(result)
+	            				{
+	            					if(result.status == 0)
+	            					{
+	            						swal.close();
+	            						$("#"+taskid).children("rect").css("stroke", "green");
+	            					} 
+	            				},
+	            			})
+	            		}
+	            	});
+          	 	} 
+            } 
+          ]
+        });
 	})
-*/
+
 </script>
 
 <script>
@@ -730,7 +790,7 @@ function getAjax(url,param,type){
 
 <script type="text/javascript">
 <!-- 模态对话框的所有操作方法在这里-->
-$("#btn_log").click(function(){   //查看该失败任务的日志
+<%-- $("#btn_log").click(function(){   //查看该失败任务的日志
 	var task_id = getTaskID($(this));
 	var task_name = getTaskName($(this));
 	var execution_date = getUrlParam('execution_date'); //获取url 的值
@@ -802,7 +862,7 @@ $("#btn_success").click(function(){    //将任务标记位成功的ajax
 			})
 		}
 	});
-});
+}); --%>
 
 
 function getTaskID(dom) //获取当前模态框的任务id
