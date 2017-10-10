@@ -10,6 +10,8 @@
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/main.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/sweetalert.css" />
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/jquery.contextmenu.css" />
+<link type="text/css" title="www" rel="stylesheet" href="${root}/css/bootstrap-table.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="${root}/css/bootstrap-editable.css">
 
 <script type="text/javascript" src="${root}/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="${root}/js/bootstrap-toggle.min.js"></script>
@@ -19,6 +21,10 @@
 <script type="text/javascript" src="${root}/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="${root}/js/sweetalert-dev.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.contextmenu.js"></script>
+<script type="text/javascript" src="${root}/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="${root}/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="${root}/js/bootstrap-editable.min.js"></script>    
+<script type="text/javascript" src="${root}/js/bootstrap-table-editable.js"></script>  
 
 
 
