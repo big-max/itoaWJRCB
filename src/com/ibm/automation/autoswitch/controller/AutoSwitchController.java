@@ -2,6 +2,7 @@ package com.ibm.automation.autoswitch.controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -93,7 +94,7 @@ public class AutoSwitchController {
 
 		return link;
 	}
-
+	
 	// 运行时页面ajax
 	@RequestMapping("/runningData.do")
 	@ResponseBody

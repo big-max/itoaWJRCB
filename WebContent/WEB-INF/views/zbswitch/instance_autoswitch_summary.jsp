@@ -13,6 +13,7 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <jsp:include page="../header.jsp" flush="true" />
 <title>自动化部署平台</title>
 <style type="text/css">
@@ -102,7 +103,25 @@ i:hover{
 			</div>
 		</div>
 	</div>
-	
+	<!-- start Modal for edit dag_info -->
+	<div class="modal fade" id="edit_dag" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">修改流程信息</h4>
+	      </div>
+	      <div class="modal-body">
+	        <table id="dag_expect_info"></table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- end Modal for edit dag_info -->
 </body>
 
 
@@ -142,6 +161,10 @@ function update_summary_table_state()
 						+"<div class=\"linkexpre\">"+
 						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"></i>"
 						+"</div>"
+						+
+						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
+					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\"></i>"
+						+"</div>"
 		         }else if (data[i].last_run_status == 'running')  //如果是运行中
 		         {
 		        	 if(data[i].is_paused == 0){  // 0 代表开着的,没有暂停
@@ -167,6 +190,10 @@ function update_summary_table_state()
 						+"<div class=\"linkexpre\">"+
 						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"></i>"
 						+"</div>"
+						+
+						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
+					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\"></i>"
+						+"</div>"
 		         }
 		         html += "</td></tr>";
 		         $(".searchable").html(html)
@@ -178,7 +205,7 @@ $(document).ready(function(){
 	update_summary_table_state();//页面初始化的时候更新一次
 }); 	
 
-setInterval('update_summary_table_state()',2000);
+/* setInterval('update_summary_table_state()',2000); */
 
 $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	 var id =  $(e.target).attr("id");       // e.target表示被点击的目标
@@ -187,14 +214,14 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 
 	
 	//历史记录的跳转
-	$("._history").live('click',function(){
+	$(document).on('click',"._history",function(){
 		var dag_id = $(this).parents("tr").find("#dag_id").text();
 		var execution_date = $(this).parents("tr").find("#execution_date").text();
 		window.open("historyPage.do?dag_id="+ dag_id +"&execution_date="+execution_date.replace(" ","T"));
 	})
 	
 	//运行记录的跳转
-	$("._running").live('click',function(){
+	$(document).on('click',"._running",function(){
 		var style = $(this).attr("style");//判断颜色能否做点击事件
 		if (style == "font-size:23px;color:#0066FF")
 		{
@@ -205,7 +232,7 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	})
 	
 	//停止一个流
-	$("._stop").live('click',function(){
+	$(document).on('click',"._stop",function(){
 		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
 		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
 		var current_execution_date = $(this).parents("tr").find("#execution_date").text();//获取执行时间
@@ -236,7 +263,7 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	})
 	
     //启动和暂停按钮的处理
-	$("._play").live('click',function(){
+	$(document).on('click',"._play",function(){
 		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
 		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
 		var current_dag_state = $(this).parents("tr").find("#dag_state").text();//获取当前流程的状态便于发起流程

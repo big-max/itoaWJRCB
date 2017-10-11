@@ -144,7 +144,7 @@ $(document).ready(function(){
 		$(this).siblings('a').css({'border-color':'transparent'});
 		$(this).css({'border-color':'#aaaaaa'});
 	});
-	//带标题内容的展开隐藏
+	//甯︽爣棰樺唴瀹圭殑灞曞紑闅愯棌
 	$('.toggle-title').click(function()
 	{
 		$(this).find('i').toggleClass("toggleicon");

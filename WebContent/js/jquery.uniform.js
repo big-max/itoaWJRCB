@@ -50,7 +50,7 @@ Enjoy!
   }else{
     $.support.selectOpacity = true;
   }
-
+  
   $.fn.uniform = function(options) {
 
     options = $.extend($.uniform.options, options);
