@@ -23,7 +23,7 @@
 	width:calc(100% - 57px);
 	margin:0px;
 	height:calc(100vh - 70px);
-	overflow-y:scroll;
+	overflow-y:hidden;
 }
 .linkexpre{
 	float:left;
@@ -109,7 +109,7 @@ i:hover{
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">修改流程信息</h4>
+	        <h4 class="modal-title" id="myModalLabel">这里会做成新页面</h4>
 	      </div>
 	      <div class="modal-body">
 	        <table id="dag_expect_info"></table>
@@ -205,7 +205,7 @@ $(document).ready(function(){
 	update_summary_table_state();//页面初始化的时候更新一次
 }); 	
 
-/* setInterval('update_summary_table_state()',2000); */
+ setInterval('update_summary_table_state()',2000); 
 
 $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	 var id =  $(e.target).attr("id");       // e.target表示被点击的目标
