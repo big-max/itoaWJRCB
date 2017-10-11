@@ -12,7 +12,9 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<jsp:include page="../header3.jsp" flush="true" /> 
+
+<jsp:include page="../header3.jsp" flush="true" />
+
 <title>自动化部署平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
@@ -37,7 +39,7 @@ body{margin:0;padding:0;}
 .btn_block{
 	width:80%;
 	margin:0 auto;
-} 
+
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -79,10 +81,10 @@ body{margin:0;padding:0;}
 	<div class="content">
 		<!-- 图例说明 -->
 		<div style="height:70px;width:300px;margin-left:10px;">
-			<div class="explogo" style="border:2px solid white;position:fixed;">未开始</div>
-			<div class="explogo" style="margin-left:75px;border:2px solid #0000ff;position:fixed;">运行中</div>
-			<div class="explogo" style="margin-left:150px;border:2px solid #00ff00;position:fixed;">成功</div>
-			<div class="explogo" style="margin-left:225px;border:2px solid red;position:fixed;">失败</div>
+			<div class="explogo"  style="border:2px solid white;position:fixed;">未开始</div>
+			<div class="explogo"  style="margin-left:75px;border:2px solid #0000ff;position:fixed;">运行中</div>
+			<div class="explogo"  style="margin-left:150px;border:2px solid #00ff00;position:fixed;">成功</div>
+			<div class="explogo"  style="margin-left:225px;border:2px solid red;position:fixed;">失败</div>
 		</div>
 		<div style="margin-bottom:10px;"></div>
 		
@@ -673,6 +675,11 @@ body{margin:0;padding:0;}
     var renderer = new dagreD3.Renderer();
     renderer.layout(layout).run(g, d3.select("#dig"));
     inject_node_ids(tasks);
+    
+    
+    
+    
+    
     //update_nodes_states(task_instances);
 
 

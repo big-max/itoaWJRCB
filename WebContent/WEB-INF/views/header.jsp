@@ -17,6 +17,7 @@
 <script type="text/javascript" src="${root}/js/unicorn.js"></script>
 <script type="text/javascript" src="${root}/js/unicorn.tables.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.spinner.min.js"></script>
+<script type="text/javascript" src="${root}/js/custom.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.form.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.datetimepicker.js"></script>
 <script type="text/javascript" src="${root}/js/echarts.common.min.js"></script>

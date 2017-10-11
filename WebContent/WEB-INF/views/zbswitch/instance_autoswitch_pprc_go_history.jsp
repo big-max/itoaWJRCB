@@ -562,18 +562,16 @@ body{margin:0;padding:0;}
 		"dag_id": "pprc_go"
 	  }
 	};
-	
+  
   
     
     var arrange = "LR";
     var g = dagreD3.json.decode(nodes, edges);
+   
     var layout = dagreD3.layout().rankDir(arrange).nodeSep(15).rankSep(15);
     var renderer = new dagreD3.Renderer();
     renderer.layout(layout).run(g, d3.select("#dig"));
     inject_node_ids(tasks);
-   //update_nodes_states(task_instances);
-
-
     function highlight_nodes(nodes, color) {
         nodes.forEach (function (nodeid) {
             my_node = d3.select('#' + nodeid + ' rect');
@@ -620,15 +618,23 @@ $(document).ready(function(){
 		var task_id = $(this).attr("id");//获取任务id
 		var execution_date = getUrlParam('execution_date'); //获取url 的值
 		var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		$.ajax({
+		var ajaxTimeoutTest = $.ajax({
 			url : '<%=path%>/getTaskLog.do',
 			data:data,
 			type : 'post',
 			dataType : 'json',
+			timeout:5000,
 			success:function(result)
 			{
 				alert(result.msg);
 			},
+			complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+				if(status == 'timeout')
+				{
+					 ajaxTimeoutTest.abort();
+					 alert("超时");
+				}
+			}
 		})
 	});
 
