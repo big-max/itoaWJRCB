@@ -675,6 +675,11 @@ body{margin:0;padding:0;}
     var renderer = new dagreD3.Renderer();
     renderer.layout(layout).run(g, d3.select("#dig"));
     inject_node_ids(tasks);
+    
+    
+    
+    
+    
     //update_nodes_states(task_instances);
 
 
