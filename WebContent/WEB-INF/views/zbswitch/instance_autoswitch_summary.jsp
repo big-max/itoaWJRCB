@@ -220,7 +220,7 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		window.open("historyPage.do?dag_id="+ dag_id +"&execution_date="+execution_date.replace(" ","T"));
 	})
 	
-	//运行记录的跳转
+	//当前运行情况的跳转
 	$(document).on('click',"._running",function(){
 		var style = $(this).attr("style");//判断颜色能否做点击事件
 		if (style == "font-size:23px;color:#0066FF")

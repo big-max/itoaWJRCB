@@ -129,7 +129,7 @@ public class AutoSwitchController {
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
-		System.out.println(on.toString());
+		//System.out.println(on.toString());
 		return on;
 	}
 
@@ -255,6 +255,7 @@ public class AutoSwitchController {
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
+			System.out.println(response);
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
@@ -280,6 +281,7 @@ public class AutoSwitchController {
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
+			System.out.println(response);
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
@@ -305,6 +307,7 @@ public class AutoSwitchController {
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
+			System.out.println(response);
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
