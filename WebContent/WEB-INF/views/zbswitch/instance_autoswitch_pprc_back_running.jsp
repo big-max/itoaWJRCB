@@ -773,7 +773,7 @@ function update_nodes_states(task_instances) {
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
                  mynode.style("stroke", "green") ;
-            }else if (obj.state == 'skipped' || obj.state == 'undefined')//未开始
+            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed')//未开始
             {
             	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
 								 "实际开始时间：" + obj.start_Date         + "," +
