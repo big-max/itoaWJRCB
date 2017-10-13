@@ -111,6 +111,7 @@
 		   		 $("#menu24").show();
 		   		 $("#menu25").show();
 		   		 $("#menu26").show();
+		   		 $("#menu27").show();
 		   		 $("#showonce").delay(0).slideDown(300);
 		   		$("#forremoveminux").addClass("submenu-indicator-minus");
 		   	
@@ -136,6 +137,7 @@
 			$("#menu24").hide();
 			$("#menu25").hide();
 			$("#menu26").hide();
+			$("#menu27").hide();
 		 	$("#jquery-accordion-menu").animate({width:"56px"},1,function(){
 			 	$(".nosubmenu").css("display","none");			//收缩后将三级菜单收起
 			 	$('.nosubmenu').find('.has-children.selected').removeClass('selected');	//将三级菜单还原到默认情况
@@ -177,6 +179,7 @@
 		 $("#menu24").show();
 		 $("#menu25").show();
 		 $("#menu26").show();
+		 $("#menu27").show();
 	});
 	//左侧菜单栏的隐藏和显示 结束
 });
@@ -388,6 +391,15 @@
 				<a href="autoswitch.do" class="notvisible tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu26" class="top5">灾备切换</span> 
+			    </a>
+			</li>
+			<li>
+				<a href="dailyflow.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="日终流程">
+					<img class="img_icon" src="img/icons/iconfont/dailyflow.png"></img>
+				</a>
+				<a href="dailyflow.do" class="notvisible tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/dailyflow.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu27" class="top5">日终流程</span> 
 			    </a>
 			</li>
 		</ul>
