@@ -1,6 +1,8 @@
 package com.ibm.automation.core.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Properties;
 
@@ -40,7 +42,7 @@ public class UserController {
 	private ServerService  addHostService;
 	
 	@RequestMapping(value="/login.do")
-	public String login(HttpServletRequest request, HttpServletResponse resp, HttpSession session) {
+	public String login(HttpServletRequest request, HttpServletResponse resp, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		// 如果已经登录，访问/login.do 直接跳转到getAllServers.do
 		if (request.getSession().getAttribute("userName") != null) {
 			logger.info("login.do::正在调转到getAllServers.do");
@@ -53,8 +55,10 @@ public class UserController {
 		}
 		// 从/login.jsp登录后执行的代码
 		LoginBean user = new LoginBean();
-		byte[] passByte = Base64.decodeBase64(request.getParameter("password"));// base64解密
-		user.setPassword(SecurityUtil.encrypt(new String(passByte), amsCfg.getProperty("key"))); // 加密字符串
+		//byte[] passByte = Base64.decodeBase64(request.getParameter("password"));// base64解密
+		String password = request.getParameter("password");
+		user.setPassword(SecurityUtil.EncoderByMd5(password));//md5 base64加密下
+		//user.setPassword(SecurityUtil.encrypt(new String(passByte), amsCfg.getProperty("key"))); // 加密字符串
 		user.setUsername(request.getParameter("userName"));
 		String strOrgUrl = addHostService.createSendUrl(PropertyKeyConst.AMS2_HOST,
 				PropertyKeyConst.POST_ams2_service_users);

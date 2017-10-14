@@ -82,21 +82,6 @@ $(function(){
 				$(".main").css("marginLeft",220);
 			}
 		});
-	// table的隔行换色
-	/*
-	 * $(".table tr").mouseover(function(){ //如果鼠标移到class为stripe的表格的tr上时，执行函数
-	 * $(this).addClass("over");}).mouseout(function(){
-	 * //给这行添加class值为over，并且当鼠标一出该行时执行函数 $(this).removeClass("over");})
-	 * //移除该行的class $(".table tr:even").addClass("selcolor");
-	 */   
-    // 给class为stripe的表格的偶数行添加class值为alt
-  // 顶部点击展示效果
-	$(".viewbox > li > a").live("click",function(){
-　　　	$(this).toggleClass("currentview");
-　　　	$(this).siblings(".viewcolumn").toggle();
-　　});
-		
-		
 		
 	// 上一页和下一页
 	 // 下一页
@@ -347,57 +332,3 @@ var changeDivShow = function(selectId){
 		}
 	});
   }
-	
-// 关于IP地址js
-		function mask(obj){
-    obj.value=obj.value.replace(/[^\d]/g,'')
-    if(obj.value.length>=3){
-        if(parseInt(obj.value)>=256 || parseInt(obj.value)<=0){
-            alert(parseInt(obj.value)+"IP地址错误！")
-            obj.value=""
-            obj.focus()
-            return false;
-        }else{
-            obj.blur();
-            nextip=parseInt(obj.id.substr(2,1))+1;
-            var _iptNext = document.getElementById('ip'+nextip);
-            if(_iptNext){
-                _iptNext.select();
-            }
-        }
-    }
-    getIP(obj.id.substr(0,2));
-		}
-		var filter = function(obj){
-				clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))
-		}
-		var paste = function(strId){
-				var data = clipboardData.getData('text');
-				var _arr = [];
-				_arr = data.split('.');
-				for(var i=0;i<4;i++){
-						document.getElementById(strId+i).value = _arr[i];
-				}
-				document.getElementById(strId+'3').focus();
-		};
-		var getIP = function(strId){
-				var str = '';
-				var v   = '';
-				for(var i=0;i<4;i++){
-						v = document.getElementById(strId+i).value;
-						if(v == ''){
-								return;
-						} else {
-								str += (i<3) ? v + '.': v ;
-						}
-				}
-				document.getElementById('ip').value = str;		 
-		};
-
-
-
-
-
-
-
-

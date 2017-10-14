@@ -60,7 +60,8 @@
 			return;
 		} else {
 			$("#errorMessage").css("display", "none");
-			$("#pwd").val(window.btoa($("#pwd").val()));
+		//	$("#pwd").val(window.btoa($("#pwd").val()));
+			$("#pwd").val($("#pwd").val());
 			$("#loginform").submit();
 		}
 	}
