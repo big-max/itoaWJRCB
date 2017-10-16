@@ -17,6 +17,20 @@
 <jsp:include page="../header.jsp" flush="true" />
 <title>自动化部署平台</title>
 <style type="text/css">
+.tooltip-inner {
+	color:white;
+	background-color:#413A3A;
+}
+.tooltip-arrow{
+	border-right-color:black;
+}
+.tooltip {
+	font-size:15px;
+	line-height:25px;
+	height:40px;
+	width:125px;
+	position:fixed;
+}
 .content {
 	position:relative;
 	float:right;
@@ -31,6 +45,9 @@
 }
 i:hover{
 	cursor:pointer;
+}
+.show_tooltips{
+	
 }
 </style>
 <script>
@@ -149,50 +166,50 @@ function update_summary_table_state()
 		         {
 		        	  html +=    "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
 			         	"<div class=\"linkexpre\">"+
-			         	"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\"></i>"
+			         	"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"tooltip\" title=\"发起流程\"></i>"
 						+"</div>"
 						+"</div><div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\"  style=\"font-size:26px;color:#bebebe\"></i>"
+						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\"  style=\"font-size:26px;color:#bebebe\" data-toggle=\"tooltip\" title=\"终止流程\"></i>"
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\">"+
-					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\"  style=\"font-size:23px;color:#0066FF\"></i>"
+					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\"  style=\"font-size:23px;color:#0066FF\" data-toggle=\"tooltip\" title=\"查看当前运行状态\"></i>"
 						+"</div>"
 						+"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"></i>"
+						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"data-toggle=\"tooltip\" title=\"查看历史\"></i>"
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
-					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\"></i>"
+					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\" title=\"编辑流程\"></i>"
 						+"</div>"
 		         }else if (data[i].last_run_status == 'running')  //如果是运行中
 		         {
 		        	 if(data[i].is_paused == 0){  // 0 代表开着的,没有暂停
 		        		html += "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
 				         	"<div class=\"linkexpre\">"+
-							"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-pause-circle\" style=\"font-size:26px;color:#0066FF\"></i>"
+							"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-pause-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"tooltip\" title=\"暂停流程\"></i>"
 							+"</div></div>"
 		        	  }else if (data[i].is_paused == 1) //1 代表着暂停中
 		        	  {
 		        		  html += "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
 				         	"<div class=\"linkexpre\">"+
-							"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\"></i>"
+							"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"tooltip\" title=\"继续流程\"></i>"
 							+"</div></div>" 
 		        	  }
 		        	 	html +=    
 						"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\" style=\"font-size:26px;color:red\"></i>"
+						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\" style=\"font-size:26px;color:red\" data-toggle=\"tooltip\" title=\"终止流程\"></i>"
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\">"+
-					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\" style=\"font-size:23px;color:#0066FF\"></i>"
+					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\" style=\"font-size:23px;color:#0066FF\" data-toggle=\"tooltip\" title=\"查看当前运行状态\"></i>"
 						+"</div>"
 						+"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"></i>"
+						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\" data-toggle=\"tooltip\" title=\"查看历史\"></i>"
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
-					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\"></i>"
+					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\" title=\"编辑流程\"></i>"
 						+"</div>"
 		         }
 		         html += "</td></tr>";
@@ -203,9 +220,10 @@ function update_summary_table_state()
 }
 $(document).ready(function(){ 
 	update_summary_table_state();//页面初始化的时候更新一次
-}); 	
+}); 
 
- setInterval('update_summary_table_state()',2000); 
+  
+ //setInterval('update_summary_table_state()',2000); 
 
 $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	 var id =  $(e.target).attr("id");       // e.target表示被点击的目标
