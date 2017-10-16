@@ -57,7 +57,7 @@ body{margin:0;padding:0;}
 		</div>
 		
 		<div id="svg_container" style="margin-left:10px;margin-right:10px;"> 
-			<svg width="100%" height="350">
+			<svg width="100%" style="height:70vh">
 				<g id='dig' transform="translate(20,50)"/>  
 			</svg>
 		</div>
