@@ -46,7 +46,7 @@ body{margin:0;padding:0;}
 				<option value="${execution_date}">${execution_date}</option>
 			</select>
 			<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
-			<button id="showlog" class="btn btn-sm" style="background-color: #448FC8;">
+			<button id="showlog" class="btn btn-sm" style="background-color: #3399CC;border:1px solid #bbb;">
 				<font color="white">查看历史</font>
 			</button>
 		</div>
@@ -655,7 +655,7 @@ function update_nodes_states(task_instances) {
             					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
-                mynode.style("stroke", "red") ;
+                mynode.style("stroke", "#FF4500") ;
             }else if (obj.state == 'success') //如果成功
             {
             	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
@@ -667,7 +667,7 @@ function update_nodes_states(task_instances) {
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
-                 mynode.style("stroke", "green") ;
+                 mynode.style("stroke", "#32CD32") ;
             }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed')//未开始
             {
             	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
@@ -691,7 +691,19 @@ function update_nodes_states(task_instances) {
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
-            	mynode.style("stroke", "blue") ; 
+            	mynode.style("stroke", "#3399CC") ; 
+            }else if (obj.state == 'done') //如果处于做完待确认的状态
+            {
+            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+								 "实际开始时间：" + obj.start_Date         + "," +
+								 "预计结束时间：" + obj.expected_endtime   + "," + 
+								 "实际结束时间：" + obj.end_Date           + "," +
+								 "预计持续时间：" + obj.expected_duration  + "," + 
+								 "实际持续时间：" + obj.duration           + "," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+                 mynode.style("stroke", "#FF8C00") ;
             }
 		})
     }

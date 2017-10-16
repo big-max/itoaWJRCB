@@ -80,9 +80,10 @@ body{margin:0;padding:0;}
 		<!-- 图例说明 -->
 		<div style="height:70px;width:300px;margin-left:10px;">
 			<div class="explogo" style="border:2px solid white;position:fixed;">未开始</div>
-			<div class="explogo" style="margin-left:75px;border:2px solid #0000ff;position:fixed;">运行中</div>
-			<div class="explogo" style="margin-left:150px;border:2px solid #00ff00;position:fixed;">成功</div>
-			<div class="explogo" style="margin-left:225px;border:2px solid red;position:fixed;">失败</div>
+			<div class="explogo" style="margin-left:75px;border:2px solid #3399CC;position:fixed;">运行中</div>
+			<div class="explogo" style="margin-left:150px;border:2px solid #32CD32;position:fixed;">成功</div>
+			<div class="explogo" style="margin-left:225px;border:2px solid #FF4500;position:fixed;">失败</div>
+			<div class="explogo" style="margin-left:300px;border:2px solid #FF8C00;position:fixed;width:85px">完成待确认</div>
 		</div>
 		<div style="margin-bottom:10px;"></div>
 		
@@ -838,7 +839,7 @@ function update_nodes_states(task_instances) {
             					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
-                mynode.style("stroke", "red") ;
+                mynode.style("stroke", "#FF4500") ;
             }else if (obj.state == 'success') //如果成功
             {
             	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
@@ -850,7 +851,7 @@ function update_nodes_states(task_instances) {
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
-                 mynode.style("stroke", "green") ;
+                 mynode.style("stroke", "#32CD32") ;
             }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed')//未开始
             {
             	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
@@ -874,7 +875,19 @@ function update_nodes_states(task_instances) {
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
-            	mynode.style("stroke", "blue") ; 
+            	mynode.style("stroke", "#3399CC") ; 
+            }else if (obj.state == 'done') //如果处于做完待确认的状态
+            {
+            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+								 "实际开始时间：" + obj.start_Date         + "," +
+								 "预计结束时间：" + obj.expected_endtime   + "," + 
+								 "实际结束时间：" + obj.end_Date           + "," +
+								 "预计持续时间：" + obj.expected_duration  + "," + 
+								 "实际持续时间：" + obj.duration           + "," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
+                var format_content = tipcontent.split(",").join("<br>");
+                $("#"+obj.task_id).attr("data-original-title",format_content); 
+                 mynode.style("stroke", "#FF8C00") ;
             }
 		})
     }
