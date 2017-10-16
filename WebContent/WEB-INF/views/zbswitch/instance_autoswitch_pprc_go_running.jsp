@@ -27,7 +27,7 @@ body{margin:0;padding:0;}
 }
 .explogo{
 	float:left;
-	width:100px;
+	width:90px;
 	height:40px;
 	background-color:#F0EDE4;
 	border-radius:10px;
@@ -82,13 +82,22 @@ body{margin:0;padding:0;}
 		<!-- 图例说明 -->
 		<div style="height:70px;width:300px;margin-left:10px;">
 			<div class="explogo"  style="border:2px solid white;position:fixed;">未开始</div>
-			<div class="explogo"  style="margin-left:75px;border:2px solid #0000ff;position:fixed;">运行中</div>
-			<div class="explogo"  style="margin-left:150px;border:2px solid green;position:fixed;">成功</div>
-			<div class="explogo"  style="margin-left:225px;border:2px solid red;position:fixed;">失败</div>
-			<div class="explogo"  style="margin-left:300px;border:2px solid #ff7f00;position:fixed;">已完成待确认</div> 
+			<div class="explogo"  style="margin-left:95px;border:2px solid #0000ff;position:fixed;">运行中</div>
+			<div class="explogo"  style="margin-left:190px;border:2px solid green;position:fixed;">成功</div>
+			<div class="explogo"  style="margin-left:285px;border:2px solid red;position:fixed;">失败</div>
+			<div class="explogo"  style="margin-left:380px;border:2px solid #ff7f00;position:fixed;">已完成待确认</div> 
 		</div>
-		<div style="margin-bottom:10px;"></div>
-		
+		<div style="margin-left:10px;">
+			<div style="float:left;width:250px;font-size:14px;">
+				<span><b>切换场景名：</b></span>
+				<span>PPRC+LVM 切换</span>
+			</div>
+			<div style="float:left;width:250px;font-size:14px;">
+				<span><b>开始执行时间：</b></span>
+				<span></span>
+			</div>
+		</div>
+		<div style="margin-bottom:40px;"></div>
 		<div id="svg_container" style="margin-left:10px;margin-right:10px;">
 			<svg width="100%" height="350">
 				<g id='dig' transform="translate(20,60)"/>  
