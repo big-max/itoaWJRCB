@@ -156,7 +156,7 @@ function update_summary_table_state()
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\">"+
-					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\"  style=\"font-size:23px;color:#bebebe\"></i>"
+					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\"  style=\"font-size:23px;color:#0066FF\"></i>"
 						+"</div>"
 						+"<div class=\"linkexpre\">"+
 						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"></i>"
@@ -222,13 +222,19 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	
 	//当前运行情况的跳转
 	$(document).on('click',"._running",function(){
-		var style = $(this).attr("style");//判断颜色能否做点击事件
+		/* var style = $(this).attr("style");//判断颜色能否做点击事件
 		if (style == "font-size:23px;color:#0066FF")
 		{
 			var dag_id = $(this).parents("tr").find("#dag_id").text()
 			var execution_date = $(this).parents("tr").find("#execution_date").text()
 			window.open("runningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
-		}
+		} */
+		
+		var dag_id = $(this).parents("tr").find("#dag_id").text()
+		var execution_date = $(this).parents("tr").find("#execution_date").text()
+		window.open("runningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
+		
+		
 	})
 	
 	//停止一个流

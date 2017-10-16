@@ -70,7 +70,7 @@ public class ServerController {
 			for (int i = 0; i < uuids.length; i++) {
 				ObjectNode inner = om.createObjectNode();
 				inner.put("uuid", uuids[i]);
-				inner.put("ip", uuids[i]);
+				inner.put("ip", ips[i]);
 				an.add(inner);
 			}
 		}

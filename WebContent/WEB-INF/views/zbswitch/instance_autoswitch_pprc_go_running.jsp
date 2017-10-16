@@ -27,7 +27,7 @@ body{margin:0;padding:0;}
 }
 .explogo{
 	float:left;
-	width:70px;
+	width:100px;
 	height:40px;
 	background-color:#F0EDE4;
 	border-radius:10px;
@@ -83,9 +83,9 @@ body{margin:0;padding:0;}
 		<div style="height:70px;width:300px;margin-left:10px;">
 			<div class="explogo"  style="border:2px solid white;position:fixed;">未开始</div>
 			<div class="explogo"  style="margin-left:75px;border:2px solid #0000ff;position:fixed;">运行中</div>
-			<div class="explogo"  style="margin-left:150px;border:2px solid #00ff00;position:fixed;">成功</div>
+			<div class="explogo"  style="margin-left:150px;border:2px solid green;position:fixed;">成功</div>
 			<div class="explogo"  style="margin-left:225px;border:2px solid red;position:fixed;">失败</div>
-			<div class="explogo"  style="margin-left:300px;border:2px solid #ff7f00;position:fixed;">已确认</div> 
+			<div class="explogo"  style="margin-left:300px;border:2px solid #ff7f00;position:fixed;">已完成待确认</div> 
 		</div>
 		<div style="margin-bottom:10px;"></div>
 		
