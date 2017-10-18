@@ -223,7 +223,7 @@ $(document).ready(function(){
 }); 
 
   
- //setInterval('update_summary_table_state()',2000); 
+setInterval('update_summary_table_state()',2000); 
 
 $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	 var id =  $(e.target).attr("id");       // e.target表示被点击的目标
