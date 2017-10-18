@@ -207,7 +207,7 @@ body{margin:0;padding:0;}
 	            					if(result.status == 0)
 	            					{
 	            						swal.close();
-	            						$("#"+taskid).children("rect").css("stroke", "green");
+	            						$("#"+taskid).children("rect").css("stroke", "#32CD32");
 	            					} 
 	            				},
 	            			})
