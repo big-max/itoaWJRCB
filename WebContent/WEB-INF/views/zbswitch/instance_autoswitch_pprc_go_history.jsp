@@ -23,6 +23,15 @@ body{margin:0;padding:0;}
 	height:calc(100vh - 50px); 
 	background-color:#F5F3F4;
 }
+.select2-container{
+	vertical-align: middle;
+}
+.select2-container .select2-choice{
+	height:35px;
+}
+.select2-container .select2-choice span{
+	line-height:30px;
+}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -758,9 +767,9 @@ function getDagHisRecord(url,param,type){
 	        cache:false,
 	        success: function (data) {
 	        	var array = data.dag_hisdatetime;
-	            for (var i = 0; i < array.length; i++) {
-	                $("#hisdatetime").append("<option>" + array[i] + "</option>");
-	            }
+	        	for (var i = 0; i < array.length; i++) {
+                $("#hisdatetime").append("<option>" + array[i] + "</option>");
+	            } 
 	        }
 	    });
 }

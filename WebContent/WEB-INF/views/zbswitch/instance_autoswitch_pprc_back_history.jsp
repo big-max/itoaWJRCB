@@ -23,6 +23,15 @@ body{margin:0;padding:0;}
 	height:calc(100vh - 50px); 
 	background-color:#F5F3F4;
 }
+.select2-container{
+	vertical-align: middle;
+}
+.select2-container .select2-choice{
+	height:35px;
+}
+.select2-container .select2-choice span{
+	line-height:30px;
+}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -57,7 +66,7 @@ body{margin:0;padding:0;}
 		</div>
 		
 		<div id="svg_container" style="margin-left:10px;margin-right:10px;"> 
-			<svg width="100%" style="height:70vh">
+			<svg width="100%" style="height:70vh;">
 				<g id='dig' transform="translate(20,50)"/>  
 			</svg>
 		</div>
@@ -69,6 +78,7 @@ body{margin:0;padding:0;}
 <script>
     //给每个g添加id
 	$(document).ready(function(){
+		
 		//定义一个数组存放所有id值
 		var arrIdVal = ["pprc_back_start","pprc_back_workdb_backup","pprc_back_icsdb_backup","pprc_back_cardb_backup",
 		                "pprc_back_cmisdb_backup","pprc_back_backup_end","pprc_back_p770c2_cardstop",
@@ -90,8 +100,6 @@ body{margin:0;padding:0;}
 		}
 	})
 	
-		
-		
 </script>
 
 <script>
@@ -812,6 +820,7 @@ $(document).ready(function(){
 	getAjax("historyData.do",data,"post");
 	//更新下拉框的日期数据
 	getDagHisRecord("historyDatatime.do",data,"get");
+	
 });
 
 function getDagHisRecord(url,param,type){

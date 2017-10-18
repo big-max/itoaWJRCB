@@ -168,7 +168,7 @@ public class AutoSwitchController {
 		}
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_hisdatetime", an);
-		//System.out.println(on.toString());
+		System.out.println(on.toString());
 		return on;
 	}
 	/*
