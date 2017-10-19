@@ -107,7 +107,7 @@ body{margin:0;padding:0;}
 			</svg>
 		</div>
 	</div>
-	<img id="progressImgage" class="progress hide" alt="" src="img/process.gif"/>
+	<img id="progressImgage" class="progress hide" style="width:5%;height:10vh" alt="请稍等，处理中。。。" src="img/process.gif"/>
     <div id="maskOfProgressImage" class="mask hide"></div>
 </body>
 
