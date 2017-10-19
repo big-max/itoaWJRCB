@@ -329,7 +329,7 @@ public class AutoSwitchController {
 			String result = task_InstanceService.getStateOfTask(map);
 			//System.out.println("state is :" + result);
 			while(true){
-				if(result.equals("queued") || result.equals("running")){
+				if(result.equals("running")){
 					break;
 				}
 				result = task_InstanceService.getStateOfTask(map);
