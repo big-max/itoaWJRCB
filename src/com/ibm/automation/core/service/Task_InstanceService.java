@@ -9,4 +9,5 @@ import com.ibm.automation.domain.Task_InstanceBean;
 public interface Task_InstanceService {
 	public List<Task_InstanceBean> getRunningTaskInstance(Map<String,String> map);
 	public List<Task_All_InfoBean> getHistoryTaskInstance(Map<String,String> map);
+	public String getStateOfTask(Map<String,String>map);
 }	

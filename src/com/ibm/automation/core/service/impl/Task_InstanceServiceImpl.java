@@ -22,5 +22,8 @@ public class Task_InstanceServiceImpl implements Task_InstanceService {
 	public List<Task_All_InfoBean> getHistoryTaskInstance(Map<String, String> map) {
 		return task_instanceBeanMapper.selectHistoryTaskInstance(map);
 	}
-	
+	@Override
+	public String getStateOfTask(Map<String, String> map) {
+		return task_instanceBeanMapper.getStateOfTask(map);
+	}
 }

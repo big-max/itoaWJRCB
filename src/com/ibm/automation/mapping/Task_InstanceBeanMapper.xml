@@ -93,5 +93,17 @@
 		DATE_FORMAT(task_instance.execution_date,'%Y-%m-%D-%H-%M-%S') = DATE_FORMAT(#{execution_date,jdbcType=TIMESTAMP},'%Y-%m-%D-%H-%M-%S') 
   </select>
   
+  <select id="getStateOfTask" parameterType="hashmap" resultType="string">
+  	select 
+  		task_instance.state
+	from 
+		task_instance	
+	where 
+		task_instance.dag_id = #{dag_id,jdbcType=VARCHAR} 
+		and
+		task_instance.task_id = #{task_id, jdbcType=VARCHAR}
+		and 
+		DATE_FORMAT(task_instance.execution_date,'%Y-%m-%D-%H-%M-%S') = DATE_FORMAT(#{execution_date,jdbcType=TIMESTAMP},'%Y-%m-%D-%H-%M-%S') 
+  </select>
   
 </mapper>

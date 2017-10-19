@@ -322,6 +322,16 @@ public class AutoSwitchController {
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
 			System.out.println(response);
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("dag_id", dag_id);
+			map.put("execution_date", execution_date);
+			map.put("task_id", task_id);
+			String result = task_InstanceService.getStateOfTask(map);
+			//System.out.println("state is :" + result);
+			while(!result.equals("success")){
+				result = task_InstanceService.getStateOfTask(map);
+				//System.out.println("state is :" + result);
+			}
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
@@ -329,6 +339,19 @@ public class AutoSwitchController {
 		}
 		return null;
 	}
+	/*@RequestMapping("/querystate.do")
+	@ResponseBody
+	public String queryState(HttpServletRequest request, HttpSession session){
+		Map<String, String> map = new HashMap<String, String>();
+		String dag_id = request.getParameter("dag_id");
+		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
+		String task_id = request.getParameter("task_id");
+		map.put("dag_id", dag_id);
+		map.put("execution_date", execution_date);
+		map.put("task_id", task_id);
+		String result = task_InstanceService.getStateOfTask(map);
+		return result;
+	}*/
 
 	// 汇总页使用，获取所有的最近的8个流程的状态
 	@RequestMapping("getLastDagRunInstance.do")
