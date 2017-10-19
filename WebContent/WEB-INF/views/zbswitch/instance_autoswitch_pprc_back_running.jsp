@@ -38,6 +38,9 @@ body{margin:0;padding:0;}
 	width:80%;
 	margin:0 auto;
 }
+ .hide{display:none }
+ .progress{z-index: 2000}
+ .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -93,6 +96,8 @@ body{margin:0;padding:0;}
 			</svg>
 		</div>
 	</div>
+	<img id="progressImgage" class="progress hide" alt="" src="img/process.gif"/>
+    <div id="maskOfProgressImage" class="mask hide"></div>
 </body>
 
 
@@ -140,6 +145,29 @@ body{margin:0;padding:0;}
 			taskid = $(this).attr("id");//获取要点击任务框的id 
 		})
 		
+		$.ajax2 = function (options) {
+	       var img = $("#progressImgage");
+	       var mask = $("#maskOfProgressImage");
+	       var complete = options.complete;
+	       options.complete = function (httpRequest, status) {
+	           img.hide();
+	           mask.hide();
+	           if (complete) {
+	               complete(httpRequest, status);
+	           }
+	       };
+	       options.async = true;
+	       img.show().css({
+	           "position": "fixed",
+	           "top": "50%",
+	           "left": "50%",
+	           "margin-top": function () { return -1 * img.height() / 2; },
+	           "margin-left": function () { return -1 * img.width() / 2; }
+	       });
+	       mask.show().css("opacity", "0.1");
+	       $.ajax(options);
+	   };
+		
 		$('g.node').contextPopup({
           items: [
             {label:'查看日志', icon:'img/viewlog.png', action:function() 
@@ -162,7 +190,7 @@ body{margin:0;padding:0;}
             	{ 
 	            	var execution_date = getUrlParam('execution_date'); //获取url 的值
 	            	var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-	            		$.ajax({
+	            		$.ajax2({
 	            			url : '<%=path%>/makeNodeClear.do',
 	            			data:data,
 	            			type : 'post',
