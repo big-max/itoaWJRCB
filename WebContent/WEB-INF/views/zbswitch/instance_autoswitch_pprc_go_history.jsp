@@ -83,8 +83,7 @@ body{margin:0;padding:0;}
 						"pprc_go_p770b2_check_hastatus","pprc_go_p770b1_check_hastatus","pprc_go_p770a1_check_hastatus",
 						"pprc_go_p770a2_hastop","pprc_go_p770b2_hastop","pprc_go_p770b1_hastop","pprc_go_p770a1_hastop",
 						"pprc_go_ds8k_lunstart","pprc_go_p770c1_lunread_suspend","pprc_go_p770c2_lunread_suspend",
-						"pprc_go_p770c1_lunread_suspend_check","pprc_go_p770c2_lunread_suspend_check","pprc_go_p770c1_lunread_recover",
-						"pprc_go_p770c2_lunread_recover","pprc_go_p770c1_lunread_recover_check","pprc_go_p770c2_lunread_recover_check",
+						"pprc_go_p770c1_lunread_recover","pprc_go_p770c2_lunread_recover",
 						"pprc_go_p770c1_workstart","pprc_go_p770c1_cmisstart","pprc_go_p770c2_icsstart","pprc_go_p770c2_cardstart",
 						"pprc_go_ywcheck","pprc_go_startreplic","pprc_go_p770c1_replicationstart","pprc_go_p770c2_replicationstart",
 						"pprc_go_end"];		
@@ -229,7 +228,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "设置p770c1 LUN可读写挂载"
+		  "label": "设置p770c1 LUN可读写挂起"
 		}
 	  }, 
 	  {
@@ -237,25 +236,9 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "设置p770c2 LUN可读写挂载"
+		  "label": "设置p770c2 LUN可读写挂起" 
 		}
 	  }, 
-	  {
-	    "id": "pprc_go_p770c1_lunread_suspend_check", 
-	    "value": {
-	      "style": "fill:#ffefeb;", 
-	      "labelStyle": "fill:#000;", 
-	      "label": "检查p770c1 LUN可读写挂载"
-	    }
-	  },
-	  {
-	    "id": "pprc_go_p770c2_lunread_suspend_check", 
-	    "value": {
-	      "style": "fill:#ffefeb;", 
-	      "labelStyle": "fill:#000;", 
-	      "label": "检查p770c2 LUN可读写挂载"
-	    }
-	  },
 	  {
 	    "id": "pprc_go_p770c1_lunread_recover", 
 	    "value": {
@@ -272,22 +255,6 @@ body{margin:0;padding:0;}
 	      "label": "设置p770c2 LUN可读写恢复"
 	    }
 	  },
-	  {
-	    "id": "pprc_go_p770c1_lunread_recover_check", 
-	    "value": {
-	      "style": "fill:#ffefeb;", 
-	      "labelStyle": "fill:#000;", 
-	      "label": "检查p770c1 LUN可读写恢复"
-	    }
-	  },
-	  {
-	    "id": "pprc_go_p770c2_lunread_recover_check", 
-	    "value": {
-	      "style": "fill:#ffefeb;", 
-	      "labelStyle": "fill:#000;", 
-	      "label": "检查p770c2 LUN可读写恢复"
-	    }
-	  },	  
 	  {
 		"id": "pprc_go_p770c1_workstart", 
 		"value": {
@@ -390,11 +357,7 @@ body{margin:0;padding:0;}
 	  {
 		"u": "pprc_go_p770c1_workstart", 
 		"v": "pprc_go_p770c1_cmisstart"
-	  }, 
-	  {
-		"u": "pprc_go_p770c1_lunread_recover_check", 
-		"v": "pprc_go_p770c1_workstart"
-	  }, 
+	  },  
 	  {
 		"u": "pprc_go_ds8k_lunstart", 
 		"v": "pprc_go_p770c1_lunread_suspend"
@@ -480,10 +443,6 @@ body{margin:0;padding:0;}
 		"v": "pprc_go_p770a1_check_hastatus"
 	  }, 
 	  {
-		"u": "pprc_go_p770c2_lunread_recover_check", 
-		"v": "pprc_go_p770c1_workstart"
-	  }, 
-	  {
 		"u": "pprc_go_ds8k_lunstart", 
 		"v": "pprc_go_p770c2_lunread_suspend"
 	  }, 
@@ -497,27 +456,19 @@ body{margin:0;padding:0;}
 	  },
 	  {
 		 "u":"pprc_go_p770c1_lunread_suspend",
-		 "v":"pprc_go_p770c1_lunread_suspend_check"
-	  },
-	  {
-		 "u":"pprc_go_p770c2_lunread_suspend",
-		 "v":"pprc_go_p770c2_lunread_suspend_check"
-	  },
-	  {
-		 "u":"pprc_go_p770c1_lunread_suspend_check",
 		 "v":"pprc_go_p770c1_lunread_recover"
 	  },
 	  {
-		 "u":"pprc_go_p770c2_lunread_suspend_check",
+		 "u":"pprc_go_p770c2_lunread_suspend",
 		 "v":"pprc_go_p770c2_lunread_recover"
 	  },
 	  {
 		 "u":"pprc_go_p770c1_lunread_recover",
-		 "v":"pprc_go_p770c1_lunread_recover_check"
+		 "v":"pprc_go_p770c1_workstart"
 	  },
 	  {
 		 "u":"pprc_go_p770c2_lunread_recover",
-		 "v":"pprc_go_p770c2_lunread_recover_check"
+		 "v":"pprc_go_p770c1_workstart"
 	  }
 	];
 	
@@ -626,27 +577,11 @@ body{margin:0;padding:0;}
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  },
-   		  "pprc_go_p770c1_lunread_suspend_check": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  },
-   		  "pprc_go_p770c2_lunread_suspend_check": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  },
    		  "pprc_go_p770c1_lunread_recover": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  },
    		  "pprc_go_p770c2_lunread_recover": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  },
-   		  "pprc_go_p770c1_lunread_recover_check": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  },
-   		  "pprc_go_p770c2_lunread_recover_check": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  }
