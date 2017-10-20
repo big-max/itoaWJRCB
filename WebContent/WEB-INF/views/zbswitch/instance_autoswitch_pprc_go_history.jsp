@@ -85,7 +85,8 @@ body{margin:0;padding:0;}
 						"pprc_go_ds8k_lunstart","pprc_go_p770c1_lunread_suspend","pprc_go_p770c2_lunread_suspend",
 						"pprc_go_p770c1_lunread_recover","pprc_go_p770c2_lunread_recover",
 						"pprc_go_p770c1_workstart","pprc_go_p770c1_cmisstart","pprc_go_p770c2_icsstart","pprc_go_p770c2_cardstart",
-						"pprc_go_ywcheck","pprc_go_startreplic","pprc_go_p770c1_replicationstart","pprc_go_p770c2_replicationstart",
+						"pprc_go_ywcheck","pprc_go_startreplic","pprc_go_p770c1_enable_copy_replicationstart",
+						"pprc_go_p770c2_enable_copy_replicationstart","pprc_go_p770c1_replicationstart","pprc_go_p770c2_replicationstart",
 						"pprc_go_end"];		
 		var nodelen = $("g.node").length;
 		//遍历每个g，赋值id
@@ -304,6 +305,22 @@ body{margin:0;padding:0;}
 		}
 	  }, 
 	  {
+		"id": "pprc_go_p770c1_enable_copy_replicationstart", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "开始反向启动P770c1复制"
+		}
+	  },
+	  {
+		"id": "pprc_go_p770c2_enable_copy_replicationstart", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "开始反向启动P770c2复制"
+		}
+	  },
+	  {
 		"id": "pprc_go_p770c1_replicationstart", 
 		"value": {
 		  "style": "fill:#ffefeb;", 
@@ -336,7 +353,7 @@ body{margin:0;padding:0;}
 	  }, 
 	  {
 		"u": "pprc_go_startreplic", 
-		"v": "pprc_go_p770c1_replicationstart"
+		"v": "pprc_go_p770c1_enable_copy_replicationstart"
 	  }, 
 	  {
 		"u": "pprc_go_ywcheck", 
@@ -452,7 +469,7 @@ body{margin:0;padding:0;}
 	  }, 
 	  {
 		"u": "pprc_go_startreplic", 
-		"v": "pprc_go_p770c2_replicationstart"
+		"v": "pprc_go_p770c2_enable_copy_replicationstart"
 	  },
 	  {
 		 "u":"pprc_go_p770c1_lunread_suspend",
@@ -469,6 +486,14 @@ body{margin:0;padding:0;}
 	  {
 		 "u":"pprc_go_p770c2_lunread_recover",
 		 "v":"pprc_go_p770c1_workstart"
+	  },
+	  {
+		 "u":"pprc_go_p770c1_enable_copy_replicationstart",
+		 "v":"pprc_go_p770c1_replicationstart"
+	  },
+	  {
+		 "u":"pprc_go_p770c2_enable_copy_replicationstart",
+		 "v":"pprc_go_p770c2_replicationstart"
 	  }
 	];
 	
@@ -584,7 +609,15 @@ body{margin:0;padding:0;}
    		  "pprc_go_p770c2_lunread_recover": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
-   		  }
+   		  },
+	   	  "pprc_go_p770c1_enable_copy_replicationstart": {
+	   		"task_type": "PythonOperator", 
+	   		"dag_id": "pprc_go"
+	   	  },
+   		  "pprc_go_p770c2_enable_copy_replicationstart": {
+	   		"task_type": "PythonOperator", 
+	   		"dag_id": "pprc_go"
+	   	  }
 	};
   
     
