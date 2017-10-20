@@ -333,7 +333,7 @@ public class AutoSwitchController {
 					break;
 				}
 				result = task_InstanceService.getStateOfTask(map);
-				//System.out.println("state is :" + result);
+				System.out.println("state is :" + result);
 			}
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
