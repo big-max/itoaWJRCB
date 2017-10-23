@@ -43,6 +43,7 @@ body{margin:0;padding:0;}
  .hide{display:none }
  .progress{z-index: 2000}
  .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
+ .modal{width:750px;left:43%;}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -53,26 +54,22 @@ body{margin:0;padding:0;}
 </head>
 
 <body>
-	<!-- 模态框（Modal） -->
-<!-- 	<div class="modal fade modalframe" id=""  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<!-- 日志模态框（Modal） -->
+	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel"></h4>
+					<h4 class="modal-title" id="myModalLabel">日志信息</h4>
 				</div>
 				<div class="modal-body">
-					  <button id="btn_log" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);"><font color="white">查看日志</font></button>
-					   <div style="margin-top: 5px;"></div>
-					  <button id="btn_clear" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);" data-toggle="tooltip" data-placement="top" title="清理当前出错任务，并让调度器重新发起此任务"><font color="white">清理&续作</font></button>
-					  <div style="margin-top: 5px;"></div>
-           			  <button id="btn_success" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);"><font color="white">确认成功</font></button>
+					<textarea rows="10" style="width:100%;height:100%;resize:none;"></textarea>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
 				</div>
-			</div>/.modal-content
-		</div>/.modal
-	</div> -->
+			</div>
+		</div>
+	</div> 
 	
 	<!--header start-->
 	<div class="header">
@@ -140,6 +137,7 @@ body{margin:0;padding:0;}
 		var execution_date = getUrlParam('execution_date');
 		var execution_date_show = execution_date.replace("T"," ");
 		$("#exe_date").text(execution_date_show);
+		
 	})
 	
 	//模态框处理 
@@ -200,7 +198,9 @@ body{margin:0;padding:0;}
            				dataType : 'json',
            				success:function(result)
            				{
-           					alert(result.msg);
+           					//alert(result.msg);
+           					$("#showlog").modal();
+           					$("textarea").text(result.msg);
            				},
            			})
             	} 
