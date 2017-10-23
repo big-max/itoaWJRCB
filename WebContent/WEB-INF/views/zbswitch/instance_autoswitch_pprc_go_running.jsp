@@ -158,28 +158,33 @@ body{margin:0;padding:0;}
 			taskid = $(this).attr("id");//获取要点击任务框的id 
 		}) 
 		
+		/* //定义点击重做按钮调用的ajax
 	    $.ajax2 = function (options) {
 	       var img = $("#progressImgage");
 	       var mask = $("#maskOfProgressImage");
-	       var complete = options.complete;
-	       options.complete = function (httpRequest, status) {
-	           img.hide();
-	           mask.hide();
-	           if (complete) {
-	               complete(httpRequest, status);
+	       var success = options.success;
+	       var error = options.error;
+	       options.success = function (data) {
+	    	   if(data.TaskState == "running"){
+	    		   console.info("running");
+	    		   img.hide();
+		           mask.hide();
+		           clearInterval(makeClear);
+	    	   }
+	           if (success) {
+	               success(data);
 	           }
 	       };
-	       options.async = true;
-	       img.show().css({
-	           "position": "fixed",
-	           "top": "50%",
-	           "left": "50%",
-	           "margin-top": function () { return -1 * img.height() / 2; },
-	           "margin-left": function () { return -1 * img.width() / 2; }
-	       });
-	       mask.show().css("opacity", "0.1");
+	       options.error = function (data){
+	    	   alert("请检查应用服务器是否正常！");
+	    	   img.hide();
+	           mask.hide();
+	    	   if(error){
+	    		   error(data);
+	    	   }
+	       }
 	       $.ajax(options);
-	   };
+	   }; */
 
 		
 		$('g.node').contextPopup({
@@ -188,32 +193,54 @@ body{margin:0;padding:0;}
             	{ 
             		var execution_date = getUrlParam('execution_date'); //获取url 的值
             		var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-            			$.ajax({
-            				url : '<%=path%>/getTaskLog.do',
-            				data:data,
-            				type : 'post',
-            				dataType : 'json',
-            				success:function(result)
-            				{
-            					alert(result.msg);
-            				},
-            			})
+            		$.ajax({
+           				url : '<%=path%>/getTaskLog.do',
+           				data:data,
+           				type : 'post',
+           				dataType : 'json',
+           				success:function(result)
+           				{
+           					alert(result.msg);
+           				},
+           			})
             	} 
             },
             {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
             	{ 
 	            	var execution_date = getUrlParam('execution_date'); //获取url 的值
 	            	var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-	            		$.ajax2({
-	            			url : '<%=path%>/makeNodeClear.do',
-	            			data:data,
-	            			type : 'post',
-	            			dataType : 'json',
-	            			success:function(result)
-	            			{
-	            				//alert(result.msg);
-	            			},
-	            		})
+            		var img = $("#progressImgage");
+         	      	var mask = $("#maskOfProgressImage");
+	            	img.show().css({
+	     	           "position": "fixed",
+	     	           "top": "50%",
+	     	           "left": "50%",
+	     	           "margin-top": function () { return -1 * img.height() / 2; },
+	     	           "margin-left": function () { return -1 * img.width() / 2; }
+	     	       });
+	     	       mask.show().css("opacity", "0.1");
+	     	       var makeClear = setInterval(function(){$.ajax({
+	          			url : '<%=path%>/makeNodeClear.do',
+	        			data:data,
+	        			type : 'post',
+	        			dataType : 'json',
+	        			success:function(data)
+	        			{
+	        				if(data.TaskState == "running"){
+	        		    		   console.info("running");
+	        		    		   img.hide();
+	        			           mask.hide();
+	        			           clearInterval(makeClear);
+	        		    	   }
+	        			},
+	        			error:function(data)
+	        			{
+	        				 alert("请检查应用服务器是否正常！");
+	        		    	 img.hide();
+	        		         mask.hide();
+	        			}
+        		   })},3000);
+	            	
             	} 
             },
             {label:'确认成功', icon:'img/comsucc.png', action:function() 
@@ -912,18 +939,20 @@ function getAjax(url,param,type){
 	 return ajax(url, param, type).then(function(resp){
 			// 成功回调
 			if(resp){
-				update_nodes_states(resp.dag_tasks)
+				update_nodes_states(resp.dag_tasks);
 			}
 			else{
 				return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
 			}
 		}, function(err){
-	//失败回调
+			//失败回调
 			console.log(err); // 打印状态码
 			});
 		}
 	handleAjax(url,param,type);
 }
+
+
 	
 </script>
 
