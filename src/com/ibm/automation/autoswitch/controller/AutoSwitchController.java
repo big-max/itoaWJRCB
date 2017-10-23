@@ -103,6 +103,7 @@ public class AutoSwitchController {
 		String dag_id = request.getParameter("dag_id");
 		// 2016-01-01T12:12:12 to 2016-01-01 12:12:12
 		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
+		System.out.println(execution_date + " -- " + dag_id);
 		map.put("dag_id", dag_id);
 		map.put("execution_date", execution_date);// "2017-09-13
 		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
@@ -304,7 +305,7 @@ public class AutoSwitchController {
 		return null;
 	}
 
-	// 将流程节点标记为成功
+	// 将流程节点清理并重做
 	@RequestMapping("makeNodeClear.do")
 	@ResponseBody
 	public JSONObject makeNodeClear(HttpServletRequest request, HttpSession session) {
@@ -326,16 +327,11 @@ public class AutoSwitchController {
 			map.put("dag_id", dag_id);
 			map.put("execution_date", execution_date);
 			map.put("task_id", task_id);
-			String result = task_InstanceService.getStateOfTask(map);
-			//System.out.println("state is :" + result);
-			while(true){
-				if(result.equals("running")){
-					break;
-				}
-				result = task_InstanceService.getStateOfTask(map);
-				System.out.println("state is :" + result);
-			}
-			return JSONObject.fromObject(response);
+			String task_state = task_InstanceService.getStateOfTask(map);
+			String result = "{\"TaskState\":\"" + task_state + "\"}";
+			System.out.println("state is :" + result);
+			
+			return JSONObject.fromObject(result);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
 			logger.error("清理任务IO错误");
