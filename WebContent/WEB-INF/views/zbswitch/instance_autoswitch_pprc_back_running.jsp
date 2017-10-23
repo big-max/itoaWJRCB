@@ -41,6 +41,7 @@ body{margin:0;padding:0;}
  .hide{display:none }
  .progress{z-index: 2000}
  .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
+ .modal{width:750px;left:43%;}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -51,25 +52,21 @@ body{margin:0;padding:0;}
 </head>
 
 <body>
-	<!-- 模态框（Modal） -->
-	<div class="modal fade modalframe" id=""  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<!-- 日志模态框（Modal） -->
+	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel"></h4>
+					<h4 class="modal-title" id="myModalLabel">日志信息</h4>
 				</div>
 				<div class="modal-body">
-					  <button id="btn_log" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);"><font color="white">查看日志</font></button>
-					   <div style="margin-top: 5px;"></div>
-					  <button id="btn_clear" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);" data-toggle="tooltip" data-placement="top" title="清理当前出错任务，并让调度器重新发起此任务"><font color="white">清理&续作</font></button>
-					  <div style="margin-top: 5px;"></div>
-           			  <button id="btn_success" type="button" class="btn btn-block" style="background-color:rgb(0,92,102);"><font color="white">确认成功</font></button>
+					<textarea rows="10" style="width:100%;height:100%;resize:none;"></textarea>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
 				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal -->
+			</div>
+		</div>
 	</div>
 	
 	<!--header start-->
@@ -82,21 +79,30 @@ body{margin:0;padding:0;}
 	<div class="content">
 		<!-- 图例说明 -->
 		<div style="height:70px;width:300px;margin-left:10px;">
-			<div class="explogo" style="border:2px solid white;position:fixed;">未开始</div>
-			<div class="explogo" style="margin-left:75px;border:2px solid #3399CC;position:fixed;">运行中</div>
-			<div class="explogo" style="margin-left:150px;border:2px solid #32CD32;position:fixed;">成功</div>
-			<div class="explogo" style="margin-left:225px;border:2px solid #FF4500;position:fixed;">失败</div>
+			<div class="explogo"  style="border:2px solid white;position:fixed;">未开始</div>
+			<div class="explogo"  style="margin-left:75px;border:2px solid #3399CC;position:fixed;">运行中</div>
+			<div class="explogo"  style="margin-left:150px;border:2px solid #32CD32;position:fixed;">成功</div>
+			<div class="explogo"  style="margin-left:225px;border:2px solid #FF4500;position:fixed;">失败</div>
 			<div class="explogo" style="margin-left:300px;border:2px solid #FF8C00;position:fixed;width:85px">完成待确认</div>
 		</div>
-		<div style="margin-bottom:10px;"></div>
-		
+		<div style="margin-left:10px;">
+			<div style="float:left;width:250px;font-size:14px;">
+				<span><b>切换场景名：</b></span>
+				<span>PPRC+LVM 回切</span>
+			</div>
+			<div style="float:left;width:250px;font-size:14px;">
+				<span><b>开始执行时间：</b></span>
+				<span id="exe_date"></span>
+			</div>
+		</div>
+		<div style="margin-bottom:40px;"></div>
 		<div id="svg_container" style="margin-left:10px;margin-right:10px;"> 
 			<svg width="100%" style="height:70vh">
 				<g id='dig' transform="translate(20,50)"/>  
 			</svg>
 		</div>
 	</div>
-	<img id="progressImgage" class="progress hide" alt="" src="img/process.gif"/>
+	<img id="progressImgage" class="progress hide" style="width:5%;height:5vh;" alt="请稍等，处理中。。。" src="img/process.gif"/>
     <div id="maskOfProgressImage" class="mask hide"></div>
 </body>
 
@@ -108,7 +114,9 @@ body{margin:0;padding:0;}
 		var arrIdVal = ["pprc_back_start","pprc_back_workdb_backup","pprc_back_icsdb_backup","pprc_back_cardb_backup",
 		                "pprc_back_cmisdb_backup","pprc_back_backup_end","pprc_back_p770c2_cardstop",
 		                "pprc_back_p770c2_icsstop","pprc_back_p770c1_cmisstop","pprc_back_p770c1_workstop",
-		                "pprc_back_ds8k_lunstart","pprc_back_p770a1b1_lunread","pprc_back_p770a2b2_lunread",
+		                "pprc_back_ds8k_lunstart","pprc_back_p770a1_lunread_suspend","pprc_back_p770b1_lunread_suspend",
+		                "pprc_back_p770a2_lunread_suspend","pprc_back_p770b2_lunread_suspend","pprc_back_p770a1_lunread_recover",
+		                "pprc_back_p770b1_lunread_recover","pprc_back_p770a2_lunread_recover","pprc_back_p770b2_lunread_recover",
 		                "pprc_back_ds8k_lunstop","pprc_back_active_vg_start","pprc_back_p770a1_activevg",
 		                "pprc_back_p770b1_activevg","pprc_back_p770a2_activevg","pprc_back_p770b2_activevg",
 		                "pprc_back_active_vg_end","pprc_back_syncha_start","pprc_back_p770a1_syncHA",
@@ -124,120 +132,115 @@ body{margin:0;padding:0;}
 			var datatar = "#" + idname;
 			$("g.node").eq(i).attr("id",idname);
 			$("g.node").eq(i).attr("data-toggle","modal");
-			$("g.node").eq(i).attr("data-target",datatar);
 		}
+		
+		//添加执行时间
+		var execution_date = getUrlParam('execution_date');
+		var execution_date_show = execution_date.replace("T"," ");
+		$("#exe_date").text(execution_date_show);
 	})
 	
-	//模态框处理 
-/* 	$(document).ready(function(){
-		$("g.node").click(function(){
-			var nodename = $(this).find("tspan").text();//获取任务中文名
-			var nodeid = $(this).attr("id");//获取任务id
-			$(".modalframe").attr("id",nodeid);//给模态框动态赋值id
-			$("#myModalLabel").text(nodename);//每个模态框获取该任务名 
-		});
-	}) */
 	
 	var taskid;
 	$(document).ready(function(){
-
 		$("g.node").on("mouseover",function(e){
 			taskid = $(this).attr("id");//获取要点击任务框的id 
 		})
 		
 		$('g.node').contextPopup({
-          items: [
-            {label:'查看日志', icon:'img/viewlog.png', action:function() 
-            	{ 
-            		var execution_date = getUrlParam('execution_date'); //获取url 的值
-            		var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-            			$.ajax({
-            				url : '<%=path%>/getTaskLog.do',
-            				data:data,
-            				type : 'post',
-            				dataType : 'json',
-            				success:function(result)
-            				{
-            					alert(result.msg);
-            				},
-            			})
-            	} 
-            },
-            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
-            	{ 
-	            	var execution_date = getUrlParam('execution_date'); //获取url 的值
-	            	var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-	            	var img = $("#progressImgage");
-         	      	var mask = $("#maskOfProgressImage");
-	            	img.show().css({
-	     	           "position": "fixed",
-	     	           "top": "50%",
-	     	           "left": "50%",
-	     	           "margin-top": function () { return -1 * img.height() / 2; },
-	     	           "margin-left": function () { return -1 * img.width() / 2; }
-	     	       });
-	     	       mask.show().css("opacity", "0.1");
-	     	       var makeClear = setInterval(function(){$.ajax({
-	          			url : '<%=path%>/makeNodeClear.do',
-	        			data:data,
-	        			type : 'post',
-	        			dataType : 'json',
-	        			success:function(data)
-	        			{
-	        				if(data.TaskState == "running"){
-	        		    		   console.info("running");
-	        		    		   img.hide();
-	        			           mask.hide();
-	        			           clearInterval(makeClear);
-	        		    	   }
-	        			},
-	        			error:function(data)
-	        			{
-	        				 alert("请检查应用服务器是否正常！");
-	        		    	 img.hide();
-	        		         mask.hide();
-	        			}
-        		   })},3000);
-	            	
-            	} 
-            },
-            {label:'确认成功', icon:'img/comsucc.png', action:function() 
-            	{ 
-	            	var execution_date = getUrlParam('execution_date'); //获取url 的值
-	            	swal({ 
-	            	    title: "", 
-	            	    text: "您确定要将任务置为成功?", 
-	            	    type: "warning", 
-	            	    showCancelButton: true, 
-	            	    closeOnConfirm: false, 
-	            	    confirmButtonText: "确认",  
-	            	    cancelButtonText: "取消",  
-	            	    confirmButtonColor: "#ec6c62" 
-	            	}, function(isConfirm) { 
-	            		if(isConfirm)
-	            		{
-	            			var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-	            			$.ajax({
-	            				url : '<%=path%>/markTaskSuccess.do',
-	            				data:data,
-	            				type : 'post',
-	            				dataType : 'json',
-	            				success:function(result)
-	            				{
-	            					if(result.status == 0)
-	            					{
-	            						swal.close();
-	            						$("#"+taskid).children("rect").css("stroke", "#32CD32");
-	            					} 
-	            				},
-	            			})
-	            		}
-	            	});
-          	 	} 
-            } 
-          ]
-        });
-	})
+	          items: [
+	            {label:'查看日志', icon:'img/viewlog.png', action:function() 
+	            	{ 
+	            		var execution_date = getUrlParam('execution_date'); //获取url 的值
+	            		var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	            		$.ajax({
+	           				url : '<%=path%>/getTaskLog.do',
+	           				data:data,
+	           				type : 'post',
+	           				dataType : 'json',
+	           				success:function(result) 
+	           				{
+	           					$("#showlog").modal();
+	           					$("textarea").text(result.msg);
+	           				},
+	           			})
+	            	} 
+	            },
+	            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
+	            	{ 
+		            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+		            	var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	            		var img = $("#progressImgage");
+	         	      	var mask = $("#maskOfProgressImage");
+		            	img.show().css({
+		     	           "position": "fixed",
+		     	           "top": "50%",
+		     	           "left": "50%",
+		     	           "margin-top": function () { return -1 * img.height() / 2; },
+		     	           "margin-left": function () { return -1 * img.width() / 2; }
+		     	       });
+		     	       mask.show().css("opacity", "0.1");
+		     	       var makeClear = setInterval(function(){$.ajax({
+		          			url : '<%=path%>/makeNodeClear.do',
+		        			data:data,
+		        			type : 'post',
+		        			dataType : 'json',
+		        			success:function(data)
+		        			{
+		        				if(data.TaskState == "running"){
+		        		    		   console.info("running");
+		        		    		   img.hide();
+		        			           mask.hide();
+		        			           clearInterval(makeClear);
+		        		    	   }
+		        			},
+		        			error:function(data)
+		        			{
+		        				 alert("请检查应用服务器是否正常！");
+		        		    	 img.hide();
+		        		         mask.hide();
+		        			}
+	        		   })},3000);
+		            	
+	            	} 
+	            },
+	            {label:'确认成功', icon:'img/comsucc.png', action:function() 
+	            	{ 
+		            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+		            	swal({ 
+		            	    title: "", 
+		            	    text: "您确定要将任务置为成功?", 
+		            	    type: "warning", 
+		            	    showCancelButton: true, 
+		            	    closeOnConfirm: false, 
+		            	    confirmButtonText: "确认",  
+		            	    cancelButtonText: "取消",  
+		            	    confirmButtonColor: "#ec6c62" 
+		            	}, function(isConfirm) { 
+		            		if(isConfirm)
+		            		{
+		            			var data ={"dag_id":"pprc_bakc","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            			$.ajax({
+		            				url : '<%=path%>/markTaskSuccess.do',
+		            				data:data,
+		            				type : 'post',
+		            				dataType : 'json',
+		            				success:function(result)
+		            				{
+		            					if(result.status == 0)
+		            					{
+		            						swal.close();
+		            						$("#"+taskid).children("rect").css("stroke", "#32CD32");
+		            					} 
+		            				},
+		            			})
+		            		}
+		            	});
+	          	 	} 
+	            } 
+	          ]
+	        });
+		})
 </script>
 
 <script>
@@ -335,19 +338,67 @@ body{margin:0;padding:0;}
 	    }
 	  },
 	  {
-	    "id": "pprc_back_p770a1b1_lunread", 
+	    "id": "pprc_back_p770a1_lunread_suspend", 
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "设置P770a1b1 LUN可读写"
+	      "label": "设置P770a1 LUN可读写挂起" 
 	    }
 	  },
 	  {
-	    "id": "pprc_back_p770a2b2_lunread", 
+	    "id": "pprc_back_p770b1_lunread_suspend", 
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "设置P770a2b2 LUN可读写"
+	      "label": "设置P770b1 LUN可读写挂起"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a2_lunread_suspend", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770a2 LUN可读写挂起"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b2_lunread_suspend", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770b2 LUN可读写挂起"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a1_lunread_recover", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770a1 LUN可读写恢复"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b1_lunread_recover", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770b1 LUN可读写恢复"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a2_lunread_recover", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770a2 LUN可读写恢复"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b2_lunread_recover", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770b2 LUN可读写恢复"
 	    }
 	  },
 	  {
@@ -570,12 +621,12 @@ body{margin:0;padding:0;}
 	    "v": "pprc_back_active_vg_start"
 	  }, 
 	  {
-	    "u": "pprc_back_p770a1b1_lunread", 
+	    "u": "pprc_back_p770a1_lunread_recover", 
 	    "v": "pprc_back_ds8k_lunstop"
 	  }, 
 	  {
 	    "u": "pprc_back_ds8k_lunstart", 
-	    "v": "pprc_back_p770a1b1_lunread"
+	    "v": "pprc_back_p770a1_lunread_suspend"
 	  }, 
 	  {
 	    "u": "pprc_back_p770c1_workstop", 
@@ -630,13 +681,45 @@ body{margin:0;padding:0;}
 	    "v": "pprc_back_cmisdb_backup"
 	  }, 
 	  {
-	    "u": "pprc_back_p770a2b2_lunread", 
+	    "u": "pprc_back_p770b1_lunread_recover", 
 	    "v": "pprc_back_ds8k_lunstop"
 	  }, 
 	  {
+	    "u": "pprc_back_p770a2_lunread_recover", 
+	    "v": "pprc_back_ds8k_lunstop"
+	  },
+	  {
+	    "u": "pprc_back_p770b2_lunread_recover", 
+	    "v": "pprc_back_ds8k_lunstop"
+	  },
+	  {
 	    "u": "pprc_back_ds8k_lunstart", 
-	    "v": "pprc_back_p770a2b2_lunread"
+	    "v": "pprc_back_p770b1_lunread_suspend"
 	  }, 
+	  {
+	    "u": "pprc_back_ds8k_lunstart", 
+	    "v": "pprc_back_p770a2_lunread_suspend"
+	  },
+	  {
+		"u": "pprc_back_ds8k_lunstart", 
+		"v": "pprc_back_p770b2_lunread_suspend"
+	  },
+	  {
+		"u":"pprc_back_p770a1_lunread_suspend",
+		"v":"pprc_back_p770a1_lunread_recover"
+	  },
+	  {
+		"u":"pprc_back_p770b1_lunread_suspend",
+		"v":"pprc_back_p770b1_lunread_recover"
+	  },
+	  {
+		"u":"pprc_back_p770a2_lunread_suspend",
+		"v":"pprc_back_p770a2_lunread_recover"
+	  },
+	  {
+		"u":"pprc_back_p770b2_lunread_suspend",
+		"v":"pprc_back_p770b2_lunread_recover"
+	  },
 	  {
 	    "u": "pprc_back_p770a2_activevg", 
 	    "v": "pprc_back_active_vg_end"
@@ -748,7 +831,7 @@ body{margin:0;padding:0;}
  		    "task_type": "BashOperator", 
  		    "dag_id": "pprc_back"
  		  }, 
- 		  "pprc_back_p770a1b1_lunread": {
+ 		  "pprc_back_p770a1_lunread_suspend": {
  		    "task_type": "PythonOperator", 
  		    "dag_id": "pprc_back"
  		  }, 
@@ -756,10 +839,34 @@ body{margin:0;padding:0;}
  		    "task_type": "PythonOperator", 
  		    "dag_id": "pprc_back"
  		  }, 
- 		  "pprc_back_p770a2b2_lunread": {
+ 		  "pprc_back_p770b1_lunread_suspend": {
  		    "task_type": "PythonOperator", 
  		    "dag_id": "pprc_back"
  		  }, 
+ 		  "pprc_back_p770a2_lunread_suspend": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
+  		  "pprc_back_p770b2_lunread_suspend": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
+  		  "pprc_back_p770a1_lunread_recover": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
+  		  "pprc_back_p770b1_lunread_recover": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
+  		  "pprc_back_p770a2_lunread_recover": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
+  		  "pprc_back_p770b2_lunread_recover": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
  		  "pprc_back_active_vg_end": {
  		    "task_type": "BashOperator", 
  		    "dag_id": "pprc_back"
@@ -818,7 +925,6 @@ body{margin:0;padding:0;}
     var g = dagreD3.json.decode(nodes, edges);
     var layout = dagreD3.layout().rankDir(arrange).nodeSep(15).rankSep(15);
     var renderer = new dagreD3.Renderer();
-    
     renderer.layout(layout).run(g, d3.select("#dig"));
     inject_node_ids(tasks);
 
@@ -854,7 +960,6 @@ setInterval(function(){getAjax("runningData.do",data,"post")},3000);
 
 function update_nodes_states(task_instances) {
 		$.each(task_instances,function(idx,obj){
-			console.info(obj.task_id);
             var mynode = d3.select('#' + obj.task_id + ' rect');
             if(obj.state == 'failed') //如果失败
             {
@@ -957,78 +1062,6 @@ function getAjax(url,param,type){
 
 <script type="text/javascript">
 <!-- 模态对话框的所有操作方法在这里-->
-<%-- $("#btn_log").click(function(){   //查看该失败任务的日志
-	var task_id = getTaskID($(this));
-	var task_name = getTaskName($(this));
-	var execution_date = getUrlParam('execution_date'); //获取url 的值
-	var data ={"dag_id":"pprc_back","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		$.ajax({
-			url : '<%=path%>/getTaskLog.do',
-			data:data,
-			type : 'post',
-			dataType : 'json',
-			success:function(result)
-			{
-				alert(result.msg);
-			},
-		})
-	
-});
- 
-$("#btn_clear").click(function(){   //将出错任务进行清理
-	var task_id = getTaskID($(this));
-	var task_name = getTaskName($(this));
-	var execution_date = getUrlParam('execution_date'); //获取url 的值
-	var data ={"dag_id":"pprc_back","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		$.ajax({
-			url : '<%=path%>/makeNodeClear.do',
-			data:data,
-			type : 'post',
-			dataType : 'json',
-			success:function(result)
-			{
-				//alert(result.msg);
-			},
-		})
-	
-});
-
-$("#btn_success").click(function(){    //将任务标记位成功的ajax
-	var task_id = getTaskID($(this));
-	var task_name = getTaskName($(this));
-	var execution_date = getUrlParam('execution_date'); //获取url 的值
-	swal({ 
-	    title: "", 
-	    text: "您确定要将任务： '"+task_name+"' 置为成功?", 
-	    type: "warning", 
-	    showCancelButton: true, 
-	    closeOnConfirm: false, 
-	    confirmButtonText: "确认",  
-	    cancelButtonText: "取消",  
-	    confirmButtonColor: "#ec6c62" 
-	}, function(isConfirm) { 
-		if(isConfirm)
-		{
-			var data ={"dag_id":"pprc_back","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-			$.ajax({
-				url : '<%=path%>/markTaskSuccess.do',
-				data:data,
-				type : 'post',
-				dataType : 'json',
-				success:function(result)
-				{
-					if(result.status == 0)
-					{
-						swal.close();
-						$(".modalframe").modal("hide");
-						$("#"+task_id).children("rect").style("stroke", "green");
-					} 
-				},
-			})
-		}
-	});
-});
-
 function getTaskID(dom) //获取当前模态框的任务id
 {
 	var reg = new RegExp(",","g");  //将逗号删掉， g代表全局
@@ -1047,7 +1080,7 @@ function getTagsInfo($doms){   //获取点击按钮的顶层容器的id
     return $doms.map(function(){
         return  this.id ;
     }).get();
-} --%>
+}
 
 function confirmMakeSuccess(task_id)
 {
