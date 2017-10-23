@@ -125,7 +125,7 @@ body{margin:0;padding:0;}
 						"pprc_go_p770c1_workstart","pprc_go_p770c1_cmisstart","pprc_go_p770c2_icsstart","pprc_go_p770c2_cardstart",
 						"pprc_go_ywcheck","pprc_go_startreplic","pprc_go_p770c1_enable_copy_replicationstart",
 						"pprc_go_p770c2_enable_copy_replicationstart","pprc_go_p770c1_replicationstart","pprc_go_p770c2_replicationstart",
-						"pprc_go_end"];		
+						"pprc_go_end"];		 
 		var nodelen = $("g.node").length;
 		//遍历每个g，赋值id
 		for(var i = 0 ; i < nodelen ; i++)
