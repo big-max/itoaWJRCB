@@ -122,8 +122,11 @@ body{margin:0;padding:0;}
 		                "pprc_back_active_vg_end","pprc_back_syncha_start","pprc_back_p770a1_syncHA",
 		                "pprc_back_p770a2_syncHA","pprc_back_syncha_stop","pprc_back_p770a1ha_start",
 		                "pprc_back_p770b1ha_start","pprc_back_p770a2ha_start","pprc_back_p770b2ha_start",
-		                "pprc_back_ywcheck","pprc_back_startreplic","pprc_back_p770a1_replicationstart",
-		                "pprc_back_p770a2_replicationstart","pprc_back_end"];		
+		                "pprc_back_ywcheck","pprc_back_startreplic","pprc_back_p770a1_enable_copy_replicationstart",
+		                "pprc_back_p770b1_enable_copy_replicationstart","pprc_back_p770a2_enable_copy_replicationstart",
+		                "pprc_back_p770b2_enable_copy_replicationstart","pprc_back_p770a1_replicationstart",
+		                "pprc_back_p770b1_replicationstart","pprc_back_p770a2_replicationstart",
+		                "pprc_back_p770b2_replicationstart","pprc_back_end"];		
 		var nodelen = $("g.node").length;
 		//遍历每个g，赋值id
 		for(var i = 0 ; i < nodelen ; i++)
@@ -538,11 +541,51 @@ body{margin:0;padding:0;}
 	    }
 	  },
 	  {
+	    "id": "pprc_back_p770a1_enable_copy_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "确认启动P770a1复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b1_enable_copy_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "确认启动P770b1复制关系" 
+	    }
+	  }, 
+	  {
+	    "id": "pprc_back_p770a2_enable_copy_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "确认启动P770a2复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b2_enable_copy_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "确认启动P770b2复制关系" 
+	    }
+	  },
+	  {
 	    "id": "pprc_back_p770a1_replicationstart", 
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "启动P770a1复制关系"
+	      "label": "启动P770a1复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b1_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770b1复制关系" 
 	    }
 	  },
 	  {
@@ -550,9 +593,17 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "启动P770a2复制关系"
+	      "label": "启动P770a2复制关系" 
 	    }
-	  },   
+	  },
+	  {
+	    "id": "pprc_back_p770b2_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770b2复制关系" 
+	    }
+	  },
 	  {
 	    "id": "pprc_back_end", 
 	    "value": {
@@ -570,7 +621,7 @@ body{margin:0;padding:0;}
 	  }, 
 	  {
 	    "u": "pprc_back_startreplic", 
-	    "v": "pprc_back_p770a1_replicationstart"
+	    "v": "pprc_back_p770a1_enable_copy_replicationstart"
 	  }, 
 	  {
 	    "u": "pprc_back_ywcheck", 
@@ -753,12 +804,44 @@ body{margin:0;padding:0;}
 	    "v": "pprc_back_p770a2_syncHA"
 	  }, 
 	  {
-	    "u": "pprc_back_p770a2_replicationstart", 
+	    "u": "pprc_back_p770b1_replicationstart", 
 	    "v": "pprc_back_end"
 	  }, 
 	  {
 	    "u": "pprc_back_startreplic", 
-	    "v": "pprc_back_p770a2_replicationstart"
+	    "v": "pprc_back_p770b1_enable_copy_replicationstart"
+	  },
+	  {
+	    "u": "pprc_back_startreplic", 
+	    "v": "pprc_back_p770a2_enable_copy_replicationstart"
+	  },
+	  {
+	    "u": "pprc_back_startreplic", 
+	    "v": "pprc_back_p770b2_enable_copy_replicationstart"
+	  },
+	  {
+		"u":"pprc_back_p770a1_enable_copy_replicationstart",
+		"v":"pprc_back_p770a1_replicationstart"
+	  },
+	  {
+		"u":"pprc_back_p770b1_enable_copy_replicationstart",
+		"v":"pprc_back_p770b1_replicationstart"
+	  },
+	  {
+		"u":"pprc_back_p770a2_enable_copy_replicationstart",
+		"v":"pprc_back_p770a2_replicationstart"
+	  },
+	  {
+		"u":"pprc_back_p770b2_enable_copy_replicationstart",
+		"v":"pprc_back_p770b2_replicationstart"
+	  },
+	  {
+	    "u": "pprc_back_p770a2_replicationstart", 
+	    "v": "pprc_back_end"
+	  },
+	  {
+	    "u": "pprc_back_p770b2_replicationstart", 
+	    "v": "pprc_back_end"
 	  }
 	];
 	
@@ -835,10 +918,26 @@ body{margin:0;padding:0;}
  		    "task_type": "PythonOperator", 
  		    "dag_id": "pprc_back"
  		  }, 
+ 		  "pprc_back_p770a1_enable_copy_replicationstart": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
+  		  "pprc_back_p770b1_enable_copy_replicationstart": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
+  		  "pprc_back_p770a2_enable_copy_replicationstart": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
+  		  "pprc_back_p770b2_enable_copy_replicationstart": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
  		  "pprc_back_p770a1_replicationstart": {
  		    "task_type": "PythonOperator", 
  		    "dag_id": "pprc_back"
- 		  }, 
+ 		  },  
  		  "pprc_back_p770b1_lunread_suspend": {
  		    "task_type": "PythonOperator", 
  		    "dag_id": "pprc_back"
@@ -916,6 +1015,14 @@ body{margin:0;padding:0;}
  		    "dag_id": "pprc_back"
  		  }, 
  		  "pprc_back_p770a2_replicationstart": {
+ 		    "task_type": "PythonOperator", 
+ 		    "dag_id": "pprc_back"
+ 		  },
+ 		  "pprc_back_p770b1_replicationstart": {
+  		    "task_type": "PythonOperator", 
+  		    "dag_id": "pprc_back"
+  		  },
+  		  "pprc_back_p770b2_replicationstart": {
  		    "task_type": "PythonOperator", 
  		    "dag_id": "pprc_back"
  		  }
