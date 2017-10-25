@@ -114,365 +114,365 @@ body{margin:0;padding:0;}
 
     var nodes = [
 		{
-		    "id": "pprc_back_start", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "备份数据库" 
-		    }
-		  },
-		  {
-			    "id": "pprc_back_workdb_backup", 
-			    "value": {
-			      "style": "fill:#ffefeb;", 
-			      "labelStyle": "fill:#000;", 
-			      "label": "备份workdb数据库"
-			    }
-			  },
-		  {
-		    "id": "pprc_back_icsdb_backup", 
+	    "id": "pprc_back_start", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "备份数据库" 
+	    }
+	  },
+	  {
+		    "id": "pprc_back_workdb_backup", 
 		    "value": {
 		      "style": "fill:#ffefeb;", 
 		      "labelStyle": "fill:#000;", 
-		      "label": "备份icsdb数据库"
+		      "label": "备份workdb数据库"
 		    }
 		  },
-		  {
-		    "id": "pprc_back_cardb_backup", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "备份carddb数据库"
-		    }
-		  },   
-		  {
-		    "id": "pprc_back_cmisdb_backup", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "备份cmisdb数据库"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_backup_end", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "完成备份" 
-		    }
-		  }, 
-		  {
-		    "id": "pprc_back_p770c2_cardstop", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "P770c2停止应用(card)"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770c2_icsstop", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "P770c2停止应用(ics)"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770c1_cmisstop", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "P770c1停止应用(cmis)"
-		    }
-		  }, 
-		  {
-		    "id": "pprc_back_p770c1_workstop", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "P770c1停止应用(work)"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_ds8k_lunstart", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "设置DS8K LUN可读写"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a1_lunread_suspend", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "设置P770a1 LUN可读写挂起" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b1_lunread_suspend", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "设置P770b1 LUN可读写挂起"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a2_lunread_suspend", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "设置P770a2 LUN可读写挂起"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b2_lunread_suspend", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "设置P770b2 LUN可读写挂起"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a1_lunread_recover", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "设置P770a1 LUN可读写恢复"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b1_lunread_recover", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "设置P770b1 LUN可读写恢复"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a2_lunread_recover", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "设置P770a2 LUN可读写恢复"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b2_lunread_recover", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "设置P770b2 LUN可读写恢复"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_ds8k_lunstop", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "停止DS8K LUN可读写"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_active_vg_start", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "开始激活生产主机VG"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a1_activevg", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "激活P770a1生产主机VG"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b1_activevg", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "激活P770b1生产主机VG"
-		    }
-		  },  
-		  {
-		    "id": "pprc_back_p770a2_activevg", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "激活P770a2生产主机VG"
-		    }
-		  }, 
-		  {
-		    "id": "pprc_back_p770b2_activevg", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "激活P770b2生产主机VG"
-		    }
-		  }, 
-		  {
-		    "id": "pprc_back_active_vg_end", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "结束激活生产主机VG" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_syncha_start", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "同步生产HA" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a1_syncHA", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "同步P770a1 HA"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a2_syncHA", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "同步P770a2 HA"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_syncha_stop", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "结束同步HA" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a1ha_start", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "启动P770a1 HA串行"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b1ha_start", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "启动P770b1 HA串行"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a2ha_start", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "启动P770a2 HA串行"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b2ha_start", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "启动P770b2 HA串行"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_ywcheck", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "业务验证"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_startreplic", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "启动PPRC复制关系"
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a1_enable_copy_replicationstart", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "确认启动P770a1复制关系" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b1_enable_copy_replicationstart", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "确认启动P770b1复制关系" 
-		    }
-		  }, 
-		  {
-		    "id": "pprc_back_p770a2_enable_copy_replicationstart", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "确认启动P770a2复制关系" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b2_enable_copy_replicationstart", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "确认启动P770b2复制关系" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a1_replicationstart", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "启动P770a1复制关系" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b1_replicationstart", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "启动P770b1复制关系" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770a2_replicationstart", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "启动P770a2复制关系" 
-		    }
-		  },
-		  {
-		    "id": "pprc_back_p770b2_replicationstart", 
-		    "value": {
-		      "style": "fill:#ffefeb;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "启动P770b2复制关系" 
-		    }
-		  },   
-		  {
-		    "id": "pprc_back_end", 
-		    "value": {
-		      "style": "fill:#f0ede4;", 
-		      "labelStyle": "fill:#000;", 
-		      "label": "结束" 
-		    }
-		  }  
+	  {
+	    "id": "pprc_back_icsdb_backup", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "备份icsdb数据库"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_cardb_backup", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "备份carddb数据库"
+	    }
+	  },   
+	  {
+	    "id": "pprc_back_cmisdb_backup", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "备份cmisdb数据库"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_backup_end", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "完成备份" 
+	    }
+	  }, 
+	  {
+	    "id": "pprc_back_p770c2_cardstop", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "停止P770c2 card应用"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770c2_icsstop", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "停止P770c2 ics应用"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770c1_cmisstop", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "停止P770c1 cmis应用"
+	    }
+	  }, 
+	  {
+	    "id": "pprc_back_p770c1_workstop", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "停止P770c1 work应用"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_ds8k_lunstart", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置DS8K LUN可读写"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a1_lunread_suspend", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770a1 LUN可读写挂起" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b1_lunread_suspend", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770b1 LUN可读写挂起"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a2_lunread_suspend", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770a2 LUN可读写挂起"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b2_lunread_suspend", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770b2 LUN可读写挂起"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a1_lunread_recover", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770a1 LUN可读写恢复"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b1_lunread_recover", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770b1 LUN可读写恢复"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a2_lunread_recover", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770a2 LUN可读写恢复"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b2_lunread_recover", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "设置P770b2 LUN可读写恢复"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_ds8k_lunstop", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "完成设置DS8K LUN可读写" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_active_vg_start", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "开始修复主机VG"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a1_activevg", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "开始修复主机P770a1 VG"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b1_activevg", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "开始修复主机P770b1 VG"
+	    }
+	  },  
+	  {
+	    "id": "pprc_back_p770a2_activevg", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "开始修复主机P770a2 VG"
+	    }
+	  }, 
+	  {
+	    "id": "pprc_back_p770b2_activevg", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "开始修复主机P770b2 VG"
+	    }
+	  }, 
+	  {
+	    "id": "pprc_back_active_vg_end", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "完成修复主机VG"  
+	    } 
+	  },
+	  {
+	    "id": "pprc_back_syncha_start", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "开始同步HA" 
+	    } 
+	  },
+	  {
+	    "id": "pprc_back_p770a1_syncHA", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "同步P770a1 HA"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a2_syncHA", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "同步P770a2 HA"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_syncha_stop", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "结束同步HA" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a1ha_start", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770a1 HA"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b1ha_start", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770b1 HA"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a2ha_start", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770a2 HA"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b2ha_start", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770b2 HA"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_ywcheck", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "业务验证"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_startreplic", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动PPRC H1:H2复制关系"
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a1_enable_copy_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "确认启动P770a1复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b1_enable_copy_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "确认启动P770b1复制关系" 
+	    }
+	  }, 
+	  {
+	    "id": "pprc_back_p770a2_enable_copy_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "确认启动P770a2复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b2_enable_copy_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "确认启动P770b2复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a1_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770a1复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b1_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770b1复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770a2_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770a2复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_p770b2_replicationstart", 
+	    "value": {
+	      "style": "fill:#ffefeb;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "启动P770b2复制关系" 
+	    }
+	  },
+	  {
+	    "id": "pprc_back_end", 
+	    "value": {
+	      "style": "fill:#f0ede4;", 
+	      "labelStyle": "fill:#000;", 
+	      "label": "结束" 
+	    }
+	  }
 	];
 	
     var edges = [

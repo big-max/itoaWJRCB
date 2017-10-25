@@ -291,7 +291,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#f0ede4;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "开始"
+		  "label": "备份数据库" 
 		}
 	  },
 	  {
@@ -299,7 +299,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "备份数据库workdb"
+		  "label": "备份workdb数据库"
 		}
 	  },
 	  {
@@ -307,7 +307,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "备份数据库icsdb"
+		  "label": "备份icsdb数据库"
 		}
 	  },
 	  {
@@ -315,7 +315,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "备份数据库cardb"
+		  "label": "备份cardb数据库"
 		}
 	  },
 	  {
@@ -323,7 +323,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "备份数据库cmisdb"
+		  "label": "备份cmisdb数据库"
 		}
 	  },
 	  {
@@ -443,7 +443,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "P770c1启动work数据库"
+		  "label": "启动P770c1 work应用" 
 		}
 	  }, 
 	  {
@@ -451,7 +451,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "p770c1启动cmis数据库"
+		  "label": "启动P770c1 cmis应用"
 		}
 	  },
 	  {
@@ -459,7 +459,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "p770c2启动ics数据库"
+		  "label": "启动P770c2 ics应用"
 		}
 	  },
 	  {
@@ -467,7 +467,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "p770c2启动card数据库"
+		  "label": "启动P770c2 card应用" 
 		}
 	  }, 
 	  {
@@ -483,7 +483,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#f0ede4;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动PPRC复制"
+		  "label": "反向启动PPRC H2:H1复制关系" 
 		}
 	  }, 
 	  {
@@ -491,7 +491,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "开始反向启动P770c1复制"
+		  "label": "确认反向启动P770c1复制关系" 
 		}
 	  },
 	  {
@@ -499,7 +499,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "开始反向启动P770c2复制"
+		  "label": "确认反向启动P770c2复制关系"
 		}
 	  },
 	  {
@@ -507,7 +507,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动P770c1复制"
+		  "label": "反向启动P770c1复制关系"
 		}
 	  }, 
 	  {
@@ -515,7 +515,7 @@ body{margin:0;padding:0;}
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动P770c2复制"
+		  "label": "反向启动P770c2复制关系"
 		}
 	  },
 	  {

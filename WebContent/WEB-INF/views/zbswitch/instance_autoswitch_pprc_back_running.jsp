@@ -305,7 +305,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "P770c2停止应用(card)"
+	      "label": "停止P770c2 card应用"
 	    }
 	  },
 	  {
@@ -313,7 +313,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "P770c2停止应用(ics)"
+	      "label": "停止P770c2 ics应用"
 	    }
 	  },
 	  {
@@ -321,7 +321,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "P770c1停止应用(cmis)"
+	      "label": "停止P770c1 cmis应用"
 	    }
 	  }, 
 	  {
@@ -329,7 +329,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "P770c1停止应用(work)"
+	      "label": "停止P770c1 work应用"
 	    }
 	  },
 	  {
@@ -409,7 +409,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#f0ede4;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "停止DS8K LUN可读写"
+	      "label": "完成设置DS8K LUN可读写" 
 	    }
 	  },
 	  {
@@ -417,7 +417,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#f0ede4;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "开始激活生产主机VG"
+	      "label": "开始修复主机VG"
 	    }
 	  },
 	  {
@@ -425,7 +425,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "激活P770a1生产主机VG"
+	      "label": "开始修复主机P770a1 VG"
 	    }
 	  },
 	  {
@@ -433,7 +433,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "激活P770b1生产主机VG"
+	      "label": "开始修复主机P770b1 VG"
 	    }
 	  },  
 	  {
@@ -441,7 +441,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "激活P770a2生产主机VG"
+	      "label": "开始修复主机P770a2 VG"
 	    }
 	  }, 
 	  {
@@ -449,7 +449,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "激活P770b2生产主机VG"
+	      "label": "开始修复主机P770b2 VG"
 	    }
 	  }, 
 	  {
@@ -457,16 +457,16 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#f0ede4;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "结束激活生产主机VG" 
-	    }
+	      "label": "完成修复主机VG"  
+	    } 
 	  },
 	  {
 	    "id": "pprc_back_syncha_start", 
 	    "value": {
 	      "style": "fill:#f0ede4;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "同步生产HA" 
-	    }
+	      "label": "开始同步HA" 
+	    } 
 	  },
 	  {
 	    "id": "pprc_back_p770a1_syncHA", 
@@ -497,7 +497,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "启动P770a1 HA串行"
+	      "label": "启动P770a1 HA"
 	    }
 	  },
 	  {
@@ -505,7 +505,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "启动P770b1 HA串行"
+	      "label": "启动P770b1 HA"
 	    }
 	  },
 	  {
@@ -513,7 +513,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "启动P770a2 HA串行"
+	      "label": "启动P770a2 HA"
 	    }
 	  },
 	  {
@@ -521,7 +521,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#ffefeb;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "启动P770b2 HA串行"
+	      "label": "启动P770b2 HA"
 	    }
 	  },
 	  {
@@ -537,7 +537,7 @@ body{margin:0;padding:0;}
 	    "value": {
 	      "style": "fill:#f0ede4;", 
 	      "labelStyle": "fill:#000;", 
-	      "label": "启动PPRC复制关系"
+	      "label": "启动PPRC H1:H2复制关系"
 	    }
 	  },
 	  {
