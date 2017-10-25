@@ -83,7 +83,7 @@ body{margin:0;padding:0;}
 						"pprc_go_p770b2_check_hastatus","pprc_go_p770b1_check_hastatus","pprc_go_p770a1_check_hastatus",
 						"pprc_go_p770a2_hastop","pprc_go_p770b2_hastop","pprc_go_p770b1_hastop","pprc_go_p770a1_hastop",
 						"pprc_go_ds8k_lunstart","pprc_go_p770c1_lunread_suspend","pprc_go_p770c2_lunread_suspend",
-						"pprc_go_p770c1_lunread_recover","pprc_go_p770c2_lunread_recover",
+						"pprc_go_p770c1_lunread_recover","pprc_go_p770c2_lunread_recover","pprc_go_ds8k_lunstop",
 						"pprc_go_p770c1_workstart","pprc_go_p770c1_cmisstart","pprc_go_p770c2_icsstart","pprc_go_p770c2_cardstart",
 						"pprc_go_ywcheck","pprc_go_startreplic","pprc_go_p770c1_enable_copy_replicationstart",
 						"pprc_go_p770c2_enable_copy_replicationstart","pprc_go_p770c1_replicationstart","pprc_go_p770c2_replicationstart",
@@ -255,6 +255,14 @@ body{margin:0;padding:0;}
 	      "labelStyle": "fill:#000;", 
 	      "label": "设置p770c2 LUN可读写恢复"
 	    }
+	  },
+	  {
+		"id": "pprc_go_ds8k_lunstop", 
+		"value": {
+		  "style": "fill:#f0ede4;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "完成设置DS8K LUN可读写"
+		}
 	  },
 	  {
 		"id": "pprc_go_p770c1_workstart", 
@@ -480,20 +488,24 @@ body{margin:0;padding:0;}
 		 "v":"pprc_go_p770c2_lunread_recover"
 	  },
 	  {
-		 "u":"pprc_go_p770c1_lunread_recover",
-		 "v":"pprc_go_p770c1_workstart"
-	  },
-	  {
-		 "u":"pprc_go_p770c2_lunread_recover",
-		 "v":"pprc_go_p770c1_workstart"
-	  },
-	  {
 		 "u":"pprc_go_p770c1_enable_copy_replicationstart",
 		 "v":"pprc_go_p770c1_replicationstart"
 	  },
 	  {
 		 "u":"pprc_go_p770c2_enable_copy_replicationstart",
 		 "v":"pprc_go_p770c2_replicationstart"
+	  },
+	  {
+		 "u":"pprc_go_ds8k_lunstop",
+		 "v":"pprc_go_p770c1_workstart"
+	  },
+	  {
+		 "u":"pprc_go_p770c1_lunread_recover",
+		 "v":"pprc_go_ds8k_lunstop"
+	  },
+	  {
+		 "u":"pprc_go_p770c2_lunread_recover",
+		 "v":"pprc_go_ds8k_lunstop"
 	  }
 	];
 	
@@ -617,7 +629,11 @@ body{margin:0;padding:0;}
    		  "pprc_go_p770c2_enable_copy_replicationstart": {
 	   		"task_type": "PythonOperator", 
 	   		"dag_id": "pprc_go"
-	   	  }
+	   	  },
+	   	  "pprc_go_ds8k_lunstop": {
+  	   		"task_type": "PythonOperator", 
+  	   		"dag_id": "pprc_go"
+  	   	  }
 	};
   
     
