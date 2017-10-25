@@ -427,7 +427,7 @@ body{margin:0;padding:0;}
 	      "labelStyle": "fill:#000;", 
 	      "label": "开始修复主机P770a1 VG"
 	    }
-	  },
+	  },  
 	  {
 	    "id": "pprc_back_p770b1_activevg", 
 	    "value": {
@@ -435,7 +435,7 @@ body{margin:0;padding:0;}
 	      "labelStyle": "fill:#000;", 
 	      "label": "开始修复主机P770b1 VG"
 	    }
-	  },  
+	  }, 
 	  {
 	    "id": "pprc_back_p770a2_activevg", 
 	    "value": {
@@ -443,7 +443,7 @@ body{margin:0;padding:0;}
 	      "labelStyle": "fill:#000;", 
 	      "label": "开始修复主机P770a2 VG"
 	    }
-	  }, 
+	  },
 	  {
 	    "id": "pprc_back_p770b2_activevg", 
 	    "value": {
@@ -451,7 +451,7 @@ body{margin:0;padding:0;}
 	      "labelStyle": "fill:#000;", 
 	      "label": "开始修复主机P770b2 VG"
 	    }
-	  }, 
+	  },
 	  {
 	    "id": "pprc_back_active_vg_end", 
 	    "value": {
@@ -770,14 +770,6 @@ body{margin:0;padding:0;}
 	  {
 		"u":"pprc_back_p770b2_lunread_suspend",
 		"v":"pprc_back_p770b2_lunread_recover"
-	  },
-	  {
-	    "u": "pprc_back_p770a2_activevg", 
-	    "v": "pprc_back_active_vg_end"
-	  }, 
-	  {
-	    "u": "pprc_back_active_vg_start", 
-	    "v": "pprc_back_p770a2_activevg"
 	  }, 
 	  {
 	    "u": "pprc_back_p770b1_activevg", 
@@ -786,15 +778,7 @@ body{margin:0;padding:0;}
 	  {
 	    "u": "pprc_back_active_vg_start", 
 	    "v": "pprc_back_p770b1_activevg"
-	  }, 
-	  {
-	    "u": "pprc_back_p770b2_activevg", 
-	    "v": "pprc_back_active_vg_end"
-	  }, 
-	  {
-	    "u": "pprc_back_active_vg_start", 
-	    "v": "pprc_back_p770b2_activevg"
-	  }, 
+	  },   
 	  {
 	    "u": "pprc_back_p770a2_syncHA", 
 	    "v": "pprc_back_syncha_stop"
@@ -842,6 +826,22 @@ body{margin:0;padding:0;}
 	  {
 	    "u": "pprc_back_p770b2_replicationstart", 
 	    "v": "pprc_back_end"
+	  },
+	  {
+		"u":"pprc_back_active_vg_start",
+		"v":"pprc_back_p770a2_activevg"
+	  },
+	  {
+		 "u":"pprc_back_p770a2_activevg",
+		 "v":"pprc_back_active_vg_end"
+	  },
+	  {
+	     "u": "pprc_back_p770b2_activevg", 
+	     "v": "pprc_back_active_vg_end"
+	  },
+	  {
+	    "u": "pprc_back_active_vg_start", 
+	    "v": "pprc_back_p770b2_activevg"
 	  }
 	];
 	

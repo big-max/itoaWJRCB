@@ -116,7 +116,8 @@ body{margin:0;padding:0;}
 		var arrIdVal = ["pprc_go_start","pprc_go_workdb_backup","pprc_go_icsdb_backup","pprc_go_cardb_backup",
 						"pprc_go_cmisdb_backup","pprc_go_backup_end","pprc_go_p770a2_check_hastatus",
 						"pprc_go_p770b2_check_hastatus","pprc_go_p770b1_check_hastatus","pprc_go_p770a1_check_hastatus",
-						"pprc_go_p770a2_hastop","pprc_go_p770b2_hastop","pprc_go_p770b1_hastop","pprc_go_p770a1_hastop",
+						"pprc_go_checkha_stop",
+						"pprc_go_p770a2_hastop","pprc_go_p770b2_hastop","pprc_go_p770a1_hastop","pprc_go_p770b1_hastop",
 						"pprc_go_ds8k_lunstart","pprc_go_p770c1_lunread_suspend","pprc_go_p770c2_lunread_suspend",
 						"pprc_go_p770c1_lunread_recover","pprc_go_p770c2_lunread_recover","pprc_go_ds8k_lunstop",
 						"pprc_go_p770c1_workstart","pprc_go_p770c1_cmisstart","pprc_go_p770c2_icsstart","pprc_go_p770c2_cardstart",
@@ -367,6 +368,14 @@ body{margin:0;padding:0;}
 		}
 	  },
 	  {
+		"id": "pprc_go_checkha_stop", 
+		"value": {
+		  "style": "fill:#f0ede4;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "完成检查HA状态" 
+		}
+	  },
+	  {
 		"id": "pprc_go_p770a2_hastop", 
 		"value": {
 		  "style": "fill:#ffefeb;", 
@@ -383,19 +392,19 @@ body{margin:0;padding:0;}
 		}
 	  },
 	  {
-		"id": "pprc_go_p770b1_hastop", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "P770b1主机停止HA"
-		}
-	  },
-	  {
 		"id": "pprc_go_p770a1_hastop", 
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
 		  "label": "P770a1主机停止HA"
+		}
+	  },
+	  {
+		"id": "pprc_go_p770b1_hastop", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "P770b1主机停止HA"
 		}
 	  },
 	  {
@@ -570,16 +579,16 @@ body{margin:0;padding:0;}
 		"v": "pprc_go_p770c1_lunread_suspend"
 	  }, 
 	  {
-		"u": "pprc_go_p770a1_hastop", 
+		"u": "pprc_go_p770b1_hastop", 
 		"v": "pprc_go_ds8k_lunstart"
 	  }, 
 	  {
-		"u": "pprc_go_p770b1_hastop", 
-		"v": "pprc_go_p770a1_hastop"
+		"u": "pprc_go_p770a1_hastop", 
+		"v": "pprc_go_p770b1_hastop"
 	  }, 
 	  {
 		"u": "pprc_go_p770b2_hastop", 
-		"v": "pprc_go_p770b1_hastop"
+		"v": "pprc_go_p770a1_hastop"
 	  }, 
 	  {
 		"u": "pprc_go_p770a2_hastop", 
@@ -587,7 +596,7 @@ body{margin:0;padding:0;}
 	  }, 
 	  {
 		"u": "pprc_go_p770a2_check_hastatus", 
-		"v": "pprc_go_p770a2_hastop"
+		"v": "pprc_go_checkha_stop"
 	  }, 
 	  {
 		"u": "pprc_go_backup_end", 
@@ -627,7 +636,7 @@ body{margin:0;padding:0;}
 	  }, 
 	  {
 		"u": "pprc_go_p770b2_check_hastatus", 
-		"v": "pprc_go_p770a2_hastop"
+		"v": "pprc_go_checkha_stop"
 	  }, 
 	  {
 		"u": "pprc_go_backup_end", 
@@ -635,7 +644,7 @@ body{margin:0;padding:0;}
 	  }, 
 	  {
 		"u": "pprc_go_p770b1_check_hastatus", 
-		"v": "pprc_go_p770a2_hastop"
+		"v": "pprc_go_checkha_stop"
 	  }, 
 	  {
 		"u": "pprc_go_backup_end", 
@@ -643,7 +652,7 @@ body{margin:0;padding:0;}
 	  }, 
 	  {
 		"u": "pprc_go_p770a1_check_hastatus", 
-		"v": "pprc_go_p770a2_hastop"
+		"v": "pprc_go_checkha_stop"
 	  }, 
 	  {
 		"u": "pprc_go_backup_end", 
@@ -688,6 +697,10 @@ body{margin:0;padding:0;}
 	  {
 		 "u":"pprc_go_p770c2_lunread_recover",
 		 "v":"pprc_go_ds8k_lunstop"
+	  },
+	  {
+		 "u":"pprc_go_checkha_stop",
+		 "v":"pprc_go_p770a2_hastop"
 	  }
 	];
 	
@@ -813,6 +826,10 @@ body{margin:0;padding:0;}
  	   		"dag_id": "pprc_go"
  	   	  },
  	     "pprc_go_ds8k_lunstop": {
+  	   		"task_type": "PythonOperator", 
+  	   		"dag_id": "pprc_go"
+  	   	  },
+  	   	"pprc_go_checkha_stop": {
   	   		"task_type": "PythonOperator", 
   	   		"dag_id": "pprc_go"
   	   	  }
