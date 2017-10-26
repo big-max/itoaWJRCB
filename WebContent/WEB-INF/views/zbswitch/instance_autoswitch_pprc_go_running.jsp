@@ -104,7 +104,7 @@ body{margin:0;padding:0;}
 			</svg>
 		</div>
 	</div>
-	<img id="progressImgage" class="progress hide" style="width:5%;height:5vh;" alt="请稍等，处理中。。。" src="img/process.gif"/>
+	<img id="progressImgage" class="progress hide" style="width:100px;height:100px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
     <div id="maskOfProgressImage" class="mask hide"></div>
 </body>
 
@@ -221,16 +221,19 @@ body{margin:0;padding:0;}
 	     	       });
 	     	       mask.show().css("opacity", "0.1");
 	     	       var makeClear = setInterval(function(){$.ajax({
-	          			url : '<%=path%>/makeNodeClear.do',
+	          			url : '<%=path%>/queryTaskState.do',
 	        			data:data,
 	        			type : 'post',
 	        			dataType : 'json',
 	        			success:function(data)
 	        			{
-	        				if(data.TaskState == "running"){
-	        		    		   console.info("running");
+	        				console.info(data.TaskState);
+	        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
+	        		    		   //console.info("running");
 	        		    		   img.hide();
 	        			           mask.hide();
+	        			           var mynode = d3.select('#' + taskid + ' rect');
+	        			           mynode.style("stroke", "white") ; 
 	        			           clearInterval(makeClear);
 	        		    	   }
 	        			},
@@ -888,6 +891,7 @@ setInterval(function(){getAjax("runningData.do",data,"post")},3000);
 function update_nodes_states(task_instances) {
 		$.each(task_instances,function(idx,obj){
             var mynode = d3.select('#' + obj.task_id + ' rect');
+            
             if(obj.state == 'failed') //如果失败
             {
             	var tipcontent ="预计开始时间：" + obj.expected_starttime + "," +
@@ -912,7 +916,7 @@ function update_nodes_states(task_instances) {
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
                  mynode.style("stroke", "#32CD32") ;
-            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed')//未开始
+            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed' || obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
             {
             	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
 								 "实际开始时间：" + obj.start_Date         + "," +

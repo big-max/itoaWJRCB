@@ -184,16 +184,18 @@ body{margin:0;padding:0;}
 		     	       });
 		     	       mask.show().css("opacity", "0.1");
 		     	       var makeClear = setInterval(function(){$.ajax({
-		          			url : '<%=path%>/makeNodeClear.do',
+		          			url : '<%=path%>/queryTaskState.do',
 		        			data:data,
 		        			type : 'post',
 		        			dataType : 'json',
 		        			success:function(data)
 		        			{
-		        				if(data.TaskState == "running"){
-		        		    		   console.info("running");
+		        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
+		        		    		   //console.info("running");
 		        		    		   img.hide();
 		        			           mask.hide();
+		        			           var mynode = d3.select('#' + taskid + ' rect');
+		        			           mynode.style("stroke", "white") ;
 		        			           clearInterval(makeClear);
 		        		    	   }
 		        			},
@@ -222,7 +224,7 @@ body{margin:0;padding:0;}
 		            	}, function(isConfirm) { 
 		            		if(isConfirm)
 		            		{
-		            			var data ={"dag_id":"pprc_bakc","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            			var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
 		            			$.ajax({
 		            				url : '<%=path%>/markTaskSuccess.do',
 		            				data:data,
@@ -1092,7 +1094,7 @@ function update_nodes_states(task_instances) {
                 var format_content = tipcontent.split(",").join("<br>");
                 $("#"+obj.task_id).attr("data-original-title",format_content); 
                  mynode.style("stroke", "#32CD32") ;
-            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed')//未开始
+            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
             {
             	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
 								 "实际开始时间：" + obj.start_Date         + "," +

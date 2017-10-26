@@ -103,7 +103,7 @@ public class AutoSwitchController {
 		String dag_id = request.getParameter("dag_id");
 		// 2016-01-01T12:12:12 to 2016-01-01 12:12:12
 		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
-		System.out.println(execution_date + " -- " + dag_id);
+		//System.out.println(execution_date + " -- " + dag_id);
 		map.put("dag_id", dag_id);
 		map.put("execution_date", execution_date);// "2017-09-13
 		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
@@ -169,7 +169,7 @@ public class AutoSwitchController {
 		}
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_hisdatetime", an);
-		System.out.println(on.toString());
+		//System.out.println(on.toString());
 		return on;
 	}
 	/*
@@ -270,7 +270,7 @@ public class AutoSwitchController {
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
-			System.out.println(response);
+			//System.out.println(response);
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
@@ -296,7 +296,7 @@ public class AutoSwitchController {
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
-			System.out.println(response);
+			//System.out.println(response);
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
@@ -305,6 +305,26 @@ public class AutoSwitchController {
 		return null;
 	}
 
+	
+	// 查询任务状态
+	@RequestMapping("queryTaskState.do")
+	@ResponseBody
+	public JSONObject QueryTaskState(HttpServletRequest request, HttpSession session) {
+		String dag_id = request.getParameter("dag_id");// 流程id
+		String task_id = request.getParameter("task_id");// 任务id
+		String execution_date = request.getParameter("execution_date");// 整个任务的发起时间
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("dag_id", dag_id);
+		map.put("execution_date", execution_date);
+		map.put("task_id", task_id);
+		String task_state = task_InstanceService.getStateOfTask(map);
+		String result = "{\"TaskState\":\"" + task_state + "\"}";
+		//System.out.println("state is :" + result);
+		
+		return JSONObject.fromObject(result);
+	}
+	
 	// 将流程节点清理并重做
 	@RequestMapping("makeNodeClear.do")
 	@ResponseBody
@@ -322,14 +342,14 @@ public class AutoSwitchController {
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
-			System.out.println(response);
+			//System.out.println(response);
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("dag_id", dag_id);
 			map.put("execution_date", execution_date);
 			map.put("task_id", task_id);
 			String task_state = task_InstanceService.getStateOfTask(map);
 			String result = "{\"TaskState\":\"" + task_state + "\"}";
-			System.out.println("state is :" + result);
+			//System.out.println("state is :" + result);
 			
 			return JSONObject.fromObject(result);
 		} catch (NetWorkException | IOException e) {
