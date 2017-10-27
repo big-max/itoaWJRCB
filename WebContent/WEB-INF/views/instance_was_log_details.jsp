@@ -13,7 +13,7 @@
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <jsp:include page="header.jsp" flush="true" />
-<title>自动化运维平台详细日志展现</title>
+<title>自动化运维平台</title>
 
 <style>
 .bcg {

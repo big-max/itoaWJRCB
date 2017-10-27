@@ -8,7 +8,7 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>自动化部署平台</title>
+<title>自动化运维平台</title>
 <meta name=”renderer” content=”webkit|ie-comp|ie-stand”>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">

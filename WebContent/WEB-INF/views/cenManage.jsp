@@ -18,7 +18,7 @@
 
 <jsp:include page="header.jsp" flush="true" />
 <script type="text/javascript" src="js/echarts.js"></script> 
-<title>云计算基础架构平台</title>
+<title>自动化运维平台</title>
 <style type="text/css">
 .mr20{
 	font-size:14px;
