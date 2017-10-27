@@ -16,7 +16,7 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <jsp:include page="header.jsp" flush="true" />
-<title>云计算基础架构平台</title>
+<title>自动化运维平台</title>
 <style type="text/css">
 .sweet-alert button.cancel {
 	background-color: #ec6c62;
