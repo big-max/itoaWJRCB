@@ -211,7 +211,7 @@ body{margin:0;padding:0;}
 		        			},
 		        			error:function(data)
 		        			{
-		        				 alert("请检查应用服务器是否正常！");
+		        				 console.info("请检查应用服务器是否正常！");
 		        		    	 img.hide();
 		        		         mask.hide();
 		        			}
