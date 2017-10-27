@@ -78,17 +78,21 @@ body{margin:0;padding:0;}
     //给每个g添加id
 	$(document).ready(function(){
 		//定义一个数组存放所有id值
-		var arrIdVal = ["pprc_go_start","pprc_go_workdb_backup","pprc_go_icsdb_backup","pprc_go_cardb_backup",
-						"pprc_go_cmisdb_backup","pprc_go_backup_end","pprc_go_p770a2_check_hastatus",
-						"pprc_go_p770b2_check_hastatus","pprc_go_p770b1_check_hastatus","pprc_go_p770a1_check_hastatus",
-						"pprc_go_checkha_stop",
+		var arrIdVal = ["pprc_go_start","pprc_go_workdb_backup","pprc_go_icsdb_backup","pprc_go_cardb_backup","pprc_go_cmisdb_backup","pprc_go_backup_end",
+						"pprc_go_p770a2_check_hastatus","pprc_go_p770b2_check_hastatus",
+						"pprc_go_p770b1_check_hastatus","pprc_go_p770a1_check_hastatus","pprc_go_checkha_stop",
 						"pprc_go_p770a2_hastop","pprc_go_p770b2_hastop","pprc_go_p770a1_hastop","pprc_go_p770b1_hastop",
-						"pprc_go_ds8k_lunstart","pprc_go_p770c1_lunread_suspend","pprc_go_p770c2_lunread_suspend",
-						"pprc_go_p770c1_lunread_recover","pprc_go_p770c2_lunread_recover","pprc_go_ds8k_lunstop",
+						"pprc_go_ds8k_lunstart",
+						"pprc_go_p770a1_lunread_suspend","pprc_go_p770b1_lunread_suspend",
+						"pprc_go_p770a2_lunread_suspend","pprc_go_p770b2_lunread_suspend",
+						"pprc_go_p770a1_lunread_recover","pprc_go_p770b1_lunread_recover",
+						"pprc_go_p770a2_lunread_recover","pprc_go_p770b2_lunread_recover","pprc_go_ds8k_lunstop",
 						"pprc_go_p770c1_workstart","pprc_go_p770c1_cmisstart","pprc_go_p770c2_icsstart","pprc_go_p770c2_cardstart",
-						"pprc_go_ywcheck","pprc_go_startreplic","pprc_go_p770c1_enable_copy_replicationstart",
-						"pprc_go_p770c2_enable_copy_replicationstart","pprc_go_p770c1_replicationstart","pprc_go_p770c2_replicationstart",
-						"pprc_go_end"];		
+						"pprc_go_ywcheck","pprc_go_startreplic",
+						"pprc_go_p770a1_enable_copy_replicationstart","pprc_go_p770b1_enable_copy_replicationstart",
+						"pprc_go_p770a2_enable_copy_replicationstart","pprc_go_p770b2_enable_copy_replicationstart",
+						"pprc_go_p770a1_replicationstart","pprc_go_p770b1_replicationstart",
+						"pprc_go_p770a2_replicationstart","pprc_go_p770b2_replicationstart","pprc_go_end"];		
 		var nodelen = $("g.node").length;
 		//遍历每个g，赋值id
 		for(var i = 0 ; i < nodelen ; i++)
@@ -232,38 +236,70 @@ body{margin:0;padding:0;}
 		  "labelStyle": "fill:#000;", 
 		  "label": "设置DS8K LUN可读写"
 		}
-	  },
+	  }, 
 	  {
-		"id": "pprc_go_p770c1_lunread_suspend", 
+		"id": "pprc_go_p770a1_lunread_suspend", 
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "设置p770c1 LUN可读写挂起"
+		  "label": "设置P770c1上P770a1 LUN可读写挂起"
 		}
-	  }, 
+	  },
 	  {
-		"id": "pprc_go_p770c2_lunread_suspend", 
+		"id": "pprc_go_p770b1_lunread_suspend", 
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "设置p770c2 LUN可读写挂起" 
+		  "label": "设置P770c1上P770b1 LUN可读写挂起"
 		}
-	  }, 
-	  {
-	    "id": "pprc_go_p770c1_lunread_recover", 
-	    "value": {
-	      "style": "fill:#ffefeb;", 
-	      "labelStyle": "fill:#000;", 
-	      "label": "设置p770c1 LUN可读写恢复" 
-	    }
 	  },
 	  {
-	    "id": "pprc_go_p770c2_lunread_recover", 
-	    "value": {
-	      "style": "fill:#ffefeb;", 
-	      "labelStyle": "fill:#000;", 
-	      "label": "设置p770c2 LUN可读写恢复"
-	    }
+		"id": "pprc_go_p770a2_lunread_suspend", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "设置P770c2上P770a2 LUN可读写挂起"
+		}
+	  },
+	  {
+		"id": "pprc_go_p770b2_lunread_suspend", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "设置P770c2上P770b2 LUN可读写挂起"
+		}
+	  },
+	  {
+		"id": "pprc_go_p770a1_lunread_recover", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "设置P770c1上P770a1 LUN可读写恢复" 
+		}
+	  },
+	  {
+		"id": "pprc_go_p770b1_lunread_recover", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "设置P770c1上P770b1 LUN可读写恢复" 
+		}
+	  },
+	  {
+		"id": "pprc_go_p770a2_lunread_recover", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "设置P770c2上P770a2 LUN可读写恢复" 
+		}
+	  },
+	  {
+		"id": "pprc_go_p770b2_lunread_recover", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "设置P770c2上P770b2 LUN可读写恢复" 
+		}
 	  },
 	  {
 		"id": "pprc_go_ds8k_lunstop", 
@@ -322,35 +358,67 @@ body{margin:0;padding:0;}
 		}
 	  }, 
 	  {
-		"id": "pprc_go_p770c1_enable_copy_replicationstart", 
+		"id": "pprc_go_p770a1_enable_copy_replicationstart", 
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "确认反向启动P770c1复制关系" 
+		  "label": "确认反向启动P770c1上P770a1复制关系" 
 		}
 	  },
 	  {
-		"id": "pprc_go_p770c2_enable_copy_replicationstart", 
+		"id": "pprc_go_p770b1_enable_copy_replicationstart", 
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "确认反向启动P770c2复制关系"
+		  "label": "确认反向启动P770c1上P770b1复制关系" 
 		}
 	  },
 	  {
-		"id": "pprc_go_p770c1_replicationstart", 
+		"id": "pprc_go_p770a2_enable_copy_replicationstart", 
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动P770c1复制关系"
+		  "label": "确认反向启动P770c2上P770a2复制关系" 
 		}
-	  }, 
+	  },
 	  {
-		"id": "pprc_go_p770c2_replicationstart", 
+		"id": "pprc_go_p770b2_enable_copy_replicationstart", 
 		"value": {
 		  "style": "fill:#ffefeb;", 
 		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动P770c2复制关系"
+		  "label": "确认反向启动P770c2上P770b2复制关系" 
+		}
+	  },
+	  {
+		"id": "pprc_go_p770a1_replicationstart", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "反向启动P770c1上P770a1复制关系"
+		}
+	  },
+	  {
+		"id": "pprc_go_p770b1_replicationstart", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "反向启动P770c1上P770b1复制关系"
+		}
+	  },
+	  {
+		"id": "pprc_go_p770a2_replicationstart", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "反向启动P770c2上P770a2复制关系"
+		}
+	  },
+	  {
+		"id": "pprc_go_p770b2_replicationstart", 
+		"value": {
+		  "style": "fill:#ffefeb;", 
+		  "labelStyle": "fill:#000;", 
+		  "label": "反向启动P770c2上P770b2复制关系"
 		}
 	  },
 	  {
@@ -365,217 +433,241 @@ body{margin:0;padding:0;}
 	
     var edges = [
 	  {
-		"u": "pprc_go_p770c1_replicationstart", 
-		"v": "pprc_go_end"
-	  }, 
+		"u": "pprc_go_start", 
+		"v": "pprc_go_workdb_backup"
+	  },
 	  {
-		"u": "pprc_go_startreplic", 
-		"v": "pprc_go_p770c1_enable_copy_replicationstart"
-	  }, 
+		"u": "pprc_go_start", 
+		"v": "pprc_go_icsdb_backup"
+	  },
 	  {
-		"u": "pprc_go_ywcheck", 
-		"v": "pprc_go_startreplic"
-	  }, 
+		"u": "pprc_go_start", 
+		"v": "pprc_go_cardb_backup"
+	  },
 	  {
-		"u": "pprc_go_p770c2_cardstart", 
-		"v": "pprc_go_ywcheck"
-	  }, 
+		"u": "pprc_go_start", 
+		"v": "pprc_go_cmisdb_backup"
+	  },
 	  {
-		"u": "pprc_go_p770c2_icsstart", 
-		"v": "pprc_go_p770c2_cardstart"
-	  }, 
+		"u": "pprc_go_workdb_backup", 
+		"v": "pprc_go_backup_end"
+	  },
 	  {
-		"u": "pprc_go_p770c1_cmisstart", 
-		"v": "pprc_go_p770c2_icsstart"
-	  }, 
+		"u": "pprc_go_icsdb_backup", 
+		"v": "pprc_go_backup_end"
+	  },
 	  {
-		"u": "pprc_go_p770c1_workstart", 
-		"v": "pprc_go_p770c1_cmisstart"
-	  },  
+		"u": "pprc_go_cardb_backup", 
+		"v": "pprc_go_backup_end"
+	  },
 	  {
-		"u": "pprc_go_ds8k_lunstart", 
-		"v": "pprc_go_p770c1_lunread_suspend"
-	  }, 
-	  {
-		"u": "pprc_go_p770b1_hastop", 
-		"v": "pprc_go_ds8k_lunstart"
-	  }, 
-	  {
-		"u": "pprc_go_p770a1_hastop", 
-		"v": "pprc_go_p770b1_hastop"
-	  }, 
-	  {
-		"u": "pprc_go_p770b2_hastop", 
-		"v": "pprc_go_p770a1_hastop"
-	  }, 
-	  {
-		"u": "pprc_go_p770a2_hastop", 
-		"v": "pprc_go_p770b2_hastop"
-	  }, 
-	  {
-		"u": "pprc_go_p770a2_check_hastatus", 
-		"v": "pprc_go_checkha_stop"
-	  }, 
+		"u": "pprc_go_cmisdb_backup", 
+		"v": "pprc_go_backup_end"
+	  },
 	  {
 		"u": "pprc_go_backup_end", 
 		"v": "pprc_go_p770a2_check_hastatus"
 	  }, 
 	  {
-		"u": "pprc_go_workdb_backup", 
-		"v": "pprc_go_backup_end"
-	  }, 
-	  {
-		"u": "pprc_go_start", 
-		"v": "pprc_go_workdb_backup"
-	  }, 
-	  {
-		"u": "pprc_go_icsdb_backup", 
-		"v": "pprc_go_backup_end"
-	  }, 
-	  {
-		"u": "pprc_go_start", 
-		"v": "pprc_go_icsdb_backup"
-	  }, 
-	  {
-		"u": "pprc_go_cardb_backup", 
-		"v": "pprc_go_backup_end"
-	  }, 
-	  {
-		"u": "pprc_go_start", 
-		"v": "pprc_go_cardb_backup"
-	  }, 
-	  {
-		"u": "pprc_go_cmisdb_backup", 
-		"v": "pprc_go_backup_end"
-	  }, 
-	  {
-		"u": "pprc_go_start", 
-		"v": "pprc_go_cmisdb_backup"
-	  }, 
-	  {
-		"u": "pprc_go_p770b2_check_hastatus", 
-		"v": "pprc_go_checkha_stop"
-	  }, 
-	  {
 		"u": "pprc_go_backup_end", 
 		"v": "pprc_go_p770b2_check_hastatus"
-	  }, 
-	  {
-		"u": "pprc_go_p770b1_check_hastatus", 
-		"v": "pprc_go_checkha_stop"
-	  }, 
+	  },
 	  {
 		"u": "pprc_go_backup_end", 
 		"v": "pprc_go_p770b1_check_hastatus"
-	  }, 
-	  {
-		"u": "pprc_go_p770a1_check_hastatus", 
-		"v": "pprc_go_checkha_stop"
-	  }, 
+	  },
 	  {
 		"u": "pprc_go_backup_end", 
 		"v": "pprc_go_p770a1_check_hastatus"
+	  },
+	  {
+		"u": "pprc_go_p770a2_check_hastatus", 
+		"v": "pprc_go_checkha_stop"
+	  },
+	  {
+		"u": "pprc_go_p770b2_check_hastatus", 
+		"v": "pprc_go_checkha_stop"
+	  },
+	  {
+		"u": "pprc_go_p770b1_check_hastatus", 
+		"v": "pprc_go_checkha_stop"
+	  },
+	  {
+		"u": "pprc_go_p770a1_check_hastatus", 
+		"v": "pprc_go_checkha_stop"
+	  },
+	  {
+		 "u":"pprc_go_checkha_stop",
+		 "v":"pprc_go_p770a2_hastop"
+	  },
+	  {
+		"u": "pprc_go_p770a2_hastop", 
+		"v": "pprc_go_p770b2_hastop"
+	  },
+	  {
+		"u": "pprc_go_p770b2_hastop", 
+		"v": "pprc_go_p770a1_hastop"
+	  },
+	  {
+		"u": "pprc_go_p770a1_hastop", 
+		"v": "pprc_go_p770b1_hastop"
+	  },
+	  {
+		"u": "pprc_go_p770b1_hastop", 
+		"v": "pprc_go_ds8k_lunstart"
+	  },
+	  {
+		"u": "pprc_go_ds8k_lunstart", 
+		"v": "pprc_go_p770a1_lunread_suspend"
 	  }, 
 	  {
 		"u": "pprc_go_ds8k_lunstart", 
-		"v": "pprc_go_p770c2_lunread_suspend"
-	  }, 
-	  {
-		"u": "pprc_go_p770c2_replicationstart", 
-		"v": "pprc_go_end"
-	  }, 
-	  {
-		"u": "pprc_go_startreplic", 
-		"v": "pprc_go_p770c2_enable_copy_replicationstart"
+		"v": "pprc_go_p770b1_lunread_suspend"
 	  },
 	  {
-		 "u":"pprc_go_p770c1_lunread_suspend",
-		 "v":"pprc_go_p770c1_lunread_recover"
+		"u": "pprc_go_ds8k_lunstart", 
+		"v": "pprc_go_p770a2_lunread_suspend"
 	  },
 	  {
-		 "u":"pprc_go_p770c2_lunread_suspend",
-		 "v":"pprc_go_p770c2_lunread_recover"
+		"u": "pprc_go_ds8k_lunstart", 
+		"v": "pprc_go_p770b2_lunread_suspend"
 	  },
 	  {
-		 "u":"pprc_go_p770c1_enable_copy_replicationstart",
-		 "v":"pprc_go_p770c1_replicationstart"
+		"u":"pprc_go_p770a1_lunread_suspend",
+		"v":"pprc_go_p770a1_lunread_recover"
 	  },
 	  {
-		 "u":"pprc_go_p770c2_enable_copy_replicationstart",
-		 "v":"pprc_go_p770c2_replicationstart"
+		"u":"pprc_go_p770b1_lunread_suspend",
+		"v":"pprc_go_p770b1_lunread_recover"
+	  },
+	  {
+		"u":"pprc_go_p770a2_lunread_suspend",
+		"v":"pprc_go_p770a2_lunread_recover"  
+	  },
+	  {
+		"u":"pprc_go_p770b2_lunread_suspend",
+		"v":"pprc_go_p770b2_lunread_recover"  
+	  },
+	  {
+		"u":"pprc_go_p770a1_lunread_recover",
+		"v":"pprc_go_ds8k_lunstop"
+	  },
+	  {
+		"u":"pprc_go_p770b1_lunread_recover",
+		"v":"pprc_go_ds8k_lunstop"
+	  },
+	  {
+		"u":"pprc_go_p770a2_lunread_recover",
+		"v":"pprc_go_ds8k_lunstop"
+	  },
+	  {
+		"u":"pprc_go_p770b2_lunread_recover",
+		"v":"pprc_go_ds8k_lunstop"
 	  },
 	  {
 		 "u":"pprc_go_ds8k_lunstop",
 		 "v":"pprc_go_p770c1_workstart"
 	  },
 	  {
-		 "u":"pprc_go_p770c1_lunread_recover",
-		 "v":"pprc_go_ds8k_lunstop"
+		"u": "pprc_go_p770c1_workstart", 
+		"v": "pprc_go_p770c1_cmisstart"
 	  },
 	  {
-		 "u":"pprc_go_p770c2_lunread_recover",
-		 "v":"pprc_go_ds8k_lunstop"
+		"u": "pprc_go_p770c1_cmisstart", 
+		"v": "pprc_go_p770c2_icsstart"
 	  },
 	  {
-		 "u":"pprc_go_checkha_stop",
-		 "v":"pprc_go_p770a2_hastop"
+		"u": "pprc_go_p770c2_icsstart", 
+		"v": "pprc_go_p770c2_cardstart"
+	  },
+	  {
+		"u": "pprc_go_p770c2_cardstart", 
+		"v": "pprc_go_ywcheck"
+	  },
+	  {
+		"u": "pprc_go_ywcheck", 
+		"v": "pprc_go_startreplic"
+	  },
+	  {
+		"u": "pprc_go_startreplic", 
+		"v": "pprc_go_p770a1_enable_copy_replicationstart"
+	  },
+	  {
+		"u": "pprc_go_startreplic", 
+		"v": "pprc_go_p770b1_enable_copy_replicationstart"
+	  },
+	  {
+		"u": "pprc_go_startreplic", 
+		"v": "pprc_go_p770a2_enable_copy_replicationstart"
+	  },
+	  {
+		"u": "pprc_go_startreplic", 
+		"v": "pprc_go_p770b2_enable_copy_replicationstart"
+	  },
+	  {
+		 "u":"pprc_go_p770a1_enable_copy_replicationstart",
+		 "v":"pprc_go_p770a1_replicationstart"
+	  },
+	  {
+		 "u":"pprc_go_p770b1_enable_copy_replicationstart",
+		 "v":"pprc_go_p770b1_replicationstart"
+	  },
+	  {
+		 "u":"pprc_go_p770a2_enable_copy_replicationstart",
+		 "v":"pprc_go_p770a2_replicationstart"
+	  },
+	  {
+		 "u":"pprc_go_p770b2_enable_copy_replicationstart",
+		 "v":"pprc_go_p770b2_replicationstart"
+	  },
+	  {
+		"u": "pprc_go_p770a1_replicationstart", 
+		"v": "pprc_go_end"
+	  },                    
+	  {
+		"u": "pprc_go_p770b1_replicationstart", 
+		"v": "pprc_go_end"
+	  },
+	  {
+		"u": "pprc_go_p770a2_replicationstart", 
+		"v": "pprc_go_end"
+	  },
+	  {
+		"u": "pprc_go_p770b2_replicationstart", 
+		"v": "pprc_go_end"
 	  }
 	];
 	
     var tasks = {
-   		"pprc_go_ywcheck": {
+   		"pprc_go_start": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_cmisdb_backup": {
+   		}, 
+   	    "pprc_go_workdb_backup": {
+   	    	"task_type": "PythonOperator", 
+   	    	"dag_id": "pprc_go"
+   	    }, 
+   		"pprc_go_icsdb_backup": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770c1_workstart": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
+   		}, 
+   	    "pprc_go_cardb_backup": {
+   	    	"task_type": "PythonOperator", 
+   	    	"dag_id": "pprc_go"
+   	    }, 
+   	    "pprc_go_cmisdb_backup": {
+   	    	"task_type": "BashOperator", 
+   	    	"dag_id": "pprc_go"
+   	    }, 
+   	    "pprc_go_backup_end": {
+   	    	"task_type": "PythonOperator", 
+   	    	"dag_id": "pprc_go"
+   	    }, 
    		  "pprc_go_p770a2_check_hastatus": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  }, 
-   		  "pprc_go_end": {
-   			"task_type": "BashOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_cardb_backup": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770c1_lunread_suspend": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770b2_hastop": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770a2_hastop": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770c2_cardstart": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_icsdb_backup": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770c2_icsstart": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770c1_replicationstart": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770c2_lunread_suspend": {
+   		  "pprc_go_p770b2_check_hastatus": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  }, 
@@ -583,16 +675,24 @@ body{margin:0;padding:0;}
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  }, 
-   		  "pprc_go_start": {
+   		  "pprc_go_p770a1_check_hastatus": {
+   			"task_type": "PythonOperator", 
+   			"dag_id": "pprc_go"
+   		  }, 
+   		  "pprc_go_checkha_stop": {
+   			"task_type": "PythonOperator", 
+   			"dag_id": "pprc_go"
+   		  }, 
+   		  "pprc_go_p770a2_hastop": {
+   			"task_type": "PythonOperator", 
+   			"dag_id": "pprc_go"
+   		  },  
+   		  "pprc_go_p770b2_hastop": {
+   			"task_type": "PythonOperator", 
+   			"dag_id": "pprc_go"
+   		  }, 
+   		  "pprc_go_p770a1_hastop": {
    			"task_type": "BashOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770b2_check_hastatus": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770c2_replicationstart": {
-   			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  }, 
    		  "pprc_go_p770b1_hastop": {
@@ -600,22 +700,62 @@ body{margin:0;padding:0;}
    			"dag_id": "pprc_go"
    		  }, 
    		  "pprc_go_ds8k_lunstart": {
-   			"task_type": "BashOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_backup_end": {
-   			"task_type": "BashOperator", 
-   			"dag_id": "pprc_go"
-   		  }, 
-   		  "pprc_go_p770a1_check_hastatus": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  }, 
+   		  "pprc_go_p770a1_lunread_suspend": {
+   			"task_type": "PythonOperator", 
+   			"dag_id": "pprc_go"
+   		  }, 
+   		  "pprc_go_p770b1_lunread_suspend": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  }, 
+   		  "pprc_go_p770a2_lunread_suspend": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  },
+   		  "pprc_go_p770b2_lunread_suspend": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  },
+   		  "pprc_go_p770a1_lunread_recover": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  },
+   		  "pprc_go_p770b1_lunread_recover": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  },
+   		  "pprc_go_p770a2_lunread_recover": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  },
+   		  "pprc_go_p770b2_lunread_recover": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  },
+   		  "pprc_go_ds8k_lunstop": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  },
+   		  "pprc_go_p770c1_workstart": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  },
    		  "pprc_go_p770c1_cmisstart": {
+   			"task_type": "BashOperator", 
+   			"dag_id": "pprc_go"
+   		  }, 
+   		  "pprc_go_p770c2_icsstart": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  }, 
-   		  "pprc_go_workdb_backup": {
+   		  "pprc_go_p770c2_cardstart": {
+   			"task_type": "PythonOperator", 
+   			"dag_id": "pprc_go"
+   		  }, 
+   		  "pprc_go_ywcheck": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  }, 
@@ -623,34 +763,42 @@ body{margin:0;padding:0;}
    			"task_type": "BashOperator", 
    			"dag_id": "pprc_go"
    		  }, 
-   		  "pprc_go_p770a1_hastop": {
+   		  "pprc_go_p770a1_enable_copy_replicationstart": {
    			"task_type": "PythonOperator", 
    			"dag_id": "pprc_go"
    		  },
-   		  "pprc_go_p770c1_lunread_recover": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  },
-   		  "pprc_go_p770c2_lunread_recover": {
-   			"task_type": "PythonOperator", 
-   			"dag_id": "pprc_go"
-   		  },
-	   	  "pprc_go_p770c1_enable_copy_replicationstart": {
-	   		"task_type": "PythonOperator", 
-	   		"dag_id": "pprc_go"
-	   	  },
-   		  "pprc_go_p770c2_enable_copy_replicationstart": {
-	   		"task_type": "PythonOperator", 
-	   		"dag_id": "pprc_go"
-	   	  },
-	   	  "pprc_go_ds8k_lunstop": {
-  	   		"task_type": "PythonOperator", 
-  	   		"dag_id": "pprc_go"
-  	   	  },
-  	    	"pprc_go_checkha_stop": {
-  	   		"task_type": "PythonOperator", 
-  	   		"dag_id": "pprc_go"
-  	   	  }
+   	  	  "pprc_go_p770b1_enable_copy_replicationstart": {
+   	  		"task_type": "PythonOperator", 
+   	  		"dag_id": "pprc_go"
+   	  	  },
+   	 	  "pprc_go_p770a2_enable_copy_replicationstart": {
+   	  		"task_type": "PythonOperator", 
+   	  		"dag_id": "pprc_go"
+   	  	  },
+   	      "pprc_go_p770b2_enable_copy_replicationstart": {
+   	   		"task_type": "PythonOperator", 
+   	   		"dag_id": "pprc_go"
+   	   	  },
+   	   	 "pprc_go_p770a1_replicationstart": {
+   	   		"task_type": "PythonOperator", 
+   	   		"dag_id": "pprc_go"
+   	   	  },
+   	   	  "pprc_go_p770b1_replicationstart": {
+   	   		"task_type": "PythonOperator", 
+   	   		"dag_id": "pprc_go"
+   	   	  },
+   	   	  "pprc_go_p770a2_replicationstart": {
+   	   		"task_type": "PythonOperator", 
+   	   		"dag_id": "pprc_go"
+   	   	  },
+   	      "pprc_go_p770b2_replicationstart": {
+   	   		"task_type": "PythonOperator", 
+   	   		"dag_id": "pprc_go"
+   	   	  },
+   	   	  "pprc_go_end": {
+   	   		"task_type": "PythonOperator", 
+   	   		"dag_id": "pprc_go"
+   	   	  }
 	};
   
     
