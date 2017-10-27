@@ -342,16 +342,8 @@ public class AutoSwitchController {
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
-			//System.out.println(response);
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("dag_id", dag_id);
-			map.put("execution_date", execution_date);
-			map.put("task_id", task_id);
-			String task_state = task_InstanceService.getStateOfTask(map);
-			String result = "{\"TaskState\":\"" + task_state + "\"}";
-			//System.out.println("state is :" + result);
-			
-			return JSONObject.fromObject(result);
+			//System.out.println("clear state's response is : " + response);
+			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
 			logger.error("清理任务IO错误");

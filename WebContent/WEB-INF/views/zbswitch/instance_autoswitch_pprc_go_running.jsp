@@ -220,6 +220,16 @@ body{margin:0;padding:0;}
 	     	           "margin-left": function () { return -1 * img.width() / 2; }
 	     	       });
 	     	       mask.show().css("opacity", "0.1");
+	     	       $.ajax({
+	     	    	  url : '<%=path%>/makeNodeClear.do',
+	        			data:data,
+	        			type : 'post',
+	        			dataType : 'json',
+	        			success:function(data)
+	        			{
+	        				console.info(data);
+	        			}
+	     	       });
 	     	       var makeClear = setInterval(function(){$.ajax({
 	          			url : '<%=path%>/queryTaskState.do',
 	        			data:data,
