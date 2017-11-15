@@ -33,6 +33,7 @@ public class DailyFlowController {
 	
 	@RequestMapping("/dailyflow.do")
 	public String dailyflow(HttpServletRequest request, HttpSession session) {
-		return "dailyflow/instance_dailyflow_running";
+		//return "dailyflow/instance_dayend_summary";
+		return "dailyflow/instance_dayend_daily_running";
 	}
 }

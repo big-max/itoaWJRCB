@@ -32,7 +32,10 @@
 	<mvc:resources location="/css/" mapping="/css/**" />
 	<mvc:resources location="/xls/" mapping="/xls/**" />
 	<mvc:resources location="/fonts/" mapping="/fonts/**" />
-
+	<mvc:resources location="/dailyimg/" mapping="/dailyimg/**" />
+	<mvc:resources location="/dailycss/" mapping="/dailycss/**" />
+	<mvc:resources location="/dailyjs/" mapping="/dailyjs/**" />
+	
 	<!-- 配置返回JSP页面结尾 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
