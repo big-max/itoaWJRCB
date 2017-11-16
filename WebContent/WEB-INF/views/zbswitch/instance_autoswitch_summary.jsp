@@ -46,8 +46,11 @@
 i:hover{
 	cursor:pointer;
 }
-.show_tooltips{
-	
+.mr20{
+	font-size:14px;
+}
+input[type="text"],input[type="password"] {
+	height:28px;
 }
 </style>
 <script>
@@ -139,6 +142,35 @@ i:hover{
 	  </div>
 	</div>
 	<!-- end Modal for edit dag_info -->
+	
+	<!-- 动态口令模态框-->
+	<div class="modal fade modalframe" id="checkpass"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">验证动态口令</h4>
+				</div>
+				<div class="modal-body">
+					<div class="control-group">
+						<div class="controls">
+							<span class="input140 mr20">用户名：</span>
+							<input class="form-control" type="text" id="username" name="username">
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<span class="input140 mr20">密码：</span>
+							<input class="form-control" type="password" id="password" name="password">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">确认</button>
+					<button type="button" class="btn" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div> 
 </body>
 
 
@@ -166,7 +198,7 @@ function update_summary_table_state()
 		         {
 		        	  html +=    "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
 			         	"<div class=\"linkexpre\">"+
-			         	"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"tooltip\" title=\"发起流程\"></i>"
+			         	"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"modal\" data-target=\"#checkpass\"></i>"
 						+"</div>"
 						+"</div><div class=\"linkexpre\">"+
 						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\"  style=\"font-size:26px;color:#bebebe\" data-toggle=\"tooltip\" title=\"终止流程\"></i>"
@@ -180,7 +212,7 @@ function update_summary_table_state()
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
-					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\" title=\"编辑流程\"></i>"
+					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\"title=\"编辑流程\" ></i>"
 						+"</div>"
 		         }else if (data[i].last_run_status == 'running')  //如果是运行中
 		         {
@@ -276,8 +308,7 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
      				type : 'post',
      				data:{"dag_id":current_dag_id,"execution_date":current_execution_date},
      				dataType : 'json',
-     				success : function(result) {
-     					
+     				success : function(result) {    					
      				},
      				error : function(errmsg) {
      				}
@@ -309,61 +340,63 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 			isshowBtn=2;
 			url="postResumeAirflow.do";
 		}
-		if(is_start == true && (current_dag_state == 'failed' ||  current_dag_state == '' || current_dag_state == 'success'  ) ){ //发起新任务
-			Message = "请再次确认是否立即启动"+current_dag_alias+"流程？";
+		else if(is_start == true && (current_dag_state == 'failed' ||  current_dag_state == '' || current_dag_state == 'success'  ) ){ //发起新任务
+			//Message = "请再次确认是否立即启动"+current_dag_alias+"流程？";
 			//$("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
 			isshowBtn=3;
 			url = "postRunAirflow.do";
-		}
-		swal({
-	            title: "",
-	            text: Message,
-	            type: "warning",
-	            showCancelButton: true,
-	            confirmButtonText: "是",
-	            cancelButtonText: "否", 
-	            confirmButtonColor:"#ec6c62"
-	        }, 
-	        function(isConfirm)
-	        {
-	        	  if (isConfirm) 
-	        	  {
-	        		  $.ajax({
-	        				url :  url,
-	        				type : 'post',
-	        				data:{"dag_id":current_dag_id},
-	        				dataType : 'json',
-	        				success : function(result) {
-	        					  if(result != 'undefined' || result != null){
-	        					  		$("#"+current_dag_id+"_stop").css("color","red");
-	        					  		$("#"+current_dag_id+"_running").attr("style","font-size:23px;color:#0066FF");
-	        					  }
-	        					  else{
-		        						alert("发生IO异常");
-		        					}
-	        					  if (isshowBtn == 1)
-	        					  {
-	        						  $("#"+current_dag_id+"_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
-	        					  }else if ( isshowBtn == 2 )
-	        					  {
-	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
-	        					  }else if ( isshowBtn == 3 )
-	        					  {
-	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
-	        					  }
-	        					  
-	        					  
-	        				},
-	        				error : function(errmsg) {
+		} 
+		
+		if(url == "postRunAirflow.do"){
 
-	        				}
-	        			})
-	        	  } 
-	        });
-		
-		
+		}
+		else{
+			swal({
+		            title: "",
+		            text: Message,
+		            type: "warning",
+		            showCancelButton: true,
+		            confirmButtonText: "是",
+		            cancelButtonText: "否", 
+		            confirmButtonColor:"#ec6c62"
+		        }, 
+		        function(isConfirm)
+		        {
+		        	  if (isConfirm) 
+		        	  {
+		        		  $.ajax({
+		        				url :  url,
+		        				type : 'post',
+		        				data:{"dag_id":current_dag_id},
+		        				dataType : 'json',
+		        				success : function(result) {
+		        					  if(result != 'undefined' || result != null){
+		        					  		$("#"+current_dag_id+"_stop").css("color","red");
+		        					  		$("#"+current_dag_id+"_running").attr("style","font-size:23px;color:#0066FF");
+		        					  }
+		        					  else{
+			        						alert("发生IO异常");
+			        					}
+		        					  if (isshowBtn == 1)
+		        					  {
+		        						  $("#"+current_dag_id+"_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
+		        					  }else if ( isshowBtn == 2 )
+		        					  {
+		        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+		        					  }else if ( isshowBtn == 3 )
+		        					  {
+		        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+		        					  }
+		        					  
+		        					  
+		        				},
+		        				error : function(errmsg) {
 	
-		
+		        				}
+		        			})
+		        	  } 
+		        });
+		}
 	})
 	
 
