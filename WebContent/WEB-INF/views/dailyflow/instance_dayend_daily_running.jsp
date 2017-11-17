@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div id="base">
+    <div id="base" class="">
     
       <div id="u2" class="ax_default box_1">
         <div id="u2_div"></div>

@@ -339,6 +339,7 @@ $("body").on("click","#disaster,#disaster2",function(){
 			<li>
 				<a href="healthCheck.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="自动化巡检">
 					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>
+					
 				</a>
 				<a href="healthCheck.do" class="tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>&nbsp;&nbsp;&nbsp;
@@ -398,7 +399,7 @@ $("body").on("click","#disaster,#disaster2",function(){
 		</ul>
 		
 		<!-- POC -->
-		<!-- <div class="jquery-accordion-menu-footer tooltipa1 notvisible" id="poccenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="灾备演练">
+		<div class="jquery-accordion-menu-footer tooltipa1 notvisible" id="poccenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="灾备演练">
 			<img class="forrotate3" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
 		</div>
 		<div class="jquery-accordion-menu-footer tooltipa2" id="poccenter2" style="cursor:pointer;">
@@ -446,7 +447,7 @@ $("body").on("click","#disaster,#disaster2",function(){
 					<span id="menu19" class="top5">批量执行</span> 
 			    </a>
 			</li>
-		</ul> -->
+		</ul>
 		
 		
 		<!-- 用户中心 -->

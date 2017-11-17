@@ -341,7 +341,8 @@
 			
 			<li>
 				<a href="healthCheck.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="自动化巡检">
-					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>					
+					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>
+					
 				</a>
 				<a href="healthCheck.do" class="notvisible tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>&nbsp;&nbsp;&nbsp;
@@ -405,7 +406,7 @@
 		
 		
 		<!-- POC模块 -->
-		<!-- <div class="jquery-accordion-menu-footer tooltipa1" id="poccenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="POC场景模块">
+		<div class="jquery-accordion-menu-footer tooltipa1" id="poccenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="POC场景模块">
 			<img class="forrotate3" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
 		</div>
 		<div class="jquery-accordion-menu-footer tooltipa2 notvisible" id="poccenter2" style="cursor:pointer;">
@@ -450,7 +451,7 @@
 					<span id="menu19" class="top5">批量执行</span> 
 			    </a>
 			</li>
-		</ul> -->
+		</ul>
 		
 		
 		
