@@ -15,6 +15,3 @@
 <script type="text/javascript" src="${root}/dailyjs/document.js"></script>
 <script type="text/javascript" src="${root}/dailyjs/prototypePost.js"></script>
 <script type="text/javascript" src="${root}/dailyjs/data.js"></script>
-
-	
-
