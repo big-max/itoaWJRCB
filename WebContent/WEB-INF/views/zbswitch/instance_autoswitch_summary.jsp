@@ -208,7 +208,7 @@ function update_summary_table_state()
 					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\"  style=\"font-size:23px;color:#0066FF\" data-toggle=\"tooltip\" title=\"查看当前运行状态\"></i>"
 						+"</div>"
 						+"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"data-toggle=\"tooltip\" title=\"查看历史\"></i>"
+						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\" data-toggle=\"tooltip\" title=\"查看历史\"></i>"
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
@@ -283,8 +283,6 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		var dag_id = $(this).parents("tr").find("#dag_id").text()
 		var execution_date = $(this).parents("tr").find("#execution_date").text()
 		window.open("runningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
-		
-		
 	})
 	
 	//停止一个流

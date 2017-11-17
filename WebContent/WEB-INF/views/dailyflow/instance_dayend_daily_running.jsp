@@ -33,7 +33,7 @@ body{margin:0;padding:0;}
 </head>
 
 <body>
-    <div id="base" class="">
+    <div id="base">
     
       <div id="u2" class="ax_default box_1">
         <div id="u2_div" class=""></div>

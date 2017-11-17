@@ -17,20 +17,6 @@
 <jsp:include page="../header.jsp" flush="true" />
 <title>自动化运维平台</title> 
 <style type="text/css">
-.tooltip-inner {
-	color:white;
-	background-color:#413A3A;
-}
-.tooltip-arrow{
-	border-right-color:black;
-}
-.tooltip {
-	font-size:15px;
-	line-height:25px;
-	height:40px;
-	width:125px;
-	position:fixed;
-}
 .content {
 	position:relative;
 	float:right;
@@ -41,13 +27,10 @@
 }
 .linkexpre{
 	float:left;
-	margin-right:10px;
+	margin-left:10px;
 }
 i:hover{
 	cursor:pointer;
-}
-.show_tooltips{
-	
 }
 </style>
 <script>
@@ -84,8 +67,7 @@ i:hover{
 							</a>
 						</div>
 						<div id="collapseOne" class="collapse in">
-							<div class="widget-content">日终流程场景一览表</div>
-							
+							<div class="widget-content">日终流程场景一览表</div>							
 						</div>
 					</div>
 				</div>
@@ -97,7 +79,6 @@ i:hover{
 				<div class="span12">
 					<div class="columnauto">
 						<div class="widget-box nostyle">
-
 							<table id="sel_tab" class="table table-bordered with-check table-hover no-search no-select">
 								<thead>
 									<tr>
@@ -109,295 +90,120 @@ i:hover{
 										<th style="text-align: center;width:25%;">操作链接</th>
 									</tr>
 								</thead>
-
+								
 								<tbody class="searchable">
 									<tr>
-										<td id="dayend_daily" hidden="" style="text-align:center;"></td>
-										<td style="text-align: center;">日终流程</td>
+										<td class="dayend_class" id="dayend_daily" hidden="" style="text-align:center;">dayend_daily</td>
+										<td class="dayend_name" style="text-align: center;">日终流程</td>
 										<td style="text-align: center;"></td>
 										<td style="text-align: center;"></td>
 										<td style="text-align: center;"></td>
-										<td style="text-align: center;"></td>
+										<td style="text-align: center;">
+											<div style="margin-left:23%;">
+												<div class="linkexpre">
+													<i id="daily_play" class="daily_play fa fa-play-circle" style="font-size:26px;color:#0066FF;" title="开始流程"></i>
+													<i id="daily_pause" class="daily_pause fa fa-pause-circle" style="font-size:26px;color:#FF7F00;display:none;" title="暂停流程"></i>
+												</div>
+												<div class="linkexpre">
+													<i id="daily_stop" class="daily_stop fa fa-stop-circle" style="font-size:26px;color:#bebebe;" title="终止流程"></i>
+												</div>
+												<div class="linkexpre" style="padding-top:2px;">
+													<i id="daily_running" class="daily_running fa fa-telegram" style="font-size:23px;color:#0066FF;" title="查看当前运行状态"></i>
+												</div>
+												<div class="linkexpre">
+													<i id="daily_history" class="daily_history fa fa-clock-o" style="font-size:26px;color:#D4237A;" title="查看历史"></i>
+												</div>
+											</div>
+										</td>
 									</tr>
 									<tr>
-										<td id="dayend_daily" hidden="" style="text-align:center;"></td>
-										<td style="text-align: center;">结息流程</td>
+										<td class="dayend_class" id="dayend_jiexi" hidden="" style="text-align:center;">dayend_jiexi</td>
+										<td class="dayend_name" style="text-align: center;">结息流程</td>
 										<td style="text-align: center;"></td>
 										<td style="text-align: center;"></td>
 										<td style="text-align: center;"></td>
-										<td style="text-align: center;"></td>
+										<td style="text-align: center;">
+											<div style="margin-left:23%;">
+												<div class="linkexpre">
+													<i id="jiexi_play" class="jiexi_play fa fa-play-circle" style="font-size:26px;color:#0066FF;" title="开始流程"></i>
+													<i id="jiexi_pause" class="jiexi_pause fa fa-pause-circle" style="font-size:26px;color:#FF7F00;display:none;" title="暂停流程"></i>
+												</div>
+												<div class="linkexpre">
+													<i id="jiexi_stop" class="jiexi_stop fa fa-stop-circle" style="font-size:26px;color:#bebebe;" title="终止流程"></i>
+												</div>
+												<div class="linkexpre" style="padding-top:2px;">
+													<i id="jiexi_running" class="jiexi_running fa fa-telegram" style="font-size:23px;color:#0066FF;" title="查看当前运行状态"></i>
+												</div>
+												<div class="linkexpre">
+													<i id="jiexi_history" class="jiexi_history fa fa-clock-o" style="font-size:26px;color:#D4237A;" title="查看历史"></i>
+												</div>
+											</div>
+										</td>
 									</tr>	
 									<tr>
-										<td id="dayend_daily" hidden="" style="text-align:center;"></td>
-										<td style="text-align: center;">年终流程</td>
+										<td class="dayend_class" id="dayend_year" hidden="" style="text-align:center;">dayend_year</td>
+										<td class="dayend_name" style="text-align: center;">年终流程</td>
 										<td style="text-align: center;"></td>
 										<td style="text-align: center;"></td>
 										<td style="text-align: center;"></td>
-										<td style="text-align: center;"></td>
+										<td style="text-align: center;">
+											<div style="margin-left:23%;">
+												<div class="linkexpre">
+													<i id="year_play" class="year_play fa fa-play-circle" style="font-size:26px;color:#0066FF;" title="开始流程"></i>
+													<i id="year_pause" class="year_pause fa fa-pause-circle" style="font-size:26px;color:#FF7F00;display:none;" title="暂停流程"></i>
+												</div>
+												<div class="linkexpre">
+													<i id="year_stop" class="year_stop fa fa-stop-circle" style="font-size:26px;color:#bebebe;" title="终止流程"></i>
+												</div>
+												<div class="linkexpre" style="padding-top:2px;">
+													<i id="year_running" class="year_running fa fa-telegram" style="font-size:23px;color:#0066FF;" title="查看当前运行状态"></i>
+												</div>
+												<div class="linkexpre">
+													<i id="year_history" class="year_history fa fa-clock-o" style="font-size:26px;color:#D4237A;" title="查看历史"></i>
+												</div>
+											</div>
+										</td>
 									</tr>
 								</tbody>
 							</table>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- start Modal for edit dag_info -->
-	<div class="modal fade" id="edit_dag" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">这里会做成新页面</h4>
-	      </div>
-	      <div class="modal-body">
-	        <table id="dag_expect_info"></table>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<!-- end Modal for edit dag_info -->
 </body>
 
 
-<script type="text/javascript">
-<!-- 更新表格状态-->
-function update_summary_table_state()
-{
-	$.ajax({
-		url : "<%=path%>/#########.do",
-		type : 'get',
-		dataType : 'json',
-		success:function(data)
-		{
-			var html = "";
-			for(var i = 0 ; i < data.length ; i++)
-			{
-				 html += "<tr>";
-		         html +=     "<td id=\"dag_id\" hidden=\"\" style=\"text-align: center;\">" + data[i].dag_id + "</td>"
-		         html +=     "<td id=\"dag_alias\" style=\"text-align: center;\">" + data[i].dag_alias + "</td>"
-		         html +=     "<td style=\"text-align: center;\">" + data[i].owners + "</td>"
-		         html +=     "<td id=\"execution_date\" style=\"text-align: center;\">" + data[i].last_run_date + "</td>"
-		         html +=     "<td id=\"dag_state\" style=\"text-align: center;\">" + data[i].last_run_status + "</td>"
-		         + "<td>" 
-		         if(data[i].last_run_status == '' || data[i].last_run_status == 'failed' || data[i].last_run_status == 'success' )  //表示当前没有发起的任务 或者任务有结束的
-		         {
-		        	  html +=    "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
-			         	"<div class=\"linkexpre\">"+
-			         	"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"tooltip\" title=\"发起流程\"></i>"
-						+"</div>"
-						+"</div><div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\"  style=\"font-size:26px;color:#bebebe\" data-toggle=\"tooltip\" title=\"终止流程\"></i>"
-						+"</div>"
-						+
-						"<div class=\"linkexpre\" style=\"margin-top:2px;\">"+
-					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\"  style=\"font-size:23px;color:#0066FF\" data-toggle=\"tooltip\" title=\"查看当前运行状态\"></i>"
-						+"</div>"
-						+"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\"data-toggle=\"tooltip\" title=\"查看历史\"></i>"
-						+"</div>"
-						+
-						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
-					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\" title=\"编辑流程\"></i>"
-						+"</div>"
-		         }else if (data[i].last_run_status == 'running')  //如果是运行中
-		         {
-		        	 if(data[i].is_paused == 0){  // 0 代表开着的,没有暂停
-		        		html += "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
-				         	"<div class=\"linkexpre\">"+
-							"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-pause-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"tooltip\" title=\"暂停流程\"></i>"
-							+"</div></div>"
-		        	  }else if (data[i].is_paused == 1) //1 代表着暂停中
-		        	  {
-		        		  html += "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
-				         	"<div class=\"linkexpre\">"+
-							"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"tooltip\" title=\"继续流程\"></i>"
-							+"</div></div>" 
-		        	  }
-		        	 	html +=    
-						"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\" style=\"font-size:26px;color:red\" data-toggle=\"tooltip\" title=\"终止流程\"></i>"
-						+"</div>"
-						+
-						"<div class=\"linkexpre\" style=\"margin-top:2px;\">"+
-					    "<i id=\""+data[i].dag_id+"_running\" class=\"_running fa fa-telegram\" style=\"font-size:23px;color:#0066FF\" data-toggle=\"tooltip\" title=\"查看当前运行状态\"></i>"
-						+"</div>"
-						+"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\" data-toggle=\"tooltip\" title=\"查看历史\"></i>"
-						+"</div>"
-						+
-						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
-					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\" title=\"编辑流程\"></i>"
-						+"</div>"
-		         }
-		         html += "</td></tr>";
-		         $(".searchable").html(html)
-			}
-		}
- })
-}
-$(document).ready(function(){ 
-	update_summary_table_state();//页面初始化的时候更新一次
-}); 
-
-  
-setInterval('update_summary_table_state()',2000); 
-
-$(document).click(function(e) { // 在页面任意位置点击而触发此事件
-	 var id =  $(e.target).attr("id");       // e.target表示被点击的目标
-	 //alert(id)
-	})
-
-	
-	//历史记录的跳转
-	$(document).on('click',"._history",function(){
-		var dag_id = $(this).parents("tr").find("#dag_id").text();
-		var execution_date = $(this).parents("tr").find("#execution_date").text();
-		window.open("historyPage.do?dag_id="+ dag_id +"&execution_date="+execution_date.replace(" ","T"));
-	})
-	
-	//当前运行情况的跳转
-	$(document).on('click',"._running",function(){
-		var dag_id = $(this).parents("tr").find("#dag_id").text()
-		var execution_date = $(this).parents("tr").find("#execution_date").text()
-		window.open("runningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
-	})
-	
-	//停止一个流
-	$(document).on('click',"._stop",function(){
-		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
-		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
-		var current_execution_date = $(this).parents("tr").find("#execution_date").text();//获取执行时间
+<script>
+	//启动按钮 
+	$("#daily_play,#jiexi_play,#year_play").on("click",function(){
+		var current_dag_id = $(this).parents("tr").find(".dayend_class").text(); //获取id
+		var current_dag_alias = $(this).parents("tr").find(".dayend_name").text(); //获取流程的中文名
+		swal_message = "请再次确认是否立即启动\""+current_dag_alias+"\"？"; 
 		swal({
             title: "",
-            text: "请再次确认是否立即停止"+current_dag_alias+"流程？",
+            text: swal_message,
             type: "warning",
             showCancelButton: true,
             confirmButtonText: "是",
             cancelButtonText: "否", 
             confirmButtonColor:"#ec6c62"
-        }, function(isConfirm){
-        	if(isConfirm)
-        	{
-        		 $.ajax({
-     				url :  'postStopAirflow.do',
-     				type : 'post',
-     				data:{"dag_id":current_dag_id,"execution_date":current_execution_date},
-     				dataType : 'json',
-     				success : function(result) {
-     					
-     				},
-     				error : function(errmsg) {
-     				}
-     			})
-        	}
+        }, 
+        function(isConfirm)
+        {
+        	  if (isConfirm) 
+        	  {
+        		  
+        	  } 
         });
 	})
 	
-    //启动和暂停按钮的处理
-	$(document).on('click',"._play",function(){
-		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
-		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
-		var current_dag_state = $(this).parents("tr").find("#dag_state").text();//获取当前流程的状态便于发起流程
-		var is_pause = $(this).hasClass("fa-pause-circle");  //是否有暂停元素
-		var is_start = $(this).hasClass("fa-play-circle");  //是否有开始元素
-		var Message = "";
-		var url = "";   //发给哪个地址
-		var isshowBtn=0; //确定在ajax回调成功后修改ICON
-		if(is_pause == true && current_dag_state == 'running' ){  //如果是暂停按钮亮着，说明在跑，按了以后要变开始就是暂停状态
-			Message="请再次确认是否立即暂停"+current_dag_alias+"流程？";
-			isshowBtn = 1;
-			//$("#"+current_dag_id+"_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
-			url="postPauseAirflow.do";
-			
-		}else if (is_start == true && current_dag_state == 'running' ) //按了继续，但是dag是运行态
-		{
-			Message="请再次确认是否立即恢复"+current_dag_alias+"流程？";
-			//$("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
-			isshowBtn=2;
-			url="postResumeAirflow.do";
-		}
-		if(is_start == true && (current_dag_state == 'failed' ||  current_dag_state == '' || current_dag_state == 'success'  ) ){ //发起新任务
-			Message = "请再次确认是否立即启动"+current_dag_alias+"流程？";
-			//$("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
-			isshowBtn=3;
-			url = "postRunAirflow.do";
-		}
-		swal({
-	            title: "",
-	            text: Message,
-	            type: "warning",
-	            showCancelButton: true,
-	            confirmButtonText: "是",
-	            cancelButtonText: "否", 
-	            confirmButtonColor:"#ec6c62"
-	        }, 
-	        function(isConfirm)
-	        {
-	        	  if (isConfirm) 
-	        	  {
-	        		  $.ajax({
-	        				url :  url,
-	        				type : 'post',
-	        				data:{"dag_id":current_dag_id},
-	        				dataType : 'json',
-	        				success : function(result) {
-	        					  if(result != 'undefined' || result != null){
-	        					  		$("#"+current_dag_id+"_stop").css("color","red");
-	        					  		$("#"+current_dag_id+"_running").attr("style","font-size:23px;color:#0066FF");
-	        					  }
-	        					  else{
-		        						alert("发生IO异常");
-		        					}
-	        					  if (isshowBtn == 1)
-	        					  {
-	        						  $("#"+current_dag_id+"_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
-	        					  }else if ( isshowBtn == 2 )
-	        					  {
-	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
-	        					  }else if ( isshowBtn == 3 )
-	        					  {
-	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
-	        					  }
-	        					  
-	        					  
-	        				},
-	        				error : function(errmsg) {
-
-	        				}
-	        			})
-	        	  } 
-	        });	
+	//跳转按钮
+	$("#daily_running,#jiexi_running,#year_running").on("click",function(){
+		var current_dag_id = $(this).parents("tr").find(".dayend_class").text(); //获取id
+		window.open("dailyRunningPage.do?current_dag_id="+current_dag_id);
 	})
-	
-
-function ajax(url, param, type) {
-         return $.ajax({
-         url: url,
-         data: param || {},
-         type: type || 'GET'
-         });
-}
-
-function handleAjax(url, param, type) {
-	 return ajax(url, param, type).then(function(resp){
-	 // 成功回调
-    if(resp.result){
-    return resp.data; // 直接返回要处理的数据，作为默认参数传入之后done()方法的回调
-    }
-    else{
-    return $.Deferred().reject(resp.msg); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
-    }
-}, function(err){
-//失败回调
-	console.log(err.status); // 打印状态码
-	});
-}
 </script>
+
 </html>
