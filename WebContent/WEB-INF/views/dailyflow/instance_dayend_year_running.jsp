@@ -323,7 +323,7 @@ body{margin:0;padding:0;}
         <img id="u486_seg2" class="img" src="dailyimg/u86_seg2.png"/>
         <img id="u486_seg3" class="img" src="dailyimg/u84_seg1.png"/>
         <img id="u486_seg4" class="img" src="dailyimg/u84_seg2.png" alt="u486_seg4"/>
-        <img id="u486_seg5" class="img" src="dailyimg/u56_seg3.png" alt="u486_seg5"/>aaa
+        <img id="u486_seg5" class="img" src="dailyimg/u56_seg3.png" alt="u486_seg5"/>
       </div>
 
       <!-- Unnamed (Connector) -->
