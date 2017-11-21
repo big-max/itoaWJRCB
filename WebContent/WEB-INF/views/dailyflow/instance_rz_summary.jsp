@@ -27,7 +27,7 @@
 }
 .linkexpre{
 	float:left;
-	margin-left:10px;
+	margin-left:25px;
 }
 i:hover{
 	cursor:pointer;
@@ -59,24 +59,6 @@ i:hover{
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span12">
-					<div class="widget-box collapsible">
-						<div class="widget-title">
-							<a data-toggle="collapse" href="#collapseOne">
-								<span class="icon"> <i class="icon-arrow-right"></i></span>
-								<h5>说明：</h5>
-							</a>
-						</div>
-						<div id="collapseOne" class="collapse in">
-							<div class="widget-content">日终流程场景一览表</div>							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
 					<div class="columnauto">
 						<div class="widget-box nostyle">
 							<table id="sel_tab" class="table table-bordered with-check table-hover no-search no-select">
@@ -90,10 +72,8 @@ i:hover{
 										<th style="text-align: center;width:25%;">操作链接</th>
 									</tr>
 								</thead>
-								
 								<tbody class="searchable">
 									<tr>
-										<td class="dayend_class" id="dayend_daily" hidden="" style="text-align:center;">dayend_daily</td>
 										<td class="dayend_name" style="text-align: center;">日终流程</td>
 										<td style="text-align: center;"></td>
 										<td style="text-align: center;"></td>
@@ -104,9 +84,9 @@ i:hover{
 													<i id="daily_play" class="daily_play fa fa-play-circle" style="font-size:26px;color:#0066FF;" title="开始流程"></i>
 													<i id="daily_pause" class="daily_pause fa fa-pause-circle" style="font-size:26px;color:#FF7F00;display:none;" title="暂停流程"></i>
 												</div>
-												<div class="linkexpre">
+												<!-- <div class="linkexpre">
 													<i id="daily_stop" class="daily_stop fa fa-stop-circle" style="font-size:26px;color:#bebebe;" title="终止流程"></i>
-												</div>
+												</div> -->
 												<div class="linkexpre" style="padding-top:2px;">
 													<i id="daily_running" class="daily_running fa fa-telegram" style="font-size:23px;color:#0066FF;" title="查看当前运行状态"></i>
 												</div>
@@ -116,7 +96,7 @@ i:hover{
 											</div>
 										</td>
 									</tr>
-									<tr>
+									<!-- <tr>
 										<td class="dayend_class" id="dayend_jiexi" hidden="" style="text-align:center;">dayend_jiexi</td>
 										<td class="dayend_name" style="text-align: center;">结息流程</td>
 										<td style="text-align: center;"></td>
@@ -139,8 +119,8 @@ i:hover{
 												</div>
 											</div>
 										</td>
-									</tr>	
-									<tr>
+									</tr> -->	
+									<!-- <tr>
 										<td class="dayend_class" id="dayend_year" hidden="" style="text-align:center;">dayend_year</td>
 										<td class="dayend_name" style="text-align: center;">年终流程</td>
 										<td style="text-align: center;"></td>
@@ -163,7 +143,25 @@ i:hover{
 												</div>
 											</div>
 										</td>
+									</tr> -->
+								</tbody>
+							</table>
+							
+							<!-- 日终事件处理 -->
+							<div style="margin-top:20px;"></div>
+							<table id="rz_event" class="table table-bordered with-check table-hover no-search no-select">
+								<thead>
+									<tr>
+										<th style="font-size:13px;" colspan="2">日终事件处理</th>
 									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${rzEvent }" var="each">
+										<tr>
+											<td style="text-align: center;width:5%;">${each.num }</td>
+											<td>${each.log }</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -176,29 +174,6 @@ i:hover{
 
 
 <script>
-	//启动按钮 
-	$("#daily_play,#jiexi_play,#year_play").on("click",function(){
-		var current_dag_id = $(this).parents("tr").find(".dayend_class").text(); //获取id
-		var current_dag_alias = $(this).parents("tr").find(".dayend_name").text(); //获取流程的中文名
-		swal_message = "请再次确认是否立即启动\""+current_dag_alias+"\"？"; 
-		swal({
-            title: "",
-            text: swal_message,
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonText: "是",
-            cancelButtonText: "否", 
-            confirmButtonColor:"#ec6c62"
-        }, 
-        function(isConfirm)
-        {
-        	  if (isConfirm) 
-        	  {
-        		  
-        	  } 
-        });
-	})
-	
 	//跳转按钮
 	$("#daily_running,#jiexi_running,#year_running").on("click",function(){
 		var current_dag_id = $(this).parents("tr").find(".dayend_class").text(); //获取id
