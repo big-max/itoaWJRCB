@@ -4,6 +4,8 @@
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 
+<link type="text/css" title="www" rel="stylesheet" href="${root}/css/bootstrap.min.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="${root}/css/bootstrap-theme.min.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/dailycss/jquery-ui-themes.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/dailycss/axure_rp_page.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/dailycss/datastyles.css"/>

@@ -659,6 +659,273 @@ body{margin:0;padding:0;}
         </div>
       </div>
     </div>
+    
+    
+    <script>
+    //给每个g添加id
+	/*$(document).ready(function(){
+		//定义一个数组存放所有id值
+		 var arrIdVal = ["pprc_back_start","pprc_back_workdb_backup","pprc_back_icsdb_backup","pprc_back_cardb_backup",
+		                "pprc_back_cmisdb_backup","pprc_back_backup_end","pprc_back_p770c2_cardstop",
+		                "pprc_back_p770c2_icsstop","pprc_back_p770c1_cmisstop","pprc_back_p770c1_workstop",
+		                "pprc_back_ds8k_lunstart","pprc_back_p770a1_lunread_suspend","pprc_back_p770b1_lunread_suspend",
+		                "pprc_back_p770a2_lunread_suspend","pprc_back_p770b2_lunread_suspend","pprc_back_p770a1_lunread_recover",
+		                "pprc_back_p770b1_lunread_recover","pprc_back_p770a2_lunread_recover","pprc_back_p770b2_lunread_recover",
+		                "pprc_back_ds8k_lunstop","pprc_back_active_vg_start","pprc_back_p770a1_activevg",
+		                "pprc_back_p770b1_activevg","pprc_back_p770a2_activevg","pprc_back_p770b2_activevg",
+		                "pprc_back_active_vg_end","pprc_back_syncha_start","pprc_back_p770a1_syncHA",
+		                "pprc_back_p770a2_syncHA","pprc_back_syncha_stop","pprc_back_p770a1ha_start",
+		                "pprc_back_p770b1ha_start","pprc_back_p770a2ha_start","pprc_back_p770b2ha_start",
+		                "pprc_back_ywcheck","pprc_back_startreplic","pprc_back_p770a1_enable_copy_replicationstart",
+		                "pprc_back_p770b1_enable_copy_replicationstart","pprc_back_p770a2_enable_copy_replicationstart",
+		                "pprc_back_p770b2_enable_copy_replicationstart","pprc_back_p770a1_replicationstart",
+		                "pprc_back_p770b1_replicationstart","pprc_back_p770a2_replicationstart",
+		                "pprc_back_p770b2_replicationstart","pprc_back_end"];		
+		var nodelen = $("g.node").length;
+		//遍历每个g，赋值id
+		for(var i = 0 ; i < nodelen ; i++)
+		{
+			var idname = arrIdVal[i];
+			var datatar = "#" + idname;
+			$("g.node").eq(i).attr("id",idname);
+			$("g.node").eq(i).attr("data-toggle","modal");
+		}
+		
+		//添加执行时间
+		var execution_date = getUrlParam('execution_date');
+		var execution_date_show = execution_date.replace("T"," ");
+		$("#exe_date").text(execution_date_show);
+	}) */
+	
+	
+	var taskid;
+	$(document).ready(function(){
+		$(".ax_default").on("mouseover",function(e){
+			taskid = $(this).find("span:eq(0)").html();//获取要点击任务框的id 
+		})
+		
+		$('.ax_default').contextPopup({
+	          items: [
+	            {label:'查看日志', icon:'img/viewlog.png', action:function() 
+	            	{ 
+	            		var execution_date = getUrlParam('execution_date'); //获取url 的值
+	            		var data ={"dag_id":"dag_pingshi","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	            		$.ajax({
+	           				url : '<%=path%>/getTaskLog.do',
+	           				data:data,
+	           				type : 'post',
+	           				dataType : 'json',
+	           				success:function(result) 
+	           				{
+	           					$("#showlog").modal();
+	           					$("textarea").text(result.msg);
+	           				},
+	           			})
+	            	} 
+	            },
+	            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
+	            	{ 
+		            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+		            	var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	            		var img = $("#progressImgage");
+	         	      	var mask = $("#maskOfProgressImage");
+		            	img.show().css({
+		     	           "position": "fixed",
+		     	           "top": "50%",
+		     	           "left": "50%",
+		     	           "margin-top": function () { return -1 * img.height() / 2; },
+		     	           "margin-left": function () { return -1 * img.width() / 2; }
+		     	       });
+		     	       mask.show().css("opacity", "0.1");
+		     	      $.ajax({
+		     	    	  url : '<%=path%>/makeNodeClear.do',
+		        			data:data,
+		        			type : 'post',
+		        			dataType : 'json',
+		        			success:function(data)
+		        			{
+		        				console.info(data);
+		        			}
+		     	       });
+		     	       var makeClear = setInterval(function(){$.ajax({
+		          			url : '<%=path%>/queryTaskState.do',
+		        			data:data,
+		        			type : 'post',
+		        			dataType : 'json',
+		        			success:function(data)
+		        			{
+		        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
+		        		    		   //console.info("running");
+		        		    		   img.hide();
+		        			           mask.hide();
+		        			           var mynode = d3.select('#' + taskid + ' rect');
+		        			           mynode.style("stroke", "white") ;
+		        			           clearInterval(makeClear);
+		        		    	   }
+		        			},
+		        			error:function(data)
+		        			{
+		        				 console.info("请检查应用服务器是否正常！");
+		        		    	 img.hide();
+		        		         mask.hide();
+		        			}
+	        		   })},3000);
+		            	
+	            	} 
+	            },
+	            {label:'确认成功', icon:'img/comsucc.png', action:function() 
+	            	{ 
+		            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+		            	swal({ 
+		            	    title: "", 
+		            	    text: "您确定要将任务置为成功?", 
+		            	    type: "warning", 
+		            	    showCancelButton: true, 
+		            	    closeOnConfirm: false, 
+		            	    confirmButtonText: "确认",  
+		            	    cancelButtonText: "取消",  
+		            	    confirmButtonColor: "#ec6c62" 
+		            	}, function(isConfirm) { 
+		            		if(isConfirm)
+		            		{
+		            			var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            			$.ajax({
+		            				url : '<%=path%>/markTaskSuccess.do',
+		            				data:data,
+		            				type : 'post',
+		            				dataType : 'json',
+		            				success:function(result)
+		            				{
+		            					if(result.status == 0)
+		            					{
+		            						swal.close();
+		            						$("#"+taskid).children("rect").css("stroke", "#32CD32");
+		            					} 
+		            				},
+		            			})
+		            		}
+		            	});
+	          	 	} 
+	            } 
+	          ]
+	        });
+		})
+	</script>
+	
+	<script type="text/javascript">
+	
+	$(".ax_default").tooltip({
+	      html: true,
+	      container: "body",
+	    });
+	var dag_id = "wjrz_dev";
+	//var execution_date = getUrlParam('execution_date');
+	var execution_date = "2017-11-21T11:23:28";
+	var data ={"dag_id":dag_id,"execution_date":execution_date};
+	
+	setInterval(function(){getAjax("pingshi_runningData.do",data,"post")},3000);
+	
+	function update_nodes_states(task_instances) {
+			$.each(task_instances,function(idx,obj){
+	            var task_div = $('.' + obj.task_id);
+	            if(obj.state == 'failed') //如果失败
+	            {
+	            	var tipcontent ="预计开始时间：" + obj.expected_starttime + "," +
+	            					"实际开始时间：" + obj.start_Date         + "," +
+	            					"预计结束时间：" + obj.expected_endtime   + "," + 
+	            					"实际结束时间：" + obj.end_Date           + "," +
+	            					"预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
+	            					"实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+	            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","#FF4500") ;
+	            }else if (obj.state == 'success') //如果成功
+	            {
+	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+									 "实际开始时间：" + obj.start_Date         + "," +
+									 "预计结束时间：" + obj.expected_endtime   + "," + 
+									 "实际结束时间：" + obj.end_Date           + "," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","#32CD32") ;
+	            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
+	            {
+	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+									 "实际开始时间：" + obj.start_Date         + "," +
+									 "预计结束时间：" + obj.expected_endtime   + "," + 
+									 "实际结束时间：" + obj.end_Date           + "," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","white") ;
+	            }else if (obj.state == 'running')
+	            {
+	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+									 "实际开始时间：" + obj.start_Date         + "," +
+									 "预计结束时间：" + obj.expected_endtime   + "," + 
+									 "实际结束时间：" + obj.end_Date           + "," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","#3399CC") ;
+	            }else if (obj.state == 'done') //如果处于做完待确认的状态
+	            {
+	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+									 "实际开始时间：" + obj.start_Date         + "," +
+									 "预计结束时间：" + obj.expected_endtime   + "," + 
+									 "实际结束时间：" + obj.end_Date           + "," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","#FF8C00") ;
+	            }
+			})
+	    }
+	    
+	//获取url中的参数
+	function getUrlParam(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	    if (r != null) return unescape(r[2]); return null; //返回参数值
+	}
+	
+	function ajax(url, param, type) {
+	    return $.ajax({
+	    url: url,
+	    data: param || {},
+	    type: type || 'GET',
+	    cache:false
+	    });
+	}
+	function getAjax(url,param,type){
+		function handleAjax(url, param, type) {
+		 return ajax(url, param, type).then(function(resp){
+				// 成功回调
+				if(resp){
+					console.info(resp.dag_tasks);
+					update_nodes_states(resp.dag_tasks);
+				}
+				else{
+					return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
+				}
+			}, function(err){
+				//失败回调
+				console.log(err); // 打印状态码
+				});
+			}
+		handleAjax(url,param,type);
+	}
+	</script>
 </body>
 
 </html>
