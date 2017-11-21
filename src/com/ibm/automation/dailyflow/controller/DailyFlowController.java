@@ -33,7 +33,7 @@ public class DailyFlowController {
 	
 	@RequestMapping("/dailyflow.do")
 	public String dailyflow(HttpServletRequest request, HttpSession session) {
-		return "dailyflow/instance_dayend_summary";
+		return "dailyflow/instance_rz_summary";
 	}
 	
 	@RequestMapping("/dailyRunningPage.do")
@@ -42,13 +42,13 @@ public class DailyFlowController {
 		String link = null;
 		switch (current_dag_id) {
 		case "dayend_daily":
-			link = "dailyflow/instance_dayend_daily_running";
+			link = "dailyflow/instance_rz_pingshi_running";
 			break;
 		case "dayend_jiexi":
-			link = "dailyflow/instance_dayend_jiexi_running";
+			link = "dailyflow/instance_rz_jiexi_running";
 			break;
 		case "dayend_year":
-			link = "dailyflow/instance_dayend_year_running";
+			link = "dailyflow/instance_rz_nianzhong_running";
 			break;
 		default:
 			link = null;
