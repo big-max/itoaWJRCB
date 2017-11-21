@@ -23,6 +23,9 @@ body{margin:0;padding:0;}
 	height:calc(100vh - 50px); 
 	background-color:#F5F3F4;
 } 
+.connector>img {
+	max-width:400px;
+}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -358,93 +361,93 @@ body{margin:0;padding:0;}
       </div>
       
       
-      <div id="u40" class="ax_default connector">
+      <div id="u40" class="connector">
         <img id="u40_seg0" class="img" src="dailyimg/u40_seg0.png"/>
         <img id="u40_seg1" class="img" src="dailyimg/u40_seg1.png"/>
         <img id="u40_seg2" class="img" src="dailyimg/u40_seg2.png"/>
         <img id="u40_seg3" class="img" src="dailyimg/u40_seg3.png"/>
       </div>
 
-      <div id="u42" class="ax_default connector">
+      <div id="u42" class="connector">
         <img id="u42_seg0" class="img " src="dailyimg/u42_seg0.png"/>
         <img id="u42_seg1" class="img " src="dailyimg/u42_seg1.png"/>
         <img id="u42_seg2" class="img " src="dailyimg/u42_seg2.png"/>
         <img id="u42_seg3" class="img " src="dailyimg/u42_seg3.png"/>
       </div>
 
-      <div id="u44" class="ax_default connector">
+      <div id="u44" class="connector">
         <img id="u44_seg0" class="img " src="dailyimg/u42_seg0.png"/>
         <img id="u44_seg1" class="img " src="dailyimg/u44_seg1.png"/>
         <img id="u44_seg2" class="img " src="dailyimg/u42_seg2.png"/>
         <img id="u44_seg3" class="img " src="dailyimg/u42_seg3.png"/>
       </div>
 
-      <div id="u46" class="ax_default connector">
+      <div id="u46" class="connector">
         <img id="u46_seg0" class="img " src="dailyimg/u46_seg0.png"/>
         <img id="u46_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u48" class="ax_default connector">
+      <div id="u48" class="connector">
         <img id="u48_seg0" class="img " src="dailyimg/u48_seg0.png"/>
         <img id="u48_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u50" class="ax_default connector">
+      <div id="u50" class="connector">
         <img id="u50_seg0" class="img " src="dailyimg/u50_seg0.png"/>
         <img id="u50_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u56" class="ax_default connector">
+      <div id="u56" class="connector">
         <img id="u56_seg0" class="img " src="dailyimg/u56_seg0.png"/>
         <img id="u56_seg1" class="img " src="dailyimg/u56_seg1.png"/>
         <img id="u56_seg2" class="img " src="dailyimg/u56_seg2.png"/>
         <img id="u56_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u58" class="ax_default connector">
+      <div id="u58" class="connector">
         <img id="u58_seg0" class="img " src="dailyimg/u58_seg0.png"/>
         <img id="u58_seg1" class="img " src="dailyimg/u58_seg1.png"/>
         <img id="u58_seg2" class="img " src="dailyimg/u58_seg2.png"/>
         <img id="u58_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u74" class="ax_default connector">
+      <div id="u74" class="connector">
         <img id="u74_seg0" class="img " src="dailyimg/u74_seg0.png"/>
         <img id="u74_seg1" class="img " src="dailyimg/u74_seg1.png"/>
         <img id="u74_seg2" class="img " src="dailyimg/u74_seg2.png"/>
         <img id="u74_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u76" class="ax_default connector">
+      <div id="u76" class="connector">
         <img id="u76_seg0" class="img " src="dailyimg/u76_seg0.png"/>
         <img id="u76_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u78" class="ax_default connector">
+      <div id="u78" class="connector">
         <img id="u78_seg0" class="img " src="dailyimg/u78_seg0.png"/>
         <img id="u78_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u80" class="ax_default connector">
+      <div id="u80" class="connector">
         <img id="u80_seg0" class="img " src="dailyimg/u50_seg0.png"/>
         <img id="u80_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u82" class="ax_default connector">
+      <div id="u82" class="connector">
         <img id="u82_seg0" class="img " src="dailyimg/u82_seg0.png"/>
         <img id="u82_seg1" class="img " src="dailyimg/u82_seg1.png"/>
         <img id="u82_seg2" class="img " src="dailyimg/u58_seg2.png"/>
         <img id="u82_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u84" class="ax_default connector">
+      <div id="u84" class="connector">
         <img id="u84_seg0" class="img " src="dailyimg/u84_seg0.png"/>
         <img id="u84_seg1" class="img " src="dailyimg/u84_seg1.png"/>
         <img id="u84_seg2" class="img " src="dailyimg/u84_seg2.png"/>
         <img id="u84_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u86" class="ax_default connector">
+      <div id="u86" class="connector">
         <img id="u86_seg0" class="img " src="dailyimg/u86_seg0.png"/>
         <img id="u86_seg1" class="img " src="dailyimg/u86_seg1.png"/>
         <img id="u86_seg2" class="img " src="dailyimg/u86_seg2.png"/>
@@ -453,206 +456,206 @@ body{margin:0;padding:0;}
         <img id="u86_seg5" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u88" class="ax_default connector">
+      <div id="u88" class="connector">
         <img id="u88_seg0" class="img " src="dailyimg/u76_seg0.png"/>
         <img id="u88_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u90" class="ax_default connector">
+      <div id="u90" class="connector">
         <img id="u90_seg0" class="img " src="dailyimg/u78_seg0.png"/>
         <img id="u90_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u92" class="ax_default connector">
+      <div id="u92" class="connector">
         <img id="u92_seg0" class="img " src="dailyimg/u50_seg0.png"/>
         <img id="u92_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u112" class="ax_default connector">
+      <div id="u112" class="connector">
         <img id="u112_seg0" class="img " src="dailyimg/u112_seg0.png"/>
         <img id="u112_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u114" class="ax_default connector">
+      <div id="u114" class="connector">
         <img id="u114_seg0" class="img " src="dailyimg/u76_seg0.png"/>
         <img id="u114_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u116" class="ax_default connector">
+      <div id="u116" class="connector">
         <img id="u116_seg0" class="img " src="dailyimg/u78_seg0.png"/>
         <img id="u116_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u118" class="ax_default connector">
+      <div id="u118" class="connector">
         <img id="u118_seg0" class="img " src="dailyimg/u50_seg0.png"/>
         <img id="u118_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u120" class="ax_default connector">
+      <div id="u120" class="connector">
         <img id="u120_seg0" class="img " src="dailyimg/u120_seg0.png"/>
         <img id="u120_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u122" class="ax_default connector">
+      <div id="u122" class="connector">
         <img id="u122_seg0" class="img " src="dailyimg/u122_seg0.png"/>
         <img id="u122_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u124" class="ax_default connector">
+      <div id="u124" class="connector">
         <img id="u124_seg0" class="img " src="dailyimg/u124_seg0.png"/>
         <img id="u124_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u126" class="ax_default connector">
+      <div id="u126" class="connector">
         <img id="u126_seg0" class="img " src="dailyimg/u48_seg0.png"/>
         <img id="u126_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u128" class="ax_default connector">
+      <div id="u128" class="connector">
         <img id="u128_seg0" class="img " src="dailyimg/u122_seg0.png"/>
         <img id="u128_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u130" class="ax_default connector">
+      <div id="u130" class="connector">
         <img id="u130_seg0" class="img " src="dailyimg/u130_seg0.png"/>
         <img id="u130_seg1" class="img " src="dailyimg/u130_seg1.png"/>
         <img id="u130_seg2" class="img " src="dailyimg/u130_seg2.png"/>
         <img id="u130_seg3" class="img " src="dailyimg/u130_seg3.png"/>
       </div>
 
-      <div id="u132" class="ax_default connector">
+      <div id="u132" class="connector">
         <img id="u132_seg0" class="img " src="dailyimg/u132_seg0.png"/>
         <img id="u132_seg1" class="img " src="dailyimg/u132_seg1.png"/>
       </div>
 
-      <div id="u134" class="ax_default connector">
+      <div id="u134" class="connector">
         <img id="u134_seg0" class="img " src="dailyimg/u134_seg0.png"/>
         <img id="u134_seg1" class="img " src="dailyimg/u134_seg1.png"/>
       </div>
 
-      <div id="u136" class="ax_default connector">
+      <div id="u136" class="connector">
         <img id="u136_seg0" class="img " src="dailyimg/u132_seg0.png"/>
         <img id="u136_seg1" class="img " src="dailyimg/u132_seg1.png"/>
       </div>
 
-      <div id="u138" class="ax_default connector">
+      <div id="u138" class="connector">
         <img id="u138_seg0" class="img " src="dailyimg/u138_seg0.png"/>
         <img id="u138_seg1" class="img " src="dailyimg/u138_seg1.png"/>
       </div>
 
-      <div id="u144" class="ax_default connector">
+      <div id="u144" class="connector">
         <img id="u144_seg0" class="img " src="dailyimg/u144_seg0.png"/>
         <img id="u144_seg1" class="img " src="dailyimg/u144_seg1.png"/>
         <img id="u144_seg2" class="img " src="dailyimg/u144_seg2.png"/>
         <img id="u144_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u146" class="ax_default connector">
+      <div id="u146" class="connector">
         <img id="u146_seg0" class="img " src="dailyimg/u144_seg0.png"/>
         <img id="u146_seg1" class="img " src="dailyimg/u146_seg1.png"/>
         <img id="u146_seg2" class="img " src="dailyimg/u144_seg2.png"/>
         <img id="u146_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u148" class="ax_default connector">
+      <div id="u148" class="connector">
         <img id="u148_seg0" class="img " src="dailyimg/u144_seg0.png"/>
         <img id="u148_seg1" class="img " src="dailyimg/u148_seg1.png"/>
         <img id="u148_seg2" class="img " src="dailyimg/u144_seg2.png"/>
         <img id="u148_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u162" class="ax_default connector">
+      <div id="u162" class="connector">
         <img id="u162_seg0" class="img " src="dailyimg/u144_seg0.png"/>
         <img id="u162_seg1" class="img " src="dailyimg/u162_seg1.png"/>
         <img id="u162_seg2" class="img " src="dailyimg/u144_seg2.png"/>
         <img id="u162_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u164" class="ax_default connector">
+      <div id="u164" class="connector">
         <img id="u164_seg0" class="img " src="dailyimg/u164_seg0.png"/>
         <img id="u164_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u166" class="ax_default connector">
+      <div id="u166" class="connector">
         <img id="u166_seg0" class="img " src="dailyimg/u166_seg0.png"/>
         <img id="u166_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u168" class="ax_default connector">
+      <div id="u168" class="connector">
         <img id="u168_seg0" class="img " src="dailyimg/u164_seg0.png"/>
         <img id="u168_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u170" class="ax_default connector">
+      <div id="u170" class="connector">
         <img id="u170_seg0" class="img " src="dailyimg/u164_seg0.png"/>
         <img id="u170_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u172" class="ax_default connector">
+      <div id="u172" class="connector">
         <img id="u172_seg0" class="img " src="dailyimg/u172_seg0.png"/>
         <img id="u172_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u176" class="ax_default connector">
+      <div id="u176" class="connector">
         <img id="u176_seg0" class="img " src="dailyimg/u176_seg0.png"/>
         <img id="u176_seg1" class="img " src="dailyimg/u176_seg1.png"/>
         <img id="u176_seg2" class="img " src="dailyimg/u176_seg2.png"/>
         <img id="u176_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u178" class="ax_default connector">
+      <div id="u178" class="connector">
         <img id="u178_seg0" class="img " src="dailyimg/u82_seg0.png"/>
         <img id="u178_seg1" class="img " src="dailyimg/u178_seg1.png"/>
         <img id="u178_seg2" class="img " src="dailyimg/u58_seg2.png"/>
         <img id="u178_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u180" class="ax_default connector">
+      <div id="u180" class="connector">
         <img id="u180_seg0" class="img " src="dailyimg/u82_seg0.png"/>
         <img id="u180_seg1" class="img " src="dailyimg/u180_seg1.png"/>
         <img id="u180_seg2" class="img " src="dailyimg/u58_seg2.png"/>
         <img id="u180_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u182" class="ax_default connector">
+      <div id="u182" class="connector">
         <img id="u182_seg0" class="img " src="dailyimg/u182_seg0.png"/>
         <img id="u182_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u184" class="ax_default connector">
+      <div id="u184" class="connector">
         <img id="u184_seg0" class="img " src="dailyimg/u120_seg0.png"/>
         <img id="u184_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u186" class="ax_default connector">
+      <div id="u186" class="connector">
         <img id="u186_seg0" class="img " src="dailyimg/u186_seg0.png"/>
         <img id="u186_seg1" class="img " src="dailyimg/u186_seg1.png"/>
         <img id="u186_seg2" class="img " src="dailyimg/u186_seg2.png"/>
         <img id="u186_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u188" class="ax_default">
+      <div id="u188" style="text-align:center;">
         <div id="u188_div"></div>
         <div id="u189" class="text">
           <p><span>未开始</span></p>
         </div>
       </div>
 
-      <div id="u190" class="ax_default">
+      <div id="u190" style="text-align:center;">
         <div id="u190_div"></div>
         <div id="u191" class="text">
           <p><span>运行中</span></p>
         </div>
       </div>
 
-      <div id="u192" class="ax_default">
+      <div id="u192" style="text-align:center;">
         <div id="u192_div"></div>
         <div id="u193" class="text">
           <p><span>成功</span></p>
         </div>
       </div>
 
-      <div id="u194" class="ax_default">
+      <div id="u194" style="text-align:center;">
         <div id="u194_div"></div>
         <div id="u195" class="text">
           <p><span>失败</span></p>
@@ -863,7 +866,7 @@ body{margin:0;padding:0;}
 									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                task_div.attr("data-original-title",format_content); 
-	                task_div.find("div:eq(0)").css("border-color","white") ;
+	                task_div.find("div:eq(0)").css("border-color","yellow") ;
 	            }else if (obj.state == 'running')
 	            {
 	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
