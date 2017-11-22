@@ -405,7 +405,7 @@
 		</ul>
 		
 		
-		<!-- POC模块 -->
+		<!-- POC模块 
 		<div class="jquery-accordion-menu-footer tooltipa1" id="poccenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="POC场景模块">
 			<img class="forrotate3" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
 		</div>
@@ -452,6 +452,7 @@
 			    </a>
 			</li>
 		</ul>
+		-->
 		
 		
 		

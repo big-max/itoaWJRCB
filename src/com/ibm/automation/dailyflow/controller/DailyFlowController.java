@@ -8,10 +8,13 @@ import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.ObjectUtils.Null;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,60 +44,48 @@ public class DailyFlowController {
 	Properties rzprop = PropertyUtil.getResourceFile("config/properties/rzdate.properties");
 	ObjectMapper om = new ObjectMapper();
 	
-	// 运行时页面ajax
-	@RequestMapping("/pingshi_runningData.do")
-	@ResponseBody
-	public ObjectNode dagrunning_data(HttpServletRequest request, HttpSession session) {
-		Map<String, String> map = new HashMap<String, String>();
-		String dag_id = request.getParameter("dag_id");
-		// 2016-01-01T12:12:12 to 2016-01-01 12:12:12
-		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
-		//System.out.println(execution_date + " -- " + dag_id);
-		map.put("dag_id", dag_id);
-		map.put("execution_date", execution_date);// "2017-09-13
-		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
-		logger.info("获取到的task个数是" + taskInstanceList.size());
-		JSONArray array = JSONArray.fromObject(taskInstanceList);
-		ObjectNode on = om.createObjectNode();
-		on.put("dag_id", dag_id);
-		on.putPOJO("dag_tasks", array);
-		//System.out.println(on.toString());
-		return on;
-	}
-	
 	@RequestMapping("/dailyflow.do")
 	public String dailyflow(HttpServletRequest request, HttpSession session) {
 		return "dailyflow/instance_rz_summary";
 	}
 	
 	@RequestMapping("/dailyRunningPage.do")
-	public String dailyrunning_page(HttpServletRequest request, HttpSession session) {
-		String date_md = request.getParameter("date_md");
-		//获取配置文件中结息和年终的日期(格式：month-day)
-		String jxString = rzprop.getProperty("jiexi");
-		String nzString = rzprop.getProperty("nianzhong");
-		
-		String[] jxdate = jxString.split(",");
-		String[] nzdate = nzString.split(",");
-		
-		
+	public String dailyrunning_page(@RequestParam Map<String, String> dag, Model model) {
+		String exe_time_str = dag.get("execution_date");
 		String link = null;
-		
-		for(int i = 0; i < jxdate.length; i++){
-			if(jxdate[i].equals(date_md)){
-				link = "dailyflow/instance_rz_jiexi_running";
-				break;
+		if( null != exe_time_str){
+			String[] exe_time= exe_time_str.split("T");
+			String[] exe_mon_day = exe_time[0].split("-");
+			
+			model.addAttribute("execution_date", exe_time_str);
+			
+			String execution_time = exe_mon_day[1]+"-"+exe_mon_day[2];
+			logger.info("month is " + exe_mon_day[1] + "; day is " + exe_mon_day[2]);
+			//获取配置文件中结息和年终的日期(格式：month-day)
+			String jxString = rzprop.getProperty("jiexi");
+			String nzString = rzprop.getProperty("nianzhong");
+			
+			String[] jxdate = jxString.split(",");
+			String[] nzdate = nzString.split(",");
+			
+			for(int i = 0; i < jxdate.length; i++){
+				if(jxdate[i].equals(execution_time)){
+					link = "dailyflow/instance_rz_jiexi_running";
+					break;
+				}
 			}
-		}
-		for(int j = 0; j < nzdate.length; j++){
-			if(nzdate[j].equals(date_md)){
-				link = "dailyflow/instance_rz_nianzhong_running";
-				break;
+			for(int j = 0; j < nzdate.length; j++){
+				if(nzdate[j].equals(execution_time)){
+					link = "dailyflow/instance_rz_nianzhong_running";
+					break;
+				}
 			}
-		}
-		
-		if(link == null){
-			link = "dailyflow/instance_rz_pingshi_running";
+			
+			if(link == null){
+				link = "dailyflow/instance_rz_pingshi_running";
+			}
+		}else {
+			link ="dailyflow/instance_rz_summary";
 		}
 		
 		return link;

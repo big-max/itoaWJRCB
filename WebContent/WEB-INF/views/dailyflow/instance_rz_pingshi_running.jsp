@@ -13,7 +13,7 @@
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <jsp:include page="../headerdaily.jsp" flush="true" /> 
-<title>自动化部署平台</title>
+<title>自动化运维平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
 .content {
@@ -26,6 +26,10 @@ body{margin:0;padding:0;}
 .connector>img {
 	max-width:400px;
 }
+.hide{display:none }
+ .progress{z-index: 2000}
+ .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
+ .modal{width:750px;left:43%;}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -36,6 +40,24 @@ body{margin:0;padding:0;}
 </head>
 
 <body>
+	
+	<!-- 日志模态框（Modal） -->
+	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">日志信息</h4>
+				</div>
+				<div class="modal-body">
+					<textarea rows="10" style="width:100%;height:100%;resize:none;"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
     <div id="base">
     
       <div id="u2" class="ax_default 5600501502">
@@ -87,14 +109,14 @@ body{margin:0;padding:0;}
         </div>
       </div>
       
-      <div id="u52" class="ax_default 55241">
+      <div id="u52" class="ax_default 5524">
         <div id="u52_div"></div>
         <div id="u53" class="text">
-          <p><span>5524-1</span></p><p><span>信贷cmis日终处理</span></p>
+          <p><span>5524</span></p><p><span>信贷cmis日终处理</span></p>
         </div>
       </div>
 
-      <div id="u54" class="ax_default 55242">
+      <div id="u54" class="ax_default 5524_2">
         <div id="u54_div"></div>
         <div id="u55" class="text">
           <p><span>5524-2：检查信贷是否具备日终5511条件</span></p>
@@ -662,156 +684,130 @@ body{margin:0;padding:0;}
         </div>
       </div>
     </div>
-    
+    <img id="progressImgage" class="progress hide" style="width:5%;height:5vh;" alt="请稍等，处理中。。。" src="img/process.gif"/>
+    <div id="maskOfProgressImage" class="mask hide"></div>
     
     <script>
-    //给每个g添加id
-	/*$(document).ready(function(){
-		//定义一个数组存放所有id值
-		 var arrIdVal = ["pprc_back_start","pprc_back_workdb_backup","pprc_back_icsdb_backup","pprc_back_cardb_backup",
-		                "pprc_back_cmisdb_backup","pprc_back_backup_end","pprc_back_p770c2_cardstop",
-		                "pprc_back_p770c2_icsstop","pprc_back_p770c1_cmisstop","pprc_back_p770c1_workstop",
-		                "pprc_back_ds8k_lunstart","pprc_back_p770a1_lunread_suspend","pprc_back_p770b1_lunread_suspend",
-		                "pprc_back_p770a2_lunread_suspend","pprc_back_p770b2_lunread_suspend","pprc_back_p770a1_lunread_recover",
-		                "pprc_back_p770b1_lunread_recover","pprc_back_p770a2_lunread_recover","pprc_back_p770b2_lunread_recover",
-		                "pprc_back_ds8k_lunstop","pprc_back_active_vg_start","pprc_back_p770a1_activevg",
-		                "pprc_back_p770b1_activevg","pprc_back_p770a2_activevg","pprc_back_p770b2_activevg",
-		                "pprc_back_active_vg_end","pprc_back_syncha_start","pprc_back_p770a1_syncHA",
-		                "pprc_back_p770a2_syncHA","pprc_back_syncha_stop","pprc_back_p770a1ha_start",
-		                "pprc_back_p770b1ha_start","pprc_back_p770a2ha_start","pprc_back_p770b2ha_start",
-		                "pprc_back_ywcheck","pprc_back_startreplic","pprc_back_p770a1_enable_copy_replicationstart",
-		                "pprc_back_p770b1_enable_copy_replicationstart","pprc_back_p770a2_enable_copy_replicationstart",
-		                "pprc_back_p770b2_enable_copy_replicationstart","pprc_back_p770a1_replicationstart",
-		                "pprc_back_p770b1_replicationstart","pprc_back_p770a2_replicationstart",
-		                "pprc_back_p770b2_replicationstart","pprc_back_end"];		
-		var nodelen = $("g.node").length;
-		//遍历每个g，赋值id
-		for(var i = 0 ; i < nodelen ; i++)
-		{
-			var idname = arrIdVal[i];
-			var datatar = "#" + idname;
-			$("g.node").eq(i).attr("id",idname);
-			$("g.node").eq(i).attr("data-toggle","modal");
-		}
+		var taskid;
+		$(document).ready(function(){
+			
+		$(".ax_default").find("div:eq(0)").css("border-radius","5px");
 		
-		//添加执行时间
-		var execution_date = getUrlParam('execution_date');
-		var execution_date_show = execution_date.replace("T"," ");
-		$("#exe_date").text(execution_date_show);
-	}) */
-	
-	
-	var taskid;
-	$(document).ready(function(){
 		$(".ax_default").on("mouseover",function(e){
-			taskid = $(this).find("span:eq(0)").html();//获取要点击任务框的id 
+			//taskid = $(this).find("span:eq(0)").html();//获取要点击任务框的id 
+			var classes = $(this).attr("class");
+			taskid = classes.split(" ")[1];
 		})
-		
+			
 		$('.ax_default').contextPopup({
 	          items: [
-	            {label:'查看日志', icon:'img/viewlog.png', action:function() 
-	            	{ 
-	            		var execution_date = getUrlParam('execution_date'); //获取url 的值
-	            		var data ={"dag_id":"dag_pingshi","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-	            		$.ajax({
-	           				url : '<%=path%>/getTaskLog.do',
-	           				data:data,
-	           				type : 'post',
-	           				dataType : 'json',
-	           				success:function(result) 
-	           				{
-	           					$("#showlog").modal();
-	           					$("textarea").text(result.msg);
-	           				},
-	           			})
-	            	} 
-	            },
-	            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
-	            	{ 
-		            	var execution_date = getUrlParam('execution_date'); //获取url 的值
-		            	var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-	            		var img = $("#progressImgage");
-	         	      	var mask = $("#maskOfProgressImage");
-		            	img.show().css({
-		     	           "position": "fixed",
-		     	           "top": "50%",
-		     	           "left": "50%",
-		     	           "margin-top": function () { return -1 * img.height() / 2; },
-		     	           "margin-left": function () { return -1 * img.width() / 2; }
-		     	       });
-		     	       mask.show().css("opacity", "0.1");
-		     	      $.ajax({
-		     	    	  url : '<%=path%>/makeNodeClear.do',
-		        			data:data,
-		        			type : 'post',
-		        			dataType : 'json',
-		        			success:function(data)
-		        			{
-		        				console.info(data);
-		        			}
-		     	       });
-		     	       var makeClear = setInterval(function(){$.ajax({
-		          			url : '<%=path%>/queryTaskState.do',
-		        			data:data,
-		        			type : 'post',
-		        			dataType : 'json',
-		        			success:function(data)
-		        			{
-		        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
-		        		    		   //console.info("running");
-		        		    		   img.hide();
-		        			           mask.hide();
-		        			           var mynode = d3.select('#' + taskid + ' rect');
-		        			           mynode.style("stroke", "white") ;
-		        			           clearInterval(makeClear);
-		        		    	   }
-		        			},
-		        			error:function(data)
-		        			{
-		        				 console.info("请检查应用服务器是否正常！");
-		        		    	 img.hide();
-		        		         mask.hide();
-		        			}
-	        		   })},3000);
-		            	
-	            	} 
-	            },
-	            {label:'确认成功', icon:'img/comsucc.png', action:function() 
-	            	{ 
-		            	var execution_date = getUrlParam('execution_date'); //获取url 的值
-		            	swal({ 
-		            	    title: "", 
-		            	    text: "您确定要将任务置为成功?", 
-		            	    type: "warning", 
-		            	    showCancelButton: true, 
-		            	    closeOnConfirm: false, 
-		            	    confirmButtonText: "确认",  
-		            	    cancelButtonText: "取消",  
-		            	    confirmButtonColor: "#ec6c62" 
-		            	}, function(isConfirm) { 
-		            		if(isConfirm)
-		            		{
-		            			var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		            			$.ajax({
-		            				url : '<%=path%>/markTaskSuccess.do',
-		            				data:data,
-		            				type : 'post',
-		            				dataType : 'json',
-		            				success:function(result)
-		            				{
-		            					if(result.status == 0)
-		            					{
-		            						swal.close();
-		            						$("#"+taskid).children("rect").css("stroke", "#32CD32");
-		            					} 
-		            				},
-		            			})
-		            		}
-		            	});
-	          	 	} 
-	            } 
-	          ]
-	        });
+		            {label:'查看日志', icon:'img/viewlog.png', action:function() 
+		            	{ 
+		            		var execution_date = getUrlParam('execution_date'); //获取url 的值
+		            		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+		            		var data ={"dag_id":"wjrz_dev","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            		$.ajax({
+		           				url : '<%=path%>/getTaskLog.do',
+		           				data:data,
+		           				type : 'post',
+		           				dataType : 'json',
+		           				success:function(result) 
+		           				{
+		           					$("#showlog").modal();
+		           					$("textarea").text(result.msg);
+		           				},
+		           			})
+		            	} 
+		            },
+		            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
+		            	{ 
+			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+			            	var data ={"dag_id":"wjrz_dev","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            		var img = $("#progressImgage");
+		         	      	var mask = $("#maskOfProgressImage");
+			            	img.show().css({
+			     	           "position": "fixed",
+			     	           "top": "50%",
+			     	           "left": "50%",
+			     	           "margin-top": function () { return -1 * img.height() / 2; },
+			     	           "margin-left": function () { return -1 * img.width() / 2; }
+			     	       });
+			     	       mask.show().css("opacity", "0.1");
+			     	      $.ajax({
+			     	    	  url : '<%=path%>/makeNodeClear.do',
+			        			data:data,
+			        			type : 'post',
+			        			dataType : 'json',
+			        			success:function(data)
+			        			{
+			        				console.info(data);
+			        			}
+			     	       });
+			     	       var makeClear = setInterval(function(){$.ajax({
+			          			url : '<%=path%>/queryTaskState.do',
+			        			data:data,
+			        			type : 'post',
+			        			dataType : 'json',
+			        			success:function(data)
+			        			{
+			        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
+			        		    		   //console.info("running");
+			        		    		   img.hide();
+			        			           mask.hide();
+			        			           var task_div = $('.' + obj.task_id);
+			        			           task_div.find("div:eq(0)").css("border-color","#797979") ;
+			        			           clearInterval(makeClear);
+			        		    	   }
+			        			},
+			        			error:function(data)
+			        			{
+			        				 console.info("请检查应用服务器是否正常！");
+			        		    	 img.hide();
+			        		         mask.hide();
+			        			}
+		        		   })},3000);
+			            	
+		            	} 
+		            },
+		            {label:'确认成功', icon:'img/comsucc.png', action:function() 
+		            	{ 
+			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+			            	swal({ 
+			            	    title: "", 
+			            	    text: "您确定要将任务置为成功?", 
+			            	    type: "warning", 
+			            	    showCancelButton: true, 
+			            	    closeOnConfirm: false, 
+			            	    confirmButtonText: "确认",  
+			            	    cancelButtonText: "取消",  
+			            	    confirmButtonColor: "#ec6c62" 
+			            	}, function(isConfirm) { 
+			            		if(isConfirm)
+			            		{
+			            			var data ={"dag_id":"wjrz_dev","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+			            			$.ajax({
+			            				url : '<%=path%>/markTaskSuccess.do',
+			            				data:data,
+			            				type : 'post',
+			            				dataType : 'json',
+			            				success:function(result)
+			            				{
+			            					if(result.status == 0)
+			            					{
+			            						swal.close();
+			            						var task_div = $('.' + obj.task_id);
+					        			        task_div.find("div:eq(0)").css("border-color","#32CD32") ;
+			            					} 
+			            				},
+			            			})
+			            		}
+			            	});
+		          	 	} 
+		            } 
+		          ]
+		});
 		})
 	</script>
 	
@@ -822,11 +818,11 @@ body{margin:0;padding:0;}
 	      container: "body",
 	    });
 	var dag_id = "wjrz_dev";
-	//var execution_date = getUrlParam('execution_date');
-	var execution_date = "2017-11-21T11:23:28";
+	var execution_date = getUrlParam('execution_date');
+	//var execution_date = "2017-11-21T11:23:28";
 	var data ={"dag_id":dag_id,"execution_date":execution_date};
 	
-	setInterval(function(){getAjax("pingshi_runningData.do",data,"post")},3000);
+	setInterval(function(){getAjax("runningData.do",data,"post")},3000);
 	
 	function update_nodes_states(task_instances) {
 			$.each(task_instances,function(idx,obj){
@@ -866,7 +862,7 @@ body{margin:0;padding:0;}
 									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                task_div.attr("data-original-title",format_content); 
-	                task_div.find("div:eq(0)").css("border-color","yellow") ;
+	                task_div.find("div:eq(0)").css("border-color","#797979") ;
 	            }else if (obj.state == 'running')
 	            {
 	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +

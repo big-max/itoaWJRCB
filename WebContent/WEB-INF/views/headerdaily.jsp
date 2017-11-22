@@ -10,6 +10,7 @@
 <link type="text/css" title="www" rel="stylesheet" href="${root}/dailycss/axure_rp_page.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/dailycss/datastyles.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/dailycss/filestyles.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="${root}/css/sweetalert.css" />
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/jquery.contextmenu.css" />
 
 <script type="text/javascript" src="${root}/dailyjs/jquery-1.7.1.min.js"></script>

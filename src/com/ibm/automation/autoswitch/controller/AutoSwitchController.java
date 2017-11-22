@@ -218,22 +218,22 @@ public class AutoSwitchController {
 	}
 	
 	// 发出灾备切换继续请求
-		@RequestMapping("/postResumeAirflow.do")
-		public JSONObject postResume(HttpServletRequest request, HttpSession session) {
-			String dag_id = request.getParameter("dag_id");
-			ObjectNode postJson = om.createObjectNode();
-			postJson.put("dag_id", dag_id);
-			postJson.put("operation", 6); // 6代表恢复airflow
-			String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
-			try {
-				String response = HttpClientUtil.postMethod(url, postJson.toString());
-				return JSONObject.fromObject(response);
-			} catch (NetWorkException | IOException e) {
-				e.printStackTrace();
-				logger.error("发起灾备过程中IO错误");
-			}
-			return null;
+	@RequestMapping("/postResumeAirflow.do")
+	public JSONObject postResume(HttpServletRequest request, HttpSession session) {
+		String dag_id = request.getParameter("dag_id");
+		ObjectNode postJson = om.createObjectNode();
+		postJson.put("dag_id", dag_id);
+		postJson.put("operation", 6); // 6代表恢复airflow
+		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
+		try {
+			String response = HttpClientUtil.postMethod(url, postJson.toString());
+			return JSONObject.fromObject(response);
+		} catch (NetWorkException | IOException e) {
+			e.printStackTrace();
+			logger.error("发起灾备过程中IO错误");
 		}
+		return null;
+	}
 
 	// 发出灾备切换停止请求
 	@RequestMapping("/postStopAirflow.do")

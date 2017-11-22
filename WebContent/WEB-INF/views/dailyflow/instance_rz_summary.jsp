@@ -176,11 +176,8 @@ i:hover{
 <script>
 	//跳转按钮
 	$("#daily_running,#jiexi_running,#year_running").on("click",function(){
-		var curr_date = new Date();
-		month_str = curr_date.getMonth()+1;
-		day_str = curr_date.getDate();
 		var current_dag_id = $(this).parents("tr").find(".dayend_class").text(); //获取id
-		window.open("dailyRunningPage.do?date_md="+month_str+"-"+day_str);
+		window.open("dailyRunningPage.do?execution_date=");
 	})
 </script>
 

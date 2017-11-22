@@ -398,57 +398,54 @@ $("body").on("click","#disaster,#disaster2",function(){
 			</li>
 		</ul>
 		
-		<!-- POC -->
-		<div class="jquery-accordion-menu-footer tooltipa1 notvisible" id="poccenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="灾备演练">
+				<!-- POC模块 
+		<div class="jquery-accordion-menu-footer tooltipa1" id="poccenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="POC场景模块">
 			<img class="forrotate3" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
 		</div>
-		<div class="jquery-accordion-menu-footer tooltipa2" id="poccenter2" style="cursor:pointer;">
+		<div class="jquery-accordion-menu-footer tooltipa2 notvisible" id="poccenter2" style="cursor:pointer;">
 			<img class="forrotate3" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-			<span id="menu24" style="position:relative;top:15px;font-size:13px;">POC场景模块</span>
+			<span id="menu24" style="position:relative;top:15px;font-size:13px;" >POC场景模块</span>
 		</div>
 		
 		<ul id="demo-list2">
 			<li>
-				<a href="fixLoad.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="补丁加载">
+				<a href="fixLoad.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="补丁加载">
 					<img class="img_icon" src="img/icons/iconfont/fixload.png" id="icon20"></img>
 				</a>
-				<a href="fixLoad.do" class="tooltipa2">
+				<a href="fixLoad.do" class="notvisible tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/fixload.png" id="icon20"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu23" class="top5">补丁加载</span> 
 			    </a>
 			</li>
-			
 			<li>
-				<a href="getAllsecurityTemplate.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="安全模板">
+				<a href="getAllsecurityTemplate.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="安全模板">
 					<img class="img_icon" src="img/icons/iconfont/safemould.png" id="icon19"></img>
 				</a>
-				<a href="getAllsecurityTemplate.do" class="tooltipa2">
+				<a href="getAllsecurityTemplate.do" class="notvisible tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/safemould.png" id="icon19"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu22" class="top5">安全模板</span> 
 			    </a>
 			</li>
-			
 			<li>
-				<a href="getAllsecurityJobs.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="安全加固">
+				<a href="getAllsecurityJobs.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="安全加固">
 					<img class="img_icon" src="img/icons/iconfont/safeplus.png" id="icon18"></img>
 				</a>
-				<a href="getAllsecurityJobs.do" class="tooltipa2">
+				<a href="getAllsecurityJobs.do" class="notvisible tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/safeplus.png" id="icon18"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu21" class="top5">安全加固</span> 
 			    </a>
 			</li>
-			
 			<li>
-				<a href="remoteCommand.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="批量执行">
+				<a href="remoteCommand.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="批量执行">
 					<img class="img_icon" src="img/icons/iconfont/more.png" id="icon17"></img>
 				</a>
-				<a href="remoteCommand.do" class="tooltipa2">
+				<a href="remoteCommand.do" class="notvisible tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/more.png" id="icon17"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu19" class="top5">批量执行</span> 
 			    </a>
 			</li>
 		</ul>
-		
+		-->
 		
 		<!-- 用户中心 -->
 		<div class="jquery-accordion-menu-footer tooltipa1 notvisible" id="usercenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="用户中心">
