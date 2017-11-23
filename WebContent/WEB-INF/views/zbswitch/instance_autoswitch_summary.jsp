@@ -187,6 +187,7 @@ function update_summary_table_state()
 			var html = "";
 			for(var i = 0 ; i < data.length ; i++)
 			{
+				if(data[i].dag_id != "wjrz_dev"){
 				 html += "<tr>";
 		         html +=     "<td id=\"dag_id\" hidden=\"\" style=\"text-align: center;\">" + data[i].dag_id + "</td>"
 		         html +=     "<td id=\"dag_alias\" style=\"text-align: center;\">" + data[i].dag_alias + "</td>"
@@ -246,14 +247,15 @@ function update_summary_table_state()
 		         }
 		         html += "</td></tr>";
 		         $(".searchable").html(html)
+				}		
 			}
 		}
  })
 }
+
 $(document).ready(function(){ 
 	update_summary_table_state();//页面初始化的时候更新一次
 }); 
-
   
 setInterval('update_summary_table_state()',2000); 
 
@@ -385,11 +387,8 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		        					  {
 		        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
 		        					  }
-		        					  
-		        					  
 		        				},
 		        				error : function(errmsg) {
-	
 		        				}
 		        			})
 		        	  } 
@@ -420,8 +419,5 @@ function handleAjax(url, param, type) {
 	console.log(err.status); // 打印状态码
 	});
 }
-	
-	
-	
 </script>
 </html>
