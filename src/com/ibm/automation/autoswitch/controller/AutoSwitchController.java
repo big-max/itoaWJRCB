@@ -183,11 +183,19 @@ public class AutoSwitchController {
 	@ResponseBody
 	public JSONObject postRun(HttpServletRequest request, HttpSession session) {
 		String dag_id = request.getParameter("dag_id");
+		int flag = Integer.valueOf(request.getParameter("flag"));
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");// 设置日期格式
 		ObjectNode postJson = om.createObjectNode();
 		postJson.put("dag_id", dag_id);
 		postJson.put("execution_date", df.format(new Date()));
 		postJson.put("operation", 3); // 3 代表run airflow
+		if(flag == 0){
+			postJson.put("zb_owner", (String)session.getAttribute("userName"));
+		}
+		else if(flag == 1)
+		{
+			postJson.put("rz_owner", (String)session.getAttribute("userName"));
+		}
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
