@@ -15,6 +15,9 @@
 <jsp:include page="../headerdaily.jsp" flush="true" /> 
 <title>自动化运维平台</title>
 <style type="text/css">
+.stronger-border {
+	border-width:2px;
+}
 body{margin:0;padding:0;}
 .content {
 	position:relative;
@@ -58,7 +61,7 @@ body{margin:0;padding:0;}
 		</div>
 	</div>
 
-    <div id="base">
+    <div id="base" style="width:800px;height:4800px;margin:0 auto;position:relative;top:100px;">
     
       <div id="u2" class="ax_default 5600501502">
         <div id="u2_div"></div><!-- 给边框加颜色 -->
@@ -692,6 +695,7 @@ body{margin:0;padding:0;}
 		$(document).ready(function(){
 			
 		$(".ax_default").find("div:eq(0)").css("border-radius","5px");
+		$(".ax_default").find("div:eq(0)").css("border-width","2px");
 		
 		$(".ax_default").on("mouseover",function(e){
 			//taskid = $(this).find("span:eq(0)").html();//获取要点击任务框的id 
@@ -829,61 +833,61 @@ body{margin:0;padding:0;}
 	            var task_div = $('.' + obj.task_id);
 	            if(obj.state == 'failed') //如果失败
 	            {
-	            	var tipcontent ="预计开始时间：" + obj.expected_starttime + "," +
+	            	var tipcontent ="<p align='left'> 预计开始时间：" + obj.expected_starttime + "," +
 	            					"实际开始时间：" + obj.start_Date         + "," +
 	            					"预计结束时间：" + obj.expected_endtime   + "," + 
 	            					"实际结束时间：" + obj.end_Date           + "," +
 	            					"预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
 	            					"实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-	            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
+	            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败</p>";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                task_div.attr("data-original-title",format_content); 
 	                task_div.find("div:eq(0)").css("border-color","#FF4500") ;
 	            }else if (obj.state == 'success') //如果成功
 	            {
-	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+	            	var tipcontent = "<p align='left'>预计开始时间：" + obj.expected_starttime + "," +
 									 "实际开始时间：" + obj.start_Date         + "," +
 									 "预计结束时间：" + obj.expected_endtime   + "," + 
 									 "实际结束时间：" + obj.end_Date           + "," +
 									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
 									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功</p>";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                task_div.attr("data-original-title",format_content); 
 	                task_div.find("div:eq(0)").css("border-color","#32CD32") ;
 	            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
 	            {
-	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+	            	var tipcontent = "<p align='left'>预计开始时间：" + obj.expected_starttime + "," +
 									 "实际开始时间：" + obj.start_Date         + "," +
 									 "预计结束时间：" + obj.expected_endtime   + "," + 
 									 "实际结束时间：" + obj.end_Date           + "," +
 									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
 									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始</p>";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                task_div.attr("data-original-title",format_content); 
-	                task_div.find("div:eq(0)").css("border-color","#797979") ;
+	                task_div.find("div:eq(0)").css("border-color","#797979");
 	            }else if (obj.state == 'running')
 	            {
-	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+	            	var tipcontent = "<p align='left'>预计开始时间：" + obj.expected_starttime + "," +
 									 "实际开始时间：" + obj.start_Date         + "," +
 									 "预计结束时间：" + obj.expected_endtime   + "," + 
 									 "实际结束时间：" + obj.end_Date           + "," +
 									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
 									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中</p>";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                task_div.attr("data-original-title",format_content); 
 	                task_div.find("div:eq(0)").css("border-color","#3399CC") ;
 	            }else if (obj.state == 'done') //如果处于做完待确认的状态
 	            {
-	            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
+	            	var tipcontent = "<p align='left'>预计开始时间：" + obj.expected_starttime + "," +
 									 "实际开始时间：" + obj.start_Date         + "," +
 									 "预计结束时间：" + obj.expected_endtime   + "," + 
 									 "实际结束时间：" + obj.end_Date           + "," +
 									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
 									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                task_div.attr("data-original-title",format_content); 
 	                task_div.find("div:eq(0)").css("border-color","#FF8C00") ;

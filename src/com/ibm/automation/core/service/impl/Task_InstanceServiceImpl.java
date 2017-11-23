@@ -14,6 +14,7 @@ public class Task_InstanceServiceImpl implements Task_InstanceService {
 
 	@Autowired
 	Task_InstanceBeanMapper task_instanceBeanMapper;
+	
 	@Override
 	public List<Task_InstanceBean> getRunningTaskInstance(Map<String,String> map) {
 		return task_instanceBeanMapper.selectRunningTaskInstance(map);

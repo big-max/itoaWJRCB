@@ -54,12 +54,15 @@ public class DailyFlowController {
 		String exe_time_str = dag.get("execution_date");
 		String link = null;
 		if( null != exe_time_str){
-			String[] exe_time= exe_time_str.split("T");
-			String[] exe_mon_day = exe_time[0].split("-");
+			String[] exe_time= null;
+			exe_time = exe_time_str.split("T");
+			String[] exe_mon_day = null;
+			exe_mon_day = exe_time[0].split("-");
 			
 			model.addAttribute("execution_date", exe_time_str);
-			
-			String execution_time = exe_mon_day[1]+"-"+exe_mon_day[2];
+			logger.info("exe_time_str is" + exe_time_str);
+			String execution_time = null;
+			execution_time = exe_mon_day[1]+"-"+exe_mon_day[2];
 			logger.info("month is " + exe_mon_day[1] + "; day is " + exe_mon_day[2]);
 			//获取配置文件中结息和年终的日期(格式：month-day)
 			String jxString = rzprop.getProperty("jiexi");
