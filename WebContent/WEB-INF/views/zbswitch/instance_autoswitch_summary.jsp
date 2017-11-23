@@ -367,7 +367,7 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		        		  $.ajax({
 		        				url :  url,
 		        				type : 'post',
-		        				data:{"dag_id":current_dag_id},
+		        				data:{"dag_id":current_dag_id,"flag":0},
 		        				dataType : 'json',
 		        				success : function(result) {
 		        					  if(result != 'undefined' || result != null){

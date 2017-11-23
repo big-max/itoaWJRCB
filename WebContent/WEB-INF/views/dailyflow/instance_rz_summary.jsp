@@ -278,7 +278,7 @@ function update_summary_table_state()
 		        		  $.ajax({
 		        				url :  url,
 		        				type : 'post',
-		        				data:{"dag_id":current_dag_id},
+		        				data:{"dag_id":current_dag_id,"flag":1},
 		        				dataType : 'json',
 		        				success : function(result) {
 		        					  if(result != 'undefined' || result != null){
