@@ -27,7 +27,7 @@
 }
 .linkexpre{
 	float:left;
-	margin-left:25px;
+	margin-left:30px;
 }
 i:hover{
 	cursor:pointer;
@@ -130,7 +130,7 @@ function update_summary_table_state()
 			         	"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"modal\" data-target=\"#checkpass\"></i>"
 						+"</div>"
 						+"</div><div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\"  style=\"font-size:26px;color:#bebebe\" data-toggle=\"tooltip\" title=\"终止流程\"></i>"
+						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\"  style=\"font-size:26px;display:none;color:#bebebe\" data-toggle=\"tooltip\" title=\"终止流程\"></i>"
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\">"+
@@ -141,7 +141,7 @@ function update_summary_table_state()
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
-					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\"title=\"编辑流程\" ></i>"
+					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;display:none;color:#D4237A\" data-toggle=\"tooltip\"title=\"编辑流程\" ></i>"
 						+"</div>"
 		         }else if (data[i].last_run_status == 'running')  //如果是运行中
 		         {
