@@ -202,7 +202,7 @@ function update_summary_table_state()
 	$(document).on('click',"._running",function(){
 		var dag_id = $(this).parents("tr").find("#dag_id").text()
 		var execution_date = $(this).parents("tr").find("#execution_date").text()
-		window.open("runningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
+		window.open("dailyRunningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
 	})
 	
 	//停止一个流
@@ -237,6 +237,7 @@ function update_summary_table_state()
 	
     //启动和暂停按钮的处理
 	$(document).on('click',"._play",function(){
+		
 		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
 		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
 		var current_dag_state = $(this).parents("tr").find("#dag_state").text();//获取当前流程的状态便于发起流程
@@ -245,6 +246,9 @@ function update_summary_table_state()
 		var Message = "";
 		var url = "";   //发给哪个地址
 		var isshowBtn=0; //确定在ajax回调成功后修改ICON
+		
+		console.info(current_dag_id +'---' + is_pause +'--'+is_start + current_dag_state)
+		
 		if(is_pause == true && current_dag_state == 'running' ){  //如果是暂停按钮亮着，说明在跑，按了以后要变开始就是暂停状态
 			Message="请再次确认是否立即暂停"+current_dag_alias+"流程？";
 			isshowBtn = 1;
@@ -258,10 +262,12 @@ function update_summary_table_state()
 		else if(is_start == true && (current_dag_state == 'failed' ||  current_dag_state == '' || current_dag_state == 'success'  ) ){ //发起新任务
 			isshowBtn=3;
 			url = "postRunAirflow.do";
+			alert('2222')
 		} 
-		if(url == "postRunAirflow.do"){
+		if(url != "postRunAirflow.do"){
 		}
 		else{
+			
 			swal({
 		            title: "",
 		            text: Message,
