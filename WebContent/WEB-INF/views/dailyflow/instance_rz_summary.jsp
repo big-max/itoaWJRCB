@@ -159,7 +159,7 @@ function update_summary_table_state()
 		        	  }
 		        	 	html +=    
 						"<div class=\"linkexpre\">"+
-						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\" style=\"font-size:26px;color:red\" data-toggle=\"tooltip\" title=\"终止流程\"></i>"
+						"<i id=\""+data[i].dag_id+"_stop\" class=\"_stop fa fa-stop-circle\" style=\"font-size:26px;display:none;color:red\" data-toggle=\"tooltip\" title=\"终止流程\"></i>"
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\">"+
@@ -170,7 +170,7 @@ function update_summary_table_state()
 						+"</div>"
 						+
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
-					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\" title=\"编辑流程\"></i>"
+					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;display:none;color:#D4237A\" data-toggle=\"tooltip\" title=\"编辑流程\"></i>"
 						+"</div>"
 		         }
 		         html += "</td></tr>";
@@ -260,57 +260,56 @@ function update_summary_table_state()
 			url="postResumeAirflow.do";
 		}
 		else if(is_start == true && (current_dag_state == 'failed' ||  current_dag_state == '' || current_dag_state == 'success'  ) ){ //发起新任务
+			Message="请再次确认是否立即启动"+current_dag_alias+"流程？"; 
 			isshowBtn=3;
 			url = "postRunAirflow.do";
-			alert('2222')
 		} 
-		if(url != "postRunAirflow.do"){
-		}
-		else{
-			
-			swal({
-		            title: "",
-		            text: Message,
-		            type: "warning",
-		            showCancelButton: true,
-		            confirmButtonText: "是",
-		            cancelButtonText: "否", 
-		            confirmButtonColor:"#ec6c62"
-		        }, 
-		        function(isConfirm)
-		        {
-		        	  if (isConfirm) 
-		        	  {
-		        		  $.ajax({
-		        				url :  url,
-		        				type : 'post',
-		        				data:{"dag_id":current_dag_id,"flag":1},
-		        				dataType : 'json',
-		        				success : function(result) {
-		        					  if(result != 'undefined' || result != null){
-		        					  		$("#"+current_dag_id+"_stop").css("color","red");
-		        					  		$("#"+current_dag_id+"_running").attr("style","font-size:23px;color:#0066FF");
-		        					  }
-		        					  else{
-			        						alert("发生IO异常");
-			        					}
-		        					  if (isshowBtn == 1)
-		        					  {
-		        						  $("#"+current_dag_id+"_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
-		        					  }else if ( isshowBtn == 2 )
-		        					  {
-		        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
-		        					  }else if ( isshowBtn == 3 )
-		        					  {
-		        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
-		        					  }
-		        				},
-		        				error : function(errmsg) {
-		        				}
-		        			})
-		        	  } 
-		        });
-		}
+		/* if(url != "postRunAirflow.do"){
+		} */
+		/* else{ */
+		swal({
+	            title: "",
+	            text: Message,
+	            type: "warning",
+	            showCancelButton: true,
+	            confirmButtonText: "是",
+	            cancelButtonText: "否", 
+	            confirmButtonColor:"#ec6c62"
+	        }, 
+	        function(isConfirm)
+	        {
+	        	  if (isConfirm) 
+	        	  {
+	        		  $.ajax({
+	        				url :  url,
+	        				type : 'post',
+	        				data:{"dag_id":current_dag_id,"flag":1},
+	        				dataType : 'json',
+	        				success : function(result) {
+	        					  if(result != 'undefined' || result != null){
+	        					  		$("#"+current_dag_id+"_stop").css("color","red");
+	        					  		$("#"+current_dag_id+"_running").attr("style","font-size:23px;color:#0066FF");
+	        					  }
+	        					  else{
+		        						alert("发生IO异常");
+		        					}
+	        					  if (isshowBtn == 1)
+	        					  {
+	        						  $("#"+current_dag_id+"_play").removeClass("fa-pause-circle").addClass("fa-play-circle");
+	        					  }else if ( isshowBtn == 2 )
+	        					  {
+	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+	        					  }else if ( isshowBtn == 3 )
+	        					  {
+	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
+	        					  }
+	        				},
+	        				error : function(errmsg) {
+	        				}
+	        			})
+	        	  } 
+	        });
+		/* } */
 	})
 
 	function ajax(url, param, type) {
