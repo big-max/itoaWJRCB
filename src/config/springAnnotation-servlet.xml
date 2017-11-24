@@ -18,12 +18,12 @@
 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
-	<bean id="SchedulerService" class="com.ibm.automation.dailyflow.controller.SchedulerController">
+	<!-- <bean id="SchedulerService" class="com.ibm.automation.dailyflow.controller.SchedulerController">
 		
 	</bean>
 	<task:scheduled-tasks>   
-        <task:scheduled ref="SchedulerService" method="updateTaskInfoExpectedTime" cron="* 30 8 * * ?"/>   
-	</task:scheduled-tasks>
+        <task:scheduled ref="SchedulerService" method="updateTaskInfoExpectedTime" cron="0/5 * * * * ?"/>   
+	</task:scheduled-tasks> -->
 
 	<!-- 注解扫描包 -->
 	<context:component-scan base-package="com.ibm.automation.*" />
