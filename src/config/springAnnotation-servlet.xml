@@ -22,7 +22,7 @@
 		
 	</bean>
 	<task:scheduled-tasks>   
-        <task:scheduled ref="SchedulerService" method="updateTaskInfoExpectedTime" cron="5 * * * * ?"/>   
+        <task:scheduled ref="SchedulerService" method="updateTaskInfoExpectedTime" cron="* 30 8 * * ?"/>   
 	</task:scheduled-tasks>
 
 	<!-- 注解扫描包 -->

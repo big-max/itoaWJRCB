@@ -1,4 +1,4 @@
-package com.ibm.automation.core.remotedao;
+package com.ibm.automation.core.dao;
 
 import com.ibm.automation.domain.AccountPasswd;
 
