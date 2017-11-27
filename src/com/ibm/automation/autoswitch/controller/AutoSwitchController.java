@@ -111,6 +111,7 @@ public class AutoSwitchController {
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
+		
 		//System.out.println(on.toString());
 		return on;
 	}

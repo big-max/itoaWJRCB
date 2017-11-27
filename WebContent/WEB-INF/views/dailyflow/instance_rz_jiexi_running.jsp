@@ -853,8 +853,8 @@ body{margin:0;padding:0;}
 	            					"实际开始时间：" + obj.start_Date         + "," +
 	            					"预计结束时间：" + obj.expected_endtime   + "," + 
 	            					"实际结束时间：" + obj.end_Date           + "," +
-	            					"预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-	            					"实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+	            					"预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+	            					"实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
 	            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                $("#"+obj.task_id).attr("data-original-title",format_content); 
@@ -865,8 +865,8 @@ body{margin:0;padding:0;}
 									 "实际开始时间：" + obj.start_Date         + "," +
 									 "预计结束时间：" + obj.expected_endtime   + "," + 
 									 "实际结束时间：" + obj.end_Date           + "," +
-									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
 									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                $("#"+obj.task_id).attr("data-original-title",format_content); 
@@ -877,8 +877,8 @@ body{margin:0;padding:0;}
 									 "实际开始时间：" + obj.start_Date         + "," +
 									 "预计结束时间：" + obj.expected_endtime   + "," + 
 									 "实际结束时间：" + obj.end_Date           + "," +
-									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
 									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                $("#"+obj.task_id).attr("data-original-title",format_content); 
@@ -889,8 +889,8 @@ body{margin:0;padding:0;}
 									 "实际开始时间：" + obj.start_Date         + "," +
 									 "预计结束时间：" + obj.expected_endtime   + "," + 
 									 "实际结束时间：" + obj.end_Date           + "," +
-									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
 									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                $("#"+obj.task_id).attr("data-original-title",format_content); 
@@ -901,8 +901,8 @@ body{margin:0;padding:0;}
 									 "实际开始时间：" + obj.start_Date         + "," +
 									 "预计结束时间：" + obj.expected_endtime   + "," + 
 									 "实际结束时间：" + obj.end_Date           + "," +
-									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
 									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
 	                var format_content = tipcontent.split(",").join("<br>");
 	                $("#"+obj.task_id).attr("data-original-title",format_content); 

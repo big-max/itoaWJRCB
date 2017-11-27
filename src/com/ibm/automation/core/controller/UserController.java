@@ -143,7 +143,7 @@ public class UserController {
 	 */
 	@RequestMapping(value="/addUser")
 	@ResponseBody
-	public int userAdd(HttpServletRequest request)
+	public int userAdd(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException
 	{
 		String name = request.getParameter("username");
 		String passwd = request.getParameter("passwd");
@@ -154,7 +154,7 @@ public class UserController {
 		on.put("type", "addUser");
 		on.put("name", name);
 		
-		on.put("password", SecurityUtil.encrypt(new String(Base64.decodeBase64(passwd)), amsCfg.getProperty("key")));
+		on.put("password", SecurityUtil.EncoderByMd5(passwd));
 		on.put("email", email);
 		on.put("role", Integer.valueOf(role));
 		
