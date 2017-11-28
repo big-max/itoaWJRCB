@@ -275,25 +275,42 @@ input[type="text"],input[type="password"]  {
 		if(username == "")
 		{
 			sweet("用户名不能为空 !","warning","确定");
+			return ;
 		} 
+		if(username != "" && username.indexOf(" ") != -1 )
+		{
+			sweet("用户名不能包含空格 !","warning","确定"); 
+			return ;
+		}
 		
 		//判断密码和确认密码都不为空 
 		var passwd = $("#passwd").val();
 		var confirmasswd = $("#confirmasswd").val();
-		if(username != "" && passwd == "")
+		if(username != "" && username.indexOf(" ") == -1 && passwd == "")
 		{
 			sweet("密码不能为空 !","warning","确定"); 
+			return ;
 		}
-		if(username != "" && passwd != "" && confirmasswd == "")
+		if(username != "" && username.indexOf(" ") == -1 && passwd != "" && confirmasswd == "")
 		{
 			sweet("确认密码不能为空 !","warning","确定");  
+			return ;
+		}
+		
+		//当角色为operator 的时候，用户名不能超过5个字符,0表示Operator,1表示Adminstor
+		var role_name = $("#role").val();
+		if(role_name == "0" && username.length > 5)
+		{
+			sweet("用户名不能超过5个字符 !","warning","确定"); 
+			return ;
 		}
 		
 		//判断管理产品不为空
 		var manageProduct = $("#manageProduct").val();
-		if(username != "" && passwd != "" && confirmasswd != "" && manageProduct == null)
+		if(username != "" && username.indexOf(" ") == -1 && passwd != "" && confirmasswd != "" && manageProduct == null)
 		{
 			sweet("请选择管理产品 !","warning","确定");  
+			return ;
 		}
 		
 		$.ajax({
