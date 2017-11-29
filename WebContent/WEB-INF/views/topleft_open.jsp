@@ -107,9 +107,10 @@ jQuery(document).ready(function () {
 		   		 $("#menu25").show();
 		   		 $("#menu26").show();
 		   		 $("#menu27").show();
+		   		 $("#menu28").show();
+		   		 $("#menu29").show();
 		   		 $("#showonce").delay(0).slideDown(300);
 		   		$("#forremoveminux").addClass("submenu-indicator-minus");
-		   	
         	});
 		
 		//左侧菜单栏的隐藏和显示 开始
@@ -133,6 +134,8 @@ jQuery(document).ready(function () {
 			$("#menu25").hide();
 			$("#menu26").hide();
 			$("#menu27").hide();
+			$("#menu28").hide();
+			$("#menu29").hide();
 		 	$("#jquery-accordion-menu").animate({width:"56px"},1,function(){
 			 	$(".nosubmenu").css("display","none");			//收缩后将三级菜单收起
 			 	$('.nosubmenu').find('.has-children.selected').removeClass('selected');	//将三级菜单还原到默认情况
@@ -176,6 +179,8 @@ jQuery(document).ready(function () {
 		 $("#menu25").show(300);
 		 $("#menu26").show(300);
 		 $("#menu27").show(300);
+		 $("#menu28").show(300);
+		 $("#menu29").show(300);
 	});
 	//左侧菜单栏的隐藏和显示 结束
 });
@@ -186,6 +191,7 @@ var i = 1;
 var j = 1;
 var k = 1;
 var p = 1;
+var q = 1;
 $("body").on("click","#proAndser,#proAndser2",function(){
 	$("#demo-list").toggle();
 	if(i%2 == 1){
@@ -229,6 +235,17 @@ $("body").on("click","#disaster,#disaster2",function(){
 		$(".forrotate4").replaceWith(state1); 
 	}
 	p++;
+})
+$("body").on("click","#autopublish,#autopublish2",function(){
+	$("#demo-list4").toggle();
+	if(q%2 == 1){
+		var state1 = "<img class='forrotate5' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
+		$(".forrotate5").replaceWith(state1); 
+	}else if(q%2 == 0) {
+		var state1 = "<img class='forrotate5' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
+		$(".forrotate5").replaceWith(state1); 
+	}
+	q++;
 })
 </script>
 
@@ -394,6 +411,27 @@ $("body").on("click","#disaster,#disaster2",function(){
 				<a href="dailyflow.do" class="tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/dailyflow.png"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu27" class="top5">日终流程</span> 
+			    </a>
+			</li>
+		</ul>
+		
+		<!-- 自动化发布 -->
+		<div class="jquery-accordion-menu-footer tooltipa1 notvisible" id="autopublish" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="自动化发布">
+			<img class="forrotate5" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
+		</div>
+		<div class="jquery-accordion-menu-footer tooltipa2" id="autopublish2" style="cursor:pointer;">
+			<img class="forrotate5" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
+			<span id="menu28" style="position:relative;top:15px;font-size:13px;">自动化发布</span>
+		</div>
+		
+		<ul id="demo-list4">
+			<li>
+				<a href="autopublish.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="WAS">
+					<img class="img_icon" src="img/icons/iconfont/was.png"></img>
+				</a>
+				<a href="autopublish.do" class="tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/was.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu29" class="top5">WAS</span> 
 			    </a>
 			</li>
 		</ul>
