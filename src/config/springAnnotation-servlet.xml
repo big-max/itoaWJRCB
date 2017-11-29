@@ -45,6 +45,9 @@
 	<mvc:resources location="/dailyimg/" mapping="/dailyimg/**" />
 	<mvc:resources location="/dailycss/" mapping="/dailycss/**" />
 	<mvc:resources location="/dailyjs/" mapping="/dailyjs/**" />
+	<mvc:resources location="/zbswitchimg/" mapping="/zbswitchimg/**" />
+	<mvc:resources location="/zbswitchcss/" mapping="/zbswitchcss/**" />
+	<mvc:resources location="/zbswitchjs/" mapping="/zbswitchjs/**" />
 	
 	<!-- 配置返回JSP页面结尾 -->
 	<bean id="viewResolver"

@@ -12,36 +12,18 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<jsp:include page="../header3.jsp" flush="true" />
+<jsp:include page="../headerpprcgo.jsp" flush="true" /> 
 <title>自动化运维平台</title>
 <style type="text/css">
 body{margin:0;padding:0;}
-.content {
-	position:relative;
-	width:calc(100% - 1px); 
-	margin-top:50px;
-	height:calc(100vh - 50px); 
-	background-color:#F5F3F4;
+.connector>img {
+	max-width:400px;
 }
-.explogo{
-	float:left;
-	width:70px;
-	height:40px;
-	background-color:#F0EDE4;
-	border-radius:10px;
-	text-align:center;
-	line-height:35px;
-	font-size:14px;
-	margin-top:15px;
-}
-.btn_block{
-	width:80%;
-	margin:0 auto;
-}
- .hide{display:none }
- .progress{z-index: 2000}
- .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
- .modal{width:750px;left:43%;}
+.hide{display:none }
+.progress{z-index: 2000}
+.mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
+.modal{width:750px;left:43%;}
+.ax_default{cursor:pointer;}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -69,1190 +51,866 @@ body{margin:0;padding:0;}
 		</div>
 	</div> 
 	
-	<!--header start-->
-	<div class="header">
-		<jsp:include page="../topnav.jsp" flush="true" />
-	</div>
-	<!--header end-->
+	<div id="base">
+
+      <div id="u0" class="ax_default">
+        <img id="u0_img" class="img" src="zbswitchimg/u0.jpg"/>
+        <div id="u1" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <div id="u2" class="ax_default pprc_go_start">
+        <div id="u2_div"></div>
+        <div id="u3" class="text">
+          <p><span>开始</span></p>
+        </div>
+      </div>
+
+      <div id="u4" class="ax_default pprc_go_workdb_backup">
+        <div id="u4_div"></div>
+        <div id="u5" class="text">
+          <p><span>备份workdb数据库</span></p>
+        </div>
+      </div>
+
+      <div id="u6" class="ax_default pprc_go_backup_end">
+        <div id="u6_div"></div>
+        <div id="u7" class="text">
+          <p><span>完成备份数据库</span></p>
+        </div>
+      </div>
+
+      <div id="u8" class="ax_default pprc_go_checkha_start">
+        <div id="u8_div"></div>
+        <div id="u9" class="text">
+          <p><span>开始检查HA状态</span></p>
+        </div>
+      </div>
+
+      <div id="u10" class="ax_default pprc_go_p770a1_check_hastatus">
+        <div id="u10_div"></div>
+        <div id="u11" class="text">
+          <p><span>检查P770a1上</span></p><p><span>HA状态</span></p>
+        </div>
+      </div>
+
+      <div id="u20" class="ax_default pprc_go_checkha_stop">
+        <div id="u20_div"></div>
+        <div id="u21" class="text">
+          <p><span>完成检查HA状态</span></p>
+        </div>
+      </div>
+
+      <div id="u22" class="ax_default pprc_go_cmisdb_backup">
+        <div id="u22_div"></div>
+        <div id="u23" class="text">
+          <p><span>备份cmisdb数据库</span></p>
+        </div>
+      </div>
+
+      <div id="u24" class="ax_default pprc_go_icsdb_backup">
+        <div id="u24_div"></div>
+        <div id="u25" class="text">
+          <p><span>备份icsdb数据库</span></p>
+        </div>
+      </div>
+
+      <div id="u26" class="ax_default pprc_go_carddb_backup">
+        <div id="u26_div"></div>
+        <div id="u27" class="text">
+          <p><span>备份carddb数据库</span></p>
+        </div>
+      </div>
+
+      <div id="u28" class="ax_default pprc_go_p770b1_check_hastatus">
+        <div id="u28_div"></div>
+        <div id="u29" class="text">
+          <p><span>检查P770b1上</span></p><p><span>HA状态</span></p>
+        </div>
+      </div>
+
+      <div id="u30" class="ax_default pprc_go_p770a2_check_hastatus">
+        <div id="u30_div"></div>
+        <div id="u31" class="text">
+          <p><span>检查P770a2上</span></p><p><span>HA状态</span></p>
+        </div>
+      </div>
+
+      <div id="u32" class="ax_default pprc_go_p770b2_check_hastatus">
+        <div id="u32_div"></div>
+        <div id="u33" class="text">
+          <p><span>检查P770b2上</span></p><p><span>HA状态</span></p>
+        </div>
+      </div>
+
+      <div id="u34" class="ax_default pprc_go_p770a2_hastop">
+        <div id="u34_div"></div>
+        <div id="u35" class="text">
+          <p><span>停止P770a2 HA</span></p>
+        </div>
+      </div>
+
+      <div id="u36" class="ax_default pprc_go_p770b2_hastop">
+        <div id="u36_div"></div>
+        <div id="u37" class="text">
+          <p><span>停止P770b2 HA</span></p>
+        </div>
+      </div>
+
+      <div id="u38" class="ax_default pprc_go_p770a1_hastop">
+        <div id="u38_div"></div>
+        <div id="u39" class="text">
+          <p><span>停止P770a1 HA</span></p>
+        </div>
+      </div>
+
+      <div id="u40" class="ax_default pprc_go_p770b1_hastop">
+        <div id="u40_div"></div>
+        <div id="u41" class="text">
+          <p><span>停止P770b1 HA</span></p>
+        </div>
+      </div>
+
+      <div id="u42" class="ax_default pprc_go_ds8k_lunstart">
+        <div id="u42_div"></div>
+        <div id="u43" class="text">
+          <p><span>开始设置DS8K LUN可读写</span></p>
+        </div>
+      </div>
+
+      <div id="u44" class="ax_default pprc_go_p770a1_lunread_failover">
+        <div id="u44_div"></div>
+        <div id="u45" class="text">
+          <p><span>停止P700a1 </span></p><p><span>复制关系</span></p>
+        </div>
+      </div>
+
+      <div id="u46" class="ax_default pprc_go_p770b2_lunread_failover">
+        <div id="u46_div"></div>
+        <div id="u47" class="text">
+          <p><span>停止P700b2 </span></p><p><span>复制关系</span></p>
+        </div>
+      </div>
+
+      <div id="u48" class="ax_default pprc_go_p770b1_lunread_failover">
+        <div id="u48_div"></div>
+        <div id="u49" class="text">
+          <p><span>停止P700b1 </span></p><p><span>复制关系</span></p>
+        </div>
+      </div>
+
+      <div id="u50" class="ax_default pprc_go_p770a2_lunread_failover">
+        <div id="u50_div"></div>
+        <div id="u51" class="text">
+          <p><span>停止P700a2 </span></p><p><span>复制关系</span></p>
+        </div>
+      </div>
+
+      <div id="u52" class="ax_default pprc_go_ds8k_lunstop">
+        <div id="u52_div"></div>
+        <div id="u53" class="text">
+          <p><span>完成设置DS8K LUN可读写</span></p>
+        </div>
+      </div>
+
+      <div id="u54" class="ax_default pprc_go_p770c1_workstart">
+        <div id="u54_div"></div>
+        <div id="u55" class="text">
+          <p><span>启动P770c1 </span></p><p><span>work应用</span></p>
+        </div>
+      </div>
+
+      <div id="u56" class="ax_default pprc_go_p770c1_workcheck">
+        <div id="u56_div"></div>
+        <div id="u57" class="text">
+          <p><span>验证P770c1 </span></p><p><span>work应用</span></p>
+        </div>
+      </div>
+
+      <div id="u58" class="ax_default pprc_go_p770c1_cmisstart">
+        <div id="u58_div"></div>
+        <div id="u59" class="text">
+          <p><span>启动P770c1 </span></p><p><span>cmis应用</span></p>
+        </div>
+      </div>
+
+      <div id="u60" class="ax_default pprc_go_p770c1_cmischeck">
+        <div id="u60_div"></div>
+        <div id="u61" class="text">
+          <p><span>验证P770c1 </span></p><p><span>cmis应用</span></p>
+        </div>
+      </div>
+
+      <div id="u62" class="ax_default pprc_go_p770c2_icsstart">
+        <div id="u62_div"></div>
+        <div id="u63" class="text">
+          <p><span>启动P770c2 </span></p><p><span>ics应用</span></p>
+        </div>
+      </div>
+
+      <div id="u64" class="ax_default pprc_go_p770c2_icscheck">
+        <div id="u64_div"></div>
+        <div id="u65" class="text">
+          <p><span>验证P770c2 </span></p><p><span>ics应用</span></p>
+        </div>
+      </div>
+
+      <div id="u66" class="ax_default pprc_go_p770c2_cardstart">
+        <div id="u66_div"></div>
+        <div id="u67" class="text">
+          <p><span>启动P770c2 </span></p><p><span>card应用</span></p>
+        </div>
+      </div>
+
+      <div id="u68" class="ax_default pprc_go_p770c2_cardcheck">
+        <div id="u68_div"></div>
+        <div id="u69" class="text">
+          <p><span>验证P770c2 </span></p><p><span>card应用</span></p>
+        </div>
+      </div>
+
+      <div id="u70" class="ax_default pprc_go_ywcheck">
+        <div id="u70_div"></div>
+        <div id="u71" class="text">
+          <p><span>业务验证</span></p>
+        </div>
+      </div>
+
+      <div id="u72" class="ax_default pprc_go_startfailback">
+        <div id="u72_div"></div>
+        <div id="u73" class="text">
+          <p><span>反向启动PPRC</span></p><p><span>&nbsp;H2:H1复制关系</span></p>
+        </div>
+      </div>
+
+      <div id="u74" class="ax_default pprc_go_p770a1_failback">
+        <div id="u74_div"></div>
+        <div id="u75" class="text">
+          <p><span>启动P770a1 盛泽到吴江复制关系</span></p>
+        </div>
+      </div>
+
+      <div id="u76" class="ax_default pprc_go_p770b1_failback">
+        <div id="u76_div"></div>
+        <div id="u77" class="text">
+          <p><span>启动P770b1 盛泽到吴江复制关系</span></p>
+        </div>
+      </div>
+
+      <div id="u78" class="ax_default pprc_go_p770a2_failback">
+        <div id="u78_div"></div>
+        <div id="u79" class="text">
+          <p><span>启动P770a2 盛泽到吴江复制关系</span></p>
+        </div>
+      </div>
+
+      <div id="u80" class="ax_default pprc_go_p770b2_failback">
+        <div id="u80_div"></div>
+        <div id="u81" class="text">
+          <p><span>启动P770b2 盛泽到吴江复制关系</span></p>
+        </div>
+      </div>
+
+      <div id="u82" class="ax_default pprc_go_end">
+        <div id="u82_div"></div>
+        <div id="u83" class="text">
+          <p><span>结束</span></p>
+        </div>
+      </div>
+      
+      <div id="u12" class="ax_default">
+        <div id="u12_div"></div>
+        <div id="u13" class="text">
+          <p><span>未开始</span></p>
+        </div>
+      </div>
+
+      <div id="u14" class="ax_default">
+        <div id="u14_div"></div>
+        <div id="u15" class="text">
+          <p><span>运行中</span></p>
+        </div>
+      </div>
+
+      <div id="u16" class="ax_default">
+        <div id="u16_div"></div>
+        <div id="u17" class="text">
+          <p><span>成功</span></p>
+        </div>
+      </div>
+
+      <div id="u18" class="ax_default">
+        <div id="u18_div"></div>
+        <div id="u19" class="text">
+          <p><span>失败</span></p>
+        </div>
+      </div>
+
+      <div id="u84" class="ax_default connector">
+        <img id="u84_seg0" class="img" src="zbswitchimg/u84_seg0.png"/>
+        <img id="u84_seg1" class="img" src="zbswitchimg/u84_seg1.png"/>
+        <img id="u84_seg2" class="img" src="zbswitchimg/u84_seg2.png"/>
+        <img id="u84_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u86" class="ax_default connector">
+        <img id="u86_seg0" class="img" src="zbswitchimg/u86_seg0.png"/>
+        <img id="u86_seg1" class="img" src="zbswitchimg/u86_seg1.png"/>
+        <img id="u86_seg2" class="img" src="zbswitchimg/u86_seg2.png"/>
+        <img id="u86_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u88" class="ax_default connector">
+        <img id="u88_seg0" class="img" src="zbswitchimg/u84_seg0.png"/>
+        <img id="u88_seg1" class="img" src="zbswitchimg/u88_seg1.png"/>
+        <img id="u88_seg2" class="img" src="zbswitchimg/u84_seg2.png"/>
+        <img id="u88_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u90" class="ax_default connector">
+        <img id="u90_seg0" class="img" src="zbswitchimg/u86_seg0.png"/>
+        <img id="u90_seg1" class="img" src="zbswitchimg/u90_seg1.png"/>
+        <img id="u90_seg2" class="img" src="zbswitchimg/u86_seg2.png"/>
+        <img id="u90_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u92" class="ax_default connector">
+        <img id="u92_seg0" class="img" src="zbswitchimg/u92_seg0.png"/>
+        <img id="u92_seg1" class="img" src="zbswitchimg/u92_seg1.png"/>
+        <img id="u92_seg2" class="img" src="zbswitchimg/u92_seg2.png"/>
+        <img id="u92_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u94" class="ax_default connector">
+        <img id="u94_seg0" class="img" src="zbswitchimg/u92_seg0.png"/>
+        <img id="u94_seg1" class="img" src="zbswitchimg/u94_seg1.png"/>
+        <img id="u94_seg2" class="img" src="zbswitchimg/u92_seg2.png"/>
+        <img id="u94_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u96" class="ax_default connector">
+        <img id="u96_seg0" class="img" src="zbswitchimg/u96_seg0.png"/>
+        <img id="u96_seg1" class="img" src="zbswitchimg/u96_seg1.png"/>
+        <img id="u96_seg2" class="img" src="zbswitchimg/u96_seg2.png"/>
+        <img id="u96_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u98" class="ax_default connector">
+        <img id="u98_seg0" class="img" src="zbswitchimg/u96_seg0.png"/>
+        <img id="u98_seg1" class="img" src="zbswitchimg/u98_seg1.png"/>
+        <img id="u98_seg2" class="img" src="zbswitchimg/u96_seg2.png"/>
+        <img id="u98_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u100" class="ax_default connector">
+        <img id="u100_seg0" class="img" src="zbswitchimg/u100_seg0.png"/>
+        <img id="u100_seg1" class="img" src="zbswitchimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u102" class="ax_default connector">
+        <img id="u102_seg0" class="img" src="zbswitchimg/u102_seg0.png"/>
+        <img id="u102_seg1" class="img" src="zbswitchimg/u102_seg1.png"/>
+        <img id="u102_seg2" class="img" src="zbswitchimg/u102_seg2.png"/>
+        <img id="u102_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u104" class="ax_default connector">
+        <img id="u104_seg0" class="img" src="zbswitchimg/u104_seg0.png"/>
+        <img id="u104_seg1" class="img" src="zbswitchimg/u104_seg1.png"/>
+        <img id="u104_seg2" class="img" src="zbswitchimg/u104_seg2.png"/>
+        <img id="u104_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u106" class="ax_default connector">
+        <img id="u106_seg0" class="img" src="zbswitchimg/u102_seg0.png"/>
+        <img id="u106_seg1" class="img" src="zbswitchimg/u96_seg1.png"/>
+        <img id="u106_seg2" class="img" src="zbswitchimg/u102_seg2.png"/>
+        <img id="u106_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u108" class="ax_default connector">
+        <img id="u108_seg0" class="img" src="zbswitchimg/u104_seg0.png"/>
+        <img id="u108_seg1" class="img" src="zbswitchimg/u94_seg1.png"/>
+        <img id="u108_seg2" class="img" src="zbswitchimg/u104_seg2.png"/>
+        <img id="u108_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u110" class="ax_default connector">
+        <img id="u110_seg0" class="img" src="zbswitchimg/u110_seg0.png"/>
+        <img id="u110_seg1" class="img" src="zbswitchimg/u86_seg1.png"/>
+        <img id="u110_seg2" class="img" src="zbswitchimg/u110_seg2.png"/>
+        <img id="u110_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u112" class="ax_default connector">
+        <img id="u112_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
+        <img id="u112_seg1" class="img" src="zbswitchimg/u84_seg1.png"/>
+        <img id="u112_seg2" class="img" src="zbswitchimg/u112_seg2.png"/>
+        <img id="u112_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u114" class="ax_default connector">
+        <img id="u114_seg0" class="img" src="zbswitchimg/u110_seg0.png"/>
+        <img id="u114_seg1" class="img" src="zbswitchimg/u114_seg1.png"/>
+        <img id="u114_seg2" class="img" src="zbswitchimg/u110_seg2.png"/>
+        <img id="u114_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u116" class="ax_default connector">
+        <img id="u116_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
+        <img id="u116_seg1" class="img" src="zbswitchimg/u116_seg1.png"/>
+        <img id="u116_seg2" class="img" src="zbswitchimg/u112_seg2.png"/>
+        <img id="u116_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u118" class="ax_default connector">
+        <img id="u118_seg0" class="img" src="zbswitchimg/u118_seg0.png"/>
+        <img id="u118_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
+      </div>
+
+      <div id="u120" class="ax_default connector">
+        <img id="u120_seg0" class="img" src="zbswitchimg/u120_seg0.png"/>
+        <img id="u120_seg1" class="img" src="zbswitchimg/u120_seg1.png"/>
+      </div>
+
+      <div id="u122" class="ax_default connector">
+        <img id="u122_seg0" class="img" src="zbswitchimg/u122_seg0.png"/>
+        <img id="u122_seg1" class="img" src="zbswitchimg/u122_seg1.png"/>
+        <img id="u122_seg2" class="img" src="zbswitchimg/u122_seg2.png"/>
+        <img id="u122_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u124" class="ax_default connector">
+        <img id="u124_seg0" class="img" src="zbswitchimg/u124_seg0.png"/>
+        <img id="u124_seg1" class="img" src="zbswitchimg/u124_seg1.png"/>
+        <img id="u124_seg2" class="img" src="zbswitchimg/u124_seg2.png"/>
+        <img id="u124_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u126" class="ax_default connector">
+        <img id="u126_seg0" class="img" src="zbswitchimg/u126_seg0.png"/>
+        <img id="u126_seg1" class="img" src="zbswitchimg/u126_seg1.png"/>
+        <img id="u126_seg2" class="img" src="zbswitchimg/u126_seg2.png"/>
+        <img id="u126_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u128" class="ax_default connector">
+        <img id="u128_seg0" class="img" src="zbswitchimg/u124_seg0.png"/>
+        <img id="u128_seg1" class="img" src="zbswitchimg/u128_seg1.png"/>
+        <img id="u128_seg2" class="img" src="zbswitchimg/u124_seg2.png"/>
+        <img id="u128_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u130" class="ax_default connector">
+        <img id="u130_seg0" class="img" src="zbswitchimg/u126_seg0.png"/>
+        <img id="u130_seg1" class="img" src="zbswitchimg/u130_seg1.png"/>
+        <img id="u130_seg2" class="img" src="zbswitchimg/u126_seg2.png"/>
+        <img id="u130_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u132" class="ax_default connector">
+        <img id="u132_seg0" class="img" src="zbswitchimg/u132_seg0.png"/>
+        <img id="u132_seg1" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u134" class="ax_default connector">
+        <img id="u134_seg0" class="img" src="zbswitchimg/u134_seg0.png"/>
+        <img id="u134_seg1" class="img" src="zbswitchimg/u134_seg1.png"/>
+        <img id="u134_seg2" class="img" src="zbswitchimg/u134_seg2.png"/>
+        <img id="u134_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u136" class="ax_default connector">
+        <img id="u136_seg0" class="img" src="zbswitchimg/u134_seg0.png"/>
+        <img id="u136_seg1" class="img" src="zbswitchimg/u136_seg1.png"/>
+        <img id="u136_seg2" class="img" src="zbswitchimg/u134_seg2.png"/>
+        <img id="u136_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u138" class="ax_default connector">
+        <img id="u138_seg0" class="img" src="zbswitchimg/u138_seg0.png"/>
+        <img id="u138_seg1" class="img" src="zbswitchimg/u138_seg1.png"/>
+        <img id="u138_seg2" class="img" src="zbswitchimg/u138_seg2.png"/>
+        <img id="u138_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u140" class="ax_default connector">
+        <img id="u140_seg0" class="img" src="zbswitchimg/u138_seg0.png"/>
+        <img id="u140_seg1" class="img" src="zbswitchimg/u140_seg1.png"/>
+        <img id="u140_seg2" class="img" src="zbswitchimg/u138_seg2.png"/>
+        <img id="u140_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u142" class="ax_default connector">
+        <img id="u142_seg0" class="img" src="zbswitchimg/u142_seg0.png"/>
+        <img id="u142_seg1" class="img" src="zbswitchimg/u122_seg3.png"/>
+      </div>
+
+      <div id="u144" class="ax_default connector">
+        <img id="u144_seg0" class="img" src="zbswitchimg/u144_seg0.png"/>
+        <img id="u144_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
+      </div>
+
+      <div id="u146" class="ax_default connector">
+        <img id="u146_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
+        <img id="u146_seg1" class="img" src="zbswitchimg/u146_seg1.png"/>
+        <img id="u146_seg2" class="img" src="zbswitchimg/u146_seg2.png"/>
+        <img id="u146_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u148" class="ax_default connector">
+        <img id="u148_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
+        <img id="u148_seg1" class="img" src="zbswitchimg/u148_seg1.png"/>
+        <img id="u148_seg2" class="img" src="zbswitchimg/u146_seg2.png"/>
+        <img id="u148_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u150" class="ax_default connector">
+        <img id="u150_seg0" class="img" src="zbswitchimg/u150_seg0.png"/>
+        <img id="u150_seg1" class="img" src="zbswitchimg/u94_seg1.png"/>
+        <img id="u150_seg2" class="img" src="zbswitchimg/u150_seg2.png"/>
+        <img id="u150_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u152" class="ax_default connector">
+        <img id="u152_seg0" class="img" src="zbswitchimg/u110_seg0.png"/>
+        <img id="u152_seg1" class="img" src="zbswitchimg/u92_seg1.png"/>
+        <img id="u152_seg2" class="img" src="zbswitchimg/u110_seg2.png"/>
+        <img id="u152_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u154" class="ax_default connector">
+        <img id="u154_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
+        <img id="u154_seg1" class="img" src="zbswitchimg/u154_seg1.png"/>
+        <img id="u154_seg2" class="img" src="zbswitchimg/u112_seg2.png"/>
+        <img id="u154_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u156" class="ax_default connector">
+        <img id="u156_seg0" class="img" src="zbswitchimg/u110_seg0.png"/>
+        <img id="u156_seg1" class="img" src="zbswitchimg/u156_seg1.png"/>
+        <img id="u156_seg2" class="img" src="zbswitchimg/u110_seg2.png"/>
+        <img id="u156_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u158" class="ax_default connector">
+        <img id="u158_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
+        <img id="u158_seg1" class="img" src="zbswitchimg/u158_seg1.png"/>
+        <img id="u158_seg2" class="img" src="zbswitchimg/u112_seg2.png"/>
+        <img id="u158_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u160" class="ax_default connector">
+        <img id="u160_seg0" class="img" src="zbswitchimg/u150_seg0.png"/>
+        <img id="u160_seg1" class="img" src="zbswitchimg/u160_seg1.png"/>
+        <img id="u160_seg2" class="img" src="zbswitchimg/u150_seg2.png"/>
+        <img id="u160_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u162" class="ax_default connector">
+        <img id="u162_seg0" class="img" src="zbswitchimg/u162_seg0.png"/>
+        <img id="u162_seg1" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u164" class="ax_default connector">
+        <img id="u164_seg0" class="img" src="zbswitchimg/u164_seg0.png"/>
+        <img id="u164_seg1" class="img" src="zbswitchimg/u120_seg1.png"/>
+      </div>
+
+      <div id="u166" class="ax_default connector">
+        <img id="u166_seg0" class="img" src="zbswitchimg/u164_seg0.png"/>
+        <img id="u166_seg1" class="img" src="zbswitchimg/u120_seg1.png"/>
+      </div>
+
+      <div id="u168" class="ax_default connector">
+        <img id="u168_seg0" class="img" src="zbswitchimg/u168_seg0.png"/>
+        <img id="u168_seg1" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u170" class="ax_default connector">
+        <img id="u170_seg0" class="img" src="zbswitchimg/u170_seg0.png"/>
+        <img id="u170_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
+      </div>
+
+      <div id="u172" class="ax_default connector">
+        <img id="u172_seg0" class="img" src="zbswitchimg/u172_seg0.png"/>
+        <img id="u172_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
+      </div>
+
+      <div id="u174" class="ax_default connector">
+        <img id="u174_seg0" class="img" src="zbswitchimg/u174_seg0.png"/>
+        <img id="u174_seg1" class="img" src="zbswitchimg/u174_seg1.png"/>
+        <img id="u174_seg2" class="img" src="zbswitchimg/u96_seg2.png"/>
+        <img id="u174_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
+      </div>
+
+      <div id="u176" class="ax_default">
+        <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
+      </div>
+
+      <div id="u178" class="ax_default">
+        <div id="u179" class="text">
+          <p><span style="font-size:23px;">吴江农村商业银行</span></p>
+          <p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
+        </div>
+      </div>
+
+      <div id="u181" class="ax_default">
+        <div id="u182" class="text">
+          <p><span>核 心 系 统 灾 备 切 换 演 练</span></p>
+        </div>
+      </div>
+
+      <div id="u183" class="ax_default connector">
+        <img id="u183_seg0" class="img" src="zbswitchimg/u183_seg0.png"/>
+        <img id="u183_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
+      </div>
+
+      <div id="u185" class="ax_default connector">
+        <img id="u185_seg0" class="img" src="zbswitchimg/u185_seg0.png"/>
+        <img id="u185_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
+      </div>
+    </div>
 	
-	<!--content start-->
-	<div class="content">
-		<!-- 图例说明 -->
-		<div style="height:70px;width:300px;margin-left:10px;">
-			<div class="explogo"  style="border:2px solid white;position:fixed;">未开始</div>
-			<div class="explogo"  style="margin-left:75px;border:2px solid #3399CC;position:fixed;">运行中</div>
-			<div class="explogo"  style="margin-left:150px;border:2px solid #32CD32;position:fixed;">成功</div>
-			<div class="explogo"  style="margin-left:225px;border:2px solid #FF4500;position:fixed;">失败</div>
-			<div class="explogo" style="margin-left:300px;border:2px solid #FF8C00;position:fixed;width:85px">完成待确认</div>
-		</div>
-		<div style="margin-left:10px;">
-			<div style="float:left;width:250px;font-size:14px;">
-				<span><b>切换场景名：</b></span>
-				<span>PPRC+LVM 切换</span>
-			</div>
-			<div style="float:left;width:250px;font-size:14px;">
-				<span><b>开始执行时间：</b></span>
-				<span id="exe_date"></span>
-			</div>
-		</div>
-		<div style="margin-bottom:40px;"></div>
-		<div id="svg_container" style="margin-left:10px;margin-right:10px;"> 
-			<svg width="100%" style="height:70vh">
-				<g id='dig' transform="translate(20,50)"/>  
-			</svg>
-		</div>
-	</div>
+
 	<img id="progressImgage" class="progress hide" style="width:100px;height:100px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
     <div id="maskOfProgressImage" class="mask hide"></div>
 </body>
 
-
 <script>
-    //给每个g添加id
-	$(document).ready(function(){
-		//定义一个数组存放所有id值
-		var arrIdVal = ["pprc_go_start","pprc_go_workdb_backup","pprc_go_icsdb_backup","pprc_go_cardb_backup","pprc_go_cmisdb_backup","pprc_go_backup_end",
-						"pprc_go_p770a2_check_hastatus","pprc_go_p770b2_check_hastatus",
-						"pprc_go_p770b1_check_hastatus","pprc_go_p770a1_check_hastatus","pprc_go_checkha_stop",
-						"pprc_go_p770a2_hastop","pprc_go_p770b2_hastop","pprc_go_p770a1_hastop","pprc_go_p770b1_hastop",
-						"pprc_go_ds8k_lunstart",
-						"pprc_go_p770a1_lunread_suspend","pprc_go_p770b1_lunread_suspend",
-						"pprc_go_p770a2_lunread_suspend","pprc_go_p770b2_lunread_suspend",
-						"pprc_go_p770a1_lunread_recover","pprc_go_p770b1_lunread_recover",
-						"pprc_go_p770a2_lunread_recover","pprc_go_p770b2_lunread_recover","pprc_go_ds8k_lunstop",
-						"pprc_go_p770c1_workstart","pprc_go_p770c1_cmisstart","pprc_go_p770c2_icsstart","pprc_go_p770c2_cardstart",
-						"pprc_go_ywcheck","pprc_go_startreplic",
-						"pprc_go_p770a1_enable_copy_replicationstart","pprc_go_p770b1_enable_copy_replicationstart",
-						"pprc_go_p770a2_enable_copy_replicationstart","pprc_go_p770b2_enable_copy_replicationstart",
-						"pprc_go_p770a1_replicationstart","pprc_go_p770b1_replicationstart",
-						"pprc_go_p770a2_replicationstart","pprc_go_p770b2_replicationstart","pprc_go_end"];		 
-		var nodelen = $("g.node").length;
-		//遍历每个g，赋值id
-		for(var i = 0 ; i < nodelen ; i++)
-		{
-			var idname = arrIdVal[i];
-			var datatar = "#" + idname;
-			$("g.node").eq(i).attr("id",idname);
-			$("g.node").eq(i).attr("data-toggle","modal");
-		}
-		
-		//添加执行时间
-		var execution_date = getUrlParam('execution_date');
-		var execution_date_show = execution_date.replace("T"," ");
-		$("#exe_date").text(execution_date_show);
-		
-	})
-	
-	//模态框处理 
-	/* $(document).ready(function(){
-		$("g.node").click(function(){
-			var nodename = $(this).find("tspan").text();//获取任务中文名
-			var nodeid = $(this).attr("id");//获取任务id
-			$(".modalframe").attr("id",nodeid);//给模态框动态赋值id
-			$("#myModalLabel").text(nodename);//每个模态框获取该任务名 
-		});
-	}) */ 
 	var taskid;
 	$(document).ready(function(){
-
-		$("g.node").on("mouseover",function(e){
-			taskid = $(this).attr("id");//获取要点击任务框的id 
-		}) 
 		
-		/* //定义点击重做按钮调用的ajax
-	    $.ajax2 = function (options) {
-	       var img = $("#progressImgage");
-	       var mask = $("#maskOfProgressImage");
-	       var success = options.success;
-	       var error = options.error;
-	       options.success = function (data) {
-	    	   if(data.TaskState == "running"){
-	    		   console.info("running");
-	    		   img.hide();
-		           mask.hide();
-		           clearInterval(makeClear);
-	    	   }
-	           if (success) {
-	               success(data);
-	           }
-	       };
-	       options.error = function (data){
-	    	   alert("请检查应用服务器是否正常！");
-	    	   img.hide();
-	           mask.hide();
-	    	   if(error){
-	    		   error(data);
-	    	   }
-	       }
-	       $.ajax(options);
-	   }; */
-
+		$(".ax_default").on("mouseover",function(e){ //获取要点击任务框的id
+			var classes = $(this).attr("class");
+			taskid = classes.split(" ")[1];
+		})
 		
-		$('g.node').contextPopup({
-          items: [
-            {label:'查看日志', icon:'img/viewlog.png', action:function() 
-            	{ 
-            		var execution_date = getUrlParam('execution_date'); //获取url 的值
-            		var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-            		$.ajax({
-           				url : '<%=path%>/getTaskLog.do',
-           				data:data,
-           				type : 'post',
-           				dataType : 'json',
-           				success:function(result)
-           				{
-           					//alert(result.msg);
-           					$("#showlog").modal();
-           					$("textarea").text(result.msg);
-           				},
-           			})
-            	} 
-            },
-            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
-            	{ 
-	            	var execution_date = getUrlParam('execution_date'); //获取url 的值
-	            	var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-            		var img = $("#progressImgage");
-         	      	var mask = $("#maskOfProgressImage");
-	            	img.show().css({
-	     	           "position": "fixed",
-	     	           "top": "50%",
-	     	           "left": "50%",
-	     	           "margin-top": function () { return -1 * img.height() / 2; },
-	     	           "margin-left": function () { return -1 * img.width() / 2; }
-	     	       });
-	     	       mask.show().css("opacity", "0.1");
-	     	       $.ajax({
-	     	    	  url : '<%=path%>/makeNodeClear.do',
-	        			data:data,
-	        			type : 'post',
-	        			dataType : 'json',
-	        			success:function(data)
-	        			{
-	        				console.info(data);
-	        			}
-	     	       });
-	     	       var makeClear = setInterval(function(){$.ajax({
-	          			url : '<%=path%>/queryTaskState.do',
-	        			data:data,
-	        			type : 'post',
-	        			dataType : 'json',
-	        			success:function(data)
-	        			{
-	        				console.info(data.TaskState);
-	        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
-	        		    		   //console.info("running");
-	        		    		   img.hide();
-	        			           mask.hide();
-	        			           var mynode = d3.select('#' + taskid + ' rect');
-	        			           mynode.style("stroke", "white") ; 
-	        			           clearInterval(makeClear);
-	        		    	   }
-	        			},
-	        			error:function(data)
-	        			{
-	        				 console.info("请检查应用服务器是否正常！");
-	        		    	 img.hide();
-	        		         mask.hide();
-	        			}
-        		   })},3000);
-	            	
-            	} 
-            },
-            {label:'确认成功', icon:'img/comsucc.png', action:function() 
-            	{ 
-	            	var execution_date = getUrlParam('execution_date'); //获取url 的值
-	            	swal({ 
-	            	    title: "", 
-	            	    text: "您确定要将任务置为成功?", 
-	            	    type: "warning", 
-	            	    showCancelButton: true, 
-	            	    closeOnConfirm: false, 
-	            	    confirmButtonText: "确认",  
-	            	    cancelButtonText: "取消",  
-	            	    confirmButtonColor: "#ec6c62" 
-	            	}, function(isConfirm) { 
-	            		if(isConfirm)
-	            		{
-	            			var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-	            			$.ajax({
-	            				url : '<%=path%>/markTaskSuccess.do',
-	            				data:data,
-	            				type : 'post',
-	            				dataType : 'json',
-	            				success:function(result)
-	            				{
-	            					if(result.status == 0)
-	            					{
-	            						swal.close();
-	            						$("#"+taskid).children("rect").css("stroke", "#32CD32");
-	            					} 
-	            				},
-	            			})
-	            		}
-	            	});
-          	 	} 
-            } 
-          ]
-        });
+		$('.ax_default').contextPopup({
+	          items: [
+		            {label:'查看日志', icon:'img/viewlog.png', action:function() 
+		            	{ 
+		            		var execution_date = getUrlParam('execution_date'); //获取url 的值
+		            		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+		            		var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            		$.ajax({
+		           				url : '<%=path%>/getTaskLog.do',
+		           				data:data,
+		           				type : 'post',
+		           				dataType : 'json',
+		           				success:function(result) 
+		           				{
+		           					$("#showlog").modal();
+		           					$("textarea").text(result.msg);
+		           				},
+		           			})
+		            	} 
+		            },
+		            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
+		            	{ 
+			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+			            	var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            		var img = $("#progressImgage");
+		         	      	var mask = $("#maskOfProgressImage");
+			            	img.show().css({
+			     	           "position": "fixed",
+			     	           "top": "50%",
+			     	           "left": "50%",
+			     	           "margin-top": function () { return -1 * img.height() / 2; },
+			     	           "margin-left": function () { return -1 * img.width() / 2; }
+			     	       });
+			     	       mask.show().css("opacity", "0.1");
+			     	      $.ajax({
+			     	    	  url : '<%=path%>/makeNodeClear.do',
+			        			data:data,
+			        			type : 'post',
+			        			dataType : 'json',
+			        			success:function(data)
+			        			{
+			        				console.info(data);
+			        			}
+			     	       });
+			     	       var makeClear = setInterval(function(){$.ajax({
+			          			url : '<%=path%>/queryTaskState.do',
+			        			data:data,
+			        			type : 'post',
+			        			dataType : 'json',
+			        			success:function(data)
+			        			{
+			        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
+			        		    		   img.hide();
+			        			           mask.hide();
+			        			           var task_div = $('.' + data.task_id);
+			        			           task_div.find("div:eq(0)").css("border-color","#797979") ;
+			        			           clearInterval(makeClear);
+			        		    	   }
+			        			},
+			        			error:function(data)
+			        			{
+			        				 console.info("请检查应用服务器是否正常！");
+			        		    	 img.hide();
+			        		         mask.hide();
+			        			}
+		        		   })},3000);
+		            	} 
+		            },
+		            {label:'确认成功', icon:'img/comsucc.png', action:function() 
+		            	{ 
+			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+			            	swal({ 
+			            	    title: "", 
+			            	    text: "您确定要将任务置为成功?", 
+			            	    type: "warning", 
+			            	    showCancelButton: true, 
+			            	    closeOnConfirm: false, 
+			            	    confirmButtonText: "确认",  
+			            	    cancelButtonText: "取消",  
+			            	    confirmButtonColor: "#ec6c62" 
+			            	}, function(isConfirm) { 
+			            		if(isConfirm)
+			            		{
+			            			var data ={"dag_id":"pprc_go","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+			            			$.ajax({
+			            				url : '<%=path%>/markTaskSuccess.do',
+			            				data:data,
+			            				type : 'post',
+			            				dataType : 'json',
+			            				success:function(result)
+			            				{
+			            					if(result.status == 0)
+			            					{
+			            						swal.close();
+			            						var task_div = $('.' + obj.task_id);
+					        			        task_div.find("div:eq(0)").css("border-color","#32CD32") ;
+			            					} 
+			            				},
+			            			})
+			            		}
+			            	});
+		          	 	} 
+		            } 
+		          ]
+		});
 	})
+</script>
+
+<script>
+	$(".ax_default").tooltip({
+	    html: true,
+	    container: "body",
+	});
 	
-    var highlight_color = "#000000";
-    var upstream_color = "#2020A0";
-    var downstream_color = "#0000FF";
-
-    var nodes = [
-	  {
-		"id": "pprc_go_start", 
-		"value": {
-		  "style": "fill:#f0ede4;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "备份数据库" 
-		}
-	  },
-	  {
-		"id": "pprc_go_workdb_backup", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "备份workdb数据库"
-		}
-	  },
-	  {
-		"id": "pprc_go_icsdb_backup", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "备份icsdb数据库"
-		}
-	  },
-	  {
-		"id": "pprc_go_cardb_backup", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "备份cardb数据库"
-		}
-	  },
-	  {
-		"id": "pprc_go_cmisdb_backup", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "备份cmisdb数据库"
-		}
-	  },
-	  {
-		"id": "pprc_go_backup_end", 
-		"value": {
-		  "style": "fill:#f0ede4;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "完成备份"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a2_check_hastatus", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "检查P770a2HA状态"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b2_check_hastatus", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "检查P770b2HA状态"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b1_check_hastatus", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "检查P770b1HA状态"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a1_check_hastatus", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "检查P770a1HA状态"
-		}
-	  },
-	  {
-		"id": "pprc_go_checkha_stop", 
-		"value": {
-		  "style": "fill:#f0ede4;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "完成检查HA状态" 
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a2_hastop", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "P770a2主机停止HA"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b2_hastop", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "P770b2主机停止HA"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a1_hastop", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "P770a1主机停止HA"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b1_hastop", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "P770b1主机停止HA"
-		}
-	  },
-	  {
-		"id": "pprc_go_ds8k_lunstart", 
-		"value": {
-		  "style": "fill:#f0ede4;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "设置DS8K LUN可读写"
-		}
-	  }, 
-	  {
-		"id": "pprc_go_p770a1_lunread_suspend", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "设置P770c1上P770a1 LUN可读写挂起"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b1_lunread_suspend", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "设置P770c1上P770b1 LUN可读写挂起"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a2_lunread_suspend", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "设置P770c2上P770a2 LUN可读写挂起"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b2_lunread_suspend", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "设置P770c2上P770b2 LUN可读写挂起"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a1_lunread_recover", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "设置P770c1上P770a1 LUN可读写恢复" 
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b1_lunread_recover", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "设置P770c1上P770b1 LUN可读写恢复" 
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a2_lunread_recover", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "设置P770c2上P770a2 LUN可读写恢复" 
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b2_lunread_recover", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "设置P770c2上P770b2 LUN可读写恢复" 
-		}
-	  },
-	  {
-		"id": "pprc_go_ds8k_lunstop", 
-		"value": {
-		  "style": "fill:#f0ede4;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "完成设置DS8K LUN可读写"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770c1_workstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "启动P770c1 work应用" 
-		}
-	  }, 
-	  {
-		"id": "pprc_go_p770c1_cmisstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "启动P770c1 cmis应用"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770c2_icsstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "启动P770c2 ics应用"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770c2_cardstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "启动P770c2 card应用" 
-		}
-	  }, 
-	  {
-		"id": "pprc_go_ywcheck", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "业务验证"
-		}
-	  },
-	  {
-		"id": "pprc_go_startreplic", 
-		"value": {
-		  "style": "fill:#f0ede4;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动PPRC H2:H1复制关系" 
-		}
-	  }, 
-	  {
-		"id": "pprc_go_p770a1_enable_copy_replicationstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "确认反向启动P770c1上P770a1复制关系" 
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b1_enable_copy_replicationstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "确认反向启动P770c1上P770b1复制关系" 
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a2_enable_copy_replicationstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "确认反向启动P770c2上P770a2复制关系" 
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b2_enable_copy_replicationstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "确认反向启动P770c2上P770b2复制关系" 
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a1_replicationstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动P770c1上P770a1复制关系"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b1_replicationstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动P770c1上P770b1复制关系"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770a2_replicationstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动P770c2上P770a2复制关系"
-		}
-	  },
-	  {
-		"id": "pprc_go_p770b2_replicationstart", 
-		"value": {
-		  "style": "fill:#ffefeb;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "反向启动P770c2上P770b2复制关系"
-		}
-	  },
-	  {
-		"id": "pprc_go_end", 
-		"value": {
-		  "style": "fill:#f0ede4;", 
-		  "labelStyle": "fill:#000;", 
-		  "label": "结束"
-		}
-	  }	
-	];
+	var dag_id = "pprc_go";
+	var execution_date = getUrlParam('execution_date');
+	var execution_date_show = execution_date.split("T")[0];
+	var data ={"dag_id":dag_id,"execution_date":execution_date};
 	
-    var edges = [
-	  {
-		"u": "pprc_go_start", 
-		"v": "pprc_go_workdb_backup"
-	  },
-	  {
-		"u": "pprc_go_start", 
-		"v": "pprc_go_icsdb_backup"
-	  },
-	  {
-		"u": "pprc_go_start", 
-		"v": "pprc_go_cardb_backup"
-	  },
-	  {
-		"u": "pprc_go_start", 
-		"v": "pprc_go_cmisdb_backup"
-	  },
-	  {
-		"u": "pprc_go_workdb_backup", 
-		"v": "pprc_go_backup_end"
-	  },
-	  {
-		"u": "pprc_go_icsdb_backup", 
-		"v": "pprc_go_backup_end"
-	  },
-	  {
-		"u": "pprc_go_cardb_backup", 
-		"v": "pprc_go_backup_end"
-	  },
-	  {
-		"u": "pprc_go_cmisdb_backup", 
-		"v": "pprc_go_backup_end"
-	  },
-	  {
-		"u": "pprc_go_backup_end", 
-		"v": "pprc_go_p770a2_check_hastatus"
-	  }, 
-	  {
-		"u": "pprc_go_backup_end", 
-		"v": "pprc_go_p770b2_check_hastatus"
-	  },
-	  {
-		"u": "pprc_go_backup_end", 
-		"v": "pprc_go_p770b1_check_hastatus"
-	  },
-	  {
-		"u": "pprc_go_backup_end", 
-		"v": "pprc_go_p770a1_check_hastatus"
-	  },
-	  {
-		"u": "pprc_go_p770a2_check_hastatus", 
-		"v": "pprc_go_checkha_stop"
-	  },
-	  {
-		"u": "pprc_go_p770b2_check_hastatus", 
-		"v": "pprc_go_checkha_stop"
-	  },
-	  {
-		"u": "pprc_go_p770b1_check_hastatus", 
-		"v": "pprc_go_checkha_stop"
-	  },
-	  {
-		"u": "pprc_go_p770a1_check_hastatus", 
-		"v": "pprc_go_checkha_stop"
-	  },
-	  {
-		 "u":"pprc_go_checkha_stop",
-		 "v":"pprc_go_p770a2_hastop"
-	  },
-	  {
-		"u": "pprc_go_p770a2_hastop", 
-		"v": "pprc_go_p770b2_hastop"
-	  },
-	  {
-		"u": "pprc_go_p770b2_hastop", 
-		"v": "pprc_go_p770a1_hastop"
-	  },
-	  {
-		"u": "pprc_go_p770a1_hastop", 
-		"v": "pprc_go_p770b1_hastop"
-	  },
-	  {
-		"u": "pprc_go_p770b1_hastop", 
-		"v": "pprc_go_ds8k_lunstart"
-	  },
-	  {
-		"u": "pprc_go_ds8k_lunstart", 
-		"v": "pprc_go_p770a1_lunread_suspend"
-	  }, 
-	  {
-		"u": "pprc_go_ds8k_lunstart", 
-		"v": "pprc_go_p770b1_lunread_suspend"
-	  },
-	  {
-		"u": "pprc_go_ds8k_lunstart", 
-		"v": "pprc_go_p770a2_lunread_suspend"
-	  },
-	  {
-		"u": "pprc_go_ds8k_lunstart", 
-		"v": "pprc_go_p770b2_lunread_suspend"
-	  },
-	  {
-		"u":"pprc_go_p770a1_lunread_suspend",
-		"v":"pprc_go_p770a1_lunread_recover"
-	  },
-	  {
-		"u":"pprc_go_p770b1_lunread_suspend",
-		"v":"pprc_go_p770b1_lunread_recover"
-	  },
-	  {
-		"u":"pprc_go_p770a2_lunread_suspend",
-		"v":"pprc_go_p770a2_lunread_recover"  
-	  },
-	  {
-		"u":"pprc_go_p770b2_lunread_suspend",
-		"v":"pprc_go_p770b2_lunread_recover"  
-	  },
-	  {
-		"u":"pprc_go_p770a1_lunread_recover",
-		"v":"pprc_go_ds8k_lunstop"
-	  },
-	  {
-		"u":"pprc_go_p770b1_lunread_recover",
-		"v":"pprc_go_ds8k_lunstop"
-	  },
-	  {
-		"u":"pprc_go_p770a2_lunread_recover",
-		"v":"pprc_go_ds8k_lunstop"
-	  },
-	  {
-		"u":"pprc_go_p770b2_lunread_recover",
-		"v":"pprc_go_ds8k_lunstop"
-	  },
-	  {
-		 "u":"pprc_go_ds8k_lunstop",
-		 "v":"pprc_go_p770c1_workstart"
-	  },
-	  {
-		"u": "pprc_go_p770c1_workstart", 
-		"v": "pprc_go_p770c1_cmisstart"
-	  },
-	  {
-		"u": "pprc_go_p770c1_cmisstart", 
-		"v": "pprc_go_p770c2_icsstart"
-	  },
-	  {
-		"u": "pprc_go_p770c2_icsstart", 
-		"v": "pprc_go_p770c2_cardstart"
-	  },
-	  {
-		"u": "pprc_go_p770c2_cardstart", 
-		"v": "pprc_go_ywcheck"
-	  },
-	  {
-		"u": "pprc_go_ywcheck", 
-		"v": "pprc_go_startreplic"
-	  },
-	  {
-		"u": "pprc_go_startreplic", 
-		"v": "pprc_go_p770a1_enable_copy_replicationstart"
-	  },
-	  {
-		"u": "pprc_go_startreplic", 
-		"v": "pprc_go_p770b1_enable_copy_replicationstart"
-	  },
-	  {
-		"u": "pprc_go_startreplic", 
-		"v": "pprc_go_p770a2_enable_copy_replicationstart"
-	  },
-	  {
-		"u": "pprc_go_startreplic", 
-		"v": "pprc_go_p770b2_enable_copy_replicationstart"
-	  },
-	  {
-		 "u":"pprc_go_p770a1_enable_copy_replicationstart",
-		 "v":"pprc_go_p770a1_replicationstart"
-	  },
-	  {
-		 "u":"pprc_go_p770b1_enable_copy_replicationstart",
-		 "v":"pprc_go_p770b1_replicationstart"
-	  },
-	  {
-		 "u":"pprc_go_p770a2_enable_copy_replicationstart",
-		 "v":"pprc_go_p770a2_replicationstart"
-	  },
-	  {
-		 "u":"pprc_go_p770b2_enable_copy_replicationstart",
-		 "v":"pprc_go_p770b2_replicationstart"
-	  },
-	  {
-		"u": "pprc_go_p770a1_replicationstart", 
-		"v": "pprc_go_end"
-	  },                    
-	  {
-		"u": "pprc_go_p770b1_replicationstart", 
-		"v": "pprc_go_end"
-	  },
-	  {
-		"u": "pprc_go_p770a2_replicationstart", 
-		"v": "pprc_go_end"
-	  },
-	  {
-		"u": "pprc_go_p770b2_replicationstart", 
-		"v": "pprc_go_end"
-	  }
-	];
+	setInterval(function(){getAjax("runningData.do",data,"post")},3000);
 	
-    var tasks = {
-	"pprc_go_start": {  
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	}, 
-    "pprc_go_workdb_backup": {
-    	"task_type": "PythonOperator", 
-    	"dag_id": "pprc_go"
-    }, 
-	"pprc_go_icsdb_backup": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	}, 
-    "pprc_go_cardb_backup": {
-    	"task_type": "PythonOperator", 
-    	"dag_id": "pprc_go"
-    }, 
-    "pprc_go_cmisdb_backup": {
-    	"task_type": "BashOperator", 
-    	"dag_id": "pprc_go"
-    }, 
-    "pprc_go_backup_end": {
-    	"task_type": "PythonOperator", 
-    	"dag_id": "pprc_go"
-    }, 
-	  "pprc_go_p770a2_check_hastatus": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770b2_check_hastatus": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770b1_check_hastatus": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770a1_check_hastatus": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_checkha_stop": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770a2_hastop": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  },  
-	  "pprc_go_p770b2_hastop": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770a1_hastop": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770b1_hastop": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_ds8k_lunstart": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770a1_lunread_suspend": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770b1_lunread_suspend": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770a2_lunread_suspend": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  },
-	  "pprc_go_p770b2_lunread_suspend": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  },
-	  "pprc_go_p770a1_lunread_recover": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  },
-	  "pprc_go_p770b1_lunread_recover": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  },
-	  "pprc_go_p770a2_lunread_recover": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  },
-	  "pprc_go_p770b2_lunread_recover": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  },
-	  "pprc_go_ds8k_lunstop": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  },
-	  "pprc_go_p770c1_workstart": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  },
-	  "pprc_go_p770c1_cmisstart": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770c2_icsstart": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770c2_cardstart": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_ywcheck": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_startreplic": {
-		"task_type": "BashOperator", 
-		"dag_id": "pprc_go"
-	  }, 
-	  "pprc_go_p770a1_enable_copy_replicationstart": {
-		"task_type": "PythonOperator", 
-		"dag_id": "pprc_go"
-	  },
-  	  "pprc_go_p770b1_enable_copy_replicationstart": {
-  		"task_type": "PythonOperator", 
-  		"dag_id": "pprc_go"
-  	  },
- 	  "pprc_go_p770a2_enable_copy_replicationstart": {
-  		"task_type": "PythonOperator", 
-  		"dag_id": "pprc_go"
-  	  },
-      "pprc_go_p770b2_enable_copy_replicationstart": {
-   		"task_type": "PythonOperator", 
-   		"dag_id": "pprc_go"
-   	  },
-   	 "pprc_go_p770a1_replicationstart": {
-   		"task_type": "PythonOperator", 
-   		"dag_id": "pprc_go"
-   	  },
-   	  "pprc_go_p770b1_replicationstart": {
-   		"task_type": "PythonOperator", 
-   		"dag_id": "pprc_go"
-   	  },
-   	  "pprc_go_p770a2_replicationstart": {
-   		"task_type": "PythonOperator", 
-   		"dag_id": "pprc_go"
-   	  },
-      "pprc_go_p770b2_replicationstart": {
-   		"task_type": "PythonOperator", 
-   		"dag_id": "pprc_go"
-   	  },
-   	  "pprc_go_end": {
-   		"task_type": "PythonOperator", 
-   		"dag_id": "pprc_go"
-   	  }
-	};
-	
-    var arrange = "LR";
-    var g = dagreD3.json.decode(nodes, edges);
-    var layout = dagreD3.layout().rankDir(arrange).nodeSep(15).rankSep(15);
-    var renderer = new dagreD3.Renderer();
-    renderer.layout(layout).run(g, d3.select("#dig"));
-    inject_node_ids(tasks);
-   
-    //update_nodes_states(task_instances);
-
-    function highlight_nodes(nodes, color) {
-        nodes.forEach (function (nodeid) {
-            my_node = d3.select('#' + nodeid + ' rect');
-            my_node.style("stroke", color) ;
-        })
-    }
-/*
-    d3.selectAll("g.node").on("mouseover", function(d){
-        d3.select(this).selectAll("rect").style("stroke", highlight_color) ;
-        highlight_nodes(g.predecessors(d), upstream_color)
-        highlight_nodes(g.successors(d), downstream_color)
-
-    });
-
-    d3.selectAll("g.node").on("mouseout", function(d){
-        d3.select(this).selectAll("rect").style("stroke", null) ;
-        highlight_nodes(g.predecessors(d), null)
-        highlight_nodes(g.successors(d), null)
-    });   
-*/
-    $("g.node").tooltip({
-      html: true,
-      container: "body",
-    });
-
-    function inject_node_ids(tasks) {
-        $.each(tasks, function(task_id, task) {
-            $('tspan').filter(function(index) { return $(this).text() === task_id; })
-                    .parent().parent().parent()
-                    .attr("id", task_id);
-        });
-    }
-
-
-var dag_id = getUrlParam('dag_id');
-var execution_date = getUrlParam('execution_date');
-var data ={"dag_id":dag_id,"execution_date":execution_date};
-
-//handleAjax("runningData.do",data,"post");
-
-setInterval(function(){getAjax("runningData.do",data,"post")},3000);
-function update_nodes_states(task_instances) {
+	function update_nodes_states(task_instances) {
 		$.each(task_instances,function(idx,obj){
-            var mynode = d3.select('#' + obj.task_id + ' rect');
-            
+            var task_div = $('.' + obj.task_id);
             if(obj.state == 'failed') //如果失败
             {
-            	var tipcontent ="预计开始时间：" + obj.expected_starttime + "," +
-            					"实际开始时间：" + obj.start_Date         + "," +
-            					"预计结束时间：" + obj.expected_endtime   + "," + 
-            					"实际结束时间：" + obj.end_Date           + "," +
-            					"预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-            					"实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
+            	var tipcontent ="<p align='left'> 预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
+            					"实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
+            					"预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
+            					"实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+            					"预计持续时间：" + execution_date_show + " " + obj.expected_duration  + "&nbsp;&nbsp;," + 
+            					"实际持续时间：" + execution_date_show + " " + obj.duration           + "&nbsp;&nbsp;," +
+            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败</p>";
                 var format_content = tipcontent.split(",").join("<br>");
-                $("#"+obj.task_id).attr("data-original-title",format_content); 
-                mynode.style("stroke", "#FF4500") ;
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#FF0000") ;
             }else if (obj.state == 'success') //如果成功
             {
-            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
-								 "实际开始时间：" + obj.start_Date         + "," +
-								 "预计结束时间：" + obj.expected_endtime   + "," + 
-								 "实际结束时间：" + obj.end_Date           + "," +
-								 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-								 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
+            	var tipcontent = "<p align='left'>预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
+								 "实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
+								 "预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
+								 "实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+								 "预计持续时间：" + execution_date_show + " " + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 "实际持续时间：" + execution_date_show + " " + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功</p>";
                 var format_content = tipcontent.split(",").join("<br>");
-                $("#"+obj.task_id).attr("data-original-title",format_content); 
-                 mynode.style("stroke", "#32CD32") ;
-            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed' || obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#32cc00") ;
+            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
             {
-            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
-								 "实际开始时间：" + obj.start_Date         + "," +
-								 "预计结束时间：" + obj.expected_endtime   + "," + 
-								 "实际结束时间：" + obj.end_Date           + "," +
-								 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-								 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
+            	var tipcontent = "<p align='left'>预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
+								 "实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
+								 "预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
+								 "实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+								 "预计持续时间：" + execution_date_show + " " + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 "实际持续时间：" + execution_date_show + " " + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始</p>";
                 var format_content = tipcontent.split(",").join("<br>");
-                $("#"+obj.task_id).attr("data-original-title",format_content); 
-            	mynode.style("stroke", "white") ; 
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#ffffff");
             }else if (obj.state == 'running')
             {
-            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
-								 "实际开始时间：" + obj.start_Date         + "," +
-								 "预计结束时间：" + obj.expected_endtime   + "," + 
-								 "实际结束时间：" + obj.end_Date           + "," +
-								 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-								 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
+            	var tipcontent = "<p align='left'>预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
+								 "实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
+								 "预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
+								 "实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+								 "预计持续时间：" + execution_date_show + " " + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 "实际持续时间：" + execution_date_show + " " + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中</p>";
                 var format_content = tipcontent.split(",").join("<br>");
-                $("#"+obj.task_id).attr("data-original-title",format_content); 
-            	mynode.style("stroke", "#3399CC") ; 
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#0000ff") ;
             }else if (obj.state == 'done') //如果处于做完待确认的状态
             {
-            	var tipcontent = "预计开始时间：" + obj.expected_starttime + "," +
-								 "实际开始时间：" + obj.start_Date         + "," +
-								 "预计结束时间：" + obj.expected_endtime   + "," + 
-								 "实际结束时间：" + obj.end_Date           + "," +
-								 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
-								 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;秒," +
-								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
+            	var tipcontent = "<p align='left'>预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
+								 "实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
+								 "预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
+								 "实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+								 "预计持续时间：" + execution_date_show + " " + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 "实际持续时间：" + execution_date_show + " " + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
                 var format_content = tipcontent.split(",").join("<br>");
-                $("#"+obj.task_id).attr("data-original-title",format_content); 
-                 mynode.style("stroke", "#FF8C00") ;
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#FF8C00") ;
             }
 		})
     }
-    
-//获取url中的参数
-function getUrlParam(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-    if (r != null) return unescape(r[2]); return null; //返回参数值
-}
-
-function ajax(url, param, type) {
-    return $.ajax({
-    url: url,
-    data: param || {},
-    type: type || 'GET',
-    cache:false
-    });
-}
-function getAjax(url,param,type){
-	function handleAjax(url, param, type) {
-	 return ajax(url, param, type).then(function(resp){
-			// 成功回调
-			if(resp){
-				update_nodes_states(resp.dag_tasks);
-			}
-			else{
-				return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
-			}
-		}, function(err){
-			//失败回调
-			console.log(err); // 打印状态码
-			});
-		}
-	handleAjax(url,param,type);
-}
-
-
 	
+	//获取url中的参数
+	function getUrlParam(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	    if (r != null) return unescape(r[2]); return null; //返回参数值
+	}
+	
+	function ajax(url, param, type) {
+	    return $.ajax({
+	    url: url,
+	    data: param || {},
+	    type: type || 'GET',
+	    cache:false
+	    });
+	}
+	
+	function getAjax(url,param,type){
+		function handleAjax(url, param, type) {
+		 return ajax(url, param, type).then(function(resp){
+				// 成功回调
+				if(resp){
+					console.info(resp.dag_tasks);
+					update_nodes_states(resp.dag_tasks);
+				}
+				else{
+					return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
+				}
+			}, function(err){
+				//失败回调
+				console.log(err); // 打印状态码
+				});
+			}
+		handleAjax(url,param,type);
+	}
 </script>
 
-<script type="text/javascript">
-<!-- 模态对话框的所有操作方法在这里-->
-<%-- $("#btn_log").click(function(){   //查看该失败任务的日志
-	var task_id = getTaskID($(this));
-	var task_name = getTaskName($(this));
-	var execution_date = getUrlParam('execution_date'); //获取url 的值
-//	var boolena = confirmMakeSuccess(task_name);
-	var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		$.ajax({
-			url : '<%=path%>/getTaskLog.do',
-			data:data,
-			type : 'post',
-			dataType : 'json',
-			success:function(result)
-			{
-				alert(result.msg);
-			},
-		})
-	
-});
- 
-$("#btn_clear").click(function(){   //将出错任务进行清理
-	var task_id = getTaskID($(this));
-	var task_name = getTaskName($(this));
-	var execution_date = getUrlParam('execution_date'); //获取url 的值
-//	var boolena = confirmMakeSuccess(task_name);
-	var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		$.ajax({
-			url : '<%=path%>/makeNodeClear.do',
-			data:data,
-			type : 'post',
-			dataType : 'json',
-			success:function(result)
-			{
-				//alert(result.msg);
-			},
-		})
-	
-});
-
-$("#btn_success").click(function(){    //将任务标记位成功的ajax
-	var task_id = getTaskID($(this));
-	var task_name = getTaskName($(this));
-	var execution_date = getUrlParam('execution_date'); //获取url 的值
-	swal({ 
-	    title: "", 
-	    text: "您确定要将任务： '"+task_name+"' 置为成功?", 
-	    type: "warning", 
-	    showCancelButton: true, 
-	    closeOnConfirm: false, 
-	    confirmButtonText: "确认",  
-	    cancelButtonText: "取消",  
-	    confirmButtonColor: "#ec6c62" 
-	}, function(isConfirm) { 
-		if(isConfirm)
-		{
-			var data ={"dag_id":"pprc_go","task_id":task_id,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-			$.ajax({
-				url : '<%=path%>/markTaskSuccess.do',
-				data:data,
-				type : 'post',
-				dataType : 'json',
-				success:function(result)
-				{
-					if(result.status == 0)
-					{
-						swal.close();
-						$(".modalframe").modal("hide");
-						$("#"+task_id).children("rect").style("stroke", "green");
-					} 
-				},
-			})
-		}
-	});
-}); --%>
-
-
-function getTaskID(dom) //获取当前模态框的任务id
-{
-	var reg = new RegExp(",","g");  //将逗号删掉， g代表全局
-	var parents1 = $(dom).parents();  //获取父类所有div+id
-	var task_id_array = getTagsInfo(parents1);
-	var task_id = task_id_array.join(",").replace(reg,""); //将task_id_array 转换为字符串，然后删除,
-	return task_id;
-}
-function getTaskName(dom){ //获取当前模态框的任务中文名
-	var text = $(dom).parent().prev().find(".modal-title").text();  //获取标题名称
-	return text;
-}
-function getTagsInfo($doms){   //获取点击按钮的顶层容器的id
-    return $doms.map(function(){
-        return  this.id ;
-    }).get();
-}
-
-
-function confirmMakeSuccess(task_id){
-          return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
-      }
-
-/* function confirmMakeSuccess(task_id){
-     return confirm("您确定要将任务： '"+task_id+"' 置为成功?");
-} */ 
- 
- $(function () { $("[data-toggle='tooltip']").tooltip(); });
-</script>
 </html>
