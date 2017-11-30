@@ -182,28 +182,28 @@ body{margin:0;padding:0;}
       <div id="u44" class="ax_default pprc_go_p770a1_lunread_failover">
         <div id="u44_div"></div>
         <div id="u45" class="text">
-          <p><span>停止P700a1 </span></p><p><span>复制关系</span></p>
+          <p><span>停止P770a1 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
       <div id="u46" class="ax_default pprc_go_p770b2_lunread_failover">
         <div id="u46_div"></div>
         <div id="u47" class="text">
-          <p><span>停止P700b2 </span></p><p><span>复制关系</span></p>
+          <p><span>停止P770b2 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
       <div id="u48" class="ax_default pprc_go_p770b1_lunread_failover">
         <div id="u48_div"></div>
         <div id="u49" class="text">
-          <p><span>停止P700b1 </span></p><p><span>复制关系</span></p>
+          <p><span>停止P770b1 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
       <div id="u50" class="ax_default pprc_go_p770a2_lunread_failover">
         <div id="u50_div"></div>
         <div id="u51" class="text">
-          <p><span>停止P700a2 </span></p><p><span>复制关系</span></p>
+          <p><span>停止P770a2 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
