@@ -640,10 +640,10 @@ function update_nodes_states(task_instances) {
         var mynode = d3.select('#' + obj.task_id + ' rect');
         if(obj.state == 'failed') //如果失败
         {
-        	var tipcontent ="预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
-        					"实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
-        					"预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
-        					"实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+        	var tipcontent ="预计开始时间：" +  obj.expected_starttime + "," +
+        					"实际开始时间：" +  obj.start_Date         + "," +
+        					"预计结束时间：" +  obj.expected_endtime   + "," + 
+        					"实际结束时间：" +  obj.end_Date           + "," +
         					"预计持续时间："   + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
         					"实际持续时间："  + obj.duration           + "&nbsp;&nbsp;秒," +
         					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
@@ -652,10 +652,10 @@ function update_nodes_states(task_instances) {
             mynode.style("stroke", "#FF0000") ;
         }else if (obj.state == 'success') //如果成功
         {
-        	var tipcontent = "预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
-							 "实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
-							 "预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
-							 "实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
+							 "实际开始时间：" +  obj.start_Date         + "," +
+							 "预计结束时间：" +  obj.expected_endtime   + "," + 
+							 "实际结束时间：" +  obj.end_Date           + "," +
 							 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
 							 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;秒," +
 							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
@@ -664,10 +664,10 @@ function update_nodes_states(task_instances) {
              mynode.style("stroke", "#32cc00") ;
         }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed')//未开始
         {
-        	var tipcontent = "预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
-							 "实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
-							 "预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
-							 "实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
+							 "实际开始时间：" +  obj.start_Date         + "," +
+							 "预计结束时间：" +  obj.expected_endtime   + "," + 
+							 "实际结束时间：" +  obj.end_Date           + "," +
 							 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
 							 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;秒," +
 							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
@@ -676,10 +676,10 @@ function update_nodes_states(task_instances) {
         	mynode.style("stroke", "#ffffff") ; 
         }else if (obj.state == 'running')
         {
-        	var tipcontent = "预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
-							 "实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
-							 "预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
-							 "实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
+							 "实际开始时间：" +  obj.start_Date         + "," +
+							 "预计结束时间：" +  obj.expected_endtime   + "," + 
+							 "实际结束时间：" +  obj.end_Date           + "," +
 							 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;秒," + 
 							 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;秒," +
 							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
@@ -688,10 +688,10 @@ function update_nodes_states(task_instances) {
         	mynode.style("stroke", "#0000ff") ; 
         }else if (obj.state == 'done') //如果处于做完待确认的状态
         {
-        	var tipcontent = "预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
-							 "实际开始时间：" + execution_date_show + " " + obj.start_Date         + "," +
-							 "预计结束时间：" + execution_date_show + " " + obj.expected_endtime   + "," + 
-							 "实际结束时间：" + execution_date_show + " " + obj.end_Date           + "," +
+        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
+							 "实际开始时间：" +  obj.start_Date         + "," +
+							 "预计结束时间：" +  obj.expected_endtime   + "," + 
+							 "实际结束时间：" +  obj.end_Date           + "," +
 							 "预计持续时间：" +  obj.expected_duration  + "&nbsp;&nbsp;秒," + 
 							 "实际持续时间：" +  obj.duration           + "&nbsp;&nbsp;秒," +
 							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
