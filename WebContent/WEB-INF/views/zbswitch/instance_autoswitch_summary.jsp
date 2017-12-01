@@ -165,7 +165,7 @@ input[type="text"],input[type="password"] {
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">确认</button>
+					<button id ="checkIkey" type="button" class="btn btn-primary">确认</button>
 					<button type="button" class="btn" data-dismiss="modal">关闭</button>
 				</div>
 			</div>
@@ -175,6 +175,8 @@ input[type="text"],input[type="password"] {
 
 
 <script type="text/javascript">
+
+
 <!-- 更新表格状态-->
 function update_summary_table_state()
 {
@@ -252,7 +254,7 @@ function update_summary_table_state()
 		}
  })
 }
-
+var current_dagid= null;  //全局变量
 $(document).ready(function(){ 
 	update_summary_table_state();//页面初始化的时候更新一次
 }); 
@@ -319,7 +321,9 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 	
     //启动和暂停按钮的处理
 	$(document).on('click',"._play",function(){
+		
 		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
+		current_dagid = current_dag_id;
 		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
 		var current_dag_state = $(this).parents("tr").find("#dag_state").text();//获取当前流程的状态便于发起流程
 		var is_pause = $(this).hasClass("fa-pause-circle");  //是否有暂停元素
@@ -395,7 +399,50 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		        });
 		}
 	})
+
 	
+//IKEY授权认证
+$("#checkIkey").click(function(){
+		var username = $("#username").val();
+		var password = $("#password").val();
+		if(username == '' || username == 'undefined' || username == null)
+		{
+			alert('请输入用户名!');
+			return;
+		}
+		if(password == '' || password =='undefined' || username == null)
+		{
+			alert('请输入密码!')
+			return;
+		}
+		$.ajax({
+			url :  '<%=path%>/ikey.do',
+			type : 'post',
+			data:{"username":username,"password":password},
+			dataType : 'json',
+			success : function(result) {
+				if(result.status == 0)   //认证成功，发起任务
+				{
+					$.ajax({
+        				url :  '<%=path%>/postRunAirflow.do',
+        				type : 'post',
+        				data:{"dag_id":current_dagid,"flag":0},
+        				dataType : 'json',
+        				success : function(result) {
+        					if(result != 'undefined' || result != null){
+    					  		$("#"+current_dagid+"_stop").css("color","red");
+    					  		$("#"+current_dagid+"_running").attr("style","font-size:23px;color:#0066FF");
+    					  }
+        				}
+					})
+				}else{
+					alert(result.msg);
+				}
+			}
+		});
+})
+
+
 
 function ajax(url, param, type) {
          return $.ajax({
@@ -419,5 +466,7 @@ function handleAjax(url, param, type) {
 	console.log(err.status); // 打印状态码
 	});
 }
+
+
 </script>
 </html>
