@@ -23,7 +23,7 @@ body{margin:0;padding:0;}
 .progress{z-index: 2000}
 .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
 .modal{width:750px;left:43%;}
-.ax_default{cursor:pointer;}
+.ax_default{cursor:pointer;text-align:center;font-size:13px;}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -53,11 +53,8 @@ body{margin:0;padding:0;}
 	
 	<div id="base">
 
-      <div id="u0" class="ax_default">
+      <div id="u0">
         <img id="u0_img" class="img" src="zbswitchimg/u0.jpg"/>
-        <div id="u1" class="text" style="display:none; visibility: hidden">
-          <p><span></span></p>
-        </div>
       </div>
 
       <div id="u2" class="ax_default pprc_go_start">
@@ -311,366 +308,374 @@ body{margin:0;padding:0;}
           <p><span>启动P770b2 盛泽到吴江复制关系</span></p>
         </div>
       </div>
-
+      
       <div id="u82" class="ax_default pprc_go_end">
         <div id="u82_div"></div>
         <div id="u83" class="text">
           <p><span>结束</span></p>
         </div>
       </div>
-      
-      <div id="u12" class="ax_default">
-        <div id="u12_div"></div>
-        <div id="u13" class="text">
-          <p><span>未开始</span></p>
-        </div>
-      </div>
 
-      <div id="u14" class="ax_default">
-        <div id="u14_div"></div>
-        <div id="u15" class="text">
-          <p><span>运行中</span></p>
-        </div>
-      </div>
-
-      <div id="u16" class="ax_default">
-        <div id="u16_div"></div>
-        <div id="u17" class="text">
-          <p><span>成功</span></p>
-        </div>
-      </div>
-
-      <div id="u18" class="ax_default">
-        <div id="u18_div"></div>
-        <div id="u19" class="text">
-          <p><span>失败</span></p>
-        </div>
-      </div>
-
-      <div id="u84" class="ax_default connector">
+      <div id="u84" class="connector">
         <img id="u84_seg0" class="img" src="zbswitchimg/u84_seg0.png"/>
         <img id="u84_seg1" class="img" src="zbswitchimg/u84_seg1.png"/>
         <img id="u84_seg2" class="img" src="zbswitchimg/u84_seg2.png"/>
         <img id="u84_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u86" class="ax_default connector">
+      <div id="u86" class="connector">
         <img id="u86_seg0" class="img" src="zbswitchimg/u86_seg0.png"/>
         <img id="u86_seg1" class="img" src="zbswitchimg/u86_seg1.png"/>
         <img id="u86_seg2" class="img" src="zbswitchimg/u86_seg2.png"/>
         <img id="u86_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u88" class="ax_default connector">
+      <div id="u88" class="connector">
         <img id="u88_seg0" class="img" src="zbswitchimg/u84_seg0.png"/>
         <img id="u88_seg1" class="img" src="zbswitchimg/u88_seg1.png"/>
         <img id="u88_seg2" class="img" src="zbswitchimg/u84_seg2.png"/>
         <img id="u88_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u90" class="ax_default connector">
+      <div id="u90" class="connector">
         <img id="u90_seg0" class="img" src="zbswitchimg/u86_seg0.png"/>
         <img id="u90_seg1" class="img" src="zbswitchimg/u90_seg1.png"/>
         <img id="u90_seg2" class="img" src="zbswitchimg/u86_seg2.png"/>
         <img id="u90_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u92" class="ax_default connector">
+      <div id="u92" class="connector">
         <img id="u92_seg0" class="img" src="zbswitchimg/u92_seg0.png"/>
         <img id="u92_seg1" class="img" src="zbswitchimg/u92_seg1.png"/>
         <img id="u92_seg2" class="img" src="zbswitchimg/u92_seg2.png"/>
         <img id="u92_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u94" class="ax_default connector">
+      <div id="u94" class="connector">
         <img id="u94_seg0" class="img" src="zbswitchimg/u92_seg0.png"/>
         <img id="u94_seg1" class="img" src="zbswitchimg/u94_seg1.png"/>
         <img id="u94_seg2" class="img" src="zbswitchimg/u92_seg2.png"/>
         <img id="u94_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u96" class="ax_default connector">
+      <div id="u96" class="connector">
         <img id="u96_seg0" class="img" src="zbswitchimg/u96_seg0.png"/>
         <img id="u96_seg1" class="img" src="zbswitchimg/u96_seg1.png"/>
         <img id="u96_seg2" class="img" src="zbswitchimg/u96_seg2.png"/>
         <img id="u96_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u98" class="ax_default connector">
+      <div id="u98" class="connector">
         <img id="u98_seg0" class="img" src="zbswitchimg/u96_seg0.png"/>
         <img id="u98_seg1" class="img" src="zbswitchimg/u98_seg1.png"/>
         <img id="u98_seg2" class="img" src="zbswitchimg/u96_seg2.png"/>
         <img id="u98_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u100" class="ax_default connector">
+      <div id="u100" class="connector">
         <img id="u100_seg0" class="img" src="zbswitchimg/u100_seg0.png"/>
         <img id="u100_seg1" class="img" src="zbswitchimg/u100_seg1.png"/>
       </div>
 
-      <div id="u102" class="ax_default connector">
+      <div id="u102" class="connector">
         <img id="u102_seg0" class="img" src="zbswitchimg/u102_seg0.png"/>
         <img id="u102_seg1" class="img" src="zbswitchimg/u102_seg1.png"/>
         <img id="u102_seg2" class="img" src="zbswitchimg/u102_seg2.png"/>
         <img id="u102_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u104" class="ax_default connector">
+      <div id="u104" class="connector">
         <img id="u104_seg0" class="img" src="zbswitchimg/u104_seg0.png"/>
         <img id="u104_seg1" class="img" src="zbswitchimg/u104_seg1.png"/>
         <img id="u104_seg2" class="img" src="zbswitchimg/u104_seg2.png"/>
         <img id="u104_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u106" class="ax_default connector">
+      <div id="u106" class="connector">
         <img id="u106_seg0" class="img" src="zbswitchimg/u102_seg0.png"/>
         <img id="u106_seg1" class="img" src="zbswitchimg/u96_seg1.png"/>
         <img id="u106_seg2" class="img" src="zbswitchimg/u102_seg2.png"/>
         <img id="u106_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u108" class="ax_default connector">
+      <div id="u108" class="connector">
         <img id="u108_seg0" class="img" src="zbswitchimg/u104_seg0.png"/>
         <img id="u108_seg1" class="img" src="zbswitchimg/u94_seg1.png"/>
         <img id="u108_seg2" class="img" src="zbswitchimg/u104_seg2.png"/>
         <img id="u108_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u110" class="ax_default connector">
+      <div id="u110" class="connector">
         <img id="u110_seg0" class="img" src="zbswitchimg/u110_seg0.png"/>
         <img id="u110_seg1" class="img" src="zbswitchimg/u86_seg1.png"/>
         <img id="u110_seg2" class="img" src="zbswitchimg/u110_seg2.png"/>
         <img id="u110_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u112" class="ax_default connector">
+      <div id="u112" class="connector">
         <img id="u112_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
         <img id="u112_seg1" class="img" src="zbswitchimg/u84_seg1.png"/>
         <img id="u112_seg2" class="img" src="zbswitchimg/u112_seg2.png"/>
         <img id="u112_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u114" class="ax_default connector">
+      <div id="u114" class="connector">
         <img id="u114_seg0" class="img" src="zbswitchimg/u110_seg0.png"/>
         <img id="u114_seg1" class="img" src="zbswitchimg/u114_seg1.png"/>
         <img id="u114_seg2" class="img" src="zbswitchimg/u110_seg2.png"/>
         <img id="u114_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u116" class="ax_default connector">
+      <div id="u116" class="connector">
         <img id="u116_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
         <img id="u116_seg1" class="img" src="zbswitchimg/u116_seg1.png"/>
         <img id="u116_seg2" class="img" src="zbswitchimg/u112_seg2.png"/>
         <img id="u116_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u118" class="ax_default connector">
+      <div id="u118" class="connector">
         <img id="u118_seg0" class="img" src="zbswitchimg/u118_seg0.png"/>
         <img id="u118_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
 
-      <div id="u120" class="ax_default connector">
+      <div id="u120" class="connector">
         <img id="u120_seg0" class="img" src="zbswitchimg/u120_seg0.png"/>
         <img id="u120_seg1" class="img" src="zbswitchimg/u120_seg1.png"/>
       </div>
 
-      <div id="u122" class="ax_default connector">
+      <div id="u122" class="connector">
         <img id="u122_seg0" class="img" src="zbswitchimg/u122_seg0.png"/>
         <img id="u122_seg1" class="img" src="zbswitchimg/u122_seg1.png"/>
         <img id="u122_seg2" class="img" src="zbswitchimg/u122_seg2.png"/>
         <img id="u122_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u124" class="ax_default connector">
+      <div id="u124" class="connector">
         <img id="u124_seg0" class="img" src="zbswitchimg/u124_seg0.png"/>
         <img id="u124_seg1" class="img" src="zbswitchimg/u124_seg1.png"/>
         <img id="u124_seg2" class="img" src="zbswitchimg/u124_seg2.png"/>
         <img id="u124_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u126" class="ax_default connector">
+      <div id="u126" class="connector">
         <img id="u126_seg0" class="img" src="zbswitchimg/u126_seg0.png"/>
         <img id="u126_seg1" class="img" src="zbswitchimg/u126_seg1.png"/>
         <img id="u126_seg2" class="img" src="zbswitchimg/u126_seg2.png"/>
         <img id="u126_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u128" class="ax_default connector">
+      <div id="u128" class="connector">
         <img id="u128_seg0" class="img" src="zbswitchimg/u124_seg0.png"/>
         <img id="u128_seg1" class="img" src="zbswitchimg/u128_seg1.png"/>
         <img id="u128_seg2" class="img" src="zbswitchimg/u124_seg2.png"/>
         <img id="u128_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u130" class="ax_default connector">
+      <div id="u130" class="connector">
         <img id="u130_seg0" class="img" src="zbswitchimg/u126_seg0.png"/>
         <img id="u130_seg1" class="img" src="zbswitchimg/u130_seg1.png"/>
         <img id="u130_seg2" class="img" src="zbswitchimg/u126_seg2.png"/>
         <img id="u130_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u132" class="ax_default connector">
+      <div id="u132" class="connector">
         <img id="u132_seg0" class="img" src="zbswitchimg/u132_seg0.png"/>
         <img id="u132_seg1" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u134" class="ax_default connector">
+      <div id="u134" class="connector">
         <img id="u134_seg0" class="img" src="zbswitchimg/u134_seg0.png"/>
         <img id="u134_seg1" class="img" src="zbswitchimg/u134_seg1.png"/>
         <img id="u134_seg2" class="img" src="zbswitchimg/u134_seg2.png"/>
         <img id="u134_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u136" class="ax_default connector">
+      <div id="u136" class="connector">
         <img id="u136_seg0" class="img" src="zbswitchimg/u134_seg0.png"/>
         <img id="u136_seg1" class="img" src="zbswitchimg/u136_seg1.png"/>
         <img id="u136_seg2" class="img" src="zbswitchimg/u134_seg2.png"/>
         <img id="u136_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u138" class="ax_default connector">
+      <div id="u138" class="connector">
         <img id="u138_seg0" class="img" src="zbswitchimg/u138_seg0.png"/>
         <img id="u138_seg1" class="img" src="zbswitchimg/u138_seg1.png"/>
         <img id="u138_seg2" class="img" src="zbswitchimg/u138_seg2.png"/>
         <img id="u138_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u140" class="ax_default connector">
+      <div id="u140" class="connector">
         <img id="u140_seg0" class="img" src="zbswitchimg/u138_seg0.png"/>
         <img id="u140_seg1" class="img" src="zbswitchimg/u140_seg1.png"/>
         <img id="u140_seg2" class="img" src="zbswitchimg/u138_seg2.png"/>
         <img id="u140_seg3" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u142" class="ax_default connector">
+      <div id="u142" class="connector">
         <img id="u142_seg0" class="img" src="zbswitchimg/u142_seg0.png"/>
         <img id="u142_seg1" class="img" src="zbswitchimg/u122_seg3.png"/>
       </div>
 
-      <div id="u144" class="ax_default connector">
+      <div id="u144" class="connector">
         <img id="u144_seg0" class="img" src="zbswitchimg/u144_seg0.png"/>
         <img id="u144_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
 
-      <div id="u146" class="ax_default connector">
+      <div id="u146" class="connector">
         <img id="u146_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
         <img id="u146_seg1" class="img" src="zbswitchimg/u146_seg1.png"/>
         <img id="u146_seg2" class="img" src="zbswitchimg/u146_seg2.png"/>
         <img id="u146_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u148" class="ax_default connector">
+      <div id="u148" class="connector">
         <img id="u148_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
         <img id="u148_seg1" class="img" src="zbswitchimg/u148_seg1.png"/>
         <img id="u148_seg2" class="img" src="zbswitchimg/u146_seg2.png"/>
         <img id="u148_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u150" class="ax_default connector">
+      <div id="u150" class="connector">
         <img id="u150_seg0" class="img" src="zbswitchimg/u150_seg0.png"/>
         <img id="u150_seg1" class="img" src="zbswitchimg/u94_seg1.png"/>
         <img id="u150_seg2" class="img" src="zbswitchimg/u150_seg2.png"/>
         <img id="u150_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u152" class="ax_default connector">
+      <div id="u152" class="connector">
         <img id="u152_seg0" class="img" src="zbswitchimg/u110_seg0.png"/>
         <img id="u152_seg1" class="img" src="zbswitchimg/u92_seg1.png"/>
         <img id="u152_seg2" class="img" src="zbswitchimg/u110_seg2.png"/>
         <img id="u152_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u154" class="ax_default connector">
+      <div id="u154" class="connector">
         <img id="u154_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
         <img id="u154_seg1" class="img" src="zbswitchimg/u154_seg1.png"/>
         <img id="u154_seg2" class="img" src="zbswitchimg/u112_seg2.png"/>
         <img id="u154_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u156" class="ax_default connector">
+      <div id="u156" class="connector">
         <img id="u156_seg0" class="img" src="zbswitchimg/u110_seg0.png"/>
         <img id="u156_seg1" class="img" src="zbswitchimg/u156_seg1.png"/>
         <img id="u156_seg2" class="img" src="zbswitchimg/u110_seg2.png"/>
         <img id="u156_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u158" class="ax_default connector">
+      <div id="u158" class="connector">
         <img id="u158_seg0" class="img" src="zbswitchimg/u112_seg0.png"/>
         <img id="u158_seg1" class="img" src="zbswitchimg/u158_seg1.png"/>
         <img id="u158_seg2" class="img" src="zbswitchimg/u112_seg2.png"/>
         <img id="u158_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u160" class="ax_default connector">
+      <div id="u160" class="connector">
         <img id="u160_seg0" class="img" src="zbswitchimg/u150_seg0.png"/>
         <img id="u160_seg1" class="img" src="zbswitchimg/u160_seg1.png"/>
         <img id="u160_seg2" class="img" src="zbswitchimg/u150_seg2.png"/>
         <img id="u160_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u162" class="ax_default connector">
+      <div id="u162" class="connector">
         <img id="u162_seg0" class="img" src="zbswitchimg/u162_seg0.png"/>
         <img id="u162_seg1" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u164" class="ax_default connector">
+      <div id="u164" class="connector">
         <img id="u164_seg0" class="img" src="zbswitchimg/u164_seg0.png"/>
         <img id="u164_seg1" class="img" src="zbswitchimg/u120_seg1.png"/>
       </div>
 
-      <div id="u166" class="ax_default connector">
+      <div id="u166" class="connector">
         <img id="u166_seg0" class="img" src="zbswitchimg/u164_seg0.png"/>
         <img id="u166_seg1" class="img" src="zbswitchimg/u120_seg1.png"/>
       </div>
 
-      <div id="u168" class="ax_default connector">
+      <div id="u168" class="connector">
         <img id="u168_seg0" class="img" src="zbswitchimg/u168_seg0.png"/>
         <img id="u168_seg1" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u170" class="ax_default connector">
+      <div id="u170" class="connector">
         <img id="u170_seg0" class="img" src="zbswitchimg/u170_seg0.png"/>
         <img id="u170_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
 
-      <div id="u172" class="ax_default connector">
+      <div id="u172" class="connector">
         <img id="u172_seg0" class="img" src="zbswitchimg/u172_seg0.png"/>
         <img id="u172_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
 
-      <div id="u174" class="ax_default connector">
+      <div id="u174" class="connector">
         <img id="u174_seg0" class="img" src="zbswitchimg/u174_seg0.png"/>
         <img id="u174_seg1" class="img" src="zbswitchimg/u174_seg1.png"/>
         <img id="u174_seg2" class="img" src="zbswitchimg/u96_seg2.png"/>
         <img id="u174_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
-
-      <div id="u176" class="ax_default">
-        <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
+      
+      <div id="u183" class="connector">
+        <img id="u183_seg0" class="img" src="zbswitchimg/u183_seg0.png"/>
+        <img id="u183_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
 
-      <div id="u178" class="ax_default">
+      <div id="u185" class="connector">
+        <img id="u185_seg0" class="img" src="zbswitchimg/u185_seg0.png"/>
+        <img id="u185_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
+      </div>
+
+      <div id="u176">
+        <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
+      </div>
+      
+      <div id="u12">
+        <div id="u12_div"></div>
+        <div id="u13">
+          <p><span>未开始</span></p>
+        </div>
+      </div>
+
+      <div id="u14">
+        <div id="u14_div"></div>
+        <div id="u15">
+          <p><span>运行中</span></p>
+        </div>
+      </div>
+
+      <div id="u16">
+        <div id="u16_div"></div>
+        <div id="u17">
+          <p><span>成功</span></p>
+        </div>
+      </div>
+
+      <div id="u18">
+        <div id="u18_div"></div>
+        <div id="u19">
+          <p><span>失败</span></p>
+        </div>
+      </div>
+      
+      <div id="uu1">
+        <div id="uu1_div"></div>
+        <div id="uu2">
+          <p><span>已完成待检查</span></p>
+        </div>
+      </div>
+
+      <div id="u178">
         <div id="u179" class="text">
           <p><span style="font-size:23px;">吴江农村商业银行</span></p>
           <p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
         </div>
       </div>
 
-      <div id="u181" class="ax_default">
+      <div id="u181">
         <div id="u182" class="text">
           <p><span>核 心 系 统 灾 备 切 换 演 练</span></p>
         </div>
       </div>
 
-      <div id="u183" class="ax_default connector">
-        <img id="u183_seg0" class="img" src="zbswitchimg/u183_seg0.png"/>
-        <img id="u183_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
-      </div>
-
-      <div id="u185" class="ax_default connector">
-        <img id="u185_seg0" class="img" src="zbswitchimg/u185_seg0.png"/>
-        <img id="u185_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
-      </div>
     </div>
 	
 
