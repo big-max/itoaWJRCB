@@ -624,7 +624,7 @@ body{margin:0;padding:0;}
         <img id="u185_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
 
-      <div id="u176">
+      <div id="u176" class="connector">
         <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
       </div>
       
@@ -672,20 +672,32 @@ body{margin:0;padding:0;}
 
       <div id="u181">
         <div id="u182" class="text">
-          <p><span>核 心 系 统 灾 备 切 换 演 练</span></p>
+          <p><span>核 心 系 统 灾 备 切 换 演 练</span>
         </div>
+        <div id="uu5" style="font-size:16px;"></div>
       </div>
 
     </div>
-	
 
 	<img id="progressImgage" class="progress hide" style="width:100px;height:100px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
     <div id="maskOfProgressImage" class="mask hide"></div>
 </body>
 
 <script>
+	//获取url中的参数
+	function getUrlParam(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	    if (r != null) return unescape(r[2]); return null; //返回参数值
+	}
+
 	var taskid;
+	var execution_date_time = getUrlParam('execution_date');//2017-12-01T15:24:28
+	var execution_date_time1 = execution_date_time.replace("T"," ");
+	
 	$(document).ready(function(){
+		
+		$("#uu5").text(execution_date_time1);
 		
 		$(".ax_default").on("mouseover",function(e){ //获取要点击任务框的id
 			var classes = $(this).attr("class");
@@ -881,13 +893,6 @@ body{margin:0;padding:0;}
             }
 		})
     }
-	
-	//获取url中的参数
-	function getUrlParam(name) {
-	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-	    if (r != null) return unescape(r[2]); return null; //返回参数值
-	}
 	
 	function ajax(url, param, type) {
 	    return $.ajax({

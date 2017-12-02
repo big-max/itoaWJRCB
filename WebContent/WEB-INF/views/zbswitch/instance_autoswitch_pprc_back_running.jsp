@@ -688,6 +688,7 @@ body{margin:0;padding:0;}
         <div id="u315" class="text">
           <p><span>核 心 系 统 灾 备 回 切 演 练</span><span>&nbsp; </span></p>
         </div>
+        <div id="uu5" style="font-size:16px;"></div>
       </div>
     </div>
 
@@ -696,8 +697,20 @@ body{margin:0;padding:0;}
 </body>
 
 <script>
+	//获取url中的参数
+	function getUrlParam(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	    if (r != null) return unescape(r[2]); return null; //返回参数值
+	}
+
 	var taskid;
+	var execution_date_time = getUrlParam('execution_date');//2017-12-01T15:24:28
+	var execution_date_time1 = execution_date_time.replace("T"," ");
+	
 	$(document).ready(function(){
+		
+		$("#uu5").text(execution_date_time1);
 		
 		$(".ax_default").on("mouseover",function(e){ //获取要点击任务框的id
 			var classes = $(this).attr("class");
@@ -894,13 +907,6 @@ body{margin:0;padding:0;}
             }
 		})
     }
-	
-	//获取url中的参数
-	function getUrlParam(name) {
-	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-	    if (r != null) return unescape(r[2]); return null; //返回参数值
-	}
 	
 	function ajax(url, param, type) {
 	    return $.ajax({
