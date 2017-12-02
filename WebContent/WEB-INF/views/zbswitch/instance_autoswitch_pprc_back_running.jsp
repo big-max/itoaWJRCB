@@ -113,21 +113,21 @@ body{margin:0;padding:0;}
         </div>
       </div>
 
-      <div id="u213" class="ax_default pprc_back_p770c2_cardcheck">
+      <div id="u213" class="ax_default pprc_back_p770c2_cardstopcheck">
         <div id="u213_div"></div>
         <div id="u214" class="text">
           <p><span>检查P770c2 card业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u215" class="ax_default pprc_back_p770c2_icscheck">
+      <div id="u215" class="ax_default pprc_back_p770c2_icsstopcheck">
         <div id="u215_div"></div>
         <div id="u216" class="text">
           <p><span>检查P770c2 ics</span></p><p><span>业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u217" class="ax_default pprc_back_p770c1_cmischeck">
+      <div id="u217" class="ax_default pprc_back_p770c1_cmisstopcheck">
         <div id="u217_div"></div>
         <div id="u218" class="text">
           <p><span>检查P770c1 cmis</span></p><p><span>业务是否停止成功</span></p>
@@ -141,7 +141,7 @@ body{margin:0;padding:0;}
         </div>
       </div>
 
-      <div id="u221" class="ax_default pprc_back_p770c1_workcheck">
+      <div id="u221" class="ax_default pprc_back_p770c1_workstopcheck">
         <div id="u221_div"></div>
         <div id="u222" class="text">
           <p><span>检查P770c1 work</span></p><p><span>业务是否停止成功</span></p>
