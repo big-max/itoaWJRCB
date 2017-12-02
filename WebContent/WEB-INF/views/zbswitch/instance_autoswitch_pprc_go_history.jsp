@@ -193,7 +193,7 @@ body{margin:0;padding:0;}
         </div>
       </div>
 
-      <div id="u56" class="ax_default pprc_go_p770c1_workcheck">
+      <div id="u56" class="ax_default pprc_go_p770c1_workstartcheck">
         <div id="u56_div"></div>
         <div id="u57" class="text">
           <p><span>验证P770c1 </span></p><p><span>work应用</span></p>
@@ -207,7 +207,7 @@ body{margin:0;padding:0;}
         </div>
       </div>
 
-      <div id="u60" class="ax_default pprc_go_p770c1_cmischeck">
+      <div id="u60" class="ax_default pprc_go_p770c1_cmisstartcheck">
         <div id="u60_div"></div>
         <div id="u61" class="text">
           <p><span>验证P770c1 </span></p><p><span>cmis应用</span></p>
@@ -221,7 +221,7 @@ body{margin:0;padding:0;}
         </div>
       </div>
 
-      <div id="u64" class="ax_default pprc_go_p770c2_icscheck">
+      <div id="u64" class="ax_default pprc_go_p770c2_icsstartcheck">
         <div id="u64_div"></div>
         <div id="u65" class="text">
           <p><span>验证P770c2 </span></p><p><span>ics应用</span></p>
@@ -235,7 +235,7 @@ body{margin:0;padding:0;}
         </div>
       </div>
 
-      <div id="u68" class="ax_default pprc_go_p770c2_cardcheck">
+      <div id="u68" class="ax_default pprc_go_p770c2_cardstartcheck">
         <div id="u68_div"></div>
         <div id="u69" class="text">
           <p><span>验证P770c2 </span></p><p><span>card应用</span></p>
