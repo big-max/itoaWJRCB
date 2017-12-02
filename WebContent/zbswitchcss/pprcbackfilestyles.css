@@ -4121,3 +4121,11 @@ body {
   width:90px;
   word-wrap:break-word;
 }
+#uu5 {
+  border-width:0px;
+  position:absolute;
+  left:450px;
+  top:0px;
+  width:60px;
+  white-space:nowrap;
+}
