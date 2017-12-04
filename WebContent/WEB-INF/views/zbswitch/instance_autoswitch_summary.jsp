@@ -294,29 +294,34 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
 		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
 		var current_execution_date = $(this).parents("tr").find("#execution_date").text();//获取执行时间
-		swal({
-            title: "",
-            text: "请再次确认是否立即停止"+current_dag_alias+"流程？",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonText: "是",
-            cancelButtonText: "否", 
-            confirmButtonColor:"#ec6c62"
-        }, function(isConfirm){
-        	if(isConfirm)
-        	{
-        		 $.ajax({
-     				url :  'postStopAirflow.do',
-     				type : 'post',
-     				data:{"dag_id":current_dag_id,"execution_date":current_execution_date},
-     				dataType : 'json',
-     				success : function(result) {    					
-     				},
-     				error : function(errmsg) {
-     				}
-     			})
-        	}
-        });
+		var current_color_get = $(this).css("color");
+		var current_color_value = "rgb(190, 190, 190)";
+		if(current_color_get != current_color_value)
+		{
+			swal({
+	            title: "",
+	            text: "请再次确认是否立即停止"+current_dag_alias+"流程？",
+	            type: "warning",
+	            showCancelButton: true,
+	            confirmButtonText: "是",
+	            cancelButtonText: "否", 
+	            confirmButtonColor:"#ec6c62"
+	        }, function(isConfirm){
+	        	if(isConfirm)
+	        	{
+	        		 $.ajax({
+	     				url :  'postStopAirflow.do',
+	     				type : 'post',
+	     				data:{"dag_id":current_dag_id,"execution_date":current_execution_date},
+	     				dataType : 'json',
+	     				success : function(result) {    					
+	     				},
+	     				error : function(errmsg) {
+	     				}
+	     			})
+	        	}
+	        });
+		} 
 	})
 	
     //启动和暂停按钮的处理
@@ -415,31 +420,6 @@ $("#checkIkey").click(function(){
 			sweet("请输入密码!","warning","确定");
 			return;
 		}
-		<%-- $.ajax({
-			url :  '<%=path%>/ikey.do',
-			type : 'post',
-			data:{"username":username,"password":password},
-			dataType : 'json',
-			success : function(result) {
-				if(result.status == 0)   //认证成功，发起任务
-				{
-					$.ajax({
-        				url :  '<%=path%>/postRunAirflow.do',
-        				type : 'post',
-        				data:{"dag_id":current_dagid,"flag":0},
-        				dataType : 'json',
-        				success : function(result) {
-        					if(result != 'undefined' || result != null){
-    					  		$("#"+current_dagid+"_stop").css("color","red");
-    					  		$("#"+current_dagid+"_running").attr("style","font-size:23px;color:#0066FF");
-    					  }
-        				}
-					})
-				}else{
-					alert(result.msg);
-				}
-			}
-		}); --%>
 		$.ajax({
 			url :  '<%=path%>/ikey.do',
 			type : 'post',
