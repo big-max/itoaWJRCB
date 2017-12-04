@@ -407,15 +407,15 @@ $("#checkIkey").click(function(){
 		var password = $("#password").val();
 		if(username == '' || username == 'undefined' || username == null)
 		{
-			alert('请输入用户名!');
+			sweet("请输入用户名!","warning","确定");
 			return;
 		}
 		if(password == '' || password =='undefined' || username == null)
 		{
-			alert('请输入密码!')
+			sweet("请输入密码!","warning","确定");
 			return;
 		}
-		$.ajax({
+		<%-- $.ajax({
 			url :  '<%=path%>/ikey.do',
 			type : 'post',
 			data:{"username":username,"password":password},
@@ -437,6 +437,58 @@ $("#checkIkey").click(function(){
 					})
 				}else{
 					alert(result.msg);
+				}
+			}
+		}); --%>
+		$.ajax({
+			url :  '<%=path%>/ikey.do',
+			type : 'post',
+			data:{"username":username,"password":password},
+			dataType : 'json',
+			success : function(result) {
+				if(result.status == 0)   //认证成功，发起任务
+				{
+					swal({
+						title: "",
+						text: "认证成功", 
+						type: "success",
+						confirmButtonText: "确定",  
+						confirmButtonColor: "rgb(174,222,244)"
+					},
+					function(isConfirm)
+					{
+						if(isConfirm)
+						{
+							$.ajax({
+		        				url :  '<%=path%>/postRunAirflow.do',
+		        				type : 'post',
+		        				data:{"dag_id":current_dagid,"flag":0},
+		        				dataType : 'json',
+		        				success : function(result) {
+		        					if(result != 'undefined' || result != null){
+		    					  		$("#"+current_dagid+"_stop").css("color","red");
+		    					  		$("#"+current_dagid+"_running").attr("style","font-size:23px;color:#0066FF");
+		    					  }
+		        				}
+							})
+							$("#checkpass").modal('hide');
+						}
+					});
+				}else{					
+					swal({
+						title: "",
+						text: "认证失败,原因:"+result.msg, 
+						type: "error",
+						confirmButtonText: "确定",  
+						confirmButtonColor: "rgb(174,222,244)"
+					},
+					function(isConfirm)
+					{
+						if(isConfirm)
+						{
+							$("#checkpass").modal('hide');
+						}
+					});
 				}
 			}
 		});
