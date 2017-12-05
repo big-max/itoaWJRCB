@@ -149,7 +149,7 @@ public class UserController {
 		String passwd = request.getParameter("passwd");
 		String role = request.getParameter("role");
 		String email = request.getParameter("email");
-		String[] products= request.getParameterValues("manageProduct");
+		//String[] products= request.getParameterValues("manageProduct");
 		ObjectNode on = om.createObjectNode();
 		on.put("type", "addUser");
 		on.put("name", name);
@@ -157,13 +157,14 @@ public class UserController {
 		on.put("password", SecurityUtil.EncoderByMd5(passwd));
 		on.put("email", email);
 		on.put("role", Integer.valueOf(role));
-		
+		/*
 		ArrayNode an = om.createArrayNode();
 		for(String pro : products)
 		{
 			an.add(pro);
 		}
 		on.putPOJO("product", an);
+		*/
 		String strOrgUrl = addHostService.createSendUrl(PropertyKeyConst.AMS2_HOST,
 				PropertyKeyConst.POST_ams2_service_users);
 		try {

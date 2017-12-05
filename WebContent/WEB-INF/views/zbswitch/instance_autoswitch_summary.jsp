@@ -286,6 +286,10 @@ $(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		
 		var dag_id = $(this).parents("tr").find("#dag_id").text()
 		var execution_date = $(this).parents("tr").find("#execution_date").text()
+		if ( execution_date == '' || execution_date == null || execution_date=='undefined')
+		{
+			execution_date  = '1969-12:12T12:12:12';
+		}
 		window.open("runningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
 	})
 	

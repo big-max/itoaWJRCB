@@ -132,7 +132,7 @@ input[type="text"],input[type="password"]  {
 										<th style="text-align: center;">用户名</th>
 										<th style="text-align: center;">E-mail</th>
 										<th style="text-align: center;">角色</th>
-										<th style="text-align: center;">管理产品</th>
+										<!-- <th style="text-align: center;">管理产品</th> -->
 									</tr>
 								</thead>
 
@@ -145,8 +145,8 @@ input[type="text"],input[type="password"]  {
 											</td>
 											<td style="text-align: center;">${job.username }</td>											
 											<td style="text-align: center;">${job.email }</td>
-											<td style="text-align: center;"><c:if test="${job.role == 1}">管理员</c:if><c:if test="${job.role == 0}">操作员</c:if></td>
-											 <td style="text-align: center;">${job.proList }</td>										    
+											<td style="text-align: center;"><c:if test="${job.role == 5}">应用发布组</c:if><c:if test="${job.role == 4}">巡检组</c:if><c:if test="${job.role == 3}">部署组</c:if><c:if test="${job.role == 1}">管理员</c:if><c:if test="${job.role == 0}">日终组</c:if><c:if test="${job.role == 2}">灾备组</c:if></td>
+											 <%-- <td style="text-align: center;">${job.proList }</td> --%>										    
 											</tr>							
 									</c:forEach> 
 								</tbody>
@@ -202,12 +202,16 @@ input[type="text"],input[type="password"]  {
 													<div class="controls" style="padding-top: 5px;">
 														<span class="input140 mr20">角色：</span>
 														<select id="role" class="w85" style="width: 210px;" name="role">
-															<option value="1" selected="selected">Adminstor</option>
-															<option value="0" >Operator</option>
+															<option value="1" selected="selected">管理员</option>
+															<option value="0" >日终组</option>
+															<option value="2" >灾备组</option>
+															<option value="3" >部署组</option>
+															<option value="4" >巡检组</option>
+															<option value="5" >应用发布组</option>
 														</select>
 													</div>
 												</div>
-												
+												<!-- 
 												<div class="control-group">
 													<div class="controls" style="padding-top: 10px;">
 														<span class="input140 mr20">管理产品：</span> 
@@ -215,7 +219,7 @@ input[type="text"],input[type="password"]  {
 														</select>
 													</div>
 												</div> 
-												
+												 -->
 											</div>
 										</form>
 									</div>
@@ -306,13 +310,15 @@ input[type="text"],input[type="password"]  {
 		}
 		
 		//判断管理产品不为空
-		var manageProduct = $("#manageProduct").val();
+		//var manageProduct = $("#manageProduct").val();
+		var manageProduct = [""];
+		/*
 		if(username != "" && username.indexOf(" ") == -1 && passwd != "" && confirmasswd != "" && manageProduct == null)
 		{
 			sweet("请选择管理产品 !","warning","确定");  
 			return ;
 		}
-		
+		*/
 		$.ajax({
 			url : '<%=path%>/addUser.do',
 			data : $('#submits_jobs').serialize(), 
@@ -330,9 +336,22 @@ input[type="text"],input[type="password"]  {
 							window.location.href = "accountManage.do";
 						}
 					})
+				}else if(retMsg == 0)
+				{
+					swal({
+						title : "",
+						text : "添加失败",
+						type : "error",
+						confirmButtonText : "确定",
+					},function(isConfirm){
+						if (isConfirm) {
+							window.location.href = "accountManage.do";
+						}
+					})
+			
 				}
 			},
-			failure : function(err) {
+			error : function(err) {
 				alert(err)
 			}
 		})

@@ -109,6 +109,7 @@ jQuery(document).ready(function () {
 		   		 $("#menu27").show();
 		   		 $("#menu28").show();
 		   		 $("#menu29").show();
+		   		 $("#menu30").show();
 		   		 $("#showonce").delay(0).slideDown(300);
 		   		$("#forremoveminux").addClass("submenu-indicator-minus");
         	});
@@ -136,6 +137,7 @@ jQuery(document).ready(function () {
 			$("#menu27").hide();
 			$("#menu28").hide();
 			$("#menu29").hide();
+			$("#menu30").hide();
 		 	$("#jquery-accordion-menu").animate({width:"56px"},1,function(){
 			 	$(".nosubmenu").css("display","none");			//收缩后将三级菜单收起
 			 	$('.nosubmenu').find('.has-children.selected').removeClass('selected');	//将三级菜单还原到默认情况
@@ -181,6 +183,7 @@ jQuery(document).ready(function () {
 		 $("#menu27").show(300);
 		 $("#menu28").show(300);
 		 $("#menu29").show(300);
+		 $("#menu30").show(300);
 	});
 	//左侧菜单栏的隐藏和显示 结束
 });
@@ -192,6 +195,7 @@ var j = 1;
 var k = 1;
 var p = 1;
 var q = 1;
+var m = 1;
 $("body").on("click","#proAndser,#proAndser2",function(){
 	$("#demo-list").toggle();
 	if(i%2 == 1){
@@ -247,6 +251,17 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 	}
 	q++;
 })
+$("body").on("click","#rizhong,#rizhong2",function(){
+	$("#demo-list5").toggle();
+	if(m%2 == 1){
+		var state1 = "<img class='forrotate6' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
+		$(".forrotate6").replaceWith(state1); 
+	}else if(m%2 == 0) {
+		var state1 = "<img class='forrotate6' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
+		$(".forrotate6").replaceWith(state1); 
+	}
+	m++;
+})
 </script>
 
 	<header class="cd-main-header">
@@ -300,6 +315,7 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 			<img class="forrotate" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
 			<span id="menu11" style="position:relative;top:15px;font-size:13px;" >产品与服务</span>
 		</div>
+		<c:if test="${role == 1 || role == 3  }">
 		<ul id="demo-list">
 			<li class="active">
 				<a href="#" class="notvisible tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化部署">
@@ -352,7 +368,7 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 					</li>
 				</ul>
 			</li>
-			
+			<c:if test="${role == 4 || role == 1  }">
 			<li>
 				<a href="healthCheck.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="自动化巡检">
 					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>
@@ -363,18 +379,18 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 					<span id="menu13" class="top5">自动化巡检</span> 
 			    </a>
 			</li>
-			
+			</c:if>
 			<li>
 				<a href="configCompare.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="配置跟踪比对">
 					<img class="img_icon" src="img/icons/iconfont/trace.png" id="icon13"></img>
 				</a>
-				<a href="configCompare.do" class="tooltipa2">
+				<!-- <a href="configCompare.do" class="tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/trace.png" id="icon13"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu14" class="top5">配置跟踪比对</span> 
-				</a>
+				</a> -->
 			</li>
 			
-			<li>
+			<!-- <li>
 				<a href="logCatch.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="日志抓取">
 					<img class="img_icon" src="img/icons/iconfont/logcatch17.png" id="icon14"></img>
 				</a>
@@ -382,10 +398,13 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 					<img class="img_icon" src="img/icons/iconfont/logcatch17.png" id="icon14"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu15" class="top5">日志抓取</span> 
 				</a>
-			</li> 	
+			</li> 	 -->
 		</ul>
+		</c:if>
+		
 		
 		<!-- 灾备演练 -->
+		<c:if test="${role ==1 || role == 2 }">
 		<div class="jquery-accordion-menu-footer tooltipa1 notvisible" id="disaster" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="灾备演练">
 			<img class="forrotate4" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
 		</div>
@@ -404,6 +423,20 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 					<span id="menu26" class="top5">灾备切换</span> 
 			    </a>
 			</li>
+		</ul>
+		</c:if>
+		<!-- 日终 -->
+		<c:if test="${role == 0 || role == 1 }">
+		<div class="jquery-accordion-menu-footer tooltipa1 notvisible" id="rizhong" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="日终">
+			<img class="forrotate6" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
+		</div>
+		<div class="jquery-accordion-menu-footer tooltipa2" id="rizhong2" style="cursor:pointer;">
+			<img class="forrotate6" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
+			<span id="menu30" style="position:relative;top:15px;font-size:13px;">日终</span>
+		</div>
+		
+		<ul id="demo-list5">		
+			
 			<li>
 				<a href="dailyflow.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="日终流程">
 					<img class="img_icon" src="img/icons/iconfont/dailyflow.png"></img>
@@ -413,9 +446,11 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 					<span id="menu27" class="top5">日终流程</span> 
 			    </a>
 			</li>
+			
 		</ul>
-		
+		</c:if>
 		<!-- 自动化发布 -->
+		<c:if test="${role == 5 || role == 1 }">
 		<div class="jquery-accordion-menu-footer tooltipa1 notvisible" id="autopublish" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="自动化发布">
 			<img class="forrotate5" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
 		</div>
@@ -435,7 +470,7 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 			    </a>
 			</li>
 		</ul>
-		
+		</c:if>
 				<!-- POC模块 
 		<div class="jquery-accordion-menu-footer tooltipa1" id="poccenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="POC场景模块">
 			<img class="forrotate3" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
@@ -486,6 +521,7 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 		-->
 		
 		<!-- 用户中心 -->
+		<c:if test="${role == 1 }">
 		<div class="jquery-accordion-menu-footer tooltipa1 notvisible" id="usercenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="用户中心">
 			<img class="forrotate2" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
 		</div>
@@ -494,7 +530,7 @@ $("body").on("click","#autopublish,#autopublish2",function(){
 			<span id="menu16" style="position:relative;top:15px;font-size:13px;">用户中心</span>
 		</div>
 		
-		<c:if test="${role == 1 }">
+		
 		<ul id="demo-list1">
 			<li>
 				<a href="accountManage.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="账号管理">
