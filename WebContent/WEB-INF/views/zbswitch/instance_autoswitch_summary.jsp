@@ -41,7 +41,7 @@
 }
 .linkexpre{
 	float:left;
-	margin-right:10px;
+	margin-right:20px;
 }
 i:hover{
 	cursor:pointer;
@@ -166,7 +166,7 @@ input[type="text"],input[type="password"] {
 				</div>
 				<div class="modal-footer">
 					<button id ="checkIkey" type="button" class="btn btn-primary">确认</button>
-					<button type="button" class="btn" data-dismiss="modal">关闭</button>
+					<button id="ikeybtn" type="button" class="btn" data-dismiss="modal">关闭</button>
 				</div>
 			</div>
 		</div>
@@ -175,8 +175,6 @@ input[type="text"],input[type="password"] {
 
 
 <script type="text/javascript">
-
-
 <!-- 更新表格状态-->
 function update_summary_table_state()
 {
@@ -199,7 +197,7 @@ function update_summary_table_state()
 		         + "<td>" 
 		         if(data[i].last_run_status == '' || data[i].last_run_status == 'failed' || data[i].last_run_status == 'success' )  //表示当前没有发起的任务 或者任务有结束的
 		         {
-		        	  html +=    "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
+		        	  html +=    "<div style=\"margin-left:22%;\">" +                                  //这里加上样式按钮
 			         	"<div class=\"linkexpre\">"+
 			         	"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"modal\" data-target=\"#checkpass\"></i>"
 						+"</div>"
@@ -213,20 +211,20 @@ function update_summary_table_state()
 						+"<div class=\"linkexpre\">"+
 						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\" data-toggle=\"tooltip\" title=\"查看历史\"></i>"
 						+"</div>"
-						+
+						/* +
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
 					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\"title=\"编辑流程\" ></i>"
-						+"</div>"
+						+"</div>" */
 		         }else if (data[i].last_run_status == 'running')  //如果是运行中
 		         {
 		        	 if(data[i].is_paused == 0){  // 0 代表开着的,没有暂停
-		        		html += "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
+		        		html += "<div style=\"margin-left:22%;\">" +                                  //这里加上样式按钮
 				         	"<div class=\"linkexpre\">"+
 							"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-pause-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"tooltip\" title=\"暂停流程\"></i>"
 							+"</div></div>"
 		        	  }else if (data[i].is_paused == 1) //1 代表着暂停中
 		        	  {
-		        		  html += "<div style=\"margin-left:18%;\">" +                                  //这里加上样式按钮
+		        		  html += "<div style=\"margin-left:22%;\">" +                                  //这里加上样式按钮
 				         	"<div class=\"linkexpre\">"+
 							"<i id=\""+data[i].dag_id+"_play\" class=\"_play fa fa-play-circle\" style=\"font-size:26px;color:#0066FF\" data-toggle=\"tooltip\" title=\"继续流程\"></i>"
 							+"</div></div>" 
@@ -242,28 +240,28 @@ function update_summary_table_state()
 						+"<div class=\"linkexpre\">"+
 						"<i id=\""+data[i].dag_id+"_history\" class=\"_history fa fa-clock-o\" style=\"font-size:26px;color:#D4237A\" data-toggle=\"tooltip\" title=\"查看历史\"></i>"
 						+"</div>"
-						+
+						/* +
 						"<div class=\"linkexpre\" style=\"margin-top:2px;\" data-toggle=\"modal\" data-target=\"#edit_dag\">"+
 					    "<i id=\""+data[i].dag_id+"_edit\" class=\"_edit fa fa-pencil\"  style=\"font-size:23px;color:#D4237A\" data-toggle=\"tooltip\" title=\"编辑流程\"></i>"
-						+"</div>"
+						+"</div>" */
 		         }
 		         html += "</td></tr>";
 		         $(".searchable").html(html)
 				}		
 			}
 		}
- })
+ 	})
 }
-var current_dagid= null;  //全局变量
-$(document).ready(function(){ 
-	update_summary_table_state();//页面初始化的时候更新一次
-}); 
-  
-setInterval('update_summary_table_state()',2000); 
 
-$(document).click(function(e) { // 在页面任意位置点击而触发此事件
-	 var id =  $(e.target).attr("id");       // e.target表示被点击的目标
-	 //alert(id)
+	var current_dagid= null;  //全局变量
+	$(document).ready(function(){ 
+		update_summary_table_state();//页面初始化的时候更新一次
+	}); 
+	  
+	setInterval('update_summary_table_state()',2000); 
+	
+	$(document).click(function(e) { // 在页面任意位置点击而触发此事件
+		 var id =  $(e.target).attr("id");       // e.target表示被点击的目标
 	})
 
 	
@@ -470,7 +468,8 @@ $("#checkIkey").click(function(){
 					{
 						if(isConfirm)
 						{
-							$("#checkpass").modal('hide');
+							$("#username").val("");
+							$("#password").val("");
 						}
 					});
 				}
@@ -503,6 +502,9 @@ function handleAjax(url, param, type) {
 	});
 }
 
-
+$("#ikeybtn").click(function(){
+	$("#username").val("");
+	$("#password").val("");
+})
 </script>
 </html>

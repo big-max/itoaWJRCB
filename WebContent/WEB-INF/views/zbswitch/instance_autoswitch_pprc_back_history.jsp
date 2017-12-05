@@ -58,6 +58,22 @@ body{margin:0;padding:0;}
 </head>
 
 <body> 
+	<!-- 日志模态框（Modal） -->
+	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">日志信息</h4>
+				</div>
+				<div class="modal-body">
+					<textarea rows="10" style="width:100%;height:100%;resize:none;"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div> 
 	
 	<div id="base">
 
@@ -668,7 +684,7 @@ body{margin:0;padding:0;}
       </div>
       
       <div id="uu2">		  
-          <button id="showlog" class="btn btn-sm" style="background-color: #3399CC;">
+          <button id="showlogbtn" class="btn btn-sm" style="background-color: #3399CC;">
 				<font color="white">查看历史</font>
 		  </button>
       </div>
@@ -682,9 +698,44 @@ var execution_date = getUrlParam('execution_date');
 var execution_date_show = execution_date.split("T")[0];
 var data ={"dag_id":dag_id,"execution_date":execution_date};
 
+var taskid;
+$(document).ready(function(){
+	$(".ax_default").on("mouseover",function(e){ //获取要点击任务框的id
+		var classes = $(this).attr("class");
+		taskid = classes.split(" ")[1];
+	})
+	
+	$('.ax_default').contextPopup({
+        items: [
+	            {label:'查看日志', icon:'img/viewlog.png', action:function() 
+	            	{ 
+	            		var execution_date = getUrlParam('execution_date'); //获取url 的值
+	            		var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	            		$.ajax({
+	           				url : '<%=path%>/getTaskLog.do',
+	           				data:data,
+	           				type : 'post',
+	           				dataType : 'json',
+	           				success:function(result) 
+	           				{
+	           					$("#showlog").modal();
+	           					$("textarea").text(result.msg);
+	           				},
+	           			})
+	            	} 
+	            } 
+	          ]
+	});
+})
+
+$(".ax_default").tooltip({
+    html: true,
+    container: "body",
+});
+
 function update_nodes_states(task_instances) {
 	$.each(task_instances,function(idx,obj){
-        var mynode = d3.select('#' + obj.task_id + ' rect');
+		var task_div = $('.' + obj.task_id);
         if(obj.state == 'failed') //如果失败
         {
         	var tipcontent ="预计开始时间：" +  obj.expected_starttime + "," +
@@ -695,8 +746,8 @@ function update_nodes_states(task_instances) {
         					"实际持续时间：" +  obj.duration           + "&nbsp;&nbsp;秒," +
         					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
             var format_content = tipcontent.split(",").join("<br>");
-            $("#"+obj.task_id).attr("data-original-title",format_content); 
-            mynode.style("stroke", "#FF0000") ;
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#FF0000");
         }else if (obj.state == 'success') //如果成功
         {
         	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
@@ -707,8 +758,8 @@ function update_nodes_states(task_instances) {
 							 "实际持续时间：" +  obj.duration           + "&nbsp;&nbsp;秒," +
 							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
             var format_content = tipcontent.split(",").join("<br>");
-            $("#"+obj.task_id).attr("data-original-title",format_content); 
-             mynode.style("stroke", "#32cc00") ;
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#32cc00");
         }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed')//未开始
         {
         	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
@@ -719,8 +770,8 @@ function update_nodes_states(task_instances) {
 							 "实际持续时间：" +  obj.duration           + "&nbsp;&nbsp;秒," +
 							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
             var format_content = tipcontent.split(",").join("<br>");
-            $("#"+obj.task_id).attr("data-original-title",format_content); 
-        	mynode.style("stroke", "#ffffff") ; 
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#ffffff"); 
         }else if (obj.state == 'running')
         {
         	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
@@ -731,8 +782,8 @@ function update_nodes_states(task_instances) {
 							 "实际持续时间：" +  obj.duration           + "&nbsp;&nbsp;秒," +
 							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
             var format_content = tipcontent.split(",").join("<br>");
-            $("#"+obj.task_id).attr("data-original-title",format_content); 
-        	mynode.style("stroke", "#0000ff") ; 
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#0000ff");
         }else if (obj.state == 'done') //如果处于做完待确认的状态
         {
         	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
@@ -743,8 +794,8 @@ function update_nodes_states(task_instances) {
 							 "实际持续时间：" +  obj.duration           + "&nbsp;&nbsp;秒," +
 							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
             var format_content = tipcontent.split(",").join("<br>");
-            $("#"+obj.task_id).attr("data-original-title",format_content); 
-             mynode.style("stroke", "#FF8C00") ;
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#FF8C00");
         }
 	})
 }
@@ -809,7 +860,7 @@ function getDagHisRecord(url,param,type){
 }
 
 //查看历史操作
-$("#showlog").click(function(){
+$("#showlogbtn").click(function(){
 	//首先获取下拉框的值
 	var curDatetime = $("#hisdatetime").val();
 	curdata={"dag_id":"pprc_back","execution_date":curDatetime};

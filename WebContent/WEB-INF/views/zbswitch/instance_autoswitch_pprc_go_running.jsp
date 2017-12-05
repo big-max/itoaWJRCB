@@ -680,7 +680,7 @@ body{margin:0;padding:0;}
 
     </div>
 
-	<img id="progressImgage" class="progress hide" style="width:100px;height:100px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
+	<img id="progressImgage"  style="width:120px;height:120px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
     <div id="maskOfProgressImage" class="mask hide"></div>
 </body>
 
@@ -842,7 +842,7 @@ body{margin:0;padding:0;}
             					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#FF0000") ;
+                task_div.find("div:eq(0)").css("border-color","#FF0000");
             }else if (obj.state == 'success') //如果成功
             {
             	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
@@ -854,7 +854,7 @@ body{margin:0;padding:0;}
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#32cc00") ;
+                task_div.find("div:eq(0)").css("border-color","#32cc00");
             }else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
             {
             	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
