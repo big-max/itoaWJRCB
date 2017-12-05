@@ -38,10 +38,10 @@ input[type="text"] {
 	margin-left:37%;
 }
 .upcon{
-	width:26%;margin-left:10px;margin-top:-10px;float:left;height:84vh;
+	width:26%;margin-left:10px;margin-top:0px;float:left;height:80vh;
 }
 .downcon{
-	width:70%;border:1px solid black;height:84vh;float:right;margin-top:1px;margin-right:10px;
+	width:70%;height:80vh;float:right;margin-top:0px;margin-right:10px;
 }
 </style>
 
@@ -69,8 +69,8 @@ input[type="text"] {
 		</div>
 		
 		<div class="upcon">
+			<div style="font-size:14px;"><b>基本信息</b></div>
 			<div class="mainmodule">
-				<h5>基本信息</h5>
 				<div class="form-horizontal">
 					<div class="control-group">
 						<label class="control-label">war包路径</label>
@@ -149,22 +149,21 @@ input[type="text"] {
 							</div>
 						</div>
 					</div>
-					<!-- <div class="control-group">
-						<label class="control-label">历史记录</label>
+					<div class="control-group">
 						<div class="controls">
 							<div class="inputb2l">
-								<select style="width: 47.5%; font-size: 13px;" class="w48" id="war_history" name="war_history">
-									<option value="" selected="selected">WAR_20171201.war</option>	
-								</select>
+								<button class="btn btn-primary">发起</button>
 							</div>
 						</div>
-					</div> -->
+					</div>
 
 				</div>
 			</div>
 		</div>
 		
 		<div class="downcon">
+			<div style="font-size:14px;margin-bottom:8px;"><b>实时日志</b></div>
+			<textarea id="real_log" style="width:100%;height:69vh;"></textarea>
 		</div>
 		
 	</div>

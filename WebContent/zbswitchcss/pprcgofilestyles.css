@@ -4067,8 +4067,16 @@ body {
 #uu5 {
   border-width:0px;
   position:absolute;
-  left:450px;
-  top:0px;
+  left:440px;
+  top:45px;
+  width:60px;
+  white-space:nowrap;
+}
+#uu6 {
+  border-width:0px;
+  position:absolute;
+  left:495px;
+  top:20px;
   width:60px;
   white-space:nowrap;
 }
