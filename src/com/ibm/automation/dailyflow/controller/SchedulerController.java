@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -24,6 +25,7 @@ public class SchedulerController {
 	
 	public  void updateTaskInfoExpectedTime()
 	{
+		System.out.println(new Date());
 		System.out.println("i am running update ....");
 		List<RemoteServerBean> list = getServerInfoFromRemote();
 		remotePasswordService.copyPasswordtoLocalFromRemote(list);

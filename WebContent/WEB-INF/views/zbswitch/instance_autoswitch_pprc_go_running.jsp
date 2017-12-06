@@ -656,12 +656,12 @@ body{margin:0;padding:0;}
         </div>
       </div>
       
-      <div id="uu1">
+      <!-- <div id="uu1">
         <div id="uu1_div"></div>
         <div id="uu2">
           <p><span>已完成待检查</span></p>
         </div>
-      </div>
+      </div> -->
 
       <div id="u178">
         <div id="u179" class="text">
