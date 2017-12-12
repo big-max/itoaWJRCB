@@ -427,7 +427,7 @@
 <body>
 	<!--header start-->
 	<div class="header">
-		<jsp:include page="topinfo.jsp" flush="true" />
+		<jsp:include page="topleft_close.jsp" flush="true" />
 	</div>
 	<!--header end-->
 
