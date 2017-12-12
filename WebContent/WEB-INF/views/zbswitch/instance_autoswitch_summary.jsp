@@ -107,9 +107,9 @@ input[type="text"],input[type="password"] {
 										<th hidden="" style="text-align: center;width:20%;">流程名</th>
 										<th style="text-align: center;width:20%;">流程名</th>
 										<th style="text-align: center;width:15%;">责任人</th>
-										<th style="text-align: center;width:20%;">最近运行时间</th>
-										<th style="text-align: center;width:20%;">最近任务状态</th>
-										<th style="text-align: center;width:25%;">操作链接</th>
+										<th style="text-align: center;width:19%;">最近运行时间</th>
+										<th style="text-align: center;width:19%;">最近任务状态</th>
+										<th style="text-align: center;width:27%;">操作链接</th>
 									</tr>
 								</thead>
 
