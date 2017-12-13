@@ -57,259 +57,259 @@ body{margin:0;padding:0;}
         <img id="u0_img" class="img" src="zbswitchimg/u0.jpg"/>
       </div>
 
-      <div id="u2" class="ax_default pprc_go_simu_start">
+      <div id="u2" class="ax_default pprc_go_start">
         <div id="u2_div"></div>
         <div id="u3" class="text">
           <p><span>开始</span></p>
         </div>
       </div>
 
-      <div id="u4" class="ax_default pprc_go_simu_workdb_backup">
+      <div id="u4" class="ax_default pprc_go_workdb_backup">
         <div id="u4_div"></div>
         <div id="u5" class="text">
           <p><span>备份workdb数据库</span></p>
         </div>
       </div>
 
-      <div id="u6" class="ax_default pprc_go_simu_backup_end">
+      <div id="u6" class="ax_default pprc_go_backup_end">
         <div id="u6_div"></div>
         <div id="u7" class="text">
           <p><span>完成备份数据库</span></p>
         </div>
       </div>
 
-      <div id="u8" class="ax_default pprc_go_simu_checkha_start">
+      <div id="u8" class="ax_default pprc_go_checkha_start">
         <div id="u8_div"></div>
         <div id="u9" class="text">
           <p><span>开始检查HA状态</span></p>
         </div>
       </div>
 
-      <div id="u10" class="ax_default pprc_go_simu_p770a1_check_hastatus">
+      <div id="u10" class="ax_default pprc_go_p770a1_check_hastatus">
         <div id="u10_div"></div>
         <div id="u11" class="text">
           <p><span>检查P770a1上</span></p><p><span>HA状态</span></p>
         </div>
       </div>
 
-      <div id="u20" class="ax_default pprc_go_simu_checkha_stop">
+      <div id="u20" class="ax_default pprc_go_checkha_stop">
         <div id="u20_div"></div>
         <div id="u21" class="text">
           <p><span>完成检查HA状态</span></p>
         </div>
       </div>
 
-      <div id="u22" class="ax_default pprc_go_simu_cmisdb_backup">
+      <div id="u22" class="ax_default pprc_go_cmisdb_backup">
         <div id="u22_div"></div>
         <div id="u23" class="text">
           <p><span>备份cmisdb数据库</span></p>
         </div>
       </div>
 
-      <div id="u24" class="ax_default pprc_go_simu_icsdb_backup">
+      <div id="u24" class="ax_default pprc_go_icsdb_backup">
         <div id="u24_div"></div>
         <div id="u25" class="text">
           <p><span>备份icsdb数据库</span></p>
         </div>
       </div>
 
-      <div id="u26" class="ax_default pprc_go_simu_carddb_backup">
+      <div id="u26" class="ax_default pprc_go_carddb_backup">
         <div id="u26_div"></div>
         <div id="u27" class="text">
           <p><span>备份carddb数据库</span></p>
         </div>
       </div>
 
-      <div id="u28" class="ax_default pprc_go_simu_p770b1_check_hastatus">
+      <div id="u28" class="ax_default pprc_go_p770b1_check_hastatus">
         <div id="u28_div"></div>
         <div id="u29" class="text">
           <p><span>检查P770b1上</span></p><p><span>HA状态</span></p>
         </div>
       </div>
 
-      <div id="u30" class="ax_default pprc_go_simu_p770a2_check_hastatus">
+      <div id="u30" class="ax_default pprc_go_p770a2_check_hastatus">
         <div id="u30_div"></div>
         <div id="u31" class="text">
           <p><span>检查P770a2上</span></p><p><span>HA状态</span></p>
         </div>
       </div>
 
-      <div id="u32" class="ax_default pprc_go_simu_p770b2_check_hastatus">
+      <div id="u32" class="ax_default pprc_go_p770b2_check_hastatus">
         <div id="u32_div"></div>
         <div id="u33" class="text">
           <p><span>检查P770b2上</span></p><p><span>HA状态</span></p>
         </div>
       </div>
 
-      <div id="u34" class="ax_default pprc_go_simu_p770a2_hastop">
+      <div id="u34" class="ax_default pprc_go_p770a2_hastop">
         <div id="u34_div"></div>
         <div id="u35" class="text">
           <p><span>停止P770a2 HA</span></p>
         </div>
       </div>
 
-      <div id="u36" class="ax_default pprc_go_simu_p770b2_hastop">
+      <div id="u36" class="ax_default pprc_go_p770b2_hastop">
         <div id="u36_div"></div>
         <div id="u37" class="text">
           <p><span>停止P770b2 HA</span></p>
         </div>
       </div>
 
-      <div id="u38" class="ax_default pprc_go_simu_p770a1_hastop">
+      <div id="u38" class="ax_default pprc_go_p770a1_hastop">
         <div id="u38_div"></div>
         <div id="u39" class="text">
           <p><span>停止P770a1 HA</span></p>
         </div>
       </div>
 
-      <div id="u40" class="ax_default pprc_go_simu_p770b1_hastop">
+      <div id="u40" class="ax_default pprc_go_p770b1_hastop">
         <div id="u40_div"></div>
         <div id="u41" class="text">
           <p><span>停止P770b1 HA</span></p>
         </div>
       </div>
 
-      <div id="u42" class="ax_default pprc_go_simu_ds8k_lunstart">
+      <div id="u42" class="ax_default pprc_go_ds8k_lunstart">
         <div id="u42_div"></div>
         <div id="u43" class="text">
           <p><span>开始设置DS8K LUN可读写</span></p>
         </div>
       </div>
 
-      <div id="u44" class="ax_default pprc_go_simu_p770a1_lunread_failover">
+      <div id="u44" class="ax_default pprc_go_p770a1_lunread_failover">
         <div id="u44_div"></div>
         <div id="u45" class="text">
           <p><span>停止P770a1 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u46" class="ax_default pprc_go_simu_p770b2_lunread_failover">
+      <div id="u46" class="ax_default pprc_go_p770b2_lunread_failover">
         <div id="u46_div"></div>
         <div id="u47" class="text">
           <p><span>停止P770b2 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u48" class="ax_default pprc_go_simu_p770b1_lunread_failover">
+      <div id="u48" class="ax_default pprc_go_p770b1_lunread_failover">
         <div id="u48_div"></div>
         <div id="u49" class="text">
           <p><span>停止P770b1 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u50" class="ax_default pprc_go_simu_p770a2_lunread_failover">
+      <div id="u50" class="ax_default pprc_go_p770a2_lunread_failover">
         <div id="u50_div"></div>
         <div id="u51" class="text">
           <p><span>停止P770a2 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u52" class="ax_default pprc_go_simu_ds8k_lunstop">
+      <div id="u52" class="ax_default pprc_go_ds8k_lunstop">
         <div id="u52_div"></div>
         <div id="u53" class="text">
           <p><span>完成设置DS8K LUN可读写</span></p>
         </div>
       </div>
 
-      <div id="u54" class="ax_default pprc_go_simu_p770c1_workstart">
+      <div id="u54" class="ax_default pprc_go_p770c1_workstart">
         <div id="u54_div"></div>
         <div id="u55" class="text">
           <p><span>启动P770c1 </span></p><p><span>work应用</span></p>
         </div>
       </div>
 
-      <div id="u56" class="ax_default pprc_go_simu_p770c1_workstartcheck">
+      <div id="u56" class="ax_default pprc_go_p770c1_workstartcheck">
         <div id="u56_div"></div>
         <div id="u57" class="text">
           <p><span>验证P770c1 </span></p><p><span>work应用</span></p>
         </div>
       </div>
 
-      <div id="u58" class="ax_default pprc_go_simu_p770c1_cmisstart">
+      <div id="u58" class="ax_default pprc_go_p770c1_cmisstart">
         <div id="u58_div"></div>
         <div id="u59" class="text">
           <p><span>启动P770c1 </span></p><p><span>cmis应用</span></p>
         </div>
       </div>
 
-      <div id="u60" class="ax_default pprc_go_simu_p770c1_cmisstartcheck">
+      <div id="u60" class="ax_default pprc_go_p770c1_cmisstartcheck">
         <div id="u60_div"></div>
         <div id="u61" class="text">
           <p><span>验证P770c1 </span></p><p><span>cmis应用</span></p>
         </div>
       </div>
 
-      <div id="u62" class="ax_default pprc_go_simu_p770c2_icsstart">
+      <div id="u62" class="ax_default pprc_go_p770c2_icsstart">
         <div id="u62_div"></div>
         <div id="u63" class="text">
           <p><span>启动P770c2 </span></p><p><span>ics应用</span></p>
         </div>
       </div>
 
-      <div id="u64" class="ax_default pprc_go_simu_p770c2_icsstartcheck">
+      <div id="u64" class="ax_default pprc_go_p770c2_icsstartcheck">
         <div id="u64_div"></div>
         <div id="u65" class="text">
           <p><span>验证P770c2 </span></p><p><span>ics应用</span></p>
         </div>
       </div>
 
-      <div id="u66" class="ax_default pprc_go_simu_p770c2_cardstart">
+      <div id="u66" class="ax_default pprc_go_p770c2_cardstart">
         <div id="u66_div"></div>
         <div id="u67" class="text">
           <p><span>启动P770c2 </span></p><p><span>card应用</span></p>
         </div>
       </div>
 
-      <div id="u68" class="ax_default pprc_go_simu_p770c2_cardstartcheck">
+      <div id="u68" class="ax_default pprc_go_p770c2_cardstartcheck">
         <div id="u68_div"></div>
         <div id="u69" class="text">
           <p><span>验证P770c2 </span></p><p><span>card应用</span></p>
         </div>
       </div>
 
-      <div id="u70" class="ax_default pprc_go_simu_ywcheck">
+      <div id="u70" class="ax_default pprc_go_ywcheck">
         <div id="u70_div"></div>
         <div id="u71" class="text">
           <p><span>业务验证</span></p>
         </div>
       </div>
 
-      <div id="u72" class="ax_default pprc_go_simu_startfailback">
+      <div id="u72" class="ax_default pprc_go_startfailback">
         <div id="u72_div"></div>
         <div id="u73" class="text">
           <p><span>反向启动PPRC</span></p><p><span>&nbsp;H2:H1复制关系</span></p>
         </div>
       </div>
 
-      <div id="u74" class="ax_default pprc_go_simu_p770a1_failback">
+      <div id="u74" class="ax_default pprc_go_p770a1_failback">
         <div id="u74_div"></div>
         <div id="u75" class="text">
           <p><span>启动P770a1 盛泽到吴江复制关系</span></p>
         </div>
       </div>
 
-      <div id="u76" class="ax_default pprc_go_simu_p770b1_failback">
+      <div id="u76" class="ax_default pprc_go_p770b1_failback">
         <div id="u76_div"></div>
         <div id="u77" class="text">
           <p><span>启动P770b1 盛泽到吴江复制关系</span></p>
         </div>
       </div>
 
-      <div id="u78" class="ax_default pprc_go_simu_p770a2_failback">
+      <div id="u78" class="ax_default pprc_go_p770a2_failback">
         <div id="u78_div"></div>
         <div id="u79" class="text">
           <p><span>启动P770a2 盛泽到吴江复制关系</span></p>
         </div>
       </div>
 
-      <div id="u80" class="ax_default pprc_go_simu_p770b2_failback">
+      <div id="u80" class="ax_default pprc_go_p770b2_failback">
         <div id="u80_div"></div>
         <div id="u81" class="text">
           <p><span>启动P770b2 盛泽到吴江复制关系</span></p>
         </div>
       </div>
       
-      <div id="u82" class="ax_default pprc_go_simu_end">
+      <div id="u82" class="ax_default pprc_go_end">
         <div id="u82_div"></div>
         <div id="u83" class="text">
           <p><span>结束</span></p>
