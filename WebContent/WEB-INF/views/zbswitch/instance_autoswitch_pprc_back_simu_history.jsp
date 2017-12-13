@@ -81,273 +81,273 @@ body{margin:0;padding:0;}
         <img id="u187_img" class="img" src="zbswitchimg/u0.jpg"/>
       </div>
 
-      <div id="u189" class="ax_default pprc_back_start">
+      <div id="u189" class="ax_default pprc_back_simu_start">
         <div id="u189_div"></div>
         <div id="u190" class="text">
           <p><span>开始</span></p>
         </div>
       </div>
 
-      <div id="u191" class="ax_default pprc_back_workdb_backup">
+      <div id="u191" class="ax_default pprc_back_simu_workdb_backup">
         <div id="u191_div"></div>
         <div id="u192" class="text">
           <p><span>备份workdb数据库</span></p>
         </div>
       </div>
 
-      <div id="u193" class="ax_default pprc_back_backup_end">
+      <div id="u193" class="ax_default pprc_back_simu_backup_end">
         <div id="u193_div"></div>
         <div id="u194" class="text">
           <p><span>完成备份数据库</span></p>
         </div>
       </div>
 
-      <div id="u195" class="ax_default pprc_back_p770c2_cardstop">
+      <div id="u195" class="ax_default pprc_back_simu_p770c2_cardstop">
         <div id="u195_div"></div>
         <div id="u196" class="text">
           <p><span>停止P770c2</span></p><p><span>card应用</span></p>
         </div>
       </div>
 
-      <div id="u205" class="ax_default pprc_back_p770c2_icsstop">
+      <div id="u205" class="ax_default pprc_back_simu_p770c2_icsstop">
         <div id="u205_div"></div>
         <div id="u206" class="text">
           <p><span>停止P770c2</span></p><p><span>ics应用</span></p>
         </div>
       </div>
 
-      <div id="u207" class="ax_default pprc_back_cmisdb_backup">
+      <div id="u207" class="ax_default pprc_back_simu_cmisdb_backup">
         <div id="u207_div"></div>
         <div id="u208" class="text">
           <p><span>备份cmisdb数据库</span></p>
         </div>
       </div>
 
-      <div id="u209" class="ax_default pprc_back_icsdb_backup">
+      <div id="u209" class="ax_default pprc_back_simu_icsdb_backup">
         <div id="u209_div"></div>
         <div id="u210" class="text">
           <p><span>备份icsdb数据库</span></p>
         </div>
       </div>
 
-      <div id="u211" class="ax_default pprc_back_carddb_backup">
+      <div id="u211" class="ax_default pprc_back_simu_carddb_backup">
         <div id="u211_div"></div>
         <div id="u212" class="text">
           <p><span>备份carddb数据库</span></p>
         </div>
       </div>
 
-      <div id="u213" class="ax_default pprc_back_p770c2_cardstopcheck">
+      <div id="u213" class="ax_default pprc_back_simu_p770c2_cardstopcheck">
         <div id="u213_div"></div>
         <div id="u214" class="text">
           <p><span>检查P770c2 card业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u215" class="ax_default pprc_back_p770c2_icsstopcheck">
+      <div id="u215" class="ax_default pprc_back_simu_p770c2_icsstopcheck">
         <div id="u215_div"></div>
         <div id="u216" class="text">
           <p><span>检查P770c2 ics</span></p><p><span>业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u217" class="ax_default pprc_back_p770c1_cmisstopcheck">
+      <div id="u217" class="ax_default pprc_back_simu_p770c1_cmisstopcheck">
         <div id="u217_div"></div>
         <div id="u218" class="text">
           <p><span>检查P770c1 cmis</span></p><p><span>业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u219" class="ax_default pprc_back_p770c1_workstop">
+      <div id="u219" class="ax_default pprc_back_simu_p770c1_workstop">
         <div id="u219_div"></div>
         <div id="u220" class="text">
           <p><span>停止P770c1</span></p><p><span>work应用</span></p>
         </div>
       </div>
 
-      <div id="u221" class="ax_default pprc_back_p770c1_workstopcheck">
+      <div id="u221" class="ax_default pprc_back_simu_p770c1_workstopcheck">
         <div id="u221_div"></div>
         <div id="u222" class="text">
           <p><span>检查P770c1 work</span></p><p><span>业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u223" class="ax_default pprc_back_ds8k_lunstart">
+      <div id="u223" class="ax_default pprc_back_simu_ds8k_lunstart">
         <div id="u223_div"></div>
         <div id="u224" class="text">
           <p><span>开始设置DS8K LUN可读写</span></p>
         </div>
       </div>
 
-      <div id="u225" class="ax_default pprc_back_p770a1_lunread_failover">
+      <div id="u225" class="ax_default pprc_back_simu_p770a1_lunread_failover">
         <div id="u225_div"></div>
         <div id="u226" class="text">
           <p><span>停止P770a1 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u227" class="ax_default pprc_back_p770b2_lunread_failover">
+      <div id="u227" class="ax_default pprc_back_simu_p770b2_lunread_failover">
         <div id="u227_div"></div>
         <div id="u228" class="text">
           <p><span>停止P770b2 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u229" class="ax_default pprc_back_p770b1_lunread_failover">
+      <div id="u229" class="ax_default pprc_back_simu_p770b1_lunread_failover">
         <div id="u229_div"></div>
         <div id="u230" class="text">
           <p><span>停止P770b1 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u231" class="ax_default pprc_back_p770a2_lunread_failover">
+      <div id="u231" class="ax_default pprc_back_simu_p770a2_lunread_failover">
         <div id="u231_div"></div>
         <div id="u232" class="text">
           <p><span>停止P770a2 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u233" class="ax_default pprc_back_ds8k_lunstop">
+      <div id="u233" class="ax_default pprc_back_simu_ds8k_lunstop">
         <div id="u233_div"></div>
         <div id="u234" class="text">
           <p><span>完成设置DS8K LUN可读写</span></p>
         </div>
       </div>
 
-      <div id="u235" class="ax_default pprc_back_syncha_start">
+      <div id="u235" class="ax_default pprc_back_simu_syncha_start">
         <div id="u235_div"></div>
         <div id="u236" class="text">
           <p><span>开始同步HA</span></p>
         </div>
       </div>
 
-      <div id="u237" class="ax_default pprc_back_p770a1_syncHA">
+      <div id="u237" class="ax_default pprc_back_simu_p770a1_syncHA">
         <div id="u237_div"></div>
         <div id="u238" class="text">
           <p><span>同步P770a1 HA</span></p>
         </div>
       </div>
 
-      <div id="u239" class="ax_default pprc_back_p770a2_syncHA">
+      <div id="u239" class="ax_default pprc_back_simu_p770a2_syncHA">
         <div id="u239_div"></div>
         <div id="u240" class="text">
           <p><span>同步P770a2 HA</span></p>
         </div>
       </div>
 
-      <div id="u241" class="ax_default pprc_back_p770b1ha_check">
+      <div id="u241" class="ax_default pprc_back_simu_p770b1ha_check">
         <div id="u241_div"></div>
         <div id="u242" class="text">
           <p><span>验证P770b1 HA</span></p>
         </div>
       </div>
 
-      <div id="u243" class="ax_default pprc_back_p770b1ha_start">
+      <div id="u243" class="ax_default pprc_back_simu_p770b1ha_start">
         <div id="u243_div"></div>
         <div id="u244" class="text">
           <p><span>启动P770b1 HA</span></p>
         </div>
       </div>
 
-      <div id="u245" class="ax_default pprc_back_p770b2ha_check">
+      <div id="u245" class="ax_default pprc_back_simu_p770b2ha_check">
         <div id="u245_div"></div>
         <div id="u246" class="text">
           <p><span>验证P770b2 HA</span></p>
         </div>
       </div>
 
-      <div id="u247" class="ax_default pprc_back_startfailback">
+      <div id="u247" class="ax_default pprc_back_simu_startfailback">
         <div id="u247_div"></div>
         <div id="u248" class="text">
           <p><span>启动PPRC</span></p><p><span>&nbsp;H1:H2复制关系</span></p>
         </div>
       </div>
 
-      <div id="u249" class="ax_default pprc_back_p770a1_failback">
+      <div id="u249" class="ax_default pprc_back_simu_p770a1_failback">
         <div id="u249_div"></div>
         <div id="u250" class="text">
           <p><span>启动P770a1 吴江到盛泽复制关系</span></p>
         </div>
       </div>
 
-      <div id="u251" class="ax_default pprc_back_p770b1_failback">
+      <div id="u251" class="ax_default pprc_back_simu_p770b1_failback">
         <div id="u251_div"></div>
         <div id="u252" class="text">
           <p><span>启动P770b1 吴江到盛泽复制关系</span></p>
         </div>
       </div>
 
-      <div id="u253" class="ax_default pprc_back_p770a2_failback">
+      <div id="u253" class="ax_default pprc_back_simu_p770a2_failback">
         <div id="u253_div"></div>
         <div id="u254" class="text">
           <p><span>启动P770a2 吴江到盛泽复制关系</span></p>
         </div>
       </div>
 
-      <div id="u255" class="ax_default pprc_back_p770b2_failback">
+      <div id="u255" class="ax_default pprc_back_simu_p770b2_failback">
         <div id="u255_div"></div>
         <div id="u256" class="text">
           <p><span>启动P770b2 吴江到盛泽复制关系</span></p>
         </div>
       </div>
 
-      <div id="u257" class="ax_default pprc_back_end">
+      <div id="u257" class="ax_default pprc_back_simu_end">
         <div id="u257_div"></div>
         <div id="u258" class="text">
           <p><span>结束</span></p>
         </div>
       </div>
       
-      <div id="u318" class="ax_default pprc_back_p770c1_cmisstop">
+      <div id="u318" class="ax_default pprc_back_simu_p770c1_cmisstop">
         <div id="u318_div"></div>
         <div id="u319" class="text">
           <p><span>停止P770c1</span></p><p><span>cmis应用</span></p>
         </div>
       </div>
 
-      <div id="u320" class="ax_default pprc_back_syncha_stop">
+      <div id="u320" class="ax_default pprc_back_simu_syncha_stop">
         <div id="u320_div"></div>
         <div id="u321" class="text">
           <p><span>结束同步HA</span></p>
         </div>
       </div>
       
-      <div id="u342" class="ax_default pprc_back_p770a1ha_start">
+      <div id="u342" class="ax_default pprc_back_simu_p770a1ha_start">
         <div id="u342_div"></div>
         <div id="u343" class="text">
           <p><span>启动P770a1 HA</span></p>
         </div>
       </div>
 
-      <div id="u344" class="ax_default pprc_back_p770b2ha_start">
+      <div id="u344" class="ax_default pprc_back_simu_p770b2ha_start">
         <div id="u344_div"></div>
         <div id="u345" class="text">
           <p><span>启动P770b2 HA</span></p>
         </div>
       </div>
       
-      <div id="u354" class="ax_default pprc_back_p770a1ha_check">
+      <div id="u354" class="ax_default pprc_back_simu_p770a1ha_check">
         <div id="u354_div"></div>
         <div id="u355" class="text">
           <p><span>验证P770a1 HA</span></p>
         </div>
       </div>
       
-      <div id="u360" class="ax_default pprc_back_p770a2ha_start">
+      <div id="u360" class="ax_default pprc_back_simu_p770a2ha_start">
         <div id="u360_div"></div>
         <div id="u361" class="text">
           <p><span>启动P770a2 HA</span></p>
         </div>
       </div>
       
-      <div id="u366" class="ax_default pprc_back_p770a2ha_check">
+      <div id="u366" class="ax_default pprc_back_simu_p770a2ha_check">
         <div id="u366_div"></div>
         <div id="u367" class="text">
           <p><span>验证P770a2 HA</span></p>
         </div>
       </div>
       
-      <div id="u372" class="ax_default pprc_back_ywcheck">
+      <div id="u372" class="ax_default pprc_back_simu_ywcheck">
         <div id="u372_div"></div>
         <div id="u373" class="text">
           <p><span>业务验证</span></p>
@@ -673,8 +673,8 @@ body{margin:0;padding:0;}
         </div>
       </div>
       
-      <div id="uu1aa">
-          <p><span style="font-size:15px;">核心系统回切</span></p>
+      <div id="uu1a">
+          <p><span style="font-size:15px;">核心系统回切(模拟)</span></p>
       </div>
       
       <div id="uu3" class="ax_default">
@@ -710,7 +710,7 @@ $(document).ready(function(){
 	            {label:'查看日志', icon:'img/viewlog.png', action:function() 
 	            	{ 
 	            		var execution_date = getUrlParam('execution_date'); //获取url 的值
-	            		var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	            		var data ={"dag_id":"pprc_back_simu","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
 	            		$.ajax({
 	           				url : '<%=path%>/getTaskLog.do',
 	           				data:data,
@@ -863,7 +863,7 @@ function getDagHisRecord(url,param,type){
 $("#showlogbtn").click(function(){
 	//首先获取下拉框的值
 	var curDatetime = $("#hisdatetime").val();
-	curdata={"dag_id":"pprc_back","execution_date":curDatetime};
+	curdata={"dag_id":"pprc_back_simu","execution_date":curDatetime};
 	getAjax("historyData.do",curdata,"post");	
 })
 </script>

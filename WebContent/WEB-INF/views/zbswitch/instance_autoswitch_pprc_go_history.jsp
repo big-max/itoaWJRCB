@@ -634,7 +634,7 @@ body{margin:0;padding:0;}
       </div>
       
       <div id="uu3">
-          <p><span style="font-size:15px;">PPRC+LVM 切换</span></p>
+          <p><span style="font-size:15px;">核心系统切换</span></p>
       </div>
       
       <div id="uu4">

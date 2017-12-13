@@ -19,18 +19,10 @@ body{margin:0;padding:0;}
 .connector>img {
 	max-width:400px;
 }
-.hide{display:none }
-.progress{z-index: 2000}
-.mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
 .modal{width:750px;left:43%;}
 .ax_default{cursor:pointer;text-align:center;font-size:13px;}
+#u181{left:460px;top:33px;width: 200px;}
 </style>
-<script>
-	function sweet(te,ty,conBut)
-	{
-		swal({ title: "", text: te,  type: ty, confirmButtonText: conBut});
-	}
-</script>
 </head>
 
 <body>
@@ -308,7 +300,7 @@ body{margin:0;padding:0;}
           <p><span>启动P770b2 盛泽到吴江复制关系</span></p>
         </div>
       </div>
-      
+
       <div id="u82" class="ax_default pprc_go_simu_end">
         <div id="u82_div"></div>
         <div id="u83" class="text">
@@ -613,6 +605,10 @@ body{margin:0;padding:0;}
         <img id="u174_seg2" class="img" src="zbswitchimg/u96_seg2.png"/>
         <img id="u174_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
+
+      <div id="u176">
+        <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
+      </div>
       
       <div id="u183" class="connector">
         <img id="u183_seg0" class="img" src="zbswitchimg/u183_seg0.png"/>
@@ -624,45 +620,6 @@ body{margin:0;padding:0;}
         <img id="u185_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
 
-      <div id="u176" class="connector">
-        <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
-      </div>
-      
-      <div id="u12">
-        <div id="u12_div"></div>
-        <div id="u13">
-          <p><span>未开始</span></p>
-        </div>
-      </div>
-
-      <div id="u14">
-        <div id="u14_div"></div>
-        <div id="u15">
-          <p><span>运行中</span></p>
-        </div>
-      </div>
-
-      <div id="u16">
-        <div id="u16_div"></div>
-        <div id="u17">
-          <p><span>成功</span></p>
-        </div>
-      </div>
-
-      <div id="u18">
-        <div id="u18_div"></div>
-        <div id="u19">
-          <p><span>失败</span></p>
-        </div>
-      </div>
-      
-      <!-- <div id="uu1">
-        <div id="uu1_div"></div>
-        <div id="uu2">
-          <p><span>已完成待检查</span></p>
-        </div>
-      </div> -->
-
       <div id="u178">
         <div id="u179" class="text">
           <p><span style="font-size:23px;">吴江农村商业银行</span></p>
@@ -671,257 +628,198 @@ body{margin:0;padding:0;}
       </div>
 
       <div id="u181">
-        <div id="u182a" class="text">
-          <p><span>核 心 系 统 灾 备 切 换 演 练 - 模 拟</span>
-        </div>
-        <div id="uu6" style="font-size:16px;">执行时间</div>
-        <div id="uu5" style="font-size:16px;"></div>
+          <select id="hisdatetime" style="width:200px;">
+				<option value="${execution_date}">${execution_date}</option>
+		  </select>
       </div>
-
+      
+      <div id="uu3a">
+          <p><span style="font-size:15px;">核心系统切换(模拟)</span></p>
+      </div>
+      
+      <div id="uu4">
+          <button id="showlogbtn" class="btn btn-sm" style="background-color: #3399CC;">
+				<font color="white">查看历史</font>
+		  </button>
+      </div>
+      
     </div>
-
-	<img id="progressImgage"  style="width:120px;height:120px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
-    <div id="maskOfProgressImage" class="mask hide"></div>
 </body>
 
 <script>
-	//获取url中的参数
-	function getUrlParam(name) {
-	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-	    if (r != null) return unescape(r[2]); return null; //返回参数值
-	}
+var dag_id = getUrlParam('dag_id');
+var execution_date = getUrlParam('execution_date');
+var execution_date_show = execution_date.split("T")[0];
+var data ={"dag_id":dag_id,"execution_date":execution_date};
 
-	var taskid;
-	var execution_date_time = getUrlParam('execution_date');//2017-12-01T15:24:28
-	var execution_date_time1 = execution_date_time.replace("T"," ");
-	
-	$(document).ready(function(){
-		
-		$("#uu5").text(execution_date_time1);
-		
-		$(".ax_default").on("mouseover",function(e){ //获取要点击任务框的id
-			var classes = $(this).attr("class");
-			taskid = classes.split(" ")[1];
-		})
-		
-		$('.ax_default').contextPopup({
-	          items: [
-		            {label:'查看日志', icon:'img/viewlog.png', action:function() 
-		            	{ 
-		            		var execution_date = getUrlParam('execution_date'); //获取url 的值
-		            		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
-		            		var data ={"dag_id":"pprc_go_simu","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		            		$.ajax({
-		           				url : '<%=path%>/getTaskLog.do',
-		           				data:data,
-		           				type : 'post',
-		           				dataType : 'json',
-		           				success:function(result) 
-		           				{
-		           					$("#showlog").modal();
-		           					$("textarea").text(result.msg);
-		           				},
-		           			})
-		            	} 
-		            },
-		            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
-		            	{ 
-			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
-			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
-			            	var data ={"dag_id":"pprc_go_simu","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		            		var img = $("#progressImgage");
-		         	      	var mask = $("#maskOfProgressImage");
-			            	img.show().css({
-			     	           "position": "fixed",
-			     	           "top": "50%",
-			     	           "left": "50%",
-			     	           "margin-top": function () { return -1 * img.height() / 2; },
-			     	           "margin-left": function () { return -1 * img.width() / 2; }
-			     	       });
-			     	       mask.show().css("opacity", "0.1");
-			     	      $.ajax({
-			     	    	  url : '<%=path%>/makeNodeClear.do',
-			        			data:data,
-			        			type : 'post',
-			        			dataType : 'json',
-			        			success:function(data)
-			        			{
-			        				console.info(data);
-			        			}
-			     	       });
-			     	       var makeClear = setInterval(function(){$.ajax({
-			          			url : '<%=path%>/queryTaskState.do',
-			        			data:data,
-			        			type : 'post',
-			        			dataType : 'json',
-			        			success:function(data)
-			        			{
-			        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
-			        		    		   img.hide();
-			        			           mask.hide();
-			        			           var task_div = $('.' + data.task_id);
-			        			           task_div.find("div:eq(0)").css("border-color","#797979") ;
-			        			           clearInterval(makeClear);
-			        		    	   }
-			        			},
-			        			error:function(data)
-			        			{
-			        				 console.info("请检查应用服务器是否正常！");
-			        		    	 img.hide();
-			        		         mask.hide();
-			        			}
-		        		   })},3000);
-		            	} 
-		            },
-		            {label:'确认成功', icon:'img/comsucc.png', action:function() 
-		            	{ 
-			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
-			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
-			            	swal({ 
-			            	    title: "", 
-			            	    text: "您确定要将任务置为成功?", 
-			            	    type: "warning", 
-			            	    showCancelButton: true, 
-			            	    closeOnConfirm: false, 
-			            	    confirmButtonText: "确认",  
-			            	    cancelButtonText: "取消",  
-			            	    confirmButtonColor: "#ec6c62" 
-			            	}, function(isConfirm) { 
-			            		if(isConfirm)
-			            		{
-			            			var data ={"dag_id":"pprc_go_simu","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-			            			$.ajax({
-			            				url : '<%=path%>/markTaskSuccess.do',
-			            				data:data,
-			            				type : 'post',
-			            				dataType : 'json',
-			            				success:function(result)
-			            				{
-			            					if(result.status == 0)
-			            					{
-			            						swal.close();
-			            						//var task_div = $('.' + obj.task_id);
-					        			        //task_div.find("div:eq(0)").css("border-color","#32CD32") ;
-			            					} 
-			            				},
-			            			})
-			            		}
-			            	});
-		          	 	} 
-		            } 
-		          ]
-		});
+var taskid;
+$(document).ready(function(){
+	$(".ax_default").on("mouseover",function(e){ //获取要点击任务框的id
+		var classes = $(this).attr("class");
+		taskid = classes.split(" ")[1];
 	})
-</script>
-
-<script>
-	$(".ax_default").tooltip({
-	    html: true,
-	    container: "body",
+	
+	$('.ax_default').contextPopup({
+	    items: [
+	          {label:'查看日志', icon:'img/viewlog.png', action:function() 
+	          	{ 
+	          		var execution_date = getUrlParam('execution_date'); //获取url 的值
+	          		var data ={"dag_id":"pprc_go_simu","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	          		$.ajax({
+	         				url : '<%=path%>/getTaskLog.do',
+	         				data:data,
+	         				type : 'post',
+	         				dataType : 'json',
+	         				success:function(result) 
+	         				{
+	         					$("#showlog").modal();
+	         					$("textarea").text(result.msg);
+	         				},
+	         			})
+	          	} 
+	          }
+	       ]
 	});
+})
+
+$(".ax_default").tooltip({
+    html: true,
+    container: "body",
+});
 	
-	var dag_id = "pprc_go_simu";
-	var execution_date = getUrlParam('execution_date');
-	var execution_date_show = execution_date.split("T")[0];
-	var data ={"dag_id":dag_id,"execution_date":execution_date};
-	
-	setInterval(function(){getAjax("runningData.do",data,"post")},3000);
-	
-	function update_nodes_states(task_instances) {
-		$.each(task_instances,function(idx,obj){
-            var task_div = $('.' + obj.task_id);
-            if(obj.state == 'failed') //如果失败
-            {
-            	var tipcontent ="<p align='left'> 预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
-            					"实际开始时间：" +  obj.start_Date         + "," +
-            					"预计结束时间：" +  obj.expected_endtime   + "," + 
-            					"实际结束时间：" +  obj.end_Date           + "," +
-            					"预计持续时间：" +  obj.expected_duration  + "&nbsp;&nbsp;," + 
-            					"实际持续时间：" +  obj.duration           + "&nbsp;&nbsp;," +
-            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败</p>";
-                var format_content = tipcontent.split(",").join("<br>");
-                task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#FF0000");
-            }else if (obj.state == 'success') //如果成功
-            {
-            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
-								 "实际开始时间：" +  obj.start_Date         + "," +
-								 "预计结束时间：" +  obj.expected_endtime   + "," + 
-								 "实际结束时间：" +  obj.end_Date           + "," +
-								 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
-								 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
-								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功</p>";
-                var format_content = tipcontent.split(",").join("<br>");
-                task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#32cc00");
-            }else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
-            {
-            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
-								 "实际开始时间：" +  obj.start_Date         + "," +
-								 "预计结束时间：" +  obj.expected_endtime   + "," + 
-								 "实际结束时间：" +  obj.end_Date           + "," +
-								 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
-								 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
-								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始</p>";
-                var format_content = tipcontent.split(",").join("<br>");
-                task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#ffffff");
-            }else if (obj.state == 'running')
-            {
-            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
-								 "实际开始时间：" +  obj.start_Date         + "," +
-								 "预计结束时间：" +  obj.expected_endtime   + "," + 
-								 "实际结束时间：" +  obj.end_Date           + "," +
-								 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
-								 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
-								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中</p>";
-                var format_content = tipcontent.split(",").join("<br>");
-                task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#0000ff") ;
-            }else if (obj.state == 'done') //如果处于做完待确认的状态
-            {
-            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
-								 "实际开始时间：" +  obj.start_Date         + "," +
-								 "预计结束时间：" +  obj.expected_endtime   + "," + 
-								 "实际结束时间：" +  obj.end_Date           + "," +
-								 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
-								 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
-								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
-                var format_content = tipcontent.split(",").join("<br>");
-                task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#FF8C00") ;
-            }
-		})
-    }
-	
-	function ajax(url, param, type) {
-	    return $.ajax({
-	    url: url,
-	    data: param || {},
-	    type: type || 'GET',
-	    cache:false
-	    });
-	}
-	
-	function getAjax(url,param,type){
-		function handleAjax(url, param, type) {
-		 return ajax(url, param, type).then(function(resp){
-				// 成功回调
-				if(resp){
-					console.info(resp.dag_tasks);
-					update_nodes_states(resp.dag_tasks);
-				}
-				else{
-					return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
-				}
-			}, function(err){
-				//失败回调
-				console.log(err); // 打印状态码
-				});
+function update_nodes_states(task_instances) {
+	$.each(task_instances,function(idx,obj){
+		var task_div = $('.' + obj.task_id);
+        if(obj.state == 'failed') //如果失败
+        {
+        	var tipcontent ="预计开始时间：" +  obj.expected_starttime + "," +
+        					"实际开始时间：" +  obj.start_Date         + "," +
+        					"预计结束时间：" +  obj.expected_endtime   + "," + 
+        					"实际结束时间：" +  obj.end_Date           + "," +
+        					"预计持续时间："   + obj.expected_duration  + "," + 
+        					"实际持续时间："  + obj.duration           + "," +
+        					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
+            var format_content = tipcontent.split(",").join("<br>");
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#FF0000");
+        }else if (obj.state == 'success') //如果成功
+        {
+        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
+							 "实际开始时间：" +  obj.start_Date         + "," +
+							 "预计结束时间：" +  obj.expected_endtime   + "," + 
+							 "实际结束时间：" +  obj.end_Date           + "," +
+							 "预计持续时间："  + obj.expected_duration  + "," + 
+							 "实际持续时间："  + obj.duration           + "," +
+							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
+            var format_content = tipcontent.split(",").join("<br>");
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#32cc00");
+        }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed')//未开始
+        {
+        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
+							 "实际开始时间：" +  obj.start_Date         + "," +
+							 "预计结束时间：" +  obj.expected_endtime   + "," + 
+							 "实际结束时间：" +  obj.end_Date           + "," +
+							 "预计持续时间："  + obj.expected_duration  + "," + 
+							 "实际持续时间："  + obj.duration           + "," +
+							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
+            var format_content = tipcontent.split(",").join("<br>");
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#ffffff");
+        }else if (obj.state == 'running')
+        {
+        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
+							 "实际开始时间：" +  obj.start_Date         + "," +
+							 "预计结束时间：" +  obj.expected_endtime   + "," + 
+							 "实际结束时间：" +  obj.end_Date           + "," +
+							 "预计持续时间："  + obj.expected_duration  + "," + 
+							 "实际持续时间："  + obj.duration           + "," +
+							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
+            var format_content = tipcontent.split(",").join("<br>");
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#0000ff"); 
+        }else if (obj.state == 'done') //如果处于做完待确认的状态
+        {
+        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
+							 "实际开始时间：" +  obj.start_Date         + "," +
+							 "预计结束时间：" +  obj.expected_endtime   + "," + 
+							 "实际结束时间：" +  obj.end_Date           + "," +
+							 "预计持续时间：" +  obj.expected_duration  + "," + 
+							 "实际持续时间：" +  obj.duration           + "," +
+							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
+            var format_content = tipcontent.split(",").join("<br>");
+            task_div.attr("data-original-title",format_content); 
+            task_div.find("div:eq(0)").css("border-color","#FF8C00") ;
+        }
+	})
+}
+
+//获取url中的参数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+
+function ajax(url, param, type) {
+    return $.ajax({
+    url: url,
+    data: param || {},
+    type: type || 'GET',
+    cache:false
+    });
+}
+
+function getAjax(url,param,type){
+	function handleAjax(url, param, type) {
+	 return ajax(url, param, type).then(function(resp){
+			// 成功回调
+			if(resp){
+				update_nodes_states(resp.dag_tasks)
 			}
-		handleAjax(url,param,type);
-	}
+			else{
+				return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
+			}
+		}, function(err){
+	//失败回调
+			console.log(err); // 打印状态码
+			});
+		}
+	handleAjax(url,param,type);
+}
+
+$(document).ready(function(){
+	//更新最新一次的流程跑跑的数据
+	getAjax("historyData.do",data,"post");
+	//更新下拉框的日期数据
+	getDagHisRecord("historyDatatime.do",data,"get");
+});
+
+function getDagHisRecord(url,param,type){
+	 $.ajax({
+	        timeout: 3000,
+	        async: false,
+	        url: url,
+	        dataType: "json",
+	        data: param || {},
+	        type: type || 'GET',
+	        cache:false,
+	        success: function (data) {
+	        	var array = data.dag_hisdatetime;
+	        	for (var i = 0; i < array.length; i++) {
+               		$("#hisdatetime").append("<option>" + array[i] + "</option>");
+	            } 
+	        }
+	    });
+}
+
+//查看历史操作
+$("#showlogbtn").click(function(){
+	//首先获取下拉框的值
+	var curDatetime = $("#hisdatetime").val();
+	curdata={"dag_id":"pprc_go_simu","execution_date":curDatetime};
+	getAjax("historyData.do",curdata,"post");	
+})
 </script>
 
 </html>

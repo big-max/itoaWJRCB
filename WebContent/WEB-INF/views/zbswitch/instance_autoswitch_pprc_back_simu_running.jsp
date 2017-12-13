@@ -24,40 +24,16 @@ body{margin:0;padding:0;}
 .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
 .modal{width:750px;left:43%;}
 .ax_default{cursor:pointer;}
-#uu1{
-	border-width: 0px;
-	position: absolute;
-	left:320px;top:38px;
-	width: 120px;
-	height: 30px;
-	font-family: '微软雅黑';
-	font-style: normal;
-	color: #FFFFFF;
-}
-#uu2{
-	border-width: 0px;
-	position: absolute;
-	left:680px;top:33px;
-	width: 100px;
-	height: 46px;
-	font-family: '微软雅黑';
-	font-style: normal;
-	color: #FFFFFF;
-}
-#uu3{
-	border-width: 0px;
-	position: absolute;
-	left:460px;top:33px;
-	width: 100px;
-	height: 46px;
-	font-family: '微软雅黑';
-	font-style: normal;
-	color: #FFFFFF;
-}
 </style>
+<script>
+	function sweet(te,ty,conBut)
+	{
+		swal({ title: "", text: te,  type: ty, confirmButtonText: conBut});
+	}
+</script>
 </head>
 
-<body> 
+<body>
 	<!-- 日志模态框（Modal） -->
 	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -81,273 +57,273 @@ body{margin:0;padding:0;}
         <img id="u187_img" class="img" src="zbswitchimg/u0.jpg"/>
       </div>
 
-      <div id="u189" class="ax_default pprc_back_start">
+      <div id="u189" class="ax_default pprc_back_simu_simu_start">
         <div id="u189_div"></div>
         <div id="u190" class="text">
           <p><span>开始</span></p>
         </div>
       </div>
 
-      <div id="u191" class="ax_default pprc_back_workdb_backup">
+      <div id="u191" class="ax_default pprc_back_simu_simu_workdb_backup">
         <div id="u191_div"></div>
         <div id="u192" class="text">
           <p><span>备份workdb数据库</span></p>
         </div>
       </div>
 
-      <div id="u193" class="ax_default pprc_back_backup_end">
+      <div id="u193" class="ax_default pprc_back_simu_simu_backup_end">
         <div id="u193_div"></div>
         <div id="u194" class="text">
           <p><span>完成备份数据库</span></p>
         </div>
       </div>
 
-      <div id="u195" class="ax_default pprc_back_p770c2_cardstop">
+      <div id="u195" class="ax_default pprc_back_simu_p770c2_cardstop">
         <div id="u195_div"></div>
         <div id="u196" class="text">
           <p><span>停止P770c2</span></p><p><span>card应用</span></p>
         </div>
       </div>
 
-      <div id="u205" class="ax_default pprc_back_p770c2_icsstop">
+      <div id="u205" class="ax_default pprc_back_simu_p770c2_icsstop">
         <div id="u205_div"></div>
         <div id="u206" class="text">
           <p><span>停止P770c2</span></p><p><span>ics应用</span></p>
         </div>
       </div>
 
-      <div id="u207" class="ax_default pprc_back_cmisdb_backup">
+      <div id="u207" class="ax_default pprc_back_simu_cmisdb_backup">
         <div id="u207_div"></div>
         <div id="u208" class="text">
           <p><span>备份cmisdb数据库</span></p>
         </div>
       </div>
 
-      <div id="u209" class="ax_default pprc_back_icsdb_backup">
+      <div id="u209" class="ax_default pprc_back_simu_icsdb_backup">
         <div id="u209_div"></div>
         <div id="u210" class="text">
           <p><span>备份icsdb数据库</span></p>
         </div>
       </div>
 
-      <div id="u211" class="ax_default pprc_back_carddb_backup">
+      <div id="u211" class="ax_default pprc_back_simu_carddb_backup">
         <div id="u211_div"></div>
         <div id="u212" class="text">
           <p><span>备份carddb数据库</span></p>
         </div>
       </div>
 
-      <div id="u213" class="ax_default pprc_back_p770c2_cardstopcheck">
+      <div id="u213" class="ax_default pprc_back_simu_p770c2_cardstopcheck">
         <div id="u213_div"></div>
         <div id="u214" class="text">
           <p><span>检查P770c2 card业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u215" class="ax_default pprc_back_p770c2_icsstopcheck">
+      <div id="u215" class="ax_default pprc_back_simu_p770c2_icsstopcheck">
         <div id="u215_div"></div>
         <div id="u216" class="text">
           <p><span>检查P770c2 ics</span></p><p><span>业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u217" class="ax_default pprc_back_p770c1_cmisstopcheck">
+      <div id="u217" class="ax_default pprc_back_simu_p770c1_cmisstopcheck">
         <div id="u217_div"></div>
         <div id="u218" class="text">
           <p><span>检查P770c1 cmis</span></p><p><span>业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u219" class="ax_default pprc_back_p770c1_workstop">
+      <div id="u219" class="ax_default pprc_back_simu_p770c1_workstop">
         <div id="u219_div"></div>
         <div id="u220" class="text">
           <p><span>停止P770c1</span></p><p><span>work应用</span></p>
         </div>
       </div>
 
-      <div id="u221" class="ax_default pprc_back_p770c1_workstopcheck">
+      <div id="u221" class="ax_default pprc_back_simu_p770c1_workstopcheck">
         <div id="u221_div"></div>
         <div id="u222" class="text">
           <p><span>检查P770c1 work</span></p><p><span>业务是否停止成功</span></p>
         </div>
       </div>
 
-      <div id="u223" class="ax_default pprc_back_ds8k_lunstart">
+      <div id="u223" class="ax_default pprc_back_simu_ds8k_lunstart">
         <div id="u223_div"></div>
         <div id="u224" class="text">
           <p><span>开始设置DS8K LUN可读写</span></p>
         </div>
       </div>
 
-      <div id="u225" class="ax_default pprc_back_p770a1_lunread_failover">
+      <div id="u225" class="ax_default pprc_back_simu_p770a1_lunread_failover">
         <div id="u225_div"></div>
         <div id="u226" class="text">
           <p><span>停止P770a1 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u227" class="ax_default pprc_back_p770b2_lunread_failover">
+      <div id="u227" class="ax_default pprc_back_simu_p770b2_lunread_failover">
         <div id="u227_div"></div>
         <div id="u228" class="text">
           <p><span>停止P770b2 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u229" class="ax_default pprc_back_p770b1_lunread_failover">
+      <div id="u229" class="ax_default pprc_back_simu_p770b1_lunread_failover">
         <div id="u229_div"></div>
         <div id="u230" class="text">
           <p><span>停止P770b1 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u231" class="ax_default pprc_back_p770a2_lunread_failover">
+      <div id="u231" class="ax_default pprc_back_simu_p770a2_lunread_failover">
         <div id="u231_div"></div>
         <div id="u232" class="text">
           <p><span>停止P770a2 </span></p><p><span>复制关系</span></p>
         </div>
       </div>
 
-      <div id="u233" class="ax_default pprc_back_ds8k_lunstop">
+      <div id="u233" class="ax_default pprc_back_simu_ds8k_lunstop">
         <div id="u233_div"></div>
         <div id="u234" class="text">
           <p><span>完成设置DS8K LUN可读写</span></p>
         </div>
       </div>
 
-      <div id="u235" class="ax_default pprc_back_syncha_start">
+      <div id="u235" class="ax_default pprc_back_simu_syncha_start">
         <div id="u235_div"></div>
         <div id="u236" class="text">
           <p><span>开始同步HA</span></p>
         </div>
       </div>
 
-      <div id="u237" class="ax_default pprc_back_p770a1_syncHA">
+      <div id="u237" class="ax_default pprc_back_simu_p770a1_syncHA">
         <div id="u237_div"></div>
         <div id="u238" class="text">
           <p><span>同步P770a1 HA</span></p>
         </div>
       </div>
 
-      <div id="u239" class="ax_default pprc_back_p770a2_syncHA">
+      <div id="u239" class="ax_default pprc_back_simu_p770a2_syncHA">
         <div id="u239_div"></div>
         <div id="u240" class="text">
           <p><span>同步P770a2 HA</span></p>
         </div>
       </div>
 
-      <div id="u241" class="ax_default pprc_back_p770b1ha_check">
+      <div id="u241" class="ax_default pprc_back_simu_p770b1ha_check">
         <div id="u241_div"></div>
         <div id="u242" class="text">
           <p><span>验证P770b1 HA</span></p>
         </div>
       </div>
 
-      <div id="u243" class="ax_default pprc_back_p770b1ha_start">
+      <div id="u243" class="ax_default pprc_back_simu_p770b1ha_start">
         <div id="u243_div"></div>
         <div id="u244" class="text">
           <p><span>启动P770b1 HA</span></p>
         </div>
       </div>
 
-      <div id="u245" class="ax_default pprc_back_p770b2ha_check">
+      <div id="u245" class="ax_default pprc_back_simu_p770b2ha_check">
         <div id="u245_div"></div>
         <div id="u246" class="text">
           <p><span>验证P770b2 HA</span></p>
         </div>
       </div>
 
-      <div id="u247" class="ax_default pprc_back_startfailback">
+      <div id="u247" class="ax_default pprc_back_simu_startfailback">
         <div id="u247_div"></div>
         <div id="u248" class="text">
           <p><span>启动PPRC</span></p><p><span>&nbsp;H1:H2复制关系</span></p>
         </div>
       </div>
 
-      <div id="u249" class="ax_default pprc_back_p770a1_failback">
+      <div id="u249" class="ax_default pprc_back_simu_p770a1_failback">
         <div id="u249_div"></div>
         <div id="u250" class="text">
           <p><span>启动P770a1 吴江到盛泽复制关系</span></p>
         </div>
       </div>
 
-      <div id="u251" class="ax_default pprc_back_p770b1_failback">
+      <div id="u251" class="ax_default pprc_back_simu_p770b1_failback">
         <div id="u251_div"></div>
         <div id="u252" class="text">
           <p><span>启动P770b1 吴江到盛泽复制关系</span></p>
         </div>
       </div>
 
-      <div id="u253" class="ax_default pprc_back_p770a2_failback">
+      <div id="u253" class="ax_default pprc_back_simu_p770a2_failback">
         <div id="u253_div"></div>
         <div id="u254" class="text">
           <p><span>启动P770a2 吴江到盛泽复制关系</span></p>
         </div>
       </div>
 
-      <div id="u255" class="ax_default pprc_back_p770b2_failback">
+      <div id="u255" class="ax_default pprc_back_simu_p770b2_failback">
         <div id="u255_div"></div>
         <div id="u256" class="text">
           <p><span>启动P770b2 吴江到盛泽复制关系</span></p>
         </div>
       </div>
 
-      <div id="u257" class="ax_default pprc_back_end">
+      <div id="u257" class="ax_default pprc_back_simu_end">
         <div id="u257_div"></div>
         <div id="u258" class="text">
           <p><span>结束</span></p>
         </div>
       </div>
       
-      <div id="u318" class="ax_default pprc_back_p770c1_cmisstop">
+      <div id="u318" class="ax_default pprc_back_simu_p770c1_cmisstop">
         <div id="u318_div"></div>
         <div id="u319" class="text">
           <p><span>停止P770c1</span></p><p><span>cmis应用</span></p>
         </div>
       </div>
 
-      <div id="u320" class="ax_default pprc_back_syncha_stop">
+      <div id="u320" class="ax_default pprc_back_simu_syncha_stop">
         <div id="u320_div"></div>
         <div id="u321" class="text">
           <p><span>结束同步HA</span></p>
         </div>
       </div>
       
-      <div id="u342" class="ax_default pprc_back_p770a1ha_start">
+      <div id="u342" class="ax_default pprc_back_simu_p770a1ha_start">
         <div id="u342_div"></div>
         <div id="u343" class="text">
           <p><span>启动P770a1 HA</span></p>
         </div>
       </div>
 
-      <div id="u344" class="ax_default pprc_back_p770b2ha_start">
+      <div id="u344" class="ax_default pprc_back_simu_p770b2ha_start">
         <div id="u344_div"></div>
         <div id="u345" class="text">
           <p><span>启动P770b2 HA</span></p>
         </div>
       </div>
       
-      <div id="u354" class="ax_default pprc_back_p770a1ha_check">
+      <div id="u354" class="ax_default pprc_back_simu_p770a1ha_check">
         <div id="u354_div"></div>
         <div id="u355" class="text">
           <p><span>验证P770a1 HA</span></p>
         </div>
       </div>
       
-      <div id="u360" class="ax_default pprc_back_p770a2ha_start">
+      <div id="u360" class="ax_default pprc_back_simu_p770a2ha_start">
         <div id="u360_div"></div>
         <div id="u361" class="text">
           <p><span>启动P770a2 HA</span></p>
         </div>
       </div>
       
-      <div id="u366" class="ax_default pprc_back_p770a2ha_check">
+      <div id="u366" class="ax_default pprc_back_simu_p770a2ha_check">
         <div id="u366_div"></div>
         <div id="u367" class="text">
           <p><span>验证P770a2 HA</span></p>
         </div>
       </div>
       
-      <div id="u372" class="ax_default pprc_back_ywcheck">
+      <div id="u372" class="ax_default pprc_back_simu_ywcheck">
         <div id="u372_div"></div>
         <div id="u373" class="text">
           <p><span>业务验证</span></p>
@@ -666,206 +642,300 @@ body{margin:0;padding:0;}
         <img id="u378_seg0" class="img" src="zbswitchimg/u378_seg0.png"/>
         <img id="u378_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
-                  
+      
+      <div id="u197">
+        <div id="u197_div"></div>
+        <div id="u198">
+          <p><span>未开始</span></p>
+        </div>
+      </div>
+
+      <div id="u199">
+        <div id="u199_div"></div>
+        <div id="u200">
+          <p><span>运行中</span></p>
+        </div>
+      </div>
+
+      <div id="u201">
+        <div id="u201_div"></div>
+        <div id="u202">
+          <p><span>成功</span></p>
+        </div>
+      </div>
+
+      <div id="u203">
+        <div id="u203_div"></div>
+        <div id="u204">
+          <p><span>失败</span></p>
+        </div>
+      </div>
+      
+      <!-- <div id="uu1">
+        <div id="uu1_div"></div>
+        <div id="uu2">
+          <p><span>已完成待检查</span></p>
+        </div>
+      </div> -->
+      
       <div id="u311">
         <div id="u312" class="text">
           <p><span style="font-size:23px;">吴江农村商业银行</span></p><p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
         </div>
       </div>
-      
-      <div id="uu1aa">
-          <p><span style="font-size:15px;">核心系统回切</span></p>
+
+      <div id="u314">
+        <div id="u315a" class="text">
+          <p><span>核 心 系 统 灾 备 回 切 演 练 - 模 拟</span><span>&nbsp; </span></p>
+        </div>
+        <div id="uu6" style="font-size:16px;">执行时间</div>
+        <div id="uu5" style="font-size:16px;"></div>
       </div>
-      
-      <div id="uu3" class="ax_default">
-      	  <select id="hisdatetime" style="width:200px;">
-				<option value="${execution_date}">${execution_date}</option>
-		  </select>
-      </div>
-      
-      <div id="uu2">		  
-          <button id="showlogbtn" class="btn btn-sm" style="background-color: #3399CC;">
-				<font color="white">查看历史</font>
-		  </button>
-      </div>
-      
-     </div> 
+    </div>
+
+	<img id="progressImgage"  style="width:120px;height:120px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
+    <div id="maskOfProgressImage" class="mask hide"></div>
 </body>
 
 <script>
-var dag_id = getUrlParam('dag_id');
-var execution_date = getUrlParam('execution_date');
-var execution_date_show = execution_date.split("T")[0];
-var data ={"dag_id":dag_id,"execution_date":execution_date};
+	//获取url中的参数
+	function getUrlParam(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	    if (r != null) return unescape(r[2]); return null; //返回参数值
+	}
 
-var taskid;
-$(document).ready(function(){
-	$(".ax_default").on("mouseover",function(e){ //获取要点击任务框的id
-		var classes = $(this).attr("class");
-		taskid = classes.split(" ")[1];
-	})
+	var taskid;
+	var execution_date_time = getUrlParam('execution_date');//2017-12-01T15:24:28
+	var execution_date_time1 = execution_date_time.replace("T"," ");
 	
-	$('.ax_default').contextPopup({
-        items: [
-	            {label:'查看日志', icon:'img/viewlog.png', action:function() 
-	            	{ 
-	            		var execution_date = getUrlParam('execution_date'); //获取url 的值
-	            		var data ={"dag_id":"pprc_back","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-	            		$.ajax({
-	           				url : '<%=path%>/getTaskLog.do',
-	           				data:data,
-	           				type : 'post',
-	           				dataType : 'json',
-	           				success:function(result) 
-	           				{
-	           					$("#showlog").modal();
-	           					$("textarea").text(result.msg);
-	           				},
-	           			})
-	            	} 
-	            } 
-	          ]
-	});
-})
-
-$(".ax_default").tooltip({
-    html: true,
-    container: "body",
-});
-
-function update_nodes_states(task_instances) {
-	$.each(task_instances,function(idx,obj){
-		var task_div = $('.' + obj.task_id);
-        if(obj.state == 'failed') //如果失败
-        {
-        	var tipcontent ="预计开始时间：" +  obj.expected_starttime + "," +
-        					"实际开始时间：" +  obj.start_Date         + "," +
-        					"预计结束时间：" +  obj.expected_endtime   + "," + 
-        					"实际结束时间：" +  obj.end_Date           + "," +
-        					"预计持续时间：" +  obj.expected_duration  + "," + 
-        					"实际持续时间：" +  obj.duration           + "," +
-        					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败";
-            var format_content = tipcontent.split(",").join("<br>");
-            task_div.attr("data-original-title",format_content); 
-            task_div.find("div:eq(0)").css("border-color","#FF0000");
-        }else if (obj.state == 'success') //如果成功
-        {
-        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
-							 "实际开始时间：" +  obj.start_Date         + "," +
-							 "预计结束时间：" +  obj.expected_endtime   + "," + 
-							 "实际结束时间：" +  obj.end_Date           + "," +
-							 "预计持续时间：" +  obj.expected_duration  + "," + 
-							 "实际持续时间：" +  obj.duration           + "," +
-							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功";
-            var format_content = tipcontent.split(",").join("<br>");
-            task_div.attr("data-original-title",format_content); 
-            task_div.find("div:eq(0)").css("border-color","#32cc00");
-        }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed')//未开始
-        {
-        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
-							 "实际开始时间：" +  obj.start_Date         + "," +
-							 "预计结束时间：" +  obj.expected_endtime   + "," + 
-							 "实际结束时间：" +  obj.end_Date           + "," +
-							 "预计持续时间：" +  obj.expected_duration  + "," + 
-							 "实际持续时间：" +  obj.duration           + "," +
-							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始";
-            var format_content = tipcontent.split(",").join("<br>");
-            task_div.attr("data-original-title",format_content); 
-            task_div.find("div:eq(0)").css("border-color","#ffffff"); 
-        }else if (obj.state == 'running')
-        {
-        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
-							 "实际开始时间：" +  obj.start_Date         + "," +
-							 "预计结束时间：" +  obj.expected_endtime   + "," + 
-							 "实际结束时间：" +  obj.end_Date           + "," +
-							 "预计持续时间：" +  obj.expected_duration  + "," + 
-							 "实际持续时间：" +  obj.duration           + "," +
-							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中";
-            var format_content = tipcontent.split(",").join("<br>");
-            task_div.attr("data-original-title",format_content); 
-            task_div.find("div:eq(0)").css("border-color","#0000ff");
-        }else if (obj.state == 'done') //如果处于做完待确认的状态
-        {
-        	var tipcontent = "预计开始时间：" +  obj.expected_starttime + "," +
-							 "实际开始时间：" +  obj.start_Date         + "," +
-							 "预计结束时间：" +  obj.expected_endtime   + "," + 
-							 "实际结束时间：" +  obj.end_Date           + "," +
-							 "预计持续时间：" +  obj.expected_duration  + "," + 
-							 "实际持续时间：" +  obj.duration           + "," +
-							 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认";
-            var format_content = tipcontent.split(",").join("<br>");
-            task_div.attr("data-original-title",format_content); 
-            task_div.find("div:eq(0)").css("border-color","#FF8C00");
-        }
+	$(document).ready(function(){
+		
+		$("#uu5").text(execution_date_time1);
+		
+		$(".ax_default").on("mouseover",function(e){ //获取要点击任务框的id
+			var classes = $(this).attr("class");
+			taskid = classes.split(" ")[1];
+		})
+		
+		$('.ax_default').contextPopup({
+	          items: [
+		            {label:'查看日志', icon:'img/viewlog.png', action:function() 
+		            	{ 
+		            		var execution_date = getUrlParam('execution_date'); //获取url 的值
+		            		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+		            		var data ={"dag_id":"pprc_back_simu","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            		$.ajax({
+		           				url : '<%=path%>/getTaskLog.do',
+		           				data:data,
+		           				type : 'post',
+		           				dataType : 'json',
+		           				success:function(result) 
+		           				{
+		           					$("#showlog").modal();
+		           					$("textarea").text(result.msg);
+		           				},
+		           			})
+		            	} 
+		            },
+		            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
+		            	{ 
+			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+			            	var data ={"dag_id":"pprc_back_simu","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            		var img = $("#progressImgage");
+		         	      	var mask = $("#maskOfProgressImage");
+			            	img.show().css({
+			     	           "position": "fixed",
+			     	           "top": "50%",
+			     	           "left": "50%",
+			     	           "margin-top": function () { return -1 * img.height() / 2; },
+			     	           "margin-left": function () { return -1 * img.width() / 2; }
+			     	       });
+			     	       mask.show().css("opacity", "0.1");
+			     	      $.ajax({
+			     	    	  url : '<%=path%>/makeNodeClear.do',
+			        			data:data,
+			        			type : 'post',
+			        			dataType : 'json',
+			        			success:function(data)
+			        			{
+			        				console.info(data);
+			        			}
+			     	       });
+			     	       var makeClear = setInterval(function(){$.ajax({
+			          			url : '<%=path%>/queryTaskState.do',
+			        			data:data,
+			        			type : 'post',
+			        			dataType : 'json',
+			        			success:function(data)
+			        			{
+			        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
+			        		    		   img.hide();
+			        			           mask.hide();
+			        			           var task_div = $('.' + data.task_id);
+			        			           task_div.find("div:eq(0)").css("border-color","#797979") ;
+			        			           clearInterval(makeClear);
+			        		    	   }
+			        			},
+			        			error:function(data)
+			        			{
+			        				 console.info("请检查应用服务器是否正常！");
+			        		    	 img.hide();
+			        		         mask.hide();
+			        			}
+		        		   })},3000);
+		            	} 
+		            },
+		            {label:'确认成功', icon:'img/comsucc.png', action:function() 
+		            	{ 
+			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+			            	swal({ 
+			            	    title: "", 
+			            	    text: "您确定要将任务置为成功?", 
+			            	    type: "warning", 
+			            	    showCancelButton: true, 
+			            	    closeOnConfirm: false, 
+			            	    confirmButtonText: "确认",  
+			            	    cancelButtonText: "取消",  
+			            	    confirmButtonColor: "#ec6c62" 
+			            	}, function(isConfirm) { 
+			            		if(isConfirm)
+			            		{
+			            			var data ={"dag_id":"pprc_back_simu","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+			            			$.ajax({
+			            				url : '<%=path%>/markTaskSuccess.do',
+			            				data:data,
+			            				type : 'post',
+			            				dataType : 'json',
+			            				success:function(result)
+			            				{
+			            					
+			            					if(result.status == 0)
+			            					{
+			            						swal.close();
+			            						var task_div = $('.' + task_id);
+					        			        task_div.find("div:eq(0)").css("border-color","#32CD32") ;
+			            					} 
+			            				},
+			            			})
+			            		}
+			            	});
+		          	 	} 
+		            } 
+		          ]
+		});
 	})
-}
+</script>
 
-//获取url中的参数
-function getUrlParam(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-    if (r != null) return unescape(r[2]); return null; //返回参数值
-}
-
-function ajax(url, param, type) {
-    return $.ajax({
-    url: url,
-    data: param || {},
-    type: type || 'GET',
-    cache:false
-    });
-}
-
-function getAjax(url,param,type){
-	function handleAjax(url, param, type) {
-	 return ajax(url, param, type).then(function(resp){
-			// 成功回调
-			if(resp){
-				update_nodes_states(resp.dag_tasks)
-			}
-			else{
-				return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
-			}
-		}, function(err){
-	//失败回调
-			console.log(err); // 打印状态码
-			});
-		}
-	handleAjax(url,param,type);
-}
-
-$(document).ready(function(){
-	//更新最新一次的流程跑跑的数据
-	getAjax("historyData.do",data,"post");
-	//更新下拉框的日期数据
-	getDagHisRecord("historyDatatime.do",data,"get");
-});
-
-function getDagHisRecord(url,param,type){
-	 $.ajax({
-	        timeout: 3000,
-	        async: false,
-	        url: url,
-	        dataType: "json",
-	        data: param || {},
-	        type: type || 'GET',
-	        cache:false,
-	        success: function (data) {
-	        	var array = data.dag_hisdatetime;
-	        	for (var i = 0; i < array.length; i++) {
-              		$("#hisdatetime").append("<option>" + array[i] + "</option>");
-	            } 
-	        }
+<script>
+	$(".ax_default").tooltip({
+	    html: true,
+	    container: "body",
+	});
+	
+	var dag_id = "pprc_back_simu";
+	var execution_date = getUrlParam('execution_date');
+	var execution_date_show = execution_date.split("T")[0];
+	var data ={"dag_id":dag_id,"execution_date":execution_date};
+	
+	setInterval(function(){getAjax("runningData.do",data,"post")},3000);
+	
+	function update_nodes_states(task_instances) {
+		$.each(task_instances,function(idx,obj){
+            var task_div = $('.' + obj.task_id);
+            if(obj.state == 'failed') //如果失败
+            {
+            	var tipcontent ="<p align='left'> 预计开始时间：" +  obj.expected_starttime + "," +
+            					"实际开始时间：" +  obj.start_Date         + "," +
+            					"预计结束时间：" +  obj.expected_endtime   + "," + 
+            					"实际结束时间：" +  obj.end_Date           + "," +
+            					"预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+            					"实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#FF0000");
+            }else if (obj.state == 'success') //如果成功
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 "实际开始时间：" +  obj.start_Date         + "," +
+								 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 "实际结束时间：" +  obj.end_Date           + "," +
+								 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#32cc00");
+            }else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 "实际开始时间：" +  obj.start_Date         + "," +
+								 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 "实际结束时间：" +  obj.end_Date           + "," +
+								 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#ffffff");
+            }else if (obj.state == 'running')
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 "实际开始时间：" +  obj.start_Date         + "," +
+								 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 "实际结束时间：" +  obj.end_Date           + "," +
+								 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#0000ff");
+            }else if (obj.state == 'done') //如果处于做完待确认的状态
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 "实际开始时间：" +  obj.start_Date         + "," +
+								 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 "实际结束时间：" +  obj.end_Date           + "," +
+								 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#FF8C00");
+            }
+		})
+    }
+	
+	function ajax(url, param, type) {
+	    return $.ajax({
+	    url: url,
+	    data: param || {},
+	    type: type || 'GET',
+	    cache:false
 	    });
-}
-
-//查看历史操作
-$("#showlogbtn").click(function(){
-	//首先获取下拉框的值
-	var curDatetime = $("#hisdatetime").val();
-	curdata={"dag_id":"pprc_back","execution_date":curDatetime};
-	getAjax("historyData.do",curdata,"post");	
-})
+	}
+	
+	function getAjax(url,param,type){
+		function handleAjax(url, param, type) {
+		 return ajax(url, param, type).then(function(resp){
+				// 成功回调
+				if(resp){
+					console.info(resp.dag_tasks);
+					update_nodes_states(resp.dag_tasks);
+				}
+				else{
+					return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
+				}
+			}, function(err){
+				//失败回调
+				console.log(err); // 打印状态码
+				});
+			}
+		handleAjax(url,param,type);
+	}
 </script>
 
 </html>

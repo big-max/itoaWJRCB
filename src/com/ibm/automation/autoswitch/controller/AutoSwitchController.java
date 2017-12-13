@@ -91,6 +91,9 @@ public class AutoSwitchController {
 		case "pprc_go_simu":
 			link = "zbswitch/instance_autoswitch_pprc_go_simu_running";
 			break;
+		case "pprc_back_simu":
+			link = "zbswitch/instance_autoswitch_pprc_back_simu_running";
+			break;
 		default:
 			link = null;
 		}
@@ -152,6 +155,12 @@ public class AutoSwitchController {
 			break;
 		case "pprc_back":
 			link = "zbswitch/instance_autoswitch_pprc_back_history";
+			break;
+		case "pprc_go_simu":
+			link = "zbswitch/instance_autoswitch_pprc_go_simu_history";
+			break;
+		case "pprc_back_simu":
+			link = "zbswitch/instance_autoswitch_pprc_back_simu_history";
 			break;
 		default:
 			break;
