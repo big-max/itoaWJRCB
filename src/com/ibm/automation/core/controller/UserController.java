@@ -80,6 +80,7 @@ public class UserController {
 					request.getSession().setAttribute("userName", user.getUsername());
 					request.getSession().setAttribute("proList", proList);
 					request.getSession().setAttribute("role", innerNode.get("role").asInt());
+					request.getSession().setAttribute("czy", innerNode.get("czy") == null ? "default":innerNode.get("czy").asText());
 					logger.info("登录成功，正在为您跳转！");
 					return "instance_main_list";
 				} else {

@@ -46,6 +46,8 @@ public class DailyFlowController {
 	
 	@RequestMapping("/dailyflow.do")
 	public String dailyflow(HttpServletRequest request, HttpSession session) {
+		 String czy = (String)session.getAttribute("czy");
+		 System.out.println(czy);
 		return "dailyflow/instance_rz_summary";
 	}
 	
