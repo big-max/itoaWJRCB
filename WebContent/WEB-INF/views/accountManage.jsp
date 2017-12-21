@@ -196,6 +196,20 @@ input[type="text"],input[type="password"]  {
 														<input class="form-control" type="password"  onblur="confirmPasswd()"
 														       id="confirmasswd" name="confirmasswd">
 													</div>
+												</div>	
+												
+												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">电话：</span>
+														<input class="form-control" type="text" id="tel" name="tel">
+													</div>
+												</div>	
+												
+												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">操作员：</span>
+														<input class="form-control" type="text" id="czy" name="czy">
+													</div>
 												</div>											
 												
 												<div class="control-group">
@@ -298,6 +312,14 @@ input[type="text"],input[type="password"]  {
 		if(username != "" && username.indexOf(" ") == -1 && passwd != "" && confirmasswd == "")
 		{
 			sweet("确认密码不能为空 !","warning","确定");  
+			return ;
+		}
+		
+		//判断操作员必须为5位
+		var czy = $("#czy").val().length;
+		if(username != "" && username.indexOf(" ") == -1 && passwd != "" && confirmasswd != "" && czy != 5)
+		{
+			sweet("操作员必须为5位 !","warning","确定");   
 			return ;
 		}
 		
