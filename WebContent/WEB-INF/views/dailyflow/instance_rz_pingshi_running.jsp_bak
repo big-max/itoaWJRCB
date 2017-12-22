@@ -12,9 +12,12 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<jsp:include page="../header_rz_pingshi.jsp" flush="true" /> 
+<jsp:include page="../headerdaily.jsp" flush="true" /> 
 <title>自动化运维平台</title>
 <style type="text/css">
+.stronger-border {
+	border-width:2px;
+}
 body{margin:0;padding:0;}
 .content {
 	position:relative;
@@ -23,6 +26,14 @@ body{margin:0;padding:0;}
 	height:calc(100vh - 50px); 
 	background-color:#F5F3F4;
 } 
+.connector>img {
+	max-width:400px;
+}
+.hide{display:none }
+ .progress{z-index: 2000}
+ .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
+ .modal{width:750px;left:43%;}
+ .ax_default{cursor:pointer;}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -34,19 +45,27 @@ body{margin:0;padding:0;}
 
 <body>
 	
-	<div style="margin:10px auto;width:320px;height:70px;line-height:70px;">
-		<select id="hisdatetime" style="display:inline;width:200px;">
-			<option value="${execution_date}">${execution_date}</option>
-		</select>
-		<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
-		<button id="showlog" class="btn btn-sm" style="background-color: #3399CC;border:1px solid #bbb;">
-			<font color="white">查看历史</font>
-		</button>
+	<!-- 日志模态框（Modal） -->
+	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">日志信息</h4>
+				</div>
+				<div class="modal-body">
+					<textarea rows="10" style="width:100%;height:100%;resize:none;"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
 	</div>
-		
-    <div id="base">
+
+    <div id="base" style="width:800px;height:4800px;margin:0 auto;position:relative;top:100px;">
+    
       <div id="u2" class="ax_default 5600501502">
-        <div id="u2_div"></div>
+        <div id="u2_div"></div><!-- 给边框加颜色 -->
         <div id="u3" class="text">
           <p><span>5600-501/502</span></p><p><span>检查机构和操作员</span></p>
         </div>
@@ -94,14 +113,14 @@ body{margin:0;padding:0;}
         </div>
       </div>
       
-      <div id="u52" class="ax_default 55241">
+      <div id="u52" class="ax_default 5524">
         <div id="u52_div"></div>
         <div id="u53" class="text">
-          <p><span>5524-1</span></p><p><span>信贷cmis日终处理</span></p>
+          <p><span>5524</span></p><p><span>信贷cmis日终处理</span></p>
         </div>
       </div>
 
-      <div id="u54" class="ax_default 55242">
+      <div id="u54" class="ax_default 5524_2">
         <div id="u54_div"></div>
         <div id="u55" class="text">
           <p><span>5524-2：检查信贷是否具备日终5511条件</span></p>
@@ -368,93 +387,93 @@ body{margin:0;padding:0;}
       </div>
       
       
-      <div id="u40" class="ax_default connector">
+      <div id="u40" class="connector">
         <img id="u40_seg0" class="img" src="dailyimg/u40_seg0.png"/>
         <img id="u40_seg1" class="img" src="dailyimg/u40_seg1.png"/>
         <img id="u40_seg2" class="img" src="dailyimg/u40_seg2.png"/>
         <img id="u40_seg3" class="img" src="dailyimg/u40_seg3.png"/>
       </div>
 
-      <div id="u42" class="ax_default connector">
+      <div id="u42" class="connector">
         <img id="u42_seg0" class="img " src="dailyimg/u42_seg0.png"/>
         <img id="u42_seg1" class="img " src="dailyimg/u42_seg1.png"/>
         <img id="u42_seg2" class="img " src="dailyimg/u42_seg2.png"/>
         <img id="u42_seg3" class="img " src="dailyimg/u42_seg3.png"/>
       </div>
 
-      <div id="u44" class="ax_default connector">
+      <div id="u44" class="connector">
         <img id="u44_seg0" class="img " src="dailyimg/u42_seg0.png"/>
         <img id="u44_seg1" class="img " src="dailyimg/u44_seg1.png"/>
         <img id="u44_seg2" class="img " src="dailyimg/u42_seg2.png"/>
         <img id="u44_seg3" class="img " src="dailyimg/u42_seg3.png"/>
       </div>
 
-      <div id="u46" class="ax_default connector">
+      <div id="u46" class="connector">
         <img id="u46_seg0" class="img " src="dailyimg/u46_seg0.png"/>
         <img id="u46_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u48" class="ax_default connector">
+      <div id="u48" class="connector">
         <img id="u48_seg0" class="img " src="dailyimg/u48_seg0.png"/>
         <img id="u48_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u50" class="ax_default connector">
+      <div id="u50" class="connector">
         <img id="u50_seg0" class="img " src="dailyimg/u50_seg0.png"/>
         <img id="u50_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u56" class="ax_default connector">
+      <div id="u56" class="connector">
         <img id="u56_seg0" class="img " src="dailyimg/u56_seg0.png"/>
         <img id="u56_seg1" class="img " src="dailyimg/u56_seg1.png"/>
         <img id="u56_seg2" class="img " src="dailyimg/u56_seg2.png"/>
         <img id="u56_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u58" class="ax_default connector">
+      <div id="u58" class="connector">
         <img id="u58_seg0" class="img " src="dailyimg/u58_seg0.png"/>
         <img id="u58_seg1" class="img " src="dailyimg/u58_seg1.png"/>
         <img id="u58_seg2" class="img " src="dailyimg/u58_seg2.png"/>
         <img id="u58_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u74" class="ax_default connector">
+      <div id="u74" class="connector">
         <img id="u74_seg0" class="img " src="dailyimg/u74_seg0.png"/>
         <img id="u74_seg1" class="img " src="dailyimg/u74_seg1.png"/>
         <img id="u74_seg2" class="img " src="dailyimg/u74_seg2.png"/>
         <img id="u74_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u76" class="ax_default connector">
+      <div id="u76" class="connector">
         <img id="u76_seg0" class="img " src="dailyimg/u76_seg0.png"/>
         <img id="u76_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u78" class="ax_default connector">
+      <div id="u78" class="connector">
         <img id="u78_seg0" class="img " src="dailyimg/u78_seg0.png"/>
         <img id="u78_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u80" class="ax_default connector">
+      <div id="u80" class="connector">
         <img id="u80_seg0" class="img " src="dailyimg/u50_seg0.png"/>
         <img id="u80_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u82" class="ax_default connector">
+      <div id="u82" class="connector">
         <img id="u82_seg0" class="img " src="dailyimg/u82_seg0.png"/>
         <img id="u82_seg1" class="img " src="dailyimg/u82_seg1.png"/>
         <img id="u82_seg2" class="img " src="dailyimg/u58_seg2.png"/>
         <img id="u82_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u84" class="ax_default connector">
+      <div id="u84" class="connector">
         <img id="u84_seg0" class="img " src="dailyimg/u84_seg0.png"/>
         <img id="u84_seg1" class="img " src="dailyimg/u84_seg1.png"/>
         <img id="u84_seg2" class="img " src="dailyimg/u84_seg2.png"/>
         <img id="u84_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u86" class="ax_default connector">
+      <div id="u86" class="connector">
         <img id="u86_seg0" class="img " src="dailyimg/u86_seg0.png"/>
         <img id="u86_seg1" class="img " src="dailyimg/u86_seg1.png"/>
         <img id="u86_seg2" class="img " src="dailyimg/u86_seg2.png"/>
@@ -463,191 +482,454 @@ body{margin:0;padding:0;}
         <img id="u86_seg5" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u88" class="ax_default connector">
+      <div id="u88" class="connector">
         <img id="u88_seg0" class="img " src="dailyimg/u76_seg0.png"/>
         <img id="u88_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u90" class="ax_default connector">
+      <div id="u90" class="connector">
         <img id="u90_seg0" class="img " src="dailyimg/u78_seg0.png"/>
         <img id="u90_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u92" class="ax_default connector">
+      <div id="u92" class="connector">
         <img id="u92_seg0" class="img " src="dailyimg/u50_seg0.png"/>
         <img id="u92_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u112" class="ax_default connector">
+      <div id="u112" class="connector">
         <img id="u112_seg0" class="img " src="dailyimg/u112_seg0.png"/>
         <img id="u112_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u114" class="ax_default connector">
+      <div id="u114" class="connector">
         <img id="u114_seg0" class="img " src="dailyimg/u76_seg0.png"/>
         <img id="u114_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u116" class="ax_default connector">
+      <div id="u116" class="connector">
         <img id="u116_seg0" class="img " src="dailyimg/u78_seg0.png"/>
         <img id="u116_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u118" class="ax_default connector">
+      <div id="u118" class="connector">
         <img id="u118_seg0" class="img " src="dailyimg/u50_seg0.png"/>
         <img id="u118_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u120" class="ax_default connector">
+      <div id="u120" class="connector">
         <img id="u120_seg0" class="img " src="dailyimg/u120_seg0.png"/>
         <img id="u120_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u122" class="ax_default connector">
+      <div id="u122" class="connector">
         <img id="u122_seg0" class="img " src="dailyimg/u122_seg0.png"/>
         <img id="u122_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u124" class="ax_default connector">
+      <div id="u124" class="connector">
         <img id="u124_seg0" class="img " src="dailyimg/u124_seg0.png"/>
         <img id="u124_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u126" class="ax_default connector">
+      <div id="u126" class="connector">
         <img id="u126_seg0" class="img " src="dailyimg/u48_seg0.png"/>
         <img id="u126_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u128" class="ax_default connector">
+      <div id="u128" class="connector">
         <img id="u128_seg0" class="img " src="dailyimg/u122_seg0.png"/>
         <img id="u128_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u130" class="ax_default connector">
+      <div id="u130" class="connector">
         <img id="u130_seg0" class="img " src="dailyimg/u130_seg0.png"/>
         <img id="u130_seg1" class="img " src="dailyimg/u130_seg1.png"/>
         <img id="u130_seg2" class="img " src="dailyimg/u130_seg2.png"/>
         <img id="u130_seg3" class="img " src="dailyimg/u130_seg3.png"/>
       </div>
 
-      <div id="u132" class="ax_default connector">
+      <div id="u132" class="connector">
         <img id="u132_seg0" class="img " src="dailyimg/u132_seg0.png"/>
         <img id="u132_seg1" class="img " src="dailyimg/u132_seg1.png"/>
       </div>
 
-      <div id="u134" class="ax_default connector">
+      <div id="u134" class="connector">
         <img id="u134_seg0" class="img " src="dailyimg/u134_seg0.png"/>
         <img id="u134_seg1" class="img " src="dailyimg/u134_seg1.png"/>
       </div>
 
-      <div id="u136" class="ax_default connector">
+      <div id="u136" class="connector">
         <img id="u136_seg0" class="img " src="dailyimg/u132_seg0.png"/>
         <img id="u136_seg1" class="img " src="dailyimg/u132_seg1.png"/>
       </div>
 
-      <div id="u138" class="ax_default connector">
+      <div id="u138" class="connector">
         <img id="u138_seg0" class="img " src="dailyimg/u138_seg0.png"/>
         <img id="u138_seg1" class="img " src="dailyimg/u138_seg1.png"/>
       </div>
 
-      <div id="u144" class="ax_default connector">
+      <div id="u144" class="connector">
         <img id="u144_seg0" class="img " src="dailyimg/u144_seg0.png"/>
         <img id="u144_seg1" class="img " src="dailyimg/u144_seg1.png"/>
         <img id="u144_seg2" class="img " src="dailyimg/u144_seg2.png"/>
         <img id="u144_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u146" class="ax_default connector">
+      <div id="u146" class="connector">
         <img id="u146_seg0" class="img " src="dailyimg/u144_seg0.png"/>
         <img id="u146_seg1" class="img " src="dailyimg/u146_seg1.png"/>
         <img id="u146_seg2" class="img " src="dailyimg/u144_seg2.png"/>
         <img id="u146_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u148" class="ax_default connector">
+      <div id="u148" class="connector">
         <img id="u148_seg0" class="img " src="dailyimg/u144_seg0.png"/>
         <img id="u148_seg1" class="img " src="dailyimg/u148_seg1.png"/>
         <img id="u148_seg2" class="img " src="dailyimg/u144_seg2.png"/>
         <img id="u148_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u162" class="ax_default connector">
+      <div id="u162" class="connector">
         <img id="u162_seg0" class="img " src="dailyimg/u144_seg0.png"/>
         <img id="u162_seg1" class="img " src="dailyimg/u162_seg1.png"/>
         <img id="u162_seg2" class="img " src="dailyimg/u144_seg2.png"/>
         <img id="u162_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u164" class="ax_default connector">
+      <div id="u164" class="connector">
         <img id="u164_seg0" class="img " src="dailyimg/u164_seg0.png"/>
         <img id="u164_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u166" class="ax_default connector">
+      <div id="u166" class="connector">
         <img id="u166_seg0" class="img " src="dailyimg/u166_seg0.png"/>
         <img id="u166_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u168" class="ax_default connector">
+      <div id="u168" class="connector">
         <img id="u168_seg0" class="img " src="dailyimg/u164_seg0.png"/>
         <img id="u168_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u170" class="ax_default connector">
+      <div id="u170" class="connector">
         <img id="u170_seg0" class="img " src="dailyimg/u164_seg0.png"/>
         <img id="u170_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u172" class="ax_default connector">
+      <div id="u172" class="connector">
         <img id="u172_seg0" class="img " src="dailyimg/u172_seg0.png"/>
         <img id="u172_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u176" class="ax_default connector">
+      <div id="u176" class="connector">
         <img id="u176_seg0" class="img " src="dailyimg/u176_seg0.png"/>
         <img id="u176_seg1" class="img " src="dailyimg/u176_seg1.png"/>
         <img id="u176_seg2" class="img " src="dailyimg/u176_seg2.png"/>
         <img id="u176_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u178" class="ax_default connector">
+      <div id="u178" class="connector">
         <img id="u178_seg0" class="img " src="dailyimg/u82_seg0.png"/>
         <img id="u178_seg1" class="img " src="dailyimg/u178_seg1.png"/>
         <img id="u178_seg2" class="img " src="dailyimg/u58_seg2.png"/>
         <img id="u178_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u180" class="ax_default connector">
+      <div id="u180" class="connector">
         <img id="u180_seg0" class="img " src="dailyimg/u82_seg0.png"/>
         <img id="u180_seg1" class="img " src="dailyimg/u180_seg1.png"/>
         <img id="u180_seg2" class="img " src="dailyimg/u58_seg2.png"/>
         <img id="u180_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u182" class="ax_default connector">
+      <div id="u182" class="connector">
         <img id="u182_seg0" class="img " src="dailyimg/u182_seg0.png"/>
         <img id="u182_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u184" class="ax_default connector">
+      <div id="u184" class="connector">
         <img id="u184_seg0" class="img " src="dailyimg/u120_seg0.png"/>
         <img id="u184_seg1" class="img " src="dailyimg/u46_seg1.png"/>
       </div>
 
-      <div id="u186" class="ax_default connector">
+      <div id="u186" class="connector">
         <img id="u186_seg0" class="img " src="dailyimg/u186_seg0.png"/>
         <img id="u186_seg1" class="img " src="dailyimg/u186_seg1.png"/>
         <img id="u186_seg2" class="img " src="dailyimg/u186_seg2.png"/>
         <img id="u186_seg3" class="img " src="dailyimg/u56_seg3.png"/>
       </div>
 
-      <div id="u194" class="ax_default">
+      <div id="u188" style="text-align:center;">
+        <div id="u188_div"></div>
+        <div id="u189" class="text">
+          <p><span>未开始</span></p>
+        </div>
+      </div>
+
+      <div id="u190" style="text-align:center;">
+        <div id="u190_div"></div>
+        <div id="u191" class="text">
+          <p><span>运行中</span></p>
+        </div>
+      </div>
+
+      <div id="u192" style="text-align:center;">
+        <div id="u192_div"></div>
+        <div id="u193" class="text">
+          <p><span>成功</span></p>
+        </div>
+      </div>
+
+      <div id="u194" style="text-align:center;">
         <div id="u194_div"></div>
         <div id="u195" class="text">
-          <p><span>超时</span></p>
+          <p><span>失败</span></p>
         </div>
       </div>
     </div>
+    <img id="progressImgage" class="progress hide" style="width:5%;height:5vh;" alt="请稍等，处理中。。。" src="img/process.gif"/>
+    <div id="maskOfProgressImage" class="mask hide"></div>
+    
+    <script>
+		var taskid;
+		$(document).ready(function(){
+			
+		$(".ax_default").find("div:eq(0)").css("border-radius","5px");
+		$(".ax_default").find("div:eq(0)").css("border-width","2px");
+		
+		$(".ax_default").on("mouseover",function(e){
+			//taskid = $(this).find("span:eq(0)").html();//获取要点击任务框的id 
+			var classes = $(this).attr("class");
+			taskid = classes.split(" ")[1];
+		})
+			
+		$('.ax_default').contextPopup({
+	          items: [
+		            {label:'查看日志', icon:'img/viewlog.png', action:function() 
+		            	{ 
+		            		var execution_date = getUrlParam('execution_date'); //获取url 的值
+		            		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+		            		var data ={"dag_id":"wjrz_dev","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            		$.ajax({
+		           				url : '<%=path%>/getTaskLog.do',
+		           				data:data,
+		           				type : 'post',
+		           				dataType : 'json',
+		           				success:function(result) 
+		           				{
+		           					$("#showlog").modal();
+		           					$("textarea").text(result.msg);
+		           				},
+		           			})
+		            	} 
+		            },
+		            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
+		            	{ 
+			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+			            	var data ={"dag_id":"wjrz_dev","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            		var img = $("#progressImgage");
+		         	      	var mask = $("#maskOfProgressImage");
+			            	img.show().css({
+			     	           "position": "fixed",
+			     	           "top": "50%",
+			     	           "left": "50%",
+			     	           "margin-top": function () { return -1 * img.height() / 2; },
+			     	           "margin-left": function () { return -1 * img.width() / 2; }
+			     	       });
+			     	       mask.show().css("opacity", "0.1");
+			     	      $.ajax({
+			     	    	  url : '<%=path%>/makeNodeClear.do',
+			        			data:data,
+			        			type : 'post',
+			        			dataType : 'json',
+			        			success:function(data)
+			        			{
+			        				console.info(data);
+			        			}
+			     	       });
+			     	       var makeClear = setInterval(function(){$.ajax({
+			          			url : '<%=path%>/queryTaskState.do',
+			        			data:data,
+			        			type : 'post',
+			        			dataType : 'json',
+			        			success:function(data)
+			        			{
+			        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
+			        		    		   //console.info("running");
+			        		    		   img.hide();
+			        			           mask.hide();
+			        			           var task_div = $('.' + data.task_id);
+			        			           task_div.find("div:eq(0)").css("border-color","#797979") ;
+			        			           clearInterval(makeClear);
+			        		    	   }
+			        			},
+			        			error:function(data)
+			        			{
+			        				 console.info("请检查应用服务器是否正常！");
+			        		    	 img.hide();
+			        		         mask.hide();
+			        			}
+		        		   })},3000);
+			            	
+		            	} 
+		            },
+		            {label:'确认成功', icon:'img/comsucc.png', action:function() 
+		            	{ 
+			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+			            	swal({ 
+			            	    title: "", 
+			            	    text: "您确定要将任务置为成功?", 
+			            	    type: "warning", 
+			            	    showCancelButton: true, 
+			            	    closeOnConfirm: false, 
+			            	    confirmButtonText: "确认",  
+			            	    cancelButtonText: "取消",  
+			            	    confirmButtonColor: "#ec6c62" 
+			            	}, function(isConfirm) { 
+			            		if(isConfirm)
+			            		{
+			            			var data ={"dag_id":"wjrz_dev","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+			            			$.ajax({
+			            				url : '<%=path%>/markTaskSuccess.do',
+			            				data:data,
+			            				type : 'post',
+			            				dataType : 'json',
+			            				success:function(result)
+			            				{
+			            					if(result.status == 0)
+			            					{
+			            						swal.close();
+			            						var task_div = $('.' + obj.task_id);
+					        			        task_div.find("div:eq(0)").css("border-color","#32CD32") ;
+			            					} 
+			            				},
+			            			})
+			            		}
+			            	});
+		          	 	} 
+		            } 
+		          ]
+		});
+		})
+	</script>
+	
+	<script type="text/javascript">
+	
+	$(".ax_default").tooltip({
+	      html: true,
+	      container: "body",
+	    });
+	var dag_id = "wjrz_dev";
+	var execution_date = getUrlParam('execution_date');
+	//var execution_date = "2017-11-21T11:23:28";
+	var data ={"dag_id":dag_id,"execution_date":execution_date};
+	
+	setInterval(function(){getAjax("runningData.do",data,"post")},3000);
+	
+	function update_nodes_states(task_instances) {
+			$.each(task_instances,function(idx,obj){
+	            var task_div = $('.' + obj.task_id);
+	            if(obj.state == 'failed') //如果失败
+	            {
+	            	var tipcontent ="<p align='left'> 预计开始时间：" + obj.expected_starttime + "," +
+	            					"实际开始时间：" + obj.start_Date         + "," +
+	            					"预计结束时间：" + obj.expected_endtime   + "," + 
+	            					"实际结束时间：" + obj.end_Date           + "," +
+	            					"预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+	            					"实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
+	            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败</p>";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","#FF4500") ;
+	            }else if (obj.state == 'success') //如果成功
+	            {
+	            	var tipcontent = "<p align='left'>预计开始时间：" + obj.expected_starttime + "," +
+									 "实际开始时间：" + obj.start_Date         + "," +
+									 "预计结束时间：" + obj.expected_endtime   + "," + 
+									 "实际结束时间：" + obj.end_Date           + "," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功</p>";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","#32CD32") ;
+	            }else if (obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
+	            {
+	            	var tipcontent = "<p align='left'>预计开始时间：" + obj.expected_starttime + "," +
+									 "实际开始时间：" + obj.start_Date         + "," +
+									 "预计结束时间：" + obj.expected_endtime   + "," + 
+									 "实际结束时间：" + obj.end_Date           + "," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始</p>";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","#797979");
+	            }else if (obj.state == 'running')
+	            {
+	            	var tipcontent = "<p align='left'>预计开始时间：" + obj.expected_starttime + "," +
+									 "实际开始时间：" + obj.start_Date         + "," +
+									 "预计结束时间：" + obj.expected_endtime   + "," + 
+									 "实际结束时间：" + obj.end_Date           + "," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中</p>";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","#3399CC") ;
+	            }else if (obj.state == 'done') //如果处于做完待确认的状态
+	            {
+	            	var tipcontent = "<p align='left'>预计开始时间：" + obj.expected_starttime + "," +
+									 "实际开始时间：" + obj.start_Date         + "," +
+									 "预计结束时间：" + obj.expected_endtime   + "," + 
+									 "实际结束时间：" + obj.end_Date           + "," +
+									 "预计持续时间：" + obj.expected_duration  + "&nbsp;&nbsp;," + 
+									 "实际持续时间：" + obj.duration           + "&nbsp;&nbsp;," +
+									 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
+	                var format_content = tipcontent.split(",").join("<br>");
+	                task_div.attr("data-original-title",format_content); 
+	                task_div.find("div:eq(0)").css("border-color","#FF8C00") ;
+	            }
+			})
+	    }
+	    
+	//获取url中的参数
+	function getUrlParam(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	    if (r != null) return unescape(r[2]); return null; //返回参数值
+	}
+	
+	function ajax(url, param, type) {
+	    return $.ajax({
+	    url: url,
+	    data: param || {},
+	    type: type || 'GET',
+	    cache:false
+	    });
+	}
+	function getAjax(url,param,type){
+		function handleAjax(url, param, type) {
+		 return ajax(url, param, type).then(function(resp){
+				// 成功回调
+				if(resp){
+					console.info(resp.dag_tasks);
+					update_nodes_states(resp.dag_tasks);
+				}
+				else{
+					return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
+				}
+			}, function(err){
+				//失败回调
+				console.log(err); // 打印状态码
+				});
+			}
+		handleAjax(url,param,type);
+	}
+	</script>
 </body>
 
 </html>
