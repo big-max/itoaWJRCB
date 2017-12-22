@@ -68,318 +68,318 @@ body{margin:0;padding:0;}
 	        <img id="u0_img" class="img" src="dailyimg/u0.jpg"/>
 	    </div>
 	    
-	    <div id="u2" class="ax_default">
+	    <div id="u2" class="ax_default 501502">
 	        <div id="u2_div"></div>
 	        <div id="u3" class="text">
 	          <p><span>5600-501/502</span></p><p><span>检查机构和操作员</span></p>
 	        </div>
 	    </div>
 	    
-	    <div id="u4" class="ax_default">
+	    <div id="u14" class="ax_default 701">
+	        <div id="u14_div"></div>
+	        <div id="u15" class="text">
+	          <p><span>5600-701</span></p><p><span>信贷日终前flashcopy</span></p>
+	        </div>
+	    </div>
+	    
+	    <div id="u16" class="ax_default 702">
+	        <div id="u16_div"></div>
+	        <div id="u17" class="text">
+	          <p><span>5600-702</span></p><p><span>信贷日终前备份</span></p>
+	        </div>
+	    </div>
+	    
+	    <div id="u4" class="ax_default 706">
 	        <div id="u4_div"></div>
 	        <div id="u5" class="text">
 	          <p><span>5600-706</span></p><p><span>信贷备份检查</span></p>
 	        </div>
 	    </div>
 
-      <div id="u6" class="ax_default">
-        <div id="u6_div"></div>
-        <div id="u7" class="text">
-          <p><span>5600-706</span></p><p><span>信贷备份检查</span></p>
-        </div>
-      </div>
-
-      <div id="u8" class="ax_default">
-        <div id="u8_div"></div>
-        <div id="u9" class="text">
-          <p><span>5513</span></p><p><span>存款每日计提</span></p>
-        </div>
-      </div>
-
-      <div id="u10" class="ax_default">
-        <div id="u10_div"></div>
-        <div id="u11" class="text">
-          <p><span>5528-1</span></p><p><span>work数据采集</span></p>
-        </div>
-      </div>
-
-      <div id="u12" class="ax_default">
-        <div id="u12_div"></div>
-        <div id="u13" class="text">
-          <p><span>55dj5</span></p><p><span>批量文件传出</span></p>
-        </div>
-      </div>
-
-      <div id="u14" class="ax_default">
-        <div id="u14_div"></div>
-        <div id="u15" class="text">
-          <p><span>5600-701</span></p><p><span>信贷日终前flashcopy</span></p>
-        </div>
-      </div>
-
-      <div id="u16" class="ax_default">
-        <div id="u16_div"></div>
-        <div id="u17" class="text">
-          <p><span>5600-702</span></p><p><span>信贷日终前备份</span></p>
-        </div>
-      </div>
-
-      <div id="u18" class="ax_default">
-        <div id="u18_div"></div>
-        <div id="u19" class="text">
-          <p><span>5555</span></p><p><span>comstar发往核心记账</span></p>
-        </div>
-      </div>
-
-      <div id="u20" class="ax_default">
-        <div id="u20_div"></div>
-        <div id="u21" class="text">
-          <p><span>5556</span></p><p><span>comstar发往核心对账</span></p>
-        </div>
-      </div>
-
-      <div id="u22" class="ax_default">
-        <div id="u22_div"></div>
-        <div id="u23" class="text">
-          <p><span>55pj</span></p><p><span>票据日终</span></p>
-        </div>
-      </div>
-
-      <div id="u24" class="ax_default">
-        <div id="u24_div"></div>
-        <div id="u25" class="text">
-          <p><span>55dj2</span></p><p><span>批量文件导入</span></p>
-        </div>
-      </div>
-
-      <div id="u26" class="ax_default">
-        <div id="u26_div"></div>
-        <div id="u27" class="text">
-          <p><span>55dj3</span></p><p><span>批量启动菜单</span></p>
-        </div>
-      </div>
-
-      <div id="u28" class="ax_default">
-        <div id="u28_div"></div>
-        <div id="u29" class="text">
-          <p><span>55ebs</span></p><p><span>提交总控主程序</span></p>
-        </div>
-      </div>
-
-      <div id="u30" class="ax_default">
-        <div id="u30_div"></div>
-        <div id="u31" class="text">
-          <p><span>55vat1</span></p><p><span>查看导数结果</span></p>
-        </div>
-      </div>
-
-      <div id="u32" class="ax_default">
-        <div id="u32_div"></div>
-        <div id="u33" class="text">
-          <p><span>55vat2</span></p><p><span>VAT日终跑批</span></p>
-        </div>
-      </div>
-
-      <div id="u34" class="ax_default">
-        <div id="u34_div"></div>
-        <div id="u35" class="text">
-          <p><span>55vat3</span></p><p><span>查看VAT日终结果</span></p>
-        </div>
-      </div>
-
-      <div id="u36" class="ax_default">
+	  <div id="u36" class="ax_default 5524">
         <div id="u36_div"></div>
         <div id="u37" class="text">
           <p><span>5524</span></p><p><span>信贷cmis日终处理</span></p>
         </div>
       </div>
 
-      <div id="u38" class="ax_default">
+      <div id="u38" class="ax_default 5524-2">
         <div id="u38_div"></div>
         <div id="u39" class="text">
           <p><span>5524-2：检查信贷是否具备日终5511条件</span></p>
         </div>
       </div>
-
-      <div id="u40" class="ax_default">
+      
+      <div id="u40" class="ax_default 703">
         <div id="u40_div"></div>
         <div id="u41" class="text">
           <p><span>5600-703</span></p><p><span>信贷日终后flashcopy</span></p>
         </div>
       </div>
 
-      <div id="u42" class="ax_default">
+      <div id="u42" class="ax_default 704">
         <div id="u42_div"></div>
         <div id="u43" class="text">
           <p><span>5600-704</span></p><p><span>信贷日终后备份</span></p>
         </div>
+      </div>      
+      
+      <div id="u6" class="ax_default 706-2">
+        <div id="u6_div"></div>
+        <div id="u7" class="text">
+          <p><span>5600-706</span></p><p><span>信贷备份检查</span></p>
+        </div>
       </div>
-
-      <div id="u44" class="ax_default">
+      
+      <div id="u44" class="ax_default 705">
         <div id="u44_div"></div>
         <div id="u45" class="text">
           <p><span>5600-705</span></p><p><span>信贷数据库导表</span></p>
         </div>
       </div>
-
-      <div id="u46" class="ax_default">
-        <div id="u46_div"></div>
-        <div id="u47" class="text">
-          <p><span>5600-802</span></p><p><span>日终前数据库备份</span></p>
+      
+      <div id="u18" class="ax_default 5555">
+        <div id="u18_div"></div>
+        <div id="u19" class="text">
+          <p><span>5555</span></p><p><span>comstar发往核心记账</span></p>
         </div>
       </div>
 
-      <div id="u48" class="ax_defaul">
+      <div id="u20" class="ax_default 5556">
+        <div id="u20_div"></div>
+        <div id="u21" class="text">
+          <p><span>5556</span></p><p><span>comstar发往核心对账</span></p>
+        </div>
+      </div>
+      
+      <div id="u22" class="ax_default 55pj">
+        <div id="u22_div"></div>
+        <div id="u23" class="text">
+          <p><span>55pj</span></p><p><span>票据日终</span></p>
+        </div>
+      </div>
+      
+      <div id="u98" class="ax_default 55pj-2">
+        <div id="u98_div"></div>
+        <div id="u99" class="text">
+          <p><span>55pj_2</span></p><p><span>票据日终</span></p>
+        </div>
+      </div>
+      
+      <div id="u48" class="ax_defaul 5511">
         <div id="u48_div"></div>
         <div id="u49" class="text">
           <p><span>5511</span></p><p><span>日终周期开始</span></p>
         </div>
       </div>
-
-      <div id="u50" class="ax_default">
+      
+      <div id="u50" class="ax_default 801">
         <div id="u50_div"></div>
         <div id="u51" class="text">
           <p><span>5600-801</span></p><p><span>flashcopy后台及ics</span></p>
         </div>
       </div>
-
-      <div id="u52" class="ax_default">
+      
+      <div id="u46" class="ax_default 802">
+        <div id="u46_div"></div>
+        <div id="u47" class="text">
+          <p><span>5600-802</span></p><p><span>日终前数据库备份</span></p>
+        </div>
+      </div>
+      
+      <div id="u52" class="ax_default 806">
         <div id="u52_div"></div>
         <div id="u53" class="text">
           <p><span>5600-806</span></p><p><span>备份检查</span></p>
         </div>
       </div>
-
-      <div id="u54" class="ax_default">
-        <div id="u54_div"></div>
-        <div id="u55" class="text">
-          <p><span>7972</span></p><p><span>贷记卡约定还款</span></p>
+      
+      <div id="u64" class="ax_default 5512">
+        <div id="u64_div"></div>
+        <div id="u65" class="text">
+          <p><span>5512</span></p><p><span>日终账务处理</span></p>
         </div>
       </div>
-
-      <div id="u56" class="ax_default">
-        <div id="u56_div"></div>
-        <div id="u57" class="text">
-          <p><span>5514</span></p><p><span>日终平衡入账</span></p>
-        </div>
-      </div>
-
-      <div id="u58" class="ax_default">
-        <div id="u58_div"></div>
-        <div id="u59" class="text">
-          <p><span>5501</span></p><p><span>系统日切</span></p>
-        </div>
-      </div>
-
-      <div id="u60" class="ax_default">
-        <div id="u60_div"></div>
-        <div id="u61" class="text">
-          <p><span>5502</span></p><p><span>系统日启</span></p>
-        </div>
-      </div>
-
-      <div id="u62" class="ax_default">
+      
+      <div id="u62" class="ax_default 7971">
         <div id="u62_div"></div>
         <div id="u63" class="text">
           <p><span>7971</span></p><p><span>贷记卡生成清算数据</span></p>
         </div>
       </div>
 
-      <div id="u64" class="ax_default">
-        <div id="u64_div"></div>
-        <div id="u65" class="text">
-          <p><span>5512</span></p><p><span>日终账务处理</span></p>
+      <div id="u54" class="ax_default 7972">
+        <div id="u54_div"></div>
+        <div id="u55" class="text">
+          <p><span>7972</span></p><p><span>贷记卡约定还款</span></p>
         </div>
       </div>
-
-      <div id="u66" class="ax_default">
+      
+      <div id="u8" class="ax_default 5513">
+        <div id="u8_div"></div>
+        <div id="u9" class="text">
+          <p><span>5513</span></p><p><span>存款每日计提</span></p>
+        </div>
+      </div>
+      
+      <div id="u56" class="ax_default 5514">
+        <div id="u56_div"></div>
+        <div id="u57" class="text">
+          <p><span>5514</span></p><p><span>日终平衡入账</span></p>
+        </div>
+      </div>
+      
+      <div id="u58" class="ax_default 5501">
+        <div id="u58_div"></div>
+        <div id="u59" class="text">
+          <p><span>5501</span></p><p><span>系统日切</span></p>
+        </div>
+      </div>
+      
+      <div id="u60" class="ax_default 5502">
+        <div id="u60_div"></div>
+        <div id="u61" class="text">
+          <p><span>5502</span></p><p><span>系统日启</span></p>
+        </div>
+      </div>
+      
+      <div id="u66" class="ax_default 5515">
         <div id="u66_div"></div>
         <div id="u67" class="text">
           <p><span>5515</span></p><p><span>日终周期结束</span></p>
         </div>
       </div>
 
-      <div id="u68" class="ax_default">
+      <div id="u68" class="ax_default 5506">
         <div id="u68_div"></div>
         <div id="u69" class="text">
           <p><span>5506</span></p><p><span>卸载数据至数据中心</span></p>
         </div>
       </div>
-
-      <div id="u70" class="ax_default">
+      
+      <div id="u70" class="ax_default 7973">
         <div id="u70_div"></div>
         <div id="u71" class="text">
           <p><span>7973</span></p><p><span>贷记卡导入科目明细</span></p>
         </div>
       </div>
-
-      <div id="u72" class="ax_default">
-        <div id="u72_div"></div>
-        <div id="u73" class="text">
-          <p><span>5528-2</span></p><p><span>总账数据迁移</span></p>
-        </div>
-      </div>
-
-      <div id="u74" class="ax_default">
-        <div id="u74_div"></div>
-        <div id="u75" class="text">
-          <p><span>5528-3</span></p><p><span>VAT供数</span></p>
-        </div>
-      </div>
-
-      <div id="u76" class="ax_default">
-        <div id="u76_div"></div>
-        <div id="u77" class="text">
-          <p><span>5600-801</span></p><p><span>flashcopy后台及ics</span></p>
-        </div>
-      </div>
-
-      <div id="u78" class="ax_default">
-        <div id="u78_div"></div>
-        <div id="u79" class="text">
-          <p><span>5600-601</span></p><p><span>清空ics日志表</span></p>
-        </div>
-      </div>
-
-      <div id="u80" class="ax_default">
-        <div id="u80_div"></div>
-        <div id="u81" class="text">
-          <p><span>5600-803</span></p><p><span>日终后数据库备份</span></p>
-        </div>
-      </div>
-
-      <div id="u82" class="ax_default">
-        <div id="u82_div"></div>
-        <div id="u83" class="text">
-          <p><span>5600-806</span></p><p><span>备份检查</span></p>
-        </div>
-      </div>
-
-      <div id="u84" class="ax_default">
-        <div id="u84_div"></div>
-        <div id="u85" class="text">
-          <p><span>5600-503</span></p><p><span>检查workdb日志</span></p>
-        </div>
-      </div>
-
-      <div id="u86" class="ax_default">
-        <div id="u86_div"></div>
-        <div id="u87" class="text">
-          <p><span>5600-805</span></p><p><span>后台及ics数据库导表</span></p>
-        </div>
-      </div>
-
-      <div id="u88" class="ax_default">
+      
+      <div id="u88" class="ax_default 5525">
         <div id="u88_div"></div>
         <div id="u89" class="text">
           <p><span>5525</span></p><p><span>数据中心日终</span></p>
         </div>
       </div>
       
-      <div id="u98" class="ax_default">
-        <div id="u98_div"></div>
-        <div id="u99" class="text">
-          <p><span>55pj_2</span></p><p><span>票据日终</span></p>
+      <div id="u10" class="ax_default 5528-1">
+        <div id="u10_div"></div>
+        <div id="u11" class="text">
+          <p><span>5528-1</span></p><p><span>work数据采集</span></p>
+        </div>
+      </div>
+      
+      <div id="u72" class="ax_default 5528-2">
+        <div id="u72_div"></div>
+        <div id="u73" class="text">
+          <p><span>5528-2</span></p><p><span>总账数据迁移</span></p>
+        </div>
+      </div>
+
+      <div id="u74" class="ax_default 5528-3">
+        <div id="u74_div"></div>
+        <div id="u75" class="text">
+          <p><span>5528-3</span></p><p><span>VAT供数</span></p>
+        </div>
+      </div>
+      
+      <div id="u76" class="ax_default 801-2">
+        <div id="u76_div"></div>
+        <div id="u77" class="text">
+          <p><span>5600-801</span></p><p><span>flashcopy后台及ics</span></p>
+        </div>
+      </div>
+      
+      <div id="u78" class="ax_default 601">
+        <div id="u78_div"></div>
+        <div id="u79" class="text">
+          <p><span>5600-601</span></p><p><span>清空ics日志表</span></p>
+        </div>
+      </div>
+
+      <div id="u80" class="ax_default 803">
+        <div id="u80_div"></div>
+        <div id="u81" class="text">
+          <p><span>5600-803</span></p><p><span>日终后数据库备份</span></p>
+        </div>
+      </div>
+      
+      <div id="u82" class="ax_default 806-2">
+        <div id="u82_div"></div>
+        <div id="u83" class="text">
+          <p><span>5600-806</span></p><p><span>备份检查</span></p>
+        </div>
+      </div>
+      
+      <div id="u84" class="ax_default 503">
+        <div id="u84_div"></div>
+        <div id="u85" class="text">
+          <p><span>5600-503</span></p><p><span>检查workdb日志</span></p>
+        </div>
+      </div>
+
+      <div id="u86" class="ax_default 805">
+        <div id="u86_div"></div>
+        <div id="u87" class="text">
+          <p><span>5600-805</span></p><p><span>后台及ics数据库导表</span></p>
+        </div>
+      </div>
+      
+      <div id="u24" class="ax_default 55dj2">
+        <div id="u24_div"></div>
+        <div id="u25" class="text">
+          <p><span>55dj2</span></p><p><span>批量文件导入</span></p>
+        </div>
+      </div>
+
+      <div id="u26" class="ax_default 55dj3">
+        <div id="u26_div"></div>
+        <div id="u27" class="text">
+          <p><span>55dj3</span></p><p><span>批量启动菜单</span></p>
+        </div>
+      </div>
+      
+      <div id="u12" class="ax_default 55dj5">
+        <div id="u12_div"></div>
+        <div id="u13" class="text">
+          <p><span>55dj5</span></p><p><span>批量文件传出</span></p>
+        </div>
+      </div>
+      
+      <div id="u28" class="ax_default 55ebs">
+        <div id="u28_div"></div>
+        <div id="u29" class="text">
+          <p><span>55ebs</span></p><p><span>提交总控主程序</span></p>
+        </div>
+      </div>
+      
+      <div id="u30" class="ax_default 55vat1">
+        <div id="u30_div"></div>
+        <div id="u31" class="text">
+          <p><span>55vat1</span></p><p><span>查看导数结果</span></p>
+        </div>
+      </div>
+
+      <div id="u32" class="ax_default 55vat2">
+        <div id="u32_div"></div>
+        <div id="u33" class="text">
+          <p><span>55vat2</span></p><p><span>VAT日终跑批</span></p>
+        </div>
+      </div>
+
+      <div id="u34" class="ax_default 55vat3">
+        <div id="u34_div"></div>
+        <div id="u35" class="text">
+          <p><span>55vat3</span></p><p><span>查看VAT日终结果</span></p>
         </div>
       </div>
 
