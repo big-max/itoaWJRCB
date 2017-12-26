@@ -262,21 +262,21 @@ body{
         </div>
       </div>
       
-      <div id="u10" class="ax_default 5528-1">
+      <div id="u10" class="ax_default 5528_1">
         <div id="u10_div"></div>
         <div id="u11" class="text">
           <p><span>5528-1</span></p><p><span>work数据采集</span></p>
         </div>
       </div>
       
-      <div id="u72" class="ax_default 5528-2">
+      <div id="u72" class="ax_default 5528_2">
         <div id="u72_div"></div>
         <div id="u73" class="text">
           <p><span>5528-2</span></p><p><span>总账数据迁移</span></p>
         </div>
       </div>
 
-      <div id="u74" class="ax_default 5528-3">
+      <div id="u74" class="ax_default 5528_3">
         <div id="u74_div"></div>
         <div id="u75" class="text">
           <p><span>5528-3</span></p><p><span>VAT供数</span></p>
@@ -331,6 +331,7 @@ body{
           <p><span>55dj2</span></p><p><span>批量文件导入</span></p>
         </div>
       </div>
+      <!-- 55dj2的子流程 -->
 
       <div id="u26" class="ax_default 55dj3">
         <div id="u26_div"></div>
@@ -350,6 +351,13 @@ body{
         <div id="u28_div"></div>
         <div id="u29" class="text">
           <p><span>55ebs</span></p><p><span>提交总控主程序</span></p>
+        </div>
+      </div>
+      
+      <div id="u199" class="ax_default 55ebs-2">
+        <div id="u199_div"></div>
+        <div id="u200" class="text">
+          <p><span>55ebs-2</span></p><p><span>提交总控主程序</span></p>
         </div>
       </div>
       
@@ -660,6 +668,11 @@ body{
         <img id="u190_seg1" class="img" src="dailyimg/u190_seg1.png"/>
         <img id="u190_seg2" class="img" src="dailyimg/u182_seg2.png"/>
         <img id="u190_seg3" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u201" class="connector">
+        <img id="u201_seg0" class="img" src="dailyimg/u162_seg0.png"/>
+        <img id="u201_seg1" class="img" src="dailyimg/u100_seg1.png"/>
       </div>
       
       <div id="u192">

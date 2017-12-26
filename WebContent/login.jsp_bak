@@ -87,9 +87,15 @@
 </head>
 
 <body>
-	
+	<div id="header" style="height:65px;">
+		<span style="position:relative;top:22px;">
+			<img src="<%=path%>/img/logo.png" />
+			<a class="treelogo" style="font-size:17px;color:white;">自动化运维平台</a>
+		</span>
+	</div>
 	<div id="loginbox">
-		<form id="loginform" method="post" class="form-vertical" action="login.do">
+		<form id="loginform" method="post" class="form-vertical"
+			action="login.do">
 			<div class="logobox">
 				<p>
 					<img src="<%=path%>/img/logo_WJRCB.png">
