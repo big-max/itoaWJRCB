@@ -59,6 +59,13 @@ body{
 	        <img id="u0_img" class="img" src="dailyimg/u0.jpg"/>
 	    </div>
 	    
+	    <div id="u203" class="ax_default rz_start">
+	        <div id="u203_div"></div>
+	        <div id="u204" class="text">
+	          <p><span>开始</span></p>
+	        </div>
+	    </div>
+	    
 	    <div id="u2" class="ax_default 501502">
 	        <div id="u2_div"></div>
 	        <div id="u3" class="text">
@@ -838,6 +845,11 @@ body{
       <div id="u201" class="connector">
         <img id="u201_seg0" class="img" src="dailyimg/u162_seg0.png"/>
         <img id="u201_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u205" class="connector">
+        <img id="u205_seg0" class="img" src="dailyimg/u205_seg0.png"/>
+        <img id="u205_seg1" class="img" src="dailyimg/u104_seg1.png"/>
       </div>
       
       <div id="u192">
