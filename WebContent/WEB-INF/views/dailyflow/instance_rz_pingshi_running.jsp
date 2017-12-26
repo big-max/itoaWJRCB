@@ -164,7 +164,7 @@ body{
         </div>
       </div>
       
-      <div id="u48" class="ax_defaul 5511">
+      <div id="u48" class="ax_default 5511">
         <div id="u48_div"></div>
         <div id="u49" class="text">
           <p><span>5511</span></p><p><span>日终周期开始</span></p>
@@ -526,7 +526,7 @@ body{
         </div>
       </div>
       
-      <div id="u199" class="ax_default 55ebs-2">
+      <div id="u199" class="ax_default 55ebs_2">
         <div id="u199_div"></div>
         <div id="u200" class="text">
           <p><span>55ebs-2</span></p><p><span>提交总控主程序</span></p>
