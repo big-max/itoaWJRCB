@@ -368,7 +368,7 @@ $("body").on("click","#rizhong,#rizhong2",function(){
 					</li>
 				</ul>
 			</li>
-			<c:if test="${role == 4 || role == 1  }">
+			<%-- <c:if test="${role == 4 || role == 1  }">
 			<li>
 				<a href="healthCheck.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="自动化巡检">
 					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>
@@ -379,7 +379,7 @@ $("body").on("click","#rizhong,#rizhong2",function(){
 					<span id="menu13" class="top5">自动化巡检</span> 
 			    </a>
 			</li>
-			</c:if>
+			</c:if> --%>
 			<li>
 				<a href="configCompare.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="配置跟踪比对">
 					<img class="img_icon" src="img/icons/iconfont/trace.png" id="icon13"></img>

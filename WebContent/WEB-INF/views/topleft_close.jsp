@@ -374,7 +374,7 @@
 				</ul>
 			</li> 
 			</c:if>
-			<c:if test="${role == 4 || role == 1 }">
+			<%-- <c:if test="${role == 4 || role == 1 }">
 			<li>
 				<a href="healthCheck.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="自动化巡检">
 					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>
@@ -396,7 +396,7 @@
 					<span id="menu14" class="top5">配置跟踪比对</span> 
 				</a>
 			</li> 
-			</c:if>
+			</c:if> --%>
 			<!-- <li>
 				<a href="logCatch.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="日志抓取">
 					<img class="img_icon" src="img/icons/iconfont/logcatch17.png" id="icon14"></img>
