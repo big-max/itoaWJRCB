@@ -335,15 +335,15 @@ body{
       <div id="sub_55dj2" style="display:none;">
       	<div id="sub_55dj2_00"><img src="dailyimg/closecha.png"/></div>
       	<div id="sub_55dj2_11"><font color="white">55dj2 子流程</font></div>
-      	<div id="sub_55dj2_22" class="ax_default xxx">
+      	<div id="sub_55dj2_22" class="ax_default okd_f1">
       		<div><font color="white">银联和行内</font></div>
       		<div><font color="white">清算文件</font></div>
       	</div>
-      	<div id="sub_55dj2_33" class="ax_default xxx">
+      	<div id="sub_55dj2_33" class="ax_default okd_f2">
       		<div><font color="white">人民币柜面</font></div>
       		<div><font color="white">还款文件</font></div>
       	</div>
-      	<div id="sub_55dj2_44" class="ax_default xxx">
+      	<div id="sub_55dj2_44" class="ax_default okd_f3">
       		<div><font color="white">人民币自动</font></div>
       		<div><font color="white">扣缴回盘文件</font></div>
       	</div>
@@ -368,35 +368,35 @@ body{
       <div id="sub_55dj3" style="display:none;">
       	<div id="sub_55dj3_00"><img src="dailyimg/closecha.png"/></div>
       	<div id="sub_55dj3_11"><font color="white">55dj3 子流程</font></div>
-      	<div id="sub_55dj3_22" class="ax_default xxx">
+      	<div id="sub_55dj3_22" class="ax_default okd_m1">
       		<div><font color="white">核心处理</font></div>
       		<div><font color="white">检查跑批标志</font></div>
       	</div>
-      	<div id="sub_55dj3_33" class="ax_default xxx">
+      	<div id="sub_55dj3_33" class="ax_default okd_m2">
       		<div><font color="white">批前合并清算</font></div>
       		<div><font color="white">文件到dat目录</font></div>
       	</div>
-      	<div id="sub_55dj3_44" class="ax_default xxx">
+      	<div id="sub_55dj3_44" class="ax_default okd_m3">
       		<div><font color="white">批前检查</font></div>
       		<div><font color="white">清算文件长度</font></div>
       	</div>
-      	<div id="sub_55dj3_55" class="ax_default xxx">
+      	<div id="sub_55dj3_55" class="ax_default okd_m4">
       		<div style="margin-top:8px;"><font color="white">批前备份</font></div>
       	</div>
-      	<div id="sub_55dj3_66" class="ax_default xxx">
+      	<div id="sub_55dj3_66" class="ax_default okd_m5">
       		<div style="margin-top:8px;"><font color="white">核心批处理</font></div>
       	</div>
-      	<div id="sub_55dj3_77" class="ax_default xxx">
+      	<div id="sub_55dj3_77" class="ax_default okd_m6">
       		<div style="margin-top:8px;"><font color="white">批后备份</font></div>
       	</div>
-      	<div id="sub_55dj3_88" class="ax_default xxx">
-      		<div style="margin-top:8px;"><font color="white">释放跑批标志</font></div>
+      	<div id="sub_55dj3_991" class="ax_default okd_m7">
+      		<div style="margin-top:8px;"><font color="white">批后发送文件处理</font></div>
       	</div>
-      	<div id="sub_55dj3_99" class="ax_default xxx">
+      	<div id="sub_55dj3_99" class="ax_default okd_m8">
       		<div style="margin-top:8px;"><font color="white">批后目录清理</font></div>
       	</div>
-      	<div id="sub_55dj3_991" class="ax_default xxx">
-      		<div style="margin-top:8px;"><font color="white">批后发送文件处理</font></div>
+      	<div id="sub_55dj3_88" class="ax_default okd_m9">
+      		<div style="margin-top:8px;"><font color="white">释放跑批标志</font></div>
       	</div>
       	<div id="sub_55dj3_line11" class="connector">
 	        <img id="u180_seg0" class="img" src="dailyimg/u158_seg0.png"/>
@@ -443,34 +443,34 @@ body{
       <div id="sub_55dj5" style="display:none;">
       	<div id="sub_55dj5_00"><img src="dailyimg/closecha.png"/></div>
       	<div id="sub_55dj5_11"><font color="white">55dj5 子流程</font></div>
-      	<div id="sub_55dj5_22" class="ax_default xxx">
+      	<div id="sub_55dj5_22" class="ax_default okd_t1">
       		<div style="margin-top:8px;"><font color="white">PSM文件</font></div>
       	</div>
-      	<div id="sub_55dj5_33" class="ax_default xxx">
+      	<div id="sub_55dj5_33" class="ax_default okd_t2">
       		<div style="margin-top:8px;"><font color="white">PTX文件</font></div>
       	</div>
-      	<div id="sub_55dj5_44" class="ax_default xxx">
+      	<div id="sub_55dj5_44" class="ax_default okd_t3">
       		<div style="margin-top:8px;"><font color="white">STM文件</font></div>
       	</div>
-      	<div id="sub_55dj5_55" class="ax_default xxx">
+      	<div id="sub_55dj5_55" class="ax_default okd_t4">
       		<div style="margin-top:8px;"><font color="white">GL文件</font></div>
       	</div>
-      	<div id="sub_55dj5_66" class="ax_default xxx">
+      	<div id="sub_55dj5_66" class="ax_default okd_t5">
       		<div style="margin-top:8px;"><font color="white">VIP文件</font></div>
       	</div>
-      	<div id="sub_55dj5_77" class="ax_default xxx">
+      	<div id="sub_55dj5_77" class="ax_default okd_t6">
       		<div style="margin-top:8px;"><font color="white">忠诚兑换文件</font></div>
       	</div>
-      	<div id="sub_55dj5_88" class="ax_default xxx">
-      		<div style="margin-top:8px;"><font color="white">批前备份文件传出</font></div>
-      	</div>
-      	<div id="sub_55dj5_99" class="ax_default xxx">
-      		<div style="margin-top:8px;"><font color="white">IC卡制卡文件传出</font></div>
-      	</div>
-      	<div id="sub_55dj5_991" class="ax_default xxx">
+      	<div id="sub_55dj5_991" class="ax_default okd_t7">
       		<div style="margin-top:8px;"><font color="white">所有文件</font></div>
       	</div>
-      	<div id="sub_55dj5_992" class="ax_default xxx">
+      	<div id="sub_55dj5_99" class="ax_default okd_t8">
+      		<div style="margin-top:8px;"><font color="white">IC卡制卡文件传出</font></div>
+      	</div>
+      	<div id="sub_55dj5_88" class="ax_default okd_t9">
+      		<div style="margin-top:8px;"><font color="white">批前备份文件传出</font></div>
+      	</div>
+      	<div id="sub_55dj5_992" class="ax_default okd_t10">
       		<div style="margin-top:8px;"><font color="white">批后备份文件传出</font></div>
       	</div>
       	<div id="sub_55dj5_line11" class="connector">
