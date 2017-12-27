@@ -149,7 +149,6 @@
 								{
 									  if (isConfirm) 
 									  {
-										  //window.location.href = "getAllServers.do";
 										  window.location.href = "getIBMAllInstance.do?ptype=was";
 									  } 
 								})
@@ -210,20 +209,11 @@
 			<a href="#" class="current1" style="position:relative;top:-3px;">IBM WAS</a>
 		</div>
 		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="widget-box collapsible">
-						<div class="widget-title">
-							<a data-toggle="collapse" href="#collapseOne"> 
-							   <span class="icon"> <i class="icon-arrow-right"></i></span>
-							   <h5>说明：</h5>
-							</a>
-						</div>
-						<div id="collapseOne" class="collapse in">
-							<div class="widget-content">所有WAS实例信息.</div>
-						</div>
-					</div>
-				</div>
+			<div class="widget-title">
+				<a data-toggle="collapse" href="#collapseOne"> 
+				   <span class="icon"> <i class="icon-arrow-right"></i></span>
+				   <h5>说明：所有WAS实例信息.</h5>
+				</a>
 			</div>
 		</div>
 

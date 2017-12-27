@@ -75,7 +75,7 @@ label > div.radio {
 	<div class="content">
 		<div class="breadcrumb">
 			<a href="getAllServers.do" class="current1" style="position:relative;top:-3px;">
-				<i class="icon-home"></i>IBM MQ
+				<i class="icon-home"></i> IBM MQ
 			</a>
 			<a class="current" style="position:relative;top:-3px;">实例配置详细</a>
 		</div>

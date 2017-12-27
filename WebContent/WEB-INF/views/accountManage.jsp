@@ -81,25 +81,15 @@ input[type="text"],input[type="password"]  {
 	<!--content start-->
 	<div class="content">
 		<div class="breadcrumb">
-			<a href="" class="current" style="position:relative;top:-3px;"><i class="icon-home"></i>实例一览</a>
-			<a href="#" class="current1" style="position:relative;top:-3px;">IBM 账号管理</a>
+			<a href="" class="current" style="position:relative;top:-3px;"><i class="icon-home"></i>用户一览</a>
 		</div>
 		
 		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="widget-box collapsible">
-						<div class="widget-title">
-							<a data-toggle="collapse" href="#collapseOne">
-								<span class="icon"> <i class="icon-arrow-right"></i></span>
-								<h5>说明：</h5>
-							</a>
-						</div>
-						<div id="collapseOne" class="collapse in">
-							<div class="widget-content">账号管理概要信息.</div>
-						</div>
-					</div>
-				</div>
+			<div class="widget-title">
+				<a data-toggle="collapse" href="#collapseOne">
+					<span class="icon"> <i class="icon-arrow-right"></i></span>
+					<h5>说明：账号管理概要信息.</h5>
+				</a>
 			</div>
 		</div>
 
