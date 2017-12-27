@@ -194,48 +194,35 @@
 });
 </script>
 
-	<header class="cd-main-header" style="background:url('img/navbg.png');height:70px;">
+	<header class="cd-main-header" style="background:url('img/menubg.jpg') repeat-x;height:70px;">
 		<nav style="display: block;float: left;height: 100%;">
-			<!-- <ul style="height:100%;list-style:none;margin:0px">
-				<li style="height:100%;display:inline-block;width:56px;padding-top:14px;padding-left:10px;position:relative;">
-					<img src="img/logo.png" style="position: relative; bottom: 5px;"></img>
-				</li>
-				<li style="height:100%;display:inline-block;position:relative;bottom:30px;left:0px;">
-					<a href="#" style="position: relative; top: 25px;">吴江农村商业银行</a>
-				</li>
-				<li style="height:100%;display:inline-block;position:relative;bottom:30px;left:20px;">
-					<a href="#" style="position:relative; top:27px; font-size:18px;">自动化运维平台</a>
-				</li>
-			</ul> -->
 			<div style="width:500px;height:55px;margin-left:5px;margin-top:9px;">
 				<img src="img/navlogo.png">
 			</div>
 		</nav>  
 
-		<nav class="cd-nav" style="height:80%;margin-top:8px;">
-			<ul class="cd-top-nav">
-				<li>
-					<a href="getAllServers.do" style="color: white;">
-						<i class="icon-home icon-white" style="margin: 3px 5px;"></i>主页    
-					</a>
-				</li>
-				<li>
-					<a href="#0" style="color: white;"> 
-						<i class="icon-user icon-white" style="margin: 5px;"></i> <span>${userName }</span>
-					</a>
-				</li>
-				<li>
-					<a href="logout.do" style="color: white;"> 
-						<i class="icon-off icon-white" style="margin: 5px;"></i> <span>注销</span>&nbsp;&nbsp;
-					</a>
-				</li>
-			</ul>
+		<nav class="cd-nav" style="height:50%;margin-top:20px;">
+			<span style="margin-right:15px;">
+				<a href="getAllServers.do" style="color: white;">
+					<img src="img/navhome.png"> 主页
+				</a>
+			</span>
+			<span style="margin-right:15px;">
+				<a href="#0" style="color: white;"> 
+					<img src="img/navuser.png"> <span>${userName }</span>
+				</a>
+			</span>
+			<span>
+				<a href="logout.do" style="color: white;"> 
+					<img src="img/navcancel.png"> <span>注销</span>&nbsp;&nbsp;
+				</a>
+			</span>
 		</nav>
 	</header>
 	<!-- .cd-main-header -->
 
 
-	<div id="jquery-accordion-menu" class="jquery-accordion-menu red downleft nano" style="z-index: 5;width:56px;overflow-x:hidden;">
+	<div id="jquery-accordion-menu" class="jquery-accordion-menu red downleft nano" style="z-index: 5;width:56px;overflow-x:hidden;background:url('img/menubg.jpg');">
 	<div class="nano-content">
 		<div style="text-align: center; height:30px;">
 			<a href="#" id="drawback2">
@@ -244,8 +231,8 @@
 		</div>
 
 		<!-- 自动化部署 -->
-		<ul id="demo-list">
 		<c:if test="${role == 1 || role == 3 }">
+		<ul>
 			<li>
 				<a href="#" class="tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化部署">
 					<img class="img_icon" src="img/icons/iconfont/deploy.png" ></img>
@@ -288,29 +275,30 @@
 					</li> -->
 				</ul>
 			</li> 
-			</c:if>
 		</ul>
+		</c:if>
+		
 		
 		
 		<!-- 灾备演练 -->
 		<c:if test="${role == 2 || role == 1 }">
-			<ul id="demo-list3">
-				<li>
-					<a href="autoswitch.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="灾备切换">
-						<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>
-					</a>
-					<a href="autoswitch.do" class="notvisible tooltipa2">
-						<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>&nbsp;&nbsp;&nbsp;
-						<span id="menu26" class="top5">灾备切换</span> 
-				    </a>
-				</li>
-			</ul>
+		<ul>
+			<li>
+				<a href="autoswitch.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="灾备切换">
+					<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>
+				</a>
+				<a href="autoswitch.do" class="notvisible tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu26" class="top5">灾备切换</span> 
+			    </a>
+			</li>
+		</ul>
 		</c:if>
 		
 		
 		<!-- 日终 -->
 		<c:if test="${role == 0 || role == 1 }">
-		<ul id="demo-list5">
+		<ul>
 			<li>
 				<a href="dailyflow.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="日终流程">
 					<img class="img_icon" src="img/icons/iconfont/dailyflow.png"></img>
@@ -326,38 +314,38 @@
 		
 		<!-- 自动化发布 -->
 		<c:if test="${role == 5 || role == 1 }">
-			<ul id="demo-list">
-				<li>
-					<a href="#" class="tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化发布">
-						<img class="img_icon" src="img/icons/iconfont/publish.png" ></img>
-					</a>
-					<a href="#" class="notvisible tooltipa2" id="forremoveminux">
-						<img class="img_icon" src="img/icons/iconfont/publish.png"></img>&nbsp;&nbsp;&nbsp;
-						<span id="menu12" class="top5">自动化发布</span> 
-					</a>
-					<ul class="nosubmenu submenu" id="showonce">
-						<li class="has-children">
-							<a href="autopublish.do"><span>WAS</span></a>
-						</li>
-					</ul>
-				</li> 
-			</ul>
+		<ul>
+			<li>
+				<a href="#" class="tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化发布">
+					<img class="img_icon" src="img/icons/iconfont/publish.png" ></img>
+				</a>
+				<a href="#" class="notvisible tooltipa2" id="forremoveminux">
+					<img class="img_icon" src="img/icons/iconfont/publish.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu12" class="top5">自动化发布</span> 
+				</a>
+				<ul class="nosubmenu submenu" id="showonce">
+					<li class="has-children">
+						<a href="autopublish.do"><span>WAS</span></a>
+					</li>
+				</ul>
+			</li> 
+		</ul>
 		</c:if>		
 		
 		
 		<!-- 用户中心 -->
 		<c:if test="${role == 1 }">		
-			<ul id="demo-list1">
-				<li>
-					<a href="accountManage.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="账号管理">
-						<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>
-					</a>
-					<a href="accountManage.do" class="notvisible tooltipa2">
-						<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>&nbsp;&nbsp;&nbsp;
-						<span id="menu17" class="top5">账号管理</span> 
-				    </a>
-				</li>
-			</ul>
+		<ul>
+			<li>
+				<a href="accountManage.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="账号管理">
+					<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>
+				</a>
+				<a href="accountManage.do" class="notvisible tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu17" class="top5">账号管理</span> 
+			    </a>
+			</li>
+		</ul>
 		</c:if> 
 
 		</div>
