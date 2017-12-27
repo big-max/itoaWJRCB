@@ -194,94 +194,25 @@
 });
 </script>
 
-<script>
-	var i = 1;
-	var j = 1;
-	var k = 1;
-	var p = 1;
-	var q = 1;
-	var m = 1;
- 	$("body").on("click","#proAndser,#proAndser2",function(){
-		$("#demo-list").toggle();
-		if(i%2 == 1){
-			var state1 = "<img class='forrotate' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate").replaceWith(state1); 
-		}else if(i%2 == 0) {
-			var state1 = "<img class='forrotate' src='img/icons/iconfont/arrowdown.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate").replaceWith(state1); 
-		}
-		i++;
-	}) 
-	$("body").on("click","#usercenter,#usercenter2",function(){
-		$("#demo-list1").toggle();
-		if(j%2 == 1){
-			var state1 = "<img class='forrotate2' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate2").replaceWith(state1); 
-		}else if(j%2 == 0) {
-			var state1 = "<img class='forrotate2' src='img/icons/iconfont/arrowdown.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate2").replaceWith(state1); 
-		}
-		j++;
-	})
-	$("body").on("click","#poccenter,#poccenter2",function(){
-		$("#demo-list2").toggle();
-		if(k%2 == 1){
-			var state1 = "<img class='forrotate3' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate3").replaceWith(state1); 
-		}else if(k%2 == 0) {
-			var state1 = "<img class='forrotate3' src='img/icons/iconfont/arrowdown.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate3").replaceWith(state1); 
-		}
-		k++;
-	})
-	$("body").on("click","#disaster,#disaster2",function(){
-		$("#demo-list3").toggle();
-		if(p%2 == 1){
-			var state1 = "<img class='forrotate4' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate4").replaceWith(state1); 
-		}else if(p%2 == 0) {
-			var state1 = "<img class='forrotate4' src='img/icons/iconfont/arrowdown.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate4").replaceWith(state1); 
-		}
-		p++;
-	})
-	$("body").on("click","#autopublish,#autopublish2",function(){
-		$("#demo-list4").toggle();
-		if(q%2 == 1){
-			var state1 = "<img class='forrotate5' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate5").replaceWith(state1); 
-		}else if(q%2 == 0) {
-			var state1 = "<img class='forrotate5' src='img/icons/iconfont/arrowdown.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate5").replaceWith(state1); 
-		}
-		q++;
-	})
-	$("body").on("click","#rizhong,#rizhong2",function(){
-		$("#demo-list5").toggle();
-		if(m%2 == 1){
-			var state1 = "<img class='forrotate6' src='img/icons/iconfont/arrowright.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate6").replaceWith(state1); 
-		}else if(m%2 == 0) {
-			var state1 = "<img class='forrotate6' src='img/icons/iconfont/arrowdown.png' style='position:relative;top:16px;'></img>";
-			$(".forrotate6").replaceWith(state1); 
-		}
-		m++;
-	})
-</script>
-
-	<header class="cd-main-header">
+	<header class="cd-main-header" style="background:url('img/navbg.png');height:70px;">
 		<nav style="display: block;float: left;height: 100%;">
-			<ul style="height:100%;list-style:none;margin:0px">
-				<li style="height:100%;display:inline-block;width:56px;padding-top:14px;padding-left:10px;background:#465A96;position:relative;">
+			<!-- <ul style="height:100%;list-style:none;margin:0px">
+				<li style="height:100%;display:inline-block;width:56px;padding-top:14px;padding-left:10px;position:relative;">
 					<img src="img/logo.png" style="position: relative; bottom: 5px;"></img>
 				</li>
-				<li style="height:100%;display:inline-block;position:relative;bottom:30px;left:10px;">
-					<a href="#" style="position: relative; top: 25px;">自动化运维平台</a>
+				<li style="height:100%;display:inline-block;position:relative;bottom:30px;left:0px;">
+					<a href="#" style="position: relative; top: 25px;">吴江农村商业银行</a>
 				</li>
-			</ul>
+				<li style="height:100%;display:inline-block;position:relative;bottom:30px;left:20px;">
+					<a href="#" style="position:relative; top:27px; font-size:18px;">自动化运维平台</a>
+				</li>
+			</ul> -->
+			<div style="width:500px;height:55px;margin-left:5px;margin-top:9px;">
+				<img src="img/navlogo.png">
+			</div>
 		</nav>  
 
-		<nav class="cd-nav">
+		<nav class="cd-nav" style="height:80%;margin-top:8px;">
 			<ul class="cd-top-nav">
 				<li>
 					<a href="getAllServers.do" style="color: white;">
@@ -312,18 +243,10 @@
 			</a>
 		</div>
 
-		<!-- 产品与服务 -->
-		<div class="jquery-accordion-menu-footer tooltipa1" id="proAndser" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="产品与服务">
-			<img class="forrotate" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-		</div>
-		<div class="jquery-accordion-menu-footer tooltipa2 notvisible" id="proAndser2" style="cursor:pointer;">
-			<img class="forrotate" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-			<span id="menu11" style="position:relative;top:15px;font-size:13px;" >产品与服务</span>
-		</div>
-		
+		<!-- 自动化部署 -->
 		<ul id="demo-list">
 		<c:if test="${role == 1 || role == 3 }">
-			<li >
+			<li>
 				<a href="#" class="tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化部署">
 					<img class="img_icon" src="img/icons/iconfont/deploy.png" ></img>
 				</a>
@@ -335,11 +258,11 @@
 					<li class="has-children">
 						<a href="getLogInfo.do"><span>部署历史</span></a>
 					</li>
-					<li class="has-children"><a href="#">IBM IHS </a>
+					<!-- <li class="has-children"><a href="#">IBM IHS </a>
 						<ul style="width:100px;">
 							<li><a href="getIBMAllInstance.do?ptype=ihs">IHS 单节点</a></li>
 						</ul>
-					</li>
+					</li> -->
 					<li class="has-children"><a href="#">IBM WAS </a>
 						<ul>
 							<li><a href="getIBMAllInstance.do?ptype=was">WAS 单节点</a></li>
@@ -349,7 +272,7 @@
 					<li class="has-children"><a href="#">IBM MQ </a>
 						<ul>
 							<li><a href="getIBMAllInstance.do?ptype=mq">MQ 单节点</a></li>
-							<li><a href="getIBMAllInstance.do?ptype=mqcluster">MQ 集群</a></li>
+							<!-- <li><a href="getIBMAllInstance.do?ptype=mqcluster">MQ 集群</a></li> -->
 						</ul>
 					</li>
 					<li class="has-children"><a href="#">IBM DB2 </a>
@@ -358,90 +281,35 @@
 							<li><a href="getIBMAllInstance.do?ptype=db2ha&platform=aix">DB2 HA</a></li>
 						</ul>
 					</li>
-					<!-- <li class="has-children"><a href="#">IBM Oracle </a>
-						<ul>
-							<li><a href="getIBMAllInstance.do?ptype=oracle">Oracle 单节点</a></li>
-						</ul>
-					</li> -->
-					<li class="has-children"><a href="#">IBM ITM </a>
+					<!-- <li class="has-children"><a href="#">IBM ITM </a>
 						<ul>
 							<li><a href="getIBMAllInstance.do?ptype=itmos">OS Agent</a></li>
-							<!-- <li><a href="getIBMAllInstance.do?ptype=itmwas">WAS Agent</a></li>
-							<li><a href="getIBMAllInstance.do?ptype=itmmq">MQ Agent</a></li>
-							<li><a href="getIBMAllInstance.do?ptype=itmdb2">DB2 Agent</a></li> -->
 						</ul>
-					</li>
+					</li> -->
 				</ul>
 			</li> 
 			</c:if>
-			<%-- <c:if test="${role == 4 || role == 1 }">
-			<li>
-				<a href="healthCheck.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="自动化巡检">
-					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>
-					
-				</a>
-				<a href="healthCheck.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/patrol.png" id="icon12"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu13" class="top5">自动化巡检</span> 
-			    </a>
-			</li> 
-			
-			<li>
-				<a href="configCompare.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="配置跟踪比对">
-					<img class="img_icon" src="img/icons/iconfont/trace.png" id="icon13"></img>
-				
-				</a>
-				<a href="configCompare.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/trace.png" id="icon13"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu14" class="top5">配置跟踪比对</span> 
-				</a>
-			</li> 
-			</c:if> --%>
-			<!-- <li>
-				<a href="logCatch.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="日志抓取">
-					<img class="img_icon" src="img/icons/iconfont/logcatch17.png" id="icon14"></img>
-					
-				</a>
-				<a href="logCatch.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/logcatch17.png" id="icon14"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu15" class="top5">日志抓取</span> 
-				</a>
-			</li> -->
 		</ul>
 		
 		
 		<!-- 灾备演练 -->
 		<c:if test="${role == 2 || role == 1 }">
-		<div class="jquery-accordion-menu-footer tooltipa1" id="disaster" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="灾备演练">
-			<img class="forrotate4" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-		</div>
-		<div class="jquery-accordion-menu-footer tooltipa2 notvisible" id="disaster2" style="cursor:pointer;">
-			<img class="forrotate4" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-			<span id="menu25" style="position:relative;top:15px;font-size:13px;" >灾备演练</span>
-		</div>
-		
-		<ul id="demo-list3">
-			<li>
-				<a href="autoswitch.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="灾备切换">
-					<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>
-				</a>
-				<a href="autoswitch.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu26" class="top5">灾备切换</span> 
-			    </a>
-			</li>
-		</ul>
+			<ul id="demo-list3">
+				<li>
+					<a href="autoswitch.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="灾备切换">
+						<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>
+					</a>
+					<a href="autoswitch.do" class="notvisible tooltipa2">
+						<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>&nbsp;&nbsp;&nbsp;
+						<span id="menu26" class="top5">灾备切换</span> 
+				    </a>
+				</li>
+			</ul>
 		</c:if>
+		
+		
 		<!-- 日终 -->
 		<c:if test="${role == 0 || role == 1 }">
-		<div class="jquery-accordion-menu-footer tooltipa1" id="rizhong" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="日终">
-			<img class="forrotate6" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-		</div>
-		<div class="jquery-accordion-menu-footer tooltipa2 notvisible" id="rizhong2" style="cursor:pointer;">
-			<img class="forrotate6" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-			<span id="menu30" style="position:relative;top:15px;font-size:13px;" >日终</span>
-		</div>
-		
 		<ul id="demo-list5">
 			<li>
 				<a href="dailyflow.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="日终流程">
@@ -454,114 +322,42 @@
 			</li>
 		</ul>
 		</c:if>
+		
+		
 		<!-- 自动化发布 -->
-		
 		<c:if test="${role == 5 || role == 1 }">
-		<div class="jquery-accordion-menu-footer tooltipa1" id="autopublish" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="自动化发布">
-			<img class="forrotate5" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-		</div>
-		<div class="jquery-accordion-menu-footer tooltipa2 notvisible" id="autopublish2" style="cursor:pointer;">
-			<img class="forrotate5" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-			<span id="menu28" style="position:relative;top:15px;font-size:13px;" >自动化发布</span>
-		</div>
-		
-		<ul id="demo-list4">
-			<li>
-				<a href="autopublish.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="WAS">
-					<img class="img_icon" src="img/icons/iconfont/was.png"></img>
-				</a>
-				<a href="autopublish.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/was.png"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu29" class="top5">WAS</span> 
-			    </a>
-			</li>
-		</ul>
-		</c:if>
-		<!-- POC模块 
-		<div class="jquery-accordion-menu-footer tooltipa1" id="poccenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="POC场景模块">
-			<img class="forrotate3" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-		</div>
-		<div class="jquery-accordion-menu-footer tooltipa2 notvisible" id="poccenter2" style="cursor:pointer;">
-			<img class="forrotate3" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-			<span id="menu24" style="position:relative;top:15px;font-size:13px;" >POC场景模块</span>
-		</div>
-		
-		<ul id="demo-list2">
-			<li>
-				<a href="fixLoad.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="补丁加载">
-					<img class="img_icon" src="img/icons/iconfont/fixload.png" id="icon20"></img>
-				</a>
-				<a href="fixLoad.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/fixload.png" id="icon20"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu23" class="top5">补丁加载</span> 
-			    </a>
-			</li>
-			<li>
-				<a href="getAllsecurityTemplate.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="安全模板">
-					<img class="img_icon" src="img/icons/iconfont/safemould.png" id="icon19"></img>
-				</a>
-				<a href="getAllsecurityTemplate.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/safemould.png" id="icon19"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu22" class="top5">安全模板</span> 
-			    </a>
-			</li>
-			<li>
-				<a href="getAllsecurityJobs.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="安全加固">
-					<img class="img_icon" src="img/icons/iconfont/safeplus.png" id="icon18"></img>
-				</a>
-				<a href="getAllsecurityJobs.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/safeplus.png" id="icon18"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu21" class="top5">安全加固</span> 
-			    </a>
-			</li>
-			<li>
-				<a href="remoteCommand.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="批量执行">
-					<img class="img_icon" src="img/icons/iconfont/more.png" id="icon17"></img>
-				</a>
-				<a href="remoteCommand.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/more.png" id="icon17"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu19" class="top5">批量执行</span> 
-			    </a>
-			</li>
-		</ul>
-		-->
-		
+			<ul id="demo-list">
+				<li>
+					<a href="#" class="tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化发布">
+						<img class="img_icon" src="img/icons/iconfont/publish.png" ></img>
+					</a>
+					<a href="#" class="notvisible tooltipa2" id="forremoveminux">
+						<img class="img_icon" src="img/icons/iconfont/publish.png"></img>&nbsp;&nbsp;&nbsp;
+						<span id="menu12" class="top5">自动化发布</span> 
+					</a>
+					<ul class="nosubmenu submenu" id="showonce">
+						<li class="has-children">
+							<a href="autopublish.do"><span>WAS</span></a>
+						</li>
+					</ul>
+				</li> 
+			</ul>
+		</c:if>		
 		
 		
 		<!-- 用户中心 -->
-		<c:if test="${role == 1 }">
-		<div class="jquery-accordion-menu-footer tooltipa1" id="usercenter" style="cursor:pointer;" data-toggle="tooltip" data-placement="right" title="用户中心">
-			<img class="forrotate2" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-		</div>
-		<div class="jquery-accordion-menu-footer tooltipa2 notvisible" id="usercenter2" style="cursor:pointer;">
-			<img class="forrotate2" src="img/icons/iconfont/arrowdown.png" style="position:relative;top:16px;"></img>&nbsp;&nbsp;
-			<span id="menu16" style="position:relative;top:15px;font-size:13px;">用户中心</span>
-		</div>
-		
-		
-		<ul id="demo-list1">
-			<li>
-				<a href="accountManage.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="账号管理">
-					<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>
-					
-				</a>
-				<a href="accountManage.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu17" class="top5">账号管理</span> 
-			    </a>
-			</li>
-			
-			<!-- <li>
-				<a href="cenManage.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="集中管理">
-					<img class="img_icon" src="img/icons/iconfont/cenManage.png" id="icon16"></img>		
-				</a>
-				<a href="cenManage.do" class="notvisible tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/cenManage.png" id="icon16"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu18" class="top5">集中管理</span> 
-			    </a>
-			</li>  -->
-			
-		</ul>
+		<c:if test="${role == 1 }">		
+			<ul id="demo-list1">
+				<li>
+					<a href="accountManage.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="账号管理">
+						<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>
+					</a>
+					<a href="accountManage.do" class="notvisible tooltipa2">
+						<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>&nbsp;&nbsp;&nbsp;
+						<span id="menu17" class="top5">账号管理</span> 
+				    </a>
+				</li>
+			</ul>
 		</c:if> 
 
 		</div>
@@ -569,6 +365,4 @@
 
 
 	<script src="js/main.js"></script>
-
-	<!-- Resource jQuery -->
 </html>

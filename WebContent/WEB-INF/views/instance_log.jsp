@@ -38,26 +38,16 @@
 	<div class="content">
 		<div class="breadcrumb">
 			<a href="getLogInfo.do" class="current" style="position:relative;top:-3px;">
-				<i class="icon-home"></i>历史执行记录
+				<i class="icon-home"></i> 部署历史执行记录
 			</a>
-			<a href="#" class="current" style="position:relative;top:-3px;">任务列表</a>
 		</div>
 		
 		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="widget-box collapsible">
-						<div class="widget-title">
-							<a data-toggle="collapse" href="#collapseOne">
-								<span class="icon"> <i class="icon-arrow-right"></i></span>
-								<h5>说明：</h5>
-							</a>
-						</div>
-						<div id="collapseOne" class="collapse in">
-							<div class="widget-content">历史任务信息列表</div>
-						</div>
-					</div>
-				</div>
+			<div class="widget-title">
+				<a data-toggle="collapse" href="#collapseOne">
+					<span class="icon"> <i class="icon-arrow-right"></i></span>
+					<h5>说明：历史任务信息列表.</h5>
+				</a>
 			</div>
 		</div>
 		
