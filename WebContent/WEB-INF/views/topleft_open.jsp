@@ -197,21 +197,18 @@ jQuery(document).ready(function () {
 		</nav>  
 
 		<nav class="cd-nav" style="height:50%;margin-top:20px;">
-			<span style="margin-right:15px;">
-				<a href="getAllServers.do" style="color: white;">
-					<img src="img/navhome.png"> 主页
-				</a>
-			</span>
-			<span style="margin-right:15px;">
-				<a href="#0" style="color: white;"> 
-					<img src="img/navuser.png"> <span>${userName }</span>
-				</a>
-			</span>
-			<span>
-				<a href="logout.do" style="color: white;"> 
-					<img src="img/navcancel.png"> <span>注销</span>&nbsp;&nbsp;
-				</a>
-			</span>
+			<div style="margin-right:20px;float:right;height:25px;">
+				<div style="float:left;margin-top:1px;"><a href="logout.do"><img src="img/navcancel.png"></a></div>
+				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="logout.do">注销</a></div>
+			</div>
+			<div style="margin-right:25px;float:right;">
+				<div style="float:left;margin-top:2px;"><img src="img/navuser.png"></div>
+				<div style="float:right;color:white;margin-top:2px;margin-left:5px;font-size:17px;">${userName }</div>
+			</div>
+			<div style="margin-right:25px;float:right;">
+				<a href="getAllServers.do"><img src="img/navhome.png"></a>
+				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="getAllServers.do">主页</a></div>
+			</div>
 		</nav>
 	</header>
 	<!-- .cd-main-header -->
