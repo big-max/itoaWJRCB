@@ -23,8 +23,8 @@
 	width:calc(100% - 57px);
 	margin:0px;
 	height:calc(100vh - 70px);
-	overflow-y:hidden;
-}
+	overflow-y:scroll;
+} 
 .linkexpre{
 	float:left;
 	margin-left:30px;
