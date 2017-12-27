@@ -414,7 +414,7 @@ function getPrimaryNodePVInfo()
 					$(ele).next().append(str);
 				})
 			}else{
-				pvArray = result['allHdisk'].split(" ");
+				pvArray = result['allHdisk'].split("\r\n");
 				totalArray=pvArray;
 				var str="<option value='-'>"+ "请选择..." + "</option>";
 				for (var i = 0; i < pvArray.length; i++) 

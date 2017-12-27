@@ -924,8 +924,9 @@ body{
 		            {label:'查看日志', icon:'img/viewlog.png', action:function() 
 		            	{ 
 		            		var execution_date = getUrlParam('execution_date'); //获取url 的值
+		            		var dag_id = getUrlParam('dag_id'); //获取url 的值
 		            		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
-		            		var data ={"dag_id":"wjrz_dev","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		            		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
 		            		$.ajax({
 		           				url : '<%=path%>/getTaskLog.do',
 		           				data:data,
@@ -942,8 +943,9 @@ body{
 		            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
 		            	{ 
 			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	var dag_id = getUrlParam('dag_id'); //获取url 的值
 			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
-			            	var data ={"dag_id":"wjrz_dev","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+			            	var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
 		            		var img = $("#progressImgage");
 		         	      	var mask = $("#maskOfProgressImage");
 			            	img.show().css({
@@ -991,6 +993,7 @@ body{
 		            {label:'确认成功', icon:'img/comsucc.png', action:function() 
 		            	{ 
 			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
+			            	var dag_id = getUrlParam('dag_id'); //获取url 的值
 			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
 			            	swal({ 
 			            	    title: "", 
@@ -1004,7 +1007,7 @@ body{
 			            	}, function(isConfirm) { 
 			            		if(isConfirm)
 			            		{
-			            			var data ={"dag_id":"wjrz_dev","task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+			            			var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
 			            			$.ajax({
 			            				url : '<%=path%>/markTaskSuccess.do',
 			            				data:data,
@@ -1035,7 +1038,8 @@ body{
 	    container: "body",
 	});
 	
-	var dag_id = "wjrz_dev"; 
+	//var dag_id = "wjrz_dev"; 
+	var dag_id = getUrlParam('dag_id'); 
 	var execution_date = getUrlParam('execution_date');
 	var execution_date_show = execution_date.split("T")[0];
 	var data ={"dag_id":dag_id,"execution_date":execution_date};
