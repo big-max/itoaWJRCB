@@ -202,6 +202,10 @@ function update_summary_table_state()
 	$(document).on('click',"._running",function(){
 		var dag_id = $(this).parents("tr").find("#dag_id").text()
 		var execution_date = $(this).parents("tr").find("#execution_date").text()
+		if ( execution_date == '' || execution_date == null || execution_date=='undefined')
+		{
+			execution_date  = '1969-12-12T12:12:12';
+		}
 		window.open("dailyRunningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
 	})
 	

@@ -12,6 +12,7 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <jsp:include page="../header_rz_pingshi.jsp" flush="true" /> 
 <title>自动化运维平台</title>
 <style type="text/css">
