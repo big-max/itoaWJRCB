@@ -71,6 +71,8 @@
 body{
 	margin:0;
 	padding:0;
+	background:url('img/menubg.jpg') repeat;
+	position:relative;
 }
 #header span {
 	margin-left:10px;
@@ -87,40 +89,39 @@ body{
 #loginbox{
 	height:360px;
 }
-.box{
-	width:80%;height:400px;
-	margin-left:10%;margin-top:9%;
-	background:url('img/menubg.jpg');
-	position:relative;
-	background-position: center center;
+.foot{
+	font-size:18px; position:absolute;bottom:40px;margin:auto;width: 100%;
 }
-.box2{
-	width:80%;height:20px;line-height:20px;
-	margin-left:10%;margin-top:15px;
-	text-align:center;
+#loginform .nobottom , #loginform .notopradius{
+	background-color:rgba(255,255,255,0);
 }
-.box3{
-	width:80%;height:20px;line-height:20px;
-	margin-left:10%;margin-top:3px;
-	text-align:center;
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: white;
 }
-#loginbox h4{ font-size:16px; }
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white;
+}
+#loginbox span{ font-size:20px; }
 </style>
 </head>
 
 <body>
-
-	<div class="box">
 	
-	<div style="width:400px;height:78px;">
+	<div style="width:400px;height:80px;">
 		<img src="img/loginlogo.png">
 	</div>
 	
 	<!-- 用户名&密码输入框 -->
-	<div id="loginbox" style="height:270px;position:absolute;top:20px;right:20px;border-radius:5px;">
+	<div id="loginbox" style="height:270px;border-radius:5px;margin:0 auto;margin-top:50px;background-color:rgba(255,255,255,0.3);">
 		<form id="loginform" method="post" class="form-vertical" action="login.do">
-			<div class="logobox" style="margin-bottom:30px;">
-				<h4>用户登录</h4>
+			<div class="logobox" style="margin-bottom:30px;margin-top:20px;">
+				<span><font color="white">自动化运维平台</font></span>
 			</div>
 			
 			<div class="control-group">
@@ -135,7 +136,7 @@ body{
 							<i class="icon-user"></i><input id="userName" name="userName"
 								type="text" placeholder="用户名" class="loginTxt nobottom" />
 						</div>
-						<div class="similarinput">
+						<div class="similarinput" style="margin-top:20px;">
 							<i class="icon-lock"></i><input id="password" name="password"
 								type="password" placeholder="密码" class="loginTxt notopradius"  />
 						</div>
@@ -153,9 +154,9 @@ body{
 		</form>
 	</div>
 	
+	<div class="foot">
+		<div style="text-align: center;"><font color="white">总行地址：江苏省苏州市吴江区中山南路1777号&nbsp;&nbsp;&nbsp;&nbsp;邮政编码：215200</font></div>
+		<div style="text-align: center;margin-top: 10px"><font color="white">Copyright©&nbsp;1996-2008&nbsp;WJRCB.COM&nbsp;&nbsp;许可证：苏ICP备06012538号</font></div>
 	</div>
-	
-	<div class="box2"><font color="#666666">总行地址：江苏省苏州市吴江区中山南路1777号&nbsp;&nbsp;&nbsp;&nbsp;邮政编码：215200</font></div>
-	<div class="box3"><font color="#666666">Copyright©&nbsp;1996-2008&nbsp;WJRCB.COM&nbsp;&nbsp;许可证：苏ICP备06012538号</font></div>
 </body>
 </html>

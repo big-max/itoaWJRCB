@@ -57,8 +57,8 @@ body{
 
     <div id="base">
     
-      <div id="u0">
-        <img id="u0_img" class="img" src="dailyimg/u0.jpg"/>
+      <div id="u0" style="background:url('img/menubg.jpg') repeat;">
+        <!-- <img id="u0_img" class="img" src="dailyimg/u0.jpg"/> -->
       </div>
       
       <div id="u2" class="ax_default 501502">
