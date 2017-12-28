@@ -59,7 +59,7 @@ body {
     overflow: hidden !important;
     text-align: center;
     position: relative;
-	border:1px solid #dfdfe4;
+	border:0px solid #dfdfe4;
 }
 
 #loginbox form{

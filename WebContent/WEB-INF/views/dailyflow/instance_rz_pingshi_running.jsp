@@ -721,8 +721,8 @@ body{
         <img id="u166_seg0" class="img" src="dailyimg/u158_seg0.png"/>
         <img id="u166_seg1" class="img" src="dailyimg/u96_seg1.png"/>
       </div>
-
-      <div id="u168" class="aconnector">
+      
+      <div id="u168" class="connector">
         <img id="u168_seg0" class="img" src="dailyimg/u116_seg0.png"/>
         <img id="u168_seg1" class="img" src="dailyimg/u100_seg1.png"/>
       </div>
@@ -876,10 +876,10 @@ body{
         <img id="u275_seg0" class="img" src="dailyimg/u154_seg0.png"/>
         <img id="u275_seg1" class="img" src="dailyimg/u96_seg1.png"/>
       </div>
-
-      <div id="u277" class="aconnector">
-        <img id="u277_seg0" class="img" src="dailyimg/u158_seg0.png"/>
-        <img id="u277_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      
+      <div id="u277" class="connector">
+        <img id="u277_seg0" class="img " src="dailyimg/u158_seg0.png"/>
+        <img id="u277_seg1" class="img " src="dailyimg/u96_seg1.png"/>
       </div>
       
       <div id="u281" class="connector">
@@ -912,6 +912,13 @@ body{
         <div id="u92_div"></div>
         <div id="u93" class="text">
           <p><span>失败</span></p>
+        </div>
+      </div>
+      
+      <div id="u283">
+        <div id="u283_div"></div>
+        <div id="u284" class="text">
+          <p><span>需要清理</span></p>
         </div>
       </div>
       
@@ -1114,7 +1121,7 @@ body{
                 task_div.attr("data-original-title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#32cc00");
             }
-            else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'upstream_failed'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
+            else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
             {
             	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
 								 				 "实际开始时间：" +  obj.start_Date         + "," +
@@ -1152,6 +1159,19 @@ body{
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#FF8C00") ;
+            }
+            else if (obj.state == 'upstream_failed') //需要清理 
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 				 "实际开始时间：" +  obj.start_Date         + "," +
+								 				 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 				 "实际结束时间：" +  obj.end_Date           + "," +
+								 				 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#FFCC33") ;
             }
 		})
     }

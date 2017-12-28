@@ -14,7 +14,7 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="自动化部署平台">
+<meta http-equiv="description" content="自动化运维平台">
 <link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css" />
 <link rel="stylesheet" href="<%=path%>/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="<%=path%>/css/unicorn.login.css" />
@@ -68,6 +68,10 @@
 </script>
 
 <style type="text/css">
+body{
+	margin:0;
+	padding:0;
+}
 #header span {
 	margin-left:10px;
 	padding-left: 5px;
@@ -83,30 +87,44 @@
 #loginbox{
 	height:360px;
 }
+.box{
+	width:80%;height:400px;
+	margin-left:10%;margin-top:9%;
+	background:url('img/menubg.jpg');
+	position:relative;
+	background-position: center center;
+}
+.box2{
+	width:80%;height:20px;line-height:20px;
+	margin-left:10%;margin-top:10px;
+	text-align:center;
+}
+.box3{
+	width:80%;height:20px;line-height:20px;
+	margin-left:10%;margin-top:2px;
+	text-align:center;
+}
+#loginbox h4{ font-size:16px; }
 </style>
 </head>
 
 <body>
-	
-	<div id="loginbox">
+
+	<div class="box">
+
+	<!-- 用户名&密码输入框 -->
+	<div id="loginbox" style="height:270px;position:absolute;top:20px;right:20px;border-radius:5px;">
 		<form id="loginform" method="post" class="form-vertical" action="login.do">
-			<div class="logobox">
-				<p>
-					<img src="<%=path%>/img/logo_WJRCB.png">
-				</p>
-				<!-- <h4>用户登录</h4> -->
+			<div class="logobox" style="margin-bottom:30px;">
+				<h4>用户登录</h4>
 			</div>
+			
 			<div class="control-group">
 				<input id="errorMessageFlag" type="hidden" value="${errorMessageFlag}" />
-				<div id="errorMessage" class="prompt" style="display: none;">
-					${errorMessage}
-				</div>
-				<div id="networkerrorMessage" class="prompt" style="display: none;">
-					${errorMessage}
-				</div>
-				<div id="paramerrorMessage" class="prompt" style="display: none;">
-					${errorMessage}
-				</div>	
+				<div id="errorMessage" class="prompt" style="display: none;">${errorMessage}</div>
+				<div id="networkerrorMessage" class="prompt" style="display: none;">${errorMessage}</div>
+				<div id="paramerrorMessage" class="prompt" style="display: none;">${errorMessage}</div>	
+				
 				<div class="controls">
 					<div class="input-prepend">
 						<div class="similarinput">
@@ -120,13 +138,20 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="form-actions">
 				<span class="pull-login">
 					<input type="button" onclick="checkFormat();" 
 					       class="btn btn-login" value="登录" style="font-weight: normal;"/>
 				</span>
 			</div>
+			
 		</form>
 	</div>
+	
+	</div>
+	
+	<div class="box2"><font color="#666666">总行地址：江苏省苏州市吴江区中山南路1777号&nbsp;&nbsp;&nbsp;&nbsp;邮政编码：215200</font></div>
+	<div class="box3"><font color="#666666">Copyright©&nbsp;1996-2008&nbsp;WJRCB.COM&nbsp;&nbsp;许可证：苏ICP备06012538号</font></div>
 </body>
 </html>
