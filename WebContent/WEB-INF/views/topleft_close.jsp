@@ -94,27 +94,11 @@
 	   				  $(".columnfoot").css("left","15%");
 	   				 });
 	   			 });
-   		
-		   		 $("#menu11").show();
-		   		 $("#menu16").show();
-		   		 $("#menu12").show();
-		   		 $("#menu13").show();
-		   		 $("#menu14").show();
-		   		 $("#menu15").show();
-		   		 $("#menu17").show();	
-		   		 $("#menu18").show();
-		   		 $("#menu19").show();
-		   		 $("#menu20").show();
-		   		 $("#menu21").show();
-		   		 $("#menu22").show();
-		   		 $("#menu23").show();
-		   		 $("#menu24").show();
-		   		 $("#menu25").show();
-		   		 $("#menu26").show();
-		   		 $("#menu27").show();
-		   		 $("#menu28").show();
-		   		 $("#menu29").show();
-		   		 $("#menu30").show();
+		   		 $("#menu_deploy").show();
+		   		 $("#menu_rz").show();	
+		   		 $("#menu_zbswitch").show();
+		   		 $("#menu_publish").show();
+		   		 $("#menu_account").show();
 		   		 $("#showonce").delay(0).slideDown(300);
 		   		$("#forremoveminux").addClass("submenu-indicator-minus");
 		   	
@@ -124,26 +108,11 @@
 		$("body").on("click","#drawback1",function(){
 		 	$(".tooltipa1").removeClass("notvisible");
 			$(".tooltipa2").addClass("notvisible");
-		 	$("#menu11").hide();
-		 	$("#menu12").hide();
-		 	$("#menu13").hide();
-			$("#menu14").hide();
-			$("#menu15").hide();
-			$("#menu16").hide();
-			$("#menu17").hide();
-			$("#menu18").hide();
-			$("#menu19").hide();
-			$("#menu20").hide();
-			$("#menu21").hide();
-			$("#menu22").hide();
-			$("#menu23").hide();
-			$("#menu24").hide();
-			$("#menu25").hide();
-			$("#menu26").hide();
-			$("#menu27").hide();
-			$("#menu28").hide();
-			$("#menu29").hide();
-			$("#menu30").hide();
+		 	$("#menu_deploy").hide();
+			$("#menu_rz").hide();
+			$("#menu_zbswitch").hide();
+			$("#menu_publish").hide();
+			$("#menu_account").hide();
 		 	$("#jquery-accordion-menu").animate({width:"56px"},1,function(){
 			 	$(".nosubmenu").css("display","none");			//收缩后将三级菜单收起
 			 	$('.nosubmenu').find('.has-children.selected').removeClass('selected');	//将三级菜单还原到默认情况
@@ -168,27 +137,11 @@
 				  $(".columnfoot").css("left","15%");
 				 });
 		 });
-		
-		 $("#menu11").show();
-		 $("#menu16").show();
-		 $("#menu12").show();
-		 $("#menu13").show();
-		 $("#menu14").show();
-		 $("#menu15").show();
-		 $("#menu17").show();
-		 $("#menu18").show();
-		 $("#menu19").show();
-		 $("#menu20").show();
-		 $("#menu21").show();
-		 $("#menu22").show();
-		 $("#menu23").show();
-		 $("#menu24").show();
-		 $("#menu25").show();
-		 $("#menu26").show();
-		 $("#menu27").show();
-		 $("#menu28").show(300);
-		 $("#menu29").show(300);
-		 $("#menu30").show(300);
+		 $("#menu_deploy").show();
+		 $("#menu_rz").show();
+		 $("#menu_zbswitch").show();
+		 $("#menu_publish").show();
+		 $("#menu_account").show();
 	});
 	//左侧菜单栏的隐藏和显示 结束
 });
@@ -196,7 +149,7 @@
 
 	<header class="cd-main-header" style="background:url('img/menubg.jpg') repeat-x;height:70px;">
 		<nav style="display: block;float: left;height: 100%;">
-			<div style="width:500px;height:55px;margin-left:5px;margin-top:9px;">
+			<div style="width:500px;height:55px;margin-left:5px;margin-top:4px;">
 				<img src="img/navlogo.png">
 			</div>
 		</nav>  
@@ -236,7 +189,7 @@
 				</a>
 				<a href="#" class="notvisible tooltipa2" id="forremoveminux">
 					<img class="img_icon" src="img/icons/iconfont/deploy.png"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu12" class="top5">自动化部署</span> 
+					<span id="menu_deploy" class="top5">自动化部署</span> 
 				</a>
 				<ul class="nosubmenu submenu" id="showonce">
 					<li class="has-children">
@@ -286,7 +239,7 @@
 				</a>
 				<a href="autoswitch.do" class="notvisible tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu26" class="top5">灾备切换</span> 
+					<span id="menu_zbswitch" class="top5">灾备切换</span> 
 			    </a>
 			</li>
 		</ul>
@@ -302,7 +255,7 @@
 				</a>
 				<a href="dailyflow.do" class="notvisible tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/dailyflow.png"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu27" class="top5">日终流程</span> 
+					<span id="menu_rz" class="top5">日终流程</span> 
 			    </a>
 			</li>
 		</ul>
@@ -318,7 +271,7 @@
 				</a>
 				<a href="#" class="notvisible tooltipa2" id="forremoveminux">
 					<img class="img_icon" src="img/icons/iconfont/publish.png"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu12" class="top5">自动化发布</span> 
+					<span id="menu_publish" class="top5">自动化发布</span> 
 				</a>
 				<ul class="nosubmenu submenu" id="showonce">
 					<li class="has-children">
@@ -339,7 +292,7 @@
 				</a>
 				<a href="accountManage.do" class="notvisible tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>&nbsp;&nbsp;&nbsp;
-					<span id="menu17" class="top5">账号管理</span> 
+					<span id="menu_account" class="top5">账号管理</span> 
 			    </a>
 			</li>
 		</ul>

@@ -96,12 +96,12 @@ body{
 }
 .box2{
 	width:80%;height:20px;line-height:20px;
-	margin-left:10%;margin-top:10px;
+	margin-left:10%;margin-top:15px;
 	text-align:center;
 }
 .box3{
 	width:80%;height:20px;line-height:20px;
-	margin-left:10%;margin-top:2px;
+	margin-left:10%;margin-top:3px;
 	text-align:center;
 }
 #loginbox h4{ font-size:16px; }
@@ -111,7 +111,11 @@ body{
 <body>
 
 	<div class="box">
-
+	
+	<div style="width:400px;height:78px;">
+		<img src="img/loginlogo.png">
+	</div>
+	
 	<!-- 用户名&密码输入框 -->
 	<div id="loginbox" style="height:270px;position:absolute;top:20px;right:20px;border-radius:5px;">
 		<form id="loginform" method="post" class="form-vertical" action="login.do">
