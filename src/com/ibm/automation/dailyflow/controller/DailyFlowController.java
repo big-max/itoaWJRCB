@@ -87,12 +87,18 @@ public class DailyFlowController {
 			}
 			
 			if(link == null){
-				link = "dailyflow/instance_rz_pingshi_running";
+				link = "dailyflow/instance_dailyflow_rz_running";
 			}
 		}else {
 			link ="dailyflow/instance_rz_summary";
 		}
 		
 		return link;
+	}
+	
+	
+	@RequestMapping("/getSubPage.do")
+	public String getSubPage(HttpServletRequest request, HttpSession session) {
+		return "dailyflow/instance_dailyflow_dj_sub";
 	}
 }
