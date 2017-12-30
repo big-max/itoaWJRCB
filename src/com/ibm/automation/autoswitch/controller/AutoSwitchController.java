@@ -41,7 +41,6 @@ import com.ibm.automation.domain.Task_InstanceBean;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-
 @Controller
 public class AutoSwitchController {
 	@Autowired
@@ -60,19 +59,20 @@ public class AutoSwitchController {
 
 	@RequestMapping("/autoswitch.do")
 	public String autoswitch(HttpServletRequest request, HttpSession session) {
-		//List<DagDomainBean> dagDomainList = dagDomainService.getAllDagDomain();
-		//DagDomainBean ddb = dagDomainService.getDagDomain("pprc");
-		//System.out.println(ddb);
-		//request.setAttribute("taskList", dagDomainList);
+		// List<DagDomainBean> dagDomainList =
+		// dagDomainService.getAllDagDomain();
+		// DagDomainBean ddb = dagDomainService.getDagDomain("pprc");
+		// System.out.println(ddb);
+		// request.setAttribute("taskList", dagDomainList);
 		return "zbswitch/instance_autoswitch_summary";
 	}
-	
+
 	@RequestMapping("/autoswitchData.do")
 	@ResponseBody
 	public JSONArray autoswitch_data(HttpServletRequest request, HttpSession session) {
 		List<DagDomainBean> dagDomainList = dagDomainService.getAllDagDomain();
 		JSONArray array = JSONArray.fromObject(dagDomainList);
-		//System.out.println(array);
+		// System.out.println(array);
 		return array;
 	}
 
@@ -100,7 +100,7 @@ public class AutoSwitchController {
 
 		return link;
 	}
-	
+
 	// 运行时页面ajax
 	@RequestMapping("/runningData.do")
 	@ResponseBody
@@ -109,7 +109,7 @@ public class AutoSwitchController {
 		String dag_id = request.getParameter("dag_id");
 		// 2016-01-01T12:12:12 to 2016-01-01 12:12:12
 		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
-		//System.out.println(execution_date + " -- " + dag_id);
+		// System.out.println(execution_date + " -- " + dag_id);
 		map.put("dag_id", dag_id);
 		map.put("execution_date", execution_date);// "2017-09-13
 		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
@@ -117,32 +117,29 @@ public class AutoSwitchController {
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
-		//System.out.println(on.toString());
+		// System.out.println(on.toString());
 		return on;
 	}
-	
+
 	// 运行时页面ajax
-		@RequestMapping("/subdag_runningData.do")
-		@ResponseBody
-		public ObjectNode dagrunning_data_subdag(HttpServletRequest request, HttpSession session) {
-			Map<String, String> map = new HashMap<String, String>();
-			String dag_id = request.getParameter("dag_id");
-			// 2016-01-01T12:12:12 to 2016-01-01 12:12:12
-			String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
-			//System.out.println(execution_date + " -- " + dag_id);
-			map.put("dag_id", dag_id);
-			map.put("execution_date", execution_date);// "2017-09-13
-			List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
-			JSONArray array = JSONArray.fromObject(taskInstanceList);
-			ObjectNode on = om.createObjectNode();
-			on.put("dag_id", dag_id);
-			on.putPOJO("dag_tasks", array);
-			//System.out.println(on.toString());
-			return on;
-		}
-	
-	
-	
+	@RequestMapping("/subdag_runningData.do")
+	@ResponseBody
+	public ObjectNode dagrunning_data_subdag(HttpServletRequest request, HttpSession session) {
+		Map<String, String> map = new HashMap<String, String>();
+		String dag_id = request.getParameter("dag_id");
+		// 2016-01-01T12:12:12 to 2016-01-01 12:12:12
+		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
+		// System.out.println(execution_date + " -- " + dag_id);
+		map.put("dag_id", dag_id);
+		map.put("execution_date", execution_date);// "2017-09-13
+		List<Task_InstanceBean> taskInstanceList = task_InstanceService.getRunningTaskInstance(map);
+		JSONArray array = JSONArray.fromObject(taskInstanceList);
+		ObjectNode on = om.createObjectNode();
+		on.put("dag_id", dag_id);
+		on.putPOJO("dag_tasks", array);
+		// System.out.println(on.toString());
+		return on;
+	}
 
 	// 历史页面数据ajax
 	@RequestMapping("/historyData.do")
@@ -159,7 +156,7 @@ public class AutoSwitchController {
 		ObjectNode on = om.createObjectNode();
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_tasks", array);
-		//System.out.println(on.toString());
+		// System.out.println(on.toString());
 		return on;
 	}
 
@@ -204,7 +201,7 @@ public class AutoSwitchController {
 		}
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_hisdatetime", an);
-		//System.out.println(on.toString());
+		// System.out.println(on.toString());
 		return on;
 	}
 	/*
@@ -224,12 +221,10 @@ public class AutoSwitchController {
 		postJson.put("dag_id", dag_id);
 		postJson.put("execution_date", df.format(new Date()));
 		postJson.put("operation", 3); // 3 代表run airflow
-		if(flag == 0){
-			postJson.put("zb_owner", (String)session.getAttribute("userName"));
-		}
-		else if(flag == 1)
-		{
-			postJson.put("rz_owner", (String)session.getAttribute("userName"));
+		if (flag == 0) {
+			postJson.put("zb_owner", (String) session.getAttribute("userName"));
+		} else if (flag == 1) {
+			postJson.put("rz_owner", (String) session.getAttribute("userName"));
 		}
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
@@ -259,7 +254,7 @@ public class AutoSwitchController {
 		}
 		return null;
 	}
-	
+
 	// 发出灾备切换继续请求
 	@RequestMapping("/postResumeAirflow.do")
 	public JSONObject postResume(HttpServletRequest request, HttpSession session) {
@@ -313,7 +308,7 @@ public class AutoSwitchController {
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
-			//System.out.println(response);
+			// System.out.println(response);
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
@@ -339,7 +334,7 @@ public class AutoSwitchController {
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
-			//System.out.println(response);
+			// System.out.println(response);
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
@@ -348,7 +343,6 @@ public class AutoSwitchController {
 		return null;
 	}
 
-	
 	// 查询任务状态
 	@RequestMapping("queryTaskState.do")
 	@ResponseBody
@@ -363,29 +357,34 @@ public class AutoSwitchController {
 		map.put("task_id", task_id);
 		String task_state = task_InstanceService.getStateOfTask(map);
 		String result = "{\"TaskState\":\"" + task_state + "\"}";
-		//System.out.println("state is :" + result);
-		
+		// System.out.println("state is :" + result);
+
 		return JSONObject.fromObject(result);
 	}
-	
+
 	// 将流程节点清理并重做
 	@RequestMapping("makeNodeClear.do")
 	@ResponseBody
 	public JSONObject makeNodeClear(HttpServletRequest request, HttpSession session) {
 		String dag_id = request.getParameter("dag_id");// 流程id
+		String subdag_id = request.getParameter("subdag_id");// 子流程id
+		System.out.println(subdag_id);
+		String fathertask_id = request.getParameter("fathertask_id");// 父任务id
 		String task_id = request.getParameter("task_id");// 任务id
-		// String execution_date =
-		// UtilDateTime.T2Datetime(request.getParameter("execution_date"));//整个任务的发起时间
 		String execution_date = request.getParameter("execution_date");// 整个任务的发起时间
 		ObjectNode postJson = om.createObjectNode();
 		postJson.put("dag_id", dag_id);
+		if (subdag_id != null) {
+			postJson.put("subdag_id", subdag_id);  //如果获取到 了子流程名，需要给到json
+			postJson.put("fathertask_id", fathertask_id);
+		}
 		postJson.put("task_id", task_id);
 		postJson.put("operation", 8); // 8代表清理任务，并且让该任务重新跑
 		postJson.put("execution_date", execution_date);
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
-			//System.out.println("clear state's response is : " + response);
+			// System.out.println("clear state's response is : " + response);
 			return JSONObject.fromObject(response);
 		} catch (NetWorkException | IOException e) {
 			e.printStackTrace();
@@ -393,32 +392,32 @@ public class AutoSwitchController {
 		}
 		return null;
 	}
-	/*@RequestMapping("/querystate.do")
-	@ResponseBody
-	public String queryState(HttpServletRequest request, HttpSession session){
-		Map<String, String> map = new HashMap<String, String>();
-		String dag_id = request.getParameter("dag_id");
-		String execution_date = UtilDateTime.T2Datetime(request.getParameter("execution_date"));
-		String task_id = request.getParameter("task_id");
-		map.put("dag_id", dag_id);
-		map.put("execution_date", execution_date);
-		map.put("task_id", task_id);
-		String result = task_InstanceService.getStateOfTask(map);
-		return result;
-	}*/
+	/*
+	 * @RequestMapping("/querystate.do")
+	 * 
+	 * @ResponseBody public String queryState(HttpServletRequest request,
+	 * HttpSession session){ Map<String, String> map = new HashMap<String,
+	 * String>(); String dag_id = request.getParameter("dag_id"); String
+	 * execution_date =
+	 * UtilDateTime.T2Datetime(request.getParameter("execution_date")); String
+	 * task_id = request.getParameter("task_id"); map.put("dag_id", dag_id);
+	 * map.put("execution_date", execution_date); map.put("task_id", task_id);
+	 * String result = task_InstanceService.getStateOfTask(map); return result;
+	 * }
+	 */
 
 	// 汇总页使用，获取所有的最近的8个流程的状态
 	@RequestMapping("getLastDagRunInstance.do")
 	@ResponseBody
 	public JSONArray getLastDagRunInstance(HttpServletRequest request, HttpSession session) {
 		List<DagRunBean> dagRunList = dagRunService.selectLastDagRunInstance();
-		if(dagRunList == null) //如果一条记录都没跑
+		if (dagRunList == null) // 如果一条记录都没跑
 		{
 			return null;
 		}
 		JSONArray array = JSONArray.fromObject(dagRunList);
 		return array;
-		
+
 	}
-    
+
 }

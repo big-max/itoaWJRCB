@@ -402,8 +402,9 @@ body{
 		            {label:'查看日志', icon:'img/viewlog.png', action:function() 
 		            	{ 
 		            		var execution_date = getUrlParam('execution_date'); //获取url 的值
-		            		var dag_id = getUrlParam('dag_id'); //获取url 的值
-		            		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+		            		//var dag_id = getUrlParam('dag_id'); //获取url 的值
+		            		var subdag_id = getUrlParam('subdag_id');//获取子流程名
+		            		var dag_id = subdag_id;//复用代码
 		            		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
 		            		$.ajax({
 		           				url : '<%=path%>/getTaskLog.do',
@@ -422,8 +423,9 @@ body{
 		            	{ 
 			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
 			            	var dag_id = getUrlParam('dag_id'); //获取url 的值
-			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
-			            	var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+			            	var subdag_id = getUrlParam('subdag_id');
+			            	var fathertask_id = getUrlParam('fathertask_id');//子任务的父任务task_id
+			            	var data ={"dag_id":dag_id,"subdag_id":subdag_id,"fathertask_id":fathertask_id,"task_id":taskid,"execution_date":execution_date}
 		            		var img = $("#progressImgage");
 		         	      	var mask = $("#maskOfProgressImage");
 			            	img.show().css({
@@ -449,9 +451,10 @@ body{
 			        			data:data,
 			        			type : 'post',
 			        			dataType : 'json',
+			        			async:false,
 			        			success:function(data)
 			        			{
-			        				if(data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
+			        				if(data.TaskState == "null" || data.TaskState == "shutdown" || data.TaskState == "queued" || data.TaskState =="scheduled"){
 			        		    		   img.hide();
 			        			           mask.hide();
 			        			           var task_div = $('.' + data.task_id);
@@ -464,6 +467,11 @@ body{
 			        				 console.info("请检查应用服务器是否正常！");
 			        		    	 img.hide();
 			        		         mask.hide();
+			        			},
+			        			complete:function()
+			        			{
+			        				 img.hide();
+			        		         mask.hide();
 			        			}
 		        		   })},3000);
 		            	} 
@@ -471,8 +479,9 @@ body{
 		            {label:'确认成功', icon:'img/comsucc.png', action:function() 
 		            	{ 
 			            	var execution_date = getUrlParam('execution_date'); //获取url 的值
-			            	var dag_id = getUrlParam('dag_id'); //获取url 的值
-			            	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+			            	//var dag_id = getUrlParam('dag_id'); //获取流程名
+			            	var subdag_id = getUrlParam('subdag_id');
+			            	var dag_id = subdag_id;//这里把子流程名给dag_id 复用代码
 			            	swal({ 
 			            	    title: "", 
 			            	    text: "您确定要将任务置为成功?", 
@@ -517,7 +526,9 @@ body{
 	});
 	
 	//var dag_id = "wjrz_dev"; 
-	var dag_id = getUrlParam('dag_id'); 
+	//var dag_id = getUrlParam('dag_id'); 
+	var subdag_id = getUrlParam('subdag_id'); 
+	var dag_id = subdag_id; //复用获取流程信息的代码
 	var execution_date = getUrlParam('execution_date');
 	var execution_date_show = execution_date.split("T")[0];
 	var data ={"dag_id":dag_id,"execution_date":execution_date};
