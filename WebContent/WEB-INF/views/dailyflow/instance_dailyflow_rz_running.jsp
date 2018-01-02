@@ -789,9 +789,12 @@ body{
 					            		$("#recordproblem").modal();//打开模态框 
 					            		var execution_date = getUrlParam('execution_date'); 
 					            		var dag_id = getUrlParam('dag_id'); //获取url 的值
-					            		var content = $("#problemarea").text();//获取提交的问题内容 
-					            		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date,"content":content}
+					            		
 					            		$("#subBtn").click(function(){
+					            			var content = $("#problemarea").text();
+					            			alert('1111')
+					            			var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date,"task_detail":content}
+					            			
 					            			$.ajax({
 					            				url : '<%=path%>/postLogRecord.do',
 					            				data:data,
@@ -799,6 +802,7 @@ body{
 					            				dataType : 'json',
 					            				success:function(result)
 					            				{
+					            					alert("添加成功!")
 					            				}
 					            			})
 					            		})
