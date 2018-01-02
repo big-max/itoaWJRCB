@@ -18,7 +18,7 @@
 <style type="text/css">
 body{
 	margin:0;padding:0;
-	background:url('img/menubg.jpg') repeat;
+	background:url('dailyimg/u0.jpg') repeat;
 }
 .connector>img { max-width:400px; }
 .hide{ display:none; }
@@ -37,7 +37,7 @@ body{
 </script>
 </head>
 
-<body style="margin:0 auto;">
+<body>
 	
 	<!-- 日志模态框（Modal） -->
 	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -47,7 +47,7 @@ body{
 					<h4 class="modal-title" id="myModalLabel">日志信息</h4>
 				</div>
 				<div class="modal-body">
-					<textarea rows="10" style="width:100%;height:100%;resize:none;"></textarea>
+					<textarea id="logarea" rows="10" style="width:100%;height:100%;resize:none;"></textarea>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
@@ -55,9 +55,75 @@ body{
 			</div>
 		</div>
 	</div>
+	
+	<!-- 记录问题模态框（Modal） -->
+	<div class="modal fade modalframe" id="recordproblem"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">记录问题</h4>
+				</div>
+				<div class="modal-body">
+					<textarea id="problemarea" rows="10" style="width:100%;height:100%;resize:none;"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn" style="background-color: rgb(68, 143, 200);"
+						onclick="SubmitInput();"><font color="white">提交</font>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div style="height:80px;width:100%;">
+		<div style="float:left;">
+			<img src="dailyimg/WJRCB_logo.png">
+		</div>
+		<div style="height:80px;line-height:70px;font-size:30px;margin-left:60%;">
+			<span><font color="white">日&nbsp;终&nbsp;(贷&nbsp;记&nbsp;卡)</font></span>
+		</div>
+	</div>
+	
+	<div>
+	  <div id="u961">
+        <div id="u961_div"></div>
+        <div id="u962" class="text">
+          <p><span>需要清理</span></p>
+        </div>
+      </div>
+      
+      <div id="u904">
+        <div id="u904_div"></div>
+        <div id="u905" class="text">
+          <p><span>未开始</span></p>
+        </div>
+      </div>
+
+      <div id="u906">
+        <div id="u906_div"></div>
+        <div id="u907" class="text">
+          <p><span>运行中</span></p>
+        </div>
+      </div>
+
+      <div id="u908">
+        <div id="u908_div"></div>
+        <div id="u909" class="text">
+          <p><span>成功</span></p>
+        </div>
+      </div>
+
+      <div id="u910">
+        <div id="u910_div"></div>
+        <div id="u911" class="text">
+          <p><span>失败</span></p>
+        </div>
+      </div>
+	</div>
 
 
-    <div id="base">
+    <div id="mainflow" style="height:620px;width:970px;position:absolute;top:10px;">
 
       <div id="u902" class="ax_default okd_f1">
         <div id="u902_div"></div>
@@ -319,61 +385,6 @@ body{
         <img id="u1003_seg1" class="img" src="dailyimg/u96_seg1.png"/>
       </div>
       
-      <div id="u961">
-        <div id="u961_div"></div>
-        <div id="u962" class="text">
-          <p><span>需要清理</span></p>
-        </div>
-      </div>
-      
-      <div id="u904">
-        <div id="u904_div"></div>
-        <div id="u905" class="text">
-          <p><span>未开始</span></p>
-        </div>
-      </div>
-
-      <div id="u906">
-        <div id="u906_div"></div>
-        <div id="u907" class="text">
-          <p><span>运行中</span></p>
-        </div>
-      </div>
-
-      <div id="u908">
-        <div id="u908_div"></div>
-        <div id="u909" class="text">
-          <p><span>成功</span></p>
-        </div>
-      </div>
-
-      <div id="u910">
-        <div id="u910_div"></div>
-        <div id="u911" class="text">
-          <p><span>失败</span></p>
-        </div>
-      </div>
-      
-      <div id="u912">
-        <img id="u912_img" class="img" src="dailyimg/u184.png"/>
-      </div>
-      
-      <div id="u914">
-        <div id="u914_div"></div>
-        <div id="u915" class="text">
-          <p><span style="font-size:23px;">吴江农村商业银行</span></p><p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
-        </div>
-      </div>
-
-      <div id="u916" data-left="492" data-top="14" data-width="279" data-height="37">
-        <div id="u917">
-          <div id="u917_div"></div>
-          <div id="u918" class="text">
-            <p><span>日&nbsp; 终&nbsp; （贷 记 卡）&nbsp;&nbsp; </span></p>
-          </div>
-        </div>
-      </div>
-      
     </div>
     
     <img id="progressImgage" style="width:120px;height:120px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
@@ -381,6 +392,12 @@ body{
 </body>
 
 <script>
+	$(document).ready(function(){
+		var wid = document.documentElement.clientWidth;
+		var widTr = (wid - 970) / 2;
+		$("#mainflow").css("left",widTr);
+	})
+
 	function getUrlParam(name) {
 	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
 	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
@@ -414,9 +431,29 @@ body{
 		           				success:function(result) 
 		           				{
 		           					$("#showlog").modal();
-		           					$("textarea").text(result.msg);
+		           					$("#logarea").text(result.msg);
 		           				},
 		           			})
+		            	} 
+		            },
+		            {label:'记录问题', icon:'img/record.png', action:function()  
+		            	{ 
+			            	$("#recordproblem").modal();//打开模态框 
+		            		var execution_date = getUrlParam('execution_date'); 
+		            		var dag_id = getUrlParam('dag_id'); //获取url 的值
+		            		var content = $("#problemarea").text();//获取提交的问题内容 
+		            		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date,"content":content}
+		            		$("#subBtn").click(function(){
+		            			$.ajax({
+		            				url : '<%=path%>/postLogRecord.do',
+		            				data:data,
+		            				type : 'post',
+		            				dataType : 'json',
+		            				success:function(result)
+		            				{
+		            				}
+		            			})
+		            		})
 		            	} 
 		            },
 		            {label:'清理&续作', icon:'img/cleanbtn.png', action:function() 
