@@ -64,7 +64,6 @@ i:hover{
 							<table id="sel_tab" class="table table-bordered with-check table-hover no-search no-select">
 								<thead>
 									<tr>
-										<th hidden="" style="text-align: center;width:20%;">流程名</th>
 										<th style="text-align: center;width:20%;">流程名</th>
 										<th style="text-align: center;width:15%;">责任人</th>
 										<th style="text-align: center;width:20%;">最近运行时间</th>
@@ -81,14 +80,23 @@ i:hover{
 							<table id="rz_event" class="table table-bordered with-check table-hover no-search no-select">
 								<thead>
 									<tr>
-										<th style="font-size:13px;" colspan="2">日终事件处理</th>
+										<th style="text-align: center;width:5%">执行者</th>
+										<!-- <th style="text-align: center;">流程名</th> -->
+										<th style="text-align: center;width:5%">任务名</th>
+										<!-- <th style="text-align: center;">执行时间</th> -->
+										<th style="text-align: center;width:10%">添加时间</th>
+										<th style="text-align: center;width:70%">处理记录</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${rzEvent }" var="each">
+									<c:forEach items="${logRecordList }" var="record">
 										<tr>
-											<td style="text-align: center;width:5%;">${each.num }</td>
-											<td>${each.log }</td>
+											<td style="text-align: center;">${record.username }</td>
+											<%-- <td style="text-align: center;">${record.dag_id }</td> --%>
+											<td style="text-align: center;">${record.task_id }</td>
+											<%-- <td style="text-align: center;">${record.execution_date }</td> --%>
+											<td style="text-align: center;">${record.add_datetime }</td>
+											<td style="text-align: left;">${record.task_detail }</td>
 										</tr>
 									</c:forEach>
 								</tbody>

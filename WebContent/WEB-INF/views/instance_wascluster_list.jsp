@@ -159,12 +159,15 @@
 	
 	function checkWasSelect() 
 	{
-		/* $("input[name='servers']").each(function() {
+		var infoId=[];
+		var osId=[];
+		 $("input[name='servers']").each(function() {
 			if ($(this).attr("checked")) {
 				infoId.push($(this).val());
 				osId.push($(this).parent().parent().parent().parent().parent().next().next().next().next().text());
 			}
-		}); */
+		});
+		
 		if (infoId.length <= 1) 
 		{
 			sweet("请选择二条以上实例！","warning","确定");
@@ -180,8 +183,8 @@
 			sweet("请选择同一类型的操作系统！","warning","确定");
 			return;
 		} */
-		{
-			/* var  arr  = [];
+		else if(infoId.length <= 5 && infoId.length >=2 ){
+			var  arr  = [];
 			if(osId[0].toLowerCase().indexOf('aix')==0)
 			{
 				location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=wascluster&platform=aix";
@@ -195,8 +198,7 @@
 				sweet("WASCluster不支持windows操作系统！","warning","确定");
 				return;
 			}
-			else */
-				
+			else 
 				location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=wascluster&platform=linux";
 		}
 	}

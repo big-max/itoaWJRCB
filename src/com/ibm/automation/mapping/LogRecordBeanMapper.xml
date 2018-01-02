@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.automation.core.dao.LogRecordBeanMapper">
+  <resultMap id="LogRecordResultMap" type="com.ibm.automation.domain.LogRecordBean">
+     <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="dag_id" jdbcType="VARCHAR" property="dag_id" />
+    <result column="task_id" jdbcType="VARCHAR" property="task_id" />
+    <result column="execution_date" jdbcType="VARCHAR" property="execution_date" />
+    <result column="add_datetime" jdbcType="VARCHAR" property="add_datetime" />
+    <result column="task_detail" jdbcType="VARCHAR" property="task_detail" />
+  </resultMap>
+ <select id="selectLogRecords" parameterType="string" resultMap="LogRecordResultMap">
+ 	select  username,dag_id,task_id,execution_date,add_datetime,task_detail from log_record  order by execution_date desc
+ </select>
+</mapper>
