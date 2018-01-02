@@ -82,9 +82,9 @@ i:hover{
 									
 									<tr>
 										<th style="text-align: center;">执行用户</th>
-										<th style="text-align: center;">流程名</th>
+										<!-- <th style="text-align: center;">流程名</th> -->
 										<th style="text-align: center;">任务名</th>
-										<th style="text-align: center;">执行时间</th>
+										<!-- <th style="text-align: center;">执行时间</th> -->
 										<th style="text-align: center;">添加时间</th>
 										<th style="text-align: center;">处理记录</th>
 
@@ -92,14 +92,13 @@ i:hover{
 								<tbody>
 
 									<c:forEach items="${logRecordList }" var="record">
-
+										<tr>
 											<td style="text-align: center;">${record.username }</td>
 											<%-- <td style="text-align: center;">${record.dag_id }</td> --%>
 											<td style="text-align: center;">${record.task_id }</td>
 											<%-- <td style="text-align: center;">${record.execution_date }</td> --%>
 											<td style="text-align: center;">${record.add_datetime }</td>
 											<td style="text-align: left;">${record.task_detail }</td>
-
 										</tr>
 									</c:forEach>
 								</tbody>
