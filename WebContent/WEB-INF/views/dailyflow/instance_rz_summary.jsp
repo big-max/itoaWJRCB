@@ -81,14 +81,23 @@ i:hover{
 							<table id="rz_event" class="table table-bordered with-check table-hover no-search no-select">
 								<thead>
 									<tr>
-										<th style="font-size:13px;" colspan="2">日终事件处理</th>
+										<th style="text-align: center;width:11%;">执行用户</th>
+										<th style="text-align: center;width:12%;">流程名</th>
+										<th style="text-align: center;width:12%;">任务名</th>
+										<th style="text-align: center;width:15%;">执行时间</th>
+										<th style="text-align: center;width:15%;">添加时间</th>
+										<th style="text-align: center;width:35%;">处理记录</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${rzEvent }" var="each">
+									<c:forEach items="${log_record }" var="logRe">
 										<tr>
-											<td style="text-align: center;width:5%;">${each.num }</td>
-											<td>${each.log }</td>
+											<td>${logRe.username }</td>
+											<td>${logRe.dag_id }</td>
+											<td>${logRe.task_id }</td>
+											<td>${logRe.execution_date }</td>
+											<td>${logRe.add_datetime }</td>
+											<td>${logRe.task_detail }</td>
 										</tr>
 									</c:forEach>
 								</tbody>
