@@ -78,26 +78,29 @@ i:hover{
 							
 							<!-- 日终事件处理 -->
 							<div style="margin-top:20px;"></div>
-							<table id="rz_event" class="table table-bordered with-check table-hover no-search no-select">
+							<table id="rz_event" class="table table-bordered data-table with-check table-hover no-search no-select">
 								<thead>
 									<tr>
-										<th style="text-align: center;width:11%;">执行用户</th>
-										<th style="text-align: center;width:12%;">流程名</th>
-										<th style="text-align: center;width:12%;">任务名</th>
-										<th style="text-align: center;width:15%;">执行时间</th>
-										<th style="text-align: center;width:15%;">添加时间</th>
-										<th style="text-align: center;width:35%;">处理记录</th>
+										<th colspan="6" style="background:#696969;text-align: center;font-size:15px;"><font color="white">日终事件处理记录表</font></th>
+									</tr>
+									<tr>
+										<th style="text-align: center;">执行用户</th>
+										<th style="text-align: center;">流程名</th>
+										<th style="text-align: center;">任务名</th>
+										<th style="text-align: center;">执行时间</th>
+										<th style="text-align: center;">添加时间</th>
+										<th style="text-align: center;">处理记录</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${log_record }" var="logRe">
 										<tr>
-											<td>${logRe.username }</td>
-											<td>${logRe.dag_id }</td>
-											<td>${logRe.task_id }</td>
-											<td>${logRe.execution_date }</td>
-											<td>${logRe.add_datetime }</td>
-											<td>${logRe.task_detail }</td>
+											<td style="text-align: center;">${logRe.username }</td>
+											<td style="text-align: center;">${logRe.dag_id }</td>
+											<td style="text-align: center;">${logRe.task_id }</td>
+											<td style="text-align: center;">${logRe.execution_date }</td>
+											<td style="text-align: center;">${logRe.add_datetime }</td>
+											<td style="text-align: center;">${logRe.task_detail }</td>
 										</tr>
 									</c:forEach>
 								</tbody>
