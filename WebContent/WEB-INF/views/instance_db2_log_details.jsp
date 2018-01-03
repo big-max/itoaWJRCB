@@ -166,23 +166,25 @@ function getInstallMsg()
 {
 	var uuid = $("#uuid").val().trim();
 	var type = $("#type").val().trim();
+	var created_time=$("#created_time").val().trim();
 	$.ajax({
 		url : '<%=path%>/nodeInstall.do',
 		type : 'post',
 		data : {
 			uuid:uuid,
-			type:type
+			type:type,
+			created_time:created_time
 		},
-		dataType : "json",
 		error : function(err) {
 			//alert("获取安装信息异常！");
 		},
 		success : function(data) {
-			giveTdColor(data);//给TD上颜色	
+			$("#deplylog").html(data);
+			/* giveTdColor(data);//给TD上颜色	
 			$("#progress_my").prev().html("主机安装进度 :&nbsp;&nbsp;&nbsp;" + data.percent);//安装进度
 			$(".bar").attr('style', 'width: ' + data.percent + ';') //percent
 			$("#percent").val(data.percent);
-			$("#status").val(data.status);
+			$("#status").val(data.status); */
 		}
 	});
 }
@@ -191,14 +193,15 @@ function myrefresh()
 {
 	if (($("#logmsg").attr("class") == 'tabcontent tabnow')) 
 	{
-		if ($("#status").val().trim() != 2 && $("#status").val().trim() != 3)
+		getInstallMsg();	
+		/* if ($("#status").val().trim() != 2 && $("#status").val().trim() != 3)
 		{
 			getInstallMsg();			
-		}
+		} */
 	}
 }   
 
-window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
+window.setInterval('myrefresh()',5000);  //每隔10秒自动刷新一次
 </script>
 </head>
 
@@ -758,10 +761,11 @@ window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
 						
 						<input type="hidden" id="type" name="type" value="${type }">
 						<input type="hidden" id="uuid" name="uuid" value="${uuid }">
-						<input type="hidden" id="percent" value="${percent}"> 
-						<input type="hidden" id="status" value="${status}">
+						<input type="hidden" id="created_time" name="created_time" value="${created_time }">
+						<%-- <input type="hidden" id="percent" value="${percent}"> 
+						<input type="hidden" id="status" value="${status}"> --%>
 						<div id="logmsg" class="tabcontent tabnow">
-							<textarea style="background-color:black;width:100%;height:62vh;resize: none;color:white;">
+							<textarea id="deplylog" style="background-color:black;width:100%;height:62vh;resize: none;color:white;">
 							</textarea>
 						</div>
 					</div>

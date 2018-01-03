@@ -28,4 +28,5 @@ public class PropertyKeyConst {
 	public static final String POST_ams2_patchLoading="POST_ams2_patchLoading";
 	public static final String POST_ams2_patchLoading_logDownload="POST_ams2_patchLoading_logDownload";
 	public static final String POST_ams2_common="POST_ams2_common";
+	public static final String POST_ams2_deploylog="POST_ams2_deploylog";
 }

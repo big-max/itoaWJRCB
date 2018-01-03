@@ -340,6 +340,7 @@ public class InstanceController {
 			logObjNode.put("type", nodeJN.get("name").asText()); // 什么任务
 			logObjNode.put("created_at",
 					UtilDateTime.getDateFromMilles(Double.valueOf(nodeJN.get("created_at").asText())));
+			logObjNode.put("created_time", nodeJN.get("created_time").asText());
 			ArrayNode Nodes = (ArrayNode) nodeJN.get("nodes");
 			ArrayNode judgeArrMainNodes = om.createArrayNode();
 			ArrayNode judgeArrSubNodes = om.createArrayNode();
@@ -396,21 +397,28 @@ public class InstanceController {
 
 	@RequestMapping("nodeInstall.do")
 	@ResponseBody
-	public void nodeInstall(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+	public String nodeInstall(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws IOException {
-		response.setContentType("application/json;charset=utf-8");
+		//response.setContentType("application/json;charset=utf-8");
 		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
+		ObjectNode json = om.createObjectNode();
+		
 		String uuid = request.getParameter("uuid");
 		String type = request.getParameter("type");// 是哪个安装 类型
-		// String type = "linux";
+		String created_time = request.getParameter("created_time");//文件名的参数
+		
+		json.put("uuid", uuid);
+		json.put("type", type);
+		json.put("created_time", created_time);
+		
 		ObjectNode curPlaybook = amsRestService.getList_one(null, null, "odata/playbooks?uuid=" + uuid);
-		ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=" + type);
+		//ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=" + type);
 		ObjectNode trans = om.createObjectNode();
-		for (JsonNode jn : engToChinse) {
+		/*for (JsonNode jn : engToChinse) {
 			trans = (ObjectNode) jn;
-		}
-
+		}*/
+		
 		List<String> serIds = new ArrayList<String>();
 		if (curPlaybook != null && curPlaybook.get("nodes") != null) {
 			ArrayNode jn = (ArrayNode) curPlaybook.get("nodes");
@@ -418,6 +426,7 @@ public class InstanceController {
 				serIds.add(js.get("uuid") == null ? "" : js.get("uuid").asText());
 			}
 		}
+		
 		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
 		Collections.sort(lahb);
 
@@ -430,6 +439,14 @@ public class InstanceController {
 				}
 			}
 		}
+		String strOrgUrl = serverService.createSendUrl(PropertyKeyConst.AMS2_HOST,
+				PropertyKeyConst.POST_ams2_deploylog);
+		
+		String resp = HttpClientUtil.postMethod(strOrgUrl, json.toString());
+		return resp;
+		
+		
+		/*
 		ObjectNode respJson = om.createObjectNode();
 		String completed = curPlaybook.get("completed").asText();
 		String total = curPlaybook.get("total").asText();
@@ -451,47 +468,32 @@ public class InstanceController {
 
 		//List<FinalStatusBean> list = new ArrayList<FinalStatusBean>();
 		for (JsonNode jn : tasks) {
-			//FinalStatusBean mqFinalStatus = new FinalStatusBean();
 			String name = jn.get("name").asText();
 			ObjectNode tempNode = (ObjectNode) trans.get("dict");
 			String ss = ((JsonNode) tempNode.get(name)).asText();
-		//	mqFinalStatus.setHost(jn.get("host").asText());
-		//	mqFinalStatus.setName(ss);// 变成中文
 			switch (Integer.valueOf(jn.get("status").asText())) {
 			case 0:
-				// mqFinalStatus.setStatus("未开始");
 				respJson.put(jn.get("uuid").asText(), "未开始");
-				//respJson.put(jn.get("host").asText() + name+"("+ss+")", "未开始");
 				break;
 			case 1:
-				// mqFinalStatus.setStatus("运行中");
 				respJson.put(jn.get("uuid").asText(), "运行中");
-				//respJson.put(jn.get("host").asText() + name+"("+ss+")", "运行中");
 				break;
 			case 2:
-				// mqFinalStatus.setStatus("成功");
 				respJson.put(jn.get("uuid").asText(), "成功");
-				//respJson.put(jn.get("host").asText() + name+"("+ss+")", "成功");
 				break;
 			case 3:
-				// mqFinalStatus.setStatus("失败");
 				respJson.put(jn.get("uuid").asText(), "失败");
-				//respJson.put(jn.get("host").asText() + name+"("+ss+")", "失败");
 				break;
 			case 4:
 				respJson.put(jn.get("uuid").asText(), "跳过");
-				//respJson.put(jn.get("host").asText() + name+"("+ss+")", "跳过"); 
 				break;
 			}
-			//list.add(mqFinalStatus);
 		}
 
-		// logger.info("map:" + map);
-		// System.out.println("resp::" + respJson);
 		logger.info("resp" + respJson);
 		out.print(respJson);
 		out.close();
-
+		*/
 	}
 
 	@RequestMapping(value = "/getMqVerion1.do")

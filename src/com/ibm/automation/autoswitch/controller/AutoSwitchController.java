@@ -75,7 +75,13 @@ public class AutoSwitchController {
 		// System.out.println(array);
 		return array;
 	}
-
+	
+    // 领导汇报页面
+	@RequestMapping("/runningPage_report.do")
+	public String dagrunning_page_report(HttpServletRequest request, HttpSession session)
+	{
+		return "zbswitch/instance_autoswitch_pprc_go_running_report";
+	}
 	// 到运行时页面
 	@RequestMapping("/runningPage.do")
 	public String dagrunning_page(HttpServletRequest request, HttpSession session) {
@@ -97,7 +103,6 @@ public class AutoSwitchController {
 		default:
 			link = null;
 		}
-
 		return link;
 	}
 

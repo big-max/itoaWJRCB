@@ -423,14 +423,16 @@ public class DB2HAController {
 	@RequestMapping("/getdb2haLogInfoDetail.do")
 	public String getdb2haLogInfoDetail(HttpServletRequest request, HttpSession session) {
 		String uuid = request.getParameter("uuid");
+		String created_time = request.getParameter("created_time");
 		request.setAttribute("uuid", uuid);
 		request.setAttribute("type", "db2ha");
+		request.setAttribute("created_time", created_time);
 		ObjectNode curPlaybook = amsRestService.getList_one(null, null, "odata/playbooks?uuid=" + uuid);
-		ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=db2ha");
+		/*ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=db2ha");
 		ObjectNode trans = om.createObjectNode();
 		for (JsonNode jn : engToChinse) {
 			trans = (ObjectNode) jn;
-		}
+		}*/
 
 		if (curPlaybook != null && curPlaybook.get("options") != null) {
 			try {
@@ -519,7 +521,7 @@ public class DB2HAController {
 		}
 
 		request.setAttribute("servers", listDetial);
-		String completed = curPlaybook.get("completed").asText();
+		/*String completed = curPlaybook.get("completed").asText();
 		String total = curPlaybook.get("total").asText();
 		String status = curPlaybook.get("status").asText();
 		Map<String, String> map = new TreeMap<String, String>();
@@ -566,7 +568,7 @@ public class DB2HAController {
 		}
 
 		request.setAttribute("allServerStatus", list);
-		logger.info("getdb2haLogInfo.do::" + list);
+		logger.info("getdb2haLogInfo.do::" + list);*/
 		return "instance_db2ha_log_details";
 	}
 

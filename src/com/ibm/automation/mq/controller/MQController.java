@@ -287,14 +287,16 @@ public class MQController {
 	@RequestMapping("/getmqLogInfoDetail.do")
 	public String getmqLogInfoDetail(HttpServletRequest request, HttpSession session) {
 		String uuid = request.getParameter("uuid");
+		String created_time = request.getParameter("created_time");
 		request.setAttribute("uuid", uuid);
 		request.setAttribute("type", "mq");
+		request.setAttribute("created_time", created_time);
 		ObjectNode curPlaybook = amsRestService.getList_one(null, null, "odata/playbooks?uuid=" + uuid);
-		ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=mq");
-		ObjectNode trans = om.createObjectNode();
+		//ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=mq");
+		/*ObjectNode trans = om.createObjectNode();
 		for (JsonNode jn : engToChinse) {
 			trans = (ObjectNode) jn;
-		}
+		}*/
 		if (curPlaybook != null && curPlaybook.get("options") != null) {
 			try {
 				JsonNode options = om.readTree(curPlaybook.get("options").asText());
@@ -368,7 +370,7 @@ public class MQController {
 			}
 		}
 		request.setAttribute("servers", listDetial);
-		String completed = curPlaybook.get("completed").asText();
+		/*String completed = curPlaybook.get("completed").asText();
 		String total = curPlaybook.get("total").asText();
 		String status = curPlaybook.get("status").asText();
 		Map<String, String> map = new TreeMap<String, String>();
@@ -420,7 +422,7 @@ public class MQController {
 		} catch (NullPointerException e) {
 			session.setAttribute("errMsg", "请检查"+name+"是否在Mongodb dict 表中定义");
 			return "redirect:/500.jsp";
-		}
+		}*/
 		return "instance_mq_log_details";
 	}
 

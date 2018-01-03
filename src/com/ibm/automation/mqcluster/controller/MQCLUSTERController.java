@@ -296,14 +296,16 @@ public class MQCLUSTERController {
 	@RequestMapping("/getmqclusterLogInfoDetail.do")
 	public String getmqclusterLogInfoDetail(HttpServletRequest request, HttpSession session) {
 		String uuid = request.getParameter("uuid");
+		String created_time = request.getParameter("created_time");
 		request.setAttribute("uuid", uuid);
 		request.setAttribute("type", "mqcluster");
+		request.setAttribute("created_time", created_time);
 		ObjectNode curPlaybook = amsRestService.getList_one(null, null, "odata/playbooks?uuid=" + uuid);
-		ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=mqcluster");
+		/*ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=mqcluster");
 		ObjectNode trans = om.createObjectNode();
 		for (JsonNode jn : engToChinse) {
 			trans = (ObjectNode) jn;
-		}
+		}*/
 		if (curPlaybook != null && curPlaybook.get("options") != null) {
 			try {
 				JsonNode options = om.readTree(curPlaybook.get("options").asText());
@@ -373,7 +375,7 @@ public class MQCLUSTERController {
 			}
 		}
 		request.setAttribute("servers", listDetial);
-		String completed = curPlaybook.get("completed").asText();
+		/*String completed = curPlaybook.get("completed").asText();
 		String total = curPlaybook.get("total").asText();
 		String status = curPlaybook.get("status").asText();
 		Map<String, String> map = new TreeMap<String, String>();
@@ -419,7 +421,7 @@ public class MQCLUSTERController {
 		}
 
 		request.setAttribute("allServerStatus", list);
-		logger.info("getmqclusterLogInfo.do::" + list);
+		logger.info("getmqclusterLogInfo.do::" + list);*/
 		return "instance_mqcluster_log_details";
 	}
 
