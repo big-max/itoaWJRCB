@@ -14,28 +14,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <jsp:include page="header.jsp" flush="true" />
 <title>自动化运维平台</title>
-
 <style>
 .bcg {
 	background: #00ec00;
 }
+
 .bcr {
 	background: #ff8080;
 }
+
 .bcb {
 	background: #8080ff;
 }
+
 .bcy {
 	background: yellow;
 }
+
 .input200 {
 	display: inline-block;
 	width: 200px;
 	margin-top: 2px;
 	text-align: right;
 }
-#logTable3 tr{
-	height:25px;
+.inputb17{
+	width:17%;display:inline-block;
+}
+.inputb20{
+	width:20%;display:inline-block;
+}
+.inputb23{
+	width:23%;display:inline-block;
+}
+#logTable3 tr {
+	height: 25px;
 }
 body,ul li,.graytxt,.input140,span{
 	font-size:13px;
@@ -51,20 +63,12 @@ body,ul li,.graytxt,.input140,span{
 .current1,.current1:hover {
     color: #444444;
 }
-.input140,.graytxt{ 
-	font-size: 13px; 
-}
-.input50{
-	display:inline-block;
-	width:50%;
-}
 </style>
 
 <script type="text/javascript">
 	$(document).ready(function() 
 	{
 		giveTdColor1();//主要用于手动页面刷新
-		//用于获取点击失败、的原因						
 		$("#logTable3 tbody").on("click", "tr td", function () {
 			var uuid = $("#uuid").val().trim();
 			selectedRecord = $(this).html().trim();
@@ -79,20 +83,19 @@ body,ul li,.graytxt,.input140,span{
 				},
 				success:function(data)
 				{
-					
 					ymPrompt.win({
 						width: 500, //宽 
 						height: 250, //高 
 						message : data['errmsg'],
-						title : '错误提示！',
 						maxBtn:true,
+						title : '错误提示！',
 						handler : function(tp) {},
-						btn : [ [ '是', 'yes' ]]
+						btn : [ [ '关闭', 'yes' ]]
 					});
 				}
 			})
-		  }
-		});
+		}
+		});	
 	});
 </script>
 
@@ -108,7 +111,7 @@ function giveTdColor1()
 		{
 			tdText.removeClass();
 			tdText.addClass("bcg");
-			$("#progress_my").attr("class","progress progress-s progress-striped progress-success ine-block w100");			
+			$("#progress_my").attr("class","progress progress-s progress-striped progress-success ine-block w100");	
 		}
 		if (tdText.html().trim() == "失败") 
 		{
@@ -122,10 +125,8 @@ function giveTdColor1()
 			tdText.addClass("bcb");
 			$("#progress_my").attr("class","progress progress-s progress-striped progress-primary ine-block w100 active");
 		}
-		if (tdText.html().trim() == "跳过") 
+		if (tdText.html().trim() == "跳过")  
 		{
-		//	$(trObject[i]).remove();
-		//	tdText.remove();//删除跳过的行
 			tdText.removeClass();
 			tdText.addClass("bcy");
 		}
@@ -142,6 +143,8 @@ function giveTdColor(data)
 	    var tdStep = $(this).find("td:first");
 	    var tdStep_next  = $(this).find('td:first').find("input");
 	   	tdText.text(data[tdStep_next.val()]);
+	   // var tdStep_next=$(this).find('td:first').next();
+		//tdText.text(data[tdStep.html().trim()+tdStep_next.html().trim()]);
 		if (tdText.html().trim() == "成功") 
 		{
 			tdText.removeClass();
@@ -160,7 +163,7 @@ function giveTdColor(data)
 			tdText.addClass("bcb");
 			$("#progress_my").attr("class","progress progress-s progress-striped progress-primary ine-block w100 active");
 		}			
-		if (tdText.html().trim() == "跳过") 
+		if (tdText.html().trim() == "跳过")  
 		{
 			$(this).remove();//删除跳过的行
 			tdText.removeClass();
@@ -169,6 +172,7 @@ function giveTdColor(data)
 	})
 }
 
+
 function getInstallMsg() 
 {
 	var uuid = $("#uuid").val().trim();
@@ -176,12 +180,9 @@ function getInstallMsg()
 	$.ajax({
 		url : '<%=path%>/nodeInstall.do',
 		type : 'post',
-		data : {
-			uuid:uuid,
-			type:type
-		},
+		data : { uuid:uuid,type:type },
 		dataType : "json",
-		error : function() {
+		error : function(err) {
 			//alert("获取安装信息异常！");
 		},
 		success : function(data) 
@@ -197,16 +198,40 @@ function getInstallMsg()
 
 function myrefresh() 
 {
-	if (($("#logmsg").attr("class") == 'tabcontent tabnow')) 
+	if (($("#logmsg").attr("class") == 'tabcontent tabnow'))
 	{
-		if ($("#status").val().trim() != 2 && $("#status").val().trim() != 3) 
+		if($("#status").val().trim() != 2 && $("#status").val().trim() != 3)
 		{
 			getInstallMsg();
 		}
 	}
-}   
+}
 
 window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
+</script>
+
+<script>
+	$(document).ready(function(){
+		var count = $(".wasip").length;
+		for(var i=0 ; i<count; i++)
+		{
+			var type = $(".wasprofiletype:eq("+i+")").text().trim();
+			if(type == "DMGR+AppServer")
+			{
+				var des = $(".wasip:eq("+i+")").text().trim();//得到主节点的IP 
+				for(var j=0 ; j<count ; j++)
+				{
+					var mainip = $(".checkip:eq("+j+")").text().trim();
+					if(des == mainip)
+					{
+						$(".nodes:eq("+j+")").removeClass("vicenode");
+						$(".nodes:eq("+j+")").addClass("majornode");
+						$(".nodes:eq("+j+")").text("主");
+					}
+				}
+			}
+		}
+	})
 </script>
 </head>
 
@@ -236,29 +261,31 @@ window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
 							</ul>
 						</div>
 
-						<div class="tabcontent">
+						<div class="tabcontent ">
 								<div class="mainmodule">									
-									<h5 class="stairtit swapcon">拓扑结构</h5>
-									<p class="twotit" style="padding-left:0;">
-										<em class="majornode">单</em>节点1
-									</p>
-									<c:forEach items="${servers }" var="ser" varStatus="num" begin="0" end="0">
-									<div class="column">
-										<div class="span12">
-											<p>
-												<b>主机名:</b> <span class="column_txt"> ${ser.name } </span>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<b>IP地址:</b><span class="column_txt">${ser.ip}</span>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<b>操作系统:</b><span class="column_txt"><em>${ser.os}</em></span>
-											</p>
-											<p>
-												<b>系统配置:</b><span class="column_txt">${ser.hconf }</span> 
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<b>状态:</b><span class="column_txt"><em>${ser.status }</em></span>
-											</p>
+									<h5 class="stairtit swapcon">
+										拓扑结构
+									</h5>
+									<c:forEach items="${servers }" var="ser" varStatus="num">
+										<p class="twotit" style="padding-left:0;">
+											<em class="vicenode nodes">从</em>节点 <c:out value="${num.count }" />																													
+										</p>
+										<div class="column">
+											<div class="span12">
+												<p>
+													<b>主机名:</b> <span class="column_txt"> ${ser.name }</span>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+													<b>IP地址:</b><span class="column_txt checkip">${ser.ip}</span>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>操作系统:</b><span class="column_txt"><em>${ser.os}</em></span>
+												</p>
+												<p>
+													<b>系统配置:</b><span class="column_txt">${ser.hconf }</span> 
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<b>状态:</b><span class="column_txt"><em>${ser.status }</em></span>
+												</p>
+											</div>
 										</div>
-									</div>
 									</c:forEach>
 								</div>
 						</div>
@@ -266,9 +293,9 @@ window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
 						<div class="tabcontent">
 								<div class="mainmodule">
 									<h5 class="swapcon">
-										<i class="icon-chevron-down icon-chevron-right"></i>WAS 基本信息
+										<i class="icon-chevron-down icon-chevron-right"></i>基本信息
 									</h5>
-									<div class="form-horizontal">
+									<div class="form-horizontal">		
 										<div class="control-group">
 											<label class="control-label">安装用户</label>
 											<div class="controls">
@@ -293,56 +320,61 @@ window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
 												</div>
 											</div>
 										</div>
-										
 										<div class="control-group">
 											<label class="control-label">IM安装路径</label>
 											<div class="controls">
 												<div class="inputb2l">
 													<span class="graytxt">${was_im_path }</span>
 												</div>
-												<div class="inputb2l">
-													<span class="input140 mr20">主机名</span> 
-													<c:forEach items="${servers }" var="sers">
-														<span class="graytxt">${sers.name }</span>
-													</c:forEach>
-												</div>
 											</div>
-										</div>
+										</div>						
 									</div>
 								</div>
 
 								<div class="mainmodule">
 									<h5 class="swapcon">
-										<i class="icon-chevron-down icon-chevron-right"></i>WAS 概要属性
+										<i class="icon-chevron-down icon-chevron-right"></i>概要属性
 									</h5>
 									<div class="form-horizontal">
+									
+									<c:forEach items="${was_profile_detail }" var="sers">		   
+											<div class="control-group">
+												<label class="control-label">IP地址</label>
+												<div class="controls">
+													<div class="inputb17">
+														<span class="graytxt wasip">${sers.ip }</span>
+													</div>	
+													<div class="inputb17">
+														<span class="mr20 ">主机名</span> 
+														<span class="graytxt">${sers.name }</span>
+													</div>									
+								 					<div class="inputb23">
+														<span class="mr20 ">Profile类型</span> 
+														<span class="graytxt wasprofiletype">
+															<c:if test="${sers.profiletype eq 'cell'}">DMGR+AppServer</c:if>
+															<c:if test="${sers.profiletype eq 'default'}">AppServer</c:if>
+														</span>
+													</div>
+													<div class="inputb23">
+														<span class="mr20 ">Profile名称</span> 
+														<span class="graytxt">${sers.profilename }</span>
+													</div>												
+												</div>																							
+											</div>
+											</c:forEach>
+							
 										<div class="control-group">
-											<label class="control-label">IP地址</label>
-											<div class="controls">												
+											<label class="control-label">Profile路径</label>
+											<div class="controls">
 												<div class="inputb2l">
-													<span class="graytxt">${was_ip }</span>
-												</div>											
-												<div class="inputb2l">
-													<span class="input140 mr20">Profile类型</span> 
 													<span class="graytxt">
-														<c:if test="${was_profile_type eq 'cell' }">DMGR+AppServer</c:if>
-														<c:if test="${was_profile_type eq 'default' }">AppServer</c:if>
+														${was_profile_path }
+														<%-- <c:if test="${was_profile_type eq 'cell' }">DMGR+AppServer</c:if>
+														<c:if test="${was_profile_type eq 'default' }">AppServer</c:if> --%>
 													</span>
 												</div>
 											</div>
 										</div>
-										<div class="control-group">
-											<label class="control-label">Profile名称</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span class="graytxt">${was_profile_name }</span>
-												</div>
-												<div class="input50">
-													<span class="input140 mr20">Profile路径</span> 
-													<span class="graytxt">${was_profile_path }</span>
-												</div>
-											</div>
-										</div>									
 										<div class="control-group">
 											<label class="control-label">管理员用户</label>
 											<div class="controls">
@@ -357,10 +389,10 @@ window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
 										</div>
 									</div>
 								</div>
-								
-							    <div class="mainmodule">
+
+								<div class="mainmodule">
 									<h5 class="swapcon">
-										<i class="icon-chevron-down icon-chevron-right"></i>WAS 系统属性
+										<i class="icon-chevron-down icon-chevron-right"></i>系统属性
 									</h5>
 									<div class="form-horizontal">
 										<div class="control-group">
@@ -387,7 +419,7 @@ window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
 													</c:if>
 												</div>
 												<div class="inputb2l">
-													<span class="input140 mr20">Coredump大小限制</span>
+													<span class="input140 mr20">Coredump大小限制</span> 
 													<c:if test="${was_core == -1 }">
 														<span class="graytxt">unlimited</span>
 													</c:if>
@@ -395,21 +427,45 @@ window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
 														<span class="graytxt">${was_core }</span>
 													</c:if>
 												</div>
-												
 											</div>
 										</div>
 									</div>
 								</div>
 						</div>
 						
-						
-						<input type="hidden" id="type" name="type" value="${type }">	
-                        <input type="hidden" id="uuid" name="uuid" value="${uuid }">
-                        <input type="hidden" id="percent" value="${percent}">
-                        <input type="hidden" id="status" value="${status}">
+						<input type="hidden" id="type" name="type" value="${type }">
+						<input type="hidden" id="uuid" name="uuid" value="${uuid }">
+						<input type="hidden" id="percent" value="${percent}"> 
+						<input type="hidden" id="status" value="${status}">
 						<div id="logmsg" class="tabcontent tabnow">
-							<textarea style="background-color:black;width:100%;height:62vh;resize: none;color:white;">
-							</textarea> 
+							<p class="columntxt2">主机安装进度 :&nbsp;&nbsp;&nbsp;${percent }</p>
+							<div id="progress_my"
+								class="progress progress-s progress-striped progress-success ine-block w100">
+								<div class="bar" name="progress" style="width: ${percent};"></div>
+							</div>
+							<h5>详细任务执行状态：</h5>
+							<table id="logTable3" class="table table-bordered  table-hover table-condensed no-search no-select" style="line-height: 20px">
+								<thead>
+									<tr>
+									<th style="text-align:left;display: none;">序号</th> 
+										<th style="text-align: left;">IP地址</th>
+										<th style="text-align: left;">操作步骤</th>
+										<th style="text-align: center;">状态</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${allServerStatus }" var="ser">
+										<c:if test="${ser.status !='跳过' }">
+										<tr>
+										<td style="display:none;"><input type="hidden" value="${ser.uuid }"/></td>
+											<td>${ser.host }</td>
+											<td>${ser.name }</td>
+											<td style="text-align: center;">${ser.status}</td>
+										</tr>
+										</c:if>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
