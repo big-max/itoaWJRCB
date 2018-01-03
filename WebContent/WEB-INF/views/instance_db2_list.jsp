@@ -174,9 +174,8 @@
 			 swal({ 
 				  title: "安装前是否满足如下条件？", 
 				  text: "<p style='text-align:left;margin:0 120px;'>AIX需预安装unzip;</br> </p>" + 
-					"<p style='text-align:left;margin:0 120px;'>/tmp目录保证15G剩余空间;</br></p>"+
-					   "<p style='text-align:left;margin:0 120px;'>/opt目录保证10G剩余空间;</br></p>"+
-					   "<p style='text-align:left;margin:0 120px;'>/usr目录保证 2G剩余空间;</br></p>"+
+					"<p style='text-align:left;margin:0 120px;'>/tmp目录保证5G剩余空间;</br></p>"+
+					   "<p style='text-align:left;margin:0 120px;'>/opt目录保证5G剩余空间;</br></p>"+
 					"<p style='text-align:left;margin:0 120px;'>AIX OpenSSL版本1.0.1.513</p>",
 				  type: "",
 				  showCancelButton: true, 
