@@ -26,10 +26,6 @@
 .current1,.current1:hover {
     color: #444444;
 }
-.sweet-alert p{
-	margin:0 120px;
-	text-align:left;
-}
 </style>
 
 <script>
@@ -193,11 +189,11 @@
 			{
 				swal({ 
 					  title: "安装前是否满足如下条件？", 
-					  text: "<span style='text-align:left;'>需预安装unzip;</br> </span>" + 
-						"<span style='text-align:left;'>/tmp目录保证15G剩余空间;</br></span>"+
-						   "<span style='text-align:left;'>/opt目录保证10G剩余空间;</br></span>"+
-						   "<span style='text-align:left;'>/usr目录保证 2G剩余空间;</br></span>"+
-						"<span style='text-align:left;'>ssl版本要求1.0.1.513</span>",
+					  text: "<p style='text-align:left;margin:0 120px;'>需预安装unzip;</br> </p>" + 
+						"<p style='text-align:left;margin:0 120px;'>/tmp目录保证15G剩余空间;</br></p>"+
+						   "<p style='text-align:left;margin:0 120px;'>/opt目录保证10G剩余空间;</br></p>"+
+						   "<p style='text-align:left;margin:0 120px;'>/usr目录保证 2G剩余空间;</br></p>"+
+						"<p style='text-align:left;margin:0 120px;'>OpenSSL版本要求1.0.1.513</p>",
 					  type: "",
 					  showCancelButton: true, 
 					  confirmButtonColor: "#DD6B55",
@@ -223,11 +219,11 @@
 			else {
 				swal({ 
 					  title: "安装前是否满足如下条件？", 
-					  text: "<span style='text-align:left;'>需预安装unzip;</br> </span>" + 
-						"<span style='text-align:left;'>/tmp目录保证15G剩余空间;</br></span>"+
-						   "<span style='text-align:left;'>/opt目录保证10G剩余空间;</br></span>"+
-						   "<span style='text-align:left;'>/usr目录保证 2G剩余空间;</br></span>"+
-						"<span style='text-align:left;'>ssl版本要求1.0.1.513</span>", 
+					  text: "<p style='text-align:left;margin:0 120px;'>需预安装unzip;</br> </p>" + 
+						"<p style='text-align:left;margin:0 120px;'>/tmp目录保证15G剩余空间;</br></p>"+
+						   "<p style='text-align:left;margin:0 120px;'>/opt目录保证10G剩余空间;</br></p>"+
+						   "<p style='text-align:left;margin:0 120px;'>/usr目录保证 2G剩余空间;</br></p>"+
+						"<p style='text-align:left;margin:0 120px;'>OpenSSL版本要求1.0.1.513</p>",
 					  type: "",
 					  showCancelButton: true, 
 					  confirmButtonColor: "#DD6B55",
