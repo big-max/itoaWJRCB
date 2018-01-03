@@ -26,7 +26,7 @@
 </script>
 </head>
 
-<body>
+<body onload="showLeftTime()">
 	<div id="base">
 	  
       <div id="u18" class="ax_default" data-left="579" data-top="14" data-width="451" data-height="42">
@@ -50,8 +50,8 @@
       
       <div id="u47" class="ax_default">
         <div id="u47_div"></div>
-        <div id="u48" class="text">
-          <p><span>2017 年 11 月 10 日 00:45:00</span></p>
+        <div id="u48" class="text" style="font-size:16px;">
+          <p><span id="current_time"></span></p>
         </div>
       </div>
       
@@ -65,7 +65,7 @@
       <div id="u49" class="ax_default" data-label="开始时间">
         <div id="u49_div"></div>
         <div id="u50" class="text">
-          <p><span>00:30:00</span></p>
+          <p><span></span></p>
         </div>
       </div>
 
@@ -79,7 +79,7 @@
       <div id="u45" class="ax_default" data-label="持续时间">
         <div id="u45_div"></div>
         <div id="u46" class="text">
-          <p><span>15 Min</span></p>
+          <p><span></span></p>
         </div>
       </div>
       
@@ -113,7 +113,7 @@
       <div id="u123" class="ax_default" data-label="环境检查">
         <div id="u123_div"></div>
         <div id="u124" class="text">
-          <p><span>00:45</span></p>
+          <p><span></span></p>
         </div>
       </div>
       
@@ -155,7 +155,7 @@
       <div id="u330" class="ax_default" data-label="停止业务">
         <div id="u330_div"></div>
         <div id="u331" class="text">
-          <p><span>00:45</span></p>
+          <p><span></span></p>
         </div>
       </div>
       
@@ -197,7 +197,7 @@
       <div id="u332" class="ax_default" data-label="切换">
         <div id="u332_div"></div>
         <div id="u333" class="text">
-          <p><span>00:45</span></p>
+          <p><span></span></p>
         </div>
       </div>
       
@@ -239,7 +239,7 @@
       <div id="u334" class="ax_default" data-label="启动业务">
         <div id="u334_div"></div>
         <div id="u335" class="text">
-          <p><span>00:45</span></p>
+          <p><span></span></p>
         </div>
       </div>
       
@@ -281,7 +281,7 @@
       <div id="u336" class="ax_default" data-label="业务验证">
         <div id="u336_div"></div>
         <div id="u337" class="text">
-          <p><span>00:45</span></p>
+          <p><span></span></p>
         </div>
       </div>
       
@@ -581,7 +581,7 @@
         <img id="u227_img" class="img" src="zbswitchimg/u174.png"/>
       </div>
       
-      <div id="u229" class="ax_default">
+      <!-- <div id="u229" class="ax_default">
         <div id="u229_div"></div>
       </div>
       
@@ -611,7 +611,7 @@
 
       <div id="u243" class="ax_default">
         <div id="u243_div"></div>
-      </div>
+      </div> -->
       
       <div id="u245" class="ax_default line">
         <img id="u245_img" class="img" src="zbswitchimg/u245.png"/>
@@ -867,5 +867,27 @@
 	</div>
 </body>
 
+<script>
+	function Appendzero(obj)  
+	{  
+	    if(obj<10) 
+	    	return "0" +""+ obj;  
+	    else 
+	    	return obj;  
+	}
+	function showLeftTime()
+	{
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		var day = date.getDate();
+		var hour = date.getHours();
+		var minute = date.getMinutes();
+		var second = date.getSeconds();
+		document.getElementById('current_time').innerHTML = ""+year+"年"+month+"月"+day+"日 "+Appendzero(hour)+":"+Appendzero(minute)+":"+Appendzero(second)+"";
+		//一秒刷新一次显示时间
+		var timeID=setTimeout(showLeftTime,1000);
+	}
+</script>
 
 </html>
