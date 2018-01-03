@@ -67,8 +67,8 @@ body{
 					<textarea id="problemarea" rows="10" style="width:100%;height:100%;resize:none;"></textarea>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn" data-dismiss="modal">关闭</button>
-					<button id="subBtn" type="button" class="btn" style="background-color: rgb(68, 143, 200);">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button id="subBtn" type="button" class="btn btn-primary" style="background-color: rgb(68, 143, 200);">
 						<font color="white">提交</font>
 					</button>
 				</div>
@@ -785,16 +785,16 @@ body{
 					            	} 
 					            },
 					            {label:'记录问题', icon:'img/record.png', action:function()  
-					            	{ 
+					            	{ 	
 					            		$("#recordproblem").modal();//打开模态框 
+					            		$("#problemarea").val("");//清空数据
 					            		var execution_date = getUrlParam('execution_date'); 
 					            		var dag_id = getUrlParam('dag_id'); //获取url 的值
 					            		
 					            		$("#subBtn").click(function(){
-					            			var content = $("#problemarea").text();
-					            			alert('1111')
+					            			alert('abc')
+					            			var content = $("#problemarea").val();
 					            			var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date,"task_detail":content}
-					            			
 					            			$.ajax({
 					            				url : '<%=path%>/postLogRecord.do',
 					            				data:data,
@@ -875,9 +875,9 @@ body{
 						            	$("#recordproblem").modal();//打开模态框 
 					            		var execution_date = getUrlParam('execution_date'); 
 					            		var dag_id = getUrlParam('dag_id'); //获取url 的值
-					            		var content = $("#problemarea").text();//获取提交的问题内容 
-					            		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date,"content":content}
 					            		$("#subBtn").click(function(){
+					            			var content = $("#problemarea").val();
+					            			var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date,"task_detail":content}
 					            			$.ajax({
 					            				url : '<%=path%>/postLogRecord.do',
 					            				data:data,
@@ -885,6 +885,7 @@ body{
 					            				dataType : 'json',
 					            				success:function(result)
 					            				{
+					            					alert("添加成功！")
 					            				}
 					            			})
 					            		})

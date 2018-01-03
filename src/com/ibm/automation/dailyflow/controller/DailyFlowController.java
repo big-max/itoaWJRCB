@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -25,6 +26,7 @@ import com.ibm.automation.core.util.HttpClientUtil;
 import com.ibm.automation.core.util.PropertyUtil;
 import com.ibm.automation.core.util.UtilDateTime;
 import com.ibm.automation.domain.LogRecordBean;
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 import net.sf.json.JSONObject;
 
@@ -104,6 +106,7 @@ public class DailyFlowController {
 	// who do what at 9.00pm detail is ""
 	//记录用户的输入日志
 	@RequestMapping("postLogRecord.do")
+	@ResponseBody
 	public JSONObject postLogRecord(HttpServletRequest req ,HttpSession session)
 	{
 		// 获取用户名
@@ -115,13 +118,14 @@ public class DailyFlowController {
 		String dag_id = req.getParameter("dag_id");//流程名
 		String execution_date = req.getParameter("execution_date");//流程执行时间
 		String task_detail = req.getParameter("task_detail");//任务描述
+											  
 		ObjectNode postJson = om.createObjectNode();
 		postJson.put("dag_id", dag_id);
 		postJson.put("task_id", task_id);
 		postJson.put("username",userName);
 		postJson.put("add_datetime", currentDatetime);
 		postJson.put("execution_date", execution_date);
-		postJson.put("task_detail", task_detail);  //记录员添加的描述
+		postJson.put("task_detail", Base64.encode(task_detail.getBytes()));  //记录员添加的描述
 		postJson.put("operation", 11); // 发起一个添加任务出错修复信息的日志
 		
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
