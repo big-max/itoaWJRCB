@@ -208,7 +208,7 @@ function giveTdColor1()
 		}
 	}
 
-	window.setInterval('myrefresh()', 5000); //每隔10秒自动刷新一次
+	window.setInterval('myrefresh()', 3000); //每隔10秒自动刷新一次
 </script>
 </head>
 
