@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,18 +30,18 @@ import com.ibm.automation.core.util.PropertyUtil;
 import com.ibm.automation.core.util.SecurityUtil;
 import com.ibm.automation.core.util.ServerUtil;
 
-
 @Controller
 public class UserController {
 	Properties amsCfg = PropertyUtil.getResourceFile("config/properties/ams2.properties");
 	ObjectMapper om = new ObjectMapper();
 	private static Logger logger = Logger.getLogger(UserController.class);
 
-	@Autowired 
-	private ServerService  addHostService;
-	
-	@RequestMapping(value="/login.do")
-	public String login(HttpServletRequest request, HttpServletResponse resp, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	@Autowired
+	private ServerService addHostService;
+
+	@RequestMapping(value = "/login.do")
+	public String login(HttpServletRequest request, HttpServletResponse resp, HttpSession session)
+			throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		// 如果已经登录，访问/login.do 直接跳转到getAllServers.do
 		if (request.getSession().getAttribute("userName") != null) {
 			logger.info("login.do::正在调转到getAllServers.do");
@@ -55,15 +54,17 @@ public class UserController {
 		}
 		// 从/login.jsp登录后执行的代码
 		LoginBean user = new LoginBean();
-		//byte[] passByte = Base64.decodeBase64(request.getParameter("password"));// base64解密
+		// byte[] passByte =
+		// Base64.decodeBase64(request.getParameter("password"));// base64解密
 		String password = request.getParameter("password");
-		user.setPassword(SecurityUtil.EncoderByMd5(password));//md5 base64加密下
-		//user.setPassword(SecurityUtil.encrypt(new String(passByte), amsCfg.getProperty("key"))); // 加密字符串
+		user.setPassword(SecurityUtil.EncoderByMd5(password));// md5 base64加密下
+		// user.setPassword(SecurityUtil.encrypt(new String(passByte),
+		// amsCfg.getProperty("key"))); // 加密字符串
 		user.setUsername(request.getParameter("userName"));
 		String strOrgUrl = addHostService.createSendUrl(PropertyKeyConst.AMS2_HOST,
 				PropertyKeyConst.POST_ams2_service_users);
 		ObjectNode on = addHostService.createSendJson("login", user);
-		logger.debug("the send url is" +strOrgUrl.toString() +" and the send data is "+on.toString());
+		logger.debug("the send url is" + strOrgUrl.toString() + " and the send data is " + on.toString());
 		try {
 			String response = HttpClientUtil.postMethod(strOrgUrl, on.toString());
 			if (!response.equals("")) {
@@ -80,7 +81,8 @@ public class UserController {
 					request.getSession().setAttribute("userName", user.getUsername());
 					request.getSession().setAttribute("proList", proList);
 					request.getSession().setAttribute("role", innerNode.get("role").asInt());
-					request.getSession().setAttribute("czy", innerNode.get("czy") == null ? "default":innerNode.get("czy").asText());
+					request.getSession().setAttribute("czy",
+							innerNode.get("czy") == null ? "default" : innerNode.get("czy").asText());
 					logger.info("登录成功，正在为您跳转！");
 					return "instance_main_list";
 				} else {
@@ -97,96 +99,102 @@ public class UserController {
 		} catch (NetWorkException e) {
 			request.setAttribute("errorMessageFlag", "networkfail");
 			request.setAttribute("errorMessage", e.getMessage());
-			logger.info("login.do::"+e.getMessage());
+			logger.info("login.do::" + e.getMessage());
 			return "forward:/login.jsp";
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			request.setAttribute("errorMessageFlag", "networkfail");
 			request.setAttribute("errorMessage", e.getMessage());
-			logger.info("login.do::"+e.getMessage());
+			logger.info("login.do::" + e.getMessage());
 			return "forward:/login.jsp";
 		}
 	}
-	
-	
-	
-	
-	
+
+	@RequestMapping("modifyPassword.do")
+	@ResponseBody
+	public JsonNode modifyPassword(HttpServletRequest request, HttpServletResponse resp, HttpSession session) throws NetWorkException, IOException, NoSuchAlgorithmException {
+		String passwd_old = request.getParameter("passwd_old");// 旧密码
+		String passwd_new = request.getParameter("passwd_new");// 新密码
+		String sessionName = (String) session.getAttribute("userName");// 用户名
+		ObjectNode on = om.createObjectNode();
+		
+		on.put("passwd_old", SecurityUtil.EncoderByMd5(passwd_old));
+		on.put("passwd_new", SecurityUtil.EncoderByMd5(passwd_new));
+		on.put("name", sessionName);
+		on.put("type", "modifypassword");
+		String strOrgUrl = addHostService.createSendUrl(PropertyKeyConst.AMS2_HOST,
+				PropertyKeyConst.POST_ams2_service_users);
+		String response=HttpClientUtil.postMethod(strOrgUrl, on.toString());
+		JsonNode respNode = om.readTree(response);
+		return respNode;
+
+	}
+
 	@RequestMapping("/logout.do")
 	public String logout(HttpServletRequest request, HttpServletResponse resp, HttpSession session) {
-		
-		logger.info("用户::"+request.getSession().getAttribute("userName")+"退出系统。" );
+
+		logger.info("用户::" + request.getSession().getAttribute("userName") + "退出系统。");
 		request.getSession(true);
-		//request.getSession().setAttribute("userName", null);
+		// request.getSession().setAttribute("userName", null);
 		request.getSession().invalidate();
 		return "redirect:/login.jsp";
 	}
-	
-	
+
 	/*
 	 * 账号管理主页
 	 */
-	
-	@RequestMapping(value="/accountManage")
-	public String accountManager(HttpServletRequest request)
-	{
+
+	@RequestMapping(value = "/accountManage")
+	public String accountManager(HttpServletRequest request) {
 		List<LoginBean> list = ServerUtil.getAllUsers("/api/v1/users");
 		request.setAttribute("userList", list);
 		request.setAttribute("total", list.size());
 		return "accountManage";
 	}
-	
-	
-	
-	
+
 	/*
 	 * 添加账号
 	 */
-	@RequestMapping(value="/addUser")
+	@RequestMapping(value = "/addUser")
 	@ResponseBody
-	public int userAdd(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException
-	{
+	public int userAdd(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		String name = request.getParameter("username");
 		String passwd = request.getParameter("passwd");
 		String role = request.getParameter("role");
 		String email = request.getParameter("email");
-		//String[] products= request.getParameterValues("manageProduct");
+		// String[] products= request.getParameterValues("manageProduct");
 		ObjectNode on = om.createObjectNode();
 		on.put("type", "addUser");
 		on.put("name", name);
-		
+
 		on.put("password", SecurityUtil.EncoderByMd5(passwd));
 		on.put("email", email);
 		on.put("role", Integer.valueOf(role));
 		/*
-		ArrayNode an = om.createArrayNode();
-		for(String pro : products)
-		{
-			an.add(pro);
-		}
-		on.putPOJO("product", an);
-		*/
+		 * ArrayNode an = om.createArrayNode(); for(String pro : products) {
+		 * an.add(pro); } on.putPOJO("product", an);
+		 */
 		String strOrgUrl = addHostService.createSendUrl(PropertyKeyConst.AMS2_HOST,
 				PropertyKeyConst.POST_ams2_service_users);
 		try {
-			String retMsg=HttpClientUtil.postMethod(strOrgUrl, on.toString());
+			String retMsg = HttpClientUtil.postMethod(strOrgUrl, on.toString());
 			JsonNode retJson = om.readTree(retMsg);
 			return retJson.get("status").asInt();
 		} catch (NetWorkException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			logger.error("添加用户发生错误，错误原因为："+e.getMessage());
+			logger.error("添加用户发生错误，错误原因为：" + e.getMessage());
 		}
 		return -1;
 	}
+
 	/*
-	 * 检查账号是否存在   1存在  - 0  不存在
+	 * 检查账号是否存在 1存在 - 0 不存在
 	 */
-	@RequestMapping(value="/checkUser")
+	@RequestMapping(value = "/checkUser")
 	@ResponseBody
-	public int checkUser(HttpServletRequest request)
-	{
-		String name = request.getParameter("username");//用户名校验
+	public int checkUser(HttpServletRequest request) {
+		String name = request.getParameter("username");// 用户名校验
 		ObjectNode on = om.createObjectNode();
 		on.put("type", "checkUser");
 		on.put("name", name);
@@ -200,25 +208,24 @@ public class UserController {
 		} catch (NetWorkException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			logger.error("添加检查用户账号发生错误，错误原因为："+e.getMessage());
-			
+			logger.error("添加检查用户账号发生错误，错误原因为：" + e.getMessage());
+
 		}
-		return -1; 
+		return -1;
 	}
+
 	/**
 	 * 删除账号
 	 */
-	@RequestMapping(value="/delUser")
+	@RequestMapping(value = "/delUser")
 	@ResponseBody
-	public int delUser(HttpServletRequest request)
-	{
-		String data1 = request.getParameter("data1");//用户名校验
-		
+	public int delUser(HttpServletRequest request) {
+		String data1 = request.getParameter("data1");// 用户名校验
+
 		ObjectNode on = om.createObjectNode();
 		ArrayNode an = om.createArrayNode();
 		String[] names = data1.split(",");
-		for(String name : names)
-		{
+		for (String name : names) {
 			an.add(name);
 		}
 		on.put("type", "delUser");
@@ -233,24 +240,22 @@ public class UserController {
 		} catch (NetWorkException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			logger.error("删除用户发生错误，错误原因为："+e.getMessage());
-			
+			logger.error("删除用户发生错误，错误原因为：" + e.getMessage());
+
 		}
-		return -1; 
+		return -1;
 	}
+
 	public static void main(String[] args) {
-	
 
 	}
-	
-	
+
 	/*
 	 * 账号管理主页
 	 */
-	
-	@RequestMapping(value="/cenManage")
-	public String cenManage(HttpServletRequest request)
-	{
+
+	@RequestMapping(value = "/cenManage")
+	public String cenManage(HttpServletRequest request) {
 		return "cenManage";
 	}
 }

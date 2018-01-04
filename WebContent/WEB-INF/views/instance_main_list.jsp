@@ -741,9 +741,9 @@ input[type="text"],input[type="password"] {
 	//提交修改密码 
 	function submitPasswd()
  	{
- 		var passwd_old = $("#passwd_old").val();
- 		var passwd_new = $("#passwd_new").val();
- 		var passwd_confirm = $("#passwd_confirm").val();
+ 		var passwd_old = $("#passwd_old").val().trim();
+ 		var passwd_new = $("#passwd_new").val().trim();
+ 		var passwd_confirm = $("#passwd_confirm").val().trim();
  		
  		if((passwd_old == "") || (passwd_new == "") || (passwd_confirm == ""))
  		{
@@ -757,13 +757,13 @@ input[type="text"],input[type="password"] {
  		}
  		
  		$.ajax({
- 			url : "<%=path%>/modifypassword.do",
-			data : { "passwd_new" : passwd_new },
+ 			url : "<%=path%>/modifyPassword.do",
+			data : { "passwd_old":passwd_old,"passwd_new" : passwd_new },
 			type : 'post',
 			dataType : 'json',
 			success : function(result)
 			{
-				if(result.val != passwd_old)
+				if(result.status == 2)
 				{
 					swal({
 			 			title:"",
@@ -777,7 +777,7 @@ input[type="text"],input[type="password"] {
 				}
 				else
 				{
-					if(result.msg == "success")
+					if(result.status == 1)
 					{
 						swal({
 				 			title:"",
@@ -798,7 +798,9 @@ input[type="text"],input[type="password"] {
 				 			confirmButtonText: "确定",  
 				 			},
 				 			function(){
-				 				window.location.href = "getAllServers.do";
+				 				$("#passwd_old").val("");
+				 				$("#passwd_new").val("");
+				 				$("#passwd_confirm").val("");
 				 		})
 					}
 				}
