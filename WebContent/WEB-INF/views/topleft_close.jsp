@@ -52,6 +52,9 @@
 .mark1 {
 	display:none;
 }
+#passwd_icon,#passwd_text{
+	cursor:pointer;
+}
 </style>
 
 <script src="js/jquery-accordion-menu.js" type="text/javascript"></script>
@@ -155,6 +158,10 @@
 		</nav>  
 
 		<nav class="cd-nav" style="height:50%;margin-top:20px;">
+			<div style="margin-right:20px;float:right;height:25px;">
+				<div id="passwd_icon" style="float:left;margin-top:1px;"><img src="img/navpasswd.png"></div>
+				<div id="passwd_text" style="float:right;color:white;margin-top:2px;margin-left:5px;">修改密码</div>
+			</div>
 			<div style="margin-right:20px;float:right;height:25px;">
 				<div style="float:left;margin-top:1px;"><a href="logout.do"><img src="img/navcancel.png"></a></div>
 				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="logout.do">注销</a></div>

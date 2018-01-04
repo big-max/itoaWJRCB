@@ -108,6 +108,9 @@ body{
     color: white;
 }
 #loginbox span{ font-size:20px; }
+#userName:focus , #password:focus{
+	border-color: #00008B; 
+}
 </style>
 </head>
 
