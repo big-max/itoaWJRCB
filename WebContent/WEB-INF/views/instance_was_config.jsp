@@ -218,6 +218,7 @@ input[type="text"] {
 												<select name="all_profile_types" class="all_profile_class" style="width: 47.5%; font-size: 13px;">													
 													<option value="default" selected="selected">AppServer</option>
 													<option value="cell">Dmgr + AppServer </option>
+													<option value="cell_1">Dmgr </option>
 												</select> 
 											</div>
 										</div>
@@ -244,12 +245,12 @@ input[type="text"] {
 										<div class="controls">
 											<div class="inputb2l">
 												<input type="text" class="w45" id="was_userid"
-													name="was_userid" value="admin" />
+													name="was_userid" value="wasadmin" />
 											</div>
 											<div class="inputb2l">
 												<span class="input140 mr20">管理员密码</span> 
 												<input type="text" class="w45" id="was_password" name="was_password"
-													value="admin" />
+													value="wasadmin" />
 											</div>
 										</div>
 									</div>
