@@ -78,9 +78,10 @@ public class UserController {
 					request.setAttribute("total", lahb.size());
 					JsonNode innerNode = om.readTree(retMsg.asText());
 					String[] proList = innerNode.get("product").asText().toUpperCase().split(",");
+					JsonNode roleList = innerNode.get("role");
 					request.getSession().setAttribute("userName", user.getUsername());
 					request.getSession().setAttribute("proList", proList);
-					request.getSession().setAttribute("role", innerNode.get("role").asInt());
+					request.getSession().setAttribute("role", roleList);
 					request.getSession().setAttribute("czy",
 							innerNode.get("czy") == null ? "default" : innerNode.get("czy").asText());
 					logger.info("登录成功，正在为您跳转！");
@@ -112,19 +113,48 @@ public class UserController {
 
 	@RequestMapping("modifyPassword.do")
 	@ResponseBody
-	public JsonNode modifyPassword(HttpServletRequest request, HttpServletResponse resp, HttpSession session) throws NetWorkException, IOException, NoSuchAlgorithmException {
+	public JsonNode modifyPassword(HttpServletRequest request, HttpServletResponse resp, HttpSession session)
+			throws NetWorkException, IOException, NoSuchAlgorithmException {
 		String passwd_old = request.getParameter("passwd_old");// 旧密码
 		String passwd_new = request.getParameter("passwd_new");// 新密码
 		String sessionName = (String) session.getAttribute("userName");// 用户名
 		ObjectNode on = om.createObjectNode();
-		
+
 		on.put("passwd_old", SecurityUtil.EncoderByMd5(passwd_old));
 		on.put("passwd_new", SecurityUtil.EncoderByMd5(passwd_new));
 		on.put("name", sessionName);
 		on.put("type", "modifypassword");
 		String strOrgUrl = addHostService.createSendUrl(PropertyKeyConst.AMS2_HOST,
 				PropertyKeyConst.POST_ams2_service_users);
-		String response=HttpClientUtil.postMethod(strOrgUrl, on.toString());
+		String response = HttpClientUtil.postMethod(strOrgUrl, on.toString());
+		JsonNode respNode = om.readTree(response);
+		return respNode;
+
+	}
+
+	@RequestMapping("modifyUser.do")
+	@ResponseBody
+	public JsonNode modifyUser(HttpServletRequest request, HttpServletResponse resp, HttpSession session)
+			throws NetWorkException, IOException, NoSuchAlgorithmException {
+		String username_old = request.getParameter("username_old");
+		String email_old = request.getParameter("email_old");
+		String tel_old = request.getParameter("tel_old");
+		String czy_old = request.getParameter("czy_old");
+		String[] change_role = request.getParameterValues("change_role");
+		ObjectNode on = om.createObjectNode();
+		on.put("name", username_old);
+		on.put("tel", tel_old);
+		on.put("czy", czy_old);
+		on.put("email", email_old);
+		on.put("type", "modifyUser");
+		ArrayNode roleNodes = om.createArrayNode();
+		for (String role : change_role) {
+			roleNodes.add(Integer.valueOf(role));
+		}
+		on.putPOJO("role", roleNodes);
+		String strOrgUrl = addHostService.createSendUrl(PropertyKeyConst.AMS2_HOST,
+				PropertyKeyConst.POST_ams2_service_users);
+		String response = HttpClientUtil.postMethod(strOrgUrl, on.toString());
 		JsonNode respNode = om.readTree(response);
 		return respNode;
 
@@ -160,20 +190,27 @@ public class UserController {
 	public int userAdd(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		String name = request.getParameter("username");
 		String passwd = request.getParameter("passwd");
-		String role = request.getParameter("role");
+		String[] roles = request.getParameterValues("role");
+		// String role = request.getParameter("role");
 		String email = request.getParameter("email");
-		// String[] products= request.getParameterValues("manageProduct");
+		// String[] products = request.getParameterValues("manageProduct");
 		ObjectNode on = om.createObjectNode();
 		on.put("type", "addUser");
 		on.put("name", name);
-
 		on.put("password", SecurityUtil.EncoderByMd5(passwd));
 		on.put("email", email);
-		on.put("role", Integer.valueOf(role));
+		ArrayNode roleNodes = om.createArrayNode();
+
+		for (String role : roles) {
+			roleNodes.add(Integer.valueOf(role));
+		}
+		on.putPOJO("role", roleNodes);
 		/*
-		 * ArrayNode an = om.createArrayNode(); for(String pro : products) {
-		 * an.add(pro); } on.putPOJO("product", an);
+		 * ArrayNode productsNode = om.createArrayNode(); for (String pro :
+		 * products) { productsNode.add(pro); } on.putPOJO("product",
+		 * productsNode);
 		 */
+		System.out.println(on.toString());
 		String strOrgUrl = addHostService.createSendUrl(PropertyKeyConst.AMS2_HOST,
 				PropertyKeyConst.POST_ams2_service_users);
 		try {

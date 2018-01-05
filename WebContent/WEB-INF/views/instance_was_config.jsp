@@ -218,7 +218,6 @@ input[type="text"] {
 												<select name="all_profile_types" class="all_profile_class" style="width: 47.5%; font-size: 13px;">													
 													<option value="default" selected="selected">AppServer</option>
 													<option value="cell">Dmgr + AppServer </option>
-													<option value="cell_1">Dmgr </option>
 												</select> 
 											</div>
 										</div>

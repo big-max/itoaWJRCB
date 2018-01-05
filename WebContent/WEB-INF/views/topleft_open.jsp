@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE HTML>
 <html>
 <link rel="stylesheet" href="css/reset.css">
@@ -183,7 +184,7 @@ jQuery(document).ready(function () {
 		</div>
 
 		<!-- 自动化部署 -->		
-		<c:if test="${role == 1 || role == 3  }">
+		<c:if test="${fn:contains(role,3) || fn:contains(role,1) }">
 		<ul>
 			<li class="active">
 				<a href="#" class="notvisible tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化部署">
@@ -232,7 +233,7 @@ jQuery(document).ready(function () {
 		
 		
 		<!-- 灾备演练 -->
-		<c:if test="${role ==1 || role == 2 }">
+		<c:if test="${fn:contains(role,2) || fn:contains(role,1)  }">
 		<ul>
 			<li>
 				<a href="autoswitch.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="灾备切换">
@@ -248,7 +249,7 @@ jQuery(document).ready(function () {
 		
 		
 		<!-- 日终流程 -->
-		<c:if test="${role == 0 || role == 1 }">
+		<c:if test="${fn:contains(role,0) || fn:contains(role,1)  }">
 		<ul>		
 			<li>
 				<a href="dailyflow.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="日终流程">
@@ -264,7 +265,7 @@ jQuery(document).ready(function () {
 		
 		
 		<!-- 自动化发布 -->
-		<c:if test="${role == 5 || role == 1 }">
+		<c:if test="${fn:contains(role,5) || fn:contains(role,1) }">
 		<ul>
 			<li class="active">
 				<a href="#" class="notvisible tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化发布">
@@ -285,7 +286,7 @@ jQuery(document).ready(function () {
 		
 		
 		<!-- 用户中心 -->
-		<c:if test="${role == 1 }">
+		<c:if test="${fn:contains(role,1) }">
 		<ul>
 			<li>
 				<a href="accountManage.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="账号管理">
@@ -297,7 +298,7 @@ jQuery(document).ready(function () {
 			    </a>
 			</li>
 		</ul>
-		</c:if> 
+		</c:if>
 		
 	</div>
 </div>

@@ -167,9 +167,11 @@ public class ServerUtil {
 			for ( JsonNode jn : jobs_arrayNode)
 			{
 				LoginBean lb = new LoginBean();
-				lb.setRole(jn.get("role") == null ? 0 : jn.get("role").asInt());
+				
 				lb.setUsername(jn.get("name") == null ? "" : jn.get("name").asText());
 				lb.setEmail(jn.get("email") == null ? "" : jn.get("email").asText());
+				lb.setCzy(jn.get("czy") == null ? "" : jn.get("czy").asText());
+				lb.setTel(jn.get("tel") == null ? "" : jn.get("tel").asText());
 				JsonNode pros = jn.get("product");
 				List<String> proList = new ArrayList<String>();
 				if (pros instanceof ArrayNode)
@@ -181,6 +183,18 @@ public class ServerUtil {
 					}
 				}
 				lb.setProList(proList);
+				JsonNode roleNode=jn.get("role");
+				List<Integer> roleList = new ArrayList<Integer>();
+				if (roleNode instanceof ArrayNode)
+				{
+					ArrayNode an = (ArrayNode)roleNode;
+					for(JsonNode jn1:an)
+					{
+						roleList.add(jn1.asInt());
+					}
+				}
+				
+				lb.setRole(roleList);
 				loginList.add(lb);
 			}
 			

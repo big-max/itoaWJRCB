@@ -5,6 +5,7 @@
 			+ path + "/";
 %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="com.fasterxml.jackson.databind.*"%>
 <%@ page import="com.fasterxml.jackson.databind.node.*"%>
 <!DOCTYPE HTML>
@@ -104,14 +105,15 @@ input[type="text"],input[type="password"]  {
 								<button class="btn btn-sm" data-toggle="modal" data-target="#create_user" style="background-color: #448FC8;">
 									<font color="white">创建用户</font>
 								</button>	
+								
+								<span style="margin-right: 4px;"></span>
+								<button class="btn btn-sm" onclick="CheckModifyUser();" data-toggle="modal" style="background-color: #448FC8;">
+									<font color="white">编辑用户</font>
+								</button>
 								<span style="margin-right: 4px;"></span>
 								<button class="btn btn-sm" onclick="deleteUser();" id="delete_button" style="background-color: #448FC8;">
 									<font color="white">删除用户</font>
-								</button>
-								<span style="margin-right: 4px;"></span>
-								<button class="btn btn-sm" onclick="changeGroup();" data-toggle="modal" style="background-color: #448FC8;">
-									<font color="white">变更组</font>
-								</button>						
+								</button>					
 							</div>
 
 							<div style="margin-bottom: 10px;"></div>
@@ -119,8 +121,10 @@ input[type="text"],input[type="password"]  {
 								<thead>
 									<tr>
 										<th style="text-align: center;width:10%;">序号</th>
-										<th style="text-align: center;width:20%;">用户名</th>
-										<th style="text-align: center;width:30%;">E-mail</th>
+										<th style="text-align: center;width:10%;">用户名</th>
+										<th style="text-align: center;width:10%;">E-mail</th>
+										<th style="text-align: center;width:10%;">电话</th>
+										<th style="text-align: center;width:10%;">操作员</th>
 										<th style="text-align: center;width:40%;">角色</th>
 									</tr>
 								</thead>
@@ -134,7 +138,16 @@ input[type="text"],input[type="password"]  {
 											</td>
 											<td style="text-align: center;">${job.username }</td>											
 											<td style="text-align: center;">${job.email }</td>
-											<td style="text-align: center;"><c:if test="${job.role == 5}">应用发布组</c:if><c:if test="${job.role == 4}">巡检组</c:if><c:if test="${job.role == 3}">部署组</c:if><c:if test="${job.role == 1}">管理员</c:if><c:if test="${job.role == 0}">日终组</c:if><c:if test="${job.role == 2}">灾备组</c:if></td>
+											<td style="text-align: center;">${job.tel }</td>
+											<td style="text-align: center;">${job.czy }</td>
+											<td style="text-align: center;">
+												
+												<c:if test="${fn:contains(job.role,0) }">日终组</c:if>
+												<c:if test="${fn:contains(job.role,1) }">管理员组</c:if>
+												<c:if test="${fn:contains(job.role,2) }">灾备组</c:if>
+												<c:if test="${fn:contains(job.role,3) }">部署组</c:if>
+												<c:if test="${fn:contains(job.role,5) }">应用发布组</c:if>
+											</td>
 											</tr>							
 									</c:forEach> 
 								</tbody>
@@ -208,7 +221,6 @@ input[type="text"],input[type="password"]  {
 															<option value="0" >日终组</option>
 															<option value="2" >灾备组</option>
 															<option value="3" >部署组</option>
-															<option value="4" >巡检组</option>
 															<option value="5" >应用发布组</option>
 														</select>
 													</div>
@@ -228,18 +240,44 @@ input[type="text"],input[type="password"]  {
 							<!-- 模态框：账号管理(创建用户) -->		
 							
 							
-							<!-- 模态框：账号管理(变更组) -->
-							<div class="modal fade" id="change_group" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<!-- 模态框：账号管理(修改用户) -->
+							<div class="modal fade" id="modifyUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 											<h5 class="modal-title" id="myModalLabel">
-												<img src="<%=path%>/img/edit16.png">&nbsp;&nbsp;变更组
+												<img src="<%=path%>/img/edit16.png">&nbsp;&nbsp;修改用户
 											</h5>
 										</div>
-										<div class="modal-body">												
+										<form  method="post" id="submits_users">
+										<div class="modal-body">
 											<div class="control-group">
+													<div class="controls" style="padding-top: 5px;margin-bottom:5px;">
+														<span class="input140 mr20" style="margin-bottom:5px;"><font color="red">*</font> 用户名：</span>
+														<input class="form-control" type="text" id="username_old" name="username_old">
+													</div>
+												</div>
+											<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">E-mail：</span>
+														<input class="form-control" type="text" id="email_old" name="email_old">
+													</div>
+												</div>												
+											<div class="control-group">
+												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">电话：</span>
+														<input class="form-control" type="text" id="tel_old" name="tel_old">
+													</div>
+												</div>	
+												
+												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">操作员：</span>
+														<input class="form-control" type="text" id="czy_old" name="czy_old">
+													</div>
+												</div>
 												<div class="controls" style="padding-top: 5px;">
 													<span class="input140 mr20">角色：</span>
 													<select multiple id="change_role" class="w85" style="width: 210px;" name="change_role">
@@ -247,12 +285,12 @@ input[type="text"],input[type="password"]  {
 														<option value="0" >日终组</option>
 														<option value="2" >灾备组</option>
 														<option value="3" >部署组</option>
-														<option value="4" >巡检组</option>
 														<option value="5" >应用发布组</option>
 													</select>
 												</div>
 											</div>
 										</div>
+										</form>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal();">取消</button>
 											<button type="button" class="btn" style="background-color: rgb(68, 143, 200);"
@@ -263,7 +301,7 @@ input[type="text"],input[type="password"]  {
 									</div>
 								</div>
 							</div>
-							<!-- 模态框：账号管理(变更组) -->			
+							<!-- 模态框：账号管理(编辑用户) -->			
 									
 						</div>
 					</div>
@@ -370,9 +408,9 @@ input[type="text"],input[type="password"]  {
 						type : "error",
 						confirmButtonText : "确定",
 					},function(isConfirm){
-						if (isConfirm) {
+						/* if (isConfirm) {
 							window.location.href = "accountManage.do";
-						}
+						} */
 					})
 			
 				}
@@ -456,8 +494,9 @@ input[type="text"],input[type="password"]  {
 </script>
 
 
-<script>
+<%-- <script>
 	/* 获取管理产品 */  
+	
 	$(document).ready(function(){
 		$.ajax({
 			url : '<%=path%>/getProduct.do',
@@ -477,11 +516,12 @@ input[type="text"],input[type="password"]  {
 			}
 		})
 	})
-</script>
+	
+</script> --%>
 
 
 <script>
-	/* 变更组 */
+	/* 编辑用户 */
 	var infoId = [];
 	function isSelect(s) {
 		if ($(s).attr("checked")) {
@@ -508,11 +548,14 @@ input[type="text"],input[type="password"]  {
 		return data.substr(0,length);
 	}
 		
-	function changeGroup()
+	function CheckModifyUser()
 	{
 		if(infoId.length == 1)
 		{
-			$("#change_group").modal('show');
+			$("#sel_tab").on('click','tr td',function(){
+				
+			})
+			 $("#username_old").val(infoId);
 		}
 		else
 		{
@@ -522,14 +565,17 @@ input[type="text"],input[type="password"]  {
 
 	function CheckChangeGroup()
 	{
+		var name = $("#username_old").val();
+		var email = $("#email_old").val();
+		var tel = $("#tel_old").val();
+		var czy = $("#czy_old").val();
 		var change_role = $("#change_role").val();
 		$.ajax({
-			url : "<%=path%>/xxxxxxx.do",
+			url : "<%=path%>/modifyUser.do",
 			type : 'post',
-			data : {"change_role":change_role},
-			dataType : 'json',
+			data : $('#submits_users').serialize(), 
 			success : function(result){
-				if(result.msg == 1){
+				if(result.status == 1){
 					swal({
 						title: "",
 						text: "更改成功！",  

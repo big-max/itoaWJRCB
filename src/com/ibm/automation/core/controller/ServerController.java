@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -33,6 +35,7 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @Controller
@@ -100,22 +103,41 @@ public class ServerController {
 
 		return "instance_main_list";
 	}
-	
-	//得到所有主机列表的ip
+
+	@RequestMapping("/refreshservers.do")
+	@ResponseBody
+	public ArrayNode refreshServers(HttpServletRequest request, HttpServletResponse resp, HttpSession session) throws JsonProcessingException {
+		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
+		Collections.sort(lahb);
+		ArrayNode an = om.createArrayNode();
+		for (ServersBean sb :lahb)
+		{
+			ObjectNode on = om.createObjectNode();
+			on.put("uuid", sb.getUuid());
+			on.put("name", sb.getName());
+			on.put("ip", sb.getIp());
+			on.put("hconf", sb.getHconf());
+			on.put("os", sb.getOs());
+			on.put("status", sb.getStatus());
+			an.add(on);
+		}
+		return an;
+	}
+
+	// 得到所有主机列表的ip
 	@RequestMapping("/getAllips.do")
 	@ResponseBody
 	public ArrayNode getAllips(HttpServletRequest request, HttpServletResponse resp, HttpSession session) {
 		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
-		ArrayNode an = om.createArrayNode();//["1","2"]{}
+		ArrayNode an = om.createArrayNode();// ["1","2"]{}
 		Collections.sort(lahb);
-		for (ServersBean sb : lahb)
-		{
+		for (ServersBean sb : lahb) {
 			String ip = sb.getIp();
 			an.add(ip);
 		}
 		return an;
 	}
-	
+
 	/**
 	 * responsebody 表示要返回字符串，不返回页面
 	 */
@@ -298,21 +320,21 @@ public class ServerController {
 		String uuid = request.getParameter("edit_uuid");
 		String userid = request.getParameter("edit_userid");
 		String password = request.getParameter("edit_password");
-//		String os = request.getParameter("edit_os");
-	//	request.getParameterValues(arg0)
+		// String os = request.getParameter("edit_os");
+		// request.getParameterValues(arg0)
 		String[] products = request.getParameterValues("edit_product");
 		ObjectNode on = obj.createObjectNode();
 		ObjectNode srvon = obj.createObjectNode();
-		
+
 		on.put("type", "modifyServer");
 		srvon.put("ip", ip);
 		srvon.put("uuid", uuid);
 		srvon.put("userid", userid);
 		srvon.put("password", password);
-//		srvon.put("os", os);
-		srvon.put("product",  String.join(",", products).toString());
+		// srvon.put("os", os);
+		srvon.put("product", String.join(",", products).toString());
 		on.putPOJO("server", srvon);
-		logger.info("modifyServer::"+on.toString());
+		logger.info("modifyServer::" + on.toString());
 		int stat = addhostserivce.modifyOne(on.toString());
 		if (stat == 1) {
 			ObjectNode temp = obj.createObjectNode();
@@ -324,13 +346,14 @@ public class ServerController {
 			return temp;
 		}
 	}
+
 	@RequestMapping(value = "/checkServerStatus.do")
 	@ResponseBody
 	public String checkServerStatus(HttpServletRequest request, HttpSession session) {
 
 		String uuids = request.getParameter("selectedServers");
 		String data = amsRestService.checkServerStatus(uuids);
-		logger.info("获取server 状态信息-->"+data);
+		logger.info("获取server 状态信息-->" + data);
 		return data;
 	}
 }

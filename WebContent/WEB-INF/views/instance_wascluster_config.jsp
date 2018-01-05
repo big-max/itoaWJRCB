@@ -303,13 +303,13 @@ input[type="text"] {
 											<div class="controls">
 												<div class="inputb2l" style="margin-left:-10px;">
 													<input type="text" class="w45" id="was_userid" style="width:265px;"
-														name="was_userid" value="admin" />
+														name="was_userid" value="wasadmin" />
 												</div>
 												<div class="inputb2l">
 													<span class="input140 mr20">管理员密码</span>
 													&nbsp;&nbsp;
 													<input type="text" class="w45" id="was_password"
-														name="was_password" value="admin" />
+														name="was_password" value="wasadmin" />
 												</div>
 											</div>
 										</div>								
