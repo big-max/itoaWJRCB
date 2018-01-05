@@ -193,12 +193,16 @@ public class UserController {
 		String[] roles = request.getParameterValues("role");
 		// String role = request.getParameter("role");
 		String email = request.getParameter("email");
+		String tel = request.getParameter("tel");
+		String czy = request.getParameter("czy");
 		// String[] products = request.getParameterValues("manageProduct");
 		ObjectNode on = om.createObjectNode();
 		on.put("type", "addUser");
 		on.put("name", name);
 		on.put("password", SecurityUtil.EncoderByMd5(passwd));
 		on.put("email", email);
+		on.put("czy", czy);
+		on.put("tel", tel);
 		ArrayNode roleNodes = om.createArrayNode();
 
 		for (String role : roles) {
