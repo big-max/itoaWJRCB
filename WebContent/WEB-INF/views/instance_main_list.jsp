@@ -85,8 +85,8 @@ input[type="text"],input[type="password"] {
 			infoId.splice(index, 1);
 			ips.splice(index,1);
 		}
-		console.log(infoId);
-		console.log(ips);
+		console.log(infoId.toString());
+		console.log(ips.toString());
 	}
 	
 	//编辑框按钮提交
@@ -379,7 +379,7 @@ input[type="text"],input[type="password"] {
 							<div style="margin-bottom: 5px"></div>
 							
 							<!-- data-table -->
-							<table id="mytable" name="data-table"
+							<table id="mytable" name="data-table" 
 								class="table table-bordered data-table  with-check table-hover no-search no-select">
 								<thead>
 									<tr>
@@ -388,35 +388,12 @@ input[type="text"],input[type="password"] {
 										<th style="text-align: center;">IP地址</th>
 										<th style="text-align: center;">主机配置</th>
 										<th style="text-align: center;">操作系统</th>
-										<th style="text-align: center;">所属产品组</th>
+										<!-- <th style="text-align: center;">所属产品组</th> -->
 										<th style="text-align: center;">健康状态</th>
 									</tr>
 								</thead>
-								<%-- <%
-									int i = 1;
-								%> --%>
 								<tbody class="searchable">
-									<c:forEach items="${servers }" var="ser">
-										<tr>				
-											<td style="text-align: center;"><input type="checkbox" name="servers"
-													value="${ser.uuid }" onclick="isSelect(this);" /></td>
-											<td style="text-align: center;">${ser.name }</td>
-											<td style="text-align: center;">${ser.ip }</td>
-											<td style="text-align: center;">${ser.hconf}</td>
-											<td style="text-align: center;">${ser.os}</td> <!-- ${ser.product} -->
-											<td style="text-align: center;">${fn:replace(ser.product,' ','&nbsp;&nbsp;')} </td>
-											<td style="text-align: center;" name="state">
-												<c:if test="${ser.status eq 'Active' }">
-													&nbsp;&nbsp;<img src="img/icon_success.png"></img>&nbsp;
-													<b>${ser.status}</b>
-												</c:if> 
-												<c:if test="${ser.status eq 'Error' }">
-													<img src="img/icon_error.png"></img>
-													&nbsp;<b>${ser.status}</b>
-												</c:if>
-											</td>
-										</tr>
-									</c:forEach>
+									
 								</tbody>
 							</table>
 						</div>
@@ -1059,6 +1036,55 @@ input[type="text"],input[type="password"] {
 			}
 		});
 	})();
+</script>
+
+
+<script>
+
+	$(document).ready(function() {  //先加载 
+	    $('#mytable').dataTable(); 
+	});
+	
+	function freshTable(){
+		$.ajax({
+		    type: 'GET',
+		    url : '<%=path%>/refreshservers.do',
+		    dataType : 'json',
+		    success : function(data){
+		        $('#mytable').dataTable().fnClearTable();    //清空表格
+		        $('#mytable').dataTable().fnAddData(packagingdatatabledata(data),true);  //刷下表格
+		        $("tbody tr td").css("text-align","center");
+		    },
+		    error:function(data){
+		        alert("新增失败");
+		    }
+		})
+	}
+	
+	function packagingdatatabledata(data){
+	   var a=[];   //全部行数据的list
+	   for(var key in data){
+	       var tempObj=[];     //一行数据的list
+	       tempObj.push("<input type='checkbox' onclick='isSelect(this);' value="+data[key].uuid+">"); 
+	       tempObj.push(data[key].name);
+	       tempObj.push(data[key].ip);
+	       tempObj.push(data[key].hconf)
+	       tempObj.push(data[key].os);
+	       //tempObj.push(data[key].product);
+	       if(data[key].status == 'Active')
+	       {
+	    	   tempObj.push("&nbsp;&nbsp;&nbsp;<img src='img/icon_success.png'></img>&nbsp;"+data[key].status); 
+	       }
+	       else
+	       {
+	    	   tempObj.push("<img src='img/icon_error.png'></img>&nbsp;"+data[key].status); 
+	       }
+	       a.push(tempObj);
+	   }
+	   return a;
+	}
+	//freshTable();
+	setInterval("freshTable()",1000); 
 </script>
 
 </html>
