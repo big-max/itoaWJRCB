@@ -369,11 +369,16 @@ input[type="text"],input[type="password"]  {
 		
 		//判断操作员必须为5位
 		var czy = $("#czy").val().length;
-		if(username != "" && username.indexOf(" ") == -1 && passwd != "" && confirmasswd != "" && czy != 5)
+		if(czy != 5)
+		{
+			sweet("操作员必须5位！","warning","确定");
+			return;
+		}
+		/* if(username != "" && username.indexOf(" ") == -1 && passwd != "" && confirmasswd != "" && czy != 5)
 		{
 			sweet("操作员必须为5位 !","warning","确定");   
 			return ;
-		}
+		} */
 		
 		//当角色为operator 的时候，用户名不能超过5个字符,0表示Operator,1表示Adminstor
 		var role_name = $("#role").val();

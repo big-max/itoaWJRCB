@@ -108,7 +108,12 @@ public class DailyFlowController {
 	}
 	
 	@RequestMapping("/dailyHistoryPage.do")
-	public String dailyHistoryPage(HttpServletRequest request, HttpSession session) {
+	public String dailyHistoryPage(@RequestParam Map<String, String> dag, Model model) {
+		String dag_id = dag.get("dag_id");
+		String execution_date = dag.get("execution_date");
+		model.addAttribute("dag_id", dag_id);
+		System.out.println(UtilDateTime.T2Datetime(execution_date));
+		model.addAttribute("execution_date", UtilDateTime.T2Datetime(execution_date));
 		return "dailyflow/instance_dailyflow_rz_history";
 	}
 	

@@ -171,6 +171,7 @@ public class AutoSwitchController {
 		String dag_id = dag.get("dag_id");
 		String execution_date = dag.get("execution_date");
 		model.addAttribute("dag_id", dag_id);
+		System.out.println(UtilDateTime.T2Datetime(execution_date));
 		model.addAttribute("execution_date", UtilDateTime.T2Datetime(execution_date));
 		String link = null;
 		switch (dag_id) {
@@ -206,7 +207,7 @@ public class AutoSwitchController {
 		}
 		on.put("dag_id", dag_id);
 		on.putPOJO("dag_hisdatetime", an);
-		// System.out.println(on.toString());
+		 System.out.println(on.toString());
 		return on;
 	}
 	/*

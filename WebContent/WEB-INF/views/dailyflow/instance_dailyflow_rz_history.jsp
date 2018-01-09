@@ -856,9 +856,9 @@ body{
 	
 	$(document).ready(function(){
 		//更新最新一次的流程跑跑的数据
-		getAjax("rzHistoryData.do",data,"post");
+		getAjax("historyData.do",data,"post");
 		//更新下拉框的日期数据
-		getDagHisRecord("rzHistoryDatatime.do",data,"get");
+		getDagHisRecord("historyDatatime.do",data,"get");
 	});
 	
 	function getDagHisRecord(url,param,type){
@@ -884,7 +884,7 @@ body{
 		//首先获取下拉框的值
 		var curDatetime = $("#hisdatetime").val();
 		curdata={"dag_id":dag_id,"execution_date":curDatetime};
-		getAjax("rzHistoryData.do",curdata,"post");	
+		getAjax("historyData.do",curdata,"post");	
 	})
 </script>
 

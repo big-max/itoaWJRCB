@@ -1084,7 +1084,7 @@ input[type="text"],input[type="password"] {
 	   return a;
 	}
 	//freshTable();
-	setInterval("freshTable()",1000); 
+	setInterval("freshTable()",5000); 
 </script>
 
 </html>
