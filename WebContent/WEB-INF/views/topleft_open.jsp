@@ -198,11 +198,11 @@ jQuery(document).ready(function () {
 					<li class="has-children" style="background:rgba(255,255,255,0);">
 						<a href="getLogInfo.do"><span>部署历史</span></a>
 					</li>
-					<!-- <li class="has-children"><a href="#">IBM IHS </a>
+					<li class="has-children"><a href="#">IBM IHS </a>
 						<ul style="width:100px;">
 							<li><a href="getIBMAllInstance.do?ptype=ihs">IHS 单节点</a></li>
 						</ul>
-					</li> -->
+					</li>
 					<li class="has-children"><a href="#">IBM WAS </a>
 						<ul>
 							<li><a href="getIBMAllInstance.do?ptype=was">WAS 单节点</a></li>
