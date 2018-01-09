@@ -205,7 +205,7 @@ function update_summary_table_state()
 	$(document).on('click',"._history",function(){
 		var dag_id = $(this).parents("tr").find("#dag_id").text();
 		var execution_date = $(this).parents("tr").find("#execution_date").text();
-		window.open("historyPage.do?dag_id="+ dag_id +"&execution_date="+execution_date.replace(" ","T"));
+		window.open("dailyHistoryPage.do?dag_id="+ dag_id +"&execution_date="+execution_date.replace(" ","T"));
 	})
 	
 	//当前运行情况的跳转

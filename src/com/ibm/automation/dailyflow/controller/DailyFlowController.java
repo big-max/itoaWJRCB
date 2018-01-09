@@ -102,6 +102,16 @@ public class DailyFlowController {
 		return "dailyflow/instance_dailyflow_dj_sub";
 	}
 	
+	@RequestMapping("/getSubPageHistory.do")
+	public String getSubPageHistory(HttpServletRequest request, HttpSession session) {
+		return "dailyflow/instance_dailyflow_dj_sub_history";
+	}
+	
+	@RequestMapping("/dailyHistoryPage.do")
+	public String dailyHistoryPage(HttpServletRequest request, HttpSession session) {
+		return "dailyflow/instance_dailyflow_rz_history";
+	}
+	
 	
 	// who do what at 9.00pm detail is ""
 	//记录用户的输入日志
