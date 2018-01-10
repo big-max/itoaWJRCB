@@ -98,6 +98,7 @@ jQuery(document).ready(function () {
 		   		 $("#menu_zbswitch").show();
 		   		 $("#menu_publish").show();
 		   		 $("#menu_account").show();
+		   		 $("#menu_rz_em").show();
 		   		 $("#showonce").delay(0).slideDown(300);
 		   		$("#forremoveminux").addClass("submenu-indicator-minus");
         	});
@@ -111,6 +112,7 @@ jQuery(document).ready(function () {
 			$("#menu_zbswitch").hide(); 
 			$("#menu_publish").hide();
 			$("#menu_account").hide();
+			$("#menu_rz_em").hide();
 		 	$("#jquery-accordion-menu").animate({width:"56px"},1,function(){
 			 	$(".nosubmenu").css("display","none");			//收缩后将三级菜单收起
 			 	$('.nosubmenu').find('.has-children.selected').removeClass('selected');	//将三级菜单还原到默认情况
@@ -141,6 +143,7 @@ jQuery(document).ready(function () {
 		 $("#menu_rz").show(300);
 		 $("#menu_publish").show(300);
 		 $("#menu_account").show(300);
+		 $("#menu_rz_em").show(300);
 	});
 	//左侧菜单栏的隐藏和显示 结束
 });
@@ -258,6 +261,21 @@ jQuery(document).ready(function () {
 				<a href="dailyflow.do" class="tooltipa2">
 					<img class="img_icon" src="img/icons/iconfont/dailyflow.png"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu_rz" class="top5">日终流程</span> 
+			    </a>
+			</li>
+		</ul>
+		</c:if>
+		
+		<!-- 日终短信编辑 -->
+		<c:if test="${ fn:contains(role,1) }">
+		<ul>		
+			<li>
+				<a href="dailyEditMessage.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="日终短信编辑">
+					<img class="img_icon" src="img/icons/iconfont/rz_em.png"></img>
+				</a>
+				<a href="dailyEditMessage.do" class="tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/rz_em.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu_rz_em" class="top5">日终短信编辑</span> 
 			    </a>
 			</li>
 		</ul>

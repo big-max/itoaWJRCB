@@ -157,4 +157,9 @@ public class DailyFlowController {
 		String s = UtilDateTime.getFormatCurrentDate();
 		System.out.println(s);
 	}
+	
+	@RequestMapping("/dailyEditMessage.do")
+	public String dailyEditMessage(HttpServletRequest request, HttpSession session) {
+		 return "dailyflow/instance_rz_edit_message";
+	}
 }
