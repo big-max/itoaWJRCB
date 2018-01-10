@@ -57,9 +57,10 @@
 							<table id="sel_tab" class="table table-bordered with-check table-hover no-search no-select">
 								<thead>
 									<tr>
-										<th style="text-align: center;width:30%;">任务编号</th>
-										<th style="text-align: center;width:30%;">任务名称</th>
-										<th style="text-align: center;width:40%;">接收人</th>
+									    <th style="text-align: center;width:10%;">任务编号</th>
+										<th style="text-align: center;width:10%;">任务id</th>
+										<th style="text-align: center;width:20%;">任务名称</th>
+										<th style="text-align: center;width:60%;">接收人</th>
 									</tr>
 								</thead>
 								<tbody class="searchable">
