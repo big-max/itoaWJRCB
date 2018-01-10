@@ -125,7 +125,7 @@ function update_summary_table_state()
 			var html = "";
 			for(var i = 0 ; i < data.length ; i++)
 			{
-				if(data[i].dag_alias == "日终"){ 
+				if(data[i].dag_alias.indexOf("日终") >=0 ){ 
 				 html += "<tr>";
 		         html +=     "<td id=\"dag_id\" hidden=\"\" style=\"text-align: center;\">" + data[i].dag_id + "</td>"
 		         html +=     "<td id=\"dag_alias\" style=\"text-align: center;\">" + data[i].dag_alias + "</td>"

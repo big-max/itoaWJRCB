@@ -255,7 +255,7 @@ input[type="text"],input[type="password"]  {
 											<div class="control-group">
 													<div class="controls" style="padding-top: 5px;margin-bottom:5px;">
 														<span class="input140 mr20" style="margin-bottom:5px;"><font color="red">*</font> 用户名：</span>
-														<input class="form-control" type="text" id="username_old" name="username_old">
+														<input class="form-control" readonly="readonly" type="text" id="username_old" name="username_old">
 													</div>
 												</div>
 											<div class="control-group">
