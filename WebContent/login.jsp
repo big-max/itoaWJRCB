@@ -156,6 +156,9 @@ body{
 			
 		</form>
 	</div>
+	<div style="width:80%;height:30px;line-height:30px;text-align:center;margin:0 auto;">
+		<font color="white">Powered by IBM</font>
+	</div>
 	
 	<div class="foot">
 		<div style="text-align: center;"><font color="white">总行地址：江苏省苏州市吴江区中山南路1777号&nbsp;&nbsp;&nbsp;&nbsp;邮政编码：215200</font></div>
