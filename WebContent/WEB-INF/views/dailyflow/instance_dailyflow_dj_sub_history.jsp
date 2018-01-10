@@ -76,7 +76,7 @@ body{
 	</div>
 
 
-    <div id="mainflow" style="height:620px;width:970px;position:absolute;top:-20px;">
+    <div id="mainflow" style="height:620px;width:970px;position:absolute;top:50px;">
 
       <div id="u902" class="ax_default okd_f1">
         <div id="u902_div"></div>

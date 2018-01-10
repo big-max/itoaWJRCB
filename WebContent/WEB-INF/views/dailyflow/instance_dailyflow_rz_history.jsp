@@ -85,7 +85,7 @@ body{
       </div>
 	</div>
 
-    <div id="mainflow" style="height:770px;width:1270px;position:absolute;top:10px;">
+    <div id="mainflow" style="height:770px;width:1270px;position:absolute;top:50px;">
     
       <div id="u697" class="ax_default 501502">
         <div id="u697_div"></div>
