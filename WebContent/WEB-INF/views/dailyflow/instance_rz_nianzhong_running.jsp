@@ -426,10 +426,10 @@ body{
         </div>
       </div>
       
-      <div id="u1191" class="ax_default 5512_2">
+      <div id="u1191" class="ax_default 5541">
         <div id="u1191_div"></div>
         <div id="u1192" class="text">
-          <p><span>5512：结转外汇</span></p><p><span>买卖损益（年终）</span></p>
+          <p><span>5541：结转外汇</span></p><p><span>买卖损益（年终）</span></p>
         </div>
       </div>
       

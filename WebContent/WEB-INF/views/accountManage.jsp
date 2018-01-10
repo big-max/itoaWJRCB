@@ -281,11 +281,11 @@ input[type="text"],input[type="password"]  {
 												<div class="controls" style="padding-top: 5px;">
 													<span class="input140 mr20">角色：</span>
 													<select multiple id="change_role" class="w85" style="width: 210px;" name="change_role">
-														<option value="1" selected="selected">管理员</option>
-														<option value="0" >日终组</option>
-														<option value="2" >灾备组</option>
-														<option value="3" >部署组</option>
-														<option value="5" >应用发布组</option>
+														<option value="1">管理员</option>
+														<option value="0">日终组</option>
+														<option value="2">灾备组</option>
+														<option value="3" selected="selected">部署组</option>
+														<option value="5">应用发布组</option>
 													</select>
 												</div>
 											</div>
@@ -557,10 +557,15 @@ input[type="text"],input[type="password"]  {
 	{
 		if(infoId.length == 1)
 		{
-			$("#sel_tab").on('click','tr td',function(){
-				
-			})
-			 $("#username_old").val(infoId);
+			$("input[name='servers']").each(function() {
+				if ($(this).attr("checked")) {
+				$('#username_old').val($(this).val());
+				$('#email_old').val($(this).parents('td').next().next().text());
+				$('#tel_old').val($(this).parents('td').next().next().next().text());
+				$('#czy_old').val($(this).parents('td').next().next().next().next().text());
+				}
+			})	
+			$('#modifyUser').modal('show');
 		}
 		else
 		{
