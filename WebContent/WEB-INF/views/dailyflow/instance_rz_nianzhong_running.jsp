@@ -419,20 +419,6 @@ body{
         </div>
       </div>
       
-      <div id="jx1" class="ax_default 5531">
-        <div id="jx1_div"></div>
-        <div id="jx1_text" class="text">
-          <p><span>5531</span></p><p><span>利息计算(存款结息日)</span></p>
-        </div>
-      </div>
-      
-      <div id="jx2" class="ax_default 5532">
-        <div id="jx2_div"></div>
-        <div id="jx2_text" class="text">
-          <p><span>5532</span></p><p><span>利息入账(存款结息日)</span></p>
-        </div>
-      </div>
-      
       <div id="u1015" class="ax_default 5513">
         <div id="u1015_div"></div>
         <div id="u1016" class="text">
@@ -764,16 +750,6 @@ body{
         <img id="u898_seg1" class="img" src="dailyimg/u126_seg1.png"/>
         <img id="u898_seg2" class="img" src="dailyimg/u896_seg2.png"/>
         <img id="u898_seg3" class="img" src="dailyimg/u96_seg1.png"/>
-      </div>
-      
-      <div id="jx_line1" class="connector">
-        <img id="u884_seg0" class="img" src="dailyimg/u860_seg0.png"/>
-        <img id="u884_seg1" class="img" src="dailyimg/u858_seg1.png"/>
-      </div>
-      
-      <div id="jx_line2" class="connector">
-        <img id="jx_line2_seg0" class="img" src="dailyimg/u205_seg0.png"/>
-        <img id="jx_line2_seg1" class="img" src="dailyimg/u58_seg1.png"/>
       </div>
       
     </div>
