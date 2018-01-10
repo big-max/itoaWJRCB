@@ -287,6 +287,7 @@ input[type="text"],input[type="password"]  {
 														<option value="3" selected="selected">部署组</option>
 														<option value="5">应用发布组</option>
 													</select>
+													<span><font color="red" size="2">* 请修改组</font></span>
 												</div>
 											</div>
 										</div>
