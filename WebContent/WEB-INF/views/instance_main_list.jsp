@@ -13,7 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <jsp:include page="header.jsp" flush="true" />
-<title>自动化运维平台</title>
+<title>自动化部署平台——主机列表</title>
 <style type="text/css">
 .mr20{
 	font-size:14px;
@@ -85,8 +85,8 @@ input[type="text"],input[type="password"] {
 			infoId.splice(index, 1);
 			ips.splice(index,1);
 		}
-		console.log(infoId.toString());
-		console.log(ips.toString());
+		console.log(infoId);
+		console.log(ips);
 	}
 	
 	//编辑框按钮提交
@@ -329,11 +329,20 @@ input[type="text"],input[type="password"] {
 		</div>
 		
 		<div class="container-fluid">
-			<div class="widget-title">
-				<a data-toggle="collapse" href="#collapseOne">
-					<span class="icon"> <i class="icon-arrow-right"></i></span>
-					<h5>说明：  所有实例信息.</h5>
-				</a>
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="widget-box collapsible">
+						<div class="widget-title">
+							<a data-toggle="collapse" href="#collapseOne">
+								<span class="icon"> <i class="icon-arrow-right"></i></span>
+								<h5>说明：</h5>
+							</a>
+						</div>
+						<div id="collapseOne" class="collapse in">
+							<div class="widget-content">所有实例信息.</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -379,7 +388,7 @@ input[type="text"],input[type="password"] {
 							<div style="margin-bottom: 5px"></div>
 							
 							<!-- data-table -->
-							<table id="mytable" name="data-table" 
+							<table id="mytable" name="data-table"
 								class="table table-bordered data-table  with-check table-hover no-search no-select">
 								<thead>
 									<tr>
@@ -388,12 +397,35 @@ input[type="text"],input[type="password"] {
 										<th style="text-align: center;">IP地址</th>
 										<th style="text-align: center;">主机配置</th>
 										<th style="text-align: center;">操作系统</th>
-										<!-- <th style="text-align: center;">所属产品组</th> -->
+										<th style="text-align: center;">所属产品组</th>
 										<th style="text-align: center;">健康状态</th>
 									</tr>
 								</thead>
+								<%-- <%
+									int i = 1;
+								%> --%>
 								<tbody class="searchable">
-									
+									<c:forEach items="${servers }" var="ser">
+										<tr>				
+											<td style="text-align: center;"><input type="checkbox" name="servers"
+													value="${ser.uuid }" onclick="isSelect(this);" /></td>
+											<td style="text-align: center;">${ser.name }</td>
+											<td style="text-align: center;">${ser.ip }</td>
+											<td style="text-align: center;">${ser.hconf}</td>
+											<td style="text-align: center;">${ser.os}</td> <!-- ${ser.product} -->
+											<td style="text-align: center;">${fn:replace(ser.product,' ','&nbsp;&nbsp;')} </td>
+											<td style="text-align: center;" name="state">
+												<c:if test="${ser.status eq 'Active' }">
+													&nbsp;&nbsp;<img src="img/icon_success.png"></img>&nbsp;
+													<b>${ser.status}</b>
+												</c:if> 
+												<c:if test="${ser.status eq 'Error' }">
+													<img src="img/icon_error.png"></img>
+													&nbsp;<b>${ser.status}</b>
+												</c:if>
+											</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -660,131 +692,10 @@ input[type="text"],input[type="password"] {
 					</div>
 				</div>
 			</div>
-			
-			<!-- 修改密码模态框 -->
-			<div class="modal fade" id="model_passwd" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h5 class="modal-title" id="myModalLabel">
-								<img src="img/plus15.png">&nbsp;&nbsp;修改密码 
-							</h5>
-						</div>
-			
-						<div class="modal-body">
-							<div class="control-group">
-								<div class="controls">
-									<span class="input140 mr20">旧密码：</span>
-									<input class="form-control" type="password" id="passwd_old" name="passwd_old">
-								</div>
-							</div>
-							<div class="control-group">
-								<div class="controls">
-									<span class="input140 mr20">新密码：</span>
-									<input class="form-control" type="password" id="passwd_new" name="passwd_new">
-								</div>
-							</div>
-							<div class="control-group">
-								<div class="controls">
-									<span class="input140 mr20">确认密码：</span>
-									<input class="form-control" type="password" id="passwd_confirm" name="passwd_confirm">
-								</div>
-							</div>
-						</div>
-						
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal();">关闭</button>
-							<button type="button" class="btn" style="background-color: rgb(68, 143, 200);" onclick="submitPasswd();">
-								<font color="white">提交</font>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 修改密码模态框 -->
 
 		</div>
 	</div>
 </body>
-
-<script>
- 	$(document).ready(function(){
-		$("#passwd_icon,#passwd_text").click(function(){
-			$('#model_passwd').modal('show');
-		})
-	}) 
-	
-	//提交修改密码 
-	function submitPasswd()
- 	{
- 		var passwd_old = $("#passwd_old").val().trim();
- 		var passwd_new = $("#passwd_new").val().trim();
- 		var passwd_confirm = $("#passwd_confirm").val().trim();
- 		
- 		if((passwd_old == "") || (passwd_new == "") || (passwd_confirm == ""))
- 		{
- 			sweet("密码均不能为空,请重新输入","warning","确定"); 
- 			return;
- 		}
- 		if(passwd_new != passwd_confirm)
- 		{
- 			sweet("新密码和确认密码不一致,请重新输入","warning","确定");  
- 			return;
- 		}
- 		
- 		$.ajax({
- 			url : "<%=path%>/modifyPassword.do",
-			data : { "passwd_old":passwd_old,"passwd_new" : passwd_new },
-			type : 'post',
-			dataType : 'json',
-			success : function(result)
-			{
-				if(result.status == 2)
-				{
-					swal({
-			 			title:"",
-			 			text:"旧密码输入错误 ,请重新输入",
-			 			type:"warning",
-			 			confirmButtonText: "确定", 
-			 			},
-			 			function(){
-			 				$("#passwd_old").val("");
-			 		})
-				}
-				else
-				{
-					if(result.status == 1)
-					{
-						swal({
-				 			title:"",
-				 			text:"密码修改成功",
-				 			type:"success",
-				 			confirmButtonText: "确定", 
-				 			},
-				 			function(){
-				 				window.location.href = "getAllServers.do";
-				 		})
-					}
-					else
-					{
-						swal({
-				 			title:"",
-				 			text:"密码修改失败",
-				 			type:"error",
-				 			confirmButtonText: "确定",  
-				 			},
-				 			function(){
-				 				$("#passwd_old").val("");
-				 				$("#passwd_new").val("");
-				 				$("#passwd_confirm").val("");
-				 		})
-					}
-				}
-			}
- 		})
- 	}
-</script>
 
 <script type="text/javascript">
 	function checkFile() 
@@ -1038,53 +949,76 @@ input[type="text"],input[type="password"] {
 	})();
 </script>
 
+<!-- websocket 动态更新主机信息 -->
+<script type="text/javascript">
+    var websocket = null;
+    //判断当前浏览器是否支持WebSocket
+    if ('WebSocket' in window) {
+    	websocket = new WebSocket("ws://"+window.location.host+"/updateServerStatus"); 
+    }
+    else {
+        alert('当前浏览器 Not support websocket')
+    }
 
-<script>
+    //连接发生错误的回调方法
+    websocket.onerror = function () {
+    //    setMessageInnerHTML("WebSocket连接发生错误");
+    };
 
-	$(document).ready(function() {  //先加载 
-	    $('#mytable').dataTable(); 
-	});
-	
-	function freshTable(){
-		$.ajax({
-		    type: 'GET',
-		    url : '<%=path%>/refreshservers.do',
-		    dataType : 'json',
-		    success : function(data){
-		        $('#mytable').dataTable().fnClearTable();    //清空表格
-		        $('#mytable').dataTable().fnAddData(packagingdatatabledata(data),true);  //刷下表格
-		        $("tbody tr td").css("text-align","center");
-		    },
-		    error:function(data){
-		        alert("新增失败");
-		    }
-		})
-	}
-	
-	function packagingdatatabledata(data){
-	   var a=[];   //全部行数据的list
-	   for(var key in data){
-	       var tempObj=[];     //一行数据的list
-	       tempObj.push("<input type='checkbox' onclick='isSelect(this);' value="+data[key].uuid+">"); 
-	       tempObj.push(data[key].name);
-	       tempObj.push(data[key].ip);
-	       tempObj.push(data[key].hconf)
-	       tempObj.push(data[key].os);
-	       //tempObj.push(data[key].product);
-	       if(data[key].status == 'Active')
-	       {
-	    	   tempObj.push("&nbsp;&nbsp;&nbsp;<img src='img/icon_success.png'></img>&nbsp;"+data[key].status); 
-	       }
-	       else
-	       {
-	    	   tempObj.push("<img src='img/icon_error.png'></img>&nbsp;"+data[key].status); 
-	       }
-	       a.push(tempObj);
-	   }
-	   return a;
-	}
-	//freshTable();
-	setInterval("freshTable()",5000); 
+    //连接成功建立的回调方法
+    websocket.onopen = function () {
+     //   setMessageInnerHTML("WebSocket连接成功");
+    }
+
+    //接收到消息的回调方法
+    websocket.onmessage = function (event) {
+        setMessageInnerHTML(event.data);
+    }
+
+    //连接关闭的回调方法
+    websocket.onclose = function () {
+     //   setMessageInnerHTML("WebSocket连接关闭");
+    }
+
+    //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+    window.onbeforeunload = function () {
+        closeWebSocket();
+    }
+
+  //将消息显示在网页上
+    function setMessageInnerHTML(retData) {
+    	var obj = eval('(' + retData + ')'); //转为对象
+    	if(obj['type'] == 1) //密码不对。网络正确
+    	{
+    		var ip=obj['msg'];
+    		alert(ip+' 账号或密码不正确！');
+    	}else if(obj['type']==2){//网络不通
+    		var ip =obj['msg'];
+    		alert( ip + ' 网络不通！');
+    	}else if(obj['type']==0){   //账号密码、网络正确、获取到数据
+    	var dataList = obj['msg'].split(':');
+    	$("#mytable tbody").find('tr').each(function(){
+    		 var tdArr = $(this).children();
+    		 var ip = tdArr.eq(2).text().trim();//取出ip
+    		 if(ip == dataList[1])
+    		 {
+    			tdArr.eq(1).html(dataList[0]); 
+    			tdArr.eq(3).html(dataList[2]);
+    			tdArr.eq(4).html(dataList[3]);
+    			tdArr.eq(6).html("&nbsp;&nbsp;<img src='img/icon_success.png'></img>&nbsp;<b>"+dataList[5]+"</b>");
+    		 }
+    	})
+    	}
+    }
+
+    //关闭WebSocket连接
+    function closeWebSocket() {
+    	if(websocket != null)
+    	{
+    		websocket.close();
+    		websocket = null;
+    	}
+        
+    }
 </script>
-
 </html>
