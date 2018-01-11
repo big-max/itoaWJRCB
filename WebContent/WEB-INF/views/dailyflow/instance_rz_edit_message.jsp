@@ -14,7 +14,7 @@
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<jsp:include page="../header.jsp" flush="true" />
+<jsp:include page="../header_easyui.jsp" flush="true" />
 <title>自动化运维平台</title> 
 <style type="text/css">
 .content {
@@ -27,9 +27,60 @@
 } 
 </style>
 <script>
-	function sweet(te,ty,conBut)
-	{
-		swal({ title: "", text: te,  type: ty, confirmButtonText: conBut});
+	var url;
+	function editTel(){
+	    var row = $('#dg').datagrid('getSelected');//选中一行否
+	    if (row == null )
+	    {
+	       $.messager.alert('提示','您只能选择一行编辑!','error');
+	        return;
+	    }           
+		$('#dlg').dialog('open').dialog('setTitle','编辑员工号');
+		$('#fm').form('clear');
+	    
+	    $('#fm').form('load',row);
+		url = 'save_user.php';
+	}
+
+	function saveTel(){
+		$('#fm').form('submit',{
+			url: url,
+			onSubmit: function(){
+				return $(this).form('validate');
+			},
+			success: function(result){
+				var result = eval('('+result+')');
+				if (result.success){
+					$('#dlg').dialog('close');		// close the dialog
+					$('#dg').datagrid('reload');	// reload the user data
+				} else {
+					$.messager.show({
+						title: 'Error',
+						msg: result.msg
+					});
+				}
+			}
+		});
+	}
+	
+	function removeTel(){
+		var row = $('#dg').datagrid('getSelected');
+		if (row){
+			$.messager.confirm('Confirm','Are you sure you want to remove this user?',function(r){
+				if (r){
+					$.post('remove_user.php',{id:row.id},function(result){
+						if (result.success){
+							$('#dg').datagrid('reload');	// reload the user data
+						} else {
+							$.messager.show({	// show error message
+								title: 'Error',
+								msg: result.msg
+							});
+						}
+					},'json');
+				}
+			});
+		}
 	}
 </script>
 </head>
@@ -43,36 +94,63 @@
 	
 	<!--content start-->
 	<div class="content">
-		<div class="breadcrumb">
-			<a href="" class="current" style="position:relative;top:-3px;">
-				<i class="icon-home"></i>日终短信编辑
-			</a>
-		</div>
-		
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="columnauto">
-						<div class="widget-box nostyle">
-							<table id="sel_tab" class="table table-bordered with-check table-hover no-search no-select">
-								<thead>
-									<tr>
-									    <th style="text-align: center;width:10%;">任务编号</th>
-										<th style="text-align: center;width:10%;">任务id</th>
-										<th style="text-align: center;width:20%;">任务名称</th>
-										<th style="text-align: center;width:60%;">接收人</th>
-									</tr>
-								</thead>
-								<tbody class="searchable">
-								</tbody>
-							</table>
-						</div>
+		<div style="width:100%;height:85vh;">
+			<table id="dg" title="日终任务更改手机号" class="easyui-datagrid" style="width:100%;height:100%"
+					url="get_users.php" fit="true" toolbar="#toolbar" pagination="true"
+					rownumbers="true" fitColumns="true" singleSelect="true">
+				<thead>
+					<tr>
+						<th field="task_id" width="20">任务ID</th>
+						<th field="task_name" width="30">任务名</th>
+						<th field="czy" width="40">工号</th>
+					</tr>
+				</thead>
+		        <tbody>
+		            <tr>
+		                 <td>501502</td>
+			             <td>检查</td>
+			             <td>0889</td>
+		            </tr>
+		            <tr>
+		                 <td>5555</td>
+		            	 <td>fas</td>
+		            	 <td>0991</td>
+		            </tr>
+		        </tbody>
+			</table>
+			
+			<div id="toolbar">
+				<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="editTel()">修改</a>
+			</div>
+			
+			<div id="dlg" class="easyui-dialog" style="width:400px;height:240px;padding:10px 20px"
+				closed="true" buttons="#dlg-buttons">
+				<form id="fm" method="post" novalidate>
+					<div class="fitem">
+						<label>任务ID:</label>
+						<input name="task_id" style="width:100%" class="easyui-validatebox" required="true">
 					</div>
-				</div>
+					<div style="margin-top:20px;"></div>
+					<div>
+						<select class="easyui-combobox" name="czy" multiple="true" multiline="true" label="选择工号:" labelPosition="top" style="width:100%;height:50px;">
+							<option value="14761176422">0000</option>
+							<option value="13064792652">0889</option>
+							<option value="13064792712">0990</option>
+						</select>
+					</div>
+				</form>
+			</div>
+			<div id="dlg-buttons">
+				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveTel()">Save</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancel</a>
 			</div>
 		</div>
 	</div>
 </body>
-
-
+<link type="text/css" title="www" rel="stylesheet" href="/css/easyui.css" />
+<link type="text/css" title="www" rel="stylesheet" href="/css/icon.css" />
+<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+		$(".tooltipa1").removeClass("tooltip-f");
+	</script>
 </html>
