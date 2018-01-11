@@ -55,14 +55,13 @@ body{
 			</div>
 		</div>
 	</div>
-		
 	
 	<div style="height:80px;width:100%;">
 		<div style="float:left;">
 			<img src="dailyimg/WJRCB_logo.png">
 		</div>
 		<div style="height:80px;line-height:70px;float:left;margin-left:15%;">
-	        <p><span style="font-size:18px;"><font color="white">日终流程</font></span></p>
+	        <p><span style="font-size:18px;"><font color="white">年终流程</font></span></p>
 	    </div>
 		<div style="height:80px;line-height:80px;margin-left:20px;float:left;">
           	<select id="hisdatetime" style="width:200px;">
@@ -105,13 +104,6 @@ body{
         <div id="u701_div"></div>
         <div id="u702" class="text">
           <p><span>5600-706</span></p><p><span>信贷备份检查</span></p>
-        </div>
-      </div>
-      
-      <div id="u703" class="ax_default 5513">
-        <div id="u703_div"></div>
-        <div id="u704" class="text">
-          <p><span>5513</span></p><p><span>存款每日计提</span></p>
         </div>
       </div>
 
@@ -217,27 +209,6 @@ body{
         <div id="u733_div"></div>
         <div id="u734" class="text">
           <p><span>7972</span></p><p><span>贷记卡约定还款</span></p>
-        </div>
-      </div>
-      
-      <div id="u735" class="ax_default 5514">
-        <div id="u735_div"></div>
-        <div id="u736" class="text">
-          <p><span>5514</span></p><p><span>日终平衡入账</span></p>
-        </div>
-      </div>
-
-      <div id="u737" class="ax_default 5501">
-        <div id="u737_div"></div>
-        <div id="u738" class="text">
-          <p><span>5501</span></p><p><span>系统日切</span></p>
-        </div>
-      </div>
-      
-      <div id="u739" class="ax_default 5502">
-        <div id="u739_div" ></div>
-        <div id="u740" class="text">
-          <p><span>5502</span></p><p><span>系统日启</span></p>
         </div>
       </div>
 
@@ -388,9 +359,9 @@ body{
         </div>
       </div>
       
-      <div id="u880" class="ax_default 5525">
-        <div id="u880_div"></div>
-        <div id="u881" class="text">
+      <div id="u5525" class="ax_default 5525">
+        <div id="u5525_div"></div>
+        <div id="u5525_text" class="text">
           <p><span>5525</span></p><p><span>数据中心日终</span></p>
         </div>
       </div>
@@ -400,6 +371,95 @@ body{
         <div id="u883" class="text">
           <p><span>7973</span></p><p><span>贷记卡导入科目明细</span></p>
         </div>
+      </div>
+      
+      <div id="u1015" class="ax_default 5513">
+        <div id="u1015_div"></div>
+        <div id="u1016" class="text">
+          <p><span>5513</span></p><p><span>存款每日计提</span></p>
+        </div>
+      </div>
+      
+      <div id="u1191" class="ax_default 5541">
+        <div id="u1191_div"></div>
+        <div id="u1192" class="text">
+          <p><span>5541：结转外汇</span></p><p><span>买卖损益（年终）</span></p>
+        </div>
+      </div>
+      
+      <div id="u1193" class="ax_default 5542">
+        <div id="u1193_div"></div>
+        <div id="u1194" class="text">
+          <p><span>5542</span></p><p><span>结转损益（年终）</span></p>
+        </div>
+      </div>
+      
+      <div id="u1195" class="ax_default 5543">
+        <div id="u1195_div"></div>
+        <div id="u1196" class="text">
+          <p><span>5543</span></p><p><span>利润分配（年终）</span></p>
+        </div>
+      </div>
+      
+      <div id="u1047" class="ax_default 5514">
+        <div id="u1047_div"></div>
+        <div id="u1048" class="text">
+          <p><span>5514</span></p><p><span>日终平衡入账</span></p>
+        </div>
+      </div>
+      
+      <div id="u1049" class="ax_default 5501">
+        <div id="u1049_div"></div>
+        <div id="u1050" class="text">
+          <p><span>5501</span></p><p><span>系统日切</span></p>
+        </div>
+      </div>
+
+      <div id="u1051" class="ax_default 5502">
+        <div id="u1051_div"></div>
+        <div id="u1052" class="text">
+          <p><span>5502</span></p><p><span>系统日启</span></p>
+        </div>
+      </div>
+      
+      <div id="u1107" class="connector">
+        <img id="u1107_seg0" class="img" src="dailyimg/u1107_seg0.png"/>
+        <img id="u1107_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u1111" class="connector">
+        <img id="u1111_seg0" class="img" src="dailyimg/u1107_seg0.png"/>
+        <img id="u1111_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1105" class="connector">
+        <img id="u1105_seg0" class="img" src="dailyimg/u1105_seg0.png"/>
+        <img id="u1105_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1203" class="connector">
+        <img id="u1203_seg0" class="img" src="dailyimg/u156_seg0.png"/>
+        <img id="u1203_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1201" class="connector">
+        <img id="u1201_seg0" class="img" src="dailyimg/u1201_seg0.png"/>
+        <img id="u1201_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1199" class="connector">
+        <img id="u1199_seg0" class="img" src="dailyimg/u164_seg0.png"/>
+        <img id="u1199_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1197" class="connector">
+        <img id="u1197_seg0" class="img" src="dailyimg/u164_seg0.png"/>
+        <img id="u1197_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1101" class="connector">
+        <img id="u1101_seg0" class="img" src="dailyimg/u1101_seg0.png"/>
+        <img id="u1101_seg1" class="img" src="dailyimg/u100_seg1.png"/>
       </div>
       
       <div id="u755" class="connector">
@@ -511,34 +571,9 @@ body{
         <img id="u806_seg1" class="img" src="dailyimg/u100_seg1.png"/>
       </div>
 
-      <div id="u808" class="connector">
-        <img id="u808_seg0" class="img" src="dailyimg/u808_seg0.png"/>
-        <img id="u808_seg1" class="img" src="dailyimg/u100_seg1.png"/>
-      </div>
-
       <div id="u810" class="connector">
         <img id="u810_seg0" class="img" src="dailyimg/u810_seg0.png"/>
         <img id="u810_seg1" class="img" src="dailyimg/u96_seg1.png"/>
-      </div>
-      
-      <div id="u812" class="connector">
-        <img id="u812_seg0" class="img" src="dailyimg/u812_seg0.png"/>
-        <img id="u812_seg1" class="img" src="dailyimg/u100_seg1.png"/>
-      </div>
-
-      <div id="u814" class="connector">
-        <img id="u814_seg0" class="img" src="dailyimg/u757_seg0.png"/>
-        <img id="u814_seg1" class="img" src="dailyimg/u100_seg1.png"/>
-      </div>
-
-      <div id="u816" class="connector">
-        <img id="u816_seg0" class="img" src="dailyimg/u816_seg0.png"/>
-        <img id="u816_seg1" class="img" src="dailyimg/u100_seg1.png"/>
-      </div>
-
-      <div id="u820" class="connector">
-        <img id="u820_seg0" class="img" src="dailyimg/u820_seg0.png"/>
-        <img id="u820_seg1" class="img" src="dailyimg/u100_seg1.png"/>
       </div>
       
       <div id="u832" class="connector">
@@ -672,11 +707,6 @@ body{
       </div>
       
     </div>
-    
-    <div id="mm" class="easyui-menu" style="width:120px;">
-        <div iconCls="icon-search" onclick="rz_showLog()">查看日志</div>
-    </div>
-    
 </body>
 
 <script>
@@ -710,37 +740,33 @@ body{
 			var classes = $(this).attr("class");
 			taskid = classes.split(" ")[1];
 		})
-	})
-	
-	$(function(){
-		$(".ax_default").bind('contextmenu',function(e){
-			e.preventDefault();
-			$('#mm').menu('show', {
-				left: e.pageX,
-				top: e.pageY
+		
+		//右键菜单不允许包含子流程的存在清理操作
+		$('.ax_default').contextPopup({
+		    items: [
+		          {label:'查看日志', icon:'img/viewlog.png', action:function() 
+		          	{ 
+		        	  var execution_date = getUrlParam('execution_date'); 
+	          		  var dag_id = getUrlParam('dag_id'); //获取url 的值
+	          		  console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+	          		  var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+	          		  $.ajax({
+	         				url : '<%=path%>/getTaskLog.do',
+	         				data:data,
+	         				type : 'post',
+	         				dataType : 'json',
+	         				success:function(result) 
+	         				{
+	         					$("#showlog").modal();
+	         					$("#logarea").text(result.msg);
+	         				},
+	         			})
+		          	} 
+		          }
+		       ]
 			});
-		});
-	});
-	
-	function rz_showLog()
-	{
-		$("#mm").menu('hide');
-		var execution_date = getUrlParam('execution_date'); 
-		var dag_id = getUrlParam('dag_id'); //获取url 的值
-		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
-		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		$.ajax({
-			url : '<%=path%>/getTaskLog.do',
-			data:data,
-			type : 'post',
-			dataType : 'json',
-			success:function(result) 
-			{
-				$("#showlog").modal();
-				$("#logarea").text(result.msg);
-			},
-		})
-	}
+			
+	})
 
 	$(".ax_default").tooltip({
 	    html: true,
@@ -862,7 +888,6 @@ body{
 			}
 		handleAjax(url,param,type);
 	}
-	
 	
 	$(document).ready(function(){
 		//更新最新一次的流程跑跑的数据

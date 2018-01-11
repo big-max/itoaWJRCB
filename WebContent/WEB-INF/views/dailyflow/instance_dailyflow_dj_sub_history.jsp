@@ -337,8 +337,12 @@ body{
         <img id="u1003_seg0" class="img" src="dailyimg/u963_seg0.png"/>
         <img id="u1003_seg1" class="img" src="dailyimg/u96_seg1.png"/>
       </div>
-      
     </div>
+    
+    <div id="mm" class="easyui-menu" style="width:120px;">
+        <div iconCls="icon-search" onclick="rz_showLog()">查看日志</div>
+    </div>
+    
 </body>
 
 <script>
@@ -363,31 +367,38 @@ body{
 			var classes = $(this).attr("class");
 			taskid = classes.split(" ")[1];
 		})
-		
-		$('.ax_default').contextPopup({
-	          items: [
-		            {label:'查看日志', icon:'img/viewlog.png', action:function() 
-		            	{ 
-		            		var execution_date = getUrlParam('execution_date'); //获取url 的值
-		            		var subdag_id = getUrlParam('subdag_id');//获取子流程名
-		            		var dag_id = subdag_id;//复用代码
-		            		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
-		            		$.ajax({
-		           				url : '<%=path%>/getTaskLog.do',
-		           				data:data,
-		           				type : 'post',
-		           				dataType : 'json',
-		           				success:function(result) 
-		           				{
-		           					$("#showlog").modal();
-		           					$("#logarea").text(result.msg);
-		           				},
-		           			})
-		            	} 
-		            }, 
-		          ]
-		});
 	})
+	
+	$(function(){
+		$(".ax_default").bind('contextmenu',function(e){
+			e.preventDefault();
+			$('#mm').menu('show', {
+				left: e.pageX,
+				top: e.pageY
+			});
+		});
+	});
+	
+	function rz_showLog()
+	{
+		$("#mm").menu('hide');
+		var execution_date = getUrlParam('execution_date'); //获取url 的值
+		var subdag_id = getUrlParam('subdag_id');//获取子流程名
+		var dag_id = subdag_id;//复用代码
+		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		$.ajax({
+				url : '<%=path%>/getTaskLog.do',
+				data:data,
+				type : 'post',
+				dataType : 'json',
+				success:function(result) 
+				{
+					$("#showlog").modal();
+					$("#logarea").text(result.msg);
+				},
+			})
+	}
+		
 
 	$(".ax_default").tooltip({
 	    html: true,
