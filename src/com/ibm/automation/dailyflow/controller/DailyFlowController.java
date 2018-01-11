@@ -45,10 +45,10 @@ public class DailyFlowController {
 	public String dailyflow(HttpServletRequest request, HttpSession session) {
 		 String czy = (String)session.getAttribute("czy");
 		 
-		 System.out.println(czy);
+
 		 List<LogRecordBean> list = logRecordService.getAllLogRecords();
 		 request.setAttribute("logRecordList", list);
-		 return "dailyflow/instance_rz_summary";
+		 return "dailyflow/instance_rz_summary";	
 	}
 	
 	@RequestMapping("/dailyRunningPage.do")

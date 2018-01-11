@@ -304,7 +304,7 @@ body{
       <div id="u753" class="ax_default 55pj_2">
         <div id="u753_div"></div>
         <div id="u754" class="text">
-          <p><span>55pj_2</span></p><p><span>票据日终</span></p>
+          <p><span>55pj_2</span></p><p><span>票据日终核心确认</span></p>
         </div>
       </div>
       
@@ -430,7 +430,7 @@ body{
       <div id="u874" class="ax_default 55ebs_2">
         <div id="u874_div"></div>
         <div id="u875" class="text">
-          <p><span>55ebs-2</span></p><p><span>提交总控主程序</span></p>
+          <p><span>55ebs-2</span></p><p><span>检查跑批状态</span></p>
         </div>
       </div>
       
