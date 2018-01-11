@@ -15,9 +15,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <jsp:include page="../header.jsp" flush="true" />
-<link type="text/css" title="www" rel="stylesheet" href="${root}/css/themes/default/easyui.css">
-<link type="text/css" title="www" rel="stylesheet" href="${root}/css/themes/default/icon.css">
-<script type="text/javascript" src="${root}/js/jquery.easyui.min.js"></script>
 <title>自动化运维平台</title> 
 <style type="text/css">
 .content {
@@ -60,10 +57,9 @@
 							<table id="sel_tab" class="table table-bordered with-check table-hover no-search no-select">
 								<thead>
 									<tr>
-									    <th style="text-align: center;width:10%;">任务编号</th>
-										<th style="text-align: center;width:10%;">任务id</th>
-										<th style="text-align: center;width:20%;">任务名称</th>
-										<th style="text-align: center;width:60%;">接收人</th>
+										<th style="text-align: center;width:30%;">任务编号</th>
+										<th style="text-align: center;width:30%;">任务名称</th>
+										<th style="text-align: center;width:40%;">接收人</th>
 									</tr>
 								</thead>
 								<tbody class="searchable">
