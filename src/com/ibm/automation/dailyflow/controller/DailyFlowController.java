@@ -44,7 +44,6 @@ public class DailyFlowController {
 	@RequestMapping("/dailyflow.do")
 	public String dailyflow(HttpServletRequest request, HttpSession session) {
 		 String czy = (String)session.getAttribute("czy");
-		 
 
 		 List<LogRecordBean> list = logRecordService.getAllLogRecords();
 		 request.setAttribute("logRecordList", list);
@@ -109,12 +108,56 @@ public class DailyFlowController {
 	
 	@RequestMapping("/dailyHistoryPage.do")
 	public String dailyHistoryPage(@RequestParam Map<String, String> dag, Model model) {
-		String dag_id = dag.get("dag_id");
-		String execution_date = dag.get("execution_date");
+		/*String dag_id = dag.get("dag_id");
 		model.addAttribute("dag_id", dag_id);
 		System.out.println(UtilDateTime.T2Datetime(execution_date));
 		model.addAttribute("execution_date", UtilDateTime.T2Datetime(execution_date));
-		return "dailyflow/instance_dailyflow_rz_history";
+		return "dailyflow/instance_dailyflow_rz_history";*/
+		
+		
+		String exe_time_str = dag.get("execution_date");
+		String link = null;
+		if( null != exe_time_str){
+			String[] exe_time= null;
+			exe_time = exe_time_str.split("T");
+			String[] exe_mon_day = null;
+			exe_mon_day = exe_time[0].split("-");
+			
+			model.addAttribute("execution_date", exe_time_str);
+			logger.info("exe_time_str is" + exe_time_str);
+			String execution_time = null;
+			execution_time = exe_mon_day[1]+"-"+exe_mon_day[2];
+			logger.info("month is " + exe_mon_day[1] + "; day is " + exe_mon_day[2]);
+			//获取配置文件中结息和年终的日期(格式：month-day)
+			String jxString = rzprop.getProperty("jiexi");
+			String nzString = rzprop.getProperty("nianzhong");
+			
+			String[] jxdate = jxString.split(",");
+			String[] nzdate = nzString.split(",");
+			
+			for(int i = 0; i < jxdate.length; i++){
+				if(jxdate[i].equals(execution_time)){
+					link = "dailyflow/instance_rz_jiexi_history";
+					break;
+				}
+			}
+			for(int j = 0; j < nzdate.length; j++){
+				if(nzdate[j].equals(execution_time)){
+					link = "dailyflow/instance_rz_nianzhong_history";
+					break;
+				}
+			}
+			
+			if(link == null){
+				link = "dailyflow/instance_dailyflow_rz_history";
+			}
+		}else {
+			link ="dailyflow/instance_rz_summary";
+		}
+		
+		return link;
+		
+		
 	}
 	
 	
