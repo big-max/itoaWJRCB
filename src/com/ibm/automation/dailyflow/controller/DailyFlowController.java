@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ibm.automation.core.constants.PropertyKeyConst;
 import com.ibm.automation.core.exception.NetWorkException;
@@ -205,4 +206,29 @@ public class DailyFlowController {
 	public String dailyEditMessage(HttpServletRequest request, HttpSession session) {
 		 return "dailyflow/instance_rz_edit_message";
 	}
+	
+	//更改每个任务可以设置的发送手机号，工号匹配手机号
+	@RequestMapping("/dailysms.do")
+	@ResponseBody
+	public ArrayNode getTaskSMSID()
+	{
+		
+		ArrayNode an = om.createArrayNode();
+		for(int i = 0 ; i < 100 ; i++)
+		{
+			ObjectNode on = om.createObjectNode();
+			on.put("task_id", i);
+			on.put("name",String.valueOf(9000+i));
+			an.addPOJO(on);
+		}
+		//System.out.println(an);
+		
+		ObjectNode on2 = om.createObjectNode();
+		on2.put("total", 100);
+		on2.putPOJO("rows", an);
+		System.out.println(on2);
+		return an;
+	}
+	
+	
 }

@@ -15,6 +15,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <jsp:include page="../header_easyui.jsp" flush="true" />
+<link type="text/css" title="www" rel="stylesheet" href="/css/easyui.css" />
+<link type="text/css" title="www" rel="stylesheet" href="/css/icon.css" />
+<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
 <title>自动化运维平台</title> 
 <style type="text/css">
 .content {
@@ -96,26 +99,17 @@
 	<div class="content">
 		<div style="width:100%;height:85vh;">
 			<table id="dg" title="日终任务更改手机号" class="easyui-datagrid" style="width:100%;height:100%"
-					url="get_users.php" fit="true" toolbar="#toolbar" pagination="true"
+					url="dailysms.do" fit="true" toolbar="#toolbar" pagination="true"
 					rownumbers="true" fitColumns="true" singleSelect="true">
 				<thead>
 					<tr>
-						<th field="task_id" width="20">任务ID</th>
-						<th field="task_name" width="30">任务名</th>
-						<th field="czy" width="40">工号</th>
+						<th field="task_id" width="10%">任务ID</th>
+						<!-- <th field="task_name" width="30">任务名</th> -->
+						<th field="name" width="90%">工号</th>
 					</tr>
 				</thead>
 		        <tbody>
-		            <tr>
-		                 <td>501502</td>
-			             <td>检查</td>
-			             <td>0889</td>
-		            </tr>
-		            <tr>
-		                 <td>5555</td>
-		            	 <td>fas</td>
-		            	 <td>0991</td>
-		            </tr>
+		            
 		        </tbody>
 			</table>
 			
@@ -132,7 +126,7 @@
 					</div>
 					<div style="margin-top:20px;"></div>
 					<div>
-						<select class="easyui-combobox" name="czy" multiple="true" multiline="true" label="选择工号:" labelPosition="top" style="width:100%;height:50px;">
+						<select class="easyui-combobox" name="name" multiple="true" multiline="true" label="选择工号:" labelPosition="top" style="width:100%;height:50px;">
 							<option value="14761176422">0000</option>
 							<option value="13064792652">0889</option>
 							<option value="13064792712">0990</option>
@@ -147,9 +141,7 @@
 		</div>
 	</div>
 </body>
-<link type="text/css" title="www" rel="stylesheet" href="/css/easyui.css" />
-<link type="text/css" title="www" rel="stylesheet" href="/css/icon.css" />
-<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
+
 <script type="text/javascript">
 		$(".tooltipa1").removeClass("tooltip-f");
 	</script>
