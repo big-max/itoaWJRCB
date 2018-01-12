@@ -842,23 +842,30 @@ body{
    		var dag_id = getUrlParam('dag_id'); //获取url 的值
    		$("#subBtn").click(function(){
    			var content = $("#problemarea").val();
-   			var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date,"task_detail":content}
-   			$.ajax({
-   				url : '<%=path%>/postLogRecord.do',
-   				data:data,
-   				type : 'post',
-   				dataType : 'json',
-   				success:function(result)
-   				{
-   					alert("添加成功！")
-   				},
-                   error: function(XMLHttpRequest, textStatus, errorThrown) {
-   					 $("#subBtn").unbind("click");
-   				},
-   				complete: function(XMLHttpRequest, textStatus) {
-   					$("#subBtn").unbind("click");
-   				}
-   			})
+   			if(content == "")
+   			{
+   				sweet("问题记录不能为空!","warning","确定"); 
+   				return;
+   			}
+   			else{
+   				var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date,"task_detail":content}
+   	   			$.ajax({
+   	   				url : '<%=path%>/postLogRecord.do',
+   	   				data:data,
+   	   				type : 'post',
+   	   				dataType : 'json',
+   	   				success:function(result)
+   	   				{
+   	   					alert("添加成功！")
+   	   				},
+   	                   error: function(XMLHttpRequest, textStatus, errorThrown) {
+   	   					 $("#subBtn").unbind("click");
+   	   				},
+   	   				complete: function(XMLHttpRequest, textStatus) {
+   	   					$("#subBtn").unbind("click");
+   	   				}
+   	   			})
+   			}  			
    		})
 	}
 	

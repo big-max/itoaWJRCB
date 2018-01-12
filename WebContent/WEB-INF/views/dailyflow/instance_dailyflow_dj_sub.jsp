@@ -462,15 +462,22 @@ body{
 		var content = $("#problemarea").text();//获取提交的问题内容 
 		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date,"content":content}
 		$("#subBtn").click(function(){
-			$.ajax({
-				url : '<%=path%>/postLogRecord.do',
-				data:data,
-				type : 'post',
-				dataType : 'json',
-				success:function(result)
-				{
-				}
-			})
+			if(content == "")
+			{
+				sweet("问题记录不能为空!","warning","确定"); 
+   				return;
+			}
+			else{
+				$.ajax({
+					url : '<%=path%>/postLogRecord.do',
+					data:data,
+					type : 'post',
+					dataType : 'json',
+					success:function(result)
+					{
+					}
+				})
+			}
 		})
 	}
 	
