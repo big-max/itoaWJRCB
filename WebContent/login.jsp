@@ -98,7 +98,7 @@
 			action="login.do">
 			<div class="logobox">
 				<p>
-					<img src="<%=path%>/img/logo_JRCB.png">
+					<img src="<%=path%>/img/logo_AHRCB.png">
 				</p>
 				<!-- <h4>用户登录</h4> -->
 			</div>
