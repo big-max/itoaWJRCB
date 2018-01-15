@@ -47,7 +47,7 @@
 
 	function saveTel(){
 		$('#fm').form('submit',{
-			url: url,
+			url: 'updatedailysms.do',
 			onSubmit: function(){
 				return $(this).form('validate');
 			},
@@ -99,13 +99,14 @@
 	<div class="content">
 		<div style="width:100%;height:85vh;">
 			<table id="dg" title="日终任务更改手机号" class="easyui-datagrid" style="width:100%;height:100%"
-					url="dailysms.do" fit="true" toolbar="#toolbar" pagination="true"
+					url="getdailysms.do" fit="true" toolbar="#toolbar" pagination="true"
 					rownumbers="true" fitColumns="true" singleSelect="true">
 				<thead>
 					<tr>
-						<th field="task_id" width="10%">任务ID</th>
-						<!-- <th field="task_name" width="30">任务名</th> -->
-						<th field="name" width="90%">工号</th>
+						<th field="id" width="10%">编号</th>
+						<th field="task_id" width="20%">任务ID</th>
+						<th field="name" width="20%">工号</th>
+						<th field="tel" width="50%">电话</th>
 					</tr>
 				</thead>
 		        <tbody>
@@ -127,9 +128,9 @@
 					<div style="margin-top:20px;"></div>
 					<div>
 						<select class="easyui-combobox" name="name" multiple="true" multiline="true" label="选择工号:" labelPosition="top" style="width:100%;height:50px;">
-							<option value="14761176422">0000</option>
+						    <option value="14761176422">0000</option>
 							<option value="13064792652">0889</option>
-							<option value="13064792712">0990</option>
+							<option value="13064792712">0990</option> 
 						</select>
 					</div>
 				</form>
@@ -144,5 +145,6 @@
 
 <script type="text/javascript">
 		$(".tooltipa1").removeClass("tooltip-f");
-	</script>
+</script>
+
 </html>
