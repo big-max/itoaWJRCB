@@ -14,7 +14,7 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="自动化部署平台">
+<meta http-equiv="description" content="自动化运维平台">
 <link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css" />
 <link rel="stylesheet" href="<%=path%>/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="<%=path%>/css/unicorn.login.css" />
@@ -68,6 +68,12 @@
 </script>
 
 <style type="text/css">
+body{
+	margin:0;
+	padding:0;
+	background:url('img/menubg.jpg') repeat;
+	position:relative;
+}
 #header span {
 	margin-left:10px;
 	padding-left: 5px;
@@ -83,16 +89,37 @@
 #loginbox{
 	height:360px;
 }
+.foot{
+	font-size:18px; position:absolute;bottom:40px;margin:auto;width: 100%;
+}
+#loginform .nobottom , #loginform .notopradius{
+	background-color:rgba(255,255,255,0);
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white;
+}
+#loginbox span{ font-size:20px; }
+#userName:focus , #password:focus{
+	border-color: #00008B; 
+}
 </style>
 </head>
 
 <body>
-	<div id="header" style="height:65px;">
-		<span style="position:relative;top:22px;">
-			<img src="<%=path%>/img/logo.png" />
-			<a class="treelogo" style="font-size:17px;color:white;">自动化运维平台</a>
-		</span>
+	
+	<div style="width:400px;height:80px;">
+		<img src="img/loginlogo.png">
 	</div>
+
 	<div id="loginbox">
 		<form id="loginform" method="post" class="form-vertical"
 			action="login.do">
@@ -101,38 +128,52 @@
 					<img src="<%=path%>/img/logo_AHRCB.png">
 				</p>
 				<!-- <h4>用户登录</h4> -->
+
+	
+	<!-- 用户名&密码输入框 -->
+	<div id="loginbox" style="height:270px;border-radius:5px;margin:0 auto;margin-top:50px;background-color:rgba(255,255,255,0.3);">
+		<form id="loginform" method="post" class="form-vertical" action="login.do">
+			<div class="logobox" style="margin-bottom:30px;margin-top:20px;">
+				<span><font color="white">自动化运维平台</font></span>
+
 			</div>
+			
 			<div class="control-group">
 				<input id="errorMessageFlag" type="hidden" value="${errorMessageFlag}" />
-				<div id="errorMessage" class="prompt" style="display: none;">
-					${errorMessage}
-				</div>
-				<div id="networkerrorMessage" class="prompt" style="display: none;">
-					${errorMessage}
-				</div>
-				<div id="paramerrorMessage" class="prompt" style="display: none;">
-					${errorMessage}
-				</div>	
+				<div id="errorMessage" class="prompt" style="display: none;">${errorMessage}</div>
+				<div id="networkerrorMessage" class="prompt" style="display: none;">${errorMessage}</div>
+				<div id="paramerrorMessage" class="prompt" style="display: none;">${errorMessage}</div>	
+				
 				<div class="controls">
 					<div class="input-prepend">
 						<div class="similarinput">
 							<i class="icon-user"></i><input id="userName" name="userName"
 								type="text" placeholder="用户名" class="loginTxt nobottom" />
 						</div>
-						<div class="similarinput">
+						<div class="similarinput" style="margin-top:20px;">
 							<i class="icon-lock"></i><input id="password" name="password"
 								type="password" placeholder="密码" class="loginTxt notopradius"  />
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<div class="form-actions">
 				<span class="pull-login">
 					<input type="button" onclick="checkFormat();" 
 					       class="btn btn-login" value="登录" style="font-weight: normal;"/>
 				</span>
 			</div>
+			
 		</form>
+	</div>
+	<div style="width:80%;height:30px;line-height:30px;text-align:center;margin:0 auto;">
+		<font color="white">Powered by IBM</font>
+	</div>
+	
+	<div class="foot">
+		<div style="text-align: center;"><font color="white">总行地址：江苏省苏州市吴江区中山南路1777号&nbsp;&nbsp;&nbsp;&nbsp;邮政编码：215200</font></div>
+		<div style="text-align: center;margin-top: 10px"><font color="white">Copyright©&nbsp;1996-2008&nbsp;WJRCB.COM&nbsp;&nbsp;许可证：苏ICP备06012538号</font></div>
 	</div>
 </body>
 </html>

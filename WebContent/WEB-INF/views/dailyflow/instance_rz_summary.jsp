@@ -23,8 +23,8 @@
 	width:calc(100% - 57px);
 	margin:0px;
 	height:calc(100vh - 70px);
-	overflow-y:hidden;
-}
+	overflow-y:scroll;
+} 
 .linkexpre{
 	float:left;
 	margin-left:30px;
@@ -64,7 +64,6 @@ i:hover{
 							<table id="sel_tab" class="table table-bordered with-check table-hover no-search no-select">
 								<thead>
 									<tr>
-										<th hidden="" style="text-align: center;width:20%;">流程名</th>
 										<th style="text-align: center;width:20%;">流程名</th>
 										<th style="text-align: center;width:15%;">责任人</th>
 										<th style="text-align: center;width:20%;">最近运行时间</th>
@@ -78,17 +77,28 @@ i:hover{
 							
 							<!-- 日终事件处理 -->
 							<div style="margin-top:20px;"></div>
-							<table id="rz_event" class="table table-bordered with-check table-hover no-search no-select">
+							<table id="rz_event" class="table table-bordered data-table with-check table-hover no-search no-select">
 								<thead>
+									
 									<tr>
-										<th style="font-size:13px;" colspan="2">日终事件处理</th>
-									</tr>
+										<th style="text-align: center;">执行用户</th>
+										<!-- <th style="text-align: center;">流程名</th> -->
+										<th style="text-align: center;">任务名</th>
+										<!-- <th style="text-align: center;">执行时间</th> -->
+										<th style="text-align: center;">添加时间</th>
+										<th style="text-align: center;">处理记录</th>
+
 								</thead>
 								<tbody>
-									<c:forEach items="${rzEvent }" var="each">
+
+									<c:forEach items="${logRecordList }" var="record">
 										<tr>
-											<td style="text-align: center;width:5%;">${each.num }</td>
-											<td>${each.log }</td>
+											<td style="text-align: center;">${record.username }</td>
+											<%-- <td style="text-align: center;">${record.dag_id }</td> --%>
+											<td style="text-align: center;">${record.task_id }</td>
+											<%-- <td style="text-align: center;">${record.execution_date }</td> --%>
+											<td style="text-align: center;">${record.add_datetime }</td>
+											<td style="text-align: left;">${record.task_detail }</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -115,7 +125,7 @@ function update_summary_table_state()
 			var html = "";
 			for(var i = 0 ; i < data.length ; i++)
 			{
-				if(data[i].dag_alias == "日终"){ 
+				if(data[i].dag_alias.indexOf("日终") >=0 ){ 
 				 html += "<tr>";
 		         html +=     "<td id=\"dag_id\" hidden=\"\" style=\"text-align: center;\">" + data[i].dag_id + "</td>"
 		         html +=     "<td id=\"dag_alias\" style=\"text-align: center;\">" + data[i].dag_alias + "</td>"
@@ -195,13 +205,21 @@ function update_summary_table_state()
 	$(document).on('click',"._history",function(){
 		var dag_id = $(this).parents("tr").find("#dag_id").text();
 		var execution_date = $(this).parents("tr").find("#execution_date").text();
-		window.open("historyPage.do?dag_id="+ dag_id +"&execution_date="+execution_date.replace(" ","T"));
+		if ( execution_date == '' || execution_date == null || execution_date=='undefined')
+		{
+			execution_date  = '1969-12-12T12:12:12';
+		}
+		window.open("dailyHistoryPage.do?dag_id="+ dag_id +"&execution_date="+execution_date.replace(" ","T"));
 	})
 	
 	//当前运行情况的跳转
 	$(document).on('click',"._running",function(){
 		var dag_id = $(this).parents("tr").find("#dag_id").text()
 		var execution_date = $(this).parents("tr").find("#execution_date").text()
+		if ( execution_date == '' || execution_date == null || execution_date=='undefined')
+		{
+			execution_date  = '1969-12-12T12:12:12';
+		}
 		window.open("dailyRunningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
 	})
 	

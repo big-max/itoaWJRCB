@@ -202,7 +202,7 @@ public class ServerServiceImpl implements ServerService {
 					on.put("type", type);
 					on.put("name", lb.getUsername());
 					on.put("password", lb.getPassword());
-					on.put("role", lb.getRole());
+					on.putPOJO("role", lb.getRole());
 				}
 				break;
 			case "ipcheck":

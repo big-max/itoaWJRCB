@@ -12,8 +12,8 @@
 <p>出错原因为：${errMsg }</p>
 
 <p>更多详细内容：</p>
-<p>请检查Tomcat服务器端日志/var/log/itoa/itoa_log</p>
-<p>请检查tornado服务器端日志/var/log/itoa/tornado_rotatefile.log</p>
+<p>请检查Tomcat服务器端日志/home/data/itoa/itoa_log</p>
+<p>请检查tornado服务器端日志/home/data/itoa/tornado_rotatefile.log</p>
 
 <a href="getAllServers.do">回到主页</a>
 <script type="text/javascript">

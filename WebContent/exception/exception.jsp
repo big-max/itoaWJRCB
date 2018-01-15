@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <!--header start-->
   <div class="header">
-  	<jsp:include page="../WEB-INF/views/topinfo.jsp" flush="true"/>
+  	<jsp:include page="../WEB-INF/views/topleft_close.jsp" flush="true"/>
   </div>
 <!--header end-->  
 

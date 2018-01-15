@@ -166,23 +166,25 @@ function getInstallMsg()
 {
 	var uuid = $("#uuid").val().trim();
 	var type = $("#type").val().trim();
+	var created_time=$("#created_time").val().trim();
 	$.ajax({
 		url : '<%=path%>/nodeInstall.do',
 		type : 'post',
 		data : {
 			uuid:uuid,
-			type:type
+			type:type,
+			created_time:created_time
 		},
-		dataType : "json",
 		error : function(err) {
 			//alert("获取安装信息异常！");
 		},
 		success : function(data) {
-			giveTdColor(data);//给TD上颜色	
+			$("#deplylog").html(data);
+			/* giveTdColor(data);//给TD上颜色	
 			$("#progress_my").prev().html("主机安装进度 :&nbsp;&nbsp;&nbsp;" + data.percent);//安装进度
 			$(".bar").attr('style', 'width: ' + data.percent + ';') //percent
 			$("#percent").val(data.percent);
-			$("#status").val(data.status);
+			$("#status").val(data.status); */
 		}
 	});
 }
@@ -191,14 +193,15 @@ function myrefresh()
 {
 	if (($("#logmsg").attr("class") == 'tabcontent tabnow')) 
 	{
-		if ($("#status").val().trim() != 2 && $("#status").val().trim() != 3)
+		getInstallMsg();	
+		/* if ($("#status").val().trim() != 2 && $("#status").val().trim() != 3)
 		{
 			getInstallMsg();			
-		}
+		} */
 	}
 }   
 
-window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
+window.setInterval('myrefresh()',3000);  //每隔3秒自动刷新一次
 </script>
 <script>
  	$(document).ready(function(){
@@ -642,36 +645,12 @@ window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
 						
 						<input type="hidden" id="type" name="type" value="${type }">
 						<input type="hidden" id="uuid" name="uuid" value="${uuid }">
-						<input type="hidden" id="percent" value="${percent}"> 
-						<input type="hidden" id="status" value="${status}">
+						<input type="hidden" id="created_time" name="created_time" value="${created_time }">
+						<%-- <input type="hidden" id="percent" value="${percent}"> 
+						<input type="hidden" id="status" value="${status}"> --%>
 						<div id="logmsg" class="tabcontent tabnow">
-							<p class="columntxt2">主机安装进度 :&nbsp;&nbsp;&nbsp;${percent }</p>
-							<div id="progress_my" class="progress progress-s progress-striped progress-success ine-block w100">
-								<div class="bar" name="progress" style="width: ${percent};"></div>
-							</div>
-							<h5>详细任务执行状态：</h5>
-							<table id="logTable3" class="table table-bordered  table-hover table-condensed no-search no-select" style="line-height: 20px">
-								<thead>
-									<tr>
-										<th style="text-align:left;display: none;">序号</th> 
-										<th style="text-align: left;">IP地址</th>
-										<th style="text-align: left;">操作步骤</th>
-										<th style="text-align: center;">状态</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${allServerStatus }" var="ser">
-										<c:if test="${ser.status != '跳过' }">
-										<tr>
-											<td style="display:none;"><input type="hidden" value="${ser.uuid }"/></td>
-											<td>${ser.host }</td>
-											<td>${ser.name }</td>
-											<td style="text-align: center;">${ser.status}</td>
-										</tr>
-									</c:if>
-									</c:forEach>
-								</tbody>
-							</table>
+							<textarea id="deplylog" style="background-color:black;width:100%;height:62vh;resize: none;color:white;">
+							</textarea>
 						</div>
 					</div>
 				</div>

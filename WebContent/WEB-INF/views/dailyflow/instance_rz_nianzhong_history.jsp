@@ -12,18 +12,23 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<jsp:include page="../headeryear.jsp" flush="true" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<jsp:include page="../header_rz.jsp" flush="true" /> 
 <title>自动化运维平台</title>
 <style type="text/css">
-body{margin:0;padding:0;}
-.content {
-	position:relative;
-	width:calc(100% - 1px); 
-	margin-top:50px;
-	height:calc(100vh - 50px); 
-	background-color:#F5F3F4;
-} 
+body{
+	margin:0;padding:0;
+	background:url('dailyimg/u0.jpg') repeat;
+}
+.connector>img { max-width:400px; }
+.hide{ display:none; }
+.progress{ z-index: 2000; }
+.mask{ position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000; }
+.modal{ width:750px;left:43%; }
+.ax_default{ cursor:pointer; }
+#progressImgage{display:none;}
 </style>
+
 <script>
 	function sweet(te,ty,conBut)
 	{
@@ -32,656 +37,898 @@ body{margin:0;padding:0;}
 </script>
 </head>
 
-<body>
-	<div style="margin:10px auto;width:320px;height:70px;line-height:70px;">
-		<select id="hisdatetime" style="display:inline;width:200px;">
-			<option value="${execution_date}">${execution_date}</option>
-		</select>
-		<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
-		<button id="showlog" class="btn btn-sm" style="background-color: #3399CC;border:1px solid #bbb;">
-			<font color="white">查看历史</font>
-		</button>
+<body style="width:100%;">
+	
+	<!-- 日志模态框（Modal） -->
+	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">日志信息</h4>
+				</div>
+				<div class="modal-body">
+					<textarea id="logarea" rows="10" style="width:100%;height:100%;resize:none;"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	
-    <div id="base" class="">
-      <div id="u402" class="ax_default 5600501502">
-        <div id="u402_div"></div>
-        <div id="u403" class="text">
+	<div style="height:80px;width:100%;">
+		<div style="float:left;">
+			<img src="dailyimg/WJRCB_logo.png">
+		</div>
+		<div style="height:80px;line-height:70px;float:left;margin-left:15%;">
+	        <p><span style="font-size:18px;"><font color="white">年终流程</font></span></p>
+	    </div>
+		<div style="height:80px;line-height:80px;margin-left:20px;float:left;">
+          	<select id="hisdatetime" style="width:200px;">
+				<option value="${execution_date}">${execution_date}</option>
+		  	</select>
+      	</div>
+      	<div style="height:80px;line-height:74px;margin-left:20px;float:left;">
+           <button id="showlogbtn" class="btn btn-sm" style="background-color: #3399CC;">
+				<font color="white">查看历史</font>
+		   </button>
+        </div>
+	</div>
+	
+	<div>      
+      <div id="u11">
+        <div id="u11_div"></div>
+        <div id="u12" class="text">
+          <p><span>子流程</span></p>
+        </div>
+      </div>
+	</div>
+
+    <div id="mainflow" style="height:770px;width:1270px;position:absolute;top:50px;">
+    
+      <div id="u697" class="ax_default 501502">
+        <div id="u697_div"></div>
+        <div id="u698" class="text">
           <p><span>5600-501/502</span></p><p><span>检查机构和操作员</span></p>
         </div>
       </div>
 
-      <div id="u404" class="ax_default 5600706">
-        <div id="u404_div"></div>
-        <div id="u405" class="text">
+      <div id="u699" class="ax_default 706">
+        <div id="u699_div"></div>
+        <div id="u700" class="text">
           <p><span>5600-706</span></p><p><span>信贷备份检查</span></p>
         </div>
       </div>
 
-      <div id="u406" class="ax_default 5600706">
-        <div id="u406_div"></div>
-        <div id="u407" class="text">
+      <div id="u701" class="ax_default 706_2">
+        <div id="u701_div"></div>
+        <div id="u702" class="text">
           <p><span>5600-706</span></p><p><span>信贷备份检查</span></p>
         </div>
       </div>
 
-      <div id="u408" class="ax_default 5513">
-        <div id="u408_div"></div>
-        <div id="u409" class="text">
-          <p><span>5513</span></p><p><span>存款每日计提</span></p>
-        </div>
-      </div>
-
-      <div id="u410" class="ax_default 55281">
-        <div id="u410_div"></div>
-        <div id="u411" class="text">
-          <p><span>5528-1</span></p><p><span>work数据采集</span></p>
-        </div>
-      </div>
-
-      <div id="u412" class="ax_default 55dj5">
-        <div id="u412_div"></div>
-        <div id="u413" class="text">
-          <p><span>55dj5</span></p><p><span>批量文件传出</span></p>
-        </div>
-      </div>
-
-      <div id="u414" class="ax_default 5600701">
-        <div id="u414_div"></div>
-        <div id="u415" class="text">
+      <div id="u705" class="ax_default 701">
+        <div id="u705_div"></div>
+        <div id="u706" class="text">
           <p><span>5600-701</span></p><p><span>信贷日终前flashcopy</span></p>
         </div>
       </div>
 
-      <div id="u416" class="ax_default 5600702">
-        <div id="u416_div"></div>
-        <div id="u417" class="text">
+      <div id="u707" class="ax_default 702">
+        <div id="u707_div"></div>
+        <div id="u708" class="text">
           <p><span>5600-702</span></p><p><span>信贷日终前备份</span></p>
         </div>
       </div>
-
-      <div id="u418" class="ax_default 5555">
-        <div id="u418_div"></div>
-        <div id="u419" class="text">
+      
+      <div id="u709" class="ax_default 5555">
+        <div id="u709_div"></div>
+        <div id="u710" class="text">
           <p><span>5555</span></p><p><span>comstar发往核心记账</span></p>
         </div>
       </div>
 
-      <div id="u420" class="ax_default 5556">
-        <div id="u420_div"></div>
-        <div id="u421" class="text">
+      <div id="u711" class="ax_default 5556">
+        <div id="u711_div"></div>
+        <div id="u712" class="text">
           <p><span>5556</span></p><p><span>comstar发往核心对账</span></p>
         </div>
       </div>
 
-      <div id="u422" class="ax_default 55pj">
-        <div id="u422_div"></div>
-        <div id="u423" class="text">
+      <div id="u713" class="ax_default 55pj">
+        <div id="u713_div"></div>
+        <div id="u714" class="text">
           <p><span>55pj</span></p><p><span>票据日终</span></p>
         </div>
       </div>
-
-      <div id="u424" class="ax_default 55dj1">
-        <div id="u424_div"></div>
-        <div id="u425" class="text">
-          <p><span>55dj1</span></p><p><span>当前登录操作员-开始跑批</span></p>
+      
+      <div id="u715" class="ax_default 5524">
+        <div id="u715_div"></div>
+        <div id="u716" class="text">
+          <p><span>5524</span></p><p><span>信贷cmis日终处理</span></p>
         </div>
       </div>
 
-      <div id="u426" class="ax_default 55dj2">
-        <div id="u426_div"></div>
-        <div id="u427" class="text">
-          <p><span>55dj2</span></p><p><span>批量文件导入</span></p>
-        </div>
-      </div>
-
-      <div id="u428" class="ax_default 55dj3">
-        <div id="u428_div"></div>
-        <div id="u429" class="text">
-          <p><span>55dj3</span></p><p><span>批量启动菜单</span></p>
-        </div>
-      </div>
-
-      <div id="u430" class="ax_default 55dj4">
-        <div id="u430_div"></div>
-        <div id="u431" class="text">
-          <p><span>55dj4</span></p><p><span>批量执行结果</span></p>
-        </div>
-      </div>
-
-      <div id="u432" class="ax_default 55ebs">
-        <div id="u432_div"></div>
-        <div id="u433" class="text">
-          <p><span>55ebs</span></p><p><span>提交总控主程序</span></p>
-        </div>
-      </div>
-
-      <div id="u434" class="ax_default 55vat1">
-        <div id="u434_div"></div>
-        <div id="u435" class="text">
-          <p><span>55vat1</span></p><p><span>查看导数结果</span></p>
-        </div>
-      </div>
-
-      <div id="u436" class="ax_default 55vat2">
-        <div id="u436_div"></div>
-        <div id="u437" class="text">
-          <p><span>55vat2</span></p><p><span>VAT日终跑批</span></p>
-        </div>
-      </div>
-
-      <div id="u438" class="ax_default 55vat3">
-        <div id="u438_div"></div>
-        <div id="u439" class="text">
-          <p><span>55vat3</span></p><p><span>查看VAT日终结果</span></p>
-        </div>
-      </div>
-
-      <div id="u440" class="ax_default connector">
-        <img id="u440_seg0" class="img" src="dailyimg/u40_seg0.png"/>
-        <img id="u440_seg1" class="img" src="dailyimg/u40_seg1.png"/>
-        <img id="u440_seg2" class="img" src="dailyimg/u40_seg2.png"/>
-        <img id="u440_seg3" class="img" src="dailyimg/u40_seg3.png"/>
-      </div>
-
-      <div id="u442" class="ax_default connector">
-        <img id="u442_seg0" class="img" src="dailyimg/u42_seg0.png"/>
-        <img id="u442_seg1" class="img" src="dailyimg/u42_seg1.png"/>
-        <img id="u442_seg2" class="img" src="dailyimg/u42_seg2.png"/>
-        <img id="u442_seg3" class="img" src="dailyimg/u42_seg3.png"/>
-      </div>
-
-      <div id="u444" class="ax_default connector">
-        <img id="u444_seg0" class="img" src="dailyimg/u42_seg0.png"/>
-        <img id="u444_seg1" class="img" src="dailyimg/u44_seg1.png"/>
-        <img id="u444_seg2" class="img" src="dailyimg/u42_seg2.png"/>
-        <img id="u444_seg3" class="img" src="dailyimg/u42_seg3.png"/>
-      </div>
-
-      <div id="u446" class="ax_default connector">
-        <img id="u446_seg0" class="img" src="dailyimg/u46_seg0.png"/>
-        <img id="u446_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u448" class="ax_default connector">
-        <img id="u448_seg0" class="img" src="dailyimg/u48_seg0.png"/>
-        <img id="u448_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u450" class="ax_default connector">
-        <img id="u450_seg0" class="img" src="dailyimg/u50_seg0.png"/>
-        <img id="u450_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u452" class="ax_default 55241">
-        <div id="u452_div"></div>
-        <div id="u453" class="text">
-          <p><span>5524-1</span></p><p><span>信贷cmis日终处理</span></p>
-        </div>
-      </div>
-
-      <div id="u454" class="ax_default 55242">
-        <div id="u454_div"></div>
-        <div id="u455" class="text">
+      <div id="u717" class="ax_default 5524_2">
+        <div id="u717_div"></div>
+        <div id="u718" class="text">
           <p><span>5524-2：检查信贷是否具备日终5511条件</span></p>
         </div>
       </div>
-
-      <div id="u456" class="ax_default connector">
-        <img id="u456_seg0" class="img" src="dailyimg/u56_seg0.png"/>
-        <img id="u456_seg1" class="img" src="dailyimg/u56_seg1.png"/>
-        <img id="u456_seg2" class="img" src="dailyimg/u56_seg2.png"/>
-        <img id="u456_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u458" class="ax_default connector">
-        <img id="u458_seg0" class="img" src="dailyimg/u58_seg0.png"/>
-        <img id="u458_seg1" class="img" src="dailyimg/u58_seg1.png"/>
-        <img id="u458_seg2" class="img" src="dailyimg/u58_seg2.png"/>
-        <img id="u458_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u460" class="ax_default 5600703">
-        <div id="u460_div"></div>
-        <div id="u461" class="text">
+      
+      <div id="u719" class="ax_default 703">
+        <div id="u719_div"></div>
+        <div id="u720" class="text">
           <p><span>5600-703</span></p><p><span>信贷日终后flashcopy</span></p>
         </div>
       </div>
 
-      <div id="u462" class="ax_default 5600704">
-        <div id="u462_div"></div>
-        <div id="u463" class="text">
+      <div id="u721" class="ax_default 704">
+        <div id="u721_div"></div>
+        <div id="u722" class="text">
           <p><span>5600-704</span></p><p><span>信贷日终后备份</span></p>
         </div>
       </div>
-
-      <div id="u464" class="ax_default 5600705">
-        <div id="u464_div"></div>
-        <div id="u465" class="text">
+      
+      <div id="u723" class="ax_default 705">
+        <div id="u723_div"></div>
+        <div id="u724" class="text">
           <p><span>5600-705</span></p><p><span>信贷数据库导表</span></p>
         </div>
       </div>
 
-      <div id="u466" class="ax_default 5600802">
-        <div id="u466_div"></div>
-        <div id="u467" class="text">
+      <div id="u725" class="ax_default 802">
+        <div id="u725_div"></div>
+        <div id="u726" class="text">
           <p><span>5600-802</span></p><p><span>日终前数据库备份</span></p>
         </div>
       </div>
-
-      <div id="u468" class="ax_default 5511">
-        <div id="u468_div"></div>
-        <div id="u469" class="text">
+      
+      <div id="u727" class="ax_default 5511">
+        <div id="u727_div"></div>
+        <div id="u728" class="text">
           <p><span>5511</span></p><p><span>日终周期开始</span></p>
         </div>
       </div>
 
-      <div id="u470" class="ax_default 5600801">
-        <div id="u470_div"></div>
-        <div id="u471" class="text">
+      <div id="u729" class="ax_default 801">
+        <div id="u729_div"></div>
+        <div id="u730" class="text">
           <p><span>5600-801</span></p><p><span>flashcopy后台及ics</span></p>
         </div>
       </div>
-
-      <div id="u472" class="ax_default 5600806">
-        <div id="u472_div"></div>
-        <div id="u473" class="text">
+      
+      <div id="u731" class="ax_default 806">
+        <div id="u731_div"></div>
+        <div id="u732" class="text">
           <p><span>5600-806</span></p><p><span>备份检查</span></p>
         </div>
       </div>
 
-      <div id="u474" class="ax_default connector">
-        <img id="u474_seg0" class="img" src="dailyimg/u74_seg0.png"/>
-        <img id="u474_seg1" class="img" src="dailyimg/u74_seg1.png"/>
-        <img id="u474_seg2" class="img" src="dailyimg/u74_seg2.png"/>
-        <img id="u474_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u476" class="ax_default connector">
-        <img id="u476_seg0" class="img" src="dailyimg/u76_seg0.png"/>
-        <img id="u476_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u478" class="ax_default connector">
-        <img id="u478_seg0" class="img" src="dailyimg/u78_seg0.png"/>
-        <img id="u478_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u480" class="ax_default connector">
-        <img id="u480_seg0" class="img" src="dailyimg/u50_seg0.png"/>
-        <img id="u480_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u482" class="ax_default connector">
-        <img id="u482_seg0" class="img" src="dailyimg/u82_seg0.png"/>
-        <img id="u482_seg1" class="img" src="dailyimg/u82_seg1.png"/>
-        <img id="u482_seg2" class="img" src="dailyimg/u58_seg2.png"/>
-        <img id="u482_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u484" class="ax_default connector">
-        <img id="u484_seg0" class="img" src="dailyimg/u84_seg0.png"/>
-        <img id="u484_seg1" class="img" src="dailyimg/u84_seg1.png"/>
-        <img id="u484_seg2" class="img" src="dailyimg/u84_seg2.png"/>
-        <img id="u484_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u486" class="ax_default connector">
-        <img id="u486_seg0" class="img" src="dailyimg/u86_seg0.png"/>
-        <img id="u486_seg1" class="img" src="dailyimg/u86_seg1.png"/>
-        <img id="u486_seg2" class="img" src="dailyimg/u86_seg2.png"/>
-        <img id="u486_seg3" class="img" src="dailyimg/u84_seg1.png"/>
-        <img id="u486_seg4" class="img" src="dailyimg/u84_seg2.png"/>
-        <img id="u486_seg5" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u488" class="ax_default connector">
-        <img id="u488_seg0" class="img" src="dailyimg/u76_seg0.png"/>
-        <img id="u488_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u490" class="ax_default connector">
-        <img id="u490_seg0" class="img" src="dailyimg/u78_seg0.png"/>
-        <img id="u490_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u492" class="ax_default connector">
-        <img id="u492_seg0" class="img" src="dailyimg/u50_seg0.png"/>
-        <img id="u492_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u494" class="ax_default 5512">
-        <div id="u494_div"></div>
-        <div id="u495" class="text">
-          <p><span>5512</span></p><p><span>结转外汇买卖损益（年终）</span></p>
-        </div>
-      </div>
-
-      <div id="u496" class="ax_default 5542">
-        <div id="u496_div"></div>
-        <div id="u497" class="text">
-          <p><span>5542</span></p><p><span>结转损益（年终）</span></p>
-        </div>
-      </div>
-
-      <div id="u498" class="ax_default 7972">
-        <div id="u498_div"></div>
-        <div id="u499" class="text">
+      <div id="u733" class="ax_default 7972">
+        <div id="u733_div"></div>
+        <div id="u734" class="text">
           <p><span>7972</span></p><p><span>贷记卡约定还款</span></p>
         </div>
       </div>
 
-      <div id="u500" class="ax_default 5543">
-        <div id="u500_div"></div>
-        <div id="u501" class="text">
-          <p><span>5543</span></p><p><span>利润分配（年终）</span></p>
-        </div>
-      </div>
-
-      <div id="u502" class="ax_default 5514">
-        <div id="u502_div"></div>
-        <div id="u503" class="text">
-          <p><span>5514</span></p><p><span>日终平衡入账</span></p>
-        </div>
-      </div>
-
-      <div id="u504" class="ax_default 5501">
-        <div id="u504_div"></div>
-        <div id="u505" class="text">
-          <p><span>5501</span></p><p><span>系统日切</span></p>
-        </div>
-      </div>
-
-      <div id="u506" class="ax_default 5502">
-        <div id="u506_div"></div>
-        <div id="u507" class="text">
-          <p><span>5502</span></p><p><span>系统日启</span></p>
-        </div>
-      </div>
-
-      <div id="u508" class="ax_default 7971">
-        <div id="u508_div"></div>
-        <div id="u509" class="text">
+      <div id="u741" class="ax_default 7971">
+        <div id="u741_div"></div>
+        <div id="u742" class="text">
           <p><span>7971</span></p><p><span>贷记卡生成清算数据</span></p>
         </div>
       </div>
-
-      <div id="u510" class="ax_default 5512">
-        <div id="u510_div"></div>
-        <div id="u511" class="text">
+      
+      <div id="u743" class="ax_default 5512">
+        <div id="u743_div"></div>
+        <div id="u744" class="text">
           <p><span>5512</span></p><p><span>日终账务处理</span></p>
         </div>
       </div>
-
-      <div id="u512" class="ax_default 5515">
-        <div id="u512_div"></div>
-        <div id="u513" class="text">
+      
+      <div id="u753" class="ax_default 55pj_2">
+        <div id="u753_div"></div>
+        <div id="u754" class="text">
+          <p><span>55pj_2</span></p><p><span>票据日终核心确认</span></p>
+        </div>
+      </div>
+      
+      <div id="u800" class="ax_default 55dj">
+        <div id="u800_div" style="background-color:#5a78ab;"></div>
+        <div id="u801" class="text">
+          <p><span>贷记卡</span></p>
+        </div>
+      </div>
+      
+      <div id="u796" class="ax_default rz_start">
+        <div id="u796_div" class=""></div>
+        <div id="u797" class="text">
+          <p><span>开始</span></p>
+        </div>
+      </div>
+      
+      <div id="u818" class="ax_default 5515">
+        <div id="u818_div"></div>
+        <div id="u819" class="text">
           <p><span>5515</span></p><p><span>日终周期结束</span></p>
         </div>
       </div>
+      
+      <div id="u822" class="ax_default 5528_1">
+        <div id="u822_div"></div>
+        <div id="u823" class="text">
+          <p><span>5528-1</span></p><p><span>work数据采集</span></p>
+        </div>
+      </div>
 
-      <div id="u514" class="ax_default 5506">
-        <div id="u514_div"></div>
-        <div id="u515" class="text">
+      <div id="u824" class="ax_default 5506">
+        <div id="u824_div"></div>
+        <div id="u825" class="text">
           <p><span>5506</span></p><p><span>卸载数据至数据中心</span></p>
         </div>
       </div>
-
-      <div id="u516" class="ax_default 7973">
-        <div id="u516_div"></div>
-        <div id="u517" class="text">
-          <p><span>7973</span></p><p><span>贷记卡导入科目明细</span></p>
-        </div>
-      </div>
-
-      <div id="u518" class="ax_default connector">
-        <img id="u518_seg0" class="img" src="dailyimg/u518_seg0.png"/>
-        <img id="u518_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u520" class="ax_default connector">
-        <img id="u520_seg0" class="img" src="dailyimg/u518_seg0.png"/>
-        <img id="u520_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u522" class="ax_default connector">
-        <img id="u522_seg0" class="img" src="dailyimg/u522_seg0.png"/>
-        <img id="u522_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u524" class="ax_default connector">
-        <img id="u524_seg0" class="img" src="dailyimg/u396_seg0.png"/>
-        <img id="u524_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u526" class="ax_default connector">
-        <img id="u526_seg0" class="img" src="dailyimg/u518_seg0.png"/>
-        <img id="u526_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u528" class="ax_default connector">
-        <img id="u528_seg0" class="img" src="dailyimg/u396_seg0.png"/>
-        <img id="u528_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u530" class="ax_default connector">
-        <img id="u530_seg0" class="img" src="dailyimg/u396_seg0.png"/>
-        <img id="u530_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u532" class="ax_default connector">
-        <img id="u532_seg0" class="img" src="dailyimg/u522_seg0.png"/>
-        <img id="u532_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u534" class="ax_default connector">
-        <img id="u534_seg0" class="img" src="dailyimg/u112_seg0.png"/>
-        <img id="u534_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u536" class="ax_default connector">
-        <img id="u536_seg0" class="img" src="dailyimg/u518_seg0.png"/>
-        <img id="u536_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u538" class="ax_default connector">
-        <img id="u538_seg0" class="img" src="dailyimg/u538_seg0.png"/>
-        <img id="u538_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u540" class="ax_default connector">
-        <img id="u540_seg0" class="img" src="dailyimg/u522_seg0.png"/>
-        <img id="u540_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u542" class="ax_default connector">
-        <img id="u542_seg0" class="img" src="dailyimg/u542_seg0.png"/>
-        <img id="u542_seg1" class="img" src="dailyimg/u542_seg1.png"/>
-        <img id="u542_seg2" class="img" src="dailyimg/u542_seg2.png"/>
-        <img id="u542_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u544" class="ax_default connector">
-        <img id="u544_seg0" class="img" src="dailyimg/u132_seg0.png"/>
-        <img id="u544_seg1" class="img" src="dailyimg/u132_seg1.png"/>
-      </div>
-
-      <div id="u546" class="ax_default connector">
-        <img id="u546_seg0" class="img" src="dailyimg/u134_seg0.png"/>
-        <img id="u546_seg1" class="img" src="dailyimg/u134_seg1.png"/>
-      </div>
-
-      <div id="u548" class="ax_default connector">
-        <img id="u548_seg0" class="img" src="dailyimg/u132_seg0.png"/>
-        <img id="u548_seg1" class="img" src="dailyimg/u132_seg1.png"/>
-      </div>
-
-      <div id="u550" class="ax_default connector">
-        <img id="u550_seg0" class="img" src="dailyimg/u138_seg0.png"/>
-        <img id="u550_seg1" class="img" src="dailyimg/u138_seg1.png"/>
-      </div>
-
-      <div id="u552" class="ax_default 55282">
-        <div id="u552_div"></div>
-        <div id="u553" class="text">
+      
+      <div id="u826" class="ax_default 5528_2">
+        <div id="u826_div"></div>
+        <div id="u827" class="text">
           <p><span>5528-2</span></p><p><span>总账数据迁移</span></p>
         </div>
       </div>
 
-      <div id="u554" class="ax_default 55283">
-        <div id="u554_div"></div>
-        <div id="u555" class="text">
+      <div id="u828" class="ax_default 5528_3">
+        <div id="u828_div"></div>
+        <div id="u829" class="text">
           <p><span>5528-3</span></p><p><span>VAT供数</span></p>
         </div>
       </div>
-
-      <div id="u556" class="ax_default connector">
-        <img id="u556_seg0" class="img" src="dailyimg/u186_seg0.png"/>
-        <img id="u556_seg1" class="img" src="dailyimg/u556_seg1.png"/>
-        <img id="u556_seg2" class="img" src="dailyimg/u84_seg2.png"/>
-        <img id="u556_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u558" class="ax_default connector">
-        <img id="u558_seg0" class="img" src="dailyimg/u186_seg0.png"/>
-        <img id="u558_seg1" class="img" src="dailyimg/u558_seg1.png"/>
-        <img id="u558_seg2" class="img" src="dailyimg/u84_seg2.png"/>
-        <img id="u558_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u560" class="ax_default connector">
-        <img id="u560_seg0" class="img" src="dailyimg/u186_seg0.png"/>
-        <img id="u560_seg1" class="img" src="dailyimg/u560_seg1.png"/>
-        <img id="u560_seg2" class="img" src="dailyimg/u84_seg2.png"/>
-        <img id="u560_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u562" class="ax_default 5600801">
-        <div id="u562_div"></div>
-        <div id="u563" class="text">
+      
+      <div id="u830" class="ax_default 801_2">
+        <div id="u830_div"></div>
+        <div id="u831" class="text">
           <p><span>5600-801</span></p><p><span>flashcopy后台及ics</span></p>
         </div>
       </div>
-
-      <div id="u564" class="ax_default 5600601">
-        <div id="u564_div"></div>
-        <div id="u565" class="text">
+      
+      <div id="u842" class="ax_default 601">
+        <div id="u842_div"></div>
+        <div id="u843" class="text">
           <p><span>5600-601</span></p><p><span>清空ics日志表</span></p>
         </div>
       </div>
 
-      <div id="u566" class="ax_default 5600803">
-        <div id="u566_div"></div>
-        <div id="u567" class="text">
+      <div id="u844" class="ax_default 803">
+        <div id="u844_div"></div>
+        <div id="u845" class="text">
           <p><span>5600-803</span></p><p><span>日终后数据库备份</span></p>
         </div>
       </div>
-
-      <div id="u568" class="ax_default 5600806">
-        <div id="u568_div"></div>
-        <div id="u569" class="text">
+      
+      <div id="u846" class="ax_default 806_2">
+        <div id="u846_div"></div>
+        <div id="u847" class="text">
           <p><span>5600-806</span></p><p><span>备份检查</span></p>
         </div>
       </div>
 
-      <div id="u570" class="ax_default 5600503">
-        <div id="u570_div"></div>
-        <div id="u571" class="text">
+      <div id="u848" class="ax_default 503">
+        <div id="u848_div"></div>
+        <div id="u849" class="text">
           <p><span>5600-503</span></p><p><span>检查workdb日志</span></p>
         </div>
       </div>
-
-      <div id="u572" class="ax_default 5600805">
-        <div id="u572_div"></div>
-        <div id="u573" class="text">
+      
+      <div id="u850" class="ax_default 805">
+        <div id="u850_div"></div>
+        <div id="u851" class="text">
           <p><span>5600-805</span></p><p><span>后台及ics数据库导表</span></p>
         </div>
       </div>
-
-      <div id="u574" class="ax_default connector">
-        <img id="u574_seg0" class="img" src="dailyimg/u186_seg0.png"/>
-        <img id="u574_seg1" class="img" src="dailyimg/u574_seg1.png"/>
-        <img id="u574_seg2" class="img" src="dailyimg/u84_seg2.png"/>
-        <img id="u574_seg3" class="img" src="dailyimg/u56_seg3.png"/>
+      
+      <div id="u862" class="ax_default 55vat1">
+        <div id="u862_div"></div>
+        <div id="u863" class="text">
+          <p><span>55vat1</span></p><p><span>查看导数结果</span></p>
+        </div>
       </div>
 
-      <div id="u576" class="ax_default connector">
-        <img id="u576_seg0" class="img" src="dailyimg/u164_seg0.png"/>
-        <img id="u576_seg1" class="img" src="dailyimg/u46_seg1.png"/>
+      <div id="u864" class="ax_default 55vat2">
+        <div id="u864_div"></div>
+        <div id="u865" class="text">
+          <p><span>55vat2</span></p><p><span>VAT日终跑批</span></p>
+        </div>
+      </div>
+      
+      <div id="u866" class="ax_default 55vat3">
+        <div id="u866_div"></div>
+        <div id="u867" class="text">
+          <p><span>55vat3</span></p><p><span>查看VAT日终结果</span></p>
+        </div>
+      </div>
+      
+      <div id="u872" class="ax_default 55ebs">
+        <div id="u872_div"></div>
+        <div id="u873" class="text">
+          <p><span>55ebs</span></p><p><span>提交总控主程序</span></p>
+        </div>
       </div>
 
-      <div id="u578" class="ax_default connector">
-        <img id="u578_seg0" class="img" src="dailyimg/u166_seg0.png"/>
-        <img id="u578_seg1" class="img" src="dailyimg/u46_seg1.png"/>
+      <div id="u874" class="ax_default 55ebs_2">
+        <div id="u874_div"></div>
+        <div id="u875" class="text">
+          <p><span>55ebs-2</span></p><p><span>检查跑批状态</span></p>
+        </div>
       </div>
-
-      <div id="u580" class="ax_default connector">
-        <img id="u580_seg0" class="img" src="dailyimg/u164_seg0.png"/>
-        <img id="u580_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u582" class="ax_default connector">
-        <img id="u582_seg0" class="img" src="dailyimg/u164_seg0.png"/>
-        <img id="u582_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u584" class="ax_default connector">
-        <img id="u584_seg0" class="img" src="dailyimg/u172_seg0.png"/>
-        <img id="u584_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u586" class="ax_default 5525">
-        <div id="u586_div"></div>
-        <div id="u587" class="text">
+      
+      <div id="u5525" class="ax_default 5525">
+        <div id="u5525_div"></div>
+        <div id="u5525_text" class="text">
           <p><span>5525</span></p><p><span>数据中心日终</span></p>
         </div>
       </div>
 
-      <div id="u588" class="ax_default connector">
-        <img id="u588_seg0" class="img" src="dailyimg/u588_seg0.png"/>
-        <img id="u588_seg1" class="img" src="dailyimg/u588_seg1.png"/>
-        <img id="u588_seg2" class="img" src="dailyimg/u588_seg2.png"/>
-        <img id="u588_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u590" class="ax_default connector">
-        <img id="u590_seg0" class="img" src="dailyimg/u82_seg0.png"/>
-        <img id="u590_seg1" class="img" src="dailyimg/u178_seg1.png"/>
-        <img id="u590_seg2" class="img" src="dailyimg/u58_seg2.png"/>
-        <img id="u590_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u592" class="ax_default connector">
-        <img id="u592_seg0" class="img" src="dailyimg/u82_seg0.png"/>
-        <img id="u592_seg1" class="img" src="dailyimg/u180_seg1.png"/>
-        <img id="u592_seg2" class="img" src="dailyimg/u58_seg2.png"/>
-        <img id="u592_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u594" class="ax_default connector">
-        <img id="u594_seg0" class="img" src="dailyimg/u182_seg0.png"/>
-        <img id="u594_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u596" class="ax_default connector">
-        <img id="u596_seg0" class="img" src="dailyimg/u120_seg0.png"/>
-        <img id="u596_seg1" class="img" src="dailyimg/u46_seg1.png"/>
-      </div>
-
-      <div id="u598" class="ax_default connector">
-        <img id="u598_seg0" class="img" src="dailyimg/u186_seg0.png"/>
-        <img id="u598_seg1" class="img" src="dailyimg/u186_seg1.png"/>
-        <img id="u598_seg2" class="img" src="dailyimg/u186_seg2.png"/>
-        <img id="u598_seg3" class="img" src="dailyimg/u56_seg3.png"/>
-      </div>
-
-      <div id="u606" class="ax_default">
-        <div id="u606_div"></div>
-        <div id="u607" class="text">
-          <p><span>超时</span></p>
+      <div id="u882" class="ax_default 7973">
+        <div id="u882_div"></div>
+        <div id="u883" class="text">
+          <p><span>7973</span></p><p><span>贷记卡导入科目明细</span></p>
         </div>
       </div>
+      
+      <div id="u1015" class="ax_default 5513">
+        <div id="u1015_div"></div>
+        <div id="u1016" class="text">
+          <p><span>5513</span></p><p><span>存款每日计提</span></p>
+        </div>
+      </div>
+      
+      <div id="u1191" class="ax_default 5541">
+        <div id="u1191_div"></div>
+        <div id="u1192" class="text">
+          <p><span>5541：结转外汇</span></p><p><span>买卖损益（年终）</span></p>
+        </div>
+      </div>
+      
+      <div id="u1193" class="ax_default 5542">
+        <div id="u1193_div"></div>
+        <div id="u1194" class="text">
+          <p><span>5542</span></p><p><span>结转损益（年终）</span></p>
+        </div>
+      </div>
+      
+      <div id="u1195" class="ax_default 5543">
+        <div id="u1195_div"></div>
+        <div id="u1196" class="text">
+          <p><span>5543</span></p><p><span>利润分配（年终）</span></p>
+        </div>
+      </div>
+      
+      <div id="u1047" class="ax_default 5514">
+        <div id="u1047_div"></div>
+        <div id="u1048" class="text">
+          <p><span>5514</span></p><p><span>日终平衡入账</span></p>
+        </div>
+      </div>
+      
+      <div id="u1049" class="ax_default 5501">
+        <div id="u1049_div"></div>
+        <div id="u1050" class="text">
+          <p><span>5501</span></p><p><span>系统日切</span></p>
+        </div>
+      </div>
+
+      <div id="u1051" class="ax_default 5502">
+        <div id="u1051_div"></div>
+        <div id="u1052" class="text">
+          <p><span>5502</span></p><p><span>系统日启</span></p>
+        </div>
+      </div>
+      
+      <div id="u1107" class="connector">
+        <img id="u1107_seg0" class="img" src="dailyimg/u1107_seg0.png"/>
+        <img id="u1107_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u1111" class="connector">
+        <img id="u1111_seg0" class="img" src="dailyimg/u1107_seg0.png"/>
+        <img id="u1111_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1105" class="connector">
+        <img id="u1105_seg0" class="img" src="dailyimg/u1105_seg0.png"/>
+        <img id="u1105_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1203" class="connector">
+        <img id="u1203_seg0" class="img" src="dailyimg/u156_seg0.png"/>
+        <img id="u1203_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1201" class="connector">
+        <img id="u1201_seg0" class="img" src="dailyimg/u1201_seg0.png"/>
+        <img id="u1201_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1199" class="connector">
+        <img id="u1199_seg0" class="img" src="dailyimg/u164_seg0.png"/>
+        <img id="u1199_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1197" class="connector">
+        <img id="u1197_seg0" class="img" src="dailyimg/u164_seg0.png"/>
+        <img id="u1197_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u1101" class="connector">
+        <img id="u1101_seg0" class="img" src="dailyimg/u1101_seg0.png"/>
+        <img id="u1101_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u755" class="connector">
+        <img id="u755_seg0" class="img" src="dailyimg/u755_seg0.png"/>
+        <img id="u755_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u757" class="connector">
+        <img id="u757_seg0" class="img" src="dailyimg/u757_seg0.png"/>
+        <img id="u757_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u759" class="connector">
+        <img id="u759_seg0" class="img" src="dailyimg/u118_seg0.png"/>
+        <img id="u759_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u761" class="connector">
+        <img id="u761_seg0" class="img" src="dailyimg/u761_seg0.png"/>
+        <img id="u761_seg1" class="img" src="dailyimg/u104_seg1.png"/>
+        <img id="u761_seg2" class="img" src="dailyimg/u761_seg2.png"/>
+        <img id="u761_seg3" class="img" src="dailyimg/u761_seg3.png"/>
+      </div>
+
+      <div id="u763" class="connector">
+        <img id="u763_seg0" class="img" src="dailyimg/u761_seg0.png"/>
+        <img id="u763_seg1" class="img" src="dailyimg/u106_seg1.png"/>
+        <img id="u763_seg2" class="img" src="dailyimg/u761_seg2.png"/>
+        <img id="u763_seg3" class="img" src="dailyimg/u761_seg3.png"/>
+      </div>
+      
+      <div id="u765" class="connector">
+        <img id="u765_seg0" class="img" src="dailyimg/u755_seg0.png"/>
+        <img id="u765_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u767" class="connector">
+        <img id="u767_seg0" class="img" src="dailyimg/u767_seg0.png"/>
+        <img id="u767_seg1" class="img" src="dailyimg/u767_seg1.png"/>
+        <img id="u767_seg2" class="img" src="dailyimg/u767_seg2.png"/>
+        <img id="u767_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+      
+      <div id="u769" class="connector">
+        <img id="u769_seg0" class="img" src="dailyimg/u769_seg0.png"/>
+        <img id="u769_seg1" class="img" src="dailyimg/u769_seg1.png"/>
+        <img id="u769_seg2" class="img" src="dailyimg/u769_seg2.png"/>
+        <img id="u769_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u771" class="connector">
+        <img id="u771_seg0" class="img" src="dailyimg/u771_seg0.png"/>
+        <img id="u771_seg1" class="img" src="dailyimg/u771_seg1.png"/>
+        <img id="u771_seg2" class="img" src="dailyimg/u771_seg2.png"/>
+        <img id="u771_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u773" class="connector">
+        <img id="u773_seg0" class="img" src="dailyimg/u116_seg0.png"/>
+        <img id="u773_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u775" class="connector">
+        <img id="u775_seg0" class="img" src="dailyimg/u118_seg0.png"/>
+        <img id="u775_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u777" class="connector">
+        <img id="u777_seg0" class="img" src="dailyimg/u120_seg0.png"/>
+        <img id="u777_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u779" class="connector">
+        <img id="u779_seg0" class="img" src="dailyimg/u779_seg0.png"/>
+        <img id="u779_seg1" class="img" src="dailyimg/u122_seg1.png"/>
+        <img id="u779_seg2" class="img" src="dailyimg/u779_seg2.png"/>
+        <img id="u779_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+      
+      <div id="u781" class="connector">
+        <img id="u781_seg0" class="img" src="dailyimg/u128_seg0.png"/>
+        <img id="u781_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u783" class="connector">
+        <img id="u783_seg0" class="img" src="dailyimg/u116_seg0.png"/>
+        <img id="u783_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u785" class="connector">
+        <img id="u785_seg0" class="img" src="dailyimg/u785_seg0.png"/>
+        <img id="u785_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u787" class="connector">
+        <img id="u787_seg0" class="img" src="dailyimg/u767_seg0.png"/>
+        <img id="u787_seg1" class="img" src="dailyimg/u134_seg1.png"/>
+        <img id="u787_seg2" class="img" src="dailyimg/u767_seg2.png"/>
+        <img id="u787_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+      
+      <div id="u804" class="connector">
+        <img id="u804_seg0" class="img" src="dailyimg/u156_seg0.png"/>
+        <img id="u804_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u806" class="connector">
+        <img id="u806_seg0" class="img" src="dailyimg/u144_seg0.png"/>
+        <img id="u806_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u810" class="connector">
+        <img id="u810_seg0" class="img" src="dailyimg/u810_seg0.png"/>
+        <img id="u810_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+      
+      <div id="u832" class="connector">
+        <img id="u832_seg0" class="img" src="dailyimg/u767_seg0.png"/>
+        <img id="u832_seg1" class="img" src="dailyimg/u832_seg1.png"/>
+        <img id="u832_seg2" class="img" src="dailyimg/u832_seg2.png"/>
+        <img id="u832_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u834" class="connector">
+        <img id="u834_seg0" class="img" src="dailyimg/u767_seg0.png"/>
+        <img id="u834_seg1" class="img" src="dailyimg/u834_seg1.png"/>
+        <img id="u834_seg2" class="img" src="dailyimg/u832_seg2.png"/>
+        <img id="u834_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u836" class="connector">
+        <img id="u836_seg0" class="img" src="dailyimg/u767_seg0.png"/>
+        <img id="u836_seg1" class="img" src="dailyimg/u836_seg1.png"/>
+        <img id="u836_seg2" class="img" src="dailyimg/u832_seg2.png"/>
+        <img id="u836_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u838" class="connector">
+        <img id="u838_seg0" class="img" src="dailyimg/u767_seg0.png"/>
+        <img id="u838_seg1" class="img" src="dailyimg/u838_seg1.png"/>
+        <img id="u838_seg2" class="img" src="dailyimg/u832_seg2.png"/>
+        <img id="u838_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+      
+      <div id="u840" class="connector">
+        <img id="u840_seg0" class="img" src="dailyimg/u767_seg0.png"/>
+        <img id="u840_seg1" class="img" src="dailyimg/u840_seg1.png"/>
+        <img id="u840_seg2" class="img" src="dailyimg/u832_seg2.png"/>
+        <img id="u840_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u852" class="connector">
+        <img id="u852_seg0" class="img" src="dailyimg/u852_seg0.png"/>
+        <img id="u852_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u854" class="connector">
+        <img id="u854_seg0" class="img" src="dailyimg/u213_seg0.png"/>
+        <img id="u854_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u856" class="connector">
+        <img id="u856_seg0" class="img" src="dailyimg/u856_seg0.png"/>
+        <img id="u856_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u858" class="connector">
+        <img id="u858_seg0" class="img" src="dailyimg/u858_seg0.png"/>
+        <img id="u858_seg1" class="img" src="dailyimg/u858_seg1.png"/>
+      </div>
+
+      <div id="u860" class="connector">
+        <img id="u860_seg0" class="img" src="dailyimg/u860_seg0.png"/>
+        <img id="u860_seg1" class="img" src="dailyimg/u858_seg1.png"/>
+      </div>
+      
+      <div id="u868" class="connector">
+        <img id="u868_seg0" class="img" src="dailyimg/u852_seg0.png"/>
+        <img id="u868_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u870" class="connector">
+        <img id="u870_seg0" class="img" src="dailyimg/u856_seg0.png"/>
+        <img id="u870_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u876" class="connector">
+        <img id="u876_seg0" class="img" src="dailyimg/u852_seg0.png"/>
+        <img id="u876_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u878" class="connector">
+        <img id="u878_seg0" class="img" src="dailyimg/u856_seg0.png"/>
+        <img id="u878_seg1" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+      
+      <div id="u884" class="connector">
+        <img id="u884_seg0" class="img" src="dailyimg/u860_seg0.png"/>
+        <img id="u884_seg1" class="img" src="dailyimg/u858_seg1.png"/>
+      </div>
+
+      <div id="u886" class="connector">
+        <img id="u886_seg0" class="img" src="dailyimg/u886_seg0.png"/>
+        <img id="u886_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u888" class="connector">
+        <img id="u888_seg0" class="img" src="dailyimg/u888_seg0.png"/>
+        <img id="u888_seg1" class="img" src="dailyimg/u888_seg1.png"/>
+        <img id="u888_seg2" class="img" src="dailyimg/u858_seg1.png"/>
+      </div>
+
+      <div id="u890" class="connector">
+        <img id="u890_seg0" class="img" src="dailyimg/u890_seg0.png"/>
+        <img id="u890_seg1" class="img" src="dailyimg/u890_seg1.png"/>
+        <img id="u890_seg2" class="img" src="dailyimg/u890_seg2.png"/>
+        <img id="u890_seg3" class="img" src="dailyimg/u890_seg3.png"/>
+        <img id="u890_seg4" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+      
+      <div id="u892" class="connector">
+        <img id="u892_seg0" class="img" src="dailyimg/u771_seg0.png"/>
+        <img id="u892_seg1" class="img" src="dailyimg/u98_seg1.png"/>
+        <img id="u892_seg2" class="img" src="dailyimg/u892_seg2.png"/>
+        <img id="u892_seg3" class="img" src="dailyimg/u892_seg3.png"/>
+      </div>
+
+      <div id="u894" class="connector">
+        <img id="u894_seg0" class="img" src="dailyimg/u894_seg0.png"/>
+        <img id="u894_seg1" class="img" src="dailyimg/u100_seg1.png"/>
+      </div>
+
+      <div id="u896" class="connector">
+        <img id="u896_seg0" class="img" src="dailyimg/u896_seg0.png"/>
+        <img id="u896_seg1" class="img" src="dailyimg/u124_seg1.png"/>
+        <img id="u896_seg2" class="img" src="dailyimg/u896_seg2.png"/>
+        <img id="u896_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+
+      <div id="u898" class="connector">
+        <img id="u898_seg0" class="img" src="dailyimg/u896_seg0.png"/>
+        <img id="u898_seg1" class="img" src="dailyimg/u126_seg1.png"/>
+        <img id="u898_seg2" class="img" src="dailyimg/u896_seg2.png"/>
+        <img id="u898_seg3" class="img" src="dailyimg/u96_seg1.png"/>
+      </div>
+    </div>
+    
+    <div id="mm" class="easyui-menu" style="width:120px;">
+        <div iconCls="icon-search" onclick="rz_showLog()">查看日志</div>
     </div>
 </body>
+
+<script>
+	$(document).ready(function(){
+		var wid = window.screen.availWidth;
+		var widTr = (wid - 1270) / 2;
+		$("#mainflow").css("left",widTr);
+	})
+
+	$(document).ready(function(){
+		$(".55dj").click(function(){
+			var dag_id = getUrlParam('dag_id');
+			var subdag_id = dag_id + ".55dj";
+			var fathertask_id = "55dj";
+			var execution_date = getUrlParam('execution_date');
+			window.open("getSubPageHistory.do?dag_id="+dag_id+"&subdag_id="+subdag_id+"&fathertask_id="+fathertask_id+"&execution_date="+execution_date);
+		})
+	})
+	function getUrlParam(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	    if (r != null) return unescape(r[2]); return null; //返回参数值
+	}
+	
+	var taskid;
+	var execution_date_time = getUrlParam('execution_date');//2017-12-01T15:24:28
+	var execution_date_time1 = execution_date_time.replace("T"," ");
+	
+	$(document).ready(function(){
+		$(".ax_default").on("mouseover",function(e){ //获取要点击任务框的id
+			var classes = $(this).attr("class");
+			taskid = classes.split(" ")[1];
+		})
+	})
+	
+	$(function(){
+		$(".ax_default").bind('contextmenu',function(e){
+			e.preventDefault();
+			$('#mm').menu('show', {
+				left: e.pageX,
+				top: e.pageY
+			});
+		});
+	});
+	
+	function rz_showLog()
+	{
+		$("#mm").menu('hide');
+		var execution_date = getUrlParam('execution_date'); 
+		var dag_id = getUrlParam('dag_id'); //获取url 的值
+		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
+		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
+		$.ajax({
+			url : '<%=path%>/getTaskLog.do',
+			data:data,
+			type : 'post',
+			dataType : 'json',
+			success:function(result) 
+			{
+				$("#showlog").modal();
+				$("#logarea").text(result.msg);
+			},
+		})
+	}		
+	
+
+	$(".ax_default").tooltip({
+	    html: true,
+	    container: "body",
+	});
+	
+	var dag_id = getUrlParam('dag_id'); 
+	var execution_date = getUrlParam('execution_date');
+	var execution_date_show = execution_date.split("T")[0];
+	var data ={"dag_id":dag_id,"execution_date":execution_date};
+		
+	function update_nodes_states(task_instances) {
+		$.each(task_instances,function(idx,obj){
+            var task_div = $('.' + obj.task_id);
+            if(obj.state == 'failed') //如果失败
+            {
+            	var tipcontent ="<p align='left'> 预计开始时间：" +  obj.expected_starttime + "," +
+            									 "实际开始时间：" +  obj.start_Date         + "," +
+            									 "预计结束时间：" +  obj.expected_endtime   + "," + 
+            									 "实际结束时间：" +  obj.end_Date           + "," +
+            									 "预计持续时间：" +  obj.expected_duration  + "&nbsp;&nbsp;," + 
+            									 "实际持续时间：" +  obj.duration           + "&nbsp;&nbsp;," +
+            					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#FF0000");
+            }
+            else if (obj.state == 'success') //如果成功
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 				 "实际开始时间：" +  obj.start_Date         + "," +
+								 			 	 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 				 "实际结束时间：" +  obj.end_Date           + "," +
+								 				 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#32cc00");
+            }
+            else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 				 "实际开始时间：" +  obj.start_Date         + "," +
+								 				 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 				 "实际结束时间：" +  obj.end_Date           + "," +
+								 				 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#ffffff");
+            }
+            else if (obj.state == 'running')
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 				 "实际开始时间：" +  obj.start_Date         + "," +
+								 				 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 				 "实际结束时间：" +  obj.end_Date           + "," +
+								 				 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#0000ff") ;
+            }
+            else if (obj.state == 'done') //如果处于做完待确认的状态
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 				 "实际开始时间：" +  obj.start_Date         + "," +
+								 				 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 				 "实际结束时间：" +  obj.end_Date           + "," +
+								 				 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#FF8C00") ;
+            }
+            else if (obj.state == 'upstream_failed') //需要清理 
+            {
+            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+								 				 "实际开始时间：" +  obj.start_Date         + "," +
+								 				 "预计结束时间：" +  obj.expected_endtime   + "," + 
+								 				 "实际结束时间：" +  obj.end_Date           + "," +
+								 				 "预计持续时间："  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "实际持续时间："  + obj.duration           + "&nbsp;&nbsp;," +
+								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
+                var format_content = tipcontent.split(",").join("<br>");
+                task_div.attr("data-original-title",format_content); 
+                task_div.find("div:eq(0)").css("border-color","#FFCC33") ;
+            }
+		})
+    }
+	
+	function ajax(url, param, type) {
+	    return $.ajax({
+	    url: url,
+	    data: param || {},
+	    type: type || 'GET',
+	    cache:false
+	    });
+	}
+	
+	function getAjax(url,param,type){
+		function handleAjax(url, param, type) {
+		 return ajax(url, param, type).then(function(resp){
+				// 成功回调
+				if(resp){
+					console.info(resp.dag_tasks);
+					update_nodes_states(resp.dag_tasks);
+				}
+				else{
+					return $.Deferred().reject(resp); // 返回一个失败状态的deferred对象，把错误代码作为默认参数传入之后fail()方法的回调
+				}
+			}, function(err){ //失败回调
+				console.log(err); // 打印状态码
+				});
+			}
+		handleAjax(url,param,type);
+	}
+	
+	$(document).ready(function(){
+		//更新最新一次的流程跑跑的数据
+		getAjax("historyData.do",data,"post");
+		//更新下拉框的日期数据
+		getDagHisRecord("historyDatatime.do",data,"get");
+	});
+	
+	function getDagHisRecord(url,param,type){
+		 $.ajax({
+		        timeout: 3000,
+		        async: false,
+		        url: url,
+		        dataType: "json",
+		        data: param || {},
+		        type: type || 'GET',
+		        cache:false,
+		        success: function (data) {
+		        	var array = data.dag_hisdatetime;
+		        	for (var i = 0; i < array.length; i++) {
+	               		$("#hisdatetime").append("<option>" + array[i] + "</option>");
+		            } 
+		        }
+		    });
+	}
+	
+	//查看历史操作
+	$("#showlogbtn").click(function(){
+		//首先获取下拉框的值
+		var curDatetime = $("#hisdatetime").val();
+		curdata={"dag_id":dag_id,"execution_date":curDatetime};
+		getAjax("historyData.do",curdata,"post");	
+	})
+</script>
 
 </html>

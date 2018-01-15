@@ -171,18 +171,35 @@
 			return;
 		 }
 		 else {
-			var  arr  = [];
-			if(osId[0].toLowerCase().indexOf('aix')==0)
-			{
-				location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=db2&platform=aix";
-			}
-			else if(osId[0].toLowerCase().indexOf('windows')==0)
-			{
-				sweet("DB2暂时不支持windows操作系统 !","warning","确定");
-				return;
-			}
-			else
-				location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=db2&platform=linux";
+			 swal({ 
+				  title: "安装前是否满足如下条件？", 
+				  text: "<p style='text-align:left;margin:0 120px;'>AIX需预安装unzip;</br> </p>" + 
+					"<p style='text-align:left;margin:0 120px;'>/tmp目录保证5G剩余空间;</br></p>"+
+					   "<p style='text-align:left;margin:0 120px;'>/opt目录保证5G剩余空间;</br></p>"+
+					"<p style='text-align:left;margin:0 120px;'>AIX OpenSSL版本1.0.1.513</p>",
+				  type: "",
+				  showCancelButton: true, 
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "继续", 
+				  closeOnConfirm: false,
+				  html: true,
+				  cancelButtonText:"取消"
+				},
+				function(){
+					var  arr  = [];
+					if(osId[0].toLowerCase().indexOf('aix')==0)
+					{
+						location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=db2&platform=aix";
+					}
+					else if(osId[0].toLowerCase().indexOf('windows')==0)
+					{
+						sweet("DB2暂时不支持windows操作系统 !","warning","确定");
+						return;
+					}
+					else
+						location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=db2&platform=linux";
+				});
+			
 		}
 	}
 </script>
@@ -202,21 +219,12 @@
 			<a href="#" class="current1" style="position:relative;top:-3px;">IBM DB2</a>
 		</div>
 		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="widget-box collapsible">
-						<div class="widget-title">
-							<a data-toggle="collapse" href="#collapseOne">
-								<span class="icon"> <i class="icon-arrow-right"></i>
-								</span>
-								<h5>说明：</h5>
-							</a>
-						</div>
-						<div id="collapseOne" class="collapse in">
-							<div class="widget-content">所有DB2实例信息.</div>
-						</div>
-					</div>
-				</div>
+			<div class="widget-title">
+				<a data-toggle="collapse" href="#collapseOne">
+					<span class="icon"> <i class="icon-arrow-right"></i>
+					</span>
+					<h5>说明：所有DB2实例信息.</h5>
+				</a>
 			</div>
 		</div>
 

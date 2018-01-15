@@ -192,21 +192,22 @@ function getInstallMsg()
 	var uuid = $("#uuid").val().trim();
 //	var type1 = $("#type").val().trim();
 	var type1="itm-os";
+	var created_time = $("#created_time").val().trim();
 	$.ajax({
 		url : '<%=path%>/nodeInstall.do',
 		type : 'post',
-		data : { uuid:uuid,type:type1 },
-		dataType : "json",
+		data : { uuid:uuid,type:type1,created_time:created_time },
 		error : function(err) {
 			//alert("获取安装信息异常！");
 		},
 		success : function(data) 
 		{
-			giveTdColor(data);//给TD上颜色
+			$("#deplylog").html(data);
+			/* giveTdColor(data);//给TD上颜色
 			$("#progress_my").prev().html("主机安装进度 :&nbsp;&nbsp;&nbsp;" + data.percent);//安装进度
 			$(".bar").attr('style', 'width: ' + data.percent + ';') //percent
 			$("#percent").val(data.percent);
-			$("#status").val(data.status);
+			$("#status").val(data.status); */
 		}
 	});
 }
@@ -215,14 +216,15 @@ function myrefresh()
 {
 	if (($("#logmsg").attr("class") == 'tabcontent tabnow'))
 	{
-		if($("#status").val().trim() != 2 && $("#status").val().trim() != 3)
+		getInstallMsg();
+		/* if($("#status").val().trim() != 2 && $("#status").val().trim() != 3)
 		{
 			getInstallMsg();
-		}
+		} */
 	}
 }
 
-window.setInterval('myrefresh()',10000);  //每隔10秒自动刷新一次
+window.setInterval('myrefresh()',3000);  //每隔3秒自动刷新一次
 </script>
 </head>
 

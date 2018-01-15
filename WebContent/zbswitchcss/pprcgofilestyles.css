@@ -3931,7 +3931,15 @@ body {
 #u182 {
   border-width:0px;
   position:absolute;
-  left:-30px;
+  left:-40px;
+  top:0px;
+  width:402px;
+  white-space:nowrap;
+}
+#u182a {
+  border-width:0px;
+  position:absolute;
+  left:-70px;
   top:0px;
   width:402px;
   white-space:nowrap;
@@ -4047,8 +4055,18 @@ body {
 #uu3{
 	border-width: 0px;
 	position: absolute;
-	left:320px;top:38px;
+	left:340px;top:38px;
 	width: 120px;
+	height: 30px;
+	font-family: 'Î¢ÈíÑÅºÚ';
+	font-style: normal;
+	color: #FFFFFF;
+}
+#uu3a{
+	border-width: 0px;
+	position: absolute;
+	left:310px;top:38px;
+	width: 140px;
 	height: 30px;
 	font-family: 'Î¢ÈíÑÅºÚ';
 	font-style: normal;

@@ -5,6 +5,7 @@
 			+ path + "/";
 %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="com.fasterxml.jackson.databind.*"%>
 <%@ page import="com.fasterxml.jackson.databind.node.*"%>
 <!DOCTYPE HTML>
@@ -81,25 +82,15 @@ input[type="text"],input[type="password"]  {
 	<!--content start-->
 	<div class="content">
 		<div class="breadcrumb">
-			<a href="" class="current" style="position:relative;top:-3px;"><i class="icon-home"></i>实例一览</a>
-			<a href="#" class="current1" style="position:relative;top:-3px;">IBM 账号管理</a>
+			<a href="" class="current" style="position:relative;top:-3px;"><i class="icon-home"></i>用户一览</a>
 		</div>
 		
 		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="widget-box collapsible">
-						<div class="widget-title">
-							<a data-toggle="collapse" href="#collapseOne">
-								<span class="icon"> <i class="icon-arrow-right"></i></span>
-								<h5>说明：</h5>
-							</a>
-						</div>
-						<div id="collapseOne" class="collapse in">
-							<div class="widget-content">账号管理概要信息.</div>
-						</div>
-					</div>
-				</div>
+			<div class="widget-title">
+				<a data-toggle="collapse" href="#collapseOne">
+					<span class="icon"> <i class="icon-arrow-right"></i></span>
+					<h5>说明：账号管理概要信息.</h5>
+				</a>
 			</div>
 		</div>
 
@@ -114,25 +105,27 @@ input[type="text"],input[type="password"]  {
 								<button class="btn btn-sm" data-toggle="modal" data-target="#create_user" style="background-color: #448FC8;">
 									<font color="white">创建用户</font>
 								</button>	
+								
+								<span style="margin-right: 4px;"></span>
+								<button class="btn btn-sm" onclick="CheckModifyUser();" data-toggle="modal" style="background-color: #448FC8;">
+									<font color="white">编辑用户</font>
+								</button>
 								<span style="margin-right: 4px;"></span>
 								<button class="btn btn-sm" onclick="deleteUser();" id="delete_button" style="background-color: #448FC8;">
 									<font color="white">删除用户</font>
-								</button>
-								<!-- <span style="margin-right: 4px;"></span>
-								<button class="btn btn-sm" onclick="editUser()" data-toggle="modal" style="background-color: #448FC8;">
-									<font color="white">编辑用户</font>
-								</button> -->						
+								</button>					
 							</div>
 
 							<div style="margin-bottom: 10px;"></div>
 							<table id="sel_tab" class="table table-bordered data-table with-check table-hover no-search no-select">
 								<thead>
 									<tr>
-										<th style="text-align: center;">序号</th>
-										<th style="text-align: center;">用户名</th>
-										<th style="text-align: center;">E-mail</th>
-										<th style="text-align: center;">角色</th>
-										<!-- <th style="text-align: center;">管理产品</th> -->
+										<th style="text-align: center;width:10%;">序号</th>
+										<th style="text-align: center;width:10%;">用户名</th>
+										<th style="text-align: center;width:10%;">E-mail</th>
+										<th style="text-align: center;width:10%;">电话</th>
+										<th style="text-align: center;width:10%;">操作员</th>
+										<th style="text-align: center;width:40%;">角色</th>
 									</tr>
 								</thead>
 
@@ -145,8 +138,16 @@ input[type="text"],input[type="password"]  {
 											</td>
 											<td style="text-align: center;">${job.username }</td>											
 											<td style="text-align: center;">${job.email }</td>
-											<td style="text-align: center;"><c:if test="${job.role == 5}">应用发布组</c:if><c:if test="${job.role == 4}">巡检组</c:if><c:if test="${job.role == 3}">部署组</c:if><c:if test="${job.role == 1}">管理员</c:if><c:if test="${job.role == 0}">日终组</c:if><c:if test="${job.role == 2}">灾备组</c:if></td>
-											 <%-- <td style="text-align: center;">${job.proList }</td> --%>										    
+											<td style="text-align: center;">${job.tel }</td>
+											<td style="text-align: center;">${job.czy }</td>
+											<td style="text-align: center;">
+												
+												<c:if test="${fn:contains(job.role,0) }">日终组</c:if>
+												<c:if test="${fn:contains(job.role,1) }">管理员组</c:if>
+												<c:if test="${fn:contains(job.role,2) }">灾备组</c:if>
+												<c:if test="${fn:contains(job.role,3) }">部署组</c:if>
+												<c:if test="${fn:contains(job.role,5) }">应用发布组</c:if>
+											</td>
 											</tr>							
 									</c:forEach> 
 								</tbody>
@@ -196,30 +197,34 @@ input[type="text"],input[type="password"]  {
 														<input class="form-control" type="password"  onblur="confirmPasswd()"
 														       id="confirmasswd" name="confirmasswd">
 													</div>
+												</div>	
+												
+												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">电话：</span>
+														<input class="form-control" type="text" id="tel" name="tel">
+													</div>
+												</div>	
+												
+												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">操作员：</span>
+														<input class="form-control" type="text" id="czy" name="czy">
+													</div>
 												</div>											
 												
 												<div class="control-group">
 													<div class="controls" style="padding-top: 5px;">
 														<span class="input140 mr20">角色：</span>
-														<select id="role" class="w85" style="width: 210px;" name="role">
+														<select multiple id="role" class="w85" style="width: 210px;" name="role">
 															<option value="1" selected="selected">管理员</option>
 															<option value="0" >日终组</option>
 															<option value="2" >灾备组</option>
 															<option value="3" >部署组</option>
-															<option value="4" >巡检组</option>
 															<option value="5" >应用发布组</option>
 														</select>
 													</div>
 												</div>
-												<!-- 
-												<div class="control-group">
-													<div class="controls" style="padding-top: 10px;">
-														<span class="input140 mr20">管理产品：</span> 
-														<select id="manageProduct" multiple="multiple" style="width: 206px;" name="manageProduct">
-														</select>
-													</div>
-												</div> 
-												 -->
 											</div>
 										</form>
 									</div>
@@ -235,7 +240,69 @@ input[type="text"],input[type="password"]  {
 							<!-- 模态框：账号管理(创建用户) -->		
 							
 							
-										
+							<!-- 模态框：账号管理(修改用户) -->
+							<div class="modal fade" id="modifyUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h5 class="modal-title" id="myModalLabel">
+												<img src="<%=path%>/img/edit16.png">&nbsp;&nbsp;修改用户
+											</h5>
+										</div>
+										<form  method="post" id="submits_users">
+										<div class="modal-body">
+											<div class="control-group">
+													<div class="controls" style="padding-top: 5px;margin-bottom:5px;">
+														<span class="input140 mr20" style="margin-bottom:5px;"><font color="red">*</font> 用户名：</span>
+														<input class="form-control" readonly="readonly" type="text" id="username_old" name="username_old">
+													</div>
+												</div>
+											<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">E-mail：</span>
+														<input class="form-control" type="text" id="email_old" name="email_old">
+													</div>
+												</div>												
+											<div class="control-group">
+												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">电话：</span>
+														<input class="form-control" type="text" id="tel_old" name="tel_old">
+													</div>
+												</div>	
+												
+												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;">
+														<span class="input140 mr20">操作员：</span>
+														<input class="form-control" type="text" id="czy_old" name="czy_old">
+													</div>
+												</div>
+												<div class="controls" style="padding-top: 5px;">
+													<span class="input140 mr20">角色：</span>
+													<select multiple id="change_role" class="w85" style="width: 210px;" name="change_role">
+														<option value="1">管理员</option>
+														<option value="0">日终组</option>
+														<option value="2">灾备组</option>
+														<option value="3" selected="selected">部署组</option>
+														<option value="5">应用发布组</option>
+													</select>
+													<span><font color="red" size="2">* 请修改组</font></span>
+												</div>
+											</div>
+										</div>
+										</form>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal();">取消</button>
+											<button type="button" class="btn" style="background-color: rgb(68, 143, 200);"
+												onclick="CheckChangeGroup();">
+												<font color="white">保存</font>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 模态框：账号管理(编辑用户) -->			
 									
 						</div>
 					</div>
@@ -301,6 +368,19 @@ input[type="text"],input[type="password"]  {
 			return ;
 		}
 		
+		//判断操作员必须为5位
+		var czy = $("#czy").val().length;
+		if(czy != 5)
+		{
+			sweet("操作员必须5位！","warning","确定");
+			return;
+		}
+		/* if(username != "" && username.indexOf(" ") == -1 && passwd != "" && confirmasswd != "" && czy != 5)
+		{
+			sweet("操作员必须为5位 !","warning","确定");   
+			return ;
+		} */
+		
 		//当角色为operator 的时候，用户名不能超过5个字符,0表示Operator,1表示Adminstor
 		var role_name = $("#role").val();
 		if(role_name == "0" && username.length > 5)
@@ -309,16 +389,6 @@ input[type="text"],input[type="password"]  {
 			return ;
 		}
 		
-		//判断管理产品不为空
-		//var manageProduct = $("#manageProduct").val();
-		var manageProduct = [""];
-		/*
-		if(username != "" && username.indexOf(" ") == -1 && passwd != "" && confirmasswd != "" && manageProduct == null)
-		{
-			sweet("请选择管理产品 !","warning","确定");  
-			return ;
-		}
-		*/
 		$.ajax({
 			url : '<%=path%>/addUser.do',
 			data : $('#submits_jobs').serialize(), 
@@ -344,9 +414,9 @@ input[type="text"],input[type="password"]  {
 						type : "error",
 						confirmButtonText : "确定",
 					},function(isConfirm){
-						if (isConfirm) {
+						/* if (isConfirm) {
 							window.location.href = "accountManage.do";
-						}
+						} */
 					})
 			
 				}
@@ -430,9 +500,9 @@ input[type="text"],input[type="password"]  {
 </script>
 
 
-
-<script>
+<%-- <script>
 	/* 获取管理产品 */  
+	
 	$(document).ready(function(){
 		$.ajax({
 			url : '<%=path%>/getProduct.do',
@@ -452,6 +522,98 @@ input[type="text"],input[type="password"]  {
 			}
 		})
 	})
+	
+</script> --%>
+
+
+<script>
+	/* 编辑用户 */
+	var infoId = [];
+	function isSelect(s) {
+		if ($(s).attr("checked")) {
+			infoId.push(s.value);
+		} else {
+			var index = 0;
+			for (var i = 0; i < infoId.length; i++) {
+				if (s.value == infoId[i]) {
+					index = i;
+				}
+			}
+			infoId.splice(index, 1);
+		}
+		console.log(infoId);
+	}
+		
+	function transData(infoId){
+    	var data="";
+		for(var i = 0 ; i < infoId.length;i++)
+		{
+	   	    data+=infoId[i]+',';
+		}
+		var length=data.lastIndexOf(',');	
+		return data.substr(0,length);
+	}
+		
+	function CheckModifyUser()
+	{
+		if(infoId.length == 1)
+		{
+			$("input[name='servers']").each(function() {
+				if ($(this).attr("checked")) {
+				$('#username_old').val($(this).val());
+				$('#email_old').val($(this).parents('td').next().next().text());
+				$('#tel_old').val($(this).parents('td').next().next().next().text());
+				$('#czy_old').val($(this).parents('td').next().next().next().next().text());
+				}
+			})	
+			$('#modifyUser').modal('show');
+		}
+		else
+		{
+			sweet("只能选择一个用户，不能不选或者多选！","warning","确定"); 
+		}
+	}
+
+	function CheckChangeGroup()
+	{
+		var name = $("#username_old").val();
+		var email = $("#email_old").val();
+		var tel = $("#tel_old").val();
+		var czy = $("#czy_old").val();
+		var change_role = $("#change_role").val();
+		$.ajax({
+			url : "<%=path%>/modifyUser.do",
+			type : 'post',
+			data : $('#submits_users').serialize(), 
+			success : function(result){
+				if(result.status == 1){
+					swal({
+						title: "",
+						text: "更改成功！",  
+						type: "success",
+						confirmButtonText: "确定",  
+						confirmButtonColor: "rgb(174,222,244)"
+					},
+					function(isConfirm)
+					{
+						  if (isConfirm) 
+						  {
+							  window.location.href = "accountManage.do";
+						  } 
+					});
+				}
+				else{
+					swal({
+					  title: "",
+					  text: "更改失败",  
+					  type: "error",
+					  confirmButtonText: "确定",  
+					  confirmButtonColor: "rgb(174,222,244)"
+					});
+				}
+			}
+		})
+	}
 </script>
 
 </body>

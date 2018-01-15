@@ -37,7 +37,7 @@
 	width:calc(100% - 57px);
 	margin:0px;
 	height:calc(100vh - 70px);
-	overflow-y:hidden;
+	overflow-y:scroll;
 }
 .linkexpre{
 	float:left;
@@ -77,21 +77,11 @@ input[type="text"],input[type="password"] {
 		</div>
 		
 		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="widget-box collapsible">
-						<div class="widget-title">
-							<a data-toggle="collapse" href="#collapseOne">
-								<span class="icon"> <i class="icon-arrow-right"></i></span>
-								<h5>说明：</h5>
-							</a>
-						</div>
-						<div id="collapseOne" class="collapse in">
-							<div class="widget-content">灾备切换场景一览表</div>
-							
-						</div>
-					</div>
-				</div>
+			<div class="widget-title">
+				<a data-toggle="collapse" href="#collapseOne">
+					<span class="icon"> <i class="icon-arrow-right"></i></span>
+					<h5>说明：灾备切换场景一览表.</h5>
+				</a>
 			</div>
 		</div>
 		
@@ -286,7 +276,7 @@ function update_summary_table_state()
 		var execution_date = $(this).parents("tr").find("#execution_date").text()
 		if ( execution_date == '' || execution_date == null || execution_date=='undefined')
 		{
-			execution_date  = '1969-12:12T12:12:12';
+			execution_date  = '1969-12-12T12:12:12';
 		}
 		window.open("runningPage.do?dag_id="+dag_id+"&execution_date="+execution_date.replace(" ","T"));
 	})

@@ -13,7 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <jsp:include page="header.jsp" flush="true" />
-<title>自动化运维平台</title>
+<title>自动化部署平台——主机列表</title>
 <style type="text/css">
 .mr20{
 	font-size:14px;

@@ -109,7 +109,8 @@
 	width: 100%;
 	float: left;
 	font-size: 12px;
-	background: #383838;
+	/* background: #383838; */
+	background:rgba("255,255,255,0");
 	border-top: none;
 	position: relative;
 	border-left: solid 6px transparent;
@@ -122,7 +123,7 @@
 	width: 190px;
 	float: left;
 	font-size: 12px;
-	background: #383838;
+	background-color:rgb(50,154,155); 
 	border-top: none;
 	position: relative;
 	border-left: solid 6px transparent;
@@ -248,7 +249,8 @@
 }
 
 .red.jquery-accordion-menu .jquery-accordion-menu-header,.red.jquery-accordion-menu ul li a {
-	background: #413A3A
+	/* background: #413A3A */
+	background:rgba(255,255,255,0);
 }
 
 .red.jquery-accordion-menu .jquery-accordion-menu-footer {
@@ -315,6 +317,6 @@
 	position:relative;
 	float:left;
 	top:auto;
-	height:calc(100vh - 50px);
-	margin-top:50px;
+	height:calc(100vh - 70px);
+	margin-top:70px;
 }

@@ -833,7 +833,7 @@ body{margin:0;padding:0;}
             var task_div = $('.' + obj.task_id);
             if(obj.state == 'failed') //如果失败
             {
-            	var tipcontent ="<p align='left'> 预计开始时间：" + execution_date_show + " " + obj.expected_starttime + "," +
+            	var tipcontent ="<p align='left'> 预计开始时间：" +  obj.expected_starttime + "," +
             					"实际开始时间：" +  obj.start_Date         + "," +
             					"预计结束时间：" +  obj.expected_endtime   + "," + 
             					"实际结束时间：" +  obj.end_Date           + "," +

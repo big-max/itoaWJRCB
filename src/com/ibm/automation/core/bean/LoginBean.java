@@ -17,7 +17,26 @@ public class LoginBean extends BaseBean implements Serializable {
 	private String username;//账号
 	private String password;//密码
 	private String email;//邮箱
-	private int role;  //1 admin   |   0 operator
+	private List<Integer> role;  //1 admin   |   0 operator
+	private String tel;//电话
+	private String czy;//操作员
+	
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getCzy() {
+		return czy;
+	}
+
+	public void setCzy(String czy) {
+		this.czy = czy;
+	}
+
 	private List<String> proList;
 	public LoginBean()
 	{
@@ -41,11 +60,12 @@ public class LoginBean extends BaseBean implements Serializable {
 		this.password = password;
 	}
 
-	public int getRole() {
+
+	public List<Integer> getRole() {
 		return role;
 	}
 
-	public void setRole(int role) {
+	public void setRole(List<Integer> role) {
 		this.role = role;
 	}
 

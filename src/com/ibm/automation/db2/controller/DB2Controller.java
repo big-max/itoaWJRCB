@@ -363,15 +363,17 @@ public class DB2Controller {
 	@RequestMapping("/getdb2LogInfoDetail.do")
 	public String getdb2LogInfoDetail(HttpServletRequest request, HttpSession session){
 		String uuid = request.getParameter("uuid");
+		String created_time = request.getParameter("created_time");
 		request.setAttribute("uuid", uuid);
 		request.setAttribute("type", "db2");
+		request.setAttribute("created_time", created_time);
 		ObjectNode curPlaybook = amsRestService.getList_one(null, null, "odata/playbooks?uuid=" + uuid);
-		ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=db2");
+		/*ArrayNode engToChinse = amsRestService.getList(null, null, "odata/dict?type=db2");
 		ObjectNode trans = om.createObjectNode();
 		for (JsonNode jn : engToChinse) 
 		{
 			trans = (ObjectNode) jn;
-		}
+		}*/
 		
 		if (curPlaybook != null && curPlaybook.get("options") != null) 
 		{
@@ -453,7 +455,7 @@ public class DB2Controller {
 			}
 		}
 		request.setAttribute("servers", listDetial);
-		String completed = curPlaybook.get("completed").asText();
+		/*String completed = curPlaybook.get("completed").asText();
 		String total = curPlaybook.get("total").asText();
 		String status = curPlaybook.get("status").asText();
 		Map<String, String> map = new TreeMap<String, String>();
@@ -506,7 +508,7 @@ public class DB2Controller {
 		{
 			session.setAttribute("errMsg", "请检查"+name+"是否在Mongodb dict 表中定义");
 			return "redirect:/500.jsp";
-		}
+		}*/
 		return "instance_db2_log_details";
 	}
 	
