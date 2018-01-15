@@ -236,7 +236,7 @@ jQuery(document).ready(function () {
 		
 		
 		<!-- 灾备演练 -->
-		<c:if test="${fn:contains(role,2) || fn:contains(role,1)  }">
+		<%-- <c:if test="${fn:contains(role,2) || fn:contains(role,1)  }">
 		<ul>
 			<li>
 				<a href="autoswitch.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="灾备切换">
@@ -248,11 +248,11 @@ jQuery(document).ready(function () {
 			    </a>
 			</li>
 		</ul>
-		</c:if>
+		</c:if> --%>
 		
 		
 		<!-- 日终流程 -->
-		<c:if test="${fn:contains(role,0) || fn:contains(role,1)  }">
+		<%-- <c:if test="${fn:contains(role,0) || fn:contains(role,1)  }">
 		<ul>		
 			<li>
 				<a href="dailyflow.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="日终流程">
@@ -264,10 +264,10 @@ jQuery(document).ready(function () {
 			    </a>
 			</li>
 		</ul>
-		</c:if>
+		</c:if> --%>
 		
 		<!-- 日终短信编辑 -->
-		<c:if test="${ fn:contains(role,1) }">
+		<%-- <c:if test="${ fn:contains(role,1) }">
 		<ul>		
 			<li>
 				<a href="dailyEditMessage.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="日终短信编辑">
@@ -279,11 +279,11 @@ jQuery(document).ready(function () {
 			    </a>
 			</li>
 		</ul>
-		</c:if>
+		</c:if> --%>
 		
 		
 		<!-- 自动化发布 -->
-		<c:if test="${fn:contains(role,5) || fn:contains(role,1) }">
+		<%-- <c:if test="${fn:contains(role,5) || fn:contains(role,1) }">
 		<ul>
 			<li class="active">
 				<a href="#" class="notvisible tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化发布">
@@ -300,11 +300,11 @@ jQuery(document).ready(function () {
 				</ul>
 			</li>
 		</ul>
-		</c:if>
+		</c:if> --%>
 		
 		
 		<!-- 用户中心 -->
-		<c:if test="${fn:contains(role,1) }">
+		<%-- <c:if test="${fn:contains(role,1) }">
 		<ul>
 			<li>
 				<a href="accountManage.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="账号管理">
@@ -316,7 +316,7 @@ jQuery(document).ready(function () {
 			    </a>
 			</li>
 		</ul>
-		</c:if>
+		</c:if> --%>
 		
 	</div>
 </div>
