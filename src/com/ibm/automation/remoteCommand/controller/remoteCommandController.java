@@ -52,7 +52,6 @@ public class remoteCommandController {
 	public String remoteCommand(HttpServletRequest request, HttpSession session) {
 		List<ServersBean> lahb = null;
 		lahb = ServerUtil.getList("odata/servers");
-		Collections.sort(lahb);
 		request.setAttribute("servers", lahb);
 		request.setAttribute("total", lahb.size());
 		getRemoteCommandLogs(request);

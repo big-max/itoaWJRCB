@@ -275,7 +275,6 @@ public class ITMOSController {
 			}
 		}
 		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
-		Collections.sort(lahb);
 		
 		List<ServersBean> listDetial = new ArrayList<ServersBean>();
 		for (int i = 0; i < lahb.size(); i++) {

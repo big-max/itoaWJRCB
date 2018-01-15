@@ -41,7 +41,6 @@ public class InstallPluginController {
 		List<ServersBean> sb = null;
 		ArrayNode allIp = om.createArrayNode();
 		sb = ServerUtil.getList("odata/servers");
-		Collections.sort(sb);
 		for(int i = 0; i < sb.size(); i++){
 			allIp.add(sb.get(i).getIp());
 		}

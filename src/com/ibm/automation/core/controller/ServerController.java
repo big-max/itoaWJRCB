@@ -97,7 +97,7 @@ public class ServerController {
 	public String getAllServers(HttpServletRequest request, HttpServletResponse resp, HttpSession session) {
 		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
 
-		Collections.sort(lahb);
+		//Collections.sort(lahb);
 		request.setAttribute("servers", lahb);
 		request.setAttribute("total", lahb.size());
 
@@ -108,7 +108,6 @@ public class ServerController {
 	@ResponseBody
 	public ArrayNode refreshServers(HttpServletRequest request, HttpServletResponse resp, HttpSession session) throws JsonProcessingException {
 		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
-		Collections.sort(lahb);
 		ArrayNode an = om.createArrayNode();
 		for (ServersBean sb :lahb)
 		{
@@ -130,7 +129,6 @@ public class ServerController {
 	public ArrayNode getAllips(HttpServletRequest request, HttpServletResponse resp, HttpSession session) {
 		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
 		ArrayNode an = om.createArrayNode();// ["1","2"]{}
-		Collections.sort(lahb);
 		for (ServersBean sb : lahb) {
 			String ip = sb.getIp();
 			an.add(ip);
@@ -272,6 +270,7 @@ public class ServerController {
 		ahb.setHconf(request.getParameter("hconf"));
 		ahb.setStatus(request.getParameter("status"));
 		ahb.setHvisor(request.getParameter("hvisor"));
+		ahb.setCreated_at(System.currentTimeMillis()/1000L);
 		// 封装多选的product mq itm was db2
 		ahb.setProduct(encodeProduct(request));
 		ahb.setUuid(UUID.randomUUID().toString());

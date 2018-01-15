@@ -83,7 +83,6 @@ public class InstanceController {
 		} else {
 			lahb = ServerUtil.getList("odata/servers");
 		}
-		Collections.sort(lahb);
 		request.setAttribute("servers", lahb);
 		request.setAttribute("total", lahb.size());
 
@@ -287,7 +286,6 @@ public class InstanceController {
 			while (iter.hasNext()) {
 				sb = (ServersBean) iter.next();
 			}
-			Collections.sort(listDetial);
 			// request.setAttribute("total", lahb.size());
 			request.setAttribute("serId", serId);
 			request.setAttribute("servers", listDetial);
@@ -428,7 +426,6 @@ public class InstanceController {
 		}
 		
 		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
-		Collections.sort(lahb);
 
 		List<ServersBean> listDetial = new ArrayList<ServersBean>();
 		for (int i = 0; i < lahb.size(); i++) {

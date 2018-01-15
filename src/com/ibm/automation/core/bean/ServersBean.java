@@ -8,7 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public class ServersBean implements Serializable, Comparable<ServersBean> {
+public class ServersBean implements Serializable {
 	/**
 	 * 
 	 */
@@ -24,7 +24,7 @@ public class ServersBean implements Serializable, Comparable<ServersBean> {
 	private String uuid;
 	private String hvisor;
 	private String product;//这个IP是装mq was db2 的。
-
+	private Long created_at;//创建时间
 
 	public static Logger getLogger() {
 		return logger;
@@ -128,11 +128,14 @@ public class ServersBean implements Serializable, Comparable<ServersBean> {
 
 	private ObjectMapper om = new ObjectMapper();
 
-	@Override
-	public int compareTo(ServersBean s) {
-		// TODO Auto-generated method stub
-		return s.getUuid().compareTo(this.getUuid()) == 0 ? this.getName().compareTo(s.getName())
-				: s.getUuid().compareTo(this.getUuid());
+	
+
+	public Long getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Long created_at) {
+		this.created_at = created_at;
 	}
 
 	@Override
@@ -149,6 +152,7 @@ public class ServersBean implements Serializable, Comparable<ServersBean> {
 		oServer.put("password", this.getPassword());
 		oServer.put("uuid", this.getUuid());
 		oServer.put("product", this.getProduct());
+		oServer.put("created_at", this.getCreated_at());
 		String retVal = null;
 		try {
 			retVal = om.writeValueAsString(oServer);

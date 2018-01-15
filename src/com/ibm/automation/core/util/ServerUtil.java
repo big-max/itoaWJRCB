@@ -34,7 +34,6 @@ public class ServerUtil {
 			}
 		}
 		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
-		Collections.sort(lahb);
 		List<ServersBean> listDetial = new ArrayList<ServersBean>();
 		for (int i = 0; i < lahb.size(); i++) {
 			String serverId = lahb.get(i).getUuid();
@@ -150,12 +149,12 @@ public class ServerUtil {
 				ahb.setUuid(js.get("uuid") != null ? js.get("uuid").asText() : "");
 				ahb.setHvisor(js.get("hvisor") != null ? js.get("hvisor").asText() : "");
 				ahb.setProduct(js.get("product") != null ? js.get("product").asText().replace(",", "  ") : "");
+				ahb.setCreated_at(js.get("created_at") != null  ? js.get("created_at").asLong(): 0L);
 				lahb.add(ahb);
 			}
 		} catch (NullPointerException e) {
 			logger.info("发生空指针异常，odata/servers::" + e.getMessage());
 		}
-		Collections.sort(lahb);
 		return lahb;
 	}
 	public  static List<LoginBean> getAllUsers(String path)
