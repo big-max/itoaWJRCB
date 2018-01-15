@@ -151,8 +151,8 @@ jQuery(document).ready(function () {
 
 	<header class="cd-main-header" style="background:url('img/menubg.jpg') repeat-x;height:70px;">
 		<nav style="display: block;float: left;height: 100%;">
-			<div style="width:500px;height:55px;margin-left:5px;margin-top:4px;">
-				<img src="img/navlogo.png">
+			<div style="width:500px;height:55px;margin-left:5px;margin-top:8px;">
+				<img src="img/navlogo_AH.png">
 			</div>
 		</nav>  
 

@@ -116,8 +116,8 @@ body{
 
 <body>
 	
-	<div style="width:400px;height:80px;">
-		<img src="img/loginlogo.png">
+	<div style="width:400px;height:80px;margin-top:10px;margin-left:10px;">
+		<img src="img/loginlogo_AH.png">
 	</div>
 	
 	<!-- 用户名&密码输入框 -->
@@ -161,8 +161,8 @@ body{
 	</div>
 	
 	<div class="foot">
-		<div style="text-align: center;"><font color="white">总行地址：江苏省苏州市吴江区中山南路1777号&nbsp;&nbsp;&nbsp;&nbsp;邮政编码：215200</font></div>
-		<div style="text-align: center;margin-top: 10px"><font color="white">Copyright©&nbsp;1996-2008&nbsp;WJRCB.COM&nbsp;&nbsp;许可证：苏ICP备06012538号</font></div>
+		<!-- <div style="text-align: center;"><font color="white">总行地址：江苏省苏州市吴江区中山南路1777号&nbsp;&nbsp;&nbsp;&nbsp;邮政编码：215200</font></div> -->
+		<div style="text-align: center;margin-top: 10px"><font color="white">安徽省农村信用社联合社&nbsp;&nbsp;版权所有&nbsp;&nbsp;皖ICP备07008388号</font></div>
 	</div>
 </body>
 </html>
