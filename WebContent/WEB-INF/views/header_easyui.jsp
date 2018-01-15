@@ -16,6 +16,9 @@
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/treeview.css" />
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/nanoscroller.css"/>
 
+<link type="text/css" title="www" rel="stylesheet" href="${root}/css/easyui.css" />
+<link type="text/css" title="www" rel="stylesheet" href="${root}/css/icon.css" />
+<script type="text/javascript" src="${root}/js/jquery.easyui.min.js"></script> 
 
 
 

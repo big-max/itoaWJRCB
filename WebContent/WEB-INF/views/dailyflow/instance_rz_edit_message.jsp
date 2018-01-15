@@ -15,9 +15,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <jsp:include page="../header_easyui.jsp" flush="true" />
-<link type="text/css" title="www" rel="stylesheet" href="/css/easyui.css" />
+<!-- <link type="text/css" title="www" rel="stylesheet" href="/css/easyui.css" />
 <link type="text/css" title="www" rel="stylesheet" href="/css/icon.css" />
-<script type="text/javascript" src="/js/jquery.easyui.min.js"></script> 
+<script type="text/javascript" src="/js/jquery.easyui.min.js"></script> --> 
 <title>自动化运维平台</title> 
 <style type="text/css">
 .content {
@@ -26,7 +26,7 @@
 	width:calc(100% - 57px);
 	margin:0px;
 	height:calc(100vh - 70px);
-	overflow-y:scroll;
+	overflow-y:no;
 } 
 </style>
 <script>
@@ -43,6 +43,23 @@
 	    
 	    $('#fm').form('load',row);
 		url = 'save_user.php';
+	}
+	
+	function addTel(){          
+		$('#dlg_add').dialog('open').dialog('setTitle','添加员工号'); 
+		$('#fm_add').form('clear');
+	    //$('#fm').form('load',row);
+		url = '';
+	}
+	
+	function delTel(){
+		var row = $('#dg').datagrid('getSelected');//选中一行否
+		if (row == null )
+		{
+			$.messager.alert('提示','请选择一行删除!','warning'); 
+			return ;
+		}
+		url = '';
 	}
 
 	function saveTel(){
@@ -110,16 +127,45 @@
 					</tr>
 				</thead>
 		        <tbody>
-		            
+		            <tr>
+		            	<td>1</td>
+		            	<td>501</td>
+		            	<td>0889</td>
+		            	<td>18251899178</td>
+		            </tr>
 		        </tbody>
 			</table>
 			
 			<div id="toolbar">
-				<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="editTel()">修改</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addTel()">添加</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="delTel()">删除</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editTel()">修改</a>
 			</div>
 			
-			<div id="dlg" class="easyui-dialog" style="width:400px;height:240px;padding:10px 20px"
-				closed="true" buttons="#dlg-buttons">
+			<!-- 添加 -->
+			<div id="dlg_add" class="easyui-dialog" style="width:400px;height:240px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
+				<form id="fm_add" method="post" novalidate>
+					<div class="fitem">
+						<label>任务ID:</label>
+						<input name="task_id" style="width:100%" class="easyui-validatebox" required="true">
+					</div>
+					<div style="margin-top:20px;"></div>
+					<div>
+						<select class="easyui-combobox" name="name" multiple="true" multiline="true" label="选择工号:" labelPosition="top" style="width:100%;height:50px;">
+						    <option value="14761176422">0000</option>
+							<option value="13064792652">0889</option>
+							<option value="13064792712">0990</option> 
+						</select>
+					</div>
+				</form>
+			</div>
+			<div id="dlg_add-buttons">
+				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveTel_add()">Save</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg_add').dialog('close')">Cancel</a>
+			</div>
+			
+			<!-- 修改 -->
+			<div id="dlg" class="easyui-dialog" style="width:400px;height:240px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
 				<form id="fm" method="post" novalidate>
 					<div class="fitem">
 						<label>任务ID:</label>
@@ -142,9 +188,5 @@
 		</div>
 	</div>
 </body>
-
-<script type="text/javascript">
-		$(".tooltipa1").removeClass("tooltip-f");
-</script>
 
 </html>
