@@ -77,7 +77,7 @@ input[type="text"] {
 						<div class="controls">
 							<div class="inputb2l">
 								<select style="width: 47.5%; font-size: 13px;" class="w48" id="file_path" name="file_path">
-									<option value="" selected="selected">/tmp</option>	
+									<option value="" selected="selected">/tmp/wasdeploy/query.ear</option>	
 								</select>
 							</div>
 						</div>
