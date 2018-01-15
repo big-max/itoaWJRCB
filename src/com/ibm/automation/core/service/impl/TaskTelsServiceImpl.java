@@ -1,0 +1,31 @@
+package com.ibm.automation.core.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ibm.automation.core.dao.TaskTelsBeanMapper;
+import com.ibm.automation.core.service.TaskTelsService;
+import com.ibm.automation.domain.TaskTelsBean;
+
+@Service("taskTelsService")
+public class TaskTelsServiceImpl implements TaskTelsService {
+
+	@Autowired
+	private TaskTelsBeanMapper taskTelsBeanMapper;
+
+	@Override
+	public List<TaskTelsBean> getAllTaskTels() {
+		List<TaskTelsBean> tasktelslist = taskTelsBeanMapper.selectAllTaskTels();
+		return tasktelslist;
+	}
+
+	@Override
+	public List<TaskTelsBean> selectTelsByTaskID(String task_id) {
+		// TODO Auto-generated method stub
+		taskTelsBeanMapper.selectTelsByTaskID(task_id);
+		return null;
+	}
+	
+}

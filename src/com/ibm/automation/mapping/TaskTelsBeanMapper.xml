@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.automation.core.dao.TaskTelsBeanMapper">
+	<resultMap id="TaskTelsResultMap" type="com.ibm.automation.domain.TaskTelsBean">
+		<result column="id" jdbcType="VARCHAR" property="id" />
+		<result column="task_id" jdbcType="VARCHAR" property="task_id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="tel" jdbcType="VARCHAR" property="tel" />
+	</resultMap>
+	<select id="selectAllTaskTels" parameterType="string" resultMap="TaskTelsResultMap">
+		select id , task_id , name , tel from task_tels
+	</select>
+
+	<select id="selectTelsByTaskID" parameterType="integer" resultMap="TaskTelsResultMap">
+		select id , task_id , name , tel from task_tels where id=#{id} >
+	</select>
+
+    <!-- <delete id="deleteTaskTelsByID" parameterType="integer" >
+        delete from task_tels where id = #{id}
+    </delete>
+    
+    <update id="modifyTaskTels" parameterMap="hashmap">
+    	update task_tels set name = #{name} , tel = #{tel} where id = #{id}
+    </update> -->
+    
+
+</mapper>
