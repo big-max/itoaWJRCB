@@ -119,23 +119,12 @@ body{
 	<div style="width:400px;height:80px;">
 		<img src="img/loginlogo.png">
 	</div>
-
-	<div id="loginbox">
-		<form id="loginform" method="post" class="form-vertical"
-			action="login.do">
-			<div class="logobox">
-				<p>
-					<img src="<%=path%>/img/logo_AHRCB.png">
-				</p>
-				<!-- <h4>用户登录</h4> -->
-
 	
 	<!-- 用户名&密码输入框 -->
 	<div id="loginbox" style="height:270px;border-radius:5px;margin:0 auto;margin-top:50px;background-color:rgba(255,255,255,0.3);">
 		<form id="loginform" method="post" class="form-vertical" action="login.do">
 			<div class="logobox" style="margin-bottom:30px;margin-top:20px;">
 				<span><font color="white">自动化运维平台</font></span>
-
 			</div>
 			
 			<div class="control-group">
