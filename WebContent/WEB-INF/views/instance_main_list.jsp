@@ -692,10 +692,131 @@ input[type="text"],input[type="password"] {
 					</div>
 				</div>
 			</div>
+			
+			<!-- 修改密码模态框 -->
+			<div class="modal fade" id="model_passwd" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h5 class="modal-title" id="myModalLabel">
+								<img src="img/plus15.png">&nbsp;&nbsp;修改密码 
+							</h5>
+						</div>
+			
+						<div class="modal-body">
+							<div class="control-group">
+								<div class="controls">
+									<span class="input140 mr20">旧密码：</span>
+									<input class="form-control" type="password" id="passwd_old" name="passwd_old">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<span class="input140 mr20">新密码：</span>
+									<input class="form-control" type="password" id="passwd_new" name="passwd_new">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<span class="input140 mr20">确认密码：</span>
+									<input class="form-control" type="password" id="passwd_confirm" name="passwd_confirm">
+								</div>
+							</div>
+						</div>
+						
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal();">关闭</button>
+							<button type="button" class="btn" style="background-color: rgb(68, 143, 200);" onclick="submitPasswd();">
+								<font color="white">提交</font>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 修改密码模态框 -->
 
 		</div>
 	</div>
 </body>
+
+<script>
+ 	$(document).ready(function(){
+		$("#passwd_icon,#passwd_text").click(function(){
+			$('#model_passwd').modal('show');
+		})
+	}) 
+	
+	//提交修改密码 
+	function submitPasswd()
+ 	{
+ 		var passwd_old = $("#passwd_old").val().trim();
+ 		var passwd_new = $("#passwd_new").val().trim();
+ 		var passwd_confirm = $("#passwd_confirm").val().trim();
+ 		
+ 		if((passwd_old == "") || (passwd_new == "") || (passwd_confirm == ""))
+ 		{
+ 			sweet("密码均不能为空,请重新输入","warning","确定"); 
+ 			return;
+ 		}
+ 		if(passwd_new != passwd_confirm)
+ 		{
+ 			sweet("新密码和确认密码不一致,请重新输入","warning","确定");  
+ 			return;
+ 		}
+ 		
+ 		$.ajax({
+ 			url : "<%=path%>/modifyPassword.do",
+			data : { "passwd_old":passwd_old,"passwd_new" : passwd_new },
+			type : 'post',
+			dataType : 'json',
+			success : function(result)
+			{
+				if(result.status == 2)
+				{
+					swal({
+			 			title:"",
+			 			text:"旧密码输入错误 ,请重新输入",
+			 			type:"warning",
+			 			confirmButtonText: "确定", 
+			 			},
+			 			function(){
+			 				$("#passwd_old").val("");
+			 		})
+				}
+				else
+				{
+					if(result.status == 1)
+					{
+						swal({
+				 			title:"",
+				 			text:"密码修改成功",
+				 			type:"success",
+				 			confirmButtonText: "确定", 
+				 			},
+				 			function(){
+				 				window.location.href = "getAllServers.do";
+				 		})
+					}
+					else
+					{
+						swal({
+				 			title:"",
+				 			text:"密码修改失败",
+				 			type:"error",
+				 			confirmButtonText: "确定",  
+				 			},
+				 			function(){
+				 				$("#passwd_old").val("");
+				 				$("#passwd_new").val("");
+				 				$("#passwd_confirm").val("");
+				 		})
+					}
+				}
+			}
+ 		})
+ 	}
+</script>
 
 <script type="text/javascript">
 	function checkFile() 
