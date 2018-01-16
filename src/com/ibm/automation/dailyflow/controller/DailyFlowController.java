@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.ibm.automation.ams.service.AmsRestService;
 import com.ibm.automation.core.constants.PropertyKeyConst;
 import com.ibm.automation.core.exception.NetWorkException;
 import com.ibm.automation.core.service.LogRecordService;
@@ -46,7 +49,8 @@ public class DailyFlowController {
 	private TaskParamService taskParamService;
 	@Autowired
 	private TaskTelsService taskTelsService;
-
+	@Autowired
+	private AmsRestService amsRestService;
 	private static Logger logger = Logger.getLogger(DailyFlowController.class);
 	Properties amsprop = PropertyUtil.getResourceFile("config/properties/ams2.properties");
 	Properties rzprop = PropertyUtil.getResourceFile("config/properties/rzdate.properties");
@@ -205,7 +209,6 @@ public class DailyFlowController {
 		return null;
 	}
 
-
 	@RequestMapping("/dailyEditMessage.do")
 	public String dailyEditMessage(HttpServletRequest request, HttpSession session) {
 		return "dailyflow/instance_rz_edit_message";
@@ -223,34 +226,46 @@ public class DailyFlowController {
 	// 添加发送手机号的员工
 	@RequestMapping("adddailysms.do")
 	@ResponseBody
-	public ObjectNode adddailySMS(HttpServletRequest request) {
+	public ObjectNode adddailySMS(HttpServletRequest request) throws Exception {
 		String task_id = request.getParameter("task_id");// 任务名
-		String[] names = request.getParameterValues("name"); // name 工号
+		String[] names = request.getParameterValues("name"); // nametel 工号:电话
 		List<TaskTelsBean> taskTelList = new ArrayList<TaskTelsBean>();
 		for (String name : names) {
 			TaskTelsBean ttb = new TaskTelsBean();
-			ttb.setName(name);
+			String[] nametel = name.split(":");//
+			ttb.setName(nametel[0]);
 			ttb.setTask_id(task_id);
-			ttb.setTel("11111");
+			ttb.setTel(nametel[1]);
 			taskTelList.add(ttb);
 		}
-		
-		//去mongodb 获取 工号对应的电话号码
-		
-		
+
+		// 去mongodb 获取 工号对应的电话号码
+
 		int sum = taskTelsService.addTaskTels(taskTelList);
 		ObjectNode on = om.createObjectNode();
-		on.put("status", 1);   // 1 表示操作OK
+		on.put("status", 1); // 1 表示操作OK
 		on.put("sum", "update " + sum + " records");
 		return on;
 	}
 
 	// 修改每个任务的手机号
 	@RequestMapping("/updatedailysms.do")
-	public void modifySMS(HttpServletRequest request) {
+	@ResponseBody
+	public ObjectNode modifySMS(HttpServletRequest request) {
+		ObjectNode on = om.createObjectNode();
+		String id = request.getParameter("id");// id
 		String task_id = request.getParameter("task_id");// 任务名
-		String[] name = request.getParameterValues("name"); // name 工号
-		// taskTelsService.
+		String names = request.getParameter("name"); // name 工号：电话
+		String[] nametel = names.split(":");
+		TaskTelsBean ttb = new TaskTelsBean();
+		ttb.setId(Integer.valueOf(id));
+		ttb.setName(nametel[0]);
+		ttb.setTask_id(task_id);
+		ttb.setTel(nametel[1]);
+		 taskTelsService.modifyTaskTels(ttb);
+		
+		on.put("status", 1);
+		return on;
 	}
 
 	// 删除选择的任务对应的员工号和手机号
@@ -281,8 +296,25 @@ public class DailyFlowController {
 	public JSONArray getAllTasks() {
 		List<TaskParamBean> an = taskParamService.getAllTaskParams();
 		JSONArray array = JSONArray.fromObject(an);
-		// System.out.println(array);
 		return array;
+	}
+
+	// 从日终页面的添加模块的，下拉框获取 mongodb login 表的name tel 对应关系
+	@RequestMapping("/getLoginInfo.do")
+	@ResponseBody
+	public ArrayNode getLoginInfo() {
+		ArrayNode array = amsRestService.getList(null, null, "/api/v2/common?tableName=login");
+		if (array == null) {
+			return null;
+		}
+		ArrayNode outNode = om.createArrayNode();
+		for (JsonNode item : array) {
+			ObjectNode tempNode = om.createObjectNode();
+			tempNode.put("name", item.get("name").asText());
+			tempNode.put("nametel", item.get("name").asText() + ":" + item.get("tel").asText());
+			outNode.addPOJO(tempNode);
+		}
+		return outNode;
 	}
 
 }

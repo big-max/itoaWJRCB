@@ -23,9 +23,9 @@
     </delete>
     
     
-    <!-- <update id="modifyTaskTels" parameterMap="hashmap">
+    <update id="modifyTaskTels" parameterType="com.ibm.automation.domain.TaskTelsBean">
     	update task_tels set name = #{name} , tel = #{tel} where id = #{id}
-    </update> --> 
+    </update> 
     
     <insert id="addTaskTels" useGeneratedKeys="true" parameterType="java.util.ArrayList">
     	insert into task_tels (task_id,name,tel) values

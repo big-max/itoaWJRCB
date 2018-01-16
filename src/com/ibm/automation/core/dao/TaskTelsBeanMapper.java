@@ -12,7 +12,7 @@ public interface TaskTelsBeanMapper {
     
 	//int deleteTaskTelsByID(int id);// 根据数字ID删除员工工号的电话号码
 
-	//int modifyTaskTels(int id);// 根据数字id 修改task_id 对应的员工号码
+	int modifyTaskTels(TaskTelsBean ttb);// 根据数字id 修改task_id 对应的员工号码
 	
 	int addTaskTels(List<TaskTelsBean> lttb); //插入多条记录
 	

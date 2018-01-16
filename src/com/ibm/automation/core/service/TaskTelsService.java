@@ -8,7 +8,7 @@ public interface TaskTelsService {
 	public List<TaskTelsBean> getAllTaskTels(); 
 	public List<TaskTelsBean> selectTelsByTaskID(String task_id);
 	//public int deleteTaskTelsByID(int id);
-	//int modifyTaskTels();
+	int modifyTaskTels(TaskTelsBean ttb);
 	
 	int addTaskTels(List<TaskTelsBean> lttb);
 	void deleteTaskTels(int[] ids);
