@@ -33,21 +33,21 @@
 	/******************* 编辑 *******************/ 
 	var url;
 	function editTel(){
-	    var row = $('#dg').datagrid('getSelected');//选中一行否
+	    var row = $('#total_table').datagrid('getSelected');//选中一行否
 	    if (row == null )
 	    {
 	       $.messager.alert('提示','您只能选择一行编辑!','error');
 	        return;
 	    }           
-		$('#dlg').dialog('open').dialog('setTitle','编辑员工号');
-		$('#fm').form('clear');
+		$('#edit_dialog').dialog('open').dialog('setTitle','编辑员工号');
+		$('#edit_form').form('clear');
 	    
-	    $('#fm').form('load',row);
+	    $('#edit_form').form('load',row);
 		url = 'save_user.php';
 	}
 	
-	function saveTel(){
-		$('#fm').form('submit',{
+	function edit_save(){
+		$('#edit_form').form('submit',{
 			url: 'updatedailysms.do',
 			onSubmit: function(){
 				return $(this).form('validate');
@@ -55,8 +55,8 @@
 			success: function(result){
 				alert(result)
 				if (result ){
-					$('#fm').datagrid('reload');
-					$('#dlg').dialog('close');		// close the dialog
+					$('#edit_form').datagrid('reload');
+					$('#edit_dialog').dialog('close');		// close the dialog
 					//$('#dg').datagrid('reload');	// reload the user data
 				} else {
 					$.messager.show({
@@ -69,13 +69,13 @@
 	}
 	
 	function removeTel(){
-		var row = $('#dg').datagrid('getSelected');
+		var row = $('#total_table').datagrid('getSelected');
 		if (row){
 			$.messager.confirm('Confirm','Are you sure you want to remove this user?',function(r){
 				if (r){
 					$.post('remove_user.php',{id:row.id},function(result){
 						if (result.success){
-							$('#dg').datagrid('reload');	// reload the user data
+							$('#total_table').datagrid('reload');	// reload the user data
 						} else {
 							$.messager.show({	// show error message
 								title: 'Error',
@@ -90,15 +90,14 @@
 	
 	/******************* 添加 *******************/  
 	function addTel(){  
-		$('#dlg_add').dialog('open').dialog('setTitle','添加员工号'); 
-		//$('#fm_add').form('clear');
-		$('#fm_add').find('#task_id').combobox('reload','/getAllTaskID.do');
+		$('#add_dialog').dialog('open').dialog('setTitle','添加员工号'); 
+		$('#add_form').find('#task_id').combobox('reload','/getAllTaskID.do');
 		url = '';
 	}
 	
-	function saveTel_add()
+	function add_save()
 	{
-		$('#fm_add').form('submit',{
+		$('#add_form').form('submit',{
 			url: 'adddailysms.do',
 			onSubmit: function(){
 				return $(this).form('validate');
@@ -106,8 +105,8 @@
 			success: function(result){
 				
 				if (result.success){
-					$('#dlg_add').dialog('close');		// close the dialog
-					$('#dg').datagrid('reload');	    // reload the user data
+					$('#add_dialog').dialog('close');		// close the dialog
+					$('#total_table').datagrid('reload');	    // reload the user data
 				} else {
 					$.messager.show({
 						title: 'Error',
@@ -120,14 +119,14 @@
 	
 	/******************* 删除 *******************/  
 	function delTel(){
-		var row = $('#dg').datagrid('getSelected');//选中一行否
+		var row = $('#total_table').datagrid('getSelected');//选中一行否
 		if (row == null )
 		{
 			$.messager.alert('提示','请选择一行删除!','error'); 
 			return ;
 		}
 		else{
-			$('#dlg_del').dialog('open');
+			$('#del_dialog').dialog('open');
 		}
 		url = '';
 	}
@@ -144,7 +143,7 @@
 	<!--content start-->
 	<div class="content">
 		<div style="width:100%;height:85vh;">
-			<table id="dg" title="日终任务更改手机号" class="easyui-datagrid" style="width:100%;height:100%"
+			<table id="total_table" title="日终任务更改手机号" class="easyui-datagrid" style="width:100%;height:100%"
 					url="getdailysms.do" fit="true" toolbar="#toolbar" pagination="true"
 					rownumbers="true" fitColumns="true" singleSelect="true">
 				<thead>
@@ -171,9 +170,9 @@
 				<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="delTel()">删除</a>
 			</div>
 			
-			<!------------------------------- 添加 ------------------------------->
-			<div id="dlg_add" class="easyui-dialog" style="width:400px;height:240px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
-				<form id="fm_add" method="post" novalidate>
+			<!------------------------------- 添加框 ------------------------------->
+			<div id="add_dialog" class="easyui-dialog" style="width:400px;height:240px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
+				<form id="add_form" method="post" novalidate>
 					<div class="fitem">
 						<label>任务ID:</label>
 						<input id="task_id" name="task_id" style="width:100%" class="easyui-combobox" data-options="valueField: 'task_id',textField: 'task_id'">
@@ -189,13 +188,14 @@
 				</form>
 			</div>
 			<div id="dlg-buttons">
-				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveTel_add()">保存</a>
-				<a href="#" class="easyui-linkbutton" iconCls="icon-no" onclick="javascript:$('#dlg_add').dialog('close')">取消</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="add_save()">保存</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-no" onclick="javascript:$('#add_dialog').dialog('close')">取消</a>
 			</div>
 			
-			<!------------------------------- 修改 ------------------------------->
-			<div id="dlg" class="easyui-dialog" style="width:400px;height:240px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
-				<form id="fm" method="post" novalidate>
+			
+			<!------------------------------- 修改框 ------------------------------->
+			<div id="edit_dialog" class="easyui-dialog" style="width:400px;height:240px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
+				<form id="edit_form" method="post" novalidate>
 					<div class="fitem">
 						<label>任务ID:</label>
 						<input name="task_id" style="width:100%" class="easyui-validatebox" required="true" readonly>
@@ -211,12 +211,13 @@
 				</form>
 			</div>
 			<div id="dlg-buttons">
-				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveTel()">保存</a>
-				<a href="#" class="easyui-linkbutton" iconCls="icon-no" onclick="javascript:$('#dlg').dialog('close')">取消</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="edit_save()">保存</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-no" onclick="javascript:$('#edit_dialog').dialog('close')">取消</a>
 			</div>
 			
-			<!------------------------------- 删除对话框 ------------------------------->
-			<div id="dlg_del" class="easyui-dialog" title="删除员工号" style="width:400px;height:200px;padding:10px"
+			
+			<!------------------------------- 删除框 ------------------------------->
+			<div id="del_dialog" class="easyui-dialog" title="删除员工号" style="width:400px;height:200px;padding:10px"
 				data-options="
 					closed: true,
 					buttons: [
@@ -233,7 +234,7 @@
 						text:'取消',
 						iconCls:'icon-no',
 						handler:function(){
-							$('#dlg_del').dialog('close');
+							$('#del_dialog').dialog('close');
 						}
 					}]
 				">
