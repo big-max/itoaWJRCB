@@ -53,14 +53,15 @@
 				return $(this).form('validate');
 			},
 			success: function(result){
-				var result = eval('('+result+')');
-				if (result.success){
+				alert(result)
+				if (result ){
+					$('#fm').datagrid('reload');
 					$('#dlg').dialog('close');		// close the dialog
-					$('#dg').datagrid('reload');	// reload the user data
+					//$('#dg').datagrid('reload');	// reload the user data
 				} else {
 					$.messager.show({
 						title: 'Error',
-						msg: result.msg
+						msg: result.sum
 					});
 				}
 			}
@@ -103,7 +104,7 @@
 				return $(this).form('validate');
 			},
 			success: function(result){
-				var result = eval('('+result+')');
+				
 				if (result.success){
 					$('#dlg_add').dialog('close');		// close the dialog
 					$('#dg').datagrid('reload');	    // reload the user data

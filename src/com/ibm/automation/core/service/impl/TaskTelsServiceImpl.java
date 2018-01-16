@@ -30,8 +30,9 @@ public class TaskTelsServiceImpl implements TaskTelsService {
 
 	@Override
 	public int addTaskTels(List<TaskTelsBean> lttb) {
-		taskTelsBeanMapper.addTaskTels(lttb);
-		return 0;
+		int id = taskTelsBeanMapper.addTaskTels(lttb);
+		System.out.println("the id is " + id);
+		return id;
 	}
 	
 }

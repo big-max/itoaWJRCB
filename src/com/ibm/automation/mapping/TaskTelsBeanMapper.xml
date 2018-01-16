@@ -24,7 +24,7 @@
     	update task_tels set name = #{name} , tel = #{tel} where id = #{id}
     </update> --> 
     
-    <insert id="addTaskTels" parameterType="java.util.ArrayList">
+    <insert id="addTaskTels" useGeneratedKeys="true" parameterType="java.util.ArrayList">
     	insert into task_tels (task_id,name,tel) values
     	<foreach collection="list" item="item" index="index" separator="," >  
         	(#{item.task_id},#{item.name},#{item.tel})  

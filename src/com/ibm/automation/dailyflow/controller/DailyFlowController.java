@@ -227,7 +227,8 @@ public class DailyFlowController {
 
 	//添加发送手机号的员工
 	@RequestMapping("adddailysms.do")
-	public void adddailySMS(HttpServletRequest request){
+	@ResponseBody
+	public ObjectNode adddailySMS(HttpServletRequest request){
 		String task_id = request.getParameter("task_id");//任务名
 		String[] names = request.getParameterValues("name"); //name 工号
 		List<TaskTelsBean> taskTelList = new ArrayList<TaskTelsBean>();
@@ -239,7 +240,11 @@ public class DailyFlowController {
 			ttb.setTel("11111");
 			taskTelList.add(ttb);
 		}
-		taskTelsService.addTaskTels(taskTelList);
+		int sum = taskTelsService.addTaskTels(taskTelList);
+		ObjectNode on = om.createObjectNode();
+		on.put("status", 1);
+		on.put("sum", "update " +  sum +" records");
+		return on;
 	}
 	
 	// 修改每个任务的手机号
