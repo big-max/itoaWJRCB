@@ -11,4 +11,5 @@ public interface TaskTelsService {
 	//int modifyTaskTels();
 	
 	int addTaskTels(List<TaskTelsBean> lttb);
+	void deleteTaskTels(int[] ids);
 }

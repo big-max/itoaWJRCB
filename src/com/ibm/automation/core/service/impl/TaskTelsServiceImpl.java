@@ -34,5 +34,12 @@ public class TaskTelsServiceImpl implements TaskTelsService {
 		System.out.println("the id is " + id);
 		return id;
 	}
-	
+
+	@Override
+	public void deleteTaskTels(int[] ids) {
+		int x = taskTelsBeanMapper.deleteTaskTelsByID(ids);
+		System.out.println(x);
+		//return 0;
+	}
+
 }

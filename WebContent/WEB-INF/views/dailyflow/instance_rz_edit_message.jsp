@@ -68,25 +68,6 @@
 		});
 	}
 	
-	function removeTel(){
-		var row = $('#total_table').datagrid('getSelected');
-		if (row){
-			$.messager.confirm('Confirm','Are you sure you want to remove this user?',function(r){
-				if (r){
-					$.post('remove_user.php',{id:row.id},function(result){
-						if (result.success){
-							$('#total_table').datagrid('reload');	// reload the user data
-						} else {
-							$.messager.show({	// show error message
-								title: 'Error',
-								msg: result.msg
-							});
-						}
-					},'json');
-				}
-			});
-		}
-	}
 	
 	/******************* 添加 *******************/  
 	function addTel(){  
@@ -119,17 +100,31 @@
 	
 	/******************* 删除 *******************/  
 	function delTel(){
-		var row = $('#total_table').datagrid('getSelected');//选中一行否
-		if (row == null )
+		var ids=[];
+		var rows = $('#total_table').datagrid('getSelections');
+		for(var i = 0 ; i < rows.length;i++)
 		{
-			$.messager.alert('提示','请选择一行删除!','error'); 
-			return ;
+			ids.push(rows[i].id);
 		}
-		else{
-			$('#del_dialog').dialog('open');
+		var rowStr = ids.join(',');
+		if (rows){
+			$.messager.confirm('Confirm','你确定删除选中的记录吗?',function(r){
+				if (r){
+					$.post('/deldailysms.do',{ids:rowStr},function(result){
+						if (result.status == 1){
+							$('#total_table').datagrid('reload');	// reload the user data
+						} else {
+							$.messager.show({	// show error message
+								title: 'Error',
+								msg: result.msg
+							});
+						}
+					},'json');
+				}
+			});
 		}
-		url = '';
 	}
+	
 </script>
 </head>
 
@@ -145,10 +140,10 @@
 		<div style="width:100%;height:85vh;">
 			<table id="total_table" title="日终任务更改手机号" class="easyui-datagrid" style="width:100%;height:100%"
 					url="getdailysms.do" fit="true" toolbar="#toolbar" pagination="true"
-					rownumbers="true" fitColumns="true" singleSelect="true">
+					rownumbers="true" fitColumns="true">
 				<thead>
 					<tr>
-						<th field="id" width="10%">编号</th>
+						<th field="id" checkbox="true" width="10%">编号</th>
 						<th field="task_id" width="20%">任务ID</th>
 						<th field="name" width="20%">工号</th>
 						<th field="tel" width="50%">电话</th>
@@ -214,32 +209,6 @@
 				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="edit_save()">保存</a>
 				<a href="#" class="easyui-linkbutton" iconCls="icon-no" onclick="javascript:$('#edit_dialog').dialog('close')">取消</a>
 			</div>
-			
-			
-			<!------------------------------- 删除框 ------------------------------->
-			<div id="del_dialog" class="easyui-dialog" title="删除员工号" style="width:400px;height:200px;padding:10px"
-				data-options="
-					closed: true,
-					buttons: [
-					{
-						text:'确认',
-						iconCls:'icon-ok',
-						handler:function(){
-							//alert('ok');
-							$.ajax({
-							})
-						}
-					},
-					{
-						text:'取消',
-						iconCls:'icon-no',
-						handler:function(){
-							$('#del_dialog').dialog('close');
-						}
-					}]
-				">
-			请确认是否立即删除所选行？
-		</div>
 			
 		</div>
 	</div>

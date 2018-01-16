@@ -15,8 +15,11 @@
 		select id , task_id , name , tel from task_tels where id=#{id} >
 	</select>
 
-    <delete id="deleteTaskTelsByID" parameterType="integer" >
-        delete from task_tels where id = #{id}
+    <delete id="deleteTaskTelsByID" parameterType="int" >
+        delete from task_tels where id in 
+        <foreach item="item" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
     </delete>
     
     

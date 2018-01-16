@@ -205,10 +205,6 @@ public class DailyFlowController {
 		return null;
 	}
 
-	public static void main(String[] args) {
-		String s = UtilDateTime.getFormatCurrentDate();
-		System.out.println(s);
-	}
 
 	@RequestMapping("/dailyEditMessage.do")
 	public String dailyEditMessage(HttpServletRequest request, HttpSession session) {
@@ -221,48 +217,71 @@ public class DailyFlowController {
 	public JSONArray getTaskSMSID() {
 		List<TaskTelsBean> mylist = taskTelsService.getAllTaskTels();
 		JSONArray array = JSONArray.fromObject(mylist);
-		System.out.println(array);
 		return array;
 	}
 
-	//添加发送手机号的员工
+	// 添加发送手机号的员工
 	@RequestMapping("adddailysms.do")
 	@ResponseBody
-	public ObjectNode adddailySMS(HttpServletRequest request){
-		String task_id = request.getParameter("task_id");//任务名
-		String[] names = request.getParameterValues("name"); //name 工号
+	public ObjectNode adddailySMS(HttpServletRequest request) {
+		String task_id = request.getParameter("task_id");// 任务名
+		String[] names = request.getParameterValues("name"); // name 工号
 		List<TaskTelsBean> taskTelList = new ArrayList<TaskTelsBean>();
-		for ( String name : names)
-		{
+		for (String name : names) {
 			TaskTelsBean ttb = new TaskTelsBean();
 			ttb.setName(name);
 			ttb.setTask_id(task_id);
 			ttb.setTel("11111");
 			taskTelList.add(ttb);
 		}
+		
+		//去mongodb 获取 工号对应的电话号码
+		
+		
 		int sum = taskTelsService.addTaskTels(taskTelList);
 		ObjectNode on = om.createObjectNode();
-		on.put("status", 1);
-		on.put("sum", "update " +  sum +" records");
+		on.put("status", 1);   // 1 表示操作OK
+		on.put("sum", "update " + sum + " records");
 		return on;
 	}
-	
+
 	// 修改每个任务的手机号
 	@RequestMapping("/updatedailysms.do")
 	public void modifySMS(HttpServletRequest request) {
-		String task_id = request.getParameter("task_id");//任务名
-		String[] name = request.getParameterValues("name"); //name 工号
-		//taskTelsService.
-		System.out.println("1111");
+		String task_id = request.getParameter("task_id");// 任务名
+		String[] name = request.getParameterValues("name"); // name 工号
+		// taskTelsService.
 	}
 
-	//日终编辑的新建任务的获取task_id
-	@RequestMapping("/getAllTaskID.do") 
+	// 删除选择的任务对应的员工号和手机号
+	@RequestMapping("deldailysms.do")
+	@ResponseBody
+	public ObjectNode delSMS(HttpServletRequest request) {
+		ObjectNode on = om.createObjectNode();
+		String ids = request.getParameter("ids");
+		if (ids == null) {
+			on.put("status", 0);
+			on.put("msg", "没有获取选中记录！");
+		} else {
+
+			String[] idlist = ids.split(",");
+			int[] num = new int[idlist.length];
+			for (int i = 0; i < idlist.length; i++) {
+				num[i] = Integer.parseInt(idlist[i]);
+			}
+			taskTelsService.deleteTaskTels(num);
+			on.put("status", 1);
+		}
+		return on;
+	}
+
+	// 日终编辑的新建任务的获取task_id
+	@RequestMapping("/getAllTaskID.do")
 	@ResponseBody
 	public JSONArray getAllTasks() {
 		List<TaskParamBean> an = taskParamService.getAllTaskParams();
 		JSONArray array = JSONArray.fromObject(an);
-		//System.out.println(array);
+		// System.out.println(array);
 		return array;
 	}
 
