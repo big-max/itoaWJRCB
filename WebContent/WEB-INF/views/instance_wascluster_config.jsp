@@ -510,11 +510,13 @@ input[type="text"] {
 		var obj_val = $(obj).val();
 		if(obj_val == "dmgr")
 		{
-			$(obj).parents(".col-md-3").next().children().children().next().children().val("Dmgr01");
+			//$(obj).parents(".col-md-3").next().children().children().next().children().val("Dmgr01");
+			$(obj).parents(".col-md-3").next().find('.all_profile_names').val("Dmgr01");
 		}
 		else
 		{
-			$(obj).parents(".col-md-3").next().children().children().next().children().val("AppSrv01");
+			//$(obj).parents(".col-md-3").next().children().children().next().children().val("AppSrv01");
+			$(obj).parents(".col-md-3").next().find('.all_profile_names').val("AppSrv01");
 		}
 	}
 </script>

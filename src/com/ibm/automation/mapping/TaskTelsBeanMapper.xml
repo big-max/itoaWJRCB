@@ -7,7 +7,7 @@
 		<result column="name" jdbcType="VARCHAR" property="name" />
 		<result column="tel" jdbcType="VARCHAR" property="tel" />
 	</resultMap>
-	<select id="selectAllTaskTels" parameterType="string" resultMap="TaskTelsResultMap">
+	<select id="selectAllTaskTels"  resultMap="TaskTelsResultMap">
 		select id , task_id , name , tel from task_tels
 	</select>
 
@@ -15,13 +15,21 @@
 		select id , task_id , name , tel from task_tels where id=#{id} >
 	</select>
 
-    <!-- <delete id="deleteTaskTelsByID" parameterType="integer" >
+    <delete id="deleteTaskTelsByID" parameterType="integer" >
         delete from task_tels where id = #{id}
     </delete>
     
-    <update id="modifyTaskTels" parameterMap="hashmap">
-    	update task_tels set name = #{name} , tel = #{tel} where id = #{id}
-    </update> -->
     
+    <!-- <update id="modifyTaskTels" parameterMap="hashmap">
+    	update task_tels set name = #{name} , tel = #{tel} where id = #{id}
+    </update> --> 
+    
+    <insert id="addTaskTels" parameterType="java.util.ArrayList">
+    	insert into task_tels (task_id,name,tel) values
+    	<foreach collection="list" item="item" index="index" separator="," >  
+        	(#{item.task_id},#{item.name},#{item.tel})  
+    	</foreach>
+    
+    </insert>
 
 </mapper>

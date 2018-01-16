@@ -90,7 +90,8 @@
 	/******************* 添加 *******************/  
 	function addTel(){  
 		$('#dlg_add').dialog('open').dialog('setTitle','添加员工号'); 
-		$('#fm_add').form('clear');
+		//$('#fm_add').form('clear');
+		$('#fm_add').find('#task_id').combobox('reload','/getAllTaskID.do');
 		url = '';
 	}
 	
@@ -174,7 +175,7 @@
 				<form id="fm_add" method="post" novalidate>
 					<div class="fitem">
 						<label>任务ID:</label>
-						<input name="task_id" style="width:100%" class="easyui-validatebox" required="true">
+						<input id="task_id" name="task_id" style="width:100%" class="easyui-combobox" data-options="valueField: 'task_id',textField: 'task_id'">
 					</div>
 					<div style="margin-top:20px;"></div>
 					<div>

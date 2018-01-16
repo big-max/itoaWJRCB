@@ -9,4 +9,6 @@ public interface TaskTelsService {
 	public List<TaskTelsBean> selectTelsByTaskID(String task_id);
 	//public int deleteTaskTelsByID(int id);
 	//int modifyTaskTels();
+	
+	int addTaskTels(List<TaskTelsBean> lttb);
 }

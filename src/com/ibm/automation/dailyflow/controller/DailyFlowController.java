@@ -1,6 +1,7 @@
 package com.ibm.automation.dailyflow.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -22,11 +23,13 @@ import com.ibm.automation.core.constants.PropertyKeyConst;
 import com.ibm.automation.core.exception.NetWorkException;
 import com.ibm.automation.core.service.LogRecordService;
 import com.ibm.automation.core.service.ServerService;
+import com.ibm.automation.core.service.TaskParamService;
 import com.ibm.automation.core.service.TaskTelsService;
 import com.ibm.automation.core.util.HttpClientUtil;
 import com.ibm.automation.core.util.PropertyUtil;
 import com.ibm.automation.core.util.UtilDateTime;
 import com.ibm.automation.domain.LogRecordBean;
+import com.ibm.automation.domain.TaskParamBean;
 import com.ibm.automation.domain.TaskTelsBean;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 
@@ -39,7 +42,8 @@ public class DailyFlowController {
 	private ServerService service;
 	@Autowired
 	private LogRecordService logRecordService;
-
+	@Autowired
+	private TaskParamService taskParamService;
 	@Autowired
 	private TaskTelsService taskTelsService;
 
@@ -220,14 +224,41 @@ public class DailyFlowController {
 		System.out.println(array);
 		return array;
 	}
-   
-	//修改每个任务的手机号
-	@RequestMapping("/updatedailysms.do")
-	public void modifySMS(HttpServletRequest request){
-		System.out.println(request);
-		request.getParameterValues("");
-		System.out.println("1111");
+
+	//添加发送手机号的员工
+	@RequestMapping("adddailysms.do")
+	public void adddailySMS(HttpServletRequest request){
+		String task_id = request.getParameter("task_id");//任务名
+		String[] names = request.getParameterValues("name"); //name 工号
+		List<TaskTelsBean> taskTelList = new ArrayList<TaskTelsBean>();
+		for ( String name : names)
+		{
+			TaskTelsBean ttb = new TaskTelsBean();
+			ttb.setName(name);
+			ttb.setTask_id(task_id);
+			ttb.setTel("11111");
+			taskTelList.add(ttb);
+		}
+		taskTelsService.addTaskTels(taskTelList);
 	}
 	
-	
+	// 修改每个任务的手机号
+	@RequestMapping("/updatedailysms.do")
+	public void modifySMS(HttpServletRequest request) {
+		String task_id = request.getParameter("task_id");//任务名
+		String[] name = request.getParameterValues("name"); //name 工号
+		//taskTelsService.
+		System.out.println("1111");
+	}
+
+	//日终编辑的新建任务的获取task_id
+	@RequestMapping("/getAllTaskID.do") 
+	@ResponseBody
+	public JSONArray getAllTasks() {
+		List<TaskParamBean> an = taskParamService.getAllTaskParams();
+		JSONArray array = JSONArray.fromObject(an);
+		//System.out.println(array);
+		return array;
+	}
+
 }
