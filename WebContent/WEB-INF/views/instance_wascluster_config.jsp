@@ -268,7 +268,8 @@ input[type="text"] {
 														<label class="col-sm-3" style="padding-top: 2.5px;">Profile类型</label>
 														<div class="col-sm-8">
 															<select style="width: 160px;" name="all_profile_types"
-																class="all_profile_class">
+																class="all_profile_class" onchange="change_dmgr(this)">
+																<option value="dmgr">DMGR</option>
 																<option value="cell">DMGR+AppServer</option>
 																<option value="default" selected="selected">AppServer</option>
 															</select>
@@ -279,7 +280,7 @@ input[type="text"] {
 													<div class="form-group">
 														<label class="col-sm-3" style="padding-top: 2.5px;">Profile名称</label>
 														<div class="col-sm-8">
-															<input type="text" class="form-control"
+															<input type="text" class="form-control all_profile_names"
 																name="all_profile_names" value="AppSrv01">
 														</div>
 													</div>
@@ -499,6 +500,22 @@ input[type="text"] {
 				alert(err);
 			}
 		});
+	}
+</script>
+
+<script>
+	/* Profile类型为dmgr的时候，Profile名称为Dmgr01，其他情况为AppSrv01 */
+	function change_dmgr(obj)
+	{
+		var obj_val = $(obj).val();
+		if(obj_val == "dmgr")
+		{
+			$(obj).parents(".col-md-3").next().children().children().next().children().val("Dmgr01");
+		}
+		else
+		{
+			$(obj).parents(".col-md-3").next().children().children().next().children().val("AppSrv01");
+		}
 	}
 </script>
 </body>
