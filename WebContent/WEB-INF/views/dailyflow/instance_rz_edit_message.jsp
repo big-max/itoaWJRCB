@@ -28,7 +28,18 @@
 	height: calc(100vh - 70px);
 	overflow-y: no;
 }
+.checkstyle{
+	float:left;width:80px;height:27px;line-height:27px;
+}
 </style>
+
+<script>
+	$(document).ready(function(){
+		//$("input[name=sendType]").get(0).checked = true;
+		//$("input[name=sendType]").get(0).attr("checked",true);
+	})
+</script>
+
 <script>
 	/******************* 编辑 *******************/ 
 	function editTel(){
@@ -148,7 +159,7 @@
 
 			<!------------------------------- 添加框 ------------------------------->
 			<div id="add_dialog" class="easyui-dialog"
-				style="width: 400px; height: 240px; padding: 10px 20px" closed="true" buttons="#dlg-buttons">
+				style="width: 400px; height: 300px; padding: 10px 20px" closed="true" buttons="#dlg-buttons">
 				<form id="add_form" method="post" novalidate>
 					<div class="fitem">
 						<label>任务ID:</label>
@@ -161,6 +172,23 @@
 						<input id="name" name="name" style="width: 100%" class="easyui-combobox" multiple="multiple"
 							data-options="valueField: 'nametel',textField: 'name'">
 					</div>
+					<div style="margin-top: 20px;">
+						<label>短信发送类型:</label>
+						<div style="float:left;width:20px;">
+							<input type="checkbox" name="status" value="1" />
+						</div>
+						<div class="checkstyle">已开始</div>
+						
+						<div style="float:left;width:20px;">
+							<input type="checkbox" name="status" value="2" />
+						</div>
+						<div class="checkstyle">成功</div>
+						
+						<div style="float:left;width:20px;">
+							<input type="checkbox" name="status" value="3" />
+						</div>
+						<div class="checkstyle">失败</div>
+					</div>
 				</form>
 			</div>
 			<div id="dlg-buttons">
@@ -172,7 +200,7 @@
 
 			<!------------------------------- 修改框 ------------------------------->
 			<div id="edit_dialog" class="easyui-dialog"
-				style="width: 400px; height: 240px; padding: 10px 20px" closed="true" buttons="#dlg-buttons">
+				style="width: 400px; height: 300px; padding: 10px 20px" closed="true" buttons="#dlg-buttons">
 				<form id="edit_form" method="post" novalidate>
 					<div>
 						<input id="id" name="id" hidden="true" >
@@ -182,11 +210,28 @@
 						<input id="task_id" name="task_id" style="width: 100%" class="easyui-validatebox" readonly="readonly" required="required">
 					</div>
 					<div style="margin-top: 20px;"></div>
-						<div>
+					<div>
 						<label>工号:</label>
 						<input id="name" name="name" style="width: 100%" class="easyui-combobox"
 							data-options="valueField: 'nametel',textField: 'name'">
-					   </div>
+					</div>
+					<div style="margin-top:20px;">
+						<label>短信发送类型:</label>
+						<div style="float:left;width:20px;">
+							<input type="checkbox" name="status" value="1" />
+						</div>
+						<div class="checkstyle">已开始</div>
+						
+						<div style="float:left;width:20px;">
+							<input type="checkbox" name="status" value="2" />
+						</div>
+						<div class="checkstyle">成功</div>
+						
+						<div style="float:left;width:20px;">
+							<input type="checkbox" name="status" value="3" />
+						</div>
+						<div class="checkstyle">失败</div>
+					</div>
 				</form>
 			</div>
 			<div id="dlg-buttons">
