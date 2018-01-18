@@ -6,13 +6,14 @@
 		<result column="task_id" jdbcType="VARCHAR" property="task_id" />
 		<result column="name" jdbcType="VARCHAR" property="name" />
 		<result column="tel" jdbcType="VARCHAR" property="tel" />
+		<result column="status" jdbcType="VARCHAR" property="status" />
 	</resultMap>
 	<select id="selectAllTaskTels"  resultMap="TaskTelsResultMap">
-		select id , task_id , name , tel from task_tels
+		select id , task_id , name , tel, status from task_tels
 	</select>
 
 	<select id="selectTelsByTaskID" parameterType="integer" resultMap="TaskTelsResultMap">
-		select id , task_id , name , tel from task_tels where id=#{id} >
+		select id , task_id , name , tel,status from task_tels where id=#{id} >
 	</select>
 
     <delete id="deleteTaskTelsByID" parameterType="int" >
@@ -24,13 +25,13 @@
     
     
     <update id="modifyTaskTels" parameterType="com.ibm.automation.domain.TaskTelsBean">
-    	update task_tels set name = #{name} , tel = #{tel} where id = #{id}
+    	update task_tels set name = #{name} , tel = #{tel} ,status = #{status} where id = #{id}
     </update> 
     
     <insert id="addTaskTels" useGeneratedKeys="true" parameterType="java.util.ArrayList">
-    	insert into task_tels (task_id,name,tel) values
+    	insert into task_tels (task_id,name,tel,status) values
     	<foreach collection="list" item="item" index="index" separator="," >  
-        	(#{item.task_id},#{item.name},#{item.tel})  
+        	(#{item.task_id},#{item.name},#{item.tel},#{item.status})  
     	</foreach>
     
     </insert>

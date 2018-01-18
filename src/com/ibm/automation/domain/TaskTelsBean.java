@@ -5,7 +5,7 @@ public class TaskTelsBean {
 	private String task_id;
 	private String name;// 工号
 	private String tel;// 电话
-
+	private String status;//开始、成功、失败
 	public int getId() {
 		return id;
 	}
@@ -37,10 +37,20 @@ public class TaskTelsBean {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
 		return "{\"id\":\"" + id + "\",\"task_id\":\"" + task_id + "\",\"name\":\"" + name + "\",\"tel\":\"" + tel
-				+ "\"} ";
+				+ "\",\"status\":\"" + status + "\"} ";
 	}
+
+	
 }

@@ -33,12 +33,6 @@
 }
 </style>
 
-<script>
-	$(document).ready(function(){
-		//$("input[name=sendType]").get(0).checked = true;
-		//$("input[name=sendType]").get(0).attr("checked",true);
-	})
-</script>
 
 <script>
 	/******************* 编辑 *******************/ 
@@ -50,10 +44,21 @@
 	        return;
 	    }           
 		$('#edit_dialog').dialog('open').dialog('setTitle','编辑员工号');
-		//$('#edit_form').form('clear');
+		$('#edit_form').form('clear');
 		$("#edit_form").find("#id").val(row.id);
 	    $("#edit_form").find("#task_id").val(row.task_id);
 	    $("#edit_form").find('#name').combobox('reload','/getLoginInfo.do');
+	    $("#edit_form").find('#name').val(row.name);
+	    
+	    if (row.status == '' || row.status == null || typeof(row.status) == 'undefined') 
+	    {
+	    	var status_arr = row.status.split(',');
+	    	for(var i = 0 ; i < status_arr.length; i++)
+	    	{
+	    		$("#edit_form").find("#status").val(status_arr[i])
+	    	}
+	    }
+	    $("#status").val(row.status);
 	}
 	
 	function edit_save(){
@@ -143,7 +148,8 @@
 						<th field="id" checkbox="true" width="10%">编号</th>
 						<th field="task_id" width="20%">任务ID</th>
 						<th field="name" width="20%">工号</th>
-						<th field="tel" width="50%">电话</th>
+						<th field="tel" width="30%">电话</th>
+						<th field="status" width="100%">发送配置</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -177,7 +183,7 @@
 						<div style="float:left;width:20px;">
 							<input type="checkbox" name="status" value="1" />
 						</div>
-						<div class="checkstyle">已开始</div>
+						<div class="checkstyle">开始</div>
 						
 						<div style="float:left;width:20px;">
 							<input type="checkbox" name="status" value="2" />
@@ -220,7 +226,7 @@
 						<div style="float:left;width:20px;">
 							<input type="checkbox" name="status" value="1" />
 						</div>
-						<div class="checkstyle">已开始</div>
+						<div class="checkstyle">开始</div>
 						
 						<div style="float:left;width:20px;">
 							<input type="checkbox" name="status" value="2" />

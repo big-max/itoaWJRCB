@@ -9,6 +9,7 @@ import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -229,6 +230,7 @@ public class DailyFlowController {
 	public ObjectNode adddailySMS(HttpServletRequest request) throws Exception {
 		String task_id = request.getParameter("task_id");// 任务名
 		String[] names = request.getParameterValues("name"); // nametel 工号:电话
+		String[] status = request.getParameterValues("status");//开始、成功、失败
 		List<TaskTelsBean> taskTelList = new ArrayList<TaskTelsBean>();
 		for (String name : names) {
 			TaskTelsBean ttb = new TaskTelsBean();
@@ -236,6 +238,7 @@ public class DailyFlowController {
 			ttb.setName(nametel[0]);
 			ttb.setTask_id(task_id);
 			ttb.setTel(nametel[1]);
+			ttb.setStatus(StringUtils.join(status,","));
 			taskTelList.add(ttb);
 		}
 
@@ -256,14 +259,15 @@ public class DailyFlowController {
 		String id = request.getParameter("id");// id
 		String task_id = request.getParameter("task_id");// 任务名
 		String names = request.getParameter("name"); // name 工号：电话
+		String[] status = request.getParameterValues("status");//状态
 		String[] nametel = names.split(":");
 		TaskTelsBean ttb = new TaskTelsBean();
 		ttb.setId(Integer.valueOf(id));
 		ttb.setName(nametel[0]);
 		ttb.setTask_id(task_id);
 		ttb.setTel(nametel[1]);
-		 taskTelsService.modifyTaskTels(ttb);
-		
+		ttb.setStatus(StringUtils.join(status,","));
+		taskTelsService.modifyTaskTels(ttb);
 		on.put("status", 1);
 		return on;
 	}
