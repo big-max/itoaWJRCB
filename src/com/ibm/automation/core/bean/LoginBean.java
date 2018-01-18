@@ -20,7 +20,7 @@ public class LoginBean extends BaseBean implements Serializable {
 	private List<Integer> role;  //1 admin   |   0 operator
 	private String tel;//电话
 	private String czy;//操作员
-	
+	private String alias;//中文别名
 	public String getTel() {
 		return tel;
 	}
@@ -83,6 +83,14 @@ public class LoginBean extends BaseBean implements Serializable {
 
 	public void setProList(List<String> proList) {
 		this.proList = proList;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 	
 }

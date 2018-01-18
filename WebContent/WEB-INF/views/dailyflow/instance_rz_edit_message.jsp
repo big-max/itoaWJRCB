@@ -148,8 +148,8 @@
 						<th field="id" checkbox="true" width="10%">编号</th>
 						<th field="task_id" width="20%">任务ID</th>
 						<th field="name" width="20%">工号</th>
-						<th field="tel" width="30%">电话</th>
-						<th field="status" width="100%">发送配置</th>
+						<th field="tel" width="20%">电话</th>
+						<th field="status" width="30%">发送配置</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -171,6 +171,7 @@ public class ServerUtil {
 				lb.setEmail(jn.get("email") == null ? "" : jn.get("email").asText());
 				lb.setCzy(jn.get("czy") == null ? "" : jn.get("czy").asText());
 				lb.setTel(jn.get("tel") == null ? "" : jn.get("tel").asText());
+				lb.setAlias(jn.get("alias") == null ? "" : jn.get("alias").asText());
 				JsonNode pros = jn.get("product");
 				List<String> proList = new ArrayList<String>();
 				if (pros instanceof ArrayNode)
