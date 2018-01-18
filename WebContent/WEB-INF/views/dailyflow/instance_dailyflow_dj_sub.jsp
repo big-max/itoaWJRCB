@@ -639,7 +639,7 @@ body{
                 task_div.attr("data-original-title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#32cc00");
             }
-            else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
+            else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'scheduled' )//未开始
             {
             	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
 								 				 "实际开始时间：" +  obj.start_Date         + "," +
@@ -678,7 +678,7 @@ body{
                 task_div.attr("data-original-title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#FF8C00") ;
             }
-            else if (obj.state == 'upstream_failed') //需要清理 
+            else if (obj.state == 'upstream_failed' || obj.state == 'shutdown') //需要清理 
             {
             	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
 								 				 "实际开始时间：" +  obj.start_Date         + "," +
