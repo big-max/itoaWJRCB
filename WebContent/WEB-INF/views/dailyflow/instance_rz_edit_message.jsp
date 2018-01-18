@@ -145,14 +145,14 @@
 				pagination="true" rownumbers="true" fitColumns="true" >
 				<thead>
 					<tr>
-						<th field="id" checkbox="true" width="10%">编号</th>
-						<th field="task_id" width="20%">任务ID</th>
-						<th field="name" width="20%">工号</th>
+						<th field="id" checkbox="true">编号</th>
+						<th field="task_id" width="21.3%">任务ID</th>
+						<th field="name" width="23%">工号</th>
 						<th field="tel" width="30%">电话</th>
-						<th field="status" width="100%">发送配置</th>
+						<th field="status" width="25%">发送配置</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="content_table">
 					
 				</tbody>
 			</table>
@@ -249,5 +249,14 @@
 		</div>
 	</div>
 </body>
+
+<script>
+	//将“发送配置的1,2,3”改为对应的“开始,成功,失败”  
+	$(document).ready(function(){
+		var tableId = document.getElementById("content_table");
+		alert(tableId.rows.length);
+	}) 
+	
+</script>
 
 </html>
