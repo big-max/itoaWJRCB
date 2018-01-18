@@ -396,6 +396,12 @@ body{
         <div iconCls="icon-reload" onclick="rz_clear()">清理&续作</div>
         <div iconCls="icon-ok" onclick="rz_makesuccess()">确认成功</div>
     </div>
+    
+    <div id="mm1" class="easyui-menu" style="width:120px;">
+        <div iconCls="icon-search" onclick="rz_showLog()">查看日志</div>
+        <div iconCls="icon-edit" onclick="rz_record()">记录问题</div>
+        <div iconCls="icon-ok" onclick="rz_makesuccess()">确认成功</div>
+    </div>
 </body>
 
 <script>
@@ -425,10 +431,21 @@ body{
 	$(function(){
 		$(".ax_default").bind('contextmenu',function(e){
 			e.preventDefault();
-			$('#mm').menu('show', {
-				left: e.pageX,
-				top: e.pageY
-			});
+			var id = $(this).find("div:eq(0)").attr("id");
+			var borderColor = document.getElementById(id).style.borderColor;
+			if(borderColor == "rgb(50, 204, 0)" || borderColor == "rgb(0, 0, 255)")//如果是成功或进行中，右键没有清理操作
+			{
+				$('#mm1').menu('show', {
+					left: e.pageX, 
+					top: e.pageY
+				});
+			}
+			else{
+				$('#mm').menu('show', {
+					left: e.pageX,
+					top: e.pageY
+				});
+			}
 		});
 	});
 	

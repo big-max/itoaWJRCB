@@ -794,10 +794,21 @@ body{
 	$(function(){
 		$(".ax_default").bind('contextmenu',function(e){
 			e.preventDefault();
-			$('#mm1').menu('show', {
-				left: e.pageX,
-				top: e.pageY
-			});
+			var id = $(this).find("div:eq(0)").attr("id");
+			var borderColor = document.getElementById(id).style.borderColor;
+			if(borderColor == "rgb(50, 204, 0)" || borderColor == "rgb(0, 0, 255)")//如果是成功或进行中，右键没有清理操作
+			{
+				$('#mm2').menu('show', {
+					left: e.pageX, 
+					top: e.pageY
+				});
+			}
+			else{
+				$('#mm1').menu('show', {
+					left: e.pageX,
+					top: e.pageY
+				});
+			}
 		});
 	});
 	
