@@ -15,7 +15,7 @@
 <jsp:include page="../headerpprcback.jsp" flush="true" /> 
 <title>自动化运维平台</title>
 <style type="text/css">
-body{margin:0;padding:0;}
+body{margin:0;padding:0;background:url('dailyimg/u0.jpg') repeat;}
 .connector>img {
 	max-width:400px;
 }
@@ -24,6 +24,7 @@ body{margin:0;padding:0;}
 .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
 .modal{width:750px;left:43%;}
 .ax_default{cursor:pointer;}
+#progressImgage{display:none;}
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -33,7 +34,7 @@ body{margin:0;padding:0;}
 </script>
 </head>
 
-<body>
+<body style="width:100%;">
 	<!-- 日志模态框（Modal） -->
 	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -51,12 +52,57 @@ body{margin:0;padding:0;}
 		</div>
 	</div> 
 	
-	<div id="base">
-
-      <div id="u187">
-        <img id="u187_img" class="img" src="zbswitchimg/u0.jpg"/>
+	<div style="height:80px;width:100%;">
+		<div id="u176" class="connector">
+	        <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
+	    </div>
+	    <div id="u178">
+	        <div id="u179" class="text">
+	          <p><span style="font-size:23px;">吴江农村商业银行</span></p>
+	          <p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
+	        </div>
+	    </div>
+	    <div style="height:80px;line-height:70px;font-size:30px;margin-left:38%;">
+			<span><font color="white">核 心 系 统 灾 备 回 切 演 练</font></span>
+		</div>
+	</div>
+	
+	<div>
+      <div id="u12">
+        <div id="u12_div"></div>
+        <div id="u13">
+          <p><span>未开始</span></p>
+        </div>
       </div>
 
+      <div id="u14">
+        <div id="u14_div"></div>
+        <div id="u15">
+          <p><span>运行中</span></p>
+        </div>
+      </div>
+
+      <div id="u16">
+        <div id="u16_div"></div>
+        <div id="u17">
+          <p><span>成功</span></p>
+        </div>
+      </div>
+
+      <div id="u18">
+        <div id="u18_div"></div>
+        <div id="u19">
+          <p><span>失败</span></p>
+        </div>
+      </div>
+    </div>
+	
+	<div id="mainflow" style="height:710px;width:1030px;position:absolute;top:50px;">
+	  <div id="u181" style="top:-30px;">
+          <div id="uu6" style="font-size:16px;">执行时间</div>
+          <div id="uu5" style="font-size:16px;"></div>
+      </div>
+      
       <div id="u189" class="ax_default pprc_back_start">
         <div id="u189_div"></div>
         <div id="u190" class="text">
@@ -505,10 +551,6 @@ body{margin:0;padding:0;}
         <img id="u307_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u309">
-        <img id="u309_img" class="img" src="zbswitchimg/u176.png"/>
-      </div>
-
       <div id="u316" class="connector">
         <img id="u316_seg0" class="img" src="zbswitchimg/u316_seg0.png"/>
         <img id="u316_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
@@ -642,55 +684,7 @@ body{margin:0;padding:0;}
         <img id="u378_seg0" class="img" src="zbswitchimg/u378_seg0.png"/>
         <img id="u378_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
-      
-      <div id="u197">
-        <div id="u197_div"></div>
-        <div id="u198">
-          <p><span>未开始</span></p>
-        </div>
-      </div>
 
-      <div id="u199">
-        <div id="u199_div"></div>
-        <div id="u200">
-          <p><span>运行中</span></p>
-        </div>
-      </div>
-
-      <div id="u201">
-        <div id="u201_div"></div>
-        <div id="u202">
-          <p><span>成功</span></p>
-        </div>
-      </div>
-
-      <div id="u203">
-        <div id="u203_div"></div>
-        <div id="u204">
-          <p><span>失败</span></p>
-        </div>
-      </div>
-      
-      <!-- <div id="uu1">
-        <div id="uu1_div"></div>
-        <div id="uu2">
-          <p><span>已完成待检查</span></p>
-        </div>
-      </div> -->
-      
-      <div id="u311">
-        <div id="u312" class="text">
-          <p><span style="font-size:23px;">吴江农村商业银行</span></p><p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
-        </div>
-      </div>
-
-      <div id="u314">
-        <div id="u315" class="text">
-          <p><span>核 心 系 统 灾 备 回 切 演 练</span><span>&nbsp; </span></p>
-        </div>
-        <div id="uu6" style="font-size:16px;">执行时间</div>
-        <div id="uu5" style="font-size:16px;"></div>
-      </div>
     </div>
 
 	<img id="progressImgage"  style="width:120px;height:120px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
@@ -698,6 +692,12 @@ body{margin:0;padding:0;}
 </body>
 
 <script>
+	$(document).ready(function(){
+		var wid = window.screen.availWidth;
+		var widTr = (wid - 1030) / 2;
+		$("#mainflow").css("left",widTr);
+	})
+
 	//获取url中的参数
 	function getUrlParam(name) {
 	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象

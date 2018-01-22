@@ -152,7 +152,7 @@
 						<th field="status" width="25%">发送配置</th>
 					</tr>
 				</thead>
-				<tbody id="content_table">
+				<tbody>
 					
 				</tbody>
 			</table>
@@ -249,14 +249,5 @@
 		</div>
 	</div>
 </body>
-
-<script>
-	//将“发送配置的1,2,3”改为对应的“开始,成功,失败”  
-	$(document).ready(function(){
-		var tableId = document.getElementById("content_table");
-		alert(tableId.rows.length);
-	}) 
-	
-</script>
 
 </html>

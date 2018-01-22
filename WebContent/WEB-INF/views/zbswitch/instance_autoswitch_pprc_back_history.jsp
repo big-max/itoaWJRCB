@@ -15,7 +15,7 @@
 <jsp:include page="../headerpprcback.jsp" flush="true" /> 
 <title>自动化运维平台</title>
 <style type="text/css">
-body{margin:0;padding:0;}
+body{margin:0;padding:0;background:url('dailyimg/u0.jpg') repeat;}
 .connector>img {
 	max-width:400px;
 }
@@ -24,40 +24,10 @@ body{margin:0;padding:0;}
 .mask{position: fixed;top: 0;right: 0;bottom: 0;left: 0; z-index: 1000; background-color: #000000}
 .modal{width:750px;left:43%;}
 .ax_default{cursor:pointer;}
-#uu1{
-	border-width: 0px;
-	position: absolute;
-	left:320px;top:38px;
-	width: 120px;
-	height: 30px;
-	font-family: '微软雅黑';
-	font-style: normal;
-	color: #FFFFFF;
-}
-#uu2{
-	border-width: 0px;
-	position: absolute;
-	left:680px;top:33px;
-	width: 100px;
-	height: 46px;
-	font-family: '微软雅黑';
-	font-style: normal;
-	color: #FFFFFF;
-}
-#uu3{
-	border-width: 0px;
-	position: absolute;
-	left:460px;top:33px;
-	width: 100px;
-	height: 46px;
-	font-family: '微软雅黑';
-	font-style: normal;
-	color: #FFFFFF;
-}
 </style>
 </head>
 
-<body> 
+<body style="width:100%;"> 
 	<!-- 日志模态框（Modal） -->
 	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -75,12 +45,34 @@ body{margin:0;padding:0;}
 		</div>
 	</div> 
 	
-	<div id="base">
-
-      <div id="u187">
-        <img id="u187_img" class="img" src="zbswitchimg/u0.jpg"/>
-      </div>
-
+	<div style="height:80px;width:100%;">
+		<div id="u176" class="connector">
+	        <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
+	    </div>
+	    <div id="u178">
+	        <div id="u179" class="text">
+	          <p><span style="font-size:23px;">吴江农村商业银行</span></p>
+	          <p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
+	        </div>
+	    </div>
+	    <div style="height:70px;line-height:70px;margin-left:34%;">
+	    	<div style="float:left;">
+	    		<span style="font-size:15px;"><font color="white">核心系统回切</font></span>
+	    	</div>
+	    	<div style="float:left;margin-left:30px;margin-top:3px;">
+	    		<select id="hisdatetime" style="width:200px;">
+					<option value="${execution_date}">${execution_date}</option>
+				</select>
+	    	</div>
+	    	<div style="float:left;margin-left:30px;">
+	    		<button id="showlogbtn" class="btn btn-sm" style="background-color: #3399CC;">
+					<font color="white">查看历史</font>
+				</button>
+	    	</div>
+		</div>
+	</div>
+	
+	<div id="mainflow" style="height:710px;width:1030px;position:absolute;top:50px;">
       <div id="u189" class="ax_default pprc_back_start">
         <div id="u189_div"></div>
         <div id="u190" class="text">
@@ -529,10 +521,6 @@ body{margin:0;padding:0;}
         <img id="u307_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
 
-      <div id="u309">
-        <img id="u309_img" class="img" src="zbswitchimg/u176.png"/>
-      </div>
-
       <div id="u316" class="connector">
         <img id="u316_seg0" class="img" src="zbswitchimg/u316_seg0.png"/>
         <img id="u316_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
@@ -666,33 +654,17 @@ body{margin:0;padding:0;}
         <img id="u378_seg0" class="img" src="zbswitchimg/u378_seg0.png"/>
         <img id="u378_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
-                  
-      <div id="u311">
-        <div id="u312" class="text">
-          <p><span style="font-size:23px;">吴江农村商业银行</span></p><p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
-        </div>
-      </div>
-      
-      <div id="uu1aa">
-          <p><span style="font-size:15px;">核心系统回切</span></p>
-      </div>
-      
-      <div id="uu3" class="ax_default">
-      	  <select id="hisdatetime" style="width:200px;">
-				<option value="${execution_date}">${execution_date}</option>
-		  </select>
-      </div>
-      
-      <div id="uu2">		  
-          <button id="showlogbtn" class="btn btn-sm" style="background-color: #3399CC;">
-				<font color="white">查看历史</font>
-		  </button>
-      </div>
       
      </div> 
 </body>
 
 <script>
+$(document).ready(function(){
+	var wid = window.screen.availWidth;
+	var widTr = (wid - 1030) / 2;
+	$("#mainflow").css("left",widTr);
+})
+
 var dag_id = getUrlParam('dag_id');
 var execution_date = getUrlParam('execution_date');
 var execution_date_show = execution_date.split("T")[0];

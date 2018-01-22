@@ -15,17 +15,16 @@
 <jsp:include page="../headerpprcgo.jsp" flush="true" /> 
 <title>自动化运维平台</title>
 <style type="text/css">
-body{margin:0;padding:0;}
+body{margin:0;padding:0;background:url('dailyimg/u0.jpg') repeat;}
 .connector>img {
 	max-width:400px;
 }
 .modal{width:750px;left:43%;}
 .ax_default{cursor:pointer;text-align:center;font-size:13px;}
-#u181{left:460px;top:33px;width: 200px;}
 </style>
 </head>
 
-<body>
+<body style="width:100%;">
 	<!-- 日志模态框（Modal） -->
 	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -43,12 +42,34 @@ body{margin:0;padding:0;}
 		</div>
 	</div> 
 	
-	<div id="base">
-
-      <div id="u0">
-        <img id="u0_img" class="img" src="zbswitchimg/u0.jpg"/>
-      </div>
-
+	<div style="height:80px;width:100%;">
+		<div id="u176" class="connector">
+	        <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
+	    </div>
+	    <div id="u178">
+	        <div id="u179" class="text">
+	          <p><span style="font-size:23px;">吴江农村商业银行</span></p>
+	          <p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
+	        </div>
+	    </div>
+	    <div style="height:70px;line-height:70px;margin-left:34%;">
+	    	<div style="float:left;">
+	    		<span style="font-size:15px;"><font color="white">核心系统切换</font></span>
+	    	</div>
+	    	<div style="float:left;margin-left:30px;margin-top:3px;">
+	    		<select id="hisdatetime" style="width:200px;">
+					<option value="${execution_date}">${execution_date}</option>
+				</select>
+	    	</div>
+	    	<div style="float:left;margin-left:30px;">
+	    		<button id="showlogbtn" class="btn btn-sm" style="background-color: #3399CC;">
+					<font color="white">查看历史</font>
+				</button>
+	    	</div>
+		</div>
+	</div>
+	
+	<div id="mainflow" style="height:710px;width:1030px;position:absolute;top:50px;">
       <div id="u2" class="ax_default pprc_go_start">
         <div id="u2_div"></div>
         <div id="u3" class="text">
@@ -605,10 +626,6 @@ body{margin:0;padding:0;}
         <img id="u174_seg2" class="img" src="zbswitchimg/u96_seg2.png"/>
         <img id="u174_seg3" class="img" src="zbswitchimg/u84_seg3.png"/>
       </div>
-
-      <div id="u176">
-        <img id="u176_img" class="img" src="zbswitchimg/u176.png"/>
-      </div>
       
       <div id="u183" class="connector">
         <img id="u183_seg0" class="img" src="zbswitchimg/u183_seg0.png"/>
@@ -619,34 +636,17 @@ body{margin:0;padding:0;}
         <img id="u185_seg0" class="img" src="zbswitchimg/u185_seg0.png"/>
         <img id="u185_seg1" class="img" src="zbswitchimg/u118_seg1.png"/>
       </div>
-
-      <div id="u178">
-        <div id="u179" class="text">
-          <p><span style="font-size:23px;">吴江农村商业银行</span></p>
-          <p><span style="font-size:10px;">WUJIANG RURAL COMMERCIAL BANK</span></p>
-        </div>
-      </div>
-
-      <div id="u181">
-          <select id="hisdatetime" style="width:200px;">
-				<option value="${execution_date}">${execution_date}</option>
-		  </select>
-      </div>
-      
-      <div id="uu3">
-          <p><span style="font-size:15px;">核心系统切换</span></p>
-      </div>
-      
-      <div id="uu4">
-          <button id="showlogbtn" class="btn btn-sm" style="background-color: #3399CC;">
-				<font color="white">查看历史</font>
-		  </button>
-      </div>
       
     </div>
 </body>
 
 <script>
+$(document).ready(function(){
+	var wid = window.screen.availWidth;
+	var widTr = (wid - 1030) / 2;
+	$("#mainflow").css("left",widTr);
+})
+
 var dag_id = getUrlParam('dag_id');
 var execution_date = getUrlParam('execution_date');
 var execution_date_show = execution_date.split("T")[0];
