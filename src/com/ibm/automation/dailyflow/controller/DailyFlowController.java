@@ -221,6 +221,13 @@ public class DailyFlowController {
 	public JSONArray getTaskSMSID() {
 		List<TaskTelsBean> mylist = taskTelsService.getAllTaskTels();
 		JSONArray array = JSONArray.fromObject(mylist);
+		for(int i=0 ; i<array.size() ; i++)
+		{
+			JSONObject ob  = (JSONObject) array.get(i);
+			String status= ob.getString("status");
+			String newstatus = status.replace("1", "开始").replace("2", "成功").replace("3", "失败");
+			ob.put("status", newstatus);
+		}
 		return array;
 	}
 
