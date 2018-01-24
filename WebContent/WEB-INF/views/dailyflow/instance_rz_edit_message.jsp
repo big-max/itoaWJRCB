@@ -48,7 +48,7 @@
 		$("#edit_form").find("#id").val(row.id);
 	    $("#edit_form").find("#task_id").val(row.task_id);
 	    $("#edit_form").find('#name').combobox('reload','/getLoginInfo.do');
-	    $("#edit_form").find('#name').val(row.name);
+	    $("#edit_form").find("#name").textbox('setValue',row.name);
 	    
 	    if (row.status == '' || row.status == null || typeof(row.status) == 'undefined') 
 	    {
@@ -176,7 +176,7 @@
 					<div>
 						<label>工号:</label>
 						<input id="name" name="name" style="width: 100%" class="easyui-combobox" multiple="multiple"
-							data-options="valueField: 'nametel',textField: 'name'">
+							data-options="valueField: 'name',textField: 'name'">
 					</div>
 					<div style="margin-top: 20px;">
 						<label>短信发送类型:</label>
@@ -219,7 +219,7 @@
 					<div>
 						<label>工号:</label>
 						<input id="name" name="name" style="width: 100%" class="easyui-combobox"
-							data-options="valueField: 'nametel',textField: 'name'">
+							data-options="valueField: 'name',textField: 'name'">
 					</div>
 					<div style="margin-top:20px;">
 						<label>短信发送类型:</label>
