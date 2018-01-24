@@ -11,7 +11,7 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<jsp:include page="../header.jsp" flush="true" />
+<jsp:include page="../header_easyui.jsp" flush="true" />
 <title>自动化运维平台</title>
 <style type="text/css">
 .content {
@@ -21,37 +21,11 @@
 	margin:0px;
 	height:calc(100vh - 70px);
 }
-.current1,.current1:hover {
-    color: #444444;
-}
-input[type="text"] {
-	height:28px;
-}
-.input140,label,.mr20 {
-	font-size: 13px;
-}
-.inputb2l{width:200%;}
-.form-horizontal .control-label{
-	width:32%;
-}
-.form-horizontal .controls{
-	margin-left:37%;
-}
-.upcon{
-	width:26%;margin-left:10px;margin-top:0px;float:left;height:80vh;
-}
-.downcon{
-	width:70%;height:80vh;float:right;margin-top:0px;margin-right:10px;
-}
+.current1,.current1:hover { color: #444444; }
+.textbox-label { width:120px; }
+.divbott { margin-bottom:20px; }
+.inptext { float:left;width:120px;text-align:right;margin-top:2px; }
 </style>
-
-<script>
-	/* 提取sweet提示框代码，以便后面方便使用，减少代码行数 */ 
-	function sweet(te,ty,conBut)
-	{
-		swal({ title: "", text: te,  type: ty, confirmButtonText: conBut, });
-	}
-</script>
 </head>
 
 <body>
@@ -68,104 +42,97 @@ input[type="text"] {
 			<i class="icon-home"></i>自动化发布 WAS</a>
 		</div>
 		
-		<div class="upcon">
-			<div style="font-size:14px;"><b>基本信息</b></div>
-			<div class="mainmodule">
-				<div class="form-horizontal">
-					<div class="control-group">
-						<label class="control-label">war包路径</label>
-						<div class="controls">
-							<div class="inputb2l">
-								<select style="width: 47.5%; font-size: 13px;" class="w48" id="file_path" name="file_path">
-									<option value="" selected="selected">/tmp</option>	
-								</select>
-							</div>
-						</div>
+		<div class="easyui-layout" style="width:99.8%;height:95%;margin:0 auto;">
+			<div data-options="region:'west'" title="基本信息" style="width:30%;padding:10px">
+				<div class="divbott">
+					<div class="inptext">
+						<label>war包路径&nbsp;&nbsp;&nbsp;</label>
 					</div>
-					<!-- <div class="control-group">
-						<label class="control-label">war包名称</label>
-						<div class="controls">
-							<div class="inputb2l">
-								<input type="text" class="w45" id="file_name" name="file_name" value="" />
-							</div>
-						</div>
-					</div> -->
-					<div class="control-group">
-						<label class="control-label">was用户名</label>
-						<div class="controls">
-							<div class="inputb2l">
-								<input type="text" class="w45" id="was_user" name="was_user" value="root" />
-							</div>
-						</div>
+					<div>
+						<select id="file_path" name="file_path" class="easyui-combobox" style="width:60%;height:30px;">
+							<option value="" selected="selected">/tmp</option>	
+						</select>
 					</div>
-					<div class="control-group">
-						<label class="control-label">profile路径</label>
-						<div class="controls">
-							<div class="inputb2l">
-								<input type="text" class="w45" id="was_profile_home" name="was_profile_home" value="/opt/IBM/WebSphere/AppServer/profiles/AppSrv02" />
-							</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">was控制台用户名</label>
-						<div class="controls">
-							<div class="inputb2l">
-								<input type="text" class="w45" id="was_username" name="was_username" value="" />
-							</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">was控制台密码</label>
-						<div class="controls">
-							<div class="inputb2l">
-								<input type="text" class="w45" id="was_password" name="was_password" value="" />
-							</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">app名称</label>
-						<div class="controls">
-							<div class="inputb2l">
-								<input type="text" class="w45" id="app_name" name="app_name" value="" />
-							</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">上下文根</label>
-						<div class="controls">
-							<div class="inputb2l">
-								<input type="text" class="w45" id="app_contextroot" name="app_contextroot" value="" />
-							</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">发布类型</label>
-						<div class="controls">
-							<div class="inputb2l">
-								<select style="width: 47.5%; font-size: 13px;" id="deploy_type" class="w48" name="deploy_type">
-									<option value="update" selected="selected">update</option>	
-									<option value="new">new</option>		
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-							<div class="inputb2l">
-								<button class="btn btn-primary">发起</button>
-							</div>
-						</div>
-					</div>
-
 				</div>
+				
+				<div class="divbott">
+					<div class="inptext">
+						<label>was用户名&nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div>
+						<input class="easyui-textbox" id="was_user" name="was_user" value="root" style="width:60%;height:30px;">
+					</div>
+				</div>
+				
+				<div class="divbott">
+					<div class="inptext">
+						<label>profile路径&nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div>
+						<input class="easyui-textbox" id="was_profile_home" name="was_profile_home" value="/opt/IBM/WebSphere/AppServer/profiles/AppSrv02" style="width:60%;height:30px;">
+					</div>
+				</div>
+				
+				<div class="divbott">
+					<div class="inptext">
+						<label>was控制台用户名&nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div>
+						<input class="easyui-textbox" id="was_username" name="was_username" value="" style="width:60%;height:30px;">
+					</div>
+				</div>
+				
+				<div class="divbott">
+					<div class="inptext">
+						<label>was控制台密码&nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div>
+						<input class="easyui-textbox" id="was_password" name="was_password" value="" style="width:60%;height:30px;">
+					</div>
+				</div>
+				
+				<div class="divbott">
+					<div class="inptext">
+						<label>app名称 &nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div>
+						<input class="easyui-textbox" id="app_name" name="app_name" value="" style="width:60%;height:30px;">
+					</div>
+				</div>
+				
+				<div class="divbott">
+					<div class="inptext">
+						<label>上下文根 &nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div>
+						<input class="easyui-textbox" id="app_contextroot" name="app_contextroot" value="" style="width:60%;height:30px;">
+					</div>
+				</div>
+				
+				<div class="divbott">
+					<div class="inptext">
+						<label>发布类型 &nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div>
+						<select id="deploy_type" name="deploy_type" class="easyui-combobox" style="width:60%;height:30px;">
+							<option value="update" selected="selected">update</option>	
+							<option value="new">new</option>	
+						</select>
+					</div>
+				</div>
+				
+				<div class="divbott">
+					<a id="startBtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:80%;margin-left:50px;;">
+						<span style="font-size:14px;">发起</span>
+					</a>
+				</div>
+				
+			</div>
+			
+			<div data-options="region:'center'" title="实时日志">
+				<textarea id="real_log" style="width:100%;height:98.6%;resize:none;border:0px;"></textarea>
 			</div>
 		</div>
-		
-		<div class="downcon">
-			<div style="font-size:14px;margin-bottom:8px;"><b>实时日志</b></div>
-			<textarea id="real_log" style="width:100%;height:69vh;"></textarea>
-		</div>
-		
 	</div>
 </body>
 </html>
