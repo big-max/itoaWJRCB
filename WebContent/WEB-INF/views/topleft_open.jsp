@@ -14,6 +14,10 @@
 <!-- Resource style -->
 <link href="css/jquery-accordion-menu.css" rel="stylesheet" type="text/css" />
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+<!-- easyui -->
+<link type="text/css" rel="stylesheet" href="css/easyui.css" />
+<link type="text/css" rel="stylesheet" href="css/icon.css" />
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script> 
 
 <style type="text/css">
 .nano .pane{ 
@@ -201,7 +205,7 @@ jQuery(document).ready(function () {
 		<c:if test="${fn:contains(role,3) || fn:contains(role,1) }">
 		<ul>
 			<li class="active">
-				<a href="#" class="notvisible tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化部署">
+				<a href="#" class="notvisible tooltipa1 showsubmenu zdhbs">
 					<img class="img_icon" src="img/icons/iconfont/deploy.png"></img>
 				</a>
 				<a href="#" class="tooltipa2" id="forremoveminux">
@@ -250,7 +254,7 @@ jQuery(document).ready(function () {
 		<c:if test="${fn:contains(role,2) || fn:contains(role,1)  }">
 		<ul>
 			<li>
-				<a href="autoswitch.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="灾备切换">
+				<a href="autoswitch.do" class="notvisible tooltipa1 zbqh">
 					<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>
 				</a>
 				<a href="autoswitch.do" class="tooltipa2">
@@ -266,7 +270,7 @@ jQuery(document).ready(function () {
 		<c:if test="${fn:contains(role,0) || fn:contains(role,1)  }">
 		<ul>		
 			<li>
-				<a href="dailyflow.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="日终流程">
+				<a href="dailyflow.do" class="notvisible tooltipa1 rzlc">
 					<img class="img_icon" src="img/icons/iconfont/dailyflow.png"></img>
 				</a>
 				<a href="dailyflow.do" class="tooltipa2">
@@ -281,7 +285,7 @@ jQuery(document).ready(function () {
 		<c:if test="${ fn:contains(role,1) }">
 		<ul>		
 			<li>
-				<a href="dailyEditMessage.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="日终短信编辑">
+				<a href="dailyEditMessage.do" class="notvisible tooltipa1 rzdx">
 					<img class="img_icon" src="img/icons/iconfont/rz_em.png"></img>
 				</a>
 				<a href="dailyEditMessage.do" class="tooltipa2">
@@ -297,7 +301,7 @@ jQuery(document).ready(function () {
 		<c:if test="${fn:contains(role,5) || fn:contains(role,1) }">
 		<ul>
 			<li class="active">
-				<a href="#" class="notvisible tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化发布">
+				<a href="#" class="notvisible tooltipa1 showsubmenu zdhfb">
 					<img class="img_icon" src="img/icons/iconfont/publish.png"></img>
 				</a>
 				<a href="#" class="tooltipa2" id="forremoveminux">
@@ -318,7 +322,7 @@ jQuery(document).ready(function () {
 		<c:if test="${fn:contains(role,1) }">
 		<ul>
 			<li>
-				<a href="accountManage.do" class="notvisible tooltipa1" data-toggle="tooltip" data-placement="right" title="账号管理">
+				<a href="accountManage.do" class="notvisible tooltipa1 zhgl">
 					<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>
 				</a>
 				<a href="accountManage.do" class="tooltipa2">
@@ -454,4 +458,28 @@ jQuery(document).ready(function () {
  	}
 </script>
 
+<script>
+	function common(cla,txt)
+	{
+		$(cla).tooltip({
+			position: 'right',
+			content: '<div style="color:#fff;font-size:15px;text-align:center;">' + txt + '</div>', 
+			onShow: function(){
+				$(this).tooltip('tip').css({
+					backgroundColor: '#666',
+					borderColor: '#666'
+				});
+			}
+		});
+	}
+	
+	$(function(){
+		common(".zdhbs","自动化部署");
+		common(".zbqh","灾备切换");
+		common(".rzlc","日终流程");
+		common(".rzdx","日终短信编辑");
+		common(".zdhfb","自动化发布");
+		common(".zhgl","账号管理");
+	})
+</script>
 </html>

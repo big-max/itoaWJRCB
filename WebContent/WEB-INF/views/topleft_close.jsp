@@ -14,6 +14,10 @@
 <!-- Resource style -->
 <link href="css/jquery-accordion-menu.css" rel="stylesheet" type="text/css" />
 <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+<!-- easyui -->
+<link type="text/css" rel="stylesheet" href="css/easyui.css" />
+<link type="text/css" rel="stylesheet" href="css/icon.css" />
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script> 
 
 <style type="text/css">
 .nano .pane{ 
@@ -97,7 +101,6 @@ input[type="text"],input[type="password"] {
 		
 		//点击缩起来的图标展示相关子菜单
 		$("#jquery-accordion-menu").children("div").children("ul").children("li").children(".showsubmenu").bind("click", function(e){
-        		  			 
 	   			 $(".content").animate({width:"86%"},1,function(){
 	   			 $("#jquery-accordion-menu").animate({width:"14%"},1,function(){
 	   				 $(".tooltipa1").addClass("notvisible");
@@ -116,9 +119,30 @@ input[type="text"],input[type="password"] {
 		   		 $("#menu_account").show();
 		   		 $("#menu_rz_em").show();
 		   		 $("#showonce").delay(0).slideDown(300);
-		   		$("#forremoveminux").addClass("submenu-indicator-minus");
-		   	
+		   		 $("#forremoveminux").addClass("submenu-indicator-minus");
         	});
+		
+		$("#jquery-accordion-menu").children("div").children("ul").children("li").children(".showsubmenu_ap").bind("click", function(e){
+  			 $(".content").animate({width:"86%"},1,function(){
+  			 $("#jquery-accordion-menu").animate({width:"14%"},1,function(){
+  				 $(".tooltipa1").addClass("notvisible");
+  				 $(".tooltipa2").removeClass("notvisible");
+  				  $('.nosubmenu').find('.has-children.selected').removeClass('selected');
+  				  $("#drawback2").replaceWith(button1);
+  				  $(".mark1").removeClass("mark1"); 	
+  				  $(".columnfoot").css("width","82.7%");
+  				  $(".columnfoot").css("left","15%");
+  				 });
+  			 });
+	   		 $("#menu_deploy").show();
+	   		 $("#menu_rz").show();	
+	   		 $("#menu_zbswitch").show();
+	   		 $("#menu_publish").show();
+	   		 $("#menu_account").show();
+	   		 $("#menu_rz_em").show();
+	   		 $("#showonce_ap").delay(0).slideDown(300);
+	   		 $("#forremoveminux").addClass("submenu-indicator-minus");
+   	});
 		
 		//左侧菜单栏的隐藏和显示 开始
 		$("body").on("click","#drawback1",function(){
@@ -206,7 +230,7 @@ input[type="text"],input[type="password"] {
 		<c:if test="${fn:contains(role,3) || fn:contains(role,1) }">
 		<ul>
 			<li>
-				<a href="#" class="tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化部署">
+				<a href="#" class="tooltipa1 showsubmenu zdhbs">
 					<img class="img_icon" src="img/icons/iconfont/deploy.png" ></img>
 				</a>
 				<a href="#" class="notvisible tooltipa2" id="forremoveminux">
@@ -256,7 +280,7 @@ input[type="text"],input[type="password"] {
 		<c:if test="${fn:contains(role,2) || fn:contains(role,1) }">
 		<ul>
 			<li>
-				<a href="autoswitch.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="灾备切换">
+				<a href="autoswitch.do" class="tooltipa1 zbqh">
 					<img class="img_icon" src="img/icons/iconfont/zaibei.png"></img>
 				</a>
 				<a href="autoswitch.do" class="notvisible tooltipa2">
@@ -272,7 +296,7 @@ input[type="text"],input[type="password"] {
 		<c:if test="${fn:contains(role,0) || fn:contains(role,1) }">
 		<ul>
 			<li>
-				<a href="dailyflow.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="日终流程">
+				<a href="dailyflow.do" class="tooltipa1 rzlc">
 					<img class="img_icon" src="img/icons/iconfont/dailyflow.png"></img>
 				</a>
 				<a href="dailyflow.do" class="notvisible tooltipa2">
@@ -287,7 +311,7 @@ input[type="text"],input[type="password"] {
 		<c:if test="${ fn:contains(role,1) }">
 		<ul>
 			<li>
-				<a href="dailyEditMessage.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="日终短信编辑">
+				<a href="dailyEditMessage.do" class="tooltipa1 rzdx">
 					<img class="img_icon" src="img/icons/iconfont/rz_em.png"></img>
 				</a>
 				<a href="dailyEditMessage.do" class="notvisible tooltipa2">
@@ -303,14 +327,14 @@ input[type="text"],input[type="password"] {
 		<c:if test="${fn:contains(role,5) || fn:contains(role,1) }">
 		<ul>
 			<li>
-				<a href="#" class="tooltipa1 showsubmenu" data-toggle="tooltip" data-placement="right" title="自动化发布">
+				<a href="#" class="tooltipa1 showsubmenu_ap zdhfb">
 					<img class="img_icon" src="img/icons/iconfont/publish.png" ></img>
 				</a>
 				<a href="#" class="notvisible tooltipa2" id="forremoveminux">
 					<img class="img_icon" src="img/icons/iconfont/publish.png"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu_publish" class="top5">自动化发布</span> 
 				</a>
-				<ul class="nosubmenu submenu" id="showonce">
+				<ul class="nosubmenu submenu" id="showonce_ap">
 					<li class="has-children">
 						<a href="autopublish.do"><span>WAS</span></a>
 					</li>
@@ -324,7 +348,7 @@ input[type="text"],input[type="password"] {
 		<c:if test="${fn:contains(role,1) }">
 		<ul>
 			<li>
-				<a href="accountManage.do" class="tooltipa1" data-toggle="tooltip" data-placement="right" title="账号管理">
+				<a href="accountManage.do" class="tooltipa1 zhgl">
 					<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>
 				</a>
 				<a href="accountManage.do" class="notvisible tooltipa2">
@@ -458,5 +482,30 @@ input[type="text"],input[type="password"] {
 			}
  		})
  	}
+</script>
+
+<script>
+	function common(cla,txt)
+	{
+		$(cla).tooltip({
+			position: 'right',
+			content: '<div style="color:#fff;font-size:15px;text-align:center;">' + txt + '</div>', 
+			onShow: function(){
+				$(this).tooltip('tip').css({
+					backgroundColor: '#666',
+					borderColor: '#666'
+				});
+			}
+		});
+	}
+	
+	$(function(){
+		common(".zdhbs","自动化部署");
+		common(".zbqh","灾备切换");
+		common(".rzlc","日终流程");
+		common(".rzdx","日终短信编辑");
+		common(".zdhfb","自动化发布");
+		common(".zhgl","账号管理");
+	})
 </script>
 </html>
