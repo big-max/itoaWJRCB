@@ -176,7 +176,7 @@
 					<div>
 						<label>工号:</label>
 						<input id="name" name="name" style="width: 100%" class="easyui-combobox" multiple="multiple"
-							data-options="valueField: 'name',textField: 'name'">
+							data-options="valueField: 'nametel',textField: 'name'">
 					</div>
 					<div style="margin-top: 20px;">
 						<label>短信发送类型:</label>
@@ -219,7 +219,7 @@
 					<div>
 						<label>工号:</label>
 						<input id="name" name="name" style="width: 100%" class="easyui-combobox"
-							data-options="valueField: 'name',textField: 'name'">
+							data-options="valueField: 'nametel',textField: 'name'">
 					</div>
 					<div style="margin-top:20px;">
 						<label>短信发送类型:</label>

@@ -742,10 +742,10 @@ body{
 		})
 	}
 
-	$(".ax_default").tooltip({
+	/* $(".ax_default").tooltip({
 	    html: true,
 	    container: "body",
-	});
+	}); */
 	
 	var dag_id = getUrlParam('dag_id'); 
 	var execution_date = getUrlParam('execution_date');
@@ -757,7 +757,7 @@ body{
             var task_div = $('.' + obj.task_id);
             if(obj.state == 'failed') //如果失败
             {
-            	var tipcontent ="<p align='left'> 预计开始时间：" +  obj.expected_starttime + "," +
+            	/* var tipcontent ="<p align='left'> 预计开始时间：" +  obj.expected_starttime + "," +
             									 "实际开始时间：" +  obj.start_Date         + "," +
             									 "预计结束时间：" +  obj.expected_endtime   + "," + 
             									 "实际结束时间：" +  obj.end_Date           + "," +
@@ -766,11 +766,30 @@ body{
             					"任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#FF0000");
+                task_div.find("div:eq(0)").css("border-color","#FF0000"); */
+                
+            	var tipcontent = '<span style="color:#fff">预计开始时间：' + obj.expected_starttime + '<br>' +
+								 '实际开始时间：' + obj.start_Date + '<br>' +
+								 '预计结束时间：' + obj.expected_endtime + '<br>' +
+								 '实际结束时间：' + obj.end_Date + '<br>' +
+								 '预计持续时间：' + obj.expected_duration + '<br>' +
+								 '实际持续时间：' + obj.duration + '<br>' +
+								 '任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：失败</span>';
+				$(task_div).tooltip({
+					position: 'top',
+					content: tipcontent,
+					onShow: function(){
+						$(this).tooltip('tip').css({
+							backgroundColor: '#676161',
+							borderColor: '#676161'
+						});
+					}
+				});
+				task_div.find("div:eq(0)").css("border-color","#FF0000"); 
             }
             else if (obj.state == 'success') //如果成功
             {
-            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+            	/* var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
 								 				 "实际开始时间：" +  obj.start_Date         + "," +
 								 			 	 "预计结束时间：" +  obj.expected_endtime   + "," + 
 								 				 "实际结束时间：" +  obj.end_Date           + "," +
@@ -779,11 +798,30 @@ body{
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#32cc00");
+                task_div.find("div:eq(0)").css("border-color","#32cc00"); */
+                
+            	var tipcontent = '<span style="color:#fff">预计开始时间：' + obj.expected_starttime + '<br>' +
+								 '实际开始时间：' + obj.start_Date + '<br>' +
+								 '预计结束时间：' + obj.expected_endtime + '<br>' +
+								 '实际结束时间：' + obj.end_Date + '<br>' +
+								 '预计持续时间：' + obj.expected_duration + '<br>' +
+								 '实际持续时间：' + obj.duration + '<br>' +
+								 '任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：成功</span>';
+				$(task_div).tooltip({
+					position: 'top',
+					content: tipcontent,
+					onShow: function(){
+						$(this).tooltip('tip').css({
+							backgroundColor: '#676161',
+							borderColor: '#676161'
+						});
+					}
+				});
+				task_div.find("div:eq(0)").css("border-color","#32cc00");
             }
             else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'scheduled' || obj.state == 'shutdown')//未开始
             {
-            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+            	/* var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
 								 				 "实际开始时间：" +  obj.start_Date         + "," +
 								 				 "预计结束时间：" +  obj.expected_endtime   + "," + 
 								 				 "实际结束时间：" +  obj.end_Date           + "," +
@@ -792,11 +830,30 @@ body{
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#ffffff");
+                task_div.find("div:eq(0)").css("border-color","#ffffff"); */
+                
+            	var tipcontent = '<span style="color:#fff">预计开始时间：' + obj.expected_starttime + '<br>' +
+								 '实际开始时间：' + obj.start_Date + '<br>' +
+								 '预计结束时间：' + obj.expected_endtime + '<br>' +
+								 '实际结束时间：' + obj.end_Date + '<br>' +
+								 '预计持续时间：' + obj.expected_duration + '<br>' +
+								 '实际持续时间：' + obj.duration + '<br>' +
+								 '任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：未开始</span>';
+				$(task_div).tooltip({
+					position: 'top',
+					content: tipcontent,
+					onShow: function(){
+						$(this).tooltip('tip').css({
+							backgroundColor: '#676161',
+							borderColor: '#676161'
+						});
+					}
+				});
+				task_div.find("div:eq(0)").css("border-color","#ffffff");
             }
             else if (obj.state == 'running')
             {
-            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+            	/* var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
 								 				 "实际开始时间：" +  obj.start_Date         + "," +
 								 				 "预计结束时间：" +  obj.expected_endtime   + "," + 
 								 				 "实际结束时间：" +  obj.end_Date           + "," +
@@ -805,11 +862,30 @@ body{
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#0000ff") ;
+                task_div.find("div:eq(0)").css("border-color","#0000ff") ; */
+                
+            	var tipcontent = '<span style="color:#fff">预计开始时间：' + obj.expected_starttime + '<br>' +
+								 '实际开始时间：' + obj.start_Date + '<br>' +
+								 '预计结束时间：' + obj.expected_endtime + '<br>' +
+								 '实际结束时间：' + obj.end_Date + '<br>' +
+								 '预计持续时间：' + obj.expected_duration + '<br>' +
+								 '实际持续时间：' + obj.duration + '<br>' +
+								 '任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：运行中</span>';
+				$(task_div).tooltip({
+					position: 'top',
+					content: tipcontent,
+					onShow: function(){
+						$(this).tooltip('tip').css({
+							backgroundColor: '#676161',
+							borderColor: '#676161'
+						});
+					}
+				});
+				task_div.find("div:eq(0)").css("border-color","#0000ff");
             }
             else if (obj.state == 'done') //如果处于做完待确认的状态
             {
-            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+            	/* var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
 								 				 "实际开始时间：" +  obj.start_Date         + "," +
 								 				 "预计结束时间：" +  obj.expected_endtime   + "," + 
 								 				 "实际结束时间：" +  obj.end_Date           + "," +
@@ -818,11 +894,30 @@ body{
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#FF8C00") ;
+                task_div.find("div:eq(0)").css("border-color","#FF8C00") ; */
+                
+            	var tipcontent = '<span style="color:#fff">预计开始时间：' + obj.expected_starttime + '<br>' +
+								 '实际开始时间：' + obj.start_Date + '<br>' +
+								 '预计结束时间：' + obj.expected_endtime + '<br>' +
+								 '实际结束时间：' + obj.end_Date + '<br>' +
+								 '预计持续时间：' + obj.expected_duration + '<br>' +
+								 '实际持续时间：' + obj.duration + '<br>' +
+								 '任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</span>';
+				$(task_div).tooltip({
+					position: 'top',
+					content: tipcontent,
+					onShow: function(){
+						$(this).tooltip('tip').css({
+							backgroundColor: '#676161',
+							borderColor: '#676161'
+						});
+					}
+				});
+				task_div.find("div:eq(0)").css("border-color","#FF8C00");
             }
             else if (obj.state == 'upstream_failed') //需要清理 
             {
-            	var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
+            	/* var tipcontent = "<p align='left'>预计开始时间：" +  obj.expected_starttime + "," +
 								 				 "实际开始时间：" +  obj.start_Date         + "," +
 								 				 "预计结束时间：" +  obj.expected_endtime   + "," + 
 								 				 "实际结束时间：" +  obj.end_Date           + "," +
@@ -831,7 +926,26 @@ body{
 								 "任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
-                task_div.find("div:eq(0)").css("border-color","#FFCC33") ;
+                task_div.find("div:eq(0)").css("border-color","#FFCC33") ; */
+                
+            	var tipcontent = '<span style="color:#fff">预计开始时间：' + obj.expected_starttime + '<br>' +
+								 '实际开始时间：' + obj.start_Date + '<br>' +
+								 '预计结束时间：' + obj.expected_endtime + '<br>' +
+								 '实际结束时间：' + obj.end_Date + '<br>' +
+								 '预计持续时间：' + obj.expected_duration + '<br>' +
+								 '实际持续时间：' + obj.duration + '<br>' +
+								 '任务状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：待确认</span>';
+				$(task_div).tooltip({
+					position: 'top',
+					content: tipcontent,
+					onShow: function(){
+						$(this).tooltip('tip').css({
+							backgroundColor: '#676161',
+							borderColor: '#676161'
+						});
+					}
+				});
+				task_div.find("div:eq(0)").css("border-color","#FFCC33");
             }
 		})
     }
