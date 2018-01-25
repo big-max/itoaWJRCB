@@ -37,6 +37,7 @@
 <script>
 	/******************* 编辑 *******************/ 
 	function editTel(){
+		$('#add_dialog').dialog('close');//点击编辑的时候，关闭添加窗口 
 	    var row = $('#total_table').datagrid('getSelected');//选中一行否
 	    if (row == null )
 	    {
@@ -77,6 +78,7 @@
 	
 	/******************* 添加 *******************/  
 	function addTel(){  
+		$('#edit_dialog').dialog('close'); 
 		$('#add_dialog').dialog('open').dialog('setTitle','添加员工号');
 		$('#add_form').form('clear');
 		$('#add_form').find('.easyui-combobox').combobox('reload','/getAllTaskID.do');
@@ -102,6 +104,8 @@
 	
 	/******************* 删除 *******************/  
 	function delTel(){
+		$('#add_dialog').dialog('close');
+		$('#edit_dialog').dialog('close');
 		var ids=[];
 		var rows = $('#total_table').datagrid('getSelections');
 		for(var i = 0 ; i < rows.length;i++)
@@ -196,12 +200,13 @@
 						<div class="checkstyle">失败</div>
 					</div>
 				</form>
+				<div style="margin:0 auto;margin-top:45px;width:140px;">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="add_save()">保存</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#" class="easyui-linkbutton" iconCls="icon-no"
+						onclick="javascript:$('#add_dialog').dialog('close')">取消</a>
+				</div>
 			</div>
-			<div id="dlg-buttons">
-				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="add_save()">保存</a>
-				<a href="#" class="easyui-linkbutton" iconCls="icon-no"
-					onclick="javascript:$('#add_dialog').dialog('close')">取消</a>
-			</div>
+			
 
 
 			<!------------------------------- 修改框 ------------------------------->
@@ -239,12 +244,13 @@
 						<div class="checkstyle">失败</div>
 					</div>
 				</form>
+				<div style="margin:0 auto;margin-top:45px;width:140px;">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="edit_save()">保存</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#" class="easyui-linkbutton" iconCls="icon-no"
+						onclick="javascript:$('#edit_dialog').dialog('close')">取消</a>
+				</div>
 			</div>
-			<div id="dlg-buttons">
-				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="edit_save()">保存</a>
-				<a href="#" class="easyui-linkbutton" iconCls="icon-no"
-					onclick="javascript:$('#edit_dialog').dialog('close')">取消</a>
-			</div>
+			
 
 		</div>
 	</div>
