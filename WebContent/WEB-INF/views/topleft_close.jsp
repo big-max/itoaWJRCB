@@ -183,7 +183,7 @@ input[type="text"],input[type="password"] {
 			</div>
 			<div style="margin-right:25px;float:right;">
 				<div style="float:left;margin-top:2px;"><img src="img/navuser.png"></div>
-				<div style="float:right;color:white;margin-top:2px;margin-left:5px;font-size:17px;">${userName }</div>
+				<div style="float:right;color:white;margin-top:2px;margin-left:5px;font-size:17px;">${alias }</div>
 			</div>
 			<div style="margin-right:25px;float:right;">
 				<a href="getAllServers.do"><img src="img/navhome.png"></a>
