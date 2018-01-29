@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -251,11 +252,18 @@ public class DailyFlowController {
 
 		// 去mongodb 获取 工号对应的电话号码
 
-		int sum = taskTelsService.addTaskTels(taskTelList);
-		ObjectNode on = om.createObjectNode();
-		on.put("status", 1); // 1 表示操作OK
-		on.put("sum", "update " + sum + " records");
-		return on;
+		try {
+			int sum = taskTelsService.addTaskTels(taskTelList);
+			ObjectNode on = om.createObjectNode();
+			on.put("status", 1); // 1 表示操作OK
+			on.put("sum", "update " + sum + " records");
+			return on;
+		} catch(DuplicateKeyException e){
+			ObjectNode on = om.createObjectNode();
+			on.put("status", 2); // 1 表示操作OK
+			on.put("sum", "0");
+			return on;
+		}
 	}
 
 	// 修改每个任务的手机号

@@ -95,9 +95,24 @@
 				return $(this).form('validate');
 			},
 			success: function(result){
-					$('#add_dialog').dialog('close');		// close the dialog
-					$('#total_table').datagrid('reload');	    // reload the user data
-				} 
+				var _result =eval("("+result+")");
+				if(_result.status == "2"){
+					swal({ 
+						  title: "插入手机号失败！", 
+						  text: "重复插入手机号，请检查！", 
+						  timer: 1500, 
+						  showConfirmButton: false 
+						});
+				} else if(_result.status == "1"){
+					swal({ 
+						  title: "插入手机号成功！", 
+						  timer: 1500, 
+						  showConfirmButton: false 
+						});
+				}
+				$('#add_dialog').dialog('close');		// close the dialog
+				$('#total_table').datagrid('reload');	    // reload the user data
+			} 
 			
 		});
 	}

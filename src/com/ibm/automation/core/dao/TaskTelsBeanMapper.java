@@ -2,6 +2,8 @@ package com.ibm.automation.core.dao;
 
 import java.util.List;
 
+import org.springframework.dao.DuplicateKeyException;
+
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.ibm.automation.domain.TaskTelsBean;
 
@@ -14,7 +16,7 @@ public interface TaskTelsBeanMapper {
 
 	int modifyTaskTels(TaskTelsBean ttb);// 根据数字id 修改task_id 对应的员工号码
 	
-	int addTaskTels(List<TaskTelsBean> lttb); //插入多条记录
+	int addTaskTels(List<TaskTelsBean> lttb) throws DuplicateKeyException; //插入多条记录
 	
 	int deleteTaskTelsByID(int[] ids);//删除多条记录
 	

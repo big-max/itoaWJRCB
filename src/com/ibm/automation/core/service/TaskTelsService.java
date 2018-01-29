@@ -2,6 +2,8 @@ package com.ibm.automation.core.service;
 
 import java.util.List;
 
+import org.springframework.dao.DuplicateKeyException;
+
 import com.ibm.automation.domain.TaskTelsBean;
 
 public interface TaskTelsService {
@@ -10,6 +12,6 @@ public interface TaskTelsService {
 	//public int deleteTaskTelsByID(int id);
 	int modifyTaskTels(TaskTelsBean ttb);
 	
-	int addTaskTels(List<TaskTelsBean> lttb);
+	int addTaskTels(List<TaskTelsBean> lttb) throws DuplicateKeyException;
 	void deleteTaskTels(int[] ids);
 }
