@@ -227,6 +227,7 @@ public class AutoSwitchController {
 		postJson.put("dag_id", dag_id);
 		postJson.put("execution_date", df.format(new Date()));
 		postJson.put("operation", 3); // 3 代表run airflow
+		postJson.put("type", "manual"); //手动
 		if (flag == 0) {
 			postJson.put("zb_owner", (String) session.getAttribute("userName"));
 		} else if (flag == 1) {
