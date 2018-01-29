@@ -56,14 +56,12 @@
 	    var arr =  row.status.split(",");
 	    for(var i=0 ; i<arr.length;i++)
 	    {
-	    	if(arr[i] == '开始'){
-	    		//alert(document.getElementsByTagName('edit_status'));
-	    		document.getElementsByTagName('edit_status')[0].checked = true; 
-	    	}
+	    	if(arr[i] == '开始')
+	    		document.getElementsByName('edit_status')[0].checked = true; 
 	    	else if(arr[i] == '成功')
-	    		document.getElementsByTagName('edit_status')[1].checked = true; 
+	    		document.getElementsByName('edit_status')[1].checked = true; 
 	    	else if(arr[i] == '失败') 
-	    		document.getElementsByTagName('edit_status')[2].checked = true; 
+	    		document.getElementsByName('edit_status')[2].checked = true; 
 	    }
 	}
 	
