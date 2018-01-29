@@ -253,7 +253,7 @@ public class DailyFlowController {
 		// 去mongodb 获取 工号对应的电话号码
 		ObjectNode on = om.createObjectNode();
 		ArrayNode failArray = om.createArrayNode();
-		ObjectNode failOn = om.createObjectNode();
+		
 		int sum = 0;
 		for (TaskTelsBean ttb : taskTelList) {
 			try {
@@ -261,6 +261,7 @@ public class DailyFlowController {
 				sum += a;
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
+				ObjectNode failOn = om.createObjectNode();
 				failOn.put(ttb.getTask_id(), ttb.getName());
 				failArray.addPOJO(failOn);
 				continue;
@@ -292,14 +293,14 @@ public class DailyFlowController {
 		ObjectNode on = om.createObjectNode();
 		String id = request.getParameter("id");// id
 		String task_id = request.getParameter("task_id");// 任务名
-		String names = request.getParameter("name"); // name 工号：电话
+		String name = request.getParameter("name"); // name 工号：电话
+		String tel = request.getParameter("tel");//电话
 		String[] status = request.getParameterValues("status");// 状态
-		String[] nametel = names.split(":");
 		TaskTelsBean ttb = new TaskTelsBean();
 		ttb.setId(Integer.valueOf(id));
-		ttb.setName(nametel[0]);
+		ttb.setName(name);
 		ttb.setTask_id(task_id);
-		ttb.setTel(nametel[1]);
+		ttb.setTel(tel);
 		ttb.setStatus(StringUtils.join(status, ","));
 		taskTelsService.modifyTaskTels(ttb);
 		on.put("status", 1);
