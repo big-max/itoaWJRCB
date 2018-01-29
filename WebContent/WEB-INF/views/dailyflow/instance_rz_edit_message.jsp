@@ -50,6 +50,7 @@
 		$("#edit_form").find("#id").val(row.id);
 	    $("#edit_form").find("#task_id").val(row.task_id);
 	    $("#edit_form").find("#name").val(row.name);
+	    $("#edit_form").find("#tel").val(row.tel);
 	    //$("#edit_form").find('#name').combobox('reload','/getLoginInfo.do');
 	    //$("#edit_form").find("#name").textbox('setValue',row.name);
 	    
@@ -220,7 +221,7 @@
 
 			<!------------------------------- 修改框 ------------------------------->
 			<div id="edit_dialog" class="easyui-dialog"
-				style="width: 400px; height: 300px; padding: 10px 20px" closed="true" buttons="#dlg-buttons">
+				style="width: 400px; height: 360px; padding: 10px 20px" closed="true" buttons="#dlg-buttons">
 				<form id="edit_form" method="post" novalidate>
 					<div>
 						<input id="id" name="id" hidden="true" >
@@ -235,6 +236,11 @@
 						<input id="name" name="name" style="width: 100%" class="easyui-validatebox" readonly="readonly">
 						<!-- <input id="name" name="name" style="width: 100%" class="easyui-combobox"
 							data-options="valueField: 'nametel',textField: 'name'"> -->
+					</div>
+					<div style="margin-top: 20px;"></div>
+					<div>
+						<label>电话:</label>
+						<input id="tel" name="tel" style="width: 100%" class="easyui-validatebox" readonly="readonly">
 					</div>
 					<div style="margin-top:20px;">
 						<label>短信发送类型:</label>
