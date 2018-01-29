@@ -84,7 +84,9 @@
 		$('#add_dialog').dialog('open').dialog('setTitle','添加员工号');
 		$('#add_form').form('clear');
 		$('#add_form').find('.easyui-combobox').combobox('reload','/getAllTaskID.do');
-		$("#add_form").find('#name').combobox('reload','/getLoginInfo.do');
+		$("#add_form").find('#name').combobox('textbox').bind('focus',function(){  
+		    $("#add_form").find('#name').combobox('reload','/getLoginInfo.do');
+		});
 	}
 	
 	function add_save()
@@ -98,10 +100,9 @@
 			},
 			success: function(result){
 				var _result =eval("("+result+")");
-				var fail = JSON.stringify(jsObj);
-				alert(fail)
+				var fail = JSON.stringify(_result.fail);
 				if(_result.status == "1"){
-						 alert("成功插入:"+_result.sum+"条记录,"+"插入失败为:"+fail); 
+						 alert("插入成功:"+_result.sum+"条记录\n"+"插入失败为:"+fail); 
 				} 
 				$('#add_dialog').dialog('close');		// close the dialog
 				$('#total_table').datagrid('reload');	    // reload the user data
@@ -182,13 +183,13 @@
 					<div class="fitem">
 						<label>任务ID:</label>
 						<input  name="task_id" style="width: 100%" class="easyui-combobox"
-							data-options="valueField: 'task_id',textField: 'task_id'">
+							data-options="valueField: 'task_id',textField: 'task_id',editable:false">
 					</div>
 					<div style="margin-top: 20px;"></div>
 					<div>
 						<label>工号:</label>
 						<input id="name" name="name" style="width: 100%" class="easyui-combobox" multiple="multiple"
-							data-options="valueField: 'nametel',textField: 'name'">
+							data-options="valueField: 'nametel',textField: 'name',editable:false">
 					</div>
 					<div style="margin-top: 20px;">
 						<label>短信发送类型:</label>
