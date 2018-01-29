@@ -11,10 +11,13 @@
 <script type="text/javascript" src="${root}/js/lodash.min.js"></script>
 <script type="text/javascript" src="${root}/js/unicorn.data.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.nanoscroller.js"></script>
+<script type="text/javascript" src="${root}/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="${root}/js/sweetalert-dev.js"></script>
 
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/bootstrap.min.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/treeview.css" />
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/nanoscroller.css"/>
+<link type="text/css" title="www" rel="stylesheet" href="${root}/css/sweetalert.css" />
 
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/easyui.css" />
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/icon.css" />

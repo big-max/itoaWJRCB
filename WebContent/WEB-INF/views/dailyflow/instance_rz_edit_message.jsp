@@ -48,8 +48,9 @@
 		$('#edit_form').form('clear');
 		$("#edit_form").find("#id").val(row.id);
 	    $("#edit_form").find("#task_id").val(row.task_id);
-	    $("#edit_form").find('#name').combobox('reload','/getLoginInfo.do');
-	    $("#edit_form").find("#name").textbox('setValue',row.name);
+	    $("#edit_form").find("#name").val(row.name);
+	    //$("#edit_form").find('#name').combobox('reload','/getLoginInfo.do');
+	    //$("#edit_form").find("#name").textbox('setValue',row.name);
 	    
 	    if (row.status == '' || row.status == null || typeof(row.status) == 'undefined') 
 	    {
@@ -95,9 +96,24 @@
 				return $(this).form('validate');
 			},
 			success: function(result){
-					$('#add_dialog').dialog('close');		// close the dialog
-					$('#total_table').datagrid('reload');	    // reload the user data
-				} 
+				var _result =eval("("+result+")");
+				if(_result.status == "2"){
+					swal({ 
+						  title: "插入手机号失败！", 
+						  text: "重复插入手机号，请检查！", 
+						  timer: 1500, 
+						  showConfirmButton: false 
+						});
+				} else if(_result.status == "1"){
+					swal({ 
+						  title: "插入手机号成功！", 
+						  timer: 1500, 
+						  showConfirmButton: false 
+						});
+				}
+				$('#add_dialog').dialog('close');		// close the dialog
+				$('#total_table').datagrid('reload');	    // reload the user data
+			} 
 			
 		});
 	}
@@ -223,8 +239,9 @@
 					<div style="margin-top: 20px;"></div>
 					<div>
 						<label>工号:</label>
-						<input id="name" name="name" style="width: 100%" class="easyui-combobox"
-							data-options="valueField: 'nametel',textField: 'name'">
+						<input id="name" name="name" style="width: 100%" class="easyui-validatebox" readonly="readonly">
+						<!-- <input id="name" name="name" style="width: 100%" class="easyui-combobox"
+							data-options="valueField: 'nametel',textField: 'name'"> -->
 					</div>
 					<div style="margin-top:20px;">
 						<label>短信发送类型:</label>

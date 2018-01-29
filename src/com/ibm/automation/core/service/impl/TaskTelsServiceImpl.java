@@ -3,6 +3,7 @@ package com.ibm.automation.core.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.ibm.automation.core.dao.TaskTelsBeanMapper;
@@ -29,9 +30,8 @@ public class TaskTelsServiceImpl implements TaskTelsService {
 	}
 
 	@Override
-	public int addTaskTels(List<TaskTelsBean> lttb) {
+	public int addTaskTels(List<TaskTelsBean> lttb) throws DuplicateKeyException{
 		int id = taskTelsBeanMapper.addTaskTels(lttb);
-		System.out.println("the id is " + id);
 		return id;
 	}
 
