@@ -103,7 +103,8 @@
 				var _result =eval("("+result+")");
 				var fail = JSON.stringify(_result.fail);
 				if(_result.status == "1"){
-						 alert("插入成功:"+_result.sum+"条记录\n"+"插入失败为:"+fail); 
+						 var conn = "插入成功 : "+_result.sum+"条记录 , "+"插入失败为 : "+fail;
+						 $.messager.alert('添加结果',conn,'info'); 
 				} 
 				$('#add_dialog').dialog('close');		// close the dialog
 				$('#total_table').datagrid('reload');	    // reload the user data
