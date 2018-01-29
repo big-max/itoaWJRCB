@@ -252,7 +252,6 @@ public class DailyFlowController {
 
 		// 去mongodb 获取 工号对应的电话号码
 		ObjectNode on = om.createObjectNode();
-		Map<String, String> failMap = new HashMap<String, String>();
 		ArrayNode failArray = om.createArrayNode();
 		ObjectNode failOn = om.createObjectNode();
 		int sum = 0;
@@ -261,7 +260,7 @@ public class DailyFlowController {
 				int a = taskTelsService.addTaskTel(ttb);
 				sum += a;
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println(e.getMessage());
 				failOn.put(ttb.getTask_id(), ttb.getName());
 				failArray.addPOJO(failOn);
 				continue;
@@ -270,7 +269,10 @@ public class DailyFlowController {
 		}
 		on.put("status", "1"); // 1 表示操作OK
 		on.put("sum", sum);
-		on.putPOJO("fail", failArray);
+		if (failArray.size() == 0) {
+			on.put("fail", "空");
+		} else
+			on.putPOJO("fail", failArray);
 		System.out.println(on.toString());
 		return on;
 		/*
