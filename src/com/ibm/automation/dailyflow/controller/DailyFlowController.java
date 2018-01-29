@@ -295,7 +295,7 @@ public class DailyFlowController {
 		String task_id = request.getParameter("task_id");// 任务名
 		String name = request.getParameter("name"); // name 工号：电话
 		String tel = request.getParameter("tel");//电话
-		String[] status = request.getParameterValues("status");// 状态
+		String[] status = request.getParameterValues("edit_status");// 状态
 		TaskTelsBean ttb = new TaskTelsBean();
 		ttb.setId(Integer.valueOf(id));
 		ttb.setName(name);
