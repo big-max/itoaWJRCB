@@ -13,5 +13,6 @@ public interface TaskTelsService {
 	int modifyTaskTels(TaskTelsBean ttb);
 	
 	int addTaskTels(List<TaskTelsBean> lttb) throws DuplicateKeyException;
+	int addTaskTel(TaskTelsBean ttb) throws DuplicateKeyException;
 	void deleteTaskTels(int[] ids);
 }

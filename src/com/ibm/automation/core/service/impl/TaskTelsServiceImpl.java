@@ -47,5 +47,11 @@ public class TaskTelsServiceImpl implements TaskTelsService {
 		int x = taskTelsBeanMapper.modifyTaskTels(ttb);
 		return x;
 	}
+
+	@Override
+	public int addTaskTel(TaskTelsBean ttb) throws DuplicateKeyException {
+		int x= taskTelsBeanMapper.addTaskTel(ttb);
+		return x;
+	}
 	
 }

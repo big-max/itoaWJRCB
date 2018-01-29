@@ -2,6 +2,7 @@ package com.ibm.automation.dailyflow.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -222,26 +222,23 @@ public class DailyFlowController {
 	public JSONArray getTaskSMSID() {
 		List<TaskTelsBean> mylist = taskTelsService.getAllTaskTels();
 		JSONArray array = JSONArray.fromObject(mylist);
-		for(int i=0 ; i<array.size() ; i++)
-		{
-			JSONObject ob  = (JSONObject) array.get(i);
-			String status= ob.getString("status");
+		for (int i = 0; i < array.size(); i++) {
+			JSONObject ob = (JSONObject) array.get(i);
+			String status = ob.getString("status");
 			String newstatus = status.replace("1", "开始").replace("2", "成功").replace("3", "失败");
 			ob.put("status", newstatus);
 		}
 		return array;
-		
+
 	}
-	
-	
-	
+
 	// 添加发送手机号的员工
 	@RequestMapping("adddailysms.do")
 	@ResponseBody
 	public ObjectNode adddailySMS(HttpServletRequest request) throws Exception {
 		String task_id = request.getParameter("task_id");// 任务名
 		String[] names = request.getParameterValues("name"); // nametel 工号:电话
-		String[] status = request.getParameterValues("status");//开始、成功、失败
+		String[] status = request.getParameterValues("status");// 开始、成功、失败
 		List<TaskTelsBean> taskTelList = new ArrayList<TaskTelsBean>();
 		for (String name : names) {
 			TaskTelsBean ttb = new TaskTelsBean();
@@ -249,24 +246,41 @@ public class DailyFlowController {
 			ttb.setName(nametel[0]);
 			ttb.setTask_id(task_id);
 			ttb.setTel(nametel[1]);
-			ttb.setStatus(StringUtils.join(status,","));
+			ttb.setStatus(StringUtils.join(status, ","));
 			taskTelList.add(ttb);
 		}
 
 		// 去mongodb 获取 工号对应的电话号码
+		ObjectNode on = om.createObjectNode();
+		Map<String, String> failMap = new HashMap<String, String>();
+		ArrayNode failArray = om.createArrayNode();
+		ObjectNode failOn = om.createObjectNode();
+		int sum = 0;
+		for (TaskTelsBean ttb : taskTelList) {
+			try {
+				int a = taskTelsService.addTaskTel(ttb);
+				sum += a;
+			} catch (Exception e) {
+				e.printStackTrace();
+				failOn.put(ttb.getTask_id(), ttb.getName());
+				failArray.addPOJO(failOn);
+				continue;
+			}
 
-		try {
-			int sum = taskTelsService.addTaskTels(taskTelList);
-			ObjectNode on = om.createObjectNode();
-			on.put("status", 1); // 1 表示操作OK
-			on.put("sum", "update " + sum + " records");
-			return on;
-		} catch(DuplicateKeyException e){
-			ObjectNode on = om.createObjectNode();
-			on.put("status", 2); // 1 表示操作OK
-			on.put("sum", "0");
-			return on;
 		}
+		on.put("status", "1"); // 1 表示操作OK
+		on.put("sum", sum);
+		on.putPOJO("fail", failArray);
+		System.out.println(on.toString());
+		return on;
+		/*
+		 * try { int sum = taskTelsService.addTaskTels(taskTelList); ObjectNode
+		 * on = om.createObjectNode(); on.put("status", 1); // 1 表示操作OK
+		 * on.put("sum", "update " + sum + " records"); return on; }
+		 * catch(DuplicateKeyException e){ ObjectNode on =
+		 * om.createObjectNode(); on.put("status", 2); // 1 表示操作OK on.put("sum",
+		 * "0"); return on; }
+		 */
 	}
 
 	// 修改每个任务的手机号
@@ -277,14 +291,14 @@ public class DailyFlowController {
 		String id = request.getParameter("id");// id
 		String task_id = request.getParameter("task_id");// 任务名
 		String names = request.getParameter("name"); // name 工号：电话
-		String[] status = request.getParameterValues("status");//状态
+		String[] status = request.getParameterValues("status");// 状态
 		String[] nametel = names.split(":");
 		TaskTelsBean ttb = new TaskTelsBean();
 		ttb.setId(Integer.valueOf(id));
 		ttb.setName(nametel[0]);
 		ttb.setTask_id(task_id);
 		ttb.setTel(nametel[1]);
-		ttb.setStatus(StringUtils.join(status,","));
+		ttb.setStatus(StringUtils.join(status, ","));
 		taskTelsService.modifyTaskTels(ttb);
 		on.put("status", 1);
 		return on;

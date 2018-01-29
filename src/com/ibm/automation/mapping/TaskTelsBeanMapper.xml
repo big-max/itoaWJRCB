@@ -35,5 +35,9 @@
     	</foreach>
     
     </insert>
+    
+     <insert id="addTaskTel" useGeneratedKeys="true" parameterType="com.ibm.automation.domain.TaskTelsBean">
+    	insert into task_tels (task_id,name,tel,status) values  (#{task_id},#{name},#{tel},#{status})  
+    </insert>
 
 </mapper>

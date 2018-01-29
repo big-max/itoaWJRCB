@@ -18,6 +18,7 @@ public interface TaskTelsBeanMapper {
 	
 	int addTaskTels(List<TaskTelsBean> lttb) throws DuplicateKeyException; //插入多条记录
 	
+	int addTaskTel(TaskTelsBean ttb) throws DuplicateKeyException; //插入单条记录
 	int deleteTaskTelsByID(int[] ids);//删除多条记录
 	
 	ArrayNode getAllRZTasks();//获取所有的日志任务列表

@@ -35,6 +35,7 @@
 
 
 <script>
+
 	/******************* 编辑 *******************/ 
 	function editTel(){
 		$('#add_dialog').dialog('close');//点击编辑的时候，关闭添加窗口 
@@ -97,20 +98,11 @@
 			},
 			success: function(result){
 				var _result =eval("("+result+")");
-				if(_result.status == "2"){
-					swal({ 
-						  title: "插入手机号失败！", 
-						  text: "重复插入手机号，请检查！", 
-						  timer: 1500, 
-						  showConfirmButton: false 
-						});
-				} else if(_result.status == "1"){
-					swal({ 
-						  title: "插入手机号成功！", 
-						  timer: 1500, 
-						  showConfirmButton: false 
-						});
-				}
+				var fail = JSON.stringify(jsObj);
+				alert(fail)
+				if(_result.status == "1"){
+						 alert("成功插入:"+_result.sum+"条记录,"+"插入失败为:"+fail); 
+				} 
 				$('#add_dialog').dialog('close');		// close the dialog
 				$('#total_table').datagrid('reload');	    // reload the user data
 			} 
