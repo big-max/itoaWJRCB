@@ -53,16 +53,18 @@
 	    $("#edit_form").find("#tel").val(row.tel);
 	    //$("#edit_form").find('#name').combobox('reload','/getLoginInfo.do');
 	    //$("#edit_form").find("#name").textbox('setValue',row.name);
-	    
-	    if (row.status == '' || row.status == null || typeof(row.status) == 'undefined') 
+	    var arr =  row.status.split(",");
+	    for(var i=0 ; i<arr.length;i++)
 	    {
-	    	var status_arr = row.status.split(',');
-	    	for(var i = 0 ; i < status_arr.length; i++)
-	    	{
-	    		$("#edit_form").find("#status").val(status_arr[i])
+	    	if(arr[i] == '开始'){
+	    		//alert(document.getElementsByTagName('edit_status'));
+	    		document.getElementsByTagName('edit_status')[0].checked = true; 
 	    	}
+	    	else if(arr[i] == '成功')
+	    		document.getElementsByTagName('edit_status')[1].checked = true; 
+	    	else if(arr[i] == '失败') 
+	    		document.getElementsByTagName('edit_status')[2].checked = true; 
 	    }
-	    $("#status").val(row.status);
 	}
 	
 	function edit_save(){
@@ -245,17 +247,17 @@
 					<div style="margin-top:20px;">
 						<label>短信发送类型:</label>
 						<div style="float:left;width:20px;">
-							<input type="checkbox" name="status" value="1" />
+							<input type="checkbox" name="edit_status" value="1" />
 						</div>
 						<div class="checkstyle">开始</div>
 						
 						<div style="float:left;width:20px;">
-							<input type="checkbox" name="status" value="2" />
+							<input type="checkbox" name="edit_status" value="2" />
 						</div>
 						<div class="checkstyle">成功</div>
 						
 						<div style="float:left;width:20px;">
-							<input type="checkbox" name="status" value="3" />
+							<input type="checkbox" name="edit_status" value="3" />
 						</div>
 						<div class="checkstyle">失败</div>
 					</div>
