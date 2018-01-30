@@ -125,7 +125,7 @@
 		}
 		var rowStr = ids.join(',');
 		if (rows){
-			$.messager.confirm('Confirm','你确定删除选中的记录吗?',function(r){
+			$.messager.confirm('操作提示','你确定删除选中的记录吗?',function(r){  
 				if (r){
 					$.post('/deldailysms.do',{ids:rowStr},function(result){
 						if (result.status == 1){
