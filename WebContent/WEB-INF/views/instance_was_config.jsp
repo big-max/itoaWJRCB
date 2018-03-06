@@ -96,7 +96,7 @@ input[type="text"] {
 	<!--content start-->
 	<div class="content">
 		<div class="breadcrumb">
-			<a href="getAllServers.do" class="current1" style="position:relative;top:-3px;"><i class="icon-home"></i>IBM WAS</a> 
+			<a href="getAllServers.do" class="current1" style="position:relative;top:-3px;"><i class="icon-home"></i>IBM TSM</a> 
 			<a class="current" style="position:relative;top:-3px;">实例配置详细</a>
 		</div>
 

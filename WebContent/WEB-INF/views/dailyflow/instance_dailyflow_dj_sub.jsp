@@ -27,6 +27,15 @@ body{
 .modal{ width:750px;left:43%; }
 .ax_default{ cursor:pointer; }
 #progressImgage{display:none;}
+#uua {
+  border-width:0px;
+  position:absolute;
+  left:400px;
+  top:15px;
+  width:250px;
+  word-wrap:break-word;
+  font-size:30px;
+}
 </style>
 
 <script>
@@ -80,9 +89,9 @@ body{
 		<div style="float:left;">
 			<img src="dailyimg/WJRCB_logo.png">
 		</div>
-		<div style="height:80px;line-height:70px;font-size:30px;margin-left:60%;">
+		<!-- <div id="titleWid" style="height:80px;line-height:70px;font-size:30px;">
 			<span><font color="white">日&nbsp;终&nbsp;(贷&nbsp;记&nbsp;卡)</font></span>
-		</div>
+		</div> -->
 	</div>
 	
 	<div>
@@ -124,7 +133,10 @@ body{
 
 
     <div id="mainflow" style="height:620px;width:970px;position:absolute;top:10px;">
-
+	  <div id="uua">
+	  	<font color="white">日&nbsp;终&nbsp;(贷&nbsp;记&nbsp;卡)</font>
+	  </div>
+	  
       <div id="u902" class="ax_default okd_f1">
         <div id="u902_div"></div>
         <div id="u903" class="text">
