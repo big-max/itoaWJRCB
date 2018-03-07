@@ -17,6 +17,7 @@
 <link type="text/css" title="www" rel="stylesheet" href="/css/easyui.css" />
 <link type="text/css" title="www" rel="stylesheet" href="/css/icon.css" />
 <script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/js/doBase64.js"></script>
 <title>自动化运维平台</title>
 <style type="text/css">
 body{
@@ -41,6 +42,7 @@ body{
 	{
 		swal({ title: "", text: te,  type: ty, confirmButtonText: conBut, });
 	}        
+	alert(Base64.encode("123"));
 </script>
 </head>
 
