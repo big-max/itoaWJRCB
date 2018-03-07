@@ -64,7 +64,7 @@
   		task_instance.execution_date,
   		date_format(task_instance.start_date, '%H:%i:%s' ) start_date,
   		date_format(task_instance.end_date,'%H:%i:%s') end_date,
-  		cast(format(task_instance.duration,2) as char ) duration,
+  		if (duration / 60 >= 1 , concat(floor(duration/60),'分',format(duration % 60,0) ,'秒')  , concat (format(duration,2),'秒')  ) as duration,
   		task_instance.state,
   		task_instance.try_number,
   		task_instance.hostname,

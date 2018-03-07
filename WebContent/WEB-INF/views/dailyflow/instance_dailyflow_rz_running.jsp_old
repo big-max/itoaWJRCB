@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -11,10 +11,10 @@
 <html>
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <jsp:include page="../header_rz.jsp" flush="true" /> 
-<title>è‡ªåŠ¨åŒ–è¿ç»´å¹³å°</title>
+<title>×Ô¶¯»¯ÔËÎ¬Æ½Ì¨</title>
 <style type="text/css">
 body{
 	margin:0;padding:0;
@@ -39,37 +39,37 @@ body{
 
 <body style="width:100%;">
 	
-	<!-- æ—¥å¿—æ¨¡æ€æ¡†ï¼ˆModalï¼‰ -->
+	<!-- ÈÕÖ¾Ä£Ì¬¿ò£¨Modal£© -->
 	<div class="modal fade modalframe" id="showlog"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">æ—¥å¿—ä¿¡æ¯</h4>
+					<h4 class="modal-title" id="myModalLabel">ÈÕÖ¾ĞÅÏ¢</h4>
 				</div>
 				<div class="modal-body">
 					<textarea id="logarea" rows="10" style="width:100%;height:100%;resize:none;"></textarea>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">å…³é—­</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">¹Ø±Õ</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<!-- è®°å½•é—®é¢˜æ¨¡æ€æ¡†ï¼ˆModalï¼‰ -->
+	<!-- ¼ÇÂ¼ÎÊÌâÄ£Ì¬¿ò£¨Modal£© -->
 	<div class="modal fade modalframe" id="recordproblem"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">è®°å½•é—®é¢˜</h4>
+					<h4 class="modal-title" id="myModalLabel">¼ÇÂ¼ÎÊÌâ</h4>
 				</div>
 				<div class="modal-body">
 					<textarea id="problemarea" rows="10" style="width:100%;height:100%;resize:none;"></textarea>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">å…³é—­</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">¹Ø±Õ</button>
 					<button id="subBtn" type="button" class="btn btn-primary" style="background-color: rgb(68, 143, 200);">
-						<font color="white">æäº¤</font>
+						<font color="white">Ìá½»</font>
 					</button>
 				</div>
 			</div>
@@ -82,7 +82,7 @@ body{
 			<img src="dailyimg/WJRCB_logo.png">
 		</div>
 		<div style="height:80px;line-height:70px;font-size:30px;margin-left:50%;">
-			<span><font color="white">æ—¥&nbsp; ç»ˆ&nbsp; æµ&nbsp; ç¨‹</font></span>
+			<span><font color="white">ÈÕ&nbsp; ÖÕ&nbsp; Á÷&nbsp; ³Ì</font></span>
 		</div>
 	</div>
 	
@@ -90,42 +90,42 @@ body{
 	  <div id="u745">
         <div id="u745_div"></div>
         <div id="u746" class="text">
-          <p><span>æœªå¼€å§‹</span></p>
+          <p><span>Î´¿ªÊ¼</span></p>
         </div>
       </div>
       
       <div id="u747">
         <div id="u747_div"></div>
         <div id="u748" class="text">
-          <p><span>è¿è¡Œä¸­</span></p>
+          <p><span>ÔËĞĞÖĞ</span></p>
         </div>
       </div>
 
       <div id="u749">
         <div id="u749_div"></div>
         <div id="u750" class="text">
-          <p><span>æˆåŠŸ</span></p>
+          <p><span>³É¹¦</span></p>
         </div>
       </div>
       
       <div id="u751">
         <div id="u751_div"></div>
         <div id="u752" class="text">
-          <p><span>å¤±è´¥</span></p>
+          <p><span>Ê§°Ü</span></p>
         </div>
       </div>
       
       <div id="u798">
         <div id="u798_div"></div>
         <div id="u799" class="text">
-          <p><span>éœ€è¦æ¸…ç†</span></p>
+          <p><span>ĞèÒªÇåÀí</span></p>
         </div>
       </div>
       
       <div id="u11" style="top:105px;left:183px;">
         <div id="u11_div"></div>
         <div id="u12" class="text">
-          <p><span>å­æµç¨‹</span></p>
+          <p><span>×ÓÁ÷³Ì</span></p>
         </div>
       </div>
 	</div>
@@ -135,315 +135,315 @@ body{
       <div id="u697" class="ax_default 501502">
         <div id="u697_div"></div>
         <div id="u698" class="text">
-          <p><span>5600-501/502</span></p><p><span>æ£€æŸ¥æœºæ„å’Œæ“ä½œå‘˜</span></p>
+          <p><span>5600-501/502</span></p><p><span>¼ì²é»ú¹¹ºÍ²Ù×÷Ô±</span></p>
         </div>
       </div>
 
       <div id="u699" class="ax_default 706">
         <div id="u699_div"></div>
         <div id="u700" class="text">
-          <p><span>5600-706</span></p><p><span>ä¿¡è´·å¤‡ä»½æ£€æŸ¥</span></p>
+          <p><span>5600-706</span></p><p><span>ĞÅ´û±¸·İ¼ì²é</span></p>
         </div>
       </div>
 
       <div id="u701" class="ax_default 706_2">
         <div id="u701_div"></div>
         <div id="u702" class="text">
-          <p><span>5600-706</span></p><p><span>ä¿¡è´·å¤‡ä»½æ£€æŸ¥</span></p>
+          <p><span>5600-706</span></p><p><span>ĞÅ´û±¸·İ¼ì²é</span></p>
         </div>
       </div>
       
       <div id="u703" class="ax_default 5513">
         <div id="u703_div"></div>
         <div id="u704" class="text">
-          <p><span>5513</span></p><p><span>å­˜æ¬¾æ¯æ—¥è®¡æ</span></p>
+          <p><span>5513</span></p><p><span>´æ¿îÃ¿ÈÕ¼ÆÌá</span></p>
         </div>
       </div>
 
       <div id="u705" class="ax_default 701">
         <div id="u705_div"></div>
         <div id="u706" class="text">
-          <p><span>5600-701</span></p><p><span>ä¿¡è´·æ—¥ç»ˆå‰flashcopy</span></p>
+          <p><span>5600-701</span></p><p><span>ĞÅ´ûÈÕÖÕÇ°flashcopy</span></p>
         </div>
       </div>
 
       <div id="u707" class="ax_default 702">
         <div id="u707_div"></div>
         <div id="u708" class="text">
-          <p><span>5600-702</span></p><p><span>ä¿¡è´·æ—¥ç»ˆå‰å¤‡ä»½</span></p>
+          <p><span>5600-702</span></p><p><span>ĞÅ´ûÈÕÖÕÇ°±¸·İ</span></p>
         </div>
       </div>
       
       <div id="u709" class="ax_default 5555">
         <div id="u709_div"></div>
         <div id="u710" class="text">
-          <p><span>5555</span></p><p><span>comstarå‘å¾€æ ¸å¿ƒè®°è´¦</span></p>
+          <p><span>5555</span></p><p><span>comstar·¢ÍùºËĞÄ¼ÇÕË</span></p>
         </div>
       </div>
 
       <div id="u711" class="ax_default 5556">
         <div id="u711_div"></div>
         <div id="u712" class="text">
-          <p><span>5556</span></p><p><span>comstarå‘å¾€æ ¸å¿ƒå¯¹è´¦</span></p>
+          <p><span>5556</span></p><p><span>comstar·¢ÍùºËĞÄ¶ÔÕË</span></p>
         </div>
       </div>
 
       <div id="u713" class="ax_default 55pj">
         <div id="u713_div"></div>
         <div id="u714" class="text">
-          <p><span>55pj</span></p><p><span>ç¥¨æ®æ—¥ç»ˆ</span></p>
+          <p><span>55pj</span></p><p><span>Æ±¾İÈÕÖÕ</span></p>
         </div>
       </div>
       
       <div id="u715" class="ax_default 5524">
         <div id="u715_div"></div>
         <div id="u716" class="text">
-          <p><span>5524</span></p><p><span>ä¿¡è´·cmisæ—¥ç»ˆå¤„ç†</span></p>
+          <p><span>5524</span></p><p><span>ĞÅ´ûcmisÈÕÖÕ´¦Àí</span></p>
         </div>
       </div>
 
       <div id="u717" class="ax_default 5524_2">
         <div id="u717_div"></div>
         <div id="u718" class="text">
-          <p><span>5524-2ï¼šæ£€æŸ¥ä¿¡è´·æ˜¯å¦å…·å¤‡æ—¥ç»ˆ5511æ¡ä»¶</span></p>
+          <p><span>5524-2£º¼ì²éĞÅ´ûÊÇ·ñ¾ß±¸ÈÕÖÕ5511Ìõ¼ş</span></p>
         </div>
       </div>
       
       <div id="u719" class="ax_default 703">
         <div id="u719_div"></div>
         <div id="u720" class="text">
-          <p><span>5600-703</span></p><p><span>ä¿¡è´·æ—¥ç»ˆåflashcopy</span></p>
+          <p><span>5600-703</span></p><p><span>ĞÅ´ûÈÕÖÕºóflashcopy</span></p>
         </div>
       </div>
 
       <div id="u721" class="ax_default 704">
         <div id="u721_div"></div>
         <div id="u722" class="text">
-          <p><span>5600-704</span></p><p><span>ä¿¡è´·æ—¥ç»ˆåå¤‡ä»½</span></p>
+          <p><span>5600-704</span></p><p><span>ĞÅ´ûÈÕÖÕºó±¸·İ</span></p>
         </div>
       </div>
       
       <div id="u723" class="ax_default 705">
         <div id="u723_div"></div>
         <div id="u724" class="text">
-          <p><span>5600-705</span></p><p><span>ä¿¡è´·æ•°æ®åº“å¯¼è¡¨</span></p>
+          <p><span>5600-705</span></p><p><span>ĞÅ´ûÊı¾İ¿âµ¼±í</span></p>
         </div>
       </div>
 
       <div id="u725" class="ax_default 802">
         <div id="u725_div"></div>
         <div id="u726" class="text">
-          <p><span>5600-802</span></p><p><span>æ—¥ç»ˆå‰æ•°æ®åº“å¤‡ä»½</span></p>
+          <p><span>5600-802</span></p><p><span>ÈÕÖÕÇ°Êı¾İ¿â±¸·İ</span></p>
         </div>
       </div>
       
       <div id="u727" class="ax_default 5511">
         <div id="u727_div"></div>
         <div id="u728" class="text">
-          <p><span>5511</span></p><p><span>æ—¥ç»ˆå‘¨æœŸå¼€å§‹</span></p>
+          <p><span>5511</span></p><p><span>ÈÕÖÕÖÜÆÚ¿ªÊ¼</span></p>
         </div>
       </div>
 
       <div id="u729" class="ax_default 801">
         <div id="u729_div"></div>
         <div id="u730" class="text">
-          <p><span>5600-801</span></p><p><span>flashcopyåå°åŠics</span></p>
+          <p><span>5600-801</span></p><p><span>flashcopyºóÌ¨¼°ics</span></p>
         </div>
       </div>
       
       <div id="u731" class="ax_default 806">
         <div id="u731_div"></div>
         <div id="u732" class="text">
-          <p><span>5600-806</span></p><p><span>å¤‡ä»½æ£€æŸ¥</span></p>
+          <p><span>5600-806</span></p><p><span>±¸·İ¼ì²é</span></p>
         </div>
       </div>
 
       <div id="u733" class="ax_default 7972">
         <div id="u733_div"></div>
         <div id="u734" class="text">
-          <p><span>7972</span></p><p><span>è´·è®°å¡çº¦å®šè¿˜æ¬¾</span></p>
+          <p><span>7972</span></p><p><span>´û¼Ç¿¨Ô¼¶¨»¹¿î</span></p>
         </div>
       </div>
       
       <div id="u735" class="ax_default 5514">
         <div id="u735_div"></div>
         <div id="u736" class="text">
-          <p><span>5514</span></p><p><span>æ—¥ç»ˆå¹³è¡¡å…¥è´¦</span></p>
+          <p><span>5514</span></p><p><span>ÈÕÖÕÆ½ºâÈëÕË</span></p>
         </div>
       </div>
 
       <div id="u737" class="ax_default 5501">
         <div id="u737_div"></div>
         <div id="u738" class="text">
-          <p><span>5501</span></p><p><span>ç³»ç»Ÿæ—¥åˆ‡</span></p>
+          <p><span>5501</span></p><p><span>ÏµÍ³ÈÕÇĞ</span></p>
         </div>
       </div>
       
       <div id="u739" class="ax_default 5502">
         <div id="u739_div" ></div>
         <div id="u740" class="text">
-          <p><span>5502</span></p><p><span>ç³»ç»Ÿæ—¥å¯</span></p>
+          <p><span>5502</span></p><p><span>ÏµÍ³ÈÕÆô</span></p>
         </div>
       </div>
 
       <div id="u741" class="ax_default 7971">
         <div id="u741_div"></div>
         <div id="u742" class="text">
-          <p><span>7971</span></p><p><span>è´·è®°å¡ç”Ÿæˆæ¸…ç®—æ•°æ®</span></p>
+          <p><span>7971</span></p><p><span>´û¼Ç¿¨Éú³ÉÇåËãÊı¾İ</span></p>
         </div>
       </div>
       
       <div id="u743" class="ax_default 5512">
         <div id="u743_div"></div>
         <div id="u744" class="text">
-          <p><span>5512</span></p><p><span>æ—¥ç»ˆè´¦åŠ¡å¤„ç†</span></p>
+          <p><span>5512</span></p><p><span>ÈÕÖÕÕËÎñ´¦Àí</span></p>
         </div>
       </div>
       
       <div id="u753" class="ax_default 55pj_2">
         <div id="u753_div"></div>
         <div id="u754" class="text">
-          <p><span>55pj_2</span></p><p><span>ç¥¨æ®æ—¥ç»ˆæ ¸å¿ƒç¡®è®¤</span></p>
+          <p><span>55pj_2</span></p><p><span>Æ±¾İÈÕÖÕºËĞÄÈ·ÈÏ</span></p>
         </div>
       </div>
       
       <div id="u800" class="ax_default1 55dj">
         <div id="u800_div" style="background-color:#5a78ab;"></div>
         <div id="u801" class="text" style="text-align:center;">
-          <p><span>è´·è®°å¡</span></p>
+          <p><span>´û¼Ç¿¨</span></p>
         </div>
       </div>
       
       <div id="u796" class="ax_default rz_start">
         <div id="u796_div" class=""></div>
         <div id="u797" class="text">
-          <p><span>å¼€å§‹</span></p>
+          <p><span>¿ªÊ¼</span></p>
         </div>
       </div>
       
       <div id="u818" class="ax_default 5515">
         <div id="u818_div"></div>
         <div id="u819" class="text">
-          <p><span>5515</span></p><p><span>æ—¥ç»ˆå‘¨æœŸç»“æŸ</span></p>
+          <p><span>5515</span></p><p><span>ÈÕÖÕÖÜÆÚ½áÊø</span></p>
         </div>
       </div>
       
       <div id="u822" class="ax_default 5528_1">
         <div id="u822_div"></div>
         <div id="u823" class="text">
-          <p><span>5528-1</span></p><p><span>workæ•°æ®é‡‡é›†</span></p>
+          <p><span>5528-1</span></p><p><span>workÊı¾İ²É¼¯</span></p>
         </div>
       </div>
 
       <div id="u824" class="ax_default 5506">
         <div id="u824_div"></div>
         <div id="u825" class="text">
-          <p><span>5506</span></p><p><span>å¸è½½æ•°æ®è‡³æ•°æ®ä¸­å¿ƒ</span></p>
+          <p><span>5506</span></p><p><span>Ğ¶ÔØÊı¾İÖÁÊı¾İÖĞĞÄ</span></p>
         </div>
       </div>
       
       <div id="u826" class="ax_default 5528_2">
         <div id="u826_div"></div>
         <div id="u827" class="text">
-          <p><span>5528-2</span></p><p><span>æ€»è´¦æ•°æ®è¿ç§»</span></p>
+          <p><span>5528-2</span></p><p><span>×ÜÕËÊı¾İÇ¨ÒÆ</span></p>
         </div>
       </div>
 
       <div id="u828" class="ax_default 5528_3">
         <div id="u828_div"></div>
         <div id="u829" class="text">
-          <p><span>5528-3</span></p><p><span>VATä¾›æ•°</span></p>
+          <p><span>5528-3</span></p><p><span>VAT¹©Êı</span></p>
         </div>
       </div>
       
       <div id="u830" class="ax_default 801_2">
         <div id="u830_div"></div>
         <div id="u831" class="text">
-          <p><span>5600-801</span></p><p><span>flashcopyåå°åŠics</span></p>
+          <p><span>5600-801</span></p><p><span>flashcopyºóÌ¨¼°ics</span></p>
         </div>
       </div>
       
       <div id="u842" class="ax_default 601">
         <div id="u842_div"></div>
         <div id="u843" class="text">
-          <p><span>5600-601</span></p><p><span>æ¸…ç©ºicsæ—¥å¿—è¡¨</span></p>
+          <p><span>5600-601</span></p><p><span>Çå¿ÕicsÈÕÖ¾±í</span></p>
         </div>
       </div>
 
       <div id="u844" class="ax_default 803">
         <div id="u844_div"></div>
         <div id="u845" class="text">
-          <p><span>5600-803</span></p><p><span>æ—¥ç»ˆåæ•°æ®åº“å¤‡ä»½</span></p>
+          <p><span>5600-803</span></p><p><span>ÈÕÖÕºóÊı¾İ¿â±¸·İ</span></p>
         </div>
       </div>
       
       <div id="u846" class="ax_default 806_2">
         <div id="u846_div"></div>
         <div id="u847" class="text">
-          <p><span>5600-806</span></p><p><span>å¤‡ä»½æ£€æŸ¥</span></p>
+          <p><span>5600-806</span></p><p><span>±¸·İ¼ì²é</span></p>
         </div>
       </div>
 
       <div id="u848" class="ax_default 503">
         <div id="u848_div"></div>
         <div id="u849" class="text">
-          <p><span>5600-503</span></p><p><span>æ£€æŸ¥workdbæ—¥å¿—</span></p>
+          <p><span>5600-503</span></p><p><span>¼ì²éworkdbÈÕÖ¾</span></p>
         </div>
       </div>
       
       <div id="u850" class="ax_default 805">
         <div id="u850_div"></div>
         <div id="u851" class="text">
-          <p><span>5600-805</span></p><p><span>åå°åŠicsæ•°æ®åº“å¯¼è¡¨</span></p>
+          <p><span>5600-805</span></p><p><span>ºóÌ¨¼°icsÊı¾İ¿âµ¼±í</span></p>
         </div>
       </div>
       
       <div id="u862" class="ax_default 55vat1">
         <div id="u862_div"></div>
         <div id="u863" class="text">
-          <p><span>55vat1</span></p><p><span>æŸ¥çœ‹å¯¼æ•°ç»“æœ</span></p>
+          <p><span>55vat1</span></p><p><span>²é¿´µ¼Êı½á¹û</span></p>
         </div>
       </div>
 
       <div id="u864" class="ax_default 55vat2">
         <div id="u864_div"></div>
         <div id="u865" class="text">
-          <p><span>55vat2</span></p><p><span>VATæ—¥ç»ˆè·‘æ‰¹</span></p>
+          <p><span>55vat2</span></p><p><span>VATÈÕÖÕÅÜÅú</span></p>
         </div>
       </div>
       
       <div id="u866" class="ax_default 55vat3">
         <div id="u866_div"></div>
         <div id="u867" class="text">
-          <p><span>55vat3</span></p><p><span>æŸ¥çœ‹VATæ—¥ç»ˆç»“æœ</span></p>
+          <p><span>55vat3</span></p><p><span>²é¿´VATÈÕÖÕ½á¹û</span></p>
         </div>
       </div>
       
       <div id="u872" class="ax_default 55ebs">
         <div id="u872_div"></div>
         <div id="u873" class="text">
-          <p><span>55ebs</span></p><p><span>æäº¤æ€»æ§ä¸»ç¨‹åº</span></p>
+          <p><span>55ebs</span></p><p><span>Ìá½»×Ü¿ØÖ÷³ÌĞò</span></p>
         </div>
       </div>
 
       <div id="u874" class="ax_default 55ebs_2">
         <div id="u874_div"></div>
         <div id="u875" class="text">
-          <p><span>55ebs-2</span></p><p><span>æ£€æŸ¥è·‘æ‰¹çŠ¶æ€</span></p>
+          <p><span>55ebs-2</span></p><p><span>¼ì²éÅÜÅú×´Ì¬</span></p>
         </div>
       </div>
       
       <div id="u880" class="ax_default 5525">
         <div id="u880_div"></div>
         <div id="u881" class="text">
-          <p><span>5525</span></p><p><span>æ•°æ®ä¸­å¿ƒæ—¥ç»ˆ</span></p>
+          <p><span>5525</span></p><p><span>Êı¾İÖĞĞÄÈÕÖÕ</span></p>
         </div>
       </div>
 
       <div id="u882" class="ax_default 7973">
         <div id="u882_div"></div>
         <div id="u883" class="text">
-          <p><span>7973</span></p><p><span>è´·è®°å¡å¯¼å…¥ç§‘ç›®æ˜ç»†</span></p>
+          <p><span>7973</span></p><p><span>´û¼Ç¿¨µ¼Èë¿ÆÄ¿Ã÷Ï¸</span></p>
         </div>
       </div>
       
@@ -718,20 +718,19 @@ body{
       
     </div>
     
-    <img id="progressImgage" style="width:120px;height:120px;" alt="è¯·ç¨ç­‰ï¼Œå¤„ç†ä¸­ã€‚ã€‚ã€‚" src="img/process.gif"/>
+    <img id="progressImgage" style="width:120px;height:120px;" alt="ÇëÉÔµÈ£¬´¦ÀíÖĞ¡£¡£¡£" src="img/process.gif"/>
     <div id="maskOfProgressImage" class="mask hide"></div>
     
     <div id="mm1" class="easyui-menu" style="width:120px;">
-        <div iconCls="icon-search" onclick="rz_showLog()">æŸ¥çœ‹æ—¥å¿—</div>
-        <div iconCls="icon-edit" onclick="rz_record()">è®°å½•é—®é¢˜</div>
-        <div iconCls="icon-reload" onclick="rz_clear()">æ¸…ç†&ç»­ä½œ</div>
-        <div iconCls="icon-ok" onclick="rz_makesuccess()">ç¡®è®¤æˆåŠŸ</div>
+        <div iconCls="icon-search" onclick="rz_showLog()">²é¿´ÈÕÖ¾</div>
+        <div iconCls="icon-edit" onclick="rz_record()">¼ÇÂ¼ÎÊÌâ</div>
+        <div iconCls="icon-reload" onclick="rz_clear()">ÇåÀí&Ğø×÷</div>
+        <div iconCls="icon-ok" onclick="rz_makesuccess()">È·ÈÏ³É¹¦</div>
     </div>
-    <div id="mm2" class="easyui-menu" style="width:120px;"><!-- é’ˆå¯¹è´·è®°å¡ -->
-        <div iconCls="icon-search" onclick="rz_showLog()">æŸ¥çœ‹æ—¥å¿—</div>
-        <div iconCls="icon-edit" onclick="rz_record()">è®°å½•é—®é¢˜</div>
-       <!--  <div iconCls="icon-reload" onclick="rz_clear()">æ¸…ç†&ç»­ä½œ</div> -->
-        <div iconCls="icon-ok" onclick="rz_makesuccess()">ç¡®è®¤æˆåŠŸ</div>
+    <div id="mm2" class="easyui-menu" style="width:120px;"><!-- Õë¶Ô´û¼Ç¿¨ -->
+        <div iconCls="icon-search" onclick="rz_showLog()">²é¿´ÈÕÖ¾</div>
+        <div iconCls="icon-edit" onclick="rz_record()">¼ÇÂ¼ÎÊÌâ</div>
+        <div iconCls="icon-ok" onclick="rz_makesuccess()">È·ÈÏ³É¹¦</div>
     </div>
 </body>
 
@@ -752,9 +751,9 @@ body{
 		})
 	})
 	function getUrlParam(name) {
-	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //æ„é€ ä¸€ä¸ªå«æœ‰ç›®æ ‡å‚æ•°çš„æ­£åˆ™è¡¨è¾¾å¼å¯¹è±¡
-	    var r = window.location.search.substr(1).match(reg);  //åŒ¹é…ç›®æ ‡å‚æ•°
-	    if (r != null) return unescape(r[2]); return null; //è¿”å›å‚æ•°å€¼
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //¹¹ÔìÒ»¸öº¬ÓĞÄ¿±ê²ÎÊıµÄÕıÔò±í´ïÊ½¶ÔÏó
+	    var r = window.location.search.substr(1).match(reg);  //Æ¥ÅäÄ¿±ê²ÎÊı
+	    if (r != null) return unescape(r[2]); return null; //·µ»Ø²ÎÊıÖµ
 	}
 	
 	var taskid;
@@ -762,7 +761,7 @@ body{
 	var execution_date_time1 = execution_date_time.replace("T"," ");
 	
 	$(document).ready(function(){
-		$(".ax_default").on("mouseover",function(e){ //è·å–è¦ç‚¹å‡»ä»»åŠ¡æ¡†çš„id
+		$(".ax_default").on("mouseover",function(e){ //»ñÈ¡Òªµã»÷ÈÎÎñ¿òµÄid
 			var classes = $(this).attr("class");
 			taskid = classes.split(" ")[1];
 		})
@@ -775,7 +774,7 @@ body{
 			var borderColor = document.getElementById(id).style.borderColor;
 			//var borderColor = $(this).find("div:eq(0)").css("border-color");
 			//alert(borderColor);
-			if(borderColor == "rgb(50, 204, 0)" || borderColor == "rgb(0, 0, 255)")//å¦‚æœæ˜¯æˆåŠŸæˆ–è¿›è¡Œä¸­ï¼Œå³é”®æ²¡æœ‰æ¸…ç†æ“ä½œ
+			if(borderColor == "rgb(50, 204, 0)" || borderColor == "rgb(0, 0, 255)")//Èç¹ûÊÇ³É¹¦»ò½øĞĞÖĞ£¬ÓÒ¼üÃ»ÓĞÇåÀí²Ù×÷
 			{
 				$('#mm2').menu('show', {
 					left: e.pageX, 
@@ -805,10 +804,10 @@ body{
 	{
 		$("#mm1").menu('hide');
 		$("#mm2").menu('hide');
-		var execution_date = getUrlParam('execution_date'); //è·å–url çš„å€¼
-   		var dag_id = getUrlParam('dag_id'); //è·å–url çš„å€¼
+		var execution_date = getUrlParam('execution_date'); //»ñÈ¡url µÄÖµ
+   		var dag_id = getUrlParam('dag_id'); //»ñÈ¡url µÄÖµ
    		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
-   		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //è¿™3ä¸ªå€¼å†³å®šå”¯ä¸€ä¸€æ¡task_instance ä¸€æ¡è®°å½•
+   		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //Õâ3¸öÖµ¾ö¶¨Î¨Ò»Ò»Ìõtask_instance Ò»Ìõ¼ÇÂ¼
    		$.ajax({
   				url : '<%=path%>/getTaskLog.do',
   				data:data,
@@ -826,15 +825,15 @@ body{
 	{
 		$("#mm1").menu('hide');
 		$("#mm2").menu('hide');
-		$("#recordproblem").modal();//æ‰“å¼€æ¨¡æ€æ¡† 
-       	$("#problemarea").val("");//æ¸…ç©ºæ•°æ®
+		$("#recordproblem").modal();//´ò¿ªÄ£Ì¬¿ò 
+       	$("#problemarea").val("");//Çå¿ÕÊı¾İ
    		var execution_date = getUrlParam('execution_date'); 
-   		var dag_id = getUrlParam('dag_id'); //è·å–url çš„å€¼
+   		var dag_id = getUrlParam('dag_id'); //»ñÈ¡url µÄÖµ
    		$("#subBtn").click(function(){
    			var content = $("#problemarea").val();
    			if(content == "")
    			{
-   				sweet("é—®é¢˜è®°å½•ä¸èƒ½ä¸ºç©º!","warning","ç¡®å®š"); 
+   				sweet("ÎÊÌâ¼ÇÂ¼²»ÄÜÎª¿Õ!","warning","È·¶¨"); 
    				return;
    			}
    			else{
@@ -846,7 +845,7 @@ body{
    	   				dataType : 'json',
    	   				success:function(result)
    	   				{
-   	   					alert("æ·»åŠ æˆåŠŸï¼")
+   	   					alert("Ìí¼Ó³É¹¦£¡")
    	   				},
    	                   error: function(XMLHttpRequest, textStatus, errorThrown) {
    	   					 $("#subBtn").unbind("click");
@@ -863,22 +862,22 @@ body{
 	{
 		$("#mm1").menu('hide');
 		$("#mm2").menu('hide');
-		var execution_date = getUrlParam('execution_date'); //è·å–url çš„å€¼
-       	var dag_id = getUrlParam('dag_id'); //è·å–url çš„å€¼
+		var execution_date = getUrlParam('execution_date'); //»ñÈ¡url µÄÖµ
+       	var dag_id = getUrlParam('dag_id'); //»ñÈ¡url µÄÖµ
        	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
        	swal({ 
        	    title: "", 
-       	    text: "æ‚¨ç¡®å®šè¦å°†ä»»åŠ¡ç½®ä¸ºæˆåŠŸ?", 
+       	    text: "ÄúÈ·¶¨Òª½«ÈÎÎñÖÃÎª³É¹¦?", 
        	    type: "warning", 
        	    showCancelButton: true, 
        	    closeOnConfirm: false, 
-       	    confirmButtonText: "ç¡®è®¤",  
-       	    cancelButtonText: "å–æ¶ˆ",  
+       	    confirmButtonText: "È·ÈÏ",  
+       	    cancelButtonText: "È¡Ïû",  
        	    confirmButtonColor: "#ec6c62" 
        	}, function(isConfirm) { 
        		if(isConfirm)
        		{
-       			var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //è¿™3ä¸ªå€¼å†³å®šå”¯ä¸€ä¸€æ¡task_instance ä¸€æ¡è®°å½•
+       			var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //Õâ3¸öÖµ¾ö¶¨Î¨Ò»Ò»Ìõtask_instance Ò»Ìõ¼ÇÂ¼
        			$.ajax({
        				url : '<%=path%>/markTaskSuccess.do',
        				data:data,
@@ -899,10 +898,10 @@ body{
 	function rz_clear()
 	{
 		$("#mm1").menu('hide');
-		var execution_date = getUrlParam('execution_date'); //è·å–url çš„å€¼
-       	var dag_id = getUrlParam('dag_id'); //è·å–url çš„å€¼
+		var execution_date = getUrlParam('execution_date'); //»ñÈ¡url µÄÖµ
+       	var dag_id = getUrlParam('dag_id'); //»ñÈ¡url µÄÖµ
        	console.info("taskid is " + taskid + "; execution_date is " + execution_date);
-       	var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //è¿™3ä¸ªå€¼å†³å®šå”¯ä¸€ä¸€æ¡task_instance ä¸€æ¡è®°å½•
+       	var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //Õâ3¸öÖµ¾ö¶¨Î¨Ò»Ò»Ìõtask_instance Ò»Ìõ¼ÇÂ¼
    		var img = $("#progressImgage");
 	      	var mask = $("#maskOfProgressImage");
        	img.show().css({
@@ -940,7 +939,7 @@ body{
    			},
    			error:function(data)
    			{
-   				 console.info("è¯·æ£€æŸ¥åº”ç”¨æœåŠ¡å™¨æ˜¯å¦æ­£å¸¸ï¼");
+   				 console.info("Çë¼ì²éÓ¦ÓÃ·şÎñÆ÷ÊÇ·ñÕı³££¡");
    		    	 img.hide();
    		         mask.hide();
    			}
@@ -964,26 +963,26 @@ body{
 	function update_nodes_states(task_instances) {
 		$.each(task_instances,function(idx,obj){
             var task_div = $('.' + obj.task_id);
-            if(obj.state == 'failed') //å¦‚æœå¤±è´¥
+            if(obj.state == 'failed') //Èç¹ûÊ§°Ü
             {
-            	/* var tipcontent ="<p align='left'> é¢„è®¡å¼€å§‹æ—¶é—´ï¼š" +  obj.expected_starttime + "," +
-            									 "å®é™…å¼€å§‹æ—¶é—´ï¼š" +  obj.start_Date         + "," +
-            									 "é¢„è®¡ç»“æŸæ—¶é—´ï¼š" +  obj.expected_endtime   + "," + 
-            									 "å®é™…ç»“æŸæ—¶é—´ï¼š" +  obj.end_Date           + "," +
-            									 "é¢„è®¡æŒç»­æ—¶é—´ï¼š" +  obj.expected_duration  + "&nbsp;&nbsp;," + 
-            									 "å®é™…æŒç»­æ—¶é—´ï¼š" +  obj.duration           + "&nbsp;&nbsp;," +
-            					"ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šå¤±è´¥</p>";
+            	/* var tipcontent ="<p align='left'> Ô¤¼Æ¿ªÊ¼Ê±¼ä£º" +  obj.expected_starttime + "," +
+            									 "Êµ¼Ê¿ªÊ¼Ê±¼ä£º" +  obj.start_Date         + "," +
+            									 "Ô¤¼Æ½áÊøÊ±¼ä£º" +  obj.expected_endtime   + "," + 
+            									 "Êµ¼Ê½áÊøÊ±¼ä£º" +  obj.end_Date           + "," +
+            									 "Ô¤¼Æ³ÖĞøÊ±¼ä£º" +  obj.expected_duration  + "&nbsp;&nbsp;," + 
+            									 "Êµ¼Ê³ÖĞøÊ±¼ä£º" +  obj.duration           + "&nbsp;&nbsp;," +
+            					"ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£ºÊ§°Ü</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#FF0000"); */
                 
-                var tipcontent = '<span style="color:#fff">é¢„è®¡å¼€å§‹æ—¶é—´ï¼š' + obj.expected_starttime + '<br>' +
-                				 'å®é™…å¼€å§‹æ—¶é—´ï¼š' + obj.start_Date + '<br>' +
-                				 'é¢„è®¡ç»“æŸæ—¶é—´ï¼š' + obj.expected_endtime + '<br>' +
-                				 'å®é™…ç»“æŸæ—¶é—´ï¼š' + obj.end_Date + '<br>' +
-                				 'é¢„è®¡æŒç»­æ—¶é—´ï¼š' + obj.expected_duration + '<br>' +
-                				 'å®é™…æŒç»­æ—¶é—´ï¼š' + obj.duration + '<br>' +
-                				 'ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šå¤±è´¥</span>';
+                var tipcontent = '<span style="color:#fff">Ô¤¼Æ¿ªÊ¼Ê±¼ä£º' + obj.expected_starttime + '<br>' +
+                				 'Êµ¼Ê¿ªÊ¼Ê±¼ä£º' + obj.start_Date + '<br>' +
+                				 'Ô¤¼Æ½áÊøÊ±¼ä£º' + obj.expected_endtime + '<br>' +
+                				 'Êµ¼Ê½áÊøÊ±¼ä£º' + obj.end_Date + '<br>' +
+                				 'Ô¤¼Æ³ÖĞøÊ±¼ä£º' + obj.expected_duration + '<br>' +
+                				 'Êµ¼Ê³ÖĞøÊ±¼ä£º' + obj.duration + '<br>' +
+                				 'ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£ºÊ§°Ü</span>';
                 $(task_div).tooltip({
     				position: 'top',
     				content: tipcontent,
@@ -996,26 +995,26 @@ body{
     			});
                 task_div.find("div:eq(0)").css("border-color","#FF0000"); 
             }
-            else if (obj.state == 'success') //å¦‚æœæˆåŠŸ
+            else if (obj.state == 'success') //Èç¹û³É¹¦
             {
-            	/* var tipcontent = "<p align='left'>é¢„è®¡å¼€å§‹æ—¶é—´ï¼š" +  obj.expected_starttime + "," +
-								 				 "å®é™…å¼€å§‹æ—¶é—´ï¼š" +  obj.start_Date         + "," +
-								 			 	 "é¢„è®¡ç»“æŸæ—¶é—´ï¼š" +  obj.expected_endtime   + "," + 
-								 				 "å®é™…ç»“æŸæ—¶é—´ï¼š" +  obj.end_Date           + "," +
-								 				 "é¢„è®¡æŒç»­æ—¶é—´ï¼š"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
-								 				 "å®é™…æŒç»­æ—¶é—´ï¼š"  + obj.duration           + "&nbsp;&nbsp;," +
-								 "ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šæˆåŠŸ</p>";
+            	/* var tipcontent = "<p align='left'>Ô¤¼Æ¿ªÊ¼Ê±¼ä£º" +  obj.expected_starttime + "," +
+								 				 "Êµ¼Ê¿ªÊ¼Ê±¼ä£º" +  obj.start_Date         + "," +
+								 			 	 "Ô¤¼Æ½áÊøÊ±¼ä£º" +  obj.expected_endtime   + "," + 
+								 				 "Êµ¼Ê½áÊøÊ±¼ä£º" +  obj.end_Date           + "," +
+								 				 "Ô¤¼Æ³ÖĞøÊ±¼ä£º"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "Êµ¼Ê³ÖĞøÊ±¼ä£º"  + obj.duration           + "&nbsp;&nbsp;," +
+								 "ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£º³É¹¦</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#32cc00"); */
                 
-                var tipcontent = '<span style="color:#fff">é¢„è®¡å¼€å§‹æ—¶é—´ï¼š' + obj.expected_starttime + '<br>' +
-								 'å®é™…å¼€å§‹æ—¶é—´ï¼š' + obj.start_Date + '<br>' +
-								 'é¢„è®¡ç»“æŸæ—¶é—´ï¼š' + obj.expected_endtime + '<br>' +
-								 'å®é™…ç»“æŸæ—¶é—´ï¼š' + obj.end_Date + '<br>' +
-								 'é¢„è®¡æŒç»­æ—¶é—´ï¼š' + obj.expected_duration + '<br>' +
-								 'å®é™…æŒç»­æ—¶é—´ï¼š' + obj.duration + '<br>' +
-								 'ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šæˆåŠŸ</span>';
+                var tipcontent = '<span style="color:#fff">Ô¤¼Æ¿ªÊ¼Ê±¼ä£º' + obj.expected_starttime + '<br>' +
+								 'Êµ¼Ê¿ªÊ¼Ê±¼ä£º' + obj.start_Date + '<br>' +
+								 'Ô¤¼Æ½áÊøÊ±¼ä£º' + obj.expected_endtime + '<br>' +
+								 'Êµ¼Ê½áÊøÊ±¼ä£º' + obj.end_Date + '<br>' +
+								 'Ô¤¼Æ³ÖĞøÊ±¼ä£º' + obj.expected_duration + '<br>' +
+								 'Êµ¼Ê³ÖĞøÊ±¼ä£º' + obj.duration + '<br>' +
+								 'ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£º³É¹¦</span>';
 				$(task_div).tooltip({
 					position: 'top',
 					content: tipcontent,
@@ -1028,26 +1027,26 @@ body{
 				});
 				task_div.find("div:eq(0)").css("border-color","#32cc00");
             }
-            else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'scheduled')//æœªå¼€å§‹
+            else if (obj.state == '' || obj.state == 'skipped' || obj.state == 'undefined'|| obj.state == 'scheduled')//Î´¿ªÊ¼
             {
-            	/* var tipcontent = "<p align='left'>é¢„è®¡å¼€å§‹æ—¶é—´ï¼š" +  obj.expected_starttime + "," +
-								 				 "å®é™…å¼€å§‹æ—¶é—´ï¼š" +  obj.start_Date         + "," +
-								 				 "é¢„è®¡ç»“æŸæ—¶é—´ï¼š" +  obj.expected_endtime   + "," + 
-								 				 "å®é™…ç»“æŸæ—¶é—´ï¼š" +  obj.end_Date           + "," +
-								 				 "é¢„è®¡æŒç»­æ—¶é—´ï¼š"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
-								 				 "å®é™…æŒç»­æ—¶é—´ï¼š"  + obj.duration           + "&nbsp;&nbsp;," +
-								 "ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šæœªå¼€å§‹</p>";
+            	/* var tipcontent = "<p align='left'>Ô¤¼Æ¿ªÊ¼Ê±¼ä£º" +  obj.expected_starttime + "," +
+								 				 "Êµ¼Ê¿ªÊ¼Ê±¼ä£º" +  obj.start_Date         + "," +
+								 				 "Ô¤¼Æ½áÊøÊ±¼ä£º" +  obj.expected_endtime   + "," + 
+								 				 "Êµ¼Ê½áÊøÊ±¼ä£º" +  obj.end_Date           + "," +
+								 				 "Ô¤¼Æ³ÖĞøÊ±¼ä£º"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "Êµ¼Ê³ÖĞøÊ±¼ä£º"  + obj.duration           + "&nbsp;&nbsp;," +
+								 "ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£ºÎ´¿ªÊ¼</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#ffffff"); */
                 
-            	var tipcontent = '<span style="color:#fff">é¢„è®¡å¼€å§‹æ—¶é—´ï¼š' + obj.expected_starttime + '<br>' +
-								 'å®é™…å¼€å§‹æ—¶é—´ï¼š' + obj.start_Date + '<br>' +
-								 'é¢„è®¡ç»“æŸæ—¶é—´ï¼š' + obj.expected_endtime + '<br>' +
-								 'å®é™…ç»“æŸæ—¶é—´ï¼š' + obj.end_Date + '<br>' +
-								 'é¢„è®¡æŒç»­æ—¶é—´ï¼š' + obj.expected_duration + '<br>' +
-								 'å®é™…æŒç»­æ—¶é—´ï¼š' + obj.duration + '<br>' +
-								 'ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šæœªå¼€å§‹</span>';
+            	var tipcontent = '<span style="color:#fff">Ô¤¼Æ¿ªÊ¼Ê±¼ä£º' + obj.expected_starttime + '<br>' +
+								 'Êµ¼Ê¿ªÊ¼Ê±¼ä£º' + obj.start_Date + '<br>' +
+								 'Ô¤¼Æ½áÊøÊ±¼ä£º' + obj.expected_endtime + '<br>' +
+								 'Êµ¼Ê½áÊøÊ±¼ä£º' + obj.end_Date + '<br>' +
+								 'Ô¤¼Æ³ÖĞøÊ±¼ä£º' + obj.expected_duration + '<br>' +
+								 'Êµ¼Ê³ÖĞøÊ±¼ä£º' + obj.duration + '<br>' +
+								 'ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£ºÎ´¿ªÊ¼</span>';
             	$(task_div).tooltip({
 					position: 'top',
 					content: tipcontent,
@@ -1062,24 +1061,24 @@ body{
             }
             else if (obj.state == 'running')
             {
-            	/* var tipcontent = "<p align='left'>é¢„è®¡å¼€å§‹æ—¶é—´ï¼š" +  obj.expected_starttime + "," +
-								 				 "å®é™…å¼€å§‹æ—¶é—´ï¼š" +  obj.start_Date         + "," +
-								 				 "é¢„è®¡ç»“æŸæ—¶é—´ï¼š" +  obj.expected_endtime   + "," + 
-								 				 "å®é™…ç»“æŸæ—¶é—´ï¼š" +  obj.end_Date           + "," +
-								 				 "é¢„è®¡æŒç»­æ—¶é—´ï¼š"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
-								 				 "å®é™…æŒç»­æ—¶é—´ï¼š"  + obj.duration           + "&nbsp;&nbsp;," +
-								 "ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šè¿è¡Œä¸­</p>";
+            	/* var tipcontent = "<p align='left'>Ô¤¼Æ¿ªÊ¼Ê±¼ä£º" +  obj.expected_starttime + "," +
+								 				 "Êµ¼Ê¿ªÊ¼Ê±¼ä£º" +  obj.start_Date         + "," +
+								 				 "Ô¤¼Æ½áÊøÊ±¼ä£º" +  obj.expected_endtime   + "," + 
+								 				 "Êµ¼Ê½áÊøÊ±¼ä£º" +  obj.end_Date           + "," +
+								 				 "Ô¤¼Æ³ÖĞøÊ±¼ä£º"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "Êµ¼Ê³ÖĞøÊ±¼ä£º"  + obj.duration           + "&nbsp;&nbsp;," +
+								 "ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£ºÔËĞĞÖĞ</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#0000ff"); */
                 
-            	var tipcontent = '<span style="color:#fff">é¢„è®¡å¼€å§‹æ—¶é—´ï¼š' + obj.expected_starttime + '<br>' +
-								 'å®é™…å¼€å§‹æ—¶é—´ï¼š' + obj.start_Date + '<br>' +
-								 'é¢„è®¡ç»“æŸæ—¶é—´ï¼š' + obj.expected_endtime + '<br>' +
-								 'å®é™…ç»“æŸæ—¶é—´ï¼š' + obj.end_Date + '<br>' +
-								 'é¢„è®¡æŒç»­æ—¶é—´ï¼š' + obj.expected_duration + '<br>' +
-								 'å®é™…æŒç»­æ—¶é—´ï¼š' + obj.duration + '<br>' +
-								 'ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šè¿è¡Œä¸­</span>';
+            	var tipcontent = '<span style="color:#fff">Ô¤¼Æ¿ªÊ¼Ê±¼ä£º' + obj.expected_starttime + '<br>' +
+								 'Êµ¼Ê¿ªÊ¼Ê±¼ä£º' + obj.start_Date + '<br>' +
+								 'Ô¤¼Æ½áÊøÊ±¼ä£º' + obj.expected_endtime + '<br>' +
+								 'Êµ¼Ê½áÊøÊ±¼ä£º' + obj.end_Date + '<br>' +
+								 'Ô¤¼Æ³ÖĞøÊ±¼ä£º' + obj.expected_duration + '<br>' +
+								 'Êµ¼Ê³ÖĞøÊ±¼ä£º' + obj.duration + '<br>' +
+								 'ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£ºÔËĞĞÖĞ</span>';
 				$(task_div).tooltip({
 					position: 'top',
 					content: tipcontent,
@@ -1092,26 +1091,26 @@ body{
 				});
 				task_div.find("div:eq(0)").css("border-color","#0000ff");
             }
-            else if (obj.state == 'done') //å¦‚æœå¤„äºåšå®Œå¾…ç¡®è®¤çš„çŠ¶æ€
+            else if (obj.state == 'done') //Èç¹û´¦ÓÚ×öÍê´ıÈ·ÈÏµÄ×´Ì¬
             {
-            	/* var tipcontent = "<p align='left'>é¢„è®¡å¼€å§‹æ—¶é—´ï¼š" +  obj.expected_starttime + "," +
-								 				 "å®é™…å¼€å§‹æ—¶é—´ï¼š" +  obj.start_Date         + "," +
-								 				 "é¢„è®¡ç»“æŸæ—¶é—´ï¼š" +  obj.expected_endtime   + "," + 
-								 				 "å®é™…ç»“æŸæ—¶é—´ï¼š" +  obj.end_Date           + "," +
-								 				 "é¢„è®¡æŒç»­æ—¶é—´ï¼š"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
-								 				 "å®é™…æŒç»­æ—¶é—´ï¼š"  + obj.duration           + "&nbsp;&nbsp;," +
-								 "ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šå¾…ç¡®è®¤</p>";
+            	/* var tipcontent = "<p align='left'>Ô¤¼Æ¿ªÊ¼Ê±¼ä£º" +  obj.expected_starttime + "," +
+								 				 "Êµ¼Ê¿ªÊ¼Ê±¼ä£º" +  obj.start_Date         + "," +
+								 				 "Ô¤¼Æ½áÊøÊ±¼ä£º" +  obj.expected_endtime   + "," + 
+								 				 "Êµ¼Ê½áÊøÊ±¼ä£º" +  obj.end_Date           + "," +
+								 				 "Ô¤¼Æ³ÖĞøÊ±¼ä£º"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "Êµ¼Ê³ÖĞøÊ±¼ä£º"  + obj.duration           + "&nbsp;&nbsp;," +
+								 "ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£º´ıÈ·ÈÏ</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#FF8C00"); */
                 
-                var tipcontent = '<span style="color:#fff">é¢„è®¡å¼€å§‹æ—¶é—´ï¼š' + obj.expected_starttime + '<br>' +
-								 'å®é™…å¼€å§‹æ—¶é—´ï¼š' + obj.start_Date + '<br>' +
-								 'é¢„è®¡ç»“æŸæ—¶é—´ï¼š' + obj.expected_endtime + '<br>' +
-								 'å®é™…ç»“æŸæ—¶é—´ï¼š' + obj.end_Date + '<br>' +
-								 'é¢„è®¡æŒç»­æ—¶é—´ï¼š' + obj.expected_duration + '<br>' +
-								 'å®é™…æŒç»­æ—¶é—´ï¼š' + obj.duration + '<br>' +
-								 'ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šå¾…ç¡®è®¤</span>';
+                var tipcontent = '<span style="color:#fff">Ô¤¼Æ¿ªÊ¼Ê±¼ä£º' + obj.expected_starttime + '<br>' +
+								 'Êµ¼Ê¿ªÊ¼Ê±¼ä£º' + obj.start_Date + '<br>' +
+								 'Ô¤¼Æ½áÊøÊ±¼ä£º' + obj.expected_endtime + '<br>' +
+								 'Êµ¼Ê½áÊøÊ±¼ä£º' + obj.end_Date + '<br>' +
+								 'Ô¤¼Æ³ÖĞøÊ±¼ä£º' + obj.expected_duration + '<br>' +
+								 'Êµ¼Ê³ÖĞøÊ±¼ä£º' + obj.duration + '<br>' +
+								 'ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£º´ıÈ·ÈÏ</span>';
 				$(task_div).tooltip({
 					position: 'top',
 					content: tipcontent,
@@ -1124,26 +1123,26 @@ body{
 				});
 				task_div.find("div:eq(0)").css("border-color","#FF8C00");
             }
-            else if (obj.state == 'upstream_failed' || obj.state == 'shutdown') //éœ€è¦æ¸…ç† 
+            else if (obj.state == 'upstream_failed' || obj.state == 'shutdown') //ĞèÒªÇåÀí 
             {
-            	/* var tipcontent = "<p align='left'>é¢„è®¡å¼€å§‹æ—¶é—´ï¼š" +  obj.expected_starttime + "," +
-								 				 "å®é™…å¼€å§‹æ—¶é—´ï¼š" +  obj.start_Date         + "," +
-								 				 "é¢„è®¡ç»“æŸæ—¶é—´ï¼š" +  obj.expected_endtime   + "," + 
-								 				 "å®é™…ç»“æŸæ—¶é—´ï¼š" +  obj.end_Date           + "," +
-								 				 "é¢„è®¡æŒç»­æ—¶é—´ï¼š"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
-								 				 "å®é™…æŒç»­æ—¶é—´ï¼š"  + obj.duration           + "&nbsp;&nbsp;," +
-								 "ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šå¾…ç¡®è®¤</p>";
+            	/* var tipcontent = "<p align='left'>Ô¤¼Æ¿ªÊ¼Ê±¼ä£º" +  obj.expected_starttime + "," +
+								 				 "Êµ¼Ê¿ªÊ¼Ê±¼ä£º" +  obj.start_Date         + "," +
+								 				 "Ô¤¼Æ½áÊøÊ±¼ä£º" +  obj.expected_endtime   + "," + 
+								 				 "Êµ¼Ê½áÊøÊ±¼ä£º" +  obj.end_Date           + "," +
+								 				 "Ô¤¼Æ³ÖĞøÊ±¼ä£º"  + obj.expected_duration  + "&nbsp;&nbsp;," + 
+								 				 "Êµ¼Ê³ÖĞøÊ±¼ä£º"  + obj.duration           + "&nbsp;&nbsp;," +
+								 "ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£º´ıÈ·ÈÏ</p>";
                 var format_content = tipcontent.split(",").join("<br>");
                 task_div.attr("data-original-title",format_content); 
                 task_div.find("div:eq(0)").css("border-color","#FFCC33"); */
                 
-            	var tipcontent = '<span style="color:#fff">é¢„è®¡å¼€å§‹æ—¶é—´ï¼š' + obj.expected_starttime + '<br>' +
-								 'å®é™…å¼€å§‹æ—¶é—´ï¼š' + obj.start_Date + '<br>' +
-								 'é¢„è®¡ç»“æŸæ—¶é—´ï¼š' + obj.expected_endtime + '<br>' +
-								 'å®é™…ç»“æŸæ—¶é—´ï¼š' + obj.end_Date + '<br>' +
-								 'é¢„è®¡æŒç»­æ—¶é—´ï¼š' + obj.expected_duration + '<br>' +
-								 'å®é™…æŒç»­æ—¶é—´ï¼š' + obj.duration + '<br>' +
-								 'ä»»åŠ¡çŠ¶æ€&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ï¼šå¾…ç¡®è®¤</span>';
+            	var tipcontent = '<span style="color:#fff">Ô¤¼Æ¿ªÊ¼Ê±¼ä£º' + obj.expected_starttime + '<br>' +
+								 'Êµ¼Ê¿ªÊ¼Ê±¼ä£º' + obj.start_Date + '<br>' +
+								 'Ô¤¼Æ½áÊøÊ±¼ä£º' + obj.expected_endtime + '<br>' +
+								 'Êµ¼Ê½áÊøÊ±¼ä£º' + obj.end_Date + '<br>' +
+								 'Ô¤¼Æ³ÖĞøÊ±¼ä£º' + obj.expected_duration + '<br>' +
+								 'Êµ¼Ê³ÖĞøÊ±¼ä£º' + obj.duration + '<br>' +
+								 'ÈÎÎñ×´Ì¬&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£º´ıÈ·ÈÏ</span>';
 				$(task_div).tooltip({
 					position: 'top',
 					content: tipcontent,
@@ -1171,16 +1170,16 @@ body{
 	function getAjax(url,param,type){
 		function handleAjax(url, param, type) {
 		 return ajax(url, param, type).then(function(resp){
-				// æˆåŠŸå›è°ƒ
+				// ³É¹¦»Øµ÷
 				if(resp){
 					console.info(resp.dag_tasks);
 					update_nodes_states(resp.dag_tasks);
 				}
 				else{
-					return $.Deferred().reject(resp); // è¿”å›ä¸€ä¸ªå¤±è´¥çŠ¶æ€çš„deferredå¯¹è±¡ï¼ŒæŠŠé”™è¯¯ä»£ç ä½œä¸ºé»˜è®¤å‚æ•°ä¼ å…¥ä¹‹åfail()æ–¹æ³•çš„å›è°ƒ
+					return $.Deferred().reject(resp); // ·µ»ØÒ»¸öÊ§°Ü×´Ì¬µÄdeferred¶ÔÏó£¬°Ñ´íÎó´úÂë×÷ÎªÄ¬ÈÏ²ÎÊı´«ÈëÖ®ºófail()·½·¨µÄ»Øµ÷
 				}
-			}, function(err){ //å¤±è´¥å›è°ƒ
-				console.log(err); // æ‰“å°çŠ¶æ€ç 
+			}, function(err){ //Ê§°Ü»Øµ÷
+				console.log(err); // ´òÓ¡×´Ì¬Âë
 				});
 			}
 		handleAjax(url,param,type);

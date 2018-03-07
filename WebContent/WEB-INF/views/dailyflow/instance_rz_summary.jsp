@@ -319,6 +319,10 @@ function update_summary_table_state()
 	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
 	        					  }else if ( isshowBtn == 3 )
 	        					  {
+	        						  if(result.status == 3)
+	        						  {
+	        							  alert(result.msg)
+	        						  }
 	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
 	        					  }
 	        				},

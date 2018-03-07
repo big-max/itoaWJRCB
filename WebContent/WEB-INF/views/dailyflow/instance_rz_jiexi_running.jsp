@@ -754,6 +754,7 @@ body{
     <div id="mm2" class="easyui-menu" style="width:120px;"><!-- 针对贷记卡 -->
         <div iconCls="icon-search" onclick="rz_showLog()">查看日志</div>
         <div iconCls="icon-edit" onclick="rz_record()">记录问题</div>
+        <!-- <div iconCls="icon-reload" onclick="rz_clear()">清理&续作</div> -->
         <div iconCls="icon-ok" onclick="rz_makesuccess()">确认成功</div>
     </div>
 </body>
