@@ -59,7 +59,8 @@ input[type="text"],input[type="password"]  {
 
 <script>
 	$(document).ready(function() {
-		(function($) {
+		
+		/* (function($) {
 			$('#filter').keyup(function() {
 				var rex = new RegExp($(this).val(), 'i');
 				$('.searchable tr').hide();
@@ -67,8 +68,8 @@ input[type="text"],input[type="password"]  {
 					return rex.test($(this).text());
 				}).show();
 			})
-		}(jQuery));
-	});
+		}(jQuery)); */
+	}); 
 </script>
 </head>
 
