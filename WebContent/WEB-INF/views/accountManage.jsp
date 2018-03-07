@@ -123,6 +123,7 @@ input[type="text"],input[type="password"]  {
 									<tr>
 										<th style="text-align: center;width:10%;">序号</th>
 										<th style="text-align: center;width:10%;">用户名</th>
+										<th style="text-align: center;width:10%;">姓名</th>
 										<th style="text-align: center;width:10%;">E-mail</th>
 										<th style="text-align: center;width:10%;">电话</th>
 										<th style="text-align: center;width:10%;">操作员</th>
@@ -137,7 +138,8 @@ input[type="text"],input[type="password"]  {
 												<input type="checkbox" name="servers"
 													 value="${job.username }" onclick="isSelect(this);" />
 											</td>
-											<td style="text-align: center;">${job.username }</td>											
+											<td style="text-align: center;">${job.username }</td>
+											<td style="text-align: center;">${job.alias }</td>											
 											<td style="text-align: center;">${job.email }</td>
 											<td style="text-align: center;">${job.tel }</td>
 											<td style="text-align: center;">${job.czy }</td>
@@ -175,6 +177,13 @@ input[type="text"],input[type="password"]  {
 													<div class="controls" style="padding-top: 5px;margin-bottom:5px;">
 														<span class="input140 mr20" style="margin-bottom:5px;"><font color="red">*</font> 用户名：</span>
 														<input class="form-control" type="text" id="username" name="username">
+													</div>
+												</div>
+												
+												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;margin-bottom:5px;">
+														<span class="input140 mr20" style="margin-bottom:5px;"><font color="red">*</font> 姓名：</span>
+														<input class="form-control" type="text" id="alias" name="alias">
 													</div>
 												</div>
 												
@@ -259,6 +268,13 @@ input[type="text"],input[type="password"]  {
 														<input class="form-control" readonly="readonly" type="text" id="username_old" name="username_old">
 													</div>
 												</div>
+											<div class="control-group">
+													<div class="controls" style="padding-top: 5px;margin-bottom:5px;">
+														<span class="input140 mr20" style="margin-bottom:5px;"><font color="red">*</font> 姓名：</span>
+														<input class="form-control" readonly="readonly" type="text" id="alias_old" name="alias_old">
+													</div>
+												</div>
+												
 											<div class="control-group">
 													<div class="controls" style="padding-top: 5px;">
 														<span class="input140 mr20">E-mail：</span>
@@ -387,6 +403,14 @@ input[type="text"],input[type="password"]  {
 		if(role_name == "0" && username.length > 5)
 		{
 			sweet("用户名不能超过5个字符 !","warning","确定"); 
+			return ;
+		}
+		
+		//中文名不能为空
+		var alias = $("#alias").val();
+		if(alias == "" )
+		{
+			sweet("中文名不能为空!","warning","确定");  
 			return ;
 		}
 		
@@ -562,9 +586,10 @@ input[type="text"],input[type="password"]  {
 			$("input[name='servers']").each(function() {
 				if ($(this).attr("checked")) {
 				$('#username_old').val($(this).val());
-				$('#email_old').val($(this).parents('td').next().next().text());
-				$('#tel_old').val($(this).parents('td').next().next().next().text());
-				$('#czy_old').val($(this).parents('td').next().next().next().next().text());
+				$('#alias_old').val($(this).parents('td').next().next().text());
+				$('#email_old').val($(this).parents('td').next().next().next().text());
+				$('#tel_old').val($(this).parents('td').next().next().next().next().text());
+				$('#czy_old').val($(this).parents('td').next().next().next().next().next().text());
 				}
 			})	
 			$('#modifyUser').modal('show');
@@ -578,6 +603,7 @@ input[type="text"],input[type="password"]  {
 	function CheckChangeGroup()
 	{
 		var name = $("#username_old").val();
+		var alias = $("#alias_old").val();
 		var email = $("#email_old").val();
 		var tel = $("#tel_old").val();
 		var czy = $("#czy_old").val();
