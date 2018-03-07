@@ -25,6 +25,7 @@ import com.ibm.automation.core.bean.ServersBean;
 import com.ibm.automation.core.constants.PropertyKeyConst;
 import com.ibm.automation.core.exception.NetWorkException;
 import com.ibm.automation.core.service.ServerService;
+import com.ibm.automation.core.util.EncodeUtil;
 import com.ibm.automation.core.util.HttpClientUtil;
 import com.ibm.automation.core.util.PropertyUtil;
 import com.ibm.automation.core.util.SecurityUtil;
@@ -205,7 +206,7 @@ public class UserController {
 		on.put("email", email);
 		on.put("czy", czy);
 		on.put("tel", tel);
-		on.put("alias", alias);
+		on.put("alias", EncodeUtil.encode(alias));
 		ArrayNode roleNodes = om.createArrayNode();
 
 		for (String role : roles) {
