@@ -2,7 +2,6 @@ package com.ibm.automation.dailyflow.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -27,6 +26,7 @@ import com.ibm.automation.ams.service.AmsRestService;
 import com.ibm.automation.core.constants.PropertyKeyConst;
 import com.ibm.automation.core.exception.NetWorkException;
 import com.ibm.automation.core.service.LogRecordService;
+import com.ibm.automation.core.service.RunPastService;
 import com.ibm.automation.core.service.ServerService;
 import com.ibm.automation.core.service.TaskParamService;
 import com.ibm.automation.core.service.TaskTelsService;
@@ -34,6 +34,7 @@ import com.ibm.automation.core.util.HttpClientUtil;
 import com.ibm.automation.core.util.PropertyUtil;
 import com.ibm.automation.core.util.UtilDateTime;
 import com.ibm.automation.domain.LogRecordBean;
+import com.ibm.automation.domain.RunPastBean;
 import com.ibm.automation.domain.TaskParamBean;
 import com.ibm.automation.domain.TaskTelsBean;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
@@ -53,6 +54,9 @@ public class DailyFlowController {
 	private TaskTelsService taskTelsService;
 	@Autowired
 	private AmsRestService amsRestService;
+	@Autowired
+	private RunPastService runPastService;
+
 	private static Logger logger = Logger.getLogger(DailyFlowController.class);
 	Properties amsprop = PropertyUtil.getResourceFile("config/properties/ams2.properties");
 	Properties rzprop = PropertyUtil.getResourceFile("config/properties/rzdate.properties");
@@ -255,7 +259,7 @@ public class DailyFlowController {
 		// 去mongodb 获取 工号对应的电话号码
 		ObjectNode on = om.createObjectNode();
 		ArrayNode failArray = om.createArrayNode();
-		
+
 		int sum = 0;
 		for (TaskTelsBean ttb : taskTelList) {
 			try {
@@ -296,7 +300,7 @@ public class DailyFlowController {
 		String id = request.getParameter("id");// id
 		String task_id = request.getParameter("task_id");// 任务名
 		String name = request.getParameter("name"); // name 工号：电话
-		String tel = request.getParameter("tel");//电话
+		String tel = request.getParameter("tel");// 电话
 		String[] status = request.getParameterValues("edit_status");// 状态
 		TaskTelsBean ttb = new TaskTelsBean();
 		ttb.setId(Integer.valueOf(id));
@@ -358,4 +362,20 @@ public class DailyFlowController {
 		return outNode;
 	}
 
+	@RequestMapping("/getRZRunDate.do")
+	@ResponseBody
+	public ObjectNode getRZRunDate() {
+		ObjectNode node = om.createObjectNode();
+		node.put("dag_id", "wjrz");
+		try {
+			RunPastBean rpb = runPastService.getRZRunDatetime("wjrz");
+			node.put("execution_date", rpb.getExecution_date());
+			//node.put("is_auto", rpb.getIs_auto());
+		} catch (Exception e) {
+			logger.error("未获取到日终执行时间，请检查！");
+			node.put("execution_date", "");
+			//node.put("is_auto", "");
+		}
+		return node;
+	}
 }

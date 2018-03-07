@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.automation.core.dao.RunPastBeanMapper">
+	<resultMap id="RunPastResultMap" type="com.ibm.automation.domain.RunPastBean">
+		<result column="dag_id" jdbcType="VARCHAR" property="dag_id" />
+		<result column="execution_date" jdbcType="VARCHAR" property="execution_date" />
+		<result column="is_auto" jdbcType="INTEGER" property="is_auto" />
+	</resultMap>
+	
+
+	<select id="selectRZRunDatetime" parameterType="string" resultMap="RunPastResultMap">
+		select dag_id , DATE_FORMAT(execution_date,'%Y-%m-%d %T')  as execution_date, is_auto from run_past where dag_id=#{dag_id}
+	</select>
+
+</mapper>

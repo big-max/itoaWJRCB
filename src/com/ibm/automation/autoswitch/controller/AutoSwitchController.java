@@ -234,7 +234,7 @@ public class AutoSwitchController {
 			postJson.put("rz_owner", (String) session.getAttribute("userName"));
 			postJson.put("czy", (String)session.getAttribute("czy"));//操作员
 		}
-		
+		logger.info("rz sendJson is " + postJson.toString());
 		String url = service.createSendUrl(PropertyKeyConst.AMS2_HOST, PropertyKeyConst.POST_ams2_common);
 		try {
 			String response = HttpClientUtil.postMethod(url, postJson.toString());
