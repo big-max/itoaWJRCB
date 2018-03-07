@@ -58,40 +58,16 @@ body{
 			<a class="current" style="position:relative;top:-3px;">实例配置详细</a>
 		</div>
 		
-		<div class="easyui-accordion" style="width:calc(100% - 57px);height:70px;">
-			<div title=">>拓扑结构" style="padding:10px;">
-				<b>主机名 : </b><span id="info_zjm" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>IP地址 : </b><span id="info_ip" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>操作系统 : </b><span id="info_os" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>系统配置 : </b><span id="info_conf" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>状态 : </b><span id="info_status" class="column_txt"></span>
-			</div>
-		</div>
-		
-		<!-- <div class="easyui-accordion" style="width:calc(100% - 57px);height:300px;">
-			<div title=">>基本信息" style="overflow:auto;padding:10px;">
-			</div>
-			<div title=">>配置信息" style="padding:10px;">
-			</div>
-		</div> -->
-		
 		<div class="easyui-panel" title=">>基本信息" style="width:calc(100% - 57px);padding:30px;">
 			<form id="tsmInfo" method="post">
 				<div style="margin-bottom:20px">
-					<select class="easyui-combobox" name="version" label="安装版本" style="width:100%">
-						<option value="8.1" selected="selected">v8.1</option>
-						<option value="8.2">v8.2</option>
-					</select>
+					<span>安装版本</span> <span id="version"></span>
 				</div>
 			</form>
 		</div>
 		<div style="text-align:center;padding:5px 0">
 			<a class="easyui-linkbutton" onclick="javascript:history.go(-1);" style="width:80px">上一页</a>
-			<a class="easyui-linkbutton" onclick="nextPage()" style="width:80px">下一页</a>
+			<a class="easyui-linkbutton" onclick="submit()" style="width:80px">创建</a>
 		</div>
 	
 	</div>
@@ -100,22 +76,24 @@ body{
 </body>
 
 <script>
-	//拓扑结构的信息 
-	var data_tupo = JSON.parse(localStorage.getItem('baseinfokey'));
-	$("#info_zjm").text(data_tupo.zjm);
-	$("#info_ip").text(data_tupo.ip);
-	$("#info_os").text(data_tupo.os);
-	$("#info_conf").text(data_tupo.conf);
-	$("#info_status").text(data_tupo.status);
+	//获取参数值填入 
+	var data_comfirm = JSON.parse(localStorage.getItem('configinfokey'));
+	$("#version").text(data_comfirm.version);
 	
-	//点击“下一页”跳转页面
-	function nextPage()
-	{
-		var configinfo = {
-				version : "v8.1"
-		};
-		localStorage.setItem('configinfokey', JSON.stringify(configinfo));
-		window.location.href = "getIBMAllInstance.do?ptype=tsmclientToNextPage";
+	function submit()
+	{	
+		$.messager.confirm('提示信息', '是否确认要在目标主机立即执行任务？', function(r){
+			if (r){
+				//$("#submits").submit();
+				$.ajax({
+					url : "",
+					type : "post",
+					data : ""
+				})
+			} else {
+				window.history.go(0);
+			}
+		}); 
 	}
 </script>
 </html>

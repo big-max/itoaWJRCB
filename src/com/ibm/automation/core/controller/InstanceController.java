@@ -105,6 +105,8 @@ public class InstanceController {
 			return "instance_itmos_list";
 		} else if (type != null && type != "" && type.equals("tsmclient")) {
 			return "tsmdeploy/instance_tsmclient_list";
+		} else if (type != null && type != "" && type.equals("tsmclientToNextPage")) {
+			return "tsmdeploy/instance_tsmclient_comfirm";
 		} else
 			return null;
 	}
