@@ -118,7 +118,9 @@ public class DailyFlowController {
 	}
 
 	@RequestMapping("/getSubPageHistory.do")
-	public String getSubPageHistory(HttpServletRequest request, HttpSession session) {
+	public String getSubPageHistory(@RequestParam Map<String, String> dag, Model model) {
+		String exe_time_str = dag.get("execution_date");
+		model.addAttribute("execution_date", exe_time_str);
 		return "dailyflow/instance_dailyflow_dj_sub_history";
 	}
 

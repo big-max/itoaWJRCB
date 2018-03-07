@@ -638,9 +638,9 @@ body{
 	
 	$(document).ready(function(){
 		//更新最新一次的流程跑跑的数据
-		getAjax("rzSubHistoryData.do",data,"post");
+		getAjax("historyData.do",data,"post");
 		//更新下拉框的日期数据
-		getDagHisRecord("rzSubHistoryDatatime.do",data,"get");
+		getDagHisRecord("historyDatatime.do",data,"get");
 	});
 	
 	function getDagHisRecord(url,param,type){
