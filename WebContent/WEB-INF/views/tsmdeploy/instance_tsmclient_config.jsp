@@ -130,8 +130,8 @@ body{
 				
 				<div class="base1">
 					<select class="easyui-combobox" name="managedservices" label="managedservices" style="width:80%;height:30px;" multiple>
-						<option value="mws" selected="selected">Magagedservices webclient schedlue</option>
-						<option value="mw">Managedservices webclien</option>
+						<option value="mws" selected="selected">Magagedservices webclient schedule</option>
+						<option value="mw">Managedservices webclient</option>
 						<option value="ms">Managedservices schedule</option>
 					</select>
 				</div>
