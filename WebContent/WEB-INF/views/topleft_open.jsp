@@ -224,6 +224,12 @@ jQuery(document).ready(function () {
 							<li><a href="getIBMAllInstance.do?ptype=db2ha&platform=aix">DB2 HA</a></li>
 						</ul>
 					</li>
+					<li class="has-children"><a href="#">IBM TSM </a>
+						<ul>
+							<li><a href="getIBMAllInstance.do?ptype=tsmclient">TSM Client</a></li>
+							<li><a href="getIBMAllInstance.do?ptype=tsmserver">TSM Server</a></li>
+						</ul>
+					</li>
 					<!-- <li class="has-children"><a href="#">IBM ITM </a>
 						<ul>
 							<li><a href="getIBMAllInstance.do?ptype=itmos">OS Agent</a></li>

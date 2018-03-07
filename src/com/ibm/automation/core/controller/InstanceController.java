@@ -103,6 +103,8 @@ public class InstanceController {
 			return "instance_mqcluster_list";
 		} else if (type != null && type != "" && type.equals("itmos")) {
 			return "instance_itmos_list";
+		} else if (type != null && type != "" && type.equals("tsmclient")) {
+			return "tsmdeploy/instance_tsmclient_list";
 		} else
 			return null;
 	}
@@ -281,7 +283,10 @@ public class InstanceController {
 			request.setAttribute("ptype", ptype);
 			request.setAttribute("hostId", serId);
 			return "instance_db2ha_host";
-		} else {
+		} else if(ptype != null && ptype != "" && ptype.equals("tsmclient")){
+			return "tsmdeploy/instance_tsmclient_config";
+		}
+		else {
 			Iterator<ServersBean> iter = listDetial.iterator();
 			ServersBean sb = null;
 			while (iter.hasNext()) {
