@@ -178,6 +178,13 @@ input[type="text"],input[type="password"]  {
 												</div>
 												
 												<div class="control-group">
+													<div class="controls" style="padding-top: 5px;margin-bottom:5px;">
+														<span class="input140 mr20" style="margin-bottom:5px;"><font color="red">*</font> 中文名：</span>
+														<input class="form-control" type="text" id="alias" name="alias">
+													</div>
+												</div>
+												
+												<div class="control-group">
 													<div class="controls" style="padding-top: 5px;">
 														<span class="input140 mr20">E-mail：</span>
 														<input class="form-control" type="text" id="email" name="email">
@@ -386,6 +393,14 @@ input[type="text"],input[type="password"]  {
 		if(role_name == "0" && username.length > 5)
 		{
 			sweet("用户名不能超过5个字符 !","warning","确定"); 
+			return ;
+		}
+		
+		//中文名不能为空
+		var alias = $("#alias").val();
+		if(alias == "" )
+		{
+			sweet("中文名不能为空!","warning","确定");  
 			return ;
 		}
 		

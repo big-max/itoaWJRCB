@@ -256,6 +256,23 @@ function update_summary_table_state()
     //启动和暂停按钮的处理
 	$(document).on('click',"._play",function(){
 		
+		$.ajax({
+			url:"getRZRunDate.do",
+			type : 'post',
+			dataType : 'json',
+			success:function(result){
+				alert(result.execution_date);
+			}
+		})
+		
+		//获取当前时间
+		var myDate = new Date();
+		var mytime=myDate.getHours()+ ":" + myDate.getMinutes() + ":" + myDate.getSeconds();
+		alert(mytime);
+		if (mytime<"19:50:00"){
+			//sweet("执行时间未到，请稍后再试！","warning","确定"); 
+		}
+		
 		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
 		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
 		var current_dag_state = $(this).parents("tr").find("#dag_state").text();//获取当前流程的状态便于发起流程
