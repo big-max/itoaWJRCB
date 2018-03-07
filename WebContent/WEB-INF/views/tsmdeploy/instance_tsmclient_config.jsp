@@ -36,6 +36,9 @@ body{
 .base1{
 	width:33%;height:40px;float:left;
 }
+.textbox-label{
+	width:150px;
+}
 </style>
 
 <script>
@@ -84,14 +87,14 @@ body{
 					</select>
 				</div>
 				
-				<div class="base1" style="margin-left:5px;">
+				<div class="base1">
 					<select class="easyui-combobox" name="fp_version" label="补丁版本" style="width:80%;height:30px;">
 						<option value="8.1" selected="selected">v8.1</option>
 						<option value="8.2">v8.2</option>
 					</select>
 				</div>
 				
-				<div class="base1" style="margin-left:5px;">
+				<div class="base1">
 					<input class="easyui-textbox" name="install_path" style="width:80%;height:30px;" data-options="label:'安装路径'">
 				</div>
 			</div>
@@ -99,18 +102,85 @@ body{
 			
 			<div class="easyui-panel" title=">>配置信息" style="width:calc(100% - 57px);padding:10px;">
 				<div class="base1">  
-					<input class="easyui-textbox" name="Servername" style="width:80%;height:30px;" data-options="label:'Servername'">
+					<input class="easyui-textbox" name="Servername" style="width:80%;height:30px;" 
+					       data-options="label:'Servername',value:'tsmserver'">
 				</div>
 				
-				<div class="base1" style="margin-left:5px;">
-					<select class="easyui-combobox" name="fp_version" label="补丁版本" style="width:80%;height:30px;">
-						<option value="8.1" selected="selected">v8.1</option>
-						<option value="8.2">v8.2</option>
+				<div class="base1">
+					<input class="easyui-textbox" name="COMMMethod" style="width:80%;height:30px;" 
+					       data-options="label:'COMMMethod',value:'TCPIP'">
+				</div>
+				
+				<div class="base1">
+					<input class="easyui-textbox" name="TCPPort" style="width:80%;height:30px;" 
+					       data-options="label:'TCPPort',value:'1500'">
+				</div>
+				
+				<div class="base1">
+					<input class="easyui-textbox" name="TCPServeraddress" style="width:80%;height:30px;" 
+					       data-options="label:'TCPServeraddress'">
+				</div>
+				
+				<div class="base1">
+					<select class="easyui-combobox" name="Passwordaccess" label="Passwordaccess" style="width:80%;height:30px;">
+						<option value="generate" selected="selected">generate</option>
+						<option value="prompt">prompt</option>
 					</select>
 				</div>
 				
-				<div class="base1" style="margin-left:5px;">
-					<input class="easyui-textbox" name="install_path" style="width:80%;height:30px;" data-options="label:'安装路径'">
+				<div class="base1">
+					<select class="easyui-combobox" name="managedservices" label="managedservices" style="width:80%;height:30px;" multiple>
+						<option value="mws" selected="selected">Magagedservices webclient schedlue</option>
+						<option value="mw">Managedservices webclien</option>
+						<option value="ms">Managedservices schedule</option>
+					</select>
+				</div>
+				
+				<div class="base1">  
+					<input class="easyui-textbox" name="nodename" style="width:80%;height:30px;" 
+					       data-options="label:'nodename'">
+				</div>
+				
+				<div class="base1">
+					<input class="easyui-textbox" name="errorlogname" style="width:80%;height:30px;" 
+					       data-options="label:'errorlogname',value:'/usr/tivoli/tsm/client/api/bin64/dsmerror.log'">
+				</div>
+				
+				<div class="base1">
+					<input class="easyui-textbox" name="resourceutilization" style="width:80%;height:30px;" 
+					       data-options="label:'resourceutilization'">
+				</div>
+				
+				<div class="base1">  
+					<input class="easyui-textbox" name="include" style="width:80%;height:30px;" 
+					       data-options="label:'include'">
+				</div>
+				
+				<div class="base1">
+					<input class="easyui-textbox" name="exclude" style="width:80%;height:30px;" 
+					       data-options="label:'exclude'">
+				</div>
+				
+				<div class="base1">
+					<input class="easyui-textbox" name="enablelanfree" style="width:80%;height:30px;" 
+					       data-options="label:''">
+				</div>
+				
+				<div>
+					<div class="base1">  
+						<input class="easyui-textbox" name="lanfreecommmethod" style="width:80%;height:30px;" 
+						       data-options="label:'lanfreecommmethod',value:'TCPIP'">
+					</div>
+					
+					<div class="base1">  
+						<input class="easyui-textbox" name="lanfreetcpserveraddress" style="width:80%;height:30px;" 
+						       data-options="label:'lanfreetcpserveraddress'">
+					</div>
+					
+					<div class="base1">  
+						<input class="easyui-textbox" name="lanfreetcpport" style="width:80%;height:30px;" 
+						       data-options="label:'lanfreetcpport',value:'1500'">
+					</div>
 				</div>
 			</div>
 		</form>
@@ -121,7 +191,6 @@ body{
 		</div>
 	
 	</div>
-	<!--content end-->
 
 </body>
 
