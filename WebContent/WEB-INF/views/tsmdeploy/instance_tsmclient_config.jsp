@@ -33,6 +33,9 @@ body{
 .current1,.current1:hover {
     color: #444444;
 }
+.base1{
+	width:33%;height:40px;float:left;
+}
 </style>
 
 <script>
@@ -72,23 +75,46 @@ body{
 			</div>
 		</div>
 		
-		<!-- <div class="easyui-accordion" style="width:calc(100% - 57px);height:300px;">
-			<div title=">>基本信息" style="overflow:auto;padding:10px;">
-			</div>
-			<div title=">>配置信息" style="padding:10px;">
-			</div>
-		</div> -->
-		
-		<div class="easyui-panel" title=">>基本信息" style="width:calc(100% - 57px);padding:30px;">
-			<form id="tsmInfo" method="post">
-				<div style="margin-bottom:20px">
-					<select class="easyui-combobox" name="version" label="安装版本" style="width:100%">
+		<form id="tsmInfo" method="post">
+			<div class="easyui-panel" title=">>基本信息" style="width:calc(100% - 57px);padding:10px;">
+				<div class="base1">
+					<select class="easyui-combobox" name="install_version" label="安装版本" class="base1_sub"style="width:80%;height:30px;">
 						<option value="8.1" selected="selected">v8.1</option>
 						<option value="8.2">v8.2</option>
 					</select>
 				</div>
-			</form>
-		</div>
+				
+				<div class="base1" style="margin-left:5px;">
+					<select class="easyui-combobox" name="fp_version" label="补丁版本" style="width:80%;height:30px;">
+						<option value="8.1" selected="selected">v8.1</option>
+						<option value="8.2">v8.2</option>
+					</select>
+				</div>
+				
+				<div class="base1" style="margin-left:5px;">
+					<input class="easyui-textbox" name="install_path" style="width:80%;height:30px;" data-options="label:'安装路径'">
+				</div>
+			</div>
+			<div style="width:50px;height:10px;"></div>
+			
+			<div class="easyui-panel" title=">>配置信息" style="width:calc(100% - 57px);padding:10px;">
+				<div class="base1">
+					<input class="easyui-textbox" name="Servername" style="width:80%;height:30px;" data-options="label:'Servername'">
+				</div>
+				
+				<div class="base1" style="margin-left:5px;">
+					<select class="easyui-combobox" name="fp_version" label="补丁版本" style="width:80%;height:30px;">
+						<option value="8.1" selected="selected">v8.1</option>
+						<option value="8.2">v8.2</option>
+					</select>
+				</div>
+				
+				<div class="base1" style="margin-left:5px;">
+					<input class="easyui-textbox" name="install_path" style="width:80%;height:30px;" data-options="label:'安装路径'">
+				</div>
+			</div>
+		</form>
+		
 		<div style="text-align:center;padding:5px 0">
 			<a class="easyui-linkbutton" onclick="javascript:history.go(-1);" style="width:80px">上一页</a>
 			<a class="easyui-linkbutton" onclick="nextPage()" style="width:80px">下一页</a>
