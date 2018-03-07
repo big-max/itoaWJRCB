@@ -98,7 +98,7 @@ body{
 			<div style="width:50px;height:10px;"></div>
 			
 			<div class="easyui-panel" title=">>配置信息" style="width:calc(100% - 57px);padding:10px;">
-				<div class="base1">
+				<div class="base1">  
 					<input class="easyui-textbox" name="Servername" style="width:80%;height:30px;" data-options="label:'Servername'">
 				</div>
 				
