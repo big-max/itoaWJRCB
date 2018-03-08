@@ -268,7 +268,7 @@ function update_summary_table_state()
 					result.execution_date == undefined)
 				{
 					retDate = 'valueerror';
-					alert('表run_past  字段execution_date 值错误！！ ');
+					sweet("表run_past 字段execution_date 值错误!","warning","确定");
 				}else{
 					retDate = result.execution_date;
 				}
@@ -276,7 +276,7 @@ function update_summary_table_state()
 			error:function(data)
 			{
 				retDate = 'networkerror';
-				alert('网络错误，获取不到日终发起时间，请联系管理员！');
+				sweet("网络错误，获取不到日终发起时间，请联系管理员!","warning","确定");
 			}
 		});
 		return retDate;
@@ -346,12 +346,12 @@ function update_summary_table_state()
 			var curTime = getCurrentTime();//当前时间
 			var getDate = new Date(new Date(getDateStr).format("yyyy-MM-dd"));
 			if (compareDate(curDate,getDate) != 1){   
-				alert('数据库表run_past execution_date 字段的日期必须比当前日期少一天！');
+				sweet("数据库表run_past execution_date 字段的日期必须比当前日期少一天!","warning","确定");
 				return;
 			} else{
 				var getTime = new Date(getDateStr).format('hh:mm:ss');
 				if (compareTime(curTime,getTime) == false){
-					alert('日终执行时间还未到，请等待！，日终发起时间为:'+getTime);
+					sweet("日终执行时间还未到，请等待！，日终发起时间为:"+getTime,"warning","确定");
 					return;
 				}
 			}
@@ -410,7 +410,7 @@ function update_summary_table_state()
 	        					  		$("#"+current_dag_id+"_running").attr("style","font-size:23px;color:#0066FF");
 	        					  }
 	        					  else{
-		        						alert("发生IO异常");
+		        						sweet("发生IO异常！","warning","确定");
 		        					}
 	        					  if (isshowBtn == 1)
 	        					  {
