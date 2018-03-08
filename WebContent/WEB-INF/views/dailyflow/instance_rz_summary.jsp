@@ -253,26 +253,91 @@ function update_summary_table_state()
         });
 	})
 	
-    //启动和暂停按钮的处理
-	$(document).on('click',"._play",function(){
-		
+	function judgeTime()
+	{
 		$.ajax({
 			url:"getRZRunDate.do",
-			type : 'post',
+			type : 'get',
 			dataType : 'json',
 			success:function(result){
-				alert(result.execution_date);
+				var exeDate = result.execution_date;
+				var exeTime = exeDate.split(" ")[1];//后台的时间
+				var myDate = new Date();
+				var currentTime=myDate.getHours()+ ":" + myDate.getMinutes() + ":" + myDate.getSeconds();//当前时间
+				if(currentTime < exeTime){
+					sweet("执行时间未到，请稍后再试！","warning","确定"); 
+				}
 			}
 		})
+	}
+	
+	//获取后台server时间
+	function getServerTime()
+	{
+		var exeDate="-2";
+		$.ajax({
+			url:"getRZRunDate.do",
+			type : 'get',
+			dataType : 'json',
+			async:false,
+			success:function(result){
+				exeDate = result.execution_date;
+			},
+			error:function(result)
+			{
+				exeDate = "-1";
+			}
+		})
+		return exeDate;
+	}
+	
+	//获取当前时间,格式yyyy-MM-dd hh:mm:ss
+	Date.prototype.format = function (format) {
+         var args = {
+             "M+": this.getMonth() + 1,
+             "d+": this.getDate(),
+             "h+": this.getHours(),
+             "m+": this.getMinutes(),
+             "s+": this.getSeconds(),
+             "q+": Math.floor((this.getMonth() + 3) / 3),  //quarter
+             "S": this.getMilliseconds()
+         };
+         if (/(y+)/.test(format))
+             format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+         for (var i in args) {
+             var n = args[i];
+             if (new RegExp("(" + i + ")").test(format))
+                 format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? n : ("00" + n).substr(("" + n).length));
+         }
+         return format;
+     };
 		
-		//获取当前时间
-		var myDate = new Date();
-		var mytime=myDate.getHours()+ ":" + myDate.getMinutes() + ":" + myDate.getSeconds();
-		alert(mytime);
-		if (mytime<"19:50:00"){
-			//sweet("执行时间未到，请稍后再试！","warning","确定"); 
+	//比较后台时间与当前时间的大小
+	//返回true：当前时间大，可以发起流程      返回false：后台时间大，未到时间，不能发起 
+	function CompareDate(serverT,currentT)
+	{
+		return ((new Date(serverT.replace(/-/g,"\/"))) < (new Date(currentT.replace(/-/g,"\/"))));
+	}
+	
+    //启动和暂停按钮的处理
+	$(document).on('click',"._play",function(){
+		var getDateFromSrv = getServerTime();
+		if(getDateFromSrv == "")
+		{
+			sweet("数据库未赋值，请重新检查!","warning","确定");  
+			return;
+		} else if(getDateFromSrv == "-1")
+		{
+			sweet("调用后台时间接口失败!","warning","确定");  
+			return ;
+		} else if (getDateFromSrv == "-2")
+		{
+			weet("程序异常，请检查!","warning","确定");   
+			return ;
 		}
-		
+		else if(CompareDate(getServerTime(),new Date().format("yyyy-MM-dd hh:mm:ss")))
+		{
+			
 		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
 		var current_dag_alias = $(this).parents("tr").find("#dag_alias").text(); //获取发起的dag_id中文名
 		var current_dag_state = $(this).parents("tr").find("#dag_state").text();//获取当前流程的状态便于发起流程
@@ -299,9 +364,7 @@ function update_summary_table_state()
 			isshowBtn=3;
 			url = "postRunAirflow.do";
 		} 
-		/* if(url != "postRunAirflow.do"){
-		} */
-		/* else{ */
+
 		swal({
 	            title: "",
 	            text: Message,
@@ -348,7 +411,10 @@ function update_summary_table_state()
 	        			})
 	        	  } 
 	        });
-		/* } */
+		} 
+		else{
+			sweet("未到执行时间，请稍后再试!","warning","确定"); 
+		}
 	})
 
 	function ajax(url, param, type) {
