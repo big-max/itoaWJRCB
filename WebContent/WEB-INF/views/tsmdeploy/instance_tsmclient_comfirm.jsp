@@ -44,7 +44,6 @@ body{
 	width:58%;height:35px;line-height:35px;float:right;
 }
 </style>
-<<<<<<< HEAD
 
 <script>
 	/* 提取sweet提示框代码，以便后面方便使用，减少代码行数 */ 
@@ -53,8 +52,7 @@ body{
 		swal({ title: "", text: te,  type: ty, confirmButtonText: conBut, });
 	}        	
 </script>
-=======
->>>>>>> branch 'ahrcb' of https://github.com/superTSS/itoaWJRCB.git
+
 </head>
 
 <body>
@@ -247,28 +245,28 @@ body{
 		    "tsm_version": data_comfirm.install_version,
 		    "tsm_binary": "SP_CLIENT_8.1.4_LIN86_M.tar.gz",
 		    "tsm_fp": data_comfirm.fp_version,
-		    "tsm_path": "",
+		    "tsm_path": "",										//？
 		    "ftp_user": "itoa",
-		    "ftp_password": "itoa",
-		    "ftp_server": "192.168.230.135",
+		    "ftp_password": "itoa",									
+		    "ftp_server": "192.168.230.135",					//项目部署所在服务器
 		   
 		    "tsm_instpath": data_comfirm.install_path,
-		    "tsm_server": "192.168.230.100",
-		    "tsm_method": "TCPIP",
-		    "tsm_port": "1550",
-		    "tsm_address": "10.0.244.20",
-		    "tsm_access": "generate",
-		    "tsm_service": "schedule webclien",    
-		    "tsm_nodename": "hammdbp01",
-		    "tsm_baerrorlog": "/opt/tivoli/tsm/client/ba/bin/dsmerror.log",
-		    "tsm_apierrorlog": "/opt/tivoli/tsm/client/api/bin64/dsierror.log",
-		    "tsm_lanfree": "yes",
-		    "tsm_lanfreemethod": "TCPIP",
-		    "tsm_lanfreeaddress": "127.0.0.1",
-		    "tsm_lanfreeport": "1500",
-		    "tsm_utilization": "1",
-		    "tsm_include": "abc",
-		    "tsm_exclude": "def"
+		    "tsm_server": data_tupo.zjm,
+		    "tsm_method": data_comfirm.COMMMethod,
+		    "tsm_port": data_comfirm.TCPPort,
+		    "tsm_address": data_tupo.ip,
+		    "tsm_access": data_comfirm.Passwordaccess,
+		    "tsm_service": data_comfirm.managedservices,    
+		    "tsm_nodename": data_comfirm.nodename,
+		    "tsm_baerrorlog": data_comfirm.baerrorlogname,
+		    "tsm_apierrorlog": data_comfirm.apierrorlogname,
+		    "tsm_lanfree": data_comfirm.enablelanfree,
+		    "tsm_lanfreemethod": data_comfirm.lanfreecommmethod,
+		    "tsm_lanfreeaddress": data_comfirm.lanfreetcpserveraddress,
+		    "tsm_lanfreeport": data_comfirm.lanfreetcpport,
+		    "tsm_utilization": data_comfirm.resourceutilization,
+		    "tsm_include": data_comfirm.include,
+		    "tsm_exclude": data_comfirm.exclude
 		};
 	
 	//对TSM客户端安装参数进行base64编码
@@ -280,7 +278,7 @@ body{
 		//拼凑传给后端的data
 		var param = {
 				  "playbook-uuid": uuid(),
-				  "playbook-name": "tsm_client.yml",
+				  "playbook-name": "tsm_client",
 				  "product-name": "tsm",
 				  "param-content": encodedStr,
 				  "nodes": [
@@ -299,13 +297,12 @@ body{
 					url : "http://192.168.80.154:8000/api/v1/run",
 					crossDomain: true,
 					type : "post",
-
-					data : param,
+					data : JSON.stringify(param),
 					success: function (response) {
-					   alert(response);
+					   alert("成功发起任务");
 					},
 					error: function (xhr, status) {
-					   alert("error");
+					   alert("发起任务失败");
 					},
 					complete : function(result){
 						window.location.href = "getLogInfo.do";
