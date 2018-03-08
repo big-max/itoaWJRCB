@@ -56,18 +56,16 @@ body{
 			<a class="current" style="position:relative;top:-3px;">实例配置详细</a>
 		</div>
 		
-		<div class="easyui-accordion" style="width:calc(100% - 57px);height:70px;">
-			<div title=">>拓扑结构" style="padding:10px;">
-				<b>主机名 : </b><span id="info_zjm" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>IP地址 : </b><span id="info_ip" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>操作系统 : </b><span id="info_os" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>系统配置 : </b><span id="info_conf" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>状态 : </b><span id="info_status" class="column_txt"></span>
-			</div>
+		<div class="easyui-panel" title=">>拓扑结构" style="width:calc(100% - 57px);height:70px;margin-bottom:5px;padding:8px;">
+			<b>主机名 : </b><span id="info_zjm" class="column_txt"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>IP地址 : </b><span id="info_ip" class="column_txt"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>操作系统 : </b><span id="info_os" class="column_txt"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>系统配置 : </b><span id="info_conf" class="column_txt"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>状态 : </b><span id="info_status" class="column_txt"></span>
 		</div>
 		
 		<form id="tsmInfo" method="post" data-options="novalidate:true">
@@ -219,7 +217,10 @@ body{
 		var os_type = data_tupo.os.toLowerCase();
 		var patt = new RegExp("aix");
 		var result = patt.test(os_type);
-		if(result == true){
+		$("#install_path").val("/usr/tivoli/tsm/client");
+		$("#baerrorlogname").val("/usr/tivoli/tsm/client/ba/bin/dsmerror.log");
+		$("#apierrorlogname").val("/usr/tivoli/tsm/client/api/bin64/dsierror.log");
+		/* if(result == true){
 			$("#install_path").val("/usr/tivoli/tsm/client");
 			$("#baerrorlogname").val("/usr/tivoli/tsm/client/ba/bin/dsmerror.log");
 			$("#apierrorlogname").val("/usr/tivoli/tsm/client/api/bin64/dsierror.log");
@@ -228,7 +229,7 @@ body{
 			$("#install_path").val("/opt/tivoli/tsm/client");
 			$("#baerrorlogname").val("/opt/tivoli/tsm/client/ba/bin/dsmerror.log");
 			$("#apierrorlogname").val("/opt/tivoli/tsm/client/api/bin64/dsierror.log");
-		}
+		} */
 	})
 	
 	

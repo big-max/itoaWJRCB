@@ -60,6 +60,18 @@ body{
 			<a class="current" style="position:relative;top:-3px;">实例配置详细</a>
 		</div>
 		
+		<div class="easyui-panel" title=">>拓扑结构" style="width:calc(100% - 57px);height:70px;margin-bottom:5px;padding-left:10px;">
+			<b>主机名 : </b><span id="info_zjm" class="column_txt"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>IP地址 : </b><span id="info_ip" class="column_txt"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>操作系统 : </b><span id="info_os" class="column_txt"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>系统配置 : </b><span id="info_conf" class="column_txt"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>状态 : </b><span id="info_status" class="column_txt"></span>
+		</div>
+		
 		<form id="tsmInfo" method="post">
 			<div class="easyui-panel" title=">>基本信息" style="width:calc(100% - 57px);padding-left:10px;">
 				<div class="base1">
@@ -175,6 +187,13 @@ body{
 
 <script>
 	//获取参数值填入 
+	var data_tupo = JSON.parse(localStorage.getItem('baseinfokey'));
+	$("#info_zjm").text(data_tupo.zjm);
+	$("#info_ip").text(data_tupo.ip);
+	$("#info_os").text(data_tupo.os);
+	$("#info_conf").text(data_tupo.conf);
+	$("#info_status").text(data_tupo.status);
+	
 	var data_comfirm = JSON.parse(localStorage.getItem('configinfokey'));
 	$("#install_version").text(data_comfirm.install_version);
 	$("#fp_version").text(data_comfirm.fp_version);

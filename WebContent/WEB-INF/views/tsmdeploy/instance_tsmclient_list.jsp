@@ -57,8 +57,6 @@
 	function isSelect(s) {
 		if ($(s).attr("checked")) {
 			//获取状态的值，Error或者Active
-			//var status = $(s).parent().parent().parent().next().next().next().next().next().next().children("b").text().trim();
-			//var status = $(s).parent().parent().parent().parent().parent().next().next().next().next().next().next().children("b").text().trim();
 			var status = $(s).parents("tr").find("b").text().trim();
 			if(status == "Error")
 			{
