@@ -34,16 +34,16 @@ body{
 .current1,.current1:hover {
     color: #444444;
 }
+.base1{
+	width:33%;height:40px;float:left;
+}
+.canshu{
+	width:38%;height:35px;line-height:35px;text-align:right;float:left;
+}
+.val{
+	width:58%;height:35px;line-height:35px;float:right;
+}
 </style>
-
-<script>
-	/* 提取sweet提示框代码，以便后面方便使用，减少代码行数 */ 
-	function sweet(te,ty,conBut)
-	{
-		swal({ title: "", text: te,  type: ty, confirmButtonText: conBut, });
-	}        
-	alert(Base64.encode("123"));
-</script>
 </head>
 
 <body>
@@ -60,13 +60,109 @@ body{
 			<a class="current" style="position:relative;top:-3px;">实例配置详细</a>
 		</div>
 		
-		<div class="easyui-panel" title=">>基本信息" style="width:calc(100% - 57px);padding:30px;">
-			<form id="tsmInfo" method="post">
-				<div style="margin-bottom:20px">
-					<span>安装版本</span> <span id="version"></span>
+		<form id="tsmInfo" method="post">
+			<div class="easyui-panel" title=">>基本信息" style="width:calc(100% - 57px);padding-left:10px;">
+				<div class="base1">
+					<div class="canshu">安装版本</div>
+					<div class="val"><font color="green"><span id="install_version"></span></font></div>
 				</div>
-			</form>
-		</div>
+				<div class="base1">
+					<div class="canshu">补丁版本</div>
+					<div class="val"><font color="green"><span id="fp_version"></span></font></div>
+				</div>
+				<div class="base1">
+					<div class="canshu">安装路径</div>
+					<div class="val"><font color="green"><span id="install_path"></span></font></div>
+				</div>
+			</div>
+			<div style="width:50px;height:5px;"></div>
+			<div class="easyui-panel" title=">>配置信息" style="width:calc(100% - 57px);">
+				<div>
+					<div class="base1">
+						<div class="canshu">Servername</div>
+						<div class="val"><font color="green"><span id="Servername"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">COMMMethod</div>
+						<div class="val"><font color="green"><span id="COMMMethod"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">TCPPort</div>
+						<div class="val"><font color="green"><span id="TCPPort"></span></font></div>
+					</div>
+				</div>
+				
+				<div>
+					<div class="base1">
+						<div class="canshu">TCPServeraddress</div>
+						<div class="val"><font color="green"><span id="TCPServeraddress"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">Passwordaccess</div>
+						<div class="val"><font color="green"><span id="Passwordaccess"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">managedservices</div>
+						<div class="val"><font color="green"><span id="managedservices"></span></font></div>
+					</div>
+				</div>
+				
+				<div>
+					<div class="base1">
+						<div class="canshu">nodename</div>
+						<div class="val"><font color="green"><span id="nodename"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">baerrorlogname</div>
+						<div class="val"><font color="green"><span id="baerrorlogname"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">apierrorlogname</div>
+						<div class="val"><font color="green"><span id="apierrorlogname"></span></font></div>
+					</div>
+				</div>
+				
+				<div>
+					<div class="base1">
+						<div class="canshu">resourceutilization</div>
+						<div class="val"><font color="green"><span id="resourceutilization"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">include</div>
+						<div class="val"><font color="green"><span id="include"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">exclude</div>
+						<div class="val"><font color="green"><span id="exclude"></span></font></div>
+					</div>
+				</div>
+				
+				<div>
+					<div class="base1">
+						<div class="canshu">enablelanfree</div>
+						<div class="val"><font color="green"><span id="enablelanfree"></span></font></div>
+					</div>
+					<div class="base1"></div>
+					<div class="base1"></div>
+				</div>
+				
+				<div>
+					<div class="base1">
+						<div class="canshu">lanfreecommmethod</div>
+						<div class="val"><font color="green"><span id="lanfreecommmethod"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">lanfreetcpserveraddress</div>
+						<div class="val"><font color="green"><span id="lanfreetcpserveraddress"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">lanfreetcpport</div>
+						<div class="val"><font color="green"><span id="lanfreetcpport"></span></font></div>
+					</div>
+				</div>
+			</div>
+		</form>
+		
 		<div style="text-align:center;padding:5px 0">
 			<a class="easyui-linkbutton" onclick="javascript:history.go(-1);" style="width:80px">上一页</a>
 			<a class="easyui-linkbutton" onclick="submit()" style="width:80px">创建</a>
@@ -80,17 +176,37 @@ body{
 <script>
 	//获取参数值填入 
 	var data_comfirm = JSON.parse(localStorage.getItem('configinfokey'));
-	$("#version").text(data_comfirm.version);
+	$("#install_version").text(data_comfirm.install_version);
+	$("#fp_version").text(data_comfirm.fp_version);
+	$("#install_path").text(data_comfirm.install_path);
+	$("#Servername").text(data_comfirm.Servername);
+	$("#COMMMethod").text(data_comfirm.COMMMethod);
+	$("#TCPPort").text(data_comfirm.TCPPort);
+	$("#TCPServeraddress").text(data_comfirm.TCPServeraddress);
+	$("#Passwordaccess").text(data_comfirm.Passwordaccess);
+	$("#managedservices").text(data_comfirm.managedservices);
+	$("#nodename").text(data_comfirm.nodename);
+	$("#baerrorlogname").text(data_comfirm.baerrorlogname);
+	$("#apierrorlogname").text(data_comfirm.apierrorlogname);
+	$("#resourceutilization").text(data_comfirm.resourceutilization);
+	$("#include").text(data_comfirm.include);
+	$("#exclude").text(data_comfirm.exclude);
+	$("#enablelanfree").text(data_comfirm.enablelanfree);
+	$("#lanfreecommmethod").text(data_comfirm.lanfreecommmethod);
+	$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
+	$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
 	
 	function submit()
 	{	
 		$.messager.confirm('提示信息', '是否确认要在目标主机立即执行任务？', function(r){
 			if (r){
-				//$("#submits").submit();
 				$.ajax({
 					url : "",
 					type : "post",
-					data : ""
+					data : data_comfirm,
+					complete : function(result){
+						window.location.href = "getLogInfo.do";
+					}
 				})
 			} else {
 				window.history.go(0);
