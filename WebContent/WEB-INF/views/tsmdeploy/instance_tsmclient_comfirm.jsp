@@ -41,64 +41,7 @@ body{
 	function sweet(te,ty,conBut)
 	{
 		swal({ title: "", text: te,  type: ty, confirmButtonText: conBut, });
-	}        
-	
-	//定义生成uuid的方法
-	function uuid() {
-	    var s = [];
-	    var hexDigits = "0123456789abcdef";
-	    for (var i = 0; i < 36; i++) {
-	        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
-	    }
-	    s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
-	    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
-	    s[8] = s[13] = s[18] = s[23] = "-";
-	 
-	    var uuid = s.join("");
-	    return uuid;
-	}
-	
-	//定义安装TSM客户端所需参数
-	var inputStr = {
-			"servername":"tsmserver",
-			"COMMMethod":"TCPIP",
-			"TCPPort":"1500",
-			"TCPServeraddress":"192.168.80.129",
-			"Passwordaccess":"generate",
-			"managedservices":"schedule",
-			"nodename":"tsm1",
-			"resourceutilization":"xx",
-			"errorlogname":"/usr/tivoli/tsm/client/api/bin64/dsmerror.log",
-			"enablelanfree":"yes",
-			"lanfreecommmethod":"tcpip",
-			"lanfreetcpserveraddress":"127.0.0.1",
-			"lanfreetcpport":"1500",
-			"include":"xx",
-			"exclude":"xx",
-			"install_version":"xx",
-			"fp_version":"xx",
-			"install_path":"xx"
-		};
-	
-	//对TSM客户端安装参数进行base64编码
-	var encodedStr = Base64.encode(JSON.stringify(inputStr));
-	console.log(encodedStr);
-	//拼凑传给后端的data
-	var param = {
-			  "playbook-uuid": uuid(),
-			  "playbook-name": "tsm",
-			  "product-name": "tsm",
-			  "param-content": encodedStr,
-			  "nodes": [
-			    {
-			      "role": 1,
-			      "uuid": uuid(),
-			      "name": "deploy3",
-			      "address": "192.168.80.162"
-			    }
-			  ]
-			};
-	
+	}        	
 </script>
 </head>
 
@@ -134,19 +77,83 @@ body{
 </body>
 
 <script>
+	//定义生成uuid的方法
+	function uuid() {
+	    var s = [];
+	    var hexDigits = "0123456789abcdef";
+	    for (var i = 0; i < 36; i++) {
+	        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+	    }
+	    s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+	    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+	    s[8] = s[13] = s[18] = s[23] = "-";
+	 
+	    var uuid = s.join("");
+	    return uuid;
+	}
+	
 	//获取参数值填入 
 	var data_comfirm = JSON.parse(localStorage.getItem('configinfokey'));
 	$("#version").text(data_comfirm.version);
 	
+	//定义安装TSM客户端所需参数
+	var inputStr = {
+			"servername":"tsmserver",
+			"COMMMethod":"TCPIP",
+			"TCPPort":"1500",
+			"TCPServeraddress":"192.168.80.129",
+			"Passwordaccess":"generate",
+			"managedservices":"schedule",
+			"nodename":"tsm1",
+			"resourceutilization":"xx",
+			"errorlogname":"/usr/tivoli/tsm/client/api/bin64/dsmerror.log",
+			"enablelanfree":"yes",
+			"lanfreecommmethod":"tcpip",
+			"lanfreetcpserveraddress":"127.0.0.1",
+			"lanfreetcpport":"1500",
+			"include":"xx",
+			"exclude":"xx",
+			"install_version":"xx",
+			"fp_version":"xx",
+			"install_path":"xx"
+		};
+	
+	//对TSM客户端安装参数进行base64编码
+	var encodedStr = Base64.encode(JSON.stringify(inputStr));
+	console.log(encodedStr);	
+	
 	function submit()
 	{	
+		//拼凑传给后端的data
+		var param = {
+				  "playbook-uuid": uuid(),
+				  "playbook-name": "tsm",
+				  "product-name": "tsm",
+				  "param-content": encodedStr,
+				  "nodes": [
+				    {
+				      "role": 1,
+				      "uuid": uuid(),
+				      "name": "deploy3",
+				      "address": "192.168.80.162"
+				    }
+				  ]
+		};
+		
 		$.messager.confirm('提示信息', '是否确认要在目标主机立即执行任务？', function(r){
 			if (r){
 				//$("#submits").submit();
 				$.ajax({
-					url : "",
+					url : "http://192.168.80.154:8000/api/v1/run",
+					crossDomain: true,
 					type : "post",
-					data : ""
+					data : param,
+					success: function (response) {
+					   alert(response);
+					},
+					error: function (xhr, status) {
+					   alert("error");
+					}
 				})
 			} else {
 				window.history.go(0);
