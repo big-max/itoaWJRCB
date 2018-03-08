@@ -53,11 +53,20 @@
 <script  type="text/javascript">
 	var infoId = [];
 	var ips=[];
+	var zjm = "";
+	var ip = "";
+	var os = "";
+	var conf = "";
+	var status = "";
 	//操作
 	function isSelect(s) {
 		if ($(s).attr("checked")) {
 			//获取状态的值，Error或者Active
-			var status = $(s).parents("tr").find("b").text().trim();
+			status = $(s).parents("tr").find("b").text().trim();
+			zjm = $(s).parents("td").next().text();
+			ip = $(s).parents("td").next().next().text();
+			conf = $(s).parents("td").next().next().next().text();
+			os = $(s).parents("td").next().next().next().next().text();
 			if(status == "Error")
 			{
 				sweet("被选择的目标系统中包含状态为Error的主机，建议查看原因（注：AIX系统添加后状态同步需要时间稍长）","warning","确定"); 
@@ -190,11 +199,11 @@
 				function(){
 					var  arr  = [];
 					var baseinfo = {
-							zjm : "p770b2",
-							ip : "192.168.166.252",
-							conf : "8C/48G",
-							os : "AIX 7.1",
-							status : "Active"
+							zjm : zjm,
+							ip : ip,
+							conf : conf,
+							os : os,
+							status : status
 					};
 					localStorage.setItem('baseinfokey', JSON.stringify(baseinfo));
 					 if(osId[0].toLowerCase().indexOf('aix')==0)
