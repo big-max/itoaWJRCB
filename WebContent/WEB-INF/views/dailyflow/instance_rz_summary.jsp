@@ -253,24 +253,108 @@ function update_summary_table_state()
         });
 	})
 	
+	//从run_past 表里面获取日终跑的时间
+	function getRZRunDatetimeFromDB()
+	{
+		var retDate = '';
+		$.ajax({
+			url:"getRZRunDate.do",
+			type : 'get',
+			dataType : 'json',
+			async:false,      //关闭异步
+			success:function(result){
+				if (result.execution_date == '0000-00-00 00:00:00' || 
+					result.execution_date == null ||
+					result.execution_date == undefined)
+				{
+					retDate = 'valueerror';
+					alert('表run_past  字段execution_date 值错误！ ');
+				}else{
+					retDate = result.execution_date;
+				}
+			},
+			error:function(data)
+			{
+				retDate = 'networkerror';
+				alert('网络错误，获取不到日终发起时间，请联系管理员！');
+			}
+		});
+		return retDate;
+	}
+	
+	//比较时间的函数，日期是 数据库时间和当天差一天   
+	//dbDate 意思是从数据库表的日期,today 表示发起当天
+	function compareDate(tDate,dbDate)
+	{
+		var days =  tDate.getTime() - dbDate.getTime() ;
+		var times = parseInt(days / (1000 * 60 * 60 * 24));
+		return times;
+	}
+	
+	//tTime当前时间, dbTime 数据库表的时间
+	function compareTime(tTime,dbTime)
+	{
+		if(tTime >= dbTime)
+		{
+			return true;
+		}
+		return false;
+	}
+	Date.prototype.format = function(fmt) { 
+	     var o = { 
+	        "M+" : this.getMonth()+1,                 //月份 
+	        "d+" : this.getDate(),                    //日 
+	        "h+" : this.getHours(),                   //小时 
+	        "m+" : this.getMinutes(),                 //分 
+	        "s+" : this.getSeconds(),                 //秒 
+	        "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+	        "S"  : this.getMilliseconds()             //毫秒 
+	    }; 
+	    if(/(y+)/.test(fmt)) {
+	            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+	    }
+	     for(var k in o) {
+	        if(new RegExp("("+ k +")").test(fmt)){
+	             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+	         }
+	     }
+	    return fmt; 
+	}
+	//获取当前日期
+	function getCurrentDate()
+	{
+		var curDate = new Date().format("yyyy-MM-dd");
+		return new Date(curDate);
+	}
+	
+	// 获取当前时间
+	function getCurrentTime()
+	{
+		var curTime = new Date().format("hh:mm:ss");
+        return curTime;
+	}
+	
     //启动和暂停按钮的处理
 	$(document).on('click',"._play",function(){
 		
-		$.ajax({
-			url:"getRZRunDate.do",
-			type : 'post',
-			dataType : 'json',
-			success:function(result){
-				alert(result.execution_date);
+		var getDateStr = getRZRunDatetimeFromDB(); //从数据库获取到了值
+		if (getDateStr == 'valueerror ' || getDateStr == 'networkerror')
+		{
+			return;
+		}else{
+			var curDate = getCurrentDate();//当前日期
+			var curTime = getCurrentTime();//当前时间
+			var getDate = new Date(new Date(getDateStr).format("yyyy-MM-dd"));
+			if (compareDate(curDate,getDate) != 1){   
+				alert('数据库表run_past execution_date 字段的日期必须比当前日期少一天！');
+				return;
+			} else{
+				var getTime = new Date(getDateStr).format('hh:mm:ss');
+				if (compareTime(curTime,getTime) == false){
+					alert('日终执行时间还未到，请等待！，日终发起时间为:'+getTime);
+					return;
+				}
 			}
-		})
-		
-		//获取当前时间
-		var myDate = new Date();
-		var mytime=myDate.getHours()+ ":" + myDate.getMinutes() + ":" + myDate.getSeconds();
-		alert(mytime);
-		if (mytime<"19:50:00"){
-			//sweet("执行时间未到，请稍后再试！","warning","确定"); 
 		}
 		
 		var current_dag_id = $(this).parents("tr").find("#dag_id").text(); //获取发起的dag_id
