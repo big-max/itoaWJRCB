@@ -666,7 +666,7 @@ body{
 		//首先获取下拉框的值
 		var curDatetime = $("#hisdatetime").val();
 		curdata={"dag_id":dag_id,"execution_date":curDatetime};
-		getAjax("rzSubHistoryData.do",curdata,"post");	
+		getAjax("historyData.do",curdata,"post");	
 	})
 </script>
 
