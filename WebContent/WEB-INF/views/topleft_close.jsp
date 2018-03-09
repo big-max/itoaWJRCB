@@ -293,7 +293,7 @@ input[type="text"],input[type="password"] {
 		
 		
 		<!-- 日终 -->
-		<c:if test="${fn:contains(role,0) || fn:contains(role,1) }">
+		<c:if test="${fn:contains(role,0) || fn:contains(role,1) || fn:contains(role,6) }">
 		<ul>
 			<li>
 				<a href="dailyflow.do" class="tooltipa1 rzlc">

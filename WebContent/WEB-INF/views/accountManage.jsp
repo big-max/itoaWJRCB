@@ -145,6 +145,7 @@ input[type="text"],input[type="password"]  {
 											<td style="text-align: center;">
 												
 												<c:if test="${fn:contains(job.role,0) }">日终组</c:if>
+												<c:if test="${fn:contains(job.role,6) }">日终管理组</c:if>
 												<c:if test="${fn:contains(job.role,1) }">管理员组</c:if>
 												<c:if test="${fn:contains(job.role,2) }">灾备组</c:if>
 												<c:if test="${fn:contains(job.role,3) }">部署组</c:if>
@@ -226,8 +227,9 @@ input[type="text"],input[type="password"]  {
 													<div class="controls" style="padding-top: 5px;">
 														<span class="input140 mr20">角色：</span>
 														<select multiple id="role" class="w85" style="width: 210px;" name="role">
-															<option value="1" selected="selected">管理员</option>
-															<option value="0" >日终组</option>
+															<option value="1">管理员</option>
+															<option value="0" selected="selected">日终组</option>
+															<option value="6">日终管理组</option>
 															<option value="2" >灾备组</option>
 															<option value="3" >部署组</option>
 															<option value="5" >应用发布组</option>
@@ -298,9 +300,10 @@ input[type="text"],input[type="password"]  {
 													<span class="input140 mr20">角色：</span>
 													<select multiple id="change_role" class="w85" style="width: 210px;" name="change_role">
 														<option value="1">管理员</option>
-														<option value="0">日终组</option>
-														<option value="2">灾备组</option>
-														<option value="3" selected="selected">部署组</option>
+														<option value="0" selected="selected">日终组</option>
+														<option value="6">日终管理组</option>
+														<option value="2" >灾备组</option>
+														<option value="3" >部署组</option>
 														<option value="5">应用发布组</option>
 													</select>
 													<span><font color="red" size="2">* 请修改组</font></span>

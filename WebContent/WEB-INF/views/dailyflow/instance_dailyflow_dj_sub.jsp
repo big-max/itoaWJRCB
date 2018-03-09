@@ -401,7 +401,7 @@ body{
     
     <img id="progressImgage" style="width:120px;height:120px;" alt="请稍等，处理中。。。" src="img/process.gif"/>
     <div id="maskOfProgressImage" class="mask hide"></div>
-    
+    <c:if test="${fn:contains(role,6)  }">
     <div id="mm" class="easyui-menu" style="width:120px;">
         <div iconCls="icon-search" onclick="rz_showLog()">查看日志</div>
         <div iconCls="icon-edit" onclick="rz_record()">记录问题</div>
@@ -414,6 +414,19 @@ body{
         <div iconCls="icon-edit" onclick="rz_record()">记录问题</div>
         <div iconCls="icon-ok" onclick="rz_makesuccess()">确认成功</div>
     </div>
+    </c:if>
+    
+    <c:if test="${fn:contains(role,0)  }">
+    <div id="mm" class="easyui-menu" style="width:120px;">
+        <div iconCls="icon-search" onclick="rz_showLog()">查看日志</div>
+    </div>
+    
+    <div id="mm1" class="easyui-menu" style="width:120px;">
+        <div iconCls="icon-search" onclick="rz_showLog()">查看日志</div>
+    </div>
+    </c:if>
+    
+    
 </body>
 
 <script>
