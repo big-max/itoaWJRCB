@@ -111,9 +111,16 @@ jQuery(document).ready(function () {
 		   	     $("#menu_deploy").show();
 		   		 $("#menu_rz").show();	
 		   		 $("#menu_zbswitch").show();
+		   		 $("#menu_check").show();
 		   		 $("#menu_publish").show();
 		   		 $("#menu_account").show();
 		   		 $("#menu_rz_em").show();
+		   		 $("#menu_config").show();
+		   		 $("#menu_logcatch").show();
+		   		 $("#menu_fixload").show();
+		   		 $("#menu_safemodel").show();
+		   		 $("#menu_safejg").show();
+		   		 $("#menu_mulexe").show();
 		   		 $("#showonce").delay(0).slideDown(300);
 		   		$("#forremoveminux").addClass("submenu-indicator-minus");
         	});
@@ -125,10 +132,17 @@ jQuery(document).ready(function () {
 		 	$("#menu_deploy").hide();
 			$("#menu_rz").hide();
 			$("#menu_zbswitch").hide(); 
+			$("#menu_check").hide(); 
 			$("#menu_publish").hide();
 			$("#menu_account").hide();
 			$("#menu_rz_em").hide();
-		 	$("#jquery-accordion-menu").animate({width:"56px"},1,function(){
+			$("#menu_config").hide();
+			$("#menu_logcatch").hide();
+			$("#menu_fixload").hide();
+			$("#menu_safemodel").hide();
+			$("#menu_safejg").hide();
+			$("#menu_mulexe").hide();
+			$("#jquery-accordion-menu").animate({width:"56px"},1,function(){
 			 	$(".nosubmenu").css("display","none");			//收缩后将三级菜单收起
 			 	$('.nosubmenu').find('.has-children.selected').removeClass('selected');	//将三级菜单还原到默认情况
 			 	$("#drawback1").replaceWith(button2);			//将收缩绑定的图标替换
@@ -154,11 +168,18 @@ jQuery(document).ready(function () {
 				 });
 		 });
 		 $("#menu_deploy").show(300);
+		 $("#menu_check").show(300);
 		 $("#menu_zbswitch").show(300);
 		 $("#menu_rz").show(300);
 		 $("#menu_publish").show(300);
 		 $("#menu_account").show(300);
 		 $("#menu_rz_em").show(300);
+		 $("#menu_config").show(300);
+		 $("#menu_logcatch").show(300);
+		 $("#menu_fixload").show(300);
+		 $("#menu_safemodel").show(300);
+		 $("#menu_safejg").show(300);
+		 $("#menu_mulexe").show(300);
 	});
 	//左侧菜单栏的隐藏和显示 结束
 });
@@ -249,6 +270,44 @@ jQuery(document).ready(function () {
 		</ul>
 		</c:if>
 		
+		<!-- 自动化巡检 -->
+		<ul>
+			<li>
+				<a href="healthCheck.do" class="notvisible tooltipa1 zdhxj">
+					<img class="img_icon" src="img/icons/iconfont/patrol.png"></img>
+				</a>
+				<a href="healthCheck.do" class="tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/patrol.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu_check" class="top5">自动化巡检</span> 
+			    </a>
+			</li>
+		</ul>
+		
+		<!-- 配置跟踪比对 -->
+		<ul>
+			<li>
+				<a href="configCompare.do" class="notvisible tooltipa1 pzgzbd">
+					<img class="img_icon" src="img/icons/iconfont/trace.png"></img>
+				</a>
+				<a href="configCompare.do" class="tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/trace.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu_config" class="top5">配置跟踪比对</span> 
+				</a> 
+			</li>
+		</ul>
+		
+		<!-- 日志抓取 -->
+		<ul>
+			<li>
+				<a href="logCatch.do" class="notvisible tooltipa1 rzzq">
+					<img class="img_icon" src="img/icons/iconfont/logcatch17.png"></img>
+				</a>
+				<a href="logCatch.do" class="tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/logcatch17.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu_logcatch" class="top5">日志抓取</span> 
+				</a>
+			</li>
+		</ul>
 		
 		<!-- 灾备演练 -->
 		<c:if test="${fn:contains(role,2) || fn:contains(role,1)  }">
@@ -317,16 +376,67 @@ jQuery(document).ready(function () {
 		</ul>
 		</c:if>
 		
+		<!-- 补丁加载 -->
+		<ul>
+			<li>
+				<a href="fixLoad.do" class="notvisible tooltipa1 bdjz">
+					<img class="img_icon" src="img/icons/iconfont/fixload.png"></img>
+				</a>
+				<a href="fixLoad.do" class="tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/fixload.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu_fixload" class="top5">补丁加载</span> 
+			    </a>
+			</li>
+		</ul>
+		
+		<!-- 安全模板 -->
+		<ul>
+			<li>
+				<a href="getAllsecurityTemplate.do" class="notvisible tooltipa1 aqmb">
+					<img class="img_icon" src="img/icons/iconfont/safemould.png"></img>
+				</a>
+				<a href="getAllsecurityTemplate.do" class="tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/safemould.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu_safemodel" class="top5">安全模板</span> 
+			    </a>
+			</li>
+		</ul>
+		
+		<!-- 安全加固 -->
+		<ul>
+			<li>
+				<a href="getAllsecurityJobs.do" class="notvisible tooltipa1 aqjg">
+					<img class="img_icon" src="img/icons/iconfont/safeplus.png"></img>
+				</a>
+				<a href="getAllsecurityJobs.do" class="tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/safeplus.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu_safejg" class="top5">安全加固</span> 
+			    </a>
+			</li>
+		</ul>
+		
+		<!-- 批量执行 -->
+		<ul>
+			<li>
+				<a href="remoteCommand.do" class="notvisible tooltipa1 plzx">
+					<img class="img_icon" src="img/icons/iconfont/more.png"></img>
+				</a>
+				<a href="remoteCommand.do" class="tooltipa2">
+					<img class="img_icon" src="img/icons/iconfont/more.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu_mulexe" class="top5">批量执行</span> 
+			    </a>
+			</li>
+		</ul>
 		
 		<!-- 用户中心 -->
 		<c:if test="${fn:contains(role,1) }">
 		<ul>
 			<li>
 				<a href="accountManage.do" class="notvisible tooltipa1 zhgl">
-					<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>
+					<img class="img_icon" src="img/icons/iconfont/account.png"></img>
 				</a>
 				<a href="accountManage.do" class="tooltipa2">
-					<img class="img_icon" src="img/icons/iconfont/account.png" id="icon15"></img>&nbsp;&nbsp;&nbsp;
+					<img class="img_icon" src="img/icons/iconfont/account.png"></img>&nbsp;&nbsp;&nbsp;
 					<span id="menu_account" class="top5">账号管理</span> 
 			    </a>
 			</li>
@@ -480,6 +590,13 @@ jQuery(document).ready(function () {
 		common(".rzdx","日终短信编辑");
 		common(".zdhfb","自动化发布");
 		common(".zhgl","账号管理");
+		common(".zdhxj","自动化巡检"); 
+		common(".pzgzbd","配置跟踪比对");
+		common(".rzzq","日志抓取");
+		common(".bdjz","补丁加载");
+		common(".aqmb","安全模板");
+		common(".aqjg","安全加固");
+		common(".plzx","批量执行");
 	})  
 </script>
 </html>

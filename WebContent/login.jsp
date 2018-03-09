@@ -117,7 +117,7 @@ body{
 <body>
 	
 	<div style="width:400px;height:80px;">
-		<img src="img/loginlogo.png">
+		<img src="img/login_jxbank.png">
 	</div>
 	
 	<!-- 用户名&密码输入框 -->
@@ -161,8 +161,7 @@ body{
 	</div>
 	
 	<div class="foot">
-		<div style="text-align: center;"><font color="white">总行地址：江苏省苏州市吴江区中山南路1777号&nbsp;&nbsp;&nbsp;&nbsp;邮政编码：215200</font></div>
-		<div style="text-align: center;margin-top: 10px"><font color="white">Copyright©&nbsp;1996-2008&nbsp;WJRCB.COM&nbsp;&nbsp;许可证：苏ICP备06012538号</font></div>
+		<div style="text-align: center;margin-top: 10px"><font color="white">Copyright 2008 版权所有 江西银行 赣ICP备14006678号</font></div>
 	</div>
 </body>
 </html>
