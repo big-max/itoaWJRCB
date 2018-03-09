@@ -500,30 +500,7 @@ input[type="text"],input[type="password"]  {
 </script>
 
 
-<%-- <script>
-	/* 获取管理产品 */  
-	
-	$(document).ready(function(){
-		$.ajax({
-			url : '<%=path%>/getProduct.do',
-			type : 'get',
-			dataType : 'json',
-			success : function(result) 
-			{
-				var str;
-				for (var i = 0; i < result.length; i++) 
-				{
-					str += "<option value='" + result[i] + "'>" + result[i]+ "</option>";
-				}
-				$("#manageProduct").append(str);
-				$("#edit_manageProduct").append(str);
-			},failure:function(err){
-				alert(err);
-			}
-		})
-	})
-	
-</script> --%>
+
 
 
 <script>
