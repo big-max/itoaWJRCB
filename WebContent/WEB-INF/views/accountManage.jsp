@@ -117,7 +117,7 @@ input[type="text"],input[type="password"]  {
 							</div>
 
 							<div style="margin-bottom: 10px;"></div>
-							<table id="sel_tab" class="table table-bordered data-table with-check table-hover no-search no-select">
+							<table id="sel_tab" class="table table-bordered data-table with-check table-hover search no-select">
 								<thead>
 									<tr>
 										<th style="text-align: center;width:10%;">序号</th>
