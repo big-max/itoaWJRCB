@@ -28,7 +28,7 @@ body{
 	width:calc(100% - 57px);
 	margin:0px;
 	height:calc(100vh - 70px);
-	overflow-y:scroll;
+	/* overflow-y:scroll; */
 }
 .current1,.current1:hover {
     color: #444444;
