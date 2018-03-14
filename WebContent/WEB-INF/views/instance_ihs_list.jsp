@@ -238,7 +238,7 @@
 					<div class="columnauto">
 						<div class="widget-box nostyle">
 							<div class="col-sm-6 form-inline">
-								<input id="filter" type="text" class="form-control" placeholder="请输入过滤项" style="height:28px;">
+								<%-- <input id="filter" type="text" class="form-control" placeholder="请输入过滤项" style="height:28px;">
 								<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
 								<button onclick="checkServer();" id="check_button" class="btn btn-sm"
 									style="background-color: #448FC8;">
@@ -246,11 +246,11 @@
 								</button>
 								<div id="showcomputer" name="showcomputer" style="float:right;">
 									<span style="position:relative;top:10px;">共有<font size="3">${total }</font>台主机</span>
-								</div>
+								</div> --%>
 							</div>
 							<div style="margin-bottom: 5px"></div>
 							
-							<table id="tableid" class="table table-bordered data-table   with-check table-hover no-search no-select">
+							<table id="tableid" class="table table-bordered data-table with-check table-hover no-select">
 								<thead>
 									<tr>
 										<th style="text-align: center;">选择</th>
