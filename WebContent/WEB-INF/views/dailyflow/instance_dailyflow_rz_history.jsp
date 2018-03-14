@@ -725,7 +725,9 @@ body{
 	function rz_showLog()
 	{
 		$("#mm").menu('hide');
-		var execution_date = getUrlParam('execution_date'); 
+		//var execution_date = getUrlParam('execution_date'); //获取url 的值
+		var execution_date_time = $("#hisdatetime").val();
+		var execution_date = execution_date_time.replace(" ","T");
 		var dag_id = getUrlParam('dag_id'); //获取url 的值
 		console.info("taskid is " + taskid + "; execution_date is " + execution_date);
 		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
