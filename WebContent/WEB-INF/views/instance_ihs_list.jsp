@@ -25,6 +25,11 @@
 .current1,.current1:hover {
     color: #444444;
 }
+div.dataTables_filter label {
+	position:absolute;
+	top:-40px;left:10px;
+	float: left;
+}
 </style>
 
 <script>
@@ -228,7 +233,7 @@
 							</div>
 							<div style="margin-bottom: 5px"></div>
 							
-							<table id="tableid" class="table table-bordered data-table with-check table-hover search no-select">
+							<table id="tableid" class="table table-bordered data-table with-check table-hover search no-select" style="margin-top:50px;">
 								<thead>
 									<tr>
 										<th style="text-align: center;">选择</th>
