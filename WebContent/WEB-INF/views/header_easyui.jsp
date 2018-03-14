@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<script type="text/javascript" src="${root}/js/jquery.min.js"></script>
+<script type="text/javascript" src="${root}/js/jquery.min1.11.js"></script>
 <script type="text/javascript" src="${root}/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.uniform.js"></script>
 <script type="text/javascript" src="${root}/js/select2.min.js"></script>
@@ -11,20 +11,14 @@
 <script type="text/javascript" src="${root}/js/lodash.min.js"></script>
 <script type="text/javascript" src="${root}/js/unicorn.data.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.nanoscroller.js"></script>
-<script type="text/javascript" src="${root}/js/sweetalert.min.js"></script>
-<script type="text/javascript" src="${root}/js/sweetalert-dev.js"></script>
 
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/bootstrap.min.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/treeview.css" />
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/nanoscroller.css"/>
-<link type="text/css" title="www" rel="stylesheet" href="${root}/css/sweetalert.css" />
 
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/easyui.css" />
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/icon.css" />
 <script type="text/javascript" src="${root}/js/jquery.easyui.min.js"></script> 
-
-
-
-
+<script type="text/javascript" src="${root}/js/datagrid-filter.js"></script> 
 
 
