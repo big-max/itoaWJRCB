@@ -217,11 +217,8 @@ body{
 		var os_type = data_tupo.os.toLowerCase();
 		var patt = new RegExp("aix");
 		var result = patt.test(os_type);
-		$("#install_path").val("/usr/tivoli/tsm/client");
-		$("#baerrorlogname").val("/usr/tivoli/tsm/client/ba/bin/dsmerror.log");
-		$("#apierrorlogname").val("/usr/tivoli/tsm/client/api/bin64/dsierror.log");
-		/* if(result == true){
-			$("#install_path").val("/usr/tivoli/tsm/client");
+		if(result == true){
+			$("#install_path").find("#install_path").val("/usr/tivoli/tsm/client");
 			$("#baerrorlogname").val("/usr/tivoli/tsm/client/ba/bin/dsmerror.log");
 			$("#apierrorlogname").val("/usr/tivoli/tsm/client/api/bin64/dsierror.log");
 		}
@@ -229,7 +226,7 @@ body{
 			$("#install_path").val("/opt/tivoli/tsm/client");
 			$("#baerrorlogname").val("/opt/tivoli/tsm/client/ba/bin/dsmerror.log");
 			$("#apierrorlogname").val("/opt/tivoli/tsm/client/api/bin64/dsierror.log");
-		} */
+		}
 	})
 	
 	
