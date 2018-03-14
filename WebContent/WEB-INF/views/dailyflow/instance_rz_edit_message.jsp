@@ -155,7 +155,7 @@
 	<!--content start-->
 	<div class="content">
 		<div style="width: 100%; height: 85vh;">
-			<table id="total_table" title="日终任务更改手机号" class="easyui-datagrid"
+			<!-- <table id="total_table" title="日终任务更改手机号" class="easyui-datagrid"
 				style="width: 100%; height: 100%" url="getdailysms.do" fit="true" toolbar="#toolbar"
 				pagination="true" rownumbers="true" fitColumns="true" >
 				<thead>
@@ -168,15 +168,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					
 				</tbody>
-			</table>
-
+			</table> -->
 			<div id="toolbar">
 				<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="addTel()">添加</a>
 				<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editTel()">修改</a>
 				<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="delTel()">删除</a>
 			</div>
+			<table id="total_table"></table>
 
 			<!------------------------------- 添加框 ------------------------------->
 			<div id="add_dialog" class="easyui-dialog"
@@ -272,8 +271,84 @@
 		</div>
 	</div>
 </body>
+
 <script type="text/javascript">
-
-
+	//表格显示初始化
+	$('#total_table').datagrid({  
+        title: '日终任务更改手机号',       //表格标题  
+        width:'100%',            //表格宽度  
+        pagination: true,     //开启分页  
+        pageSize: 15,         //分页大小  
+        pageNumber:1,         //第几页显示（默认第一页，可以省略）  
+        pageList: [15], //设置每页记录条数的列表   
+        columns: [[                //添加列  
+            {  
+                field: 'id',      //绑定数据源ID  
+                title: '编号',    //显示列名称  
+                checkbox:true,
+            },
+            {  
+                field: 'task_id',  
+                title: '任务ID', 
+                width:'21%',
+            },  
+            {  
+                field: 'name',  
+                title: '工号',  
+                width:'23%',
+            },
+            {  
+                field: 'tel',  
+                title: '电话',  
+                width:'30%',
+            }, 
+            {  
+                field: 'status',  
+                title: '发送配置', 
+                width:'25%',
+            },
+        ]],  
+    });
+	
+	//分页中文显示设置 
+	$.fn.pagination.defaults.beforePageText = '第';
+	$.fn.pagination.defaults.afterPageText = '共 {pages} 页';
+	$.fn.pagination.defaults.displayMsg = '显示 {from} 到 {to} ,共 {total} 记录';
+	
+	//加载表格数据   
+	$('#total_table').datagrid({ loadFilter: pagerFilter }).datagrid({  
+	    url: 'getdailysms.do'     
+	}); 
+	
+    // 分页数据的操作  
+    function pagerFilter(data) {  
+        if (typeof data.length == 'number' && typeof data.splice == 'function') {   // is array  
+            data = {  
+                total: data.length,  
+                rows: data  
+            }  
+        }  
+        var dg = $(this);  
+        var opts = dg.datagrid('options');  
+        var pager = dg.datagrid('getPager');  
+        pager.pagination({  
+            onSelectPage: function (pageNum, pageSize) {  
+                opts.pageNumber = pageNum;  
+                opts.pageSize = pageSize;  
+                pager.pagination('refresh', {  
+                    pageNumber: pageNum,  
+                    pageSize: pageSize  
+                });  
+                dg.datagrid('loadData', data);  
+            }  
+        });  
+        if (!data.originalRows) {  
+            data.originalRows = (data.rows);  
+        }  
+        var start = (opts.pageNumber - 1) * parseInt(opts.pageSize);  
+        var end = start + parseInt(opts.pageSize);  
+        data.rows = (data.originalRows.slice(start, end));  
+        return data;  
+    }  
 </script>
 </html>
