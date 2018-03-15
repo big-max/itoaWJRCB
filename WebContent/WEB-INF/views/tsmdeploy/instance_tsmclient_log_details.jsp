@@ -12,7 +12,11 @@
 <head>
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<jsp:include page="../header.jsp" flush="true" />
+<c:set var="root" value="${pageContext.request.contextPath}"/>
+<jsp:include page="../header_easyui.jsp" flush="true" />
+<link type="text/css" title="www" rel="stylesheet" href="/css/easyui.css" />
+<link type="text/css" title="www" rel="stylesheet" href="/css/icon.css" />
+<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
 <title>自动化运维平台</title>
 
 <style>
@@ -46,7 +50,7 @@ body,ul li,.graytxt,.input140,span{
 	width:calc(100% - 57px);
 	margin:0px;
 	height:calc(100vh - 70px);
-	overflow-y:scroll;
+	/* overflow-y:scroll; */
 }
 .current1,.current1:hover {
     color: #444444;
@@ -57,6 +61,15 @@ body,ul li,.graytxt,.input140,span{
 .input50{
 	display:inline-block;
 	width:50%;
+}
+.base1{
+	width:33%;height:40px;float:left;
+}
+.canshu{
+	width:38%;height:35px;line-height:35px;text-align:right;float:left;
+}
+.val{
+	width:58%;height:35px;line-height:35px;float:right;
 }
 </style>
 
@@ -219,189 +232,124 @@ window.setInterval('myrefresh()',3000);  //每隔3秒自动刷新一次
 			<a href="#" class="current" style="position:relative;top:-3px;">任务信息</a>
 		</div>
 		
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="columnauto">
-						<div class="tabtitle">
-							<ul class="tabnav">
-								<li>主机节点</li>
-								<li>环境参数</li>
-								<li class="active">执行日志</li>
-							</ul>
+		<div class="easyui-tabs" style="width:calc(100% - 57px);height:auto;padding:10px;">
+			<div title="主机节点" style="padding:10px">
+				<b>主机名 : </b><span id="info_zjm" class="column_txt"></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>IP地址 : </b><span id="info_ip" class="column_txt"></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>操作系统 : </b><span id="info_os" class="column_txt"></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>系统配置 : </b><span id="info_conf" class="column_txt"></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>状态 : </b><span id="info_status" class="column_txt"></span>
+			</div>
+			<div title="环境参数" style="padding:10px">
+				<div class="easyui-panel" title=">>基本信息" style="width:100%;padding-left:20px;">
+					<div class="base1">
+						<div class="canshu">安装版本</div>
+						<div class="val"><font color="green"><span id="install_version"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">补丁版本</div>
+						<div class="val"><font color="green"><span id="fp_version"></span></font></div>
+					</div>
+					<div class="base1">
+						<div class="canshu">安装路径</div>
+						<div class="val"><font color="green"><span id="install_path"></span></font></div>
+					</div>
+				</div>
+				<div style="width:50px;height:5px;"></div>
+				<div class="easyui-panel" title=">>配置信息" style="width:100%;"> 
+					<div>
+						<div class="base1">
+							<div class="canshu">Servername</div>
+							<div class="val"><font color="green"><span id="Servername"></span></font></div>
 						</div>
-
-						<div class="tabcontent">
-								<div class="mainmodule">									
-									<h5 class="stairtit swapcon">拓扑结构</h5>
-									<p class="twotit" style="padding-left:0;">
-										<em class="majornode">单</em>节点1
-									</p>
-									<div class="column">
-										<div class="span12">
-											<p>
-												<b>主机名:</b> <span id="info_zjm" class="column_txt"></span>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<b>IP地址:</b><span id="info_ip" class="column_txt"></span>
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<b>操作系统:</b><span id="info_os" class="column_txt"><em></em></span>
-											</p>
-											<p>
-												<b>系统配置:</b><span id="info_conf" class="column_txt"></span> 
-												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<b>状态:</b><span id="info_status" class="column_txt"><em></em></span>
-											</p>
-										</div>
-									</div>
-								</div>
+						<div class="base1">
+							<div class="canshu">COMMMethod</div>
+							<div class="val"><font color="green"><span id="COMMMethod"></span></font></div>
 						</div>
-
-						<div class="tabcontent">
-								<div class="mainmodule">
-									<h5 class="swapcon">
-										<i class="icon-chevron-down icon-chevron-right"></i>基本信息
-									</h5>
-									<div class="form-horizontal">
-										<div class="control-group">
-											<label class="control-label">安装版本</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span id="install_version" class="graytxt"></span>
-												</div>
-												<div class="inputb2l">
-													<span class="input140 mr20">补丁版本</span> 
-													<span id="fp_version" class="graytxt"></span>
-												</div>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">安装路径</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span id="install_path" class="graytxt"></span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="mainmodule">
-									<h5 class="swapcon">
-										<i class="icon-chevron-down icon-chevron-right"></i>配置信息
-									</h5>
-									<div class="form-horizontal">
-										<div class="control-group">
-											<label class="control-label">Servername</label>
-											<div class="controls">												
-												<div class="inputb2l">
-													<span id="Servername" class="graytxt"></span>
-												</div>											
-												<div class="inputb2l">
-													<span class="input140 mr20">COMMMethod</span> 
-													<span id="COMMMethod" class="graytxt"></span>
-												</div>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">TCPPort</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span id="TCPPort" class="graytxt"></span>
-												</div>
-												<div class="input50">
-													<span class="input140 mr20">TCPServeraddress</span> 
-													<span id="TCPServeraddress" class="graytxt"></span>
-												</div>
-											</div>
-										</div>									
-										<div class="control-group">
-											<label class="control-label">Passwordaccess</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span id="Passwordaccess" class="graytxt"></span>
-												</div>
-												<div class="inputb2l">
-													<span class="input140 mr20">managedservices</span> 
-													<span id="managedservices" class="graytxt"></span>
-												</div>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">nodename</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span id="nodename" class="graytxt"></span>
-												</div>
-												<div class="inputb2l">
-													<span class="input140 mr20">baerrorlogname</span> 
-													<span id="baerrorlogname" class="graytxt"></span>
-												</div>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">apierrorlogname</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span id="apierrorlogname" class="graytxt"></span>
-												</div>
-												<div class="inputb2l">
-													<span class="input140 mr20">resourceutilization</span> 
-													<span id="resourceutilization" class="graytxt"></span>
-												</div>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">include</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span id="include" class="graytxt"></span>
-												</div>
-												<div class="inputb2l">
-													<span class="input140 mr20">exclude</span> 
-													<span id="exclude" class="graytxt"></span>
-												</div>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">enablelanfree</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span id="enablelanfree" class="graytxt"></span>
-												</div>
-												<div class="inputb2l">
-													<span class="input140 mr20">lanfreecommmethod</span> 
-													<span id="lanfreecommmethod" class="graytxt"></span>
-												</div>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">lanfreetcpserveraddress</label>
-											<div class="controls">
-												<div class="inputb2l">
-													<span id="lanfreetcpserveraddress" class="graytxt"></span>
-												</div>
-												<div class="inputb2l">
-													<span class="input140 mr20">lanfreetcpport</span> 
-													<span id="lanfreetcpport" class="graytxt"></span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+						<div class="base1">
+							<div class="canshu">TCPPort</div>
+							<div class="val"><font color="green"><span id="TCPPort"></span></font></div>
 						</div>
-						
-						
-						<input type="hidden" id="type" name="type" value="${type }">	
-                        <input type="hidden" id="uuid" name="uuid" value="${uuid }">
-                        <input type="hidden" id="created_time" name="created_time" value="${created_time }">
-						<div id="logmsg" class="tabcontent tabnow">
-							<textarea id="deplylog" style="background-color:black;width:100%;height:62vh;resize: none;color:white;">
-							</textarea> 
+					</div>
+					<div>
+						<div class="base1">
+							<div class="canshu">TCPServeraddress</div>
+							<div class="val"><font color="green"><span id="TCPServeraddress"></span></font></div>
+						</div>
+						<div class="base1">
+							<div class="canshu">Passwordaccess</div>
+							<div class="val"><font color="green"><span id="Passwordaccess"></span></font></div>
+						</div>
+						<div class="base1">
+							<div class="canshu">managedservices</div>
+							<div class="val"><font color="green"><span id="managedservices"></span></font></div>
+						</div>
+					</div>
+					<div>
+						<div class="base1">
+							<div class="canshu">nodename</div>
+							<div class="val"><font color="green"><span id="nodename"></span></font></div>
+						</div>
+						<div class="base1">
+							<div class="canshu">baerrorlogname</div>
+							<div class="val"><font color="green"><span id="baerrorlogname"></span></font></div>
+						</div>
+						<div class="base1">
+							<div class="canshu">apierrorlogname</div>
+							<div class="val"><font color="green"><span id="apierrorlogname"></span></font></div>
+						</div>
+					</div>
+					<div>
+						<div class="base1">
+							<div class="canshu">resourceutilization</div>
+							<div class="val"><font color="green"><span id="resourceutilization"></span></font></div>
+						</div>
+						<div class="base1">
+							<div class="canshu">include</div>
+							<div class="val"><font color="green"><span id="include"></span></font></div>
+						</div>
+						<div class="base1">
+							<div class="canshu">exclude</div>
+							<div class="val"><font color="green"><span id="exclude"></span></font></div>
+						</div>
+					</div>
+					<div>
+						<div class="base1">
+							<div class="canshu">enablelanfree</div>
+							<div class="val"><font color="green"><span id="enablelanfree"></span></font></div>
+						</div>
+						<div class="base1"></div>
+						<div class="base1"></div>
+					</div>
+					<div>
+						<div class="base1">
+							<div class="canshu">lanfreecommmethod</div>
+							<div class="val"><font color="green"><span id="lanfreecommmethod"></span></font></div>
+						</div>
+						<div class="base1">
+							<div class="canshu">lanfreetcpserveraddress</div>
+							<div class="val"><font color="green"><span id="lanfreetcpserveraddress"></span></font></div>
+						</div>
+						<div class="base1">
+							<div class="canshu">lanfreetcpport</div>
+							<div class="val"><font color="green"><span id="lanfreetcpport"></span></font></div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div title="执行日志" style="padding:10px" data-options="selected:true">
+				<input type="hidden" id="type" name="type" value="${type }">	
+                <input type="hidden" id="uuid" name="uuid" value="${uuid }">
+                <input type="hidden" id="created_time" name="created_time" value="${created_time }">
+				<textarea id="deplylog" style="background-color:black;width:100%;height:68vh;resize: none;color:white;">
+				</textarea> 
+			</div>
 		</div>
+
 	</div>
 </body>
 
