@@ -234,29 +234,39 @@ window.setInterval('myrefresh()',3000);  //每隔3秒自动刷新一次
 		
 		<div class="easyui-tabs" style="width:calc(100% - 57px);height:auto;padding:10px;">
 			<div title="主机节点" style="padding:10px">
-				<b>主机名 : </b><span id="info_zjm" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>IP地址 : </b><span id="info_ip" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>操作系统 : </b><span id="info_os" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>系统配置 : </b><span id="info_conf" class="column_txt"></span>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>状态 : </b><span id="info_status" class="column_txt"></span>
+				<c:forEach items="${servers }" var="ser" varStatus="num">
+					<div class="column">
+						<div class="span12">
+							<p>
+								<b>主机名:</b> <span class="column_txt"> ${ser.name } </span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<b>IP地址:</b><span class="column_txt">${ser.ip}</span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<b>操作系统:</b><span class="column_txt"><em>${ser.os}</em></span>
+							</p>
+							<p>
+								<b>系统配置:</b><span class="column_txt">${ser.hconf }</span> 
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<b>状态:</b><span class="column_txt"><em>${ser.status }</em></span>
+							</p>
+						</div>
+					</div>
+				</c:forEach>
+	
 			</div>
 			<div title="环境参数" style="padding:10px">
 				<div class="easyui-panel" title=">>基本信息" style="width:100%;padding-left:20px;">
 					<div class="base1">
 						<div class="canshu">安装版本</div>
-						<div class="val"><font color="green"><span id="install_version"></span></font></div>
+						<div class="val"><font color="green"><span id="install_version">${tsm_version}</span></font></div>
 					</div>
 					<div class="base1">
 						<div class="canshu">补丁版本</div>
-						<div class="val"><font color="green"><span id="fp_version"></span></font></div>
+						<div class="val"><font color="green"><span id="fp_version">${tsm_fp}</span></font></div>
 					</div>
 					<div class="base1">
 						<div class="canshu">安装路径</div>
-						<div class="val"><font color="green"><span id="install_path"></span></font></div>
+						<div class="val"><font color="green"><span id="install_path">${tsm_instpath}</span></font></div>
 					</div>
 				</div>
 				<div style="width:50px;height:5px;"></div>
@@ -264,63 +274,63 @@ window.setInterval('myrefresh()',3000);  //每隔3秒自动刷新一次
 					<div>
 						<div class="base1">
 							<div class="canshu">Servername</div>
-							<div class="val"><font color="green"><span id="Servername"></span></font></div>
+							<div class="val"><font color="green"><span id="Servername">${tsm_server}</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">COMMMethod</div>
-							<div class="val"><font color="green"><span id="COMMMethod"></span></font></div>
+							<div class="val"><font color="green"><span id="COMMMethod">${tsm_method}</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">TCPPort</div>
-							<div class="val"><font color="green"><span id="TCPPort"></span></font></div>
+							<div class="val"><font color="green"><span id="TCPPort">${tsm_port}</span></font></div>
 						</div>
 					</div>
 					<div>
 						<div class="base1">
 							<div class="canshu">TCPServeraddress</div>
-							<div class="val"><font color="green"><span id="TCPServeraddress"></span></font></div>
+							<div class="val"><font color="green"><span id="TCPServeraddress">${ tsm_address }</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">Passwordaccess</div>
-							<div class="val"><font color="green"><span id="Passwordaccess"></span></font></div>
+							<div class="val"><font color="green"><span id="Passwordaccess">${ tsm_access }</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">managedservices</div>
-							<div class="val"><font color="green"><span id="managedservices"></span></font></div>
+							<div class="val"><font color="green"><span id="managedservices">${ tsm_service }</span></font></div>
 						</div>
 					</div>
 					<div>
 						<div class="base1">
 							<div class="canshu">nodename</div>
-							<div class="val"><font color="green"><span id="nodename"></span></font></div>
+							<div class="val"><font color="green"><span id="nodename">${ tsm_nodename }</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">baerrorlogname</div>
-							<div class="val"><font color="green"><span id="baerrorlogname"></span></font></div>
+							<div class="val"><font color="green"><span id="baerrorlogname">${ tsm_baerrorlog }</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">apierrorlogname</div>
-							<div class="val"><font color="green"><span id="apierrorlogname"></span></font></div>
+							<div class="val"><font color="green"><span id="apierrorlogname">${ tsm_apierrorlog }</span></font></div>
 						</div>
 					</div>
 					<div>
 						<div class="base1">
 							<div class="canshu">resourceutilization</div>
-							<div class="val"><font color="green"><span id="resourceutilization"></span></font></div>
+							<div class="val"><font color="green"><span id="resourceutilization">${ tsm_utilization }</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">include</div>
-							<div class="val"><font color="green"><span id="include"></span></font></div>
+							<div class="val"><font color="green"><span id="include">${ tsm_include }</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">exclude</div>
-							<div class="val"><font color="green"><span id="exclude"></span></font></div>
+							<div class="val"><font color="green"><span id="exclude">${ tsm_exclude }</span></font></div>
 						</div>
 					</div>
 					<div>
 						<div class="base1">
 							<div class="canshu">enablelanfree</div>
-							<div class="val"><font color="green"><span id="enablelanfree"></span></font></div>
+							<div class="val"><font color="green"><span id="enablelanfree">${ tsm_lanfree }</span></font></div>
 						</div>
 						<div class="base1"></div>
 						<div class="base1"></div>
@@ -328,15 +338,15 @@ window.setInterval('myrefresh()',3000);  //每隔3秒自动刷新一次
 					<div>
 						<div class="base1">
 							<div class="canshu">lanfreecommmethod</div>
-							<div class="val"><font color="green"><span id="lanfreecommmethod"></span></font></div>
+							<div class="val"><font color="green"><span id="lanfreecommmethod">${ tsm_lanfreemethod }</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">lanfreetcpserveraddress</div>
-							<div class="val"><font color="green"><span id="lanfreetcpserveraddress"></span></font></div>
+							<div class="val"><font color="green"><span id="lanfreetcpserveraddress">${ tsm_lanfreeaddress }</span></font></div>
 						</div>
 						<div class="base1">
 							<div class="canshu">lanfreetcpport</div>
-							<div class="val"><font color="green"><span id="lanfreetcpport"></span></font></div>
+							<div class="val"><font color="green"><span id="lanfreetcpport">${ tsm_lanfreeport }</span></font></div>
 						</div>
 					</div>
 				</div>

@@ -399,11 +399,85 @@ public class InstanceController {
 		} else if (type.equalsIgnoreCase("itm-os")){
 			return "forward:" + "/getitmosLogInfoDetail.do";
 		} else if (type.equalsIgnoreCase("tsm_client")){
-			return "tsmdeploy/instance_tsmclient_log_details";
+			return "forward:" + "/gettsmclientLogInfoDetail.do";
 		} else
 			return "";
 	}
 
+	
+	@RequestMapping("/gettsmclientLogInfoDetail.do")
+	public String gettsmclientLogInfoDetail(HttpServletRequest request, HttpSession session){
+		String uuid = request.getParameter("uuid");
+		String created_time = request.getParameter("created_time");
+		String type = request.getParameter("type");
+		request.setAttribute("uuid", uuid);
+		request.setAttribute("type", type);
+		request.setAttribute("created_time", created_time);
+		ObjectNode curPlaybook = amsRestService.getList_one(null, null, "odata/playbooks?uuid=" + uuid);
+		
+		if (curPlaybook != null && curPlaybook.get("options") != null) 
+		{
+			try {
+				JsonNode options = om.readTree(curPlaybook.get("options").asText());
+				request.setAttribute("tsm_version", options.get("tsm_version").asText());
+				request.setAttribute("downloadpath", options.get("downloadpath").asText());
+				request.setAttribute("tsm_binary", options.get("tsm_binary").asText());
+				request.setAttribute("tsm_fp", options.get("tsm_fp").asText());	
+				request.setAttribute("tsm_path", options.get("tsm_path").asText());
+				request.setAttribute("ftp_user", options.get("ftp_user").asText());
+				request.setAttribute("ftp_password", options.get("ftp_password").asText());
+				request.setAttribute("ftp_server", options.get("ftp_server").asText());
+				
+				request.setAttribute("tsm_instpath", options.get("tsm_instpath").asText());
+				request.setAttribute("tsm_server", options.get("tsm_server").asText());
+				request.setAttribute("tsm_method", options.get("tsm_method").asText());
+				request.setAttribute("tsm_port", options.get("tsm_port").asText());
+				request.setAttribute("tsm_address", options.get("tsm_address").asText());
+				request.setAttribute("tsm_access", options.get("tsm_access").asText());
+				
+				request.setAttribute("tsm_service", options.get("tsm_service").asText());
+				request.setAttribute("tsm_nodename", options.get("tsm_nodename").asText());
+				request.setAttribute("tsm_baerrorlog", options.get("tsm_baerrorlog").asText());
+				request.setAttribute("tsm_apierrorlog", options.get("tsm_apierrorlog").asText());
+				request.setAttribute("tsm_lanfree", options.get("tsm_lanfree").asText());
+				request.setAttribute("tsm_lanfreemethod", options.get("tsm_lanfreemethod").asText());
+				request.setAttribute("tsm_lanfreeaddress", options.get("tsm_lanfreeaddress").asText());
+				request.setAttribute("tsm_lanfreeport", options.get("tsm_lanfreeport").asText());
+				request.setAttribute("tsm_utilization", options.get("tsm_utilization").asText());
+				request.setAttribute("tsm_include", options.get("tsm_include").asText());
+				request.setAttribute("tsm_exclude", options.get("tsm_exclude").asText());
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+				logger.error("getdb2LogInfoDetail 获取参数错误::"+e.getMessage());
+			}
+		}
+		List<String> serIds = new ArrayList<String>();
+		if (curPlaybook != null && curPlaybook.get("nodes") != null) 
+		{
+			ArrayNode jn = (ArrayNode) curPlaybook.get("nodes");
+			for (JsonNode js : jn) 
+			{
+				serIds.add(js.get("uuid") == null ? "" : js.get("uuid").asText());
+			}
+		}
+		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
+		Collections.sort(lahb);
+		
+		List<ServersBean> listDetial = new ArrayList<ServersBean>();
+		for (int i = 0; i < lahb.size(); i++) {
+			String serverId = lahb.get(i).getUuid();
+
+			for (int j = 0; j < serIds.size(); j++) {
+				if (serverId.equals(serIds.get(j))) {
+					listDetial.add(lahb.get(i));
+				}
+			}
+		}
+		request.setAttribute("servers", listDetial);
+
+		return "tsmdeploy/instance_tsmclient_log_details";
+	}
 	@RequestMapping("nodeInstall.do")
 	@ResponseBody
 	public String nodeInstall(HttpServletRequest request, HttpServletResponse response, HttpSession session)

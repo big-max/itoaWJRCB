@@ -275,7 +275,7 @@ body{
 				  "nodes": [
 				    {
 				      "role": 1,
-				      "uuid": uuid(),
+				      "uuid": localStorage.getItem('infoId'),
 				      "name": data_tupo.zjm,
 				      "address": data_tupo.ip
 				    }

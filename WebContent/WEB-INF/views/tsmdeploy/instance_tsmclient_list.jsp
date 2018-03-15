@@ -206,6 +206,7 @@
 							status : status
 					};
 					localStorage.setItem('baseinfokey', JSON.stringify(baseinfo));
+					localStorage.setItem('infoId',infoId);
 					 if(osId[0].toLowerCase().indexOf('aix')==0)
 					 {
 						 location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=tsmclient&platform=aix";
