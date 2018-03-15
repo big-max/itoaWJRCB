@@ -57,6 +57,7 @@
 	var os = "";
 	var conf = "";
 	var status = "";
+	
 	//操作
 	function isSelect(s) {
 		if ($(s).attr("checked")) {
