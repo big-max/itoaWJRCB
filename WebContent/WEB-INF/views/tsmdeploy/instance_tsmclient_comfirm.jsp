@@ -176,7 +176,7 @@ body{
 		</form>
 		
 		<div style="text-align:center;padding:5px 0">
-			<a class="easyui-linkbutton" onclick="javascript:history.go(-1);" style="width:80px">上一页</a>
+			<a class="easyui-linkbutton" onclick="self.location=document.referrer;" style="width:80px">上一页</a>
 			<a class="easyui-linkbutton" onclick="submit()" style="width:80px">创建</a>
 		</div>
 	
