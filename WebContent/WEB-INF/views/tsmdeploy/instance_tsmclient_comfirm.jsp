@@ -60,7 +60,7 @@ body{
 			<a class="current" style="position:relative;top:-3px;">实例配置详细</a>
 		</div>
 		
-		<div class="easyui-panel" title=">>拓扑结构" style="width:calc(100% - 57px);height:70px;margin-bottom:5px;padding-left:10px;">
+		<div class="easyui-panel" title=">>拓扑结构" style="width:calc(100% - 57px);height:70px;margin-bottom:5px;padding-left:10px;padding-top:8px;">
 			<b>主机名 : </b><span id="info_zjm" class="column_txt"></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<b>IP地址 : </b><span id="info_ip" class="column_txt"></span>
@@ -158,7 +158,7 @@ body{
 					<div class="base1"></div>
 				</div>
 				
-				<div>
+				<div id="lanfreeshow" style="display:none;">
 					<div class="base1">
 						<div class="canshu">lanfreecommmethod</div>
 						<div class="val"><font color="green"><span id="lanfreecommmethod"></span></font></div>
@@ -226,9 +226,14 @@ body{
 	$("#include").text(data_comfirm.include);
 	$("#exclude").text(data_comfirm.exclude);
 	$("#enablelanfree").text(data_comfirm.enablelanfree);
-	$("#lanfreecommmethod").text(data_comfirm.lanfreecommmethod);
-	$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
-	$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
+	if(data_comfirm.enablelanfree == "Yes")
+	{
+		$("#lanfreeshow").css("display","block");
+		$("#lanfreecommmethod").text(data_comfirm.lanfreecommmethod);
+		$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
+		$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
+	}
+	
 	
 	var  playbook_pro =new  playbook_property();  
 	//定义安装TSM客户端所需参数
