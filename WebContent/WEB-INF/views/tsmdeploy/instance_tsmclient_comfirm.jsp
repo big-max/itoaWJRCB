@@ -239,16 +239,17 @@ body{
 	$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
 	$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
 	
+	var  playbook_pro =new  playbook_property();  
 	//定义安装TSM客户端所需参数
 	var inputStr = {
-			"downloadpath":"/tmp/tsmclient",
+			"downloadpath":playbook_pro.get('downloadpath'),
 		    "tsm_version": data_comfirm.install_version,
 		    "tsm_binary": "SP_CLIENT_8.1.4_LIN86_M.tar.gz",
 		    "tsm_fp": data_comfirm.fp_version,
-		    "tsm_path": "",										//？
-		    "ftp_user": "itoa",
-		    "ftp_password": "itoa",									
-		    "ftp_server": "192.168.230.135",					//项目部署所在服务器
+		    "tsm_path": playbook_pro.get('tsm_path'),										//？
+		    "ftp_user": playbook_pro.get('ftp_user'),
+		    "ftp_password": playbook_pro.get('ftp_password'),									
+		    "ftp_server": playbook_pro.get('ftp_server'),					//项目部署所在服务器
 		   
 		    "tsm_instpath": data_comfirm.install_path,
 		    "tsm_server": data_tupo.zjm,
@@ -270,8 +271,7 @@ body{
 		};
 	
 	//对TSM客户端安装参数进行base64编码
-	var encodedStr = Base64.encode(JSON.stringify(inputStr));
-	console.log(encodedStr);	
+	var encodedStr = Base64.encode(JSON.stringify(inputStr));	
 	
 	function submit()
 	{	
@@ -300,6 +300,7 @@ body{
 					data : JSON.stringify(param),
 					success: function (response) {
 					   alert("成功发起任务");
+					   localStorage.clear();
 					},
 					error: function (xhr, status) {
 					   alert("发起任务失败");

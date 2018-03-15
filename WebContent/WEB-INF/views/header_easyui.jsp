@@ -11,6 +11,8 @@
 <script type="text/javascript" src="${root}/js/lodash.min.js"></script>
 <script type="text/javascript" src="${root}/js/unicorn.data.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.nanoscroller.js"></script>
+<script type="text/javascript" src="${root}/js/doBase64.js"></script>
+<script type="text/javascript" src="${root}/js/config.js"></script>
 
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/bootstrap.min.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/treeview.css" />
