@@ -36,9 +36,6 @@ body{
 .base1{
 	width:33%;height:40px;float:left;
 }
-.textbox-label{
-	width:150px;
-}
 </style>
 </head>
 
