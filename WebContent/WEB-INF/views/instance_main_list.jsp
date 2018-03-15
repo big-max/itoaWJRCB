@@ -390,8 +390,6 @@ input[type="text"],input[type="password"] {
 							<!-- data-table -->
 							<table id="mytable" name="data-table" class="table table-striped table-bordered table-hover">
 								<!-- class="table table-bordered data-table  with-check table-hover   no-select"> -->
-								
-								
 								<thead>
 									<tr>
 										<th style="text-align: center;">序号</th>
@@ -1145,15 +1143,23 @@ input[type="text"],input[type="password"] {
     }
 </script>
 
-
 <script type="text/javascript">
-	
-$(document).ready(function() {
-    $('#mytable').DataTable();
-} );
-
+	$(document).ready(function() {
+	    $('#mytable').DataTable({
+	    	"oLanguage":{
+	    		"sLengthMenu": "每页显示 _MENU_ 条记录",
+	    		"sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_条记录",
+	    		"sInfoFiltered": "(数据表中共有 _MAX_ 条记录)", 
+	    		"sSearch": "搜索",
+	    		"oPaginate": {
+	    			"sFirst": "第一页",
+	    			"sPrevious":" 上一页 ",
+	    			"sNext": " 下一页 ",
+	    			"sLast": " 最后一页 "
+	    		 },
+	    	}
+	    });
+	});
 </script>
-
-
 
 </html>
