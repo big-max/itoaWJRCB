@@ -354,8 +354,8 @@ input[type="text"],input[type="password"] {
 							<div class="col-sm-6 form-inline">
 								
 								<div class="dt-buttons btn-group">
-									<input id="filter" type="text" class="form-control" placeholder="请输入过滤项" style="height:28px;">
-									<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
+									<!-- <input id="filter" type="text" class="form-control" placeholder="请输入过滤项" style="height:28px;">
+									<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span> -->
 									<button class="btn btn-sm" data-toggle="modal" style="background-color: #448FC8;"
 										data-target="#add_single">
 										<font color="white">添加主机</font>
@@ -383,13 +383,15 @@ input[type="text"],input[type="password"] {
 										<font color="white">检查主机状态</font>
 									</button> -->
 								</div>
-								<span style="float:right;position:relative;top:10px;">共有<font size="3">${total }</font>台主机</span>
+								<%-- <span style="float:right;position:relative;top:10px;">共有<font size="3">${total }</font>台主机</span> --%>
 							</div>
 							<div style="margin-bottom: 5px"></div>
 							
 							<!-- data-table -->
-							<table id="mytable" name="data-table"
-								class="table table-bordered data-table  with-check table-hover no-search no-select">
+							<table id="mytable" name="data-table" class="table table-striped table-bordered table-hover">
+								<!-- class="table table-bordered data-table  with-check table-hover   no-select"> -->
+								
+								
 								<thead>
 									<tr>
 										<th style="text-align: center;">序号</th>
@@ -1142,4 +1144,16 @@ input[type="text"],input[type="password"] {
         
     }
 </script>
+
+
+<script type="text/javascript">
+	
+$(document).ready(function() {
+    $('#mytable').DataTable();
+} );
+
+</script>
+
+
+
 </html>
