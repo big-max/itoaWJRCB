@@ -398,6 +398,8 @@ public class InstanceController {
 			return "forward:" + "/getihsLogInfoDetail.do";
 		} else if (type.equalsIgnoreCase("itm-os")){
 			return "forward:" + "/getitmosLogInfoDetail.do";
+		} else if (type.equalsIgnoreCase("tsm_client")){
+			return "tsmdeploy/instance_tsmclient_log_details";
 		} else
 			return "";
 	}

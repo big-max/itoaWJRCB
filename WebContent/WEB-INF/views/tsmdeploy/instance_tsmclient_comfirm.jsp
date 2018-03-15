@@ -44,15 +44,6 @@ body{
 	width:58%;height:35px;line-height:35px;float:right;
 }
 </style>
-
-<script>
-	/* 提取sweet提示框代码，以便后面方便使用，减少代码行数 */ 
-	function sweet(te,ty,conBut)
-	{
-		swal({ title: "", text: te,  type: ty, confirmButtonText: conBut, });
-	}        	
-</script>
-
 </head>
 
 <body>
@@ -299,19 +290,16 @@ body{
 					type : "post",
 					data : JSON.stringify(param),
 					success: function (response) {
-					   alert("成功发起任务");
+					   $.messager.alert('提示信息','成功发起任务!','info');
 					   localStorage.clear();
 					},
 					error: function (xhr, status) {
-					   alert("发起任务失败");
+					   $.messager.alert('提示信息','发起任务失败!','error');
+					   localStorage.clear();
 					},
 					complete : function(result){
 						window.location.href = "getLogInfo.do";
 					}
-					/* data : data_comfirm,
-					complete : function(result){
-						window.location.href = "getLogInfo.do";
-					} */
 				})
 			} else {
 				window.history.go(0);
