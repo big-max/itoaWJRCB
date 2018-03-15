@@ -24,7 +24,7 @@ body::after {
 }
 
 a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -731,5 +731,5 @@ Sidebar
   }
   a:hover{
   	text-decoration:none;
-  	color:white;
+  	/* color:white; */
   }

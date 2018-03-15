@@ -352,10 +352,7 @@ input[type="text"],input[type="password"] {
 					<div class="columnauto">
 						<div class="widget-box nostyle ">
 							<div class="col-sm-6 form-inline">
-								
 								<div class="dt-buttons btn-group">
-									<input id="filter" type="text" class="form-control" placeholder="请输入过滤项" style="height:28px;">
-									<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
 									<button class="btn btn-sm" data-toggle="modal" style="background-color: #448FC8;"
 										data-target="#add_single">
 										<font color="white">添加主机</font>
@@ -383,13 +380,11 @@ input[type="text"],input[type="password"] {
 										<font color="white">检查主机状态</font>
 									</button> -->
 								</div>
-								<span style="float:right;position:relative;top:10px;">共有<font size="3">${total }</font>台主机</span>
 							</div>
 							<div style="margin-bottom: 5px"></div>
 							
 							<!-- data-table -->
-							<table id="mytable" name="data-table"
-								class="table table-bordered data-table  with-check table-hover no-search no-select">
+							<table id="mytable" name="data-table" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
 										<th style="text-align: center;">序号</th>
@@ -401,9 +396,6 @@ input[type="text"],input[type="password"] {
 										<th style="text-align: center;">健康状态</th>
 									</tr>
 								</thead>
-								<%-- <%
-									int i = 1;
-								%> --%>
 								<tbody class="searchable">
 									<c:forEach items="${servers }" var="ser">
 										<tr>				
@@ -430,9 +422,7 @@ input[type="text"],input[type="password"] {
 							</table>
 						</div>
 					</div>
-
 					<div class="columnfoot"></div>
-
 
 
 					<div class="modal fade" id="add_single" tabindex="-1" role="dialog"
@@ -1020,5 +1010,24 @@ input[type="text"],input[type="password"] {
     	}
         
     }
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#mytable').DataTable({
+	    	"oLanguage":{
+	    		"sLengthMenu": "每页显示 _MENU_ 条记录",
+	    		"sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_条记录",
+	    		"sInfoFiltered": "(数据表中共有 _MAX_ 条记录)", 
+	    		"sSearch": "搜索",
+	    		"oPaginate": {
+	    			"sFirst": "第一页",
+	    			"sPrevious":" 上一页 ",
+	    			"sNext": " 下一页 ",
+	    			"sLast": " 最后一页 "
+	    		 },
+	    	}
+	    });
+	});
 </script>
 </html>

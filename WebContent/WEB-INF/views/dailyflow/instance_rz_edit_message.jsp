@@ -275,7 +275,7 @@
         pagination: true,     //开启分页  
         pageSize: 15,         //分页大小  
         pageNumber:1,         //第几页显示（默认第一页，可以省略）  
-        pageList: [15],  //设置每页记录条数的列表   
+        pageList: [15,25,35],  //设置每页记录条数的列表   
         url: 'getdailysms.do' 
     }); 
     
