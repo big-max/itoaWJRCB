@@ -203,7 +203,7 @@ input[type="text"],input[type="password"] {
 			</div>
 			<div style="margin-right:20px;float:right;height:25px;">
 				<div style="float:left;margin-top:1px;"><a href="logout.do"><img src="img/navcancel.png"></a></div>
-				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="logout.do">注销</a></div>
+				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="logout.do"><font color=white>注销</font></a></div>
 			</div>
 			<div style="margin-right:25px;float:right;">
 				<div style="float:left;margin-top:2px;"><img src="img/navuser.png"></div>
@@ -211,7 +211,7 @@ input[type="text"],input[type="password"] {
 			</div>
 			<div style="margin-right:25px;float:right;">
 				<a href="getAllServers.do"><img src="img/navhome.png"></a>
-				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="getAllServers.do">主页</a></div>
+				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="getAllServers.do"><font color=white>主页</font></a></div>
 			</div>
 		</nav>
 	</header>

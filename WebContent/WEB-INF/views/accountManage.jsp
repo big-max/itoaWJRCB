@@ -100,12 +100,10 @@ input[type="text"],input[type="password"]  {
 					<div class="columnauto">
 						<div class="widget-box nostyle">
 							<div class="col-sm-6 form-inline">
-								<input id="filter" type="text" class="form-control" placeholder="请输入过滤项" style="height:28px;">
 								<span style="margin-right: 4px;"></span>
 								<button class="btn btn-sm" data-toggle="modal" data-target="#create_user" style="background-color: #448FC8;">
 									<font color="white">创建用户</font>
 								</button>	
-								
 								<span style="margin-right: 4px;"></span>
 								<button class="btn btn-sm" onclick="CheckModifyUser();" data-toggle="modal" style="background-color: #448FC8;">
 									<font color="white">编辑用户</font>
@@ -115,9 +113,8 @@ input[type="text"],input[type="password"]  {
 									<font color="white">删除用户</font>
 								</button>					
 							</div>
-
 							<div style="margin-bottom: 10px;"></div>
-							<table id="sel_tab" class="table table-bordered data-table with-check table-hover search no-select">
+							<table id="mytable" name="data-table" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
 										<th style="text-align: center;width:10%;">序号</th>
@@ -645,5 +642,23 @@ input[type="text"],input[type="password"]  {
 	}
 </script>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#mytable').DataTable({
+	    	"oLanguage":{
+	    		"sLengthMenu": "每页显示 _MENU_ 条记录",
+	    		"sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_条记录",
+	    		"sInfoFiltered": "(数据表中共有 _MAX_ 条记录)", 
+	    		"sSearch": "搜索",
+	    		"oPaginate": {
+	    			"sFirst": "第一页",
+	    			"sPrevious":" 上一页 ",
+	    			"sNext": " 下一页 ",
+	    			"sLast": " 最后一页 "
+	    		 },
+	    	}
+	    });
+	});
+</script>
 </body>
 </html>
