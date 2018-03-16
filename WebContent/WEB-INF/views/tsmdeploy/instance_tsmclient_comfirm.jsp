@@ -115,7 +115,7 @@ body{
 					</div>
 					<div class="base1">
 						<div class="canshu">managedservices</div>
-						<div class="val"><font color="green"><span id="managedservices"></span></font></div>
+						<div class="val" style="white-space:nowrap;overflow:hidden;width:235px;text-overflow:ellipsis;"><font color="green"><span id="managedservices"></span></font></div>
 					</div>
 				</div>
 				
@@ -176,7 +176,7 @@ body{
 		</form>
 		
 		<div style="text-align:center;padding:5px 0">
-			<a class="easyui-linkbutton" onclick="self.location=document.referrer;" style="width:80px">上一页</a>
+			<a class="easyui-linkbutton" onclick="javascript:history.go(-1);" style="width:80px">上一页</a>
 			<a class="easyui-linkbutton" onclick="submit()" style="width:80px">创建</a>
 		</div>
 	
@@ -233,7 +233,6 @@ body{
 		$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
 		$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
 	}
-	
 	
 	var  playbook_pro =new  playbook_property();  
 	//定义安装TSM客户端所需参数
@@ -311,5 +310,20 @@ body{
 			}
 		}); 
 	}
+	
+	$(document).ready(function(){
+		$("#managedservices").tooltip({
+			position: 'left',
+			content: '<div style="color:#fff;font-size:12px;text-align:left;">' + data_comfirm.managedservices + '</div>', 
+			onShow: function(){
+				$(this).tooltip('tip').css({
+					backgroundColor: '#666',
+					borderColor: '#666',
+					width:'250px',
+					height:'80px'
+				});
+			}
+		});
+	})
 </script>
 </html>
