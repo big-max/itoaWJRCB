@@ -214,7 +214,7 @@ function myrefresh()
 	}
 }   
 
-window.setInterval('myrefresh()',3000);  //每隔3秒自动刷新一次
+window.setInterval('getInstallMsg()',3000);  //每隔3秒自动刷新一次
 </script>
 </head>
 
