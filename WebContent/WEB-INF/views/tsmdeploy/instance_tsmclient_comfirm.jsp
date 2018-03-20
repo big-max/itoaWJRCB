@@ -175,9 +175,17 @@ body{
 			</div>
 		</form>
 		
-		<div style="text-align:center;padding:5px 0">
-			<a class="easyui-linkbutton" onclick="go()" style="width:80px">上一页</a>
+		<!-- <div style="text-align:center;padding:5px 0">
+			<a class="easyui-linkbutton" onclick="javascript:history.go(-1);" style="width:80px">上一页</a>
 			<a class="easyui-linkbutton" onclick="submit()" style="width:80px">创建</a>
+		</div> -->
+		
+		<div class="columnfoot" style="width: 93%; left: 5%;">
+			<a class="btn btn-info btn-up" onclick="javascript:history.go(-1);">
+				<i class="icon-btn-up"></i> <span>上一页</span>
+			</a> <a class="btn btn-info fr btn-down" onclick="submit()"> <span>创建</span>
+				<i class="icon-btn-next"></i>
+			</a>
 		</div>
 	
 	</div>
@@ -210,8 +218,10 @@ body{
 	$("#info_status").text(data_tupo.status);
 	
 	var data_comfirm = JSON.parse(localStorage.getItem('configinfokey'));
-	$("#install_version").text(data_comfirm.install_version);
-	$("#fp_version").text(data_comfirm.fp_version);
+	//$("#install_version").text(data_comfirm.install_version);
+	//$("#fp_version").text(data_comfirm.fp_version);
+	$("#install_version").text("8.1");
+	$("#fp_version").text("8.1.4");
 	$("#install_path").text(data_comfirm.install_path);
 	$("#Servername").text(data_comfirm.Servername);
 	$("#COMMMethod").text(data_comfirm.COMMMethod);

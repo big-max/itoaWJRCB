@@ -69,15 +69,13 @@ body{
 			<div class="easyui-panel" title=">>基本信息" style="width:calc(100% - 57px);padding:10px;">
 				<div class="base1">
 					<select class="easyui-combobox" id="install_version" name="install_version" label="安装版本" style="width:90%;height:30px;">
-						<option value="8.1" selected="selected">v8.1</option>
-						<option value="8.2">v8.2</option>
+						<option value="SP_CLIENT_8.1.4_LIN86_M.tar.gz" selected="selected">8.1</option>
 					</select>
 				</div>
 				
 				<div class="base1">
 					<select class="easyui-combobox" id="fp_version" name="fp_version" label="补丁版本" style="width:90%;height:30px;">
-						<option value="8.1" selected="selected">v8.1</option>
-						<option value="8.2">v8.2</option>
+						<option value="-" selected="selected">8.1.4</option>
 					</select>
 				</div>
 				
@@ -190,9 +188,18 @@ body{
 			</div>
 		</form>
 		
-		<div style="text-align:center;padding:5px 0">
+		<!-- <div style="text-align:center;padding:5px 0">
 			<a class="easyui-linkbutton" onclick="javascript:history.go(-1);" style="width:80px">上一页</a>
 			<a class="easyui-linkbutton" onclick="nextPage()" style="width:80px">下一页</a>
+		</div> -->
+		
+		<div class="columnfoot" style="width: 93%; left: 5%;">
+			<a class="btn btn-info btn-up" onclick="javascript:history.go(-1);">
+				<i class="icon-btn-up"></i> <span>上一页</span>
+			</a> 
+			<a class="btn btn-info fr btn-down" onclick="nextPage()"> 
+				<span>下一页</span><i class="icon-btn-next"></i>
+			</a>
 		</div>
 	
 	</div>
