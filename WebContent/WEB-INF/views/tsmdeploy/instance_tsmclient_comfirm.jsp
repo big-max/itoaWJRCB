@@ -261,9 +261,9 @@ body{
 	//定义安装TSM客户端所需参数
 	var inputStr = {
 			"downloadpath":playbook_property.get('downloadpath'),
-		    "tsm_version": data_comfirm.install_version,
-		    "tsm_binary": getInstallFileName(playbook_property.get('softpath')+'tsmclient',localStorage.getItem('platform')),                          //"SP_CLIENT_8.1.4_LIN86_M.tar.gz"
-		    "tsm_fp": data_comfirm.fp_version,
+		    "tsm_version": "8.1",
+		    "tsm_binary": "SP_CLIENT_8.1.4_LIN86_M.tar.gz",
+		    "tsm_fp": "8.1.4",
 		    "tsm_path": playbook_property.get('tsm_path'),										
 		    "ftp_user": playbook_property.get('ftp_user'),
 		    "ftp_password": playbook_property.get('ftp_password'),									

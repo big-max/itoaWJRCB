@@ -367,36 +367,4 @@ window.setInterval('getInstallMsg()',3000);  //每隔3秒自动刷新一次
 
 	</div>
 </body>
-
-<script>
-	//获取主机节点——拓扑结构填入  
-	var data_tupo = JSON.parse(localStorage.getItem('baseinfokey'));
-	$("#info_zjm").text(data_tupo.zjm);
-	$("#info_ip").text(data_tupo.ip);
-	$("#info_os").text(data_tupo.os);
-	$("#info_conf").text(data_tupo.conf);
-	$("#info_status").text(data_tupo.status);
-	
-	//环境参数 
-	var data_comfirm = JSON.parse(localStorage.getItem('configinfokey'));
-	$("#install_version").text(data_comfirm.install_version);
-	$("#fp_version").text(data_comfirm.fp_version);
-	$("#install_path").text(data_comfirm.install_path);
-	$("#Servername").text(data_comfirm.Servername);
-	$("#COMMMethod").text(data_comfirm.COMMMethod);
-	$("#TCPPort").text(data_comfirm.TCPPort);
-	$("#TCPServeraddress").text(data_comfirm.TCPServeraddress);
-	$("#Passwordaccess").text(data_comfirm.Passwordaccess);
-	$("#managedservices").text(data_comfirm.managedservices);
-	$("#nodename").text(data_comfirm.nodename);
-	$("#baerrorlogname").text(data_comfirm.baerrorlogname);
-	$("#apierrorlogname").text(data_comfirm.apierrorlogname);
-	$("#resourceutilization").text(data_comfirm.resourceutilization);
-	$("#include").text(data_comfirm.include);
-	$("#exclude").text(data_comfirm.exclude);
-	$("#enablelanfree").text(data_comfirm.enablelanfree);
-	$("#lanfreecommmethod").text(data_comfirm.lanfreecommmethod);
-	$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
-	$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
-</script>
 </html>
