@@ -52,20 +52,12 @@
 <script  type="text/javascript">
 	var infoId = [];
 	var ips=[];
-	var zjm = "";
-	var ip = "";
-	var os = "";
-	var conf = "";
-	var status = "";
+	
 	//操作
 	function isSelect(s) {
 		if ($(s).attr("checked")) {
 			//获取状态的值，Error或者Active
 			status = $(s).parents("tr").find("b").text().trim();
-			zjm = $(s).parents("td").next().text();
-			ip = $(s).parents("td").next().next().text();
-			conf = $(s).parents("td").next().next().next().text();
-			os = $(s).parents("td").next().next().next().next().text();
 			if(status == "Error")
 			{
 				sweet("被选择的目标系统中包含状态为Error的主机，建议查看原因（注：AIX系统添加后状态同步需要时间稍长）","warning","确定"); 
@@ -168,10 +160,20 @@
 	function checkTSMSelect() {
 		var infoId = [];
 		var osId=[];
+		var zjm = "";
+		var ip = "";
+		var os = "";
+		var conf = "";
+		var status = "";
 		$("input[name='servers']").each(function() {
 			if ($(this).attr("checked")) {
 				infoId.push($(this).val());
 				osId.push($(this).parent().parent().parent().parent().parent().next().next().next().next().text());
+				status = $(this).parents("tr").find("b").text().trim();
+				zjm = $(this).parents("td").next().text();
+				ip = $(this).parents("td").next().next().text();
+				conf = $(this).parents("td").next().next().next().text();
+				os = $(this).parents("td").next().next().next().next().text();
 			}
 		});
 		 if (infoId.length != 1 ) 

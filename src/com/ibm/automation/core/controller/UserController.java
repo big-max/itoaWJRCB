@@ -80,6 +80,7 @@ public class UserController {
 					String[] proList = innerNode.get("product").asText().toUpperCase().split(",");
 					JsonNode roleList = innerNode.get("role");
 					request.getSession().setAttribute("userName", user.getUsername());
+					request.getSession().setAttribute("alias", innerNode.get("alias").asText());//获取中文名
 					request.getSession().setAttribute("proList", proList);
 					request.getSession().setAttribute("role", roleList);
 					request.getSession().setAttribute("czy",

@@ -60,7 +60,7 @@ body{
 			<a class="current" style="position:relative;top:-3px;">实例配置详细</a>
 		</div>
 		
-		<div class="easyui-panel" title=">>拓扑结构" style="width:calc(100% - 57px);height:70px;margin-bottom:5px;padding-left:10px;">
+		<div class="easyui-panel" title=">>拓扑结构" style="width:calc(100% - 57px);height:70px;margin-bottom:5px;padding-left:10px;padding-top:8px;">
 			<b>主机名 : </b><span id="info_zjm" class="column_txt"></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<b>IP地址 : </b><span id="info_ip" class="column_txt"></span>
@@ -115,7 +115,7 @@ body{
 					</div>
 					<div class="base1">
 						<div class="canshu">managedservices</div>
-						<div class="val"><font color="green"><span id="managedservices"></span></font></div>
+						<div class="val" style="white-space:nowrap;overflow:hidden;width:235px;text-overflow:ellipsis;"><font color="green"><span id="managedservices"></span></font></div>
 					</div>
 				</div>
 				
@@ -158,7 +158,7 @@ body{
 					<div class="base1"></div>
 				</div>
 				
-				<div>
+				<div id="lanfreeshow" style="display:none;">
 					<div class="base1">
 						<div class="canshu">lanfreecommmethod</div>
 						<div class="val"><font color="green"><span id="lanfreecommmethod"></span></font></div>
@@ -175,9 +175,17 @@ body{
 			</div>
 		</form>
 		
-		<div style="text-align:center;padding:5px 0">
+		<!-- <div style="text-align:center;padding:5px 0">
 			<a class="easyui-linkbutton" onclick="javascript:history.go(-1);" style="width:80px">上一页</a>
 			<a class="easyui-linkbutton" onclick="submit()" style="width:80px">创建</a>
+		</div> -->
+		
+		<div class="columnfoot" style="width: 93%; left: 5%;">
+			<a class="btn btn-info btn-up" onclick="javascript:history.go(-1);">
+				<i class="icon-btn-up"></i> <span>上一页</span>
+			</a> <a class="btn btn-info fr btn-down" onclick="submit()"> <span>创建</span>
+				<i class="icon-btn-next"></i>
+			</a>
 		</div>
 	
 	</div>
@@ -222,8 +230,10 @@ body{
 	$("#info_status").text(data_tupo.status);
 	
 	var data_comfirm = JSON.parse(localStorage.getItem('configinfokey'));
-	$("#install_version").text(data_comfirm.install_version);
-	$("#fp_version").text(data_comfirm.fp_version);
+	//$("#install_version").text(data_comfirm.install_version);
+	//$("#fp_version").text(data_comfirm.fp_version);
+	$("#install_version").text("8.1");
+	$("#fp_version").text("8.1.4");
 	$("#install_path").text(data_comfirm.install_path);
 	$("#Servername").text(data_comfirm.Servername);
 	$("#COMMMethod").text(data_comfirm.COMMMethod);
@@ -238,10 +248,16 @@ body{
 	$("#include").text(data_comfirm.include);
 	$("#exclude").text(data_comfirm.exclude);
 	$("#enablelanfree").text(data_comfirm.enablelanfree);
-	$("#lanfreecommmethod").text(data_comfirm.lanfreecommmethod);
-	$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
-	$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
 	
+	if(data_comfirm.enablelanfree == "Yes")
+	{
+		$("#lanfreeshow").css("display","block");
+		$("#lanfreecommmethod").text(data_comfirm.lanfreecommmethod);
+		$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
+		$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
+	}
+	var playbook_uuid = uuid(); //全局变量
+	var  playbook_pro =new  playbook_property();  
 	//定义安装TSM客户端所需参数
 	var inputStr = {
 			"downloadpath":playbook_pro.get('downloadpath'),
@@ -269,7 +285,8 @@ body{
 		    "tsm_lanfreeport": data_comfirm.lanfreetcpport,
 		    "tsm_utilization": data_comfirm.resourceutilization,
 		    "tsm_include": data_comfirm.include,
-		    "tsm_exclude": data_comfirm.exclude
+		    "tsm_exclude": data_comfirm.exclude,
+		    "playbook-uuid": playbook_uuid
 		};
 	
 	//对TSM客户端安装参数进行base64编码
@@ -279,9 +296,7 @@ body{
 	{	
 		//拼凑传给后端的data
 		var param = {
-				  "ip_list":data_tupo.ip,
-				  "hostname_list":data_tupo.zjm, 
-				  "playbook-uuid": uuid(),
+				  "playbook-uuid": playbook_uuid,
 				  "playbook-name": "tsm_client",
 				  "product-name": "tsm",
 				  "param-content": encodedStr,
@@ -319,5 +334,20 @@ body{
 			}
 		}); 
 	}
+	
+	$(document).ready(function(){
+		$("#managedservices").tooltip({
+			position: 'left',
+			content: '<div style="color:#fff;font-size:12px;text-align:left;">' + data_comfirm.managedservices + '</div>', 
+			onShow: function(){
+				$(this).tooltip('tip').css({
+					backgroundColor: '#666',
+					borderColor: '#666',
+					width:'250px',
+					height:'80px'
+				});
+			}
+		});
+	})
 </script>
 </html>
