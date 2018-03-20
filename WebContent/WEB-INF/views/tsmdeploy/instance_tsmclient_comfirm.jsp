@@ -186,6 +186,62 @@ body{
 </body>
 
 <script>
+	//playbook_property在js/config.js中定义
+	var  playbook_pro =new  playbook_property();  
+	
+	//获取安装介质文件名
+	function getInstallFileName(platform,filepath){
+		
+	};
+	//获取TSM client 大版本
+	function getTsmVersion(){
+		var filepath = playbook_pro.get('softpath')+'tsmclient';
+		var platform = localStorage.getItem.get('platform');
+		var prodname = 'tsmclient';
+		var param = {
+				'pName':prodname,
+				'platform':platform,
+				'tsmclientPath':filepath,
+				'type':'version'
+		};
+		$.ajax({
+			url : "http://" + playbook_property.get('serverip') + ":" + playbook_property.get('serverport') + playbook_property.get('getTsmclientVersionapi'),
+			crossDomain: true,
+			type : "post",
+			data : JSON.stringify(param),
+			success: function (response) {
+			   return ;
+			},
+			error: function (xhr, status) {
+				console.log('获取安装文件名失败！');
+			}
+		})
+	};
+	//获取TSM client fix版本
+	function getTsmfixVersion(version){
+		var filepath = playbook_pro.get('softpath')+'tsmclient';
+		var platform = localStorage.getItem.get('platform');
+		var prodname = 'tsmclient';
+		var param = {
+				'pName':prodname,
+				'platform':platform,
+				'tsmclientPath':filepath,
+				'type':'fix',
+				'version': version
+		};
+		$.ajax({
+			url : "http://" + playbook_property.get('serverip') + ":" + playbook_property.get('serverport') + playbook_property.get('getTsmclientVersionapi'),
+			crossDomain: true,
+			type : "post",
+			data : JSON.stringify(param),
+			success: function (response) {
+			   return ;
+			},
+			error: function (xhr, status) {
+				console.log('获取安装文件名失败！');
+			}
+		})
+	};
 	//定义生成uuid的方法
 	function uuid() {
 	    var s = [];
@@ -230,14 +286,13 @@ body{
 	$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
 	$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
 	
-	var  playbook_pro =new  playbook_property();  
 	//定义安装TSM客户端所需参数
 	var inputStr = {
 			"downloadpath":playbook_pro.get('downloadpath'),
 		    "tsm_version": data_comfirm.install_version,
-		    "tsm_binary": "SP_CLIENT_8.1.4_LIN86_M.tar.gz",
+		    "tsm_binary": getInstallFileName(playbook_pro.get('softpath')+'tsmclient',localStorage.getItem.get('platform')),                          //"SP_CLIENT_8.1.4_LIN86_M.tar.gz"
 		    "tsm_fp": data_comfirm.fp_version,
-		    "tsm_path": playbook_pro.get('tsm_path'),										//？
+		    "tsm_path": playbook_pro.get('tsm_path'),										
 		    "ftp_user": playbook_pro.get('ftp_user'),
 		    "ftp_password": playbook_pro.get('ftp_password'),									
 		    "ftp_server": playbook_pro.get('ftp_server'),					//项目部署所在服务器
@@ -268,6 +323,8 @@ body{
 	{	
 		//拼凑传给后端的data
 		var param = {
+				  "ip_list":data_tupo.ip,
+				  "hostname_list":data_tupo.zjm, 
 				  "playbook-uuid": uuid(),
 				  "playbook-name": "tsm_client",
 				  "product-name": "tsm",
@@ -275,7 +332,7 @@ body{
 				  "nodes": [
 				    {
 				      "role": 1,
-				      "uuid": localStorage.getItem('infoId'),
+				      "uuid": localStorage.getItem('infoId'),		//来自list页面
 				      "name": data_tupo.zjm,
 				      "address": data_tupo.ip
 				    }
@@ -285,7 +342,7 @@ body{
 		$.messager.confirm('提示信息', '是否确认要在目标主机立即执行任务？', function(r){
 			if (r){
 				$.ajax({
-					url : "http://192.168.80.154:8000/api/v1/run",
+					url : "http://" + playbook_property.get('serverip') + ":" + playbook_property.get('serverport') + playbook_property.get('runapi'),
 					crossDomain: true,
 					type : "post",
 					data : JSON.stringify(param),

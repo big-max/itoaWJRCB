@@ -209,18 +209,23 @@
 					 if(osId[0].toLowerCase().indexOf('aix')==0)
 					 {
 						 location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=tsmclient&platform=aix";
+						 localStorage.setItem('platform','aix');
 					 }
 					 else if(osId[0].toLowerCase().indexOf('hp')==0)
 					 {
 						 location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=tsmclient&platform=hpux";
+						 localStorage.setItem('platform','hpux');
 					 }
 					 else if(osId[0].toLowerCase().indexOf('windows')==0)
 					 { 
-						 sweet("WAS不支持windows操作系统！","warning","确定");
+						 sweet("不支持windows操作系统！","warning","确定");
 						 return;
 					 }
 					 else
-						 location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=tsmclient&platform=linux";
+					 {
+						 location.href = "getInstanceDetial.do?serId=" + infoId + "&ptype=tsmclient&,platform=linux";
+						 localStorage.setItem('platform','linux');
+					 }
 				});
 		}
 	}
