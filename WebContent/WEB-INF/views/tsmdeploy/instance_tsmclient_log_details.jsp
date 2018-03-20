@@ -66,10 +66,10 @@ body,ul li,.graytxt,.input140,span{
 	width:33%;height:40px;float:left;
 }
 .canshu{
-	width:35%;height:35px;line-height:35px;text-align:right;float:left;
+	width:38%;height:35px;line-height:35px;text-align:right;float:left;
 }
 .val{
-	width:61%;height:35px;line-height:35px;float:right;
+	width:58%;height:35px;line-height:35px;float:right;
 }
 </style>
 
