@@ -195,7 +195,7 @@ body{
 
 <script>
 	//playbook_property在js/config.js中定义
-	var  playbook_pro =new  playbook_property();  
+	var  playbook_property =new  playbook_property();  
 	
 	//获取安装介质文件名
 	function getInstallFileName(platform,filepath){
@@ -257,17 +257,17 @@ body{
 		$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
 	}
 	var playbook_uuid = uuid(); //全局变量
-	var  playbook_pro =new  playbook_property();  
+	
 	//定义安装TSM客户端所需参数
 	var inputStr = {
-			"downloadpath":playbook_pro.get('downloadpath'),
+			"downloadpath":playbook_property.get('downloadpath'),
 		    "tsm_version": data_comfirm.install_version,
-		    "tsm_binary": getInstallFileName(playbook_pro.get('softpath')+'tsmclient',localStorage.getItem.get('platform')),                          //"SP_CLIENT_8.1.4_LIN86_M.tar.gz"
+		    "tsm_binary": getInstallFileName(playbook_property.get('softpath')+'tsmclient',localStorage.getItem('platform')),                          //"SP_CLIENT_8.1.4_LIN86_M.tar.gz"
 		    "tsm_fp": data_comfirm.fp_version,
-		    "tsm_path": playbook_pro.get('tsm_path'),										
-		    "ftp_user": playbook_pro.get('ftp_user'),
-		    "ftp_password": playbook_pro.get('ftp_password'),									
-		    "ftp_server": playbook_pro.get('ftp_server'),					//项目部署所在服务器
+		    "tsm_path": playbook_property.get('tsm_path'),										
+		    "ftp_user": playbook_property.get('ftp_user'),
+		    "ftp_password": playbook_property.get('ftp_password'),									
+		    "ftp_server": playbook_property.get('ftp_server'),					//项目部署所在服务器
 		   
 		    "tsm_instpath": data_comfirm.install_path,
 		    "tsm_server": data_tupo.zjm,
