@@ -195,17 +195,8 @@ body{
 
 <script>
 	//playbook_property在js/config.js中定义
-	var  playbook_property =new  playbook_property();  
+	var  playbook_property =new  playbook_property();
 	
-	//获取安装介质文件名
-	function getInstallFileName(platform,filepath){
-		
-	};
-
-	//获取TSM client fix版本
-	function showTsmfixVersion(version){
-		
-	};
 	//定义生成uuid的方法
 	function uuid() {
 	    var s = [];
@@ -232,8 +223,8 @@ body{
 	var data_comfirm = JSON.parse(localStorage.getItem('configinfokey'));
 	//$("#install_version").text(data_comfirm.install_version);
 	//$("#fp_version").text(data_comfirm.fp_version);
-	$("#install_version").text("8.1");
-	$("#fp_version").text("8.1.4");
+	$("#install_version").text(localStorage.getItem('tsm_version'));
+	$("#fp_version").text("-");
 	$("#install_path").text(data_comfirm.install_path);
 	$("#Servername").text(data_comfirm.Servername);
 	$("#COMMMethod").text(data_comfirm.COMMMethod);
@@ -260,10 +251,12 @@ body{
 	
 	//定义安装TSM客户端所需参数
 	var inputStr = {
+			"ip_list":[data_tupo.ip],
+			"hostname_list":[data_tupo.zjm],
 			"downloadpath":playbook_property.get('downloadpath'),
-		    "tsm_version": "8.1",
-		    "tsm_binary": "SP_CLIENT_8.1.4_LIN86_M.tar.gz",
-		    "tsm_fp": "8.1.4",
+		    "tsm_version": localStorage.getItem('tsm_version'),																 //"8.1",
+		    "tsm_binary": localStorage.getItem('tsm_binary'),                              // "SP_CLIENT_8.1.4_LIN86_M.tar.gz",
+		    "tsm_fp": "-",
 		    "tsm_path": playbook_property.get('tsm_path'),										
 		    "ftp_user": playbook_property.get('ftp_user'),
 		    "ftp_password": playbook_property.get('ftp_password'),									

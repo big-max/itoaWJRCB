@@ -70,12 +70,13 @@ body{
 				<div class="base1">
 					<select class="easyui-combobox" id="install_version" name="install_version" label="安装版本" style="width:90%;height:30px;">
 						<option value="SP_CLIENT_8.1.4_LIN86_M.tar.gz" selected="selected">8.1</option>
+						<option value="TSM_CNT_712_LNX_X86_64_ML.tar.gz">7.1</option>
 					</select>
 				</div>
 				
 				<div class="base1">
 					<select class="easyui-combobox" id="fp_version" name="fp_version" label="补丁版本" style="width:90%;height:30px;">
-						<option value="-" selected="selected">8.1.4</option>
+						<option value="-">-</option>
 					</select>
 				</div>
 				
@@ -207,6 +208,7 @@ body{
 </body>
 
 <script>
+
 	//拓扑结构的信息 
 	var data_tupo = JSON.parse(localStorage.getItem('baseinfokey'));
 	$("#info_zjm").text(data_tupo.zjm);
@@ -262,6 +264,20 @@ body{
 	//点击“下一页”跳转页面
 	function nextPage()
 	{	
+		//获取版本和安装文件名
+		switch($('input[name="install_version"]').val()){
+		case "SP_CLIENT_8.1.4_LIN86_M.tar.gz":
+			localStorage.setItem("tsm_version","8.1");
+			localStorage.setItem("tsm_binary","SP_CLIENT_8.1.4_LIN86_M.tar.gz");
+			break;
+		case "TSM_CNT_712_LNX_X86_64_ML.tar.gz":
+			localStorage.setItem("tsm_version","7.1");
+			localStorage.setItem("tsm_binary","TSM_CNT_712_LNX_X86_64_ML.tar.gz");
+			break;
+		default:
+			alert("请选择版本");
+		}
+		
 		var install_path = $("#install_path").val();
 		if(install_path == "")
 		{
