@@ -181,7 +181,7 @@ body{
 		</div> -->
 		
 		<div class="columnfoot" style="width: 93%; left: 5%;">
-			<a class="btn btn-info btn-up" onclick="javascript:history.go(-1);">
+			<a class="btn btn-info btn-up" onclick="javascript:history.back(-1);">
 				<i class="icon-btn-up"></i> <span>上一页</span>
 			</a> <a class="btn btn-info fr btn-down" onclick="submit()"> <span>创建</span>
 				<i class="icon-btn-next"></i>
