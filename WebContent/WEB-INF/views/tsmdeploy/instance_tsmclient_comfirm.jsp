@@ -44,8 +44,12 @@ body{
 	width:58%;height:35px;line-height:35px;float:right;
 }
 </style>
-</head>
-
+<script>
+	function go()
+	{
+		window.history.go(-1);
+	}
+</script>
 <body>
 	<!--header start-->
 	<div class="header">
@@ -176,7 +180,7 @@ body{
 		</form>
 		
 		<div style="text-align:center;padding:5px 0">
-			<a class="easyui-linkbutton" onclick="javascript:history.go(-1);" style="width:80px">上一页</a>
+			<a class="easyui-linkbutton" onclick="go()" style="width:80px">上一页</a>
 			<a class="easyui-linkbutton" onclick="submit()" style="width:80px">创建</a>
 		</div>
 	
