@@ -193,54 +193,10 @@ body{
 	function getInstallFileName(platform,filepath){
 		
 	};
-	//获取TSM client 大版本
-	function getTsmVersion(){
-		var filepath = playbook_pro.get('softpath')+'tsmclient';
-		var platform = localStorage.getItem.get('platform');
-		var prodname = 'tsmclient';
-		var param = {
-				'pName':prodname,
-				'platform':platform,
-				'tsmclientPath':filepath,
-				'type':'version'
-		};
-		$.ajax({
-			url : "http://" + playbook_property.get('serverip') + ":" + playbook_property.get('serverport') + playbook_property.get('getTsmclientVersionapi'),
-			crossDomain: true,
-			type : "post",
-			data : JSON.stringify(param),
-			success: function (response) {
-			   return ;
-			},
-			error: function (xhr, status) {
-				console.log('获取安装文件名失败！');
-			}
-		})
-	};
+
 	//获取TSM client fix版本
-	function getTsmfixVersion(version){
-		var filepath = playbook_pro.get('softpath')+'tsmclient';
-		var platform = localStorage.getItem.get('platform');
-		var prodname = 'tsmclient';
-		var param = {
-				'pName':prodname,
-				'platform':platform,
-				'tsmclientPath':filepath,
-				'type':'fix',
-				'version': version
-		};
-		$.ajax({
-			url : "http://" + playbook_property.get('serverip') + ":" + playbook_property.get('serverport') + playbook_property.get('getTsmclientVersionapi'),
-			crossDomain: true,
-			type : "post",
-			data : JSON.stringify(param),
-			success: function (response) {
-			   return ;
-			},
-			error: function (xhr, status) {
-				console.log('获取安装文件名失败！');
-			}
-		})
+	function showTsmfixVersion(version){
+		
 	};
 	//定义生成uuid的方法
 	function uuid() {
