@@ -44,12 +44,8 @@ body{
 	width:58%;height:35px;line-height:35px;float:right;
 }
 </style>
-<script>
-	function go()
-	{
-		window.history.go(-1);
-	}
-</script>
+</head>
+
 <body>
 	<!--header start-->
 	<div class="header">
@@ -237,7 +233,7 @@ body{
 		$("#lanfreetcpserveraddress").text(data_comfirm.lanfreetcpserveraddress);
 		$("#lanfreetcpport").text(data_comfirm.lanfreetcpport);
 	}
-	
+	var playbook_uuid = uuid(); //全局变量
 	var  playbook_pro =new  playbook_property();  
 	//定义安装TSM客户端所需参数
 	var inputStr = {
@@ -266,7 +262,8 @@ body{
 		    "tsm_lanfreeport": data_comfirm.lanfreetcpport,
 		    "tsm_utilization": data_comfirm.resourceutilization,
 		    "tsm_include": data_comfirm.include,
-		    "tsm_exclude": data_comfirm.exclude
+		    "tsm_exclude": data_comfirm.exclude,
+		    "playbook-uuid": playbook_uuid
 		};
 	
 	//对TSM客户端安装参数进行base64编码
@@ -276,7 +273,7 @@ body{
 	{	
 		//拼凑传给后端的data
 		var param = {
-				  "playbook-uuid": uuid(),
+				  "playbook-uuid": playbook_uuid,
 				  "playbook-name": "tsm_client",
 				  "product-name": "tsm",
 				  "param-content": encodedStr,
