@@ -264,11 +264,6 @@ input[type="text"],input[type="password"] {
 							<li><a href="getIBMAllInstance.do?ptype=db2ha&platform=aix">DB2 HA</a></li>
 						</ul>
 					</li>
-					<!-- <li class="has-children"><a href="#">IBM ITM </a>
-						<ul>
-							<li><a href="getIBMAllInstance.do?ptype=itmos">OS Agent</a></li>
-						</ul>
-					</li> -->
 				</ul>
 			</li> 
 		</ul>
@@ -335,6 +330,9 @@ input[type="text"],input[type="password"] {
 					<span id="menu_publish" class="top5">自动化发布</span> 
 				</a>
 				<ul class="nosubmenu submenu" id="showonce_ap">
+					<li class="has-children">
+						<a href="publishLog.do"><span>发布历史</span></a>
+					</li>
 					<li class="has-children">
 						<a href="autopublish.do"><span>WAS</span></a>
 					</li>

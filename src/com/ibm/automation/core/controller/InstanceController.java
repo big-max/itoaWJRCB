@@ -363,6 +363,11 @@ public class InstanceController {
 		return "instance_log";
 
 	}
+	
+	@RequestMapping("/publishLog.do")
+	public String publishLog(HttpServletRequest request, HttpServletResponse resp, HttpSession session){
+		return "/autopublish/instance_autopublish_log";
+	}
 
 	@RequestMapping("/getLogInfoDetail.do")
 	public String getLogInfoDetail(HttpServletRequest request, HttpSession session) throws Exception {
