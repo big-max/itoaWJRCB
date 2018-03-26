@@ -507,6 +507,6 @@ input[type="text"],input[type="password"] {
 		common(".rzdx","日终短信编辑");
 		common(".zdhfb","自动化发布");
 		common(".zhgl","账号管理");
-	})  
+	})    
 </script>
 </html>
