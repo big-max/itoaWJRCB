@@ -1,5 +1,10 @@
 package com.ibm.automation.domain;
 
+/**
+ * 
+ * 设置用户跑日终任务的地方
+ * 
+ */
 public class RunPastBean {
 	private String dag_id;
 	private String execution_date;
