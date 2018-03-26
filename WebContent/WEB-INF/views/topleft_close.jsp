@@ -336,6 +336,9 @@ input[type="text"],input[type="password"] {
 					<li class="has-children">
 						<a href="autopublish.do"><span>WAS</span></a>
 					</li>
+					<li class="has-children">
+						<a href="autopublishEsb.do"><span>WAS</span></a>
+					</li>
 				</ul>
 			</li> 
 		</ul>

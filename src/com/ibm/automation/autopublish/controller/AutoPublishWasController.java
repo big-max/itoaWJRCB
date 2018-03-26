@@ -53,4 +53,9 @@ public class AutoPublishWasController {
 	public String autopublish(HttpServletRequest request, HttpSession session) {
 		return "autopublish/instance_autopublish_was";
 	}
+	
+	@RequestMapping("/autopublishEsb.do")
+	public String autopublishEsb(HttpServletRequest request, HttpSession session) {
+		return "autopublish/instance_autopublish_esb";
+	}
 }
