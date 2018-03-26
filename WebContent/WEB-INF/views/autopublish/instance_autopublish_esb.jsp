@@ -25,6 +25,7 @@
 .textbox-label { width:120px; }
 .divbott { margin-bottom:20px; }
 .inptext { float:left;width:120px;text-align:right;margin-top:2px; }
+.inptext1 { float:left;width:120px;text-align:left;margin-top:2px; }
 </style>
 </head>
 
@@ -85,7 +86,8 @@
 						<label>变更目标&nbsp;&nbsp;&nbsp;</label>
 					</div>
 					<div>
-						<input class="easyui-textbox" id="esb_target" name="esb_target" value="" readonly style="width:60%;height:30px;">
+						<input id="esb_target" name="esb_target" style="width:60%;" class="easyui-combobox" multiple="multiple"
+							data-options="valueField: 'esb_target',textField: 'esb_target',editable:false">
 					</div>
 				</div>
 				
@@ -93,15 +95,22 @@
 					<div class="inptext">
 						<label>变更状态&nbsp;&nbsp;&nbsp;</label>
 					</div>
-					<div>
-						<input class="easyui-textbox" id="esb_status" name="esb_status" value="" style="width:60%;height:30px;">
+					<div class="inptext1">
+						<span id="esb_status" style="font-size:13px;"></span>
 					</div>
 				</div>
 				
-				<div class="divbott">
-					<a id="startBtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:80%;margin-left:50px;;">
-						<span style="font-size:14px;">重试</span>
-					</a>
+				<div style="margin-top:60px;">
+					<div style="float:left;width:38%;margin-left:50px;">
+						<a id="retry" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:100%;">
+							<span style="font-size:14px;">重试</span>
+						</a>
+					</div>
+					<div style="float:right;width:38%;margin-right:20px;">
+						<a id="back" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-back'" style="padding:5px 0px;width:100%;">
+							<span style="font-size:14px;">回滚</span>
+						</a>
+					</div>
 				</div>
 				
 			</div>
