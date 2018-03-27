@@ -13,10 +13,8 @@
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<jsp:include page="../header_easyui.jsp" flush="true" />
-<link type="text/css" title="www" rel="stylesheet" href="/css/easyui.css" />
-<link type="text/css" title="www" rel="stylesheet" href="/css/icon.css" />
-<script type="text/javascript" src="/js/jquery.easyui.min.js"></script>
+<jsp:include page="../header_easyui2.jsp" flush="true" />
+
 <title>自动化运维平台</title>
 <style type="text/css">
 body{
