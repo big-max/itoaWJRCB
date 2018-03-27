@@ -290,7 +290,7 @@ jQuery(document).ready(function () {
 			</li>
 		</ul>
 		</c:if>
-		
+		 
 		
 		<!-- 自动化发布 -->
 		<c:if test="${fn:contains(role,5) || fn:contains(role,1) }">

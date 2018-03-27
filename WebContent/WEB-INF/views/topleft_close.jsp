@@ -56,7 +56,7 @@
 .notvisible{
 	display:none;
 }
-.isvisible{
+.isvisible{  
 	display:block;
 }
 .mark1 {
