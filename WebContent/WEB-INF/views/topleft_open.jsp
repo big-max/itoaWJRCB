@@ -248,11 +248,6 @@ jQuery(document).ready(function () {
 							<li><a href="getIBMAllInstance.do?ptype=tsmserver">TSM Server</a></li>
 						</ul>
 					</li>
-					<!-- <li class="has-children"><a href="#">IBM ITM </a>
-						<ul>
-							<li><a href="getIBMAllInstance.do?ptype=itmos">OS Agent</a></li>
-						</ul>
-					</li> -->
 				</ul>
 			</li>
 		</ul>
