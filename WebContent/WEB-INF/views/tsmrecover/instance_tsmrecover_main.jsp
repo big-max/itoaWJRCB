@@ -73,7 +73,7 @@ body{
 				<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="delTel()">删除</a>
 			</div> -->
 			
-			<table id="total_table" title="自动化备份恢复" style="width: 100%;height:95%;">
+			<table class="easyui-datagrid" id="total_table" title="自动化备份恢复" style="width: 100%;height:95%;">
 				<thead>
 	                <tr>
 	                    <th data-options="field:'id',width:80,checkbox:true">序号</th>
