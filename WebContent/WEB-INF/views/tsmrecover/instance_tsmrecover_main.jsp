@@ -14,7 +14,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <jsp:include page="../header_easyui2.jsp" flush="true" />
-
 <title>自动化运维平台</title>
 <style type="text/css">
 body{
@@ -111,7 +110,7 @@ body{
 			<thead>
                 <tr>
                     <th data-options="field:'bakser_id',width:'1%',checkbox:true">选择</th>
-                    <th data-options="field:'bakser_type',width:'15%'">类型</th>
+                    <th data-options="field:'bakser_type',width:'15%'">Server类型</th>
                     <th data-options="field:'bakser_ip',width:'18%'">IP</th>
                     <th data-options="field:'bakser_version',width:'15%'">版本</th>
                     <th data-options="field:'bakser_synctime',width:'20%'">上次同步时间</th>
@@ -127,7 +126,7 @@ body{
 			data-options="modal:true,closed:true,minimizable:false,maximizable:false"> 
 		<form id="addServer_form" method="post">
 			<div class="addSerMain">
-				<div class="addSerSub1">类型&nbsp;：</div>
+				<div class="addSerSub1">Server类型&nbsp;：</div>
 				<div class="addSerSub2">
 					<input class="easyui-textbox" name="addServer_type" style="width:100%" data-options="required:true">
 				</div>
@@ -169,6 +168,12 @@ body{
 	function submitForm()
 	{
 		$('#addServer_form').form('submit');
+	}
+	
+	//“一键恢复”按钮
+	function CheckRecover()
+	{
+		window.location.href = "BackRecover.do";
 	}
 </script>
 </html>
