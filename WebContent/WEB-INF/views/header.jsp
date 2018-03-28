@@ -42,6 +42,8 @@
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/nanoscroller.css"/>
 <link type="text/css" title="www" rel="stylesheet" href="${root}/css/font-awesome.min.css"/>
 
+<script type="text/javascript" src="${root}/js/jquery.easyui.min.js"></script>
+
 
 
 

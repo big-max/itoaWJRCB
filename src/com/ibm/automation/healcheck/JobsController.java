@@ -71,6 +71,7 @@ public class JobsController {
 	 */
 	@RequestMapping("/healthCheck.do")
 	public String getAlljobs(HttpServletRequest request, HttpSession session) {
+		
 		List<JobsBean> ljb = ServerUtil.getJobs("/api/v1/jobs");
 		request.setAttribute("jobs", ljb);
 		request.setAttribute("proList", request.getSession().getAttribute("proList"));

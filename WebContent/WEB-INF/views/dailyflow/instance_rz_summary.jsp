@@ -346,12 +346,12 @@ function update_summary_table_state()
 			var curTime = getCurrentTime();//当前时间
 			var getDate = new Date(new Date(getDateStr).format("yyyy-MM-dd"));
 			if (compareDate(curDate,getDate) != 1){   
-				sweet("数据库表run_past execution_date 字段的日期必须比当前日期少一天!","warning","确定");
+				sweet("日终运行的日期不正确，请检查!","warning","确定");
 				return;
 			} else{
 				var getTime = new Date(getDateStr).format('hh:mm:ss');
 				if (compareTime(curTime,getTime) == false){
-					sweet("日终执行时间还未到，请等待！，日终发起时间为:"+getTime,"warning","确定");
+					sweet("日终执行时间还未到，请等待！日终发起时间为:"+getTime,"warning","确定");
 					return;
 				}
 			}

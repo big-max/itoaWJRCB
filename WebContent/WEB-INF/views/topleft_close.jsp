@@ -17,7 +17,7 @@
 <!-- easyui -->
 <link type="text/css" rel="stylesheet" href="css/easyui.css" />
 <link type="text/css" rel="stylesheet" href="css/icon.css" />
-<script type="text/javascript" src="js/jquery.easyui.min.js"></script> 
+<!-- <script type="text/javascript" src="js/jquery.easyui.min.js"></script>  -->
 
 <style type="text/css">
 .nano .pane{ 
@@ -56,7 +56,7 @@
 .notvisible{
 	display:none;
 }
-.isvisible{
+.isvisible{  
 	display:block;
 }
 .mark1 {
@@ -203,7 +203,7 @@ input[type="text"],input[type="password"] {
 			</div>
 			<div style="margin-right:20px;float:right;height:25px;">
 				<div style="float:left;margin-top:1px;"><a href="logout.do"><img src="img/navcancel.png"></a></div>
-				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="logout.do">注销</a></div>
+				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="logout.do"><font color=white>注销</font></a></div>
 			</div>
 			<div style="margin-right:25px;float:right;">
 				<div style="float:left;margin-top:2px;"><img src="img/navuser.png"></div>
@@ -211,7 +211,7 @@ input[type="text"],input[type="password"] {
 			</div>
 			<div style="margin-right:25px;float:right;">
 				<a href="getAllServers.do"><img src="img/navhome.png"></a>
-				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="getAllServers.do">主页</a></div>
+				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="getAllServers.do"><font color=white>主页</font></a></div>
 			</div>
 		</nav>
 	</header>
@@ -264,11 +264,6 @@ input[type="text"],input[type="password"] {
 							<li><a href="getIBMAllInstance.do?ptype=db2ha&platform=aix">DB2 HA</a></li>
 						</ul>
 					</li>
-					<!-- <li class="has-children"><a href="#">IBM ITM </a>
-						<ul>
-							<li><a href="getIBMAllInstance.do?ptype=itmos">OS Agent</a></li>
-						</ul>
-					</li> -->
 				</ul>
 			</li> 
 		</ul>
@@ -293,7 +288,7 @@ input[type="text"],input[type="password"] {
 		
 		
 		<!-- 日终 -->
-		<c:if test="${fn:contains(role,0) || fn:contains(role,1) }">
+		<c:if test="${fn:contains(role,0) || fn:contains(role,1) || fn:contains(role,6) }">
 		<ul>
 			<li>
 				<a href="dailyflow.do" class="tooltipa1 rzlc">
@@ -336,7 +331,13 @@ input[type="text"],input[type="password"] {
 				</a>
 				<ul class="nosubmenu submenu" id="showonce_ap">
 					<li class="has-children">
+						<a href="publishLog.do"><span>发布历史</span></a>
+					</li>
+					<li class="has-children">
 						<a href="autopublish.do"><span>WAS</span></a>
+					</li>
+					<li class="has-children">
+						<a href="autopublishEsb.do"><span>ESB</span></a>
 					</li>
 				</ul>
 			</li> 
@@ -506,6 +507,6 @@ input[type="text"],input[type="password"] {
 		common(".rzdx","日终短信编辑");
 		common(".zdhfb","自动化发布");
 		common(".zhgl","账号管理");
-	})  
+	})    
 </script>
 </html>

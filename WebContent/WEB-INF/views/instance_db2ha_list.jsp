@@ -200,7 +200,6 @@
 	<!--header start-->
 	<div class="header">
 		<jsp:include page="topleft_close.jsp" flush="true" />
-		
 	</div>
 	<!--header end-->
 
@@ -227,17 +226,13 @@
 					<div class="columnauto">
 						<div class="widget-box nostyle">
 							<div class="col-sm-6 form-inline">
-								<input id="filter" type="text" class="form-control" placeholder="请输入过滤项" style="height:28px;">
-								<!-- <span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
-									<button onclick="checkServer();" id="check_button" class="btn btn-sm"
+								<!--<button onclick="checkServer();" id="check_button" class="btn btn-sm"
 										style="background-color: #448FC8;">
 										<font color="white">检查主机状态</font>
 									</button> -->
-								<div id="showcomputer" name="showcomputer" style="float:right;"><span style="position:relative;top:10px;">共有<font size="3">${total }</font>台主机</span></div>
-
 							</div>
 							<div style="margin-bottom: 5px"></div>
-							<table class="table table-bordered data-table  with-check table-hover no-search no-select">
+							<table id="mytable" name="data-table" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
 										<th style="text-align: center;">选择</th>
@@ -245,7 +240,6 @@
 										<th style="text-align: center;">IP地址</th>
 										<th style="text-align: center;">主机配置</th>
 										<th style="text-align: center;">操作系统</th>										
-										
 										<th style="text-align: center;">所属产品组</th>
 										<th style="text-align: center;">健康状态</th>
 									</tr>
@@ -289,8 +283,25 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
-
 </body>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#mytable').DataTable({
+	    	"oLanguage":{
+	    		"sLengthMenu": "每页显示 _MENU_ 条记录",
+	    		"sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_条记录",
+	    		"sInfoFiltered": "(数据表中共有 _MAX_ 条记录)", 
+	    		"sSearch": "搜索",
+	    		"oPaginate": {
+	    			"sFirst": "第一页",
+	    			"sPrevious":" 上一页 ",
+	    			"sNext": " 下一页 ",
+	    			"sLast": " 最后一页 "
+	    		 },
+	    	}
+	    });
+	});
+</script>
 </html>

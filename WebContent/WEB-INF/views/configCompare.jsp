@@ -228,8 +228,12 @@ label > div.radio {
 													<div class="controls" style="padding-top: 5px;">
 														<span class="input140 mr20">跟踪类型：</span>
 														<select id="confComp_type" class="w85" style="width: 220px;" name="confComp_type"
-															onchange="change_type(this)">														
-															<c:forEach var="pro" items="${proList}"><option value="${pro }">${pro }</option></c:forEach>
+															onchange="change_type(this)">
+															 <option value="WAS">WAS</option>
+															<option value="MQ">MQ</option>
+															<option value="DB2">DB2</option>
+															<%-- <option value="OS">OS 巡检</option> 														
+															<c:forEach var="pro" items="${proList}"><option value="${pro }">${pro }</option></c:forEach> --%>
 														</select>
 													</div>
 												</div>

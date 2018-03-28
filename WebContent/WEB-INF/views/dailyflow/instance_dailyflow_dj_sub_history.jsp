@@ -382,7 +382,9 @@ body{
 	function rz_showLog()
 	{
 		$("#mm").menu('hide');
-		var execution_date = getUrlParam('execution_date'); //获取url 的值
+		//var execution_date = getUrlParam('execution_date'); //获取url 的值
+		var execution_date_time = $("#hisdatetime").val();
+		var execution_date = execution_date_time.replace(" ","T");
 		var subdag_id = getUrlParam('subdag_id');//获取子流程名
 		var dag_id = subdag_id;//复用代码
 		var data ={"dag_id":dag_id,"task_id":taskid,"execution_date":execution_date}  //这3个值决定唯一一条task_instance 一条记录
@@ -666,7 +668,7 @@ body{
 		//首先获取下拉框的值
 		var curDatetime = $("#hisdatetime").val();
 		curdata={"dag_id":dag_id,"execution_date":curDatetime};
-		getAjax("rzSubHistoryData.do",curdata,"post");	
+		getAjax("historyData.do",curdata,"post");	
 	})
 </script>
 
