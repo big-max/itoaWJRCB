@@ -112,6 +112,7 @@ jQuery(document).ready(function () {
 		   		 $("#menu_rz").show();	
 		   		 $("#menu_zbswitch").show();
 		   		 $("#menu_publish").show();
+		   		 $("#menu_recover").show();
 		   		 $("#menu_account").show();
 		   		 $("#menu_rz_em").show();
 		   		 $("#showonce").delay(0).slideDown(300);
@@ -126,6 +127,7 @@ jQuery(document).ready(function () {
 			$("#menu_rz").hide();
 			$("#menu_zbswitch").hide(); 
 			$("#menu_publish").hide();
+			$("#menu_recover").hide();
 			$("#menu_account").hide();
 			$("#menu_rz_em").hide();
 		 	$("#jquery-accordion-menu").animate({width:"56px"},1,function(){
@@ -157,6 +159,7 @@ jQuery(document).ready(function () {
 		 $("#menu_zbswitch").show(300);
 		 $("#menu_rz").show(300);
 		 $("#menu_publish").show(300);
+		 $("#menu_recover").show(300);
 		 $("#menu_account").show(300);
 		 $("#menu_rz_em").show(300);
 	});
@@ -186,7 +189,7 @@ jQuery(document).ready(function () {
 			</div>
 			<div style="margin-right:25px;float:right;">
 				<a href="getAllServers.do"><img src="img/navhome.png"></a>
-				<div style="float:right;color:white;margin-top:2px;margin-left:5px;"><a href="getAllServers.do">主页</a></div>
+				<div style="float:right;font-color:white;margin-top:2px;margin-left:5px;"><a href="getAllServers.do">主页</a></div>
 			</div>
 		</nav>
 	</header>
@@ -245,16 +248,31 @@ jQuery(document).ready(function () {
 							<li><a href="getIBMAllInstance.do?ptype=tsmserver">TSM Server</a></li>
 						</ul>
 					</li>
-					<!-- <li class="has-children"><a href="#">IBM ITM </a>
-						<ul>
-							<li><a href="getIBMAllInstance.do?ptype=itmos">OS Agent</a></li>
-						</ul>
-					</li> -->
 				</ul>
 			</li>
 		</ul>
 		</c:if>
 		
+		<!-- 自动化备份恢复 -->
+		<ul>
+			<li class="active">
+				<a href="#" class="notvisible tooltipa1 showsubmenu zdhbfhf">
+					<img class="img_icon" src="img/icons/iconfont/recover.png"></img>
+				</a>
+				<a href="#" class="tooltipa2" id="forremoveminux">
+					<img class="img_icon" src="img/icons/iconfont/recover.png"></img>&nbsp;&nbsp;&nbsp;
+					<span id="menu_recover" class="top5">自动化备份恢复</span> 
+				</a>
+				<ul class="submenu nosubmenu" id="showonce">
+					<li class="has-children">
+						<a href="recover.do"><span>一键恢复</span></a>
+					</li>
+					<li class="has-children">
+						<a href="recovertask.do"><span>恢复任务</span></a>
+					</li>
+				</ul>
+			</li>
+		</ul>
 		
 		<!-- 灾备演练 -->
 		<%-- <c:if test="${fn:contains(role,2) || fn:contains(role,1)  }">
@@ -485,6 +503,7 @@ jQuery(document).ready(function () {
 		common(".rzdx","日终短信编辑");
 		common(".zdhfb","自动化发布");
 		common(".zhgl","账号管理");
+		common(".zdhbfhf","自动化备份恢复"); 
 	})  
 </script>
 </html>

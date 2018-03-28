@@ -117,6 +117,7 @@ input[type="text"],input[type="password"] {
 		   		 $("#menu_rz").show();	
 		   		 $("#menu_zbswitch").show();
 		   		 $("#menu_publish").show();
+		   		 $("#menu_recover").show();
 		   		 $("#menu_account").show();
 		   		 $("#menu_rz_em").show();
 		   		 $("#showonce").delay(0).slideDown(300);
@@ -139,11 +140,35 @@ input[type="text"],input[type="password"] {
 	   		 $("#menu_rz").show();	
 	   		 $("#menu_zbswitch").show();
 	   		 $("#menu_publish").show();
+	   		 $("#menu_recover").show();
 	   		 $("#menu_account").show();
 	   		 $("#menu_rz_em").show();
 	   		 $("#showonce_ap").delay(0).slideDown(300);
 	   		 $("#forremoveminux").addClass("submenu-indicator-minus");
         });
+		
+		$("#jquery-accordion-menu").children("div").children("ul").children("li").children(".showsubmenu_ap").bind("click", function(e){
+ 			 $(".content").animate({width:"86%"},1,function(){
+ 			 $("#jquery-accordion-menu").animate({width:"14%"},1,function(){
+ 				 $(".tooltipa1").addClass("notvisible");
+ 				 $(".tooltipa2").removeClass("notvisible");
+ 				  $('.nosubmenu').find('.has-children.selected').removeClass('selected');
+ 				  $("#drawback2").replaceWith(button1);
+ 				  $(".mark1").removeClass("mark1"); 	
+ 				  $(".columnfoot").css("width","82.7%");
+ 				  $(".columnfoot").css("left","15%");
+ 				 });
+ 			 });
+	   		 $("#menu_deploy").show();
+	   		 $("#menu_rz").show();	
+	   		 $("#menu_zbswitch").show();
+	   		 $("#menu_publish").show();
+	   		 $("#menu_recover").show();
+	   		 $("#menu_account").show();
+	   		 $("#menu_rz_em").show();
+	   		 $("#showonce_bh").delay(0).slideDown(300);
+	   		 $("#forremoveminux").addClass("submenu-indicator-minus");
+       });
 		
 		//左侧菜单栏的隐藏和显示 开始
 		$("body").on("click","#drawback1",function(){
@@ -153,6 +178,7 @@ input[type="text"],input[type="password"] {
 			$("#menu_rz").hide();
 			$("#menu_zbswitch").hide();
 			$("#menu_publish").hide();
+			$("#menu_recover").hide();
 			$("#menu_account").hide();
 			$("#menu_rz_em").hide();
 		 	$("#jquery-accordion-menu").animate({width:"56px"},1,function(){
@@ -183,6 +209,7 @@ input[type="text"],input[type="password"] {
 		 $("#menu_rz").show();
 		 $("#menu_zbswitch").show();
 		 $("#menu_publish").show();
+		 $("#menu_recover").show();
 		 $("#menu_account").show();
 		 $("#menu_rz_em").show();
 	});
@@ -271,16 +298,34 @@ input[type="text"],input[type="password"] {
 							<li><a href="getIBMAllInstance.do?ptype=tsmserver">TSM Server</a></li>
 						</ul>
 					</li>
-					<!-- <li class="has-children"><a href="#">IBM ITM </a>
-						<ul>
-							<li><a href="getIBMAllInstance.do?ptype=itmos">OS Agent</a></li>
-						</ul>
-					</li> -->
 				</ul>
 			</li> 
 		</ul>
 		</c:if>
 		
+		
+		<!-- 自动化备份恢复 -->
+		<c:if test="${fn:contains(role,5) || fn:contains(role,1) }">
+			<ul>
+				<li>
+					<a href="#" class="tooltipa1 showsubmenu_ap zdhbfhf">
+						<img class="img_icon" src="img/icons/iconfont/recover.png" ></img>
+					</a>
+					<a href="#" class="notvisible tooltipa2" id="forremoveminux">
+						<img class="img_icon" src="img/icons/iconfont/recover.png"></img>&nbsp;&nbsp;&nbsp;
+						<span id="menu_recover" class="top5">自动化备份恢复</span> 
+					</a>
+					<ul class="nosubmenu submenu" id="showonce_bh">
+						<li class="has-children">
+							<a href="recover.do"><span>一键恢复</span></a>
+						</li>
+						<li class="has-children">
+							<a href="recovertask.do"><span>恢复任务</span></a>
+						</li>
+					</ul>
+				</li> 
+			</ul>
+		</c:if> 
 		
 		
 		<!-- 灾备演练 -->
@@ -513,6 +558,7 @@ input[type="text"],input[type="password"] {
 		common(".rzdx","日终短信编辑");
 		common(".zdhfb","自动化发布");
 		common(".zhgl","账号管理");
+		common(".zdhbfhf","自动化备份恢复"); 
 	})  
 </script>
 </html>
