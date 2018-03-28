@@ -69,8 +69,8 @@ body{
 			<div class="easyui-panel" title=">>基本信息" style="width:calc(100% - 57px);padding:10px;">
 				<div class="base1">
 					<select class="easyui-combobox" id="install_version" name="install_version" label="安装版本" style="width:90%;height:30px;">
-						<option value="SP_CLIENT_8.1.4_LIN86_M.tar.gz" selected="selected">8.1</option>
-						<option value="TSM_CNT_712_LNX_X86_64_ML.tar.gz">7.1</option>
+						<option value="8.1" selected="selected">8.1</option>
+						<option value="7.1">7.1</option>
 					</select>
 				</div>
 				
@@ -217,13 +217,17 @@ body{
 	$("#info_conf").text(data_tupo.conf);
 	$("#info_status").text(data_tupo.status);
 	
-	
-	//根据linux还是aix自动识别：安装路径，baerrorlogname，apierrorlogname(linux为opt，aix为usr) 
-	$(document).ready(function(){
+	//判断所选主机是否是AIX，如果返回true，那么就是AIX，false则是非AIX
+	function isAix(){
 		var os_type = data_tupo.os.toLowerCase();
 		var patt = new RegExp("aix");
 		var result = patt.test(os_type);
-		if(result == true){			
+		return result;
+	};
+	
+	//根据linux还是aix自动识别：安装路径，baerrorlogname，apierrorlogname(linux为opt，aix为usr) 
+	$(document).ready(function(){
+		if(isAix()){			
 			$('#install_path').textbox('setValue','/usr/tivoli/tsm/client');
 			$('#baerrorlogname').textbox('setValue','/usr/tivoli/tsm/client/ba/bin/dsmerror.log');
 			$('#apierrorlogname').textbox('setValue','/usr/tivoli/tsm/client/api/bin64/dsierror.log');
@@ -266,13 +270,21 @@ body{
 	{	
 		//获取版本和安装文件名
 		switch($('input[name="install_version"]').val()){
-		case "SP_CLIENT_8.1.4_LIN86_M.tar.gz":
+		case "8.1":
 			localStorage.setItem("tsm_version","8.1");
-			localStorage.setItem("tsm_binary","SP_CLIENT_8.1.4_LIN86_M.tar.gz");
+			if(isAix()){
+				localStorage.setItem("tsm_binary","SP_CLIENT_8.1.4_LIN86_M.tar.gz");
+			}else {
+				localStorage.setItem("tsm_binary","SP_CLIENT_8.1.4_LIN86_M.tar.gz");
+			}
 			break;
-		case "TSM_CNT_712_LNX_X86_64_ML.tar.gz":
+		case "7.1":
 			localStorage.setItem("tsm_version","7.1");
-			localStorage.setItem("tsm_binary","TSM_CNT_712_LNX_X86_64_ML.tar.gz");
+			if(isAix()){
+				localStorage.setItem("tsm_binary","SP_CLIENT_8.1.4_LIN86_M.tar.gz");
+			}else {
+				localStorage.setItem("tsm_binary","TSM_CNT_712_LNX_X86_64_ML.tar.gz");
+			}
 			break;
 		default:
 			alert("请选择版本");
