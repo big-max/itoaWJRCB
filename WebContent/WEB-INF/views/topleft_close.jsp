@@ -317,10 +317,10 @@ input[type="text"],input[type="password"] {
 					</a>
 					<ul class="nosubmenu submenu" id="showonce_bh">
 						<li class="has-children">
-							<a href="recover.do"><span>一键恢复</span></a>
+							<a href="recoverlog.do"><span>恢复历史</span></a>
 						</li>
 						<li class="has-children">
-							<a href="recovertask.do"><span>恢复任务</span></a>
+							<a href="recover.do"><span>一键恢复</span></a>
 						</li>
 					</ul>
 				</li> 
