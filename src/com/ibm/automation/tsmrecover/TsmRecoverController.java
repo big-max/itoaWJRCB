@@ -47,5 +47,10 @@ public class TsmRecoverController {
 	public String toTargetEnv(HttpServletRequest request, HttpSession session) {
 		return "/tsmrecover/instance_tsmrecover_choicetarget";
 	}
+	
+	@RequestMapping("/toConfirmTask.do")
+	public String toConfirmTask(HttpServletRequest request, HttpSession session) {
+		return "/tsmrecover/instance_tsmrecover_confirmtask";
+	}
 
 }

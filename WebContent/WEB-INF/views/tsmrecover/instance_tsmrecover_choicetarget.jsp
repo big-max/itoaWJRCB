@@ -123,6 +123,9 @@ body{
 	
 	<!--footer start-->
 	<div class="columnfoot" style="width: 93%; left: 5%;">
+		<a class="btn btn-info btn-up" onclick="javascript:history.go(-1);">
+       		<i class="icon-btn-up"></i><span>上一页</span>
+    	</a>
 		<a class="btn btn-info fr btn-down" onclick="Next();">
 			<span>下一步</span> <i class="icon-btn-next"></i>
 		</a>
@@ -134,7 +137,7 @@ body{
 	//下一步
 	function Next()
 	{
-		window.location.href = "toTargetEnv.do";
+		window.location.href = "toConfirmTask.do";
 	}
 </script>
 
