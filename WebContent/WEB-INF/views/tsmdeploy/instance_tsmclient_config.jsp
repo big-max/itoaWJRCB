@@ -327,7 +327,7 @@ body{
 			platform = "linux";
 		}
 		var ver_param = {
-			"tsmclientPath" : playbook_property.get('softpath')+'tsmclient',
+			"tsmclientPath" : playbook_property.get('softpath')+'tsm',
 			"type" : "version",
 			"platform" : platform,
 			"pName" : "tsmclient"
@@ -338,7 +338,7 @@ body{
 		$("#install_version").combobox({
 			onChange: function(newValue,oldValue){
 				var fp_param = {
-						"tsmclientPath" : playbook_property.get('softpath')+'tsmclient',
+						"tsmclientPath" : playbook_property.get('softpath')+'tsm',
 						"type" : "fix",
 						"platform" : platform,
 						"pName" : "tsmclient",
