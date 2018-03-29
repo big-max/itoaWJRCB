@@ -221,10 +221,8 @@ body{
 	$("#info_status").text(data_tupo.status);
 	
 	var data_comfirm = JSON.parse(localStorage.getItem('configinfokey'));
-	//$("#install_version").text(data_comfirm.install_version);
-	//$("#fp_version").text(data_comfirm.fp_version);
 	$("#install_version").text(localStorage.getItem('tsm_version'));
-	$("#fp_version").text("-");
+	$("#fp_version").text(localStorage.getItem('tsm_fp'));
 	$("#install_path").text(data_comfirm.install_path);
 	$("#Servername").text(data_comfirm.Servername);
 	$("#COMMMethod").text(data_comfirm.COMMMethod);
@@ -256,7 +254,7 @@ body{
 			"downloadpath":playbook_property.get('downloadpath'),
 		    "tsm_version": localStorage.getItem('tsm_version'),																 //"8.1",
 		    "tsm_binary": localStorage.getItem('tsm_binary'),                              // "SP_CLIENT_8.1.4_LIN86_M.tar.gz",
-		    "tsm_fp": "-",
+		    "tsm_fp": localStorage.getItem('tsm_fp'),
 		    "tsm_path": playbook_property.get('tsm_path'),										
 		    "ftp_user": playbook_property.get('ftp_user'),
 		    "ftp_password": playbook_property.get('ftp_password'),									

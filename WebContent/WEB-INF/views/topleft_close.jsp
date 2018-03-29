@@ -295,7 +295,6 @@ input[type="text"],input[type="password"] {
 					<li class="has-children"><a href="#">IBM TSM </a>
 						<ul>
 							<li><a href="getIBMAllInstance.do?ptype=tsmclient">TSM Client</a></li>
-							<li><a href="getIBMAllInstance.do?ptype=tsmserver">TSM Server</a></li>
 						</ul>
 					</li>
 				</ul>
