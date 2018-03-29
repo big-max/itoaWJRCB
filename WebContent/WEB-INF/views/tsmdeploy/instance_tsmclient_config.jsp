@@ -271,7 +271,14 @@ body{
 	{			
 		localStorage.setItem("tsm_fp",$('#fp_version').combobox('getText')); 
 		localStorage.setItem("tsm_binary",$('#fp_version').combobox('getValue'));
-		localStorage.setItem("tsm_version",$('#install_version').combobox('getText'))
+		localStorage.setItem("tsm_version",$('#install_version').combobox('getText'));
+		if($('#install_version').combobox('getValue')==""){
+			alert("请选择TSM Client版本！");
+			return;
+		}else if($('#fp_version').combobox('getValue')==""){
+	    	alert("请选择补丁版本！");
+			return;
+		} 
 		var install_path = $("#install_path").val();
 		if(install_path == "")
 		{
@@ -309,7 +316,7 @@ body{
 				
 			},
 			error: function (xhr, status) {
-				alert(status);
+				alert(status+"请检查服务器中tsm介质路径是否存在");
 			},
 			complete : function(result){
 				
