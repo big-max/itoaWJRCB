@@ -151,6 +151,10 @@ body{
 </body>
 
 <script>
-	
+	//下一步
+	function Next()
+	{
+		window.location.href = "toTargetEnv.do";
+	}
 </script>
 </html>

@@ -42,5 +42,10 @@ public class TsmRecoverController {
 	public String backRecover(HttpServletRequest request, HttpSession session) {
 		return "/tsmrecover/instance_tsmrecover_backresource";
 	}
+	
+	@RequestMapping("/toTargetEnv.do")
+	public String toTargetEnv(HttpServletRequest request, HttpSession session) {
+		return "/tsmrecover/instance_tsmrecover_choicetarget";
+	}
 
 }
