@@ -69,8 +69,8 @@ body{
 			<div class="easyui-panel" title=">>基本信息" style="width:calc(100% - 57px);padding:10px;">
 				<div class="base1">
 					<select class="easyui-combobox" id="install_version" name="install_version" label="安装版本" style="width:90%;height:30px;">
-						<option value="8.1" selected="selected">8.1</option>
-						<option value="7.1">7.1</option>
+						<!-- <option value="8.1" selected="selected">8.1</option>
+						<option value="7.1">7.1</option> -->
 					</select>
 				</div>
 				
@@ -208,7 +208,8 @@ body{
 </body>
 
 <script>
-
+	//playbook_property在js/config.js中定义
+	var playbook_property =new playbook_property();
 	//拓扑结构的信息 
 	var data_tupo = JSON.parse(localStorage.getItem('baseinfokey'));
 	$("#info_zjm").text(data_tupo.zjm);
@@ -267,29 +268,10 @@ body{
 	
 	//点击“下一页”跳转页面
 	function nextPage()
-	{	
-		//获取版本和安装文件名
-		switch($('input[name="install_version"]').val()){
-		case "8.1":
-			localStorage.setItem("tsm_version","8.1");
-			if(isAix()){
-				localStorage.setItem("tsm_binary","SP_CLIENT_8.1.4_LIN86_M.tar.gz");
-			}else {
-				localStorage.setItem("tsm_binary","SP_CLIENT_8.1.4_LIN86_M.tar.gz");
-			}
-			break;
-		case "7.1":
-			localStorage.setItem("tsm_version","7.1");
-			if(isAix()){
-				localStorage.setItem("tsm_binary","SP_CLIENT_8.1.4_LIN86_M.tar.gz");
-			}else {
-				localStorage.setItem("tsm_binary","TSM_CNT_712_LNX_X86_64_ML.tar.gz");
-			}
-			break;
-		default:
-			alert("请选择版本");
-		}
-		
+	{			
+		localStorage.setItem("tsm_fp",$('#fp_version').combobox('getText')); 
+		localStorage.setItem("tsm_binary",$('#fp_version').combobox('getValue'));
+		localStorage.setItem("tsm_version",$('#install_version').combobox('getText'))
 		var install_path = $("#install_path").val();
 		if(install_path == "")
 		{
@@ -300,5 +282,72 @@ body{
 		localStorage.setItem('configinfokey', JSON.stringify(configinfo));
 		window.location.href = "getIBMAllInstance.do?ptype=tsmclientToNextPage";
 	}
+	//封装ajax方法
+	function sendAjax(tornado_api, send_data){
+		$.ajax({
+			url : "http://" + playbook_property.get('serverip') + ":" + playbook_property.get('serverport') + playbook_property.get('version_fp_api'),
+			crossDomain: true,
+			type : "post",
+			data : send_data,
+			success: function (response) {
+				send_json = eval('(' + send_data + ')');
+				if(send_json.type == "version"){
+					version = eval('(' + response + ')');
+					dataList = [];
+				    for(var key in version){
+				    	dataList.push({"text":key,"value":version[key]});
+				    }  
+				    $("#install_version").combobox("loadData",dataList);
+				}else if(send_json.type == "fix"){
+					version = eval('(' + response + ')');
+					dataList = [];
+				    for(var key in version){
+				    	dataList.push({"text":key,"value":version[key]});
+				    }  
+				    $("#fp_version").combobox("loadData",dataList);
+				}
+				
+			},
+			error: function (xhr, status) {
+				alert(status);
+			},
+			complete : function(result){
+				
+			}
+		})
+	}
+	
+	//负责在页面加载完去获取所有的版本和补丁
+	$(document).ready(function (){
+
+		var platform = "";
+		if(isAix()){
+			platform = "aix";
+		}else {
+			platform = "linux";
+		}
+		var ver_param = {
+			"tsmclientPath" : playbook_property.get('softpath')+'tsmclient',
+			"type" : "version",
+			"platform" : platform,
+			"pName" : "tsmclient"
+		};
+		sendAjax('version_fp_api',JSON.stringify(ver_param));
+		
+		
+		$("#install_version").combobox({
+			onChange: function(newValue,oldValue){
+				var fp_param = {
+						"tsmclientPath" : playbook_property.get('softpath')+'tsmclient',
+						"type" : "fix",
+						"platform" : platform,
+						"pName" : "tsmclient",
+						"version": newValue
+				};
+				sendAjax('version_fp_api',JSON.stringify(fp_param));
+			}
+		})
+	});
+
 </script>
 </html>

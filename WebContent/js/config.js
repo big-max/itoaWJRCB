@@ -10,9 +10,8 @@ function playbook_property(){
 	 this.serverip="192.168.80.154",
 	 this.serverport="8000",
 	 this.runapi="/api/v1/run",
-	 this.getTsmclientVersionapi="/api/v1/fp",
-	 this.getTsmInstallFileNameapi="/api/v1/"
+	 this.version_fp_api="/api/v1/fp"
 };   
 playbook_property.prototype.get=function(param){ 
 	 return this[param];  
-};;  
+};
