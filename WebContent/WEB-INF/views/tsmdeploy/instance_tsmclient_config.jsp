@@ -292,17 +292,17 @@ body{
 			success: function (response) {
 				send_json = eval('(' + send_data + ')');
 				if(send_json.type == "version"){
-					version = eval('(' + response + ')');
-					dataList = [];
+					var version = eval('(' + response + ')');
+					var dataList = [];
 				    for(var key in version){
 				    	dataList.push({"text":key,"value":version[key]});
 				    }  
 				    $("#install_version").combobox("loadData",dataList);
 				}else if(send_json.type == "fix"){
-					version = eval('(' + response + ')');
-					dataList = [];
-				    for(var key in version){
-				    	dataList.push({"text":key,"value":version[key]});
+					var fp = eval('(' + response + ')');
+					var dataList = [];
+				    for(var key in fp){
+				    	dataList.push({"text":key,"value":fp[key]});
 				    }  
 				    $("#fp_version").combobox("loadData",dataList);
 				}
@@ -344,6 +344,8 @@ body{
 						"pName" : "tsmclient",
 						"version": newValue
 				};
+				 $("#fp_version").combobox("loadData",{});
+				 $("#fp_version").combobox("clear");
 				sendAjax('version_fp_api',JSON.stringify(fp_param));
 			}
 		})
