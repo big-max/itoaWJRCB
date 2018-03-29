@@ -5,7 +5,7 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript" src="${root}/js/jquery.min1.11.js"></script>
 <script type="text/javascript" src="${root}/js/bootstrap.min.js"></script>
-<%-- <script type="text/javascript" src="${root}/js/jquery.uniform.js"></script> --%>
+<script type="text/javascript" src="${root}/js/jquery.uniform.js"></script> 
 <script type="text/javascript" src="${root}/js/select2.min.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="${root}/js/lodash.min.js"></script>

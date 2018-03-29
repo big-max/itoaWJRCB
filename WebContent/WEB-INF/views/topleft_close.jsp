@@ -17,7 +17,7 @@
 <!-- easyui -->
 <link type="text/css" rel="stylesheet" href="css/easyui.css" />
 <link type="text/css" rel="stylesheet" href="css/icon.css" />
-<script type="text/javascript" src="js/jquery.easyui.min.js"></script> 
+<!-- <script type="text/javascript" src="js/jquery.easyui.min.js"></script>  -->
 
 <style type="text/css">
 .nano .pane{ 
@@ -295,7 +295,6 @@ input[type="text"],input[type="password"] {
 					<li class="has-children"><a href="#">IBM TSM </a>
 						<ul>
 							<li><a href="getIBMAllInstance.do?ptype=tsmclient">TSM Client</a></li>
-							<li><a href="getIBMAllInstance.do?ptype=tsmserver">TSM Server</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -317,10 +316,10 @@ input[type="text"],input[type="password"] {
 					</a>
 					<ul class="nosubmenu submenu" id="showonce_bh">
 						<li class="has-children">
-							<a href="recover.do"><span>一键恢复</span></a>
+							<a href="recoverlog.do"><span>恢复历史</span></a>
 						</li>
 						<li class="has-children">
-							<a href="recovertask.do"><span>恢复任务</span></a>
+							<a href="recover.do"><span>一键恢复</span></a>
 						</li>
 					</ul>
 				</li> 
