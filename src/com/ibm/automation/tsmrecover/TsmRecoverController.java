@@ -52,5 +52,20 @@ public class TsmRecoverController {
 	public String toConfirmTask(HttpServletRequest request, HttpSession session) {
 		return "/tsmrecover/instance_tsmrecover_confirmtask";
 	}
+	
+	@RequestMapping("/recoverlog.do")
+	public String recoverlog(HttpServletRequest request, HttpSession session) {
+		return "/tsmrecover/instance_tsmrecover_log";
+	}
+	
+	@RequestMapping("/toDetailsLogPage.do")
+	public String toDetailsLogPage(HttpServletRequest request, HttpSession session) {
+		return "/tsmrecover/instance_tsmrecover_log";
+	}
+	
+	@RequestMapping("/tsmDetailLog.do")
+	public String tsmDetailLog(HttpServletRequest request, HttpSession session) {
+		return "/tsmrecover/instance_tsmrecover_log_details";
+	}
 
 }

@@ -169,7 +169,11 @@ body{
 	//下一步
 	function Submit()
 	{
-		window.location.href = "toTargetEnv.do";
+		$.messager.confirm('信息提示框', '确认恢复备份吗?', function(r){
+			if (r){ 
+				window.location.href = "toDetailsLogPage.do"; 
+			}
+		});
 	}
 </script>
 </html>
