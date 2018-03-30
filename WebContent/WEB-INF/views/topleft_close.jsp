@@ -56,7 +56,7 @@
 .notvisible{
 	display:none;
 }
-.isvisible{
+.isvisible{  
 	display:block;
 }
 .mark1 {
@@ -337,7 +337,7 @@ input[type="text"],input[type="password"] {
 						<a href="autopublish.do"><span>WAS</span></a>
 					</li>
 					<li class="has-children">
-						<a href="autopublishEsb.do"><span>WAS</span></a>
+						<a href="autopublishEsb.do"><span>ESB</span></a>
 					</li>
 				</ul>
 			</li> 
@@ -507,6 +507,6 @@ input[type="text"],input[type="password"] {
 		common(".rzdx","日终短信编辑");
 		common(".zdhfb","自动化发布");
 		common(".zhgl","账号管理");
-	})  
+	})    
 </script>
 </html>
