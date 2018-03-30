@@ -15,6 +15,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <jsp:include page="../header.jsp" flush="true" />
+<script src="/js/blockUI.js" ></script>
 <title>自动化运维平台</title> 
 <style type="text/css">
 .content {
@@ -32,6 +33,7 @@
 i:hover{
 	cursor:pointer;
 }
+   
 </style>
 <script>
 	function sweet(te,ty,conBut)
@@ -130,7 +132,7 @@ function update_summary_table_state()
 				 html += "<tr>";
 		         html +=     "<td id=\"dag_id\" hidden=\"\" style=\"text-align: center;\">" + data[i].dag_id + "</td>"
 		         html +=     "<td id=\"dag_alias\" style=\"text-align: center;\">" + data[i].dag_alias + "</td>"
-		         html +=     "<td style=\"text-align: center;\">" + data[i].owners + "</td>"
+		         html +=     "<td id=\"dag_owner\" style=\"text-align: center;\">" + data[i].owners + "</td>"
 		         html +=     "<td id=\"execution_date\" style=\"text-align: center;\">" + data[i].last_run_date + "</td>"
 		         html +=     "<td id=\"dag_state\" style=\"text-align: center;\">" + data[i].last_run_status + "</td>"
 		              + "<td>" 
@@ -185,7 +187,7 @@ function update_summary_table_state()
 						+"</div>"
 		         }
 		         html += "</td></tr>";
-		         $(".searchable").html(html)
+		         $(".searchable").html(html);
 				}		
 			}
 		}
@@ -197,6 +199,7 @@ function update_summary_table_state()
 	}); 
   
 	setInterval('update_summary_table_state()',2000); 
+	
 
 	$(document).click(function(e) { // 在页面任意位置点击而触发此事件
 		var id =  $(e.target).attr("id"); // e.target表示被点击的目标
@@ -334,9 +337,19 @@ function update_summary_table_state()
 		var curTime = new Date().format("hh:mm:ss");
         return curTime;
 	}
-	
+    
     //启动和暂停按钮的处理
 	$(document).on('click',"._play",function(){
+		
+		//当流程状态变为running的时候，为页面解冻
+		var control_start = setInterval(function(){
+			//dag_status是发起流程的当前状态
+			var dag_status = $(".searchable").find("#dag_state").html();
+			if("running" == dag_status){
+				$.unblockUI();
+				clearInterval(control_start);
+			}
+		},"2000");
 		
 		var getDateStr = getRZRunDatetimeFromDB(); //从数据库获取到了值
 		if (getDateStr == 'valueerror ' || getDateStr == 'networkerror')
@@ -400,6 +413,16 @@ function update_summary_table_state()
 	        {
 	        	  if (isConfirm) 
 	        	  {
+	        		  $.blockUI({  message : '<h1>日终正在发起，请稍候……</h1>',css: { 
+	        	            border: 'none', 
+	        	            padding: '15px', 
+	        	            backgroundColor: '#000', 
+	        	            '-webkit-border-radius': '10px', 
+	        	            '-moz-border-radius': '10px', 
+	        	            opacity: .5, 
+	        	            color: '#fff' 
+	        	        } }); 
+	        		  
 	        		  $.ajax({
 	        				url :  url,
 	        				type : 'post',
@@ -433,6 +456,7 @@ function update_summary_table_state()
 	        						  }
 	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
 	        					  }
+	        					  
 	        				},
 	        				error : function(errmsg) {
 	        					
