@@ -109,6 +109,7 @@ i:hover{
 			</div>
 		</div>
 	</div>
+ 
 </body>
 
 
@@ -404,7 +405,9 @@ function update_summary_table_state()
 	        				type : 'post',
 	        				data:{"dag_id":current_dag_id,"flag":1},
 	        				dataType : 'json',
+	        				
 	        				success : function(result) {
+	        					 
 	        					  if(result != 'undefined' || result != null){
 	        					  		$("#"+current_dag_id+"_stop").css("color","red");
 	        					  		$("#"+current_dag_id+"_running").attr("style","font-size:23px;color:#0066FF");
@@ -420,6 +423,10 @@ function update_summary_table_state()
 	        						  $("#"+current_dag_id+"_play").removeClass("fa-play-circle").addClass("fa-pause-circle");
 	        					  }else if ( isshowBtn == 3 )
 	        					  {
+	        						  if(result.status == -1 || result.status == -2 )
+	        						  {
+	        							  sweet("无法重复发起！","warning","确定");
+	        						  }
 	        						  if(result.status == 3)
 	        						  {
 	        							  alert(result.msg)
@@ -428,7 +435,9 @@ function update_summary_table_state()
 	        					  }
 	        				},
 	        				error : function(errmsg) {
+	        					
 	        				}
+	        				
 	        			})
 	        	  } 
 	        });
