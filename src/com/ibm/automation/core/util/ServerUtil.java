@@ -150,6 +150,7 @@ public class ServerUtil {
 				ahb.setUuid(js.get("uuid") != null ? js.get("uuid").asText() : "");
 				ahb.setHvisor(js.get("hvisor") != null ? js.get("hvisor").asText() : "");
 				ahb.setProduct(js.get("product") != null ? js.get("product").asText().replace(",", "  ") : "");
+				ahb.setCreated_at(js.get("created_at") != null  ? js.get("created_at").asLong(): 0L);
 				lahb.add(ahb);
 			}
 		} catch (NullPointerException e) {
