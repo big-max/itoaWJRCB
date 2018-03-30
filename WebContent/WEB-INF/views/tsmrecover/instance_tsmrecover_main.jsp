@@ -84,6 +84,15 @@ body{
 	                    <th data-options="field:'total_ip',width:'20%'">IP</th>
 	                </tr>
 				</thead>
+				<tbody>
+					<tr>
+	                    <th>序号</th>
+	                    <th>类型</th>
+	                    <th>IP</th>
+	                    <th>备份对象</th>
+	                    <th>数据库版本</th>
+	                </tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
