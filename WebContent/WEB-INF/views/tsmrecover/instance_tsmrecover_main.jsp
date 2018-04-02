@@ -118,13 +118,13 @@ body{
 		<table class="easyui-datagrid" id="bakser_table" style="width: 100%;height:300px;">
 			<thead>
                 <tr>
-                    <th data-options="field:'bakser_id',width:'1%',checkbox:true">选择</th>
-                    <th data-options="field:'bakser_type',width:'15%'">Server类型</th>
-                    <th data-options="field:'bakser_ip',width:'18%'">IP</th>
-                    <th data-options="field:'bakser_version',width:'15%'">版本</th>
-                    <th data-options="field:'bakser_synctime',width:'20%'">上次同步时间</th>
-                    <th data-options="field:'bakser_syncway',width:'16%'">上次同步方式</th>
-                    <th data-options="field:'bakser_op',width:'15%'">管理操作</th>
+                    <th data-options="field:'id',width:'1%',checkbox:true">选择</th>
+                    <th data-options="field:'type',width:'15%'">Server类型</th>
+                    <th data-options="field:'ip',width:'18%'">IP</th>
+                    <th data-options="field:'version',width:'15%'">版本</th>
+                    <th data-options="field:'lastSycTime',width:'20%'">上次同步时间</th>
+                    <th data-options="field:'lastSycMode',width:'16%'">上次同步方式</th>
+                    <th data-options="field:'manageUrl',width:'15%',formatter:formatOper">管理操作</th>
                 </tr>
 			</thead>
 		</table>
@@ -160,11 +160,57 @@ body{
 </body>
 
 <script>
-	//点击“备份服务器”，弹出框 
+	////点击“备份服务器弹出框”的刷新按钮 
+	function formatOper(val,row,index){ 
+	  return '<a href="#" rel="external nofollow" style="color:#000" onclick="editUser('+index+')">刷新</a>'; 
+	}
+	function editUser(){
+		alert("hhh ");
+	};
+
+	//点击“删除服务器”，对应的操作
+	function delServer(){
+		var checked = $('#bakser_table').datagrid('getChecked');
+		var ids = [];
+        
+        $.each(checked, function(index, item){
+            ids.push(item.id);
+        });
+        
+        $.ajax({
+        	url: '/delBackupServer.do',
+        	type: 'post',
+        	data: {
+        		'ids': ids
+        	},
+        	dataType: 'json',
+        	success: function(data){
+        		if(data.msg=="success"){
+        			if(data.notdel!=0){
+            			$.messager.alert('提示信息',"删除成功"+data.delRecords+"条，失败"+data.notdel+"条",'error');
+            		}else{
+            			$.messager.alert('提示信息',"成功删除"+data.delRecords+"条记录",'info');
+            		}
+        		}else{
+        			$.messager.alert("发送参数错误，请重新删除");
+        		}
+        		
+        		$('#bakser_table').datagrid({  
+	        	    url: '/showBackupServer.do'  
+	        	});
+                $('#bakser_table').datagrid("reload");
+        	}
+        });
+	}
+	
+	//点击“备份服务器”，弹出框 加载数据
 	function openWin()
 	{
 		$('#backServer').window('open');
-		$("#bakser_table").datagrid();//初始化表格
+		//打开备份服务器弹出框的时候，加载数据并显示
+		$('#bakser_table').datagrid({  
+	        url: '/showBackupServer.do'  
+	    });		  
 	}
 	
 	//点击“备份服务器弹出框”的“添加服务器”按钮 
@@ -176,13 +222,60 @@ body{
 	//“添加服务器”提交按钮
 	function submitForm()
 	{
-		$('#addServer_form').form('submit');
+		$('#addServer_form').form('submit', {  
+	            url: "<%=path%>/addBackupServer.do",  
+	            onSubmit: function () {               //表单提交前的回调函数  
+	                var isValid = $(this).form('validate');//验证表单中的一些控件的值是否填写正确，比如某些文本框中的内容必须是数字  
+	                if (!isValid) {  
+	                }  
+	                var strIP = $("input[name='addServer_ip']").val();
+	                if(!isIP(strIP)){
+	                	 $.messager.alert('提示信息', 'IP格式不对，请检查！', 'warning'); 
+	                }
+	                return (isValid&&isIP(strIP)); // 如果验证不通过，返回false终止表单提交  
+	            },  
+	            success: function (data) {    //表单提交成功后的回调函数，里面参数data是我们调用/BasicClass/ModifyClassInfo方法的返回值。
+	                var ret_value = eval('(' + data + ')');
+	            	if (ret_value.msg == "1") {  
+	                    $.messager.show({  
+	                        title: '提示消息',  
+	                        msg: '添加成功',  
+	                        showType: 'show', 
+	                        timeout: '500',
+	                        style: {  
+	                            right: '',  
+	                            bottom: ''  
+	                        }  
+	                    });  
+	                    $('#addServer_form').form('clear');    // 重新载入当前页面数据    
+	                    $('#addServer').window('close');  //关闭窗口  
+	                    $('#bakser_table').datagrid({  
+		        	        url: '/showBackupServer.do'  
+		        	    });
+	                    $('#bakser_table').datagrid("reload");
+	                }  
+	                else {  
+	                    $.messager.alert('提示信息', '提交失败！', 'warning');  
+	            	}  
+	            }
+    	});  
 	}
 	
 	//“一键恢复”按钮
 	function CheckRecover()
 	{
 		window.location.href = "BackRecover.do";
+	}
+	
+	function isIP(strIP) {
+		var re=/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/g; //匹配IP地址的正则表达式
+		if(re.test(strIP))
+		{
+			if( RegExp.$1 <256 && RegExp.$2<256 && RegExp.$3<256 && RegExp.$4<256) {
+				return true;
+			}
+		}
+		return false;
 	}
 </script>
 </html>

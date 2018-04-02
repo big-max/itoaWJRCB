@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibm.automation.core.dao.BackupServerMapper" >
+  <resultMap id="BaseResultMap" type="com.ibm.automation.domain.BackupServer" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="last_syc_time" property="lastSycTime" jdbcType="TIMESTAMP" />
+    <result column="last_syc_mode" property="lastSycMode" jdbcType="VARCHAR" />
+    <result column="manage_url" property="manageUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, ip, version, last_syc_time, last_syc_mode, manage_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from backup_server
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from backup_server
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from backup_server
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ibm.automation.domain.BackupServer" >
+    insert into backup_server (id, type, ip, 
+      version, last_syc_time, last_syc_mode, 
+      manage_url)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{version,jdbcType=VARCHAR}, #{lastSycTime,jdbcType=TIMESTAMP}, #{lastSycMode,jdbcType=VARCHAR}, 
+      #{manageUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ibm.automation.domain.BackupServer" >
+    insert into backup_server
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibm.automation.domain.BackupServer" >
+    update backup_server
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSycTime != null" >
+        last_syc_time = #{lastSycTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastSycMode != null" >
+        last_syc_mode = #{lastSycMode,jdbcType=VARCHAR},
+      </if>
+      <if test="manageUrl != null" >
+        manage_url = #{manageUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ibm.automation.domain.BackupServer" >
+    update backup_server
+    set type = #{type,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      last_syc_time = #{lastSycTime,jdbcType=TIMESTAMP},
+      last_syc_mode = #{lastSycMode,jdbcType=VARCHAR},
+      manage_url = #{manageUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
