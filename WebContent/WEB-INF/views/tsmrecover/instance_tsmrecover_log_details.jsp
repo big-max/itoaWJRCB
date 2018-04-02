@@ -251,7 +251,7 @@ window.setInterval('getInstallMsg()',3000);  //每隔3秒自动刷新一次
 						<div class="newmain1">恢复版本</div>
 						<div class="newmain2"><span id="source_server">DB2-DBInst1-Sample-2017-10-10 11:30:20</span></div>
 					</div>
-				</div>
+				</div>  
 				<div>
 					<div class="newmain">
 						<div class="newmain1">目标环境</div>
