@@ -259,6 +259,97 @@ window.setInterval('getInstallMsg()',3000);  //每隔3秒自动刷新一次
 					</div>
 				</div>
 			</div>
+			<div title="配置信息" style="padding:10px">
+				<div class="container-fluid" style="margin-top:10px;">
+					<div id="source_panel" class="easyui-panel" title="备份源" style="width:100%;height:210px;padding:10px;">
+						<div>
+							<div class="newmain">
+								<div class="newmain1">备份版本时间点</div>
+								<div class="newmain2"><span id="source_time">2018-11-23 12:23:30</span></div>
+							</div>
+							<div class="newmain">
+								<div class="newmain1">备份服务器</div>
+								<div class="newmain2"><span id="source_server">192.168.80.154</span></div>
+							</div>
+						</div>
+						<div>
+							<div class="newmain">
+								<div class="newmain1">备份节点名</div>
+								<div class="newmain2"><span id="source_nodename">nodename</span></div>
+							</div>
+							<div class="newmain">
+								<div class="newmain1">实例名</div>
+								<div class="newmain2"><span id="source_instname">ahlm</span></div>
+							</div>
+						</div>
+						<div>
+							<div class="newmain">
+								<div class="newmain1">数据库名</div>
+								<div class="newmain2"><span id="source_dbname">dbname</span></div>
+							</div>
+							<div class="newmain">
+								<div class="newmain1">数据路径</div>
+								<div class="newmain2"><span id="source_dbpath">/dbpath</span></div>
+							</div>
+						</div>
+						<div style="width:90%;margin:0 auto;margin-top:50px;">
+							<table class="easyui-datagrid" id="source_table" style="width:100%;height:80px;">
+								<thead>
+					                <tr>
+					                    <th data-options="field:'source_dbname',width:'26%'">表空间名</th>
+					                    <th data-options="field:'source_dbtype',width:'25.5%'">表空间类型</th>
+					                    <th data-options="field:'source_path',width:'25%'">容器路径</th>
+					                    <th data-options="field:'source_size',width:'25%'">容器大小</th>
+					                </tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid" style="margin-top:10px;">
+					<div id="target_panel" class="easyui-panel" title="目标环境" style="width:100%;height:210px;padding:10px;">
+						<div>
+							<div class="newmain">
+								<div class="newmain1">IP地址</div>
+								<div class="newmain2"><span id="target_ip">192.168.80.154</span></div>
+							</div>
+							<div class="newmain"></div>
+						</div>
+						<div>
+							<div class="newmain">
+								<div class="newmain1">实例名</div>
+								<div class="newmain2"><span id="target_instname">instname</span></div>
+							</div>
+							<div class="newmain">
+								<div class="newmain1">数据库名</div>
+								<div class="newmain2"><span id="target_dbname">ahlm</span></div>
+							</div>
+						</div>
+						<div>
+							<div class="newmain">
+								<div class="newmain1">数据路径</div>
+								<div class="newmain2"><span id="target_dbpath">/dbname</span></div>
+							</div>
+							<div class="newmain">
+								<div class="newmain1">前滚日志路径</div>
+								<div class="newmain2"><span id="target_logpath">/dbpath</span></div>
+							</div>
+						</div>
+						<div style="width:90%;margin:0 auto;margin-top:50px;">
+							<table class="easyui-datagrid" id="target_table" style="width:100%;height:80px;">
+								<thead>
+					                <tr>
+					                    <th data-options="field:'target_dbname',width:'26%'">表空间名</th>
+					                    <th data-options="field:'target_dbtype',width:'25.5%'">表空间类型</th>
+					                    <th data-options="field:'target_path',width:'25%'">容器路径</th>
+					                    <th data-options="field:'target_size',width:'25%'">容器大小</th>
+					                </tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div title="执行日志" style="padding:10px" data-options="selected:true">
 				<input type="hidden" id="type" name="type" value="${type }">	
                 <input type="hidden" id="uuid" name="uuid" value="${uuid }">
