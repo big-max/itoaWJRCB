@@ -373,23 +373,23 @@ body{
       <div id="u862" class="ax_default 55vat1">
         <div id="u862_div"></div>
         <div id="u863" class="text">
-          <p><span>55vat1</span></p><p><span>查看导数结果</span></p>
+          <p><span>55vat</span></p><p><span>查看导数结果</span></p>
         </div>
       </div>
 
-      <div id="u864" class="ax_default 55vat2">
+      <!-- <div id="u864" class="ax_default 55vat2">
         <div id="u864_div"></div>
         <div id="u865" class="text">
           <p><span>55vat2</span></p><p><span>VAT日终跑批</span></p>
         </div>
-      </div>
+      </div> -->
       
-      <div id="u866" class="ax_default 55vat3">
+      <!-- <div id="u866" class="ax_default 55vat3">
         <div id="u866_div"></div>
         <div id="u867" class="text">
           <p><span>55vat3</span></p><p><span>查看VAT日终结果</span></p>
         </div>
-      </div>
+      </div> -->
       
       <div id="u872" class="ax_default 55ebs">
         <div id="u872_div"></div>
@@ -687,10 +687,10 @@ body{
         <img id="u868_seg1" class="img" src="dailyimg/u96_seg1.png"/>
       </div>
 
-      <div id="u870" class="connector">
+      <!-- <div id="u870" class="connector">
         <img id="u870_seg0" class="img" src="dailyimg/u856_seg0.png"/>
         <img id="u870_seg1" class="img" src="dailyimg/u96_seg1.png"/>
-      </div>
+      </div> -->
 
       <div id="u876" class="connector">
         <img id="u876_seg0" class="img" src="dailyimg/u852_seg0.png"/>
@@ -718,13 +718,13 @@ body{
         <img id="u888_seg2" class="img" src="dailyimg/u858_seg1.png"/>
       </div>
 
-      <div id="u890" class="connector">
+      <!-- <div id="u890" class="connector">
         <img id="u890_seg0" class="img" src="dailyimg/u890_seg0.png"/>
         <img id="u890_seg1" class="img" src="dailyimg/u890_seg1.png"/>
         <img id="u890_seg2" class="img" src="dailyimg/u890_seg2.png"/>
         <img id="u890_seg3" class="img" src="dailyimg/u890_seg3.png"/>
         <img id="u890_seg4" class="img" src="dailyimg/u100_seg1.png"/>
-      </div>
+      </div> -->
       
       <div id="u892" class="connector">
         <img id="u892_seg0" class="img" src="dailyimg/u771_seg0.png"/>
