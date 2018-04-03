@@ -1,7 +1,5 @@
 package com.ibm.automation.core.controller;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
@@ -21,21 +19,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ibm.automation.ams.service.AmsRestService;
 import com.ibm.automation.core.bean.ServersBean;
 import com.ibm.automation.core.service.ServerService;
+import com.ibm.automation.core.util.ExcelUtils;
 import com.ibm.automation.core.util.PropertyUtil;
 import com.ibm.automation.core.util.ServerUtil;
 
-import jxl.Cell;
-import jxl.Sheet;
-import jxl.Workbook;
-import jxl.read.biff.BiffException;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @Controller
@@ -106,12 +99,12 @@ public class ServerController {
 
 	@RequestMapping("/refreshservers.do")
 	@ResponseBody
-	public ArrayNode refreshServers(HttpServletRequest request, HttpServletResponse resp, HttpSession session) throws JsonProcessingException {
+	public ArrayNode refreshServers(HttpServletRequest request, HttpServletResponse resp, HttpSession session)
+			throws JsonProcessingException {
 		List<ServersBean> lahb = ServerUtil.getList("odata/servers");
 		Collections.sort(lahb);
 		ArrayNode an = om.createArrayNode();
-		for (ServersBean sb :lahb)
-		{
+		for (ServersBean sb : lahb) {
 			ObjectNode on = om.createObjectNode();
 			on.put("uuid", sb.getUuid());
 			on.put("name", sb.getName());
@@ -165,90 +158,46 @@ public class ServerController {
 	@ResponseBody
 	public String importExcel(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
 		ObjectMapper om = new ObjectMapper();
-		// String org= file.getOriginalFilename();
-		// System.out.println("the original file is ::"+org);
+		ArrayNode objArray = om.createArrayNode();
+		ObjectNode totalObj = om.createObjectNode();// 总的节点
+		ExcelUtils ex = new ExcelUtils();
 		try {
-			InputStream is = file.getInputStream();
-			Workbook rwb = Workbook.getWorkbook(is);
-			Sheet oFirstSheet = rwb.getSheet(0);
-			int rows = oFirstSheet.getRows();// 获取工作表中的总行数
-			int cols = oFirstSheet.getColumns();// 获取工作表中的总列数
-			StringBuffer total = new StringBuffer();
-
-			for (int i = 1; i < rows; i++) {
-				String temp = "";
-
-				StringBuffer sb = new StringBuffer();
-				for (int j = 0; j < cols; j++) {
-					Cell oCell = oFirstSheet.getCell(j, i);
-					temp = oCell.getContents();
-					sb.append(temp).append(",");
-				}
-				total.append(sb).append(";");
-
-			}
-			String finalStr = new String(total);
-			finalStr = finalStr.replaceAll(",;", ";"); // 把,;变成;
-			// System.out.println(finalStr);
-			ArrayNode objArray = om.createArrayNode();
-			ObjectNode totalObj = om.createObjectNode();// 总的节点
-			String[] finalArr = finalStr.split(";");
-			for (String s1 : finalArr) {
-				String[] s2 = s1.split(",");
+			List<Object[]> list = ex.importExcel(file.getName(), file.getInputStream());
+			for (Object[] ss : list) {
 				ObjectNode inner = om.createObjectNode();
 				inner.put("name", "DefaultName");
-				inner.put("ip", s2[0]);
-				inner.put("userid", s2[1]);
-				inner.put("password", s2[2]);
+				inner.put("ip", (String) ss[0]);
+				inner.put("userid", (String) ss[1]);
+				inner.put("password", (String) ss[2]);
 				inner.put("uuid", UUID.randomUUID().toString());
 				inner.put("status", "Error");
-				// inner.put("os", "DefaultOS");
-				inner.put("os", s2[3]);
+				inner.put("os", "DefaultOS");
+				inner.put("product", (String) ss[3]);
 				inner.put("hvisor", "DefaultHVisor");
 				inner.put("hconf", "DefaultHConf");
 				objArray.add(inner);
-				/*
-				 * AddHostBean ahb = new AddHostBean();
-				 * ahb.setType("createServer"); ahb.setName(s2[0]);
-				 * ahb.setIP(s2[1]); ahb.setUserID(s2[2]);
-				 * ahb.setPassword(s2[3]); ahb.setOS(s2[4]);
-				 * ahb.setHVisor(s2[5]); // int stat =
-				 * addhostserivce.create(ahb); // System.out.println(stat);
-				 * 
-				 */
 			}
-			totalObj.put("type", "importExcel");
-			totalObj.putPOJO("servers", objArray);
-			int stat = addhostserivce.importFromExcel(totalObj.toString());
-			if (stat == 1) {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		totalObj.put("type", "importExcel");
+		totalObj.putPOJO("servers", objArray);
+		JSONObject obj = addhostserivce.importFromExcel(totalObj.toString());
+		if (obj != null) {
+			if (obj.getInt("status") == 1 ) {
 				JSONObject json = new JSONObject();
 				json.put("msg", "success");
+				json.put("detail", obj.get("message").toString());
 				request.setAttribute("status", "success");
 				return json.toString();// 成功
-			} else if (stat == 2) {
-				request.setAttribute("status", "success");
-				JSONObject json = new JSONObject();
-				json.put("msg", "success");
-				return json.toString();//
 			} else {
 				request.setAttribute("status", "failure");
 				JSONObject json = new JSONObject();
 				json.put("msg", "failure");
 				return json.toString();//
-
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		JSONObject json = new JSONObject();
-		json.put("msg", "failure");
-		return json.toString();
-		// return "1";
-
+		return null;
 	}
 
 	// 封装多选的product 属性 [mq was db2 itm] to mq,was,db2,itm

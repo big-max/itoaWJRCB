@@ -131,7 +131,7 @@ public class ServerServiceImpl implements ServerService {
 	}
 
 	@Override
-	public int importFromExcel(String lsb) {
+	public JSONObject importFromExcel(String lsb) {
 		String hdiskHost = amsCfg.getProperty(PropertyKeyConst.AMS2_HOST);
 		String hdiskApi = amsCfg.getProperty(PropertyKeyConst.POST_ams2_service_servers);
 		String strOrgUrl = hdiskHost + hdiskApi;
@@ -146,16 +146,17 @@ public class ServerServiceImpl implements ServerService {
 			logger.info(response);
 			if (!response.equals("")) {
 				JSONObject jsonObj = JSONObject.fromObject(response);
-				Integer retVal = (Integer) jsonObj.get("status");
-				if (retVal == 1)
-					return 1;
+				return jsonObj;
+				//Integer retVal = (Integer) jsonObj.get("status");
+				//if (retVal == 1)
+				//	return 1;
 				// else return -1;
 			}
 		} catch (JSONException e1) {
 			logger.error("json 格式存在异常！" + e1.getMessage());
 			e1.printStackTrace();
 		}
-		return 0;
+		return null;
 	}
 
 	@Override

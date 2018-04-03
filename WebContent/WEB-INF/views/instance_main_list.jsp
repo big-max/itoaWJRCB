@@ -360,13 +360,13 @@ input[type="text"],input[type="password"] {
 										data-target="#add_single">
 										<font color="white">添加主机</font>
 									</button>
-									<!--  
+									 
 									<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
 									<button class="btn btn-sm" data-toggle="modal" style="background-color: #448FC8;"
 										data-target="#add_more">
 										<font color="white">批量导入</font>
 									</button>
-									-->
+									
 									<span style="margin-right: 5px;">&nbsp;&nbsp;&nbsp;</span>
 									<button onclick="editServer()" class="btn btn-sm" data-toggle="modal"
 										style="background-color: #448FC8;">
@@ -1052,10 +1052,12 @@ input[type="text"],input[type="password"] {
 
 			success : function(result) 
 			{
+				
 				if (result.msg == 'success') 
 				{
 					getId("wait_success").style.display = "";
 					getId("submits").style.display = "";
+					sweet(result.detail,"success","确定");
 				}
 				if (result.msg == 'failure') 
 				{
