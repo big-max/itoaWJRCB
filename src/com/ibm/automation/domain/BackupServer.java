@@ -24,15 +24,21 @@ public class BackupServer implements Serializable{
 
     private String manageUrl;
     
+    private String user;
+    
+    private String passwd;
+    
     public BackupServer(){
     	super();
     }
     
-    public BackupServer(String type, String ip, String version){
+    public BackupServer(String type, String ip, String version, String user, String passwd){
     	super();
     	this.type = type;
     	this.ip = ip;
     	this.version = version;
+    	this.user = user;
+    	this.passwd = passwd;
     }
 
     public Integer getId() {
@@ -90,4 +96,20 @@ public class BackupServer implements Serializable{
     public void setManageUrl(String manageUrl) {
         this.manageUrl = manageUrl == null ? null : manageUrl.trim();
     }
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getPasswd() {
+		return passwd;
+	}
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
 }

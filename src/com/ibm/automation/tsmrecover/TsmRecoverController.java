@@ -79,8 +79,10 @@ public class TsmRecoverController {
 		String serverType = request.getParameter("addServer_type");
 		String serverIP = request.getParameter("addServer_ip");
 		String serverVersion = request.getParameter("addServer_version");
+		String serverUser = request.getParameter("addServer_user");
+		String serverPasswd = request.getParameter("addServer_passwd");
 		
-		BackupServer bs = new BackupServer(serverType, serverIP, serverVersion);
+		BackupServer bs = new BackupServer(serverType, serverIP, serverVersion, serverUser, serverPasswd);
 		
 		int insertRecord = bsm.insertSelective(bs);
 		JSONObject json = new JSONObject();

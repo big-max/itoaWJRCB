@@ -131,7 +131,7 @@ body{
 	</div>
 	
 	<!-- 添加服务器弹出框 -->
- 	<div id="addServer" class="easyui-window" title="添加服务器" style="width:30%;height:250px;padding:10px;"
+ 	<div id="addServer" class="easyui-window" title="添加服务器" style="width:30%;height:350px;padding:10px;"
 			data-options="modal:true,closed:true,minimizable:false,maximizable:false"> 
 		<form id="addServer_form" method="post">
 			<div class="addSerMain">
@@ -150,6 +150,18 @@ body{
 				<div class="addSerSub1">版本&nbsp;：</div>
 				<div class="addSerSub2">
 					<input class="easyui-textbox" name="addServer_version" style="width:100%" data-options="required:true">
+				</div>
+			</div>
+			<div class="addSerMain">
+				<div class="addSerSub1">用户名&nbsp;：</div>
+				<div class="addSerSub2">
+					<input class="easyui-textbox" name="addServer_user" style="width:100%" data-options="required:true">
+				</div>
+			</div>
+			<div class="addSerMain">
+				<div class="addSerSub1">密码&nbsp;：</div>
+				<div class="addSerSub2">
+					<input class="easyui-textbox" name="addServer_passwd" style="width:100%" data-options="required:true">
 				</div>
 			</div>
 		</form>

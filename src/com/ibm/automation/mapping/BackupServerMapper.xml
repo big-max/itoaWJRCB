@@ -9,9 +9,11 @@
     <result column="last_syc_time" property="lastSycTime" jdbcType="TIMESTAMP" />
     <result column="last_syc_mode" property="lastSycMode" jdbcType="VARCHAR" />
     <result column="manage_url" property="manageUrl" jdbcType="VARCHAR" />
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    <result column="passwd" property="passwd" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, type, ip, version, last_syc_time, last_syc_mode, manage_url
+    id, type, ip, version, last_syc_time, last_syc_mode, manage_url, user, passwd
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -31,10 +33,10 @@
   <insert id="insert" parameterType="com.ibm.automation.domain.BackupServer" >
     insert into backup_server (id, type, ip, 
       version, last_syc_time, last_syc_mode, 
-      manage_url)
+      manage_url, user, passwd)
     values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
       #{version,jdbcType=VARCHAR}, #{lastSycTime,jdbcType=TIMESTAMP}, #{lastSycMode,jdbcType=VARCHAR}, 
-      #{manageUrl,jdbcType=VARCHAR})
+      #{manageUrl,jdbcType=VARCHAR},#{user,jdbcType=VARCHAR}, #{passwd,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ibm.automation.domain.BackupServer" >
     insert into backup_server
@@ -48,6 +50,12 @@
       <if test="version != null" >
         version,
       </if>
+      <if test="user != null" >
+        user,
+      </if>
+      <if test="passwd != null" >
+        passwd,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="type != null" >
@@ -58,6 +66,12 @@
       </if>
       <if test="version != null" >
         #{version,jdbcType=VARCHAR},
+      </if>
+       <if test="user != null" >
+        #{user,jdbcType=VARCHAR},
+      </if>
+       <if test="passwd != null" >
+        #{passwd,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -82,6 +96,12 @@
       <if test="manageUrl != null" >
         manage_url = #{manageUrl,jdbcType=VARCHAR},
       </if>
+      <if test="user != null" >
+        user = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null" >
+        passwd = #{passwd,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -92,7 +112,9 @@
       version = #{version,jdbcType=VARCHAR},
       last_syc_time = #{lastSycTime,jdbcType=TIMESTAMP},
       last_syc_mode = #{lastSycMode,jdbcType=VARCHAR},
-      manage_url = #{manageUrl,jdbcType=VARCHAR}
+      manage_url = #{manageUrl,jdbcType=VARCHAR},
+      user = #{user,jdbcType=VARCHAR},
+      passwd = #{passwd,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
