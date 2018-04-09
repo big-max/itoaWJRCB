@@ -56,6 +56,6 @@ public class AutoPublishWasController {
 	
 	@RequestMapping("/autopublishEsb.do")
 	public String autopublishEsb(HttpServletRequest request, HttpSession session) {
-		return "autopublish/instance_autopublish_esb";
+		return "autopublish/instance_autopublish_esb_main";
 	}
 }
