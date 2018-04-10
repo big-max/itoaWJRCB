@@ -84,8 +84,8 @@
 		<!-- 表格 -->
 		<div style="width:95%;margin:0 auto;">
 			<div id="toolbar" style="margin-bottom:5px;margin-top:5px;">
-				<button class="easyui-linkbutton" iconCls="icon-redo" onclick="">发布</button>
-				<button class="easyui-linkbutton" iconCls="icon-back" onclick="">回滚</button>
+				<button class="easyui-linkbutton" iconCls="icon-redo" onclick="publish()">发布</button>
+				<button class="easyui-linkbutton" iconCls="icon-back" onclick="backroll()">回滚</button>
 			</div>
 			<table class="easyui-datagrid" id="total_table" title="" style="width:100%;height:auto;">
 				<thead>
@@ -101,15 +101,29 @@
 				</thead>
 				<tbody>
 					<tr>
-	                    <th>序号</th>
-	                    <th>类型</th>
-	                    <th>IP</th>
-	                    <th>备份对象</th>
-	                    <th>数据库版本</th>
+	                    <td></td>
+	                    <td>1</td>
+	                    <td>1</td>
+	                    <td>1</td>
+	                    <td>1</td>
+	                    <td>1</td>
+	                    <td>1</td>
 	                </tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 </body>
+
+<script>
+	function publish()
+	{
+		window.location.href = "toStepSelect.do";
+	}
+	
+	function backroll()
+	{
+		window.location.href = "toStepChange.do";
+	}
+</script>
 </html>

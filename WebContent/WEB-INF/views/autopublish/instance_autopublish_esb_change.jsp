@@ -26,6 +26,8 @@
 .divbott { margin-bottom:20px; }
 .inptext { float:left;width:120px;text-align:right;margin-top:2px; }
 .inptext1 { float:left;width:120px;text-align:left;margin-top:2px; }
+.checkstyle{ float:left;width:80px;height:27px;line-height:27px; }
+#real_log{ width:100%;height:98.6%;resize:none;border:0px; }
 </style>
 </head>
 
@@ -44,71 +46,79 @@
 		</div>
 		
 		<div class="easyui-layout" style="width:99.8%;height:95%;margin:0 auto;">
-			<div data-options="region:'west'" title="基本信息" style="width:30%;padding:10px">
+			<div data-options="region:'west'" title="步骤3：应用信息" style="width:30%;padding:10px">
 				<div class="divbott">
 					<div class="inptext">
-						<label>变更系统&nbsp;&nbsp;&nbsp;</label>
+						<label>变更系统:&nbsp;&nbsp;&nbsp;</label>
 					</div>
-					<div>
-						<input class="easyui-textbox" id="esb_os" name="esb_os" value="" readonly style="width:60%;height:30px;">
+					<div style="padding-top:2px;">
+						<label>SmartESB</label>
+					</div>
+				</div>
+				
+				<div class="divbott" style="height:20px;">
+					<div class="inptext">
+						<label>变更类型:&nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div style="padding-top:2px;">
+						<label>应用程序</label>
 					</div>
 				</div>
 				
 				<div class="divbott">
 					<div class="inptext">
-						<label>变更类型&nbsp;&nbsp;&nbsp;</label>
+						<label>应用发布包:&nbsp;&nbsp;&nbsp;</label>
 					</div>
-					<div>
-						<input class="easyui-textbox" id="esb_type" name="esb_type" value="" readonly style="width:60%;height:30px;">
-					</div>
-				</div>
-				
-				<div class="divbott">
-					<div class="inptext">
-						<label>变更版本&nbsp;&nbsp;&nbsp;</label>
-					</div>
-					<div>
-						<input class="easyui-textbox" id="esb_version" name="esb_version" value="" readonly style="width:60%;height:30px;">
+					<div style="padding-top:2px;">
+						<label>APP.war</label>
 					</div>
 				</div>
 				
 				<div class="divbott">
 					<div class="inptext">
-						<label>变更时间&nbsp;&nbsp;&nbsp;</label>
+						<label>变更目标:&nbsp;&nbsp;&nbsp;</label>
 					</div>
-					<div>
-						<input class="easyui-textbox" id="esb_time" name="esb_time" value="" readonly style="width:60%;height:30px;">
+					<div style="padding-top:2px;">
+						<input class="easyui-textbox" multiline="true" value="" style="width:220px;height:80px">
+					</div>
+				</div>
+				
+				<div class="divbott" style="display:none;">
+					<div class="inptext">
+						<label>数据库发布包:&nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div style="padding-top:2px;">
+						<label></label>
+					</div>
+				</div>
+				
+				<div class="divbott" style="display:none;">
+					<div class="inptext">
+						<label>数据库服务器&nbsp;&nbsp;&nbsp;</label>
+					</div>
+					<div style="padding-top:2px;">
+						<label></label>
 					</div>
 				</div>
 				
 				<div class="divbott">
 					<div class="inptext">
-						<label>变更目标&nbsp;&nbsp;&nbsp;</label>
+						<label>变更状态:&nbsp;&nbsp;&nbsp;</label>
 					</div>
-					<div>
-						<input id="esb_target" name="esb_target" style="width:60%;" class="easyui-combobox" multiple="multiple"
-							data-options="valueField: 'esb_target',textField: 'esb_target',editable:false">
-					</div>
-				</div>
-				
-				<div class="divbott">
-					<div class="inptext">
-						<label>变更状态&nbsp;&nbsp;&nbsp;</label>
-					</div>
-					<div class="inptext1">
-						<span id="esb_status" style="font-size:13px;"></span>
+					<div style="padding-top:2px;">
+						<label>进行中</label>
 					</div>
 				</div>
 				
 				<div style="margin-top:60px;">
 					<div style="float:left;width:38%;margin-left:50px;">
-						<a id="retry" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:100%;">
+						<a id="retry" href="#" class="easyui-linkbutton" onclick="retry()" style="padding:5px 0px;width:100%;">
 							<span style="font-size:14px;">重试</span>
 						</a>
 					</div>
 					<div style="float:right;width:38%;margin-right:20px;">
-						<a id="back" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-back'" style="padding:5px 0px;width:100%;">
-							<span style="font-size:14px;">回滚</span>
+						<a id="close" href="#" class="easyui-linkbutton" onclick="close()" style="padding:5px 0px;width:100%;">
+							<span style="font-size:14px;">关闭</span>
 						</a>
 					</div>
 				</div>
@@ -116,9 +126,16 @@
 			</div>
 			
 			<div data-options="region:'center'" title="实时日志">
-				<textarea id="real_log" style="width:100%;height:98.6%;resize:none;border:0px;"></textarea>
+				<textarea id="real_log"></textarea>
 			</div>
 		</div>
 	</div>
 </body>
+
+<script>
+	function Submits()
+	{
+		
+	}
+</script>
 </html>

@@ -58,4 +58,19 @@ public class AutoPublishWasController {
 	public String autopublishEsb(HttpServletRequest request, HttpSession session) {
 		return "autopublish/instance_autopublish_esb_main";
 	}
+	
+	@RequestMapping("/toStepSelect.do")
+	public String toStepSelect(HttpServletRequest request, HttpSession session) {
+		return "autopublish/instance_autopublish_esb_select";
+	}
+	
+	@RequestMapping("/toStepSubmit.do")
+	public String toStepSubmit(HttpServletRequest request, HttpSession session) {
+		return "autopublish/instance_autopublish_esb_submit";
+	}
+	
+	@RequestMapping("/toStepChange.do")
+	public String toStepChange(HttpServletRequest request, HttpSession session) {
+		return "autopublish/instance_autopublish_esb_change";
+	}
 }
