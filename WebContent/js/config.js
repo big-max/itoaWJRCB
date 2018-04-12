@@ -10,7 +10,8 @@ function playbook_property(){
 	 this.serverip="192.168.80.154",
 	 this.serverport="8000",
 	 this.runapi="/api/v1/run",
-	 this.version_fp_api="/api/v1/fp"
+	 this.version_fp_api="/api/v1/fp",
+     this.recovery_api="/api/v1/tsm"
 };   
 playbook_property.prototype.get=function(param){ 
 	 return this[param];  

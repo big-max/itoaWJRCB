@@ -125,6 +125,8 @@ body{
                     <th data-options="field:'lastSycTime',width:'20%'">上次同步时间</th>
                     <th data-options="field:'lastSycMode',width:'16%'">上次同步方式</th>
                     <th data-options="field:'manageUrl',width:'15%',formatter:formatOper">管理操作</th>
+                    <th data-options="field:'user',width:'15%',hidden:'true'">用户名</th>
+                    <th data-options="field:'passwd',width:'15%',hidden:'true'">用户名</th>
                 </tr>
 			</thead>
 		</table>
@@ -172,12 +174,33 @@ body{
 </body>
 
 <script>
-	////点击“备份服务器弹出框”的刷新按钮 
+	var  playbook_property =new  playbook_property();
+	//点击“备份服务器弹出框”的刷新按钮 
 	function formatOper(val,row,index){ 
-	  return '<a href="#" rel="external nofollow" style="color:#000" onclick="editUser('+index+')">刷新</a>'; 
+	  return '<a href="#" rel="external nofollow" style="color:#000" onclick="refresh('+index+')">刷新</a>'; 
 	}
-	function editUser(){
-		alert("hhh ");
+	
+	//点击行内的刷新按钮，后台更新该备份服务器信息
+	function refresh(index){
+		var id = $('#bakser_table').datagrid('getData').rows[index].id;
+		var user = $('#bakser_table').datagrid('getData').rows[index].user;
+		var passwd = $('#bakser_table').datagrid('getData').rows[index].passwd;
+		var ip = $('#bakser_table').datagrid('getData').rows[index].ip;
+		var param = {
+			'operation':'getTSMBackupInfo',
+			'username':user,
+			'password':passwd,
+			'ip':ip
+		};
+		$.ajax({
+			url: "http://" + playbook_property.get('serverip') + ":" + playbook_property.get('serverport') + playbook_property.get('recovery_api'),
+			type: 'post',
+			data:JSON.stringify(param),
+			dataType: 'json',
+			success: function(data){
+				
+			}
+		});
 	};
 
 	//点击“删除服务器”，对应的操作
