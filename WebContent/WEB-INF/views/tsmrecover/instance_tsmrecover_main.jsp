@@ -73,15 +73,15 @@ body{
 				<button class="easyui-linkbutton" iconCls="icon-edit" onclick="openWin()">备份服务器</button>
 			</div>
 			
-			<table class="easyui-datagrid" id="total_table" title="自动化备份恢复" style="width: 100%;height:95%;">
+			<table class="easyui-datagrid" id="total_table" title="自动化备份恢复" style="width: 100%;height:95%;" rownumbers="false" pagination="true" >
 				<thead>
 	                <tr>
-	                    <th data-options="field:'total_id',width:'1%',checkbox:true">序号</th>
-	                    <th data-options="field:'total_ywtype',width:'19%'">业务类型</th>
-	                    <th data-options="field:'total_baktype',width:'20%'">备份类型</th>
-	                    <th data-options="field:'total_target',width:'20%'">备份对象</th>
-	                    <th data-options="field:'total_version',width:'20%'">数据库版本</th>
-	                    <th data-options="field:'total_ip',width:'20%'">IP</th>
+	                    <th data-options="field:'tsmId',width:'1%',checkbox:true">序号</th>
+	                    <th data-options="field:'businessType',width:'19%'">业务类型</th>
+	                    <th data-options="field:'backupType',width:'20%'">备份类型</th>
+	                    <th data-options="field:'dbName',width:'20%'">备份对象</th>
+	                    <th data-options="field:'dbVersion',width:'20%'">数据库版本</th>
+	                    <th data-options="field:'ip',width:'20%'">IP</th>
 	                </tr>
 				</thead>
 				<tbody>
@@ -182,6 +182,7 @@ body{
 	
 	//点击行内的刷新按钮，后台更新该备份服务器信息
 	function refresh(index){
+		alert(index);
 		var id = $('#bakser_table').datagrid('getData').rows[index].id;
 		var user = $('#bakser_table').datagrid('getData').rows[index].user;
 		var passwd = $('#bakser_table').datagrid('getData').rows[index].passwd;
@@ -312,5 +313,24 @@ body{
 		}
 		return false;
 	}
+	
+	//“页面加载备份记录”
+	//打开备份服务器弹出框的时候，加载数据并显示
+	$(document).ready(function(){
+		$('#total_table').datagrid({  
+	        url: '/showBackupInfo.do',
+	        pageSize:10
+	    }); 
+	  
+	    //设置分页控件  
+	    var p = $('#total_table').datagrid('getPager');  
+	    p.pagination({  
+	        pageSize: 10,//每页显示的记录条数，默认为10  
+	        pageList: [5, 10, 15],//可以设置每页记录条数的列表  
+	        beforePageText: '第',//页数文本框前显示的汉字  
+	        afterPageText: '页    共 {pages} 页',  
+	        displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录'  
+	    }); 
+	});		
 </script>
 </html>

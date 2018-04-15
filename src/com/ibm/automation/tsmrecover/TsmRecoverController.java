@@ -1,6 +1,8 @@
 package com.ibm.automation.tsmrecover;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,15 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.ibm.automation.ams.service.AmsRestService;
-import com.ibm.automation.core.bean.ServersBean;
 import com.ibm.automation.core.dao.BackupServerMapper;
-import com.ibm.automation.core.service.ServerService;
+import com.ibm.automation.core.dao.TsminfoMapper;
 import com.ibm.automation.core.util.PropertyUtil;
-import com.ibm.automation.core.util.ServerUtil;
 import com.ibm.automation.domain.BackupServer;
+import com.ibm.automation.domain.Tsminfo;
 
 import net.sf.json.JSONObject;
 
@@ -31,9 +29,7 @@ public class TsmRecoverController {
 	@Autowired
 	private BackupServerMapper bsm;
 	@Autowired
-	private ServerService service;
-	@Autowired
-	private AmsRestService amsRestService;
+	private TsminfoMapper tim;
 	private static Logger logger = Logger.getLogger(TsmRecoverController.class);
 	Properties amsprop = PropertyUtil.getResourceFile("config/properties/ams2.properties");
 	ObjectMapper om = new ObjectMapper();
@@ -73,6 +69,9 @@ public class TsmRecoverController {
 		return "/tsmrecover/instance_tsmrecover_log_details";
 	}
 	
+	/*
+	 * 处理添加备份服务器请求
+	 */
 	@RequestMapping("/addBackupServer.do")
 	@ResponseBody
 	public String addBackupServer(HttpServletRequest request, HttpSession session) {
@@ -95,6 +94,9 @@ public class TsmRecoverController {
 		return json.toString();
 	}
   
+	/*
+	 * 处理展示备份服务器列表请求
+	 */
 	@RequestMapping("/showBackupServer.do")
 	@ResponseBody
 	public String showBackupServer(HttpServletRequest request, HttpSession session) {
@@ -115,6 +117,9 @@ public class TsmRecoverController {
 		}
 	}
 	
+	/*
+	 * 处理删除备份服务器请求
+	 */
 	@RequestMapping("/delBackupServer.do")
 	@ResponseBody
 	public String delBackupServer(HttpServletRequest request) {
@@ -138,5 +143,48 @@ public class TsmRecoverController {
 			json.put("msg", "failed");
 		}
 		return json.toString();
+	}
+	
+	/*
+	 * 处理展示备份记录列表请求
+	 */
+	@RequestMapping("/showBackupInfo.do")
+	@ResponseBody
+	public String showBackupInfo(HttpServletRequest request, HttpSession session) {
+		String s_pageStart = request.getParameter("page");
+		String s_pageSize = request.getParameter("rows");
+		logger.info("page is :" + s_pageStart);
+		logger.info("rows is :" + s_pageSize);
+		if(s_pageStart != null && s_pageSize != null){
+			Map<String,Integer> map = new HashMap<String,Integer>();
+			Integer rowStart = Integer.parseInt(s_pageSize)*(Integer.parseInt(s_pageStart)-1);
+			map.put("rowStart", rowStart);
+			map.put("pageSize", Integer.parseInt(s_pageSize));
+			
+			List<Tsminfo> serverList = tim.selectPage(map);
+			int pageCount = tim.selectCount();
+			
+			try {
+				ObjectMapper mapper= new ObjectMapper();
+				String jsonStr = mapper.writeValueAsString(serverList);
+				JSONObject json = new JSONObject();
+				json.put("total", pageCount);
+				json.put("rows", jsonStr);
+				return json.toString();
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+				JSONObject json = new JSONObject();
+				json.put("msg", "error");
+				return json.toString();
+			}
+		}else if(s_pageStart == null){
+			JSONObject json = new JSONObject();
+			json.put("msg", "page is null");
+			return json.toString();
+		}else {
+			JSONObject json = new JSONObject();
+			json.put("msg", "rows is null");
+			return json.toString();
+		}
 	}
 }
