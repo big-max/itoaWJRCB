@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibm.automation.core.dao.TsminfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ibm.automation.domain.Tsminfo" >
+    <id column="tsm_id" property="tsmId" jdbcType="INTEGER" />
+    <result column="business_type" property="businessType" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="backup_type" property="backupType" jdbcType="VARCHAR" />
+    <result column="db_name" property="dbName" jdbcType="VARCHAR" />
+    <result column="db_version" property="dbVersion" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tsm_id, business_type, ip, backup_type, db_name, db_version
+  </sql>
+  <select id="selectCount" resultType="java.lang.Integer">
+  	select count(*) from tsm_info
+  </select>
+  <select id="selectPage" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from tsm_info 
+  	order by business_type 
+  	limit #{rowStart}, #{pageSize}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tsm_info
+    where tsm_id = #{tsmId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tsm_info
+    where tsm_id = #{tsmId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ibm.automation.domain.Tsminfo" >
+    insert into tsm_info (tsm_id, business_type, ip, 
+      backup_type, db_name, db_version
+      )
+    values (#{tsmId,jdbcType=INTEGER}, #{businessType,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{backupType,jdbcType=VARCHAR}, #{dbName,jdbcType=VARCHAR}, #{dbVersion,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ibm.automation.domain.Tsminfo" >
+    insert into tsm_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsmId != null" >
+        tsm_id,
+      </if>
+      <if test="businessType != null" >
+        business_type,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="backupType != null" >
+        backup_type,
+      </if>
+      <if test="dbName != null" >
+        db_name,
+      </if>
+      <if test="dbVersion != null" >
+        db_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsmId != null" >
+        #{tsmId,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null" >
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="backupType != null" >
+        #{backupType,jdbcType=VARCHAR},
+      </if>
+      <if test="dbName != null" >
+        #{dbName,jdbcType=VARCHAR},
+      </if>
+      <if test="dbVersion != null" >
+        #{dbVersion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibm.automation.domain.Tsminfo" >
+    update tsm_info
+    <set >
+      <if test="businessType != null" >
+        business_type = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="backupType != null" >
+        backup_type = #{backupType,jdbcType=VARCHAR},
+      </if>
+      <if test="dbName != null" >
+        db_name = #{dbName,jdbcType=VARCHAR},
+      </if>
+      <if test="dbVersion != null" >
+        db_version = #{dbVersion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tsm_id = #{tsmId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ibm.automation.domain.Tsminfo" >
+    update tsm_info
+    set business_type = #{businessType,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      backup_type = #{backupType,jdbcType=VARCHAR},
+      db_name = #{dbName,jdbcType=VARCHAR},
+      db_version = #{dbVersion,jdbcType=VARCHAR}
+    where tsm_id = #{tsmId,jdbcType=INTEGER}
+  </update>
+</mapper>
