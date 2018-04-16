@@ -22,8 +22,8 @@
 	height:calc(100vh - 70px);
 }
 .current1,.current1:hover { color: #444444; }
-.par1{ width:calc(100% - 57px);height:150px;margin:0 auto; }
-.par1_sub{ width:40%;height:150px;float:left; }
+.par1{ width:calc(100% - 57px);height:130px;margin:0 auto; }
+.par1_sub{ width:40%;height:130px;float:left; }
 .line{ width:100%;height:30px; }
 .line1{ width:30%;height:30px;line-height:30px;text-align:right;float:left;font-size:14px; }
 .line2{ width:70%;height:30px;line-height:30px;float:left;font-size:14px; }
@@ -82,34 +82,23 @@
 		</div>
 		
 		<!-- 表格 -->
-		<div style="width:95%;margin:0 auto;">
-			<div id="toolbar" style="margin-bottom:5px;margin-top:5px;">
+		<div style="width:95%;margin:0 auto;height:79%;">
+			<div id="toolbar" style="margin-bottom:5px;">
 				<button class="easyui-linkbutton" iconCls="icon-redo" onclick="publish()">发布</button>
 				<button class="easyui-linkbutton" iconCls="icon-back" onclick="backroll()">回滚</button>
 			</div>
-			<table class="easyui-datagrid" id="total_table" title="" style="width:100%;height:auto;">
+			<table class="easyui-datagrid" id="total_table" title="" style="width:100%;height:80%;"> 
 				<thead>
 	                <tr>
 	                    <th data-options="field:'total_id',width:'1%',checkbox:true">选择</th>
 	                    <th data-options="field:'total_ywtype',width:'15%'">发布时间</th>
-	                    <th data-options="field:'total_baktype',width:'20%'">发布类型</th>
+	                    <th data-options="field:'total_baktype',width:'19%'">发布类型</th>
 	                    <th data-options="field:'total_target',width:'21.3%'">发布节点</th>
 	                    <th data-options="field:'total_version',width:'15%'">发布员</th>
-	                    <th data-options="field:'total_ip',width:'14%'">发布状态</th>
+	                    <th data-options="field:'total_status',width:'14%'">发布状态</th>
 	                    <th data-options="field:'total_ip',width:'15%'">日志</th>
 	                </tr>
 				</thead>
-				<tbody>
-					<tr>
-	                    <td></td>
-	                    <td>1</td>
-	                    <td>1</td>
-	                    <td>1</td>
-	                    <td>1</td>
-	                    <td>1</td>
-	                    <td>1</td>
-	                </tr>
-				</tbody>
 			</table>
 		</div>
 	</div>
@@ -125,5 +114,25 @@
 	{
 		window.location.href = "toStepChange.do";
 	}
+</script>
+
+<script type="text/javascript">
+	$(function(){
+	    var dg = $('#total_table').datagrid().datagrid('enableFilter');
+	});
+	
+	//表格显示初始化
+	$('#total_table').datagrid({  
+        pagination: true,     //开启分页  
+        pageSize: 10,         //分页大小  
+        pageNumber:1,         //第几页显示（默认第一页，可以省略）  
+        pageList: [10,20,30],  //设置每页记录条数的列表   
+        url: 'getdailysms.do' 
+    });
+	
+	//分页中文显示设置 
+	$.fn.pagination.defaults.beforePageText = '第';
+	$.fn.pagination.defaults.afterPageText = '共 {pages} 页';
+	$.fn.pagination.defaults.displayMsg = '显示 {from} 到 {to} ,共 {total} 记录';
 </script>
 </html>
