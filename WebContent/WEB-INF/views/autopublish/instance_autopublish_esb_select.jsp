@@ -61,11 +61,11 @@
 					</div>
 					<div>
 						<div style="float:left;width:20px;">
-							<input type="checkbox" name="esb_type" value="1" />
+							<input id="app_checkbox" type="checkbox" name="esb_type" value="1" />
 						</div>
 						<div class="checkstyle">应用程序</div>
 						<div style="float:left;width:20px;">
-							<input type="checkbox" name="esb_type" value="1" />
+							<input id="db_checkbox" type="checkbox" name="esb_type" value="1" />
 						</div>
 						<div class="checkstyle">数据库</div>
 					</div>
@@ -76,7 +76,7 @@
 						<label>应用发布包&nbsp;&nbsp;&nbsp;</label>
 					</div>
 					<div>
-						<input class="easyui-filebox" id="esb_appwar" data-options="prompt:'选择文件'" style="width:220px;">
+						<input class="easyui-filebox" id="esb_appwar" data-options="prompt:'选择文件'" style="width:220px;" disabled>
 					</div>
 				</div>
 				
@@ -85,7 +85,7 @@
 						<label>应用服务器&nbsp;&nbsp;&nbsp;</label>
 					</div>
 					<div>
-						<select class="easyui-combobox" id="esb_appserver" name="esb_appserver" style="width:220px;" multiple>
+						<select class="easyui-combobox" id="esb_appserver" name="esb_appserver" style="width:220px;" multiple readonly>
 							<option value="10.1.120.10" selected="selected">10.1.120.10</option>
 							<option value="10.1.120.11">10.1.120.11</option>
 						</select>
@@ -97,7 +97,7 @@
 						<label>数据库发布包&nbsp;&nbsp;&nbsp;</label>
 					</div>
 					<div>
-						<input class="easyui-filebox" id="esb_db" data-options="prompt:'选择文件'" style="width:220px;">
+						<input class="easyui-filebox" id="esb_db" data-options="prompt:'选择文件'" style="width:220px;" disabled>
 					</div>
 				</div>
 				
@@ -106,7 +106,7 @@
 						<label>数据库服务器&nbsp;&nbsp;&nbsp;</label>
 					</div>
 					<div>
-						<select class="easyui-combobox" id="esb_dbserver" name="esb_dbserver" style="width:220px;" multiple>
+						<select class="easyui-combobox" id="esb_dbserver" name="esb_dbserver" style="width:220px;" multiple readonly>
 							<option value="10.1.120.10" selected="selected">10.1.120.10</option>
 							<option value="10.1.120.11">10.1.120.11</option>
 						</select>
@@ -132,6 +132,31 @@
 	$(document).ready(function(){
 		$("#retry").click(function(){
 			window.location.href = "toStepSubmit.do";
+		})
+	})
+	
+	$(document).ready(function(){		
+		$("#app_checkbox").click(function(){
+			var flag1 = $("#app_checkbox").is(":checked");
+			if(flag1 == true){
+				$("#esb_appwar").combobox("enable");
+				$("#esb_appserver").combobox("readonly", false);
+			}
+			else{
+				$("#esb_appwar").combobox("disable");
+				$("#esb_appserver").combobox("readonly", true);
+			}
+		})
+		$("#db_checkbox").click(function(){
+			var flag2 = $("#db_checkbox").is(":checked");
+			if(flag2 == true){
+				$("#esb_db").combobox("enable");
+				$("#esb_dbserver").combobox("readonly", false);
+			}
+			else{
+				$("#esb_db").combobox("disable");
+				$("#esb_dbserver").combobox("readonly", true);
+			}
 		})
 	})
 </script>
