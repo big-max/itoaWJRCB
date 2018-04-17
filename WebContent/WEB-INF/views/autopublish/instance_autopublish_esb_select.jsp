@@ -54,14 +54,14 @@
 						<input class="easyui-textbox" id="esb_os" name="esb_os" value="" readonly style="width:60%;height:30px;">
 					</div>
 				</div> -->
-				
+				<form id="submits" action="postFormElement.do" enctype="multipart/form-data" method="post">
 				<div class="divbott" style="height:20px;">
 					<div class="inptext">
 						<label>变更类型&nbsp;&nbsp;&nbsp;</label>
 					</div>
 					<div>
 						<div style="float:left;width:20px;">
-							<input id="app_checkbox" type="checkbox" name="esb_type" value="1" />
+							<input id="app_checkbox" type="checkbox" name="esb_type" value="0" />
 						</div>
 						<div class="checkstyle">应用程序</div>
 						<div style="float:left;width:20px;">
@@ -76,7 +76,7 @@
 						<label>应用发布包&nbsp;&nbsp;&nbsp;</label>
 					</div>
 					<div>
-						<input class="easyui-filebox" id="esb_appwar" data-options="prompt:'选择文件'" style="width:220px;" disabled>
+						<input  name="esb_appfile" class="easyui-filebox" id="esb_appwar" data-options="prompt:'选择文件'" style="width:220px;">
 					</div>
 				</div>
 				
@@ -97,7 +97,7 @@
 						<label>数据库发布包&nbsp;&nbsp;&nbsp;</label>
 					</div>
 					<div>
-						<input class="easyui-filebox" id="esb_db" data-options="prompt:'选择文件'" style="width:220px;" disabled>
+						<input  name="esb_dbfile" class="easyui-filebox" id="esb_db" data-options="prompt:'选择文件'" style="width:220px;" >
 					</div>
 				</div>
 				
@@ -112,13 +112,17 @@
 						</select>
 					</div>
 				</div>
-				
+				</form>
 				<div style="margin:0 auto;margin-top:60px;width:80%;">
-					<a id="retry" href="#" class="easyui-linkbutton" style="padding:5px 0px;width:100%;">
-						<span style="font-size:14px;">下一步</span>
+					<a id="retry" href="javascript:void(0)" class="easyui-linkbutton" style="padding:5px 0px;width:100%;">
+						<span style="font-size:14px;">提交</span>
 					</a>
 				</div>
-				
+				<div style="margin:0 auto;margin-top:60px;width:80%;">
+					<a id="rollback" href="javascript:void(0)" class="easyui-linkbutton" style="padding:5px 0px;width:100%;">
+						<span style="font-size:14px;">回滚</span>
+					</a>
+				</div>
 			</div>
 			
 			<div data-options="region:'center'" title="实时日志">
@@ -131,7 +135,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#retry").click(function(){
-			window.location.href = "toStepSubmit.do";
+			//陈芙蓉写  判断 checkbox 必须至少选择一个
+			
+			$("#submits").submit();
+			//window.location.href = "toStepSubmit.do";
 		})
 	})
 	
@@ -139,22 +146,22 @@
 		$("#app_checkbox").click(function(){
 			var flag1 = $("#app_checkbox").is(":checked");
 			if(flag1 == true){
-				$("#esb_appwar").combobox("enable");
+				$("#esb_appwar").combobox("readonly",false);
 				$("#esb_appserver").combobox("readonly", false);
 			}
 			else{
-				$("#esb_appwar").combobox("disable");
+				$("#esb_appwar").combobox("readonly");
 				$("#esb_appserver").combobox("readonly", true);
 			}
 		})
 		$("#db_checkbox").click(function(){
 			var flag2 = $("#db_checkbox").is(":checked");
 			if(flag2 == true){
-				$("#esb_db").combobox("enable");
+				$("#esb_db").combobox("readonly",false);
 				$("#esb_dbserver").combobox("readonly", false);
 			}
 			else{
-				$("#esb_db").combobox("disable");
+				$("#esb_db").combobox("readonly");
 				$("#esb_dbserver").combobox("readonly", true);
 			}
 		})
