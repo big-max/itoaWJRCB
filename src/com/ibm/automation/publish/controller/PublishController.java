@@ -2,6 +2,9 @@ package com.ibm.automation.publish.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +28,8 @@ public class PublishController {
 	public PublishRecordService publishRecordService;
 	public static final String APP_FILE_PATH = "/home/data/itoa/deploy/esb/app"; // APP保存的文件路径
 	public static final String DB_FILE_PATH = "/home/data/itoa/deploy/esb/db"; // DB文件保存的文件路径
+	public static final String APP_FILE_TYPE = "SmartESB_AP_V%s_%s.zip";
+	public static final String DB_FILE_TYPE = "SmartESB_DB_V%s_%s.zip";
 
 	@RequestMapping("/getAllPubRecord.do")
 	@ResponseBody
@@ -35,9 +40,8 @@ public class PublishController {
 	}
 
 	// 根据文件的类型保存文件
-	public boolean saveFile(MultipartFile file, String filePath) {
+	public boolean saveFile(MultipartFile file,  String filePath) {
 		if (!file.isEmpty()) {
-			// 上传文件名
 			String filename = file.getOriginalFilename();
 			File filepath = new File(filePath, filename);
 			if (!filepath.getParentFile().exists()) {
@@ -50,6 +54,7 @@ public class PublishController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			return true;
 		}
 		return false;
 
@@ -63,32 +68,35 @@ public class PublishController {
 		if (esb_type != null) { // esb 类型不为空
 			for (int i = 0; i < esb_type.length; i++) {
 				if (esb_type[i].equals("0")) { // 表示app选中
-					saveFile(esb_appfile, APP_FILE_PATH); // 保存app
+					saveFile(esb_appfile,  APP_FILE_PATH); // 保存app
 				} else if (esb_type[i].equals("1")) { // 表示db选中
-					saveFile(esb_dbfile, DB_FILE_PATH); // 保存db
+					saveFile(esb_dbfile,  DB_FILE_PATH); // 保存db
 				}
 
 			}
 		}
 		return "autopublish/instance_autopublish_esb_submit";
 	}
+
 	@RequestMapping("/autopublishEsb.do")
 	public String autopublishEsb(HttpServletRequest request, HttpSession session) {
+
 		return "autopublish/instance_autopublish_esb_main";
 	}
-	
+
 	@RequestMapping("/toStepSelect.do")
 	public String toStepSelect(HttpServletRequest request, HttpSession session) {
 		return "autopublish/instance_autopublish_esb_select";
 	}
-	
+
 	@RequestMapping("/toStepSubmit.do")
 	public String toStepSubmit(HttpServletRequest request, HttpSession session) {
 		return "autopublish/instance_autopublish_esb_submit";
 	}
-	
+
 	@RequestMapping("/toStepChange.do")
 	public String toStepChange(HttpServletRequest request, HttpSession session) {
 		return "autopublish/instance_autopublish_esb_change";
 	}
+
 }

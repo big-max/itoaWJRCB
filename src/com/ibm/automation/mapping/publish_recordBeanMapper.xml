@@ -6,12 +6,14 @@
     <result column="publish_time" property="publishTime" jdbcType="VARCHAR" />
     <result column="publish_type" property="publishType" jdbcType="VARCHAR" />
     <result column="publish_node" property="publishNode" jdbcType="VARCHAR" />
+    <result column="publish_appversion" property="publishAppversion" jdbcType="VARCHAR" />
+    <result column="publish_dbversion" property="publishDBversion" jdbcType="VARCHAR" />
     <result column="publish_user" property="publishUser" jdbcType="VARCHAR" />
     <result column="publish_status" property="publishStatus" jdbcType="VARCHAR" />
     <result column="publish_log" property="publishLog" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, publish_time, publish_type, publish_node, publish_user, publish_status, publish_log
+    id, publish_time, publish_type, publish_node,publish_appversion,publish_dbversion, publish_user, publish_status, publish_log
   </sql>
   
   <select id="selectAllRecords" resultMap="BaseResultMap">

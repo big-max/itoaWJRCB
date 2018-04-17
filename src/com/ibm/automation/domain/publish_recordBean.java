@@ -1,6 +1,5 @@
 package com.ibm.automation.domain;
 
-import java.util.Date;
 
 
 public class publish_recordBean {
@@ -17,6 +16,11 @@ public class publish_recordBean {
 	private String publishStatus;
 
 	private String publishLog;
+	
+	private String publishAppversion;
+	
+	private String publishDBversion;
+	
 
 	public Integer getId() {
 		return id;
@@ -74,5 +78,22 @@ public class publish_recordBean {
 		this.publishLog = publishLog == null ? null : publishLog.trim();
 	}
 
+	public String getPublishAppversion() {
+		return publishAppversion;
+	}
+
+	public void setPublishAppversion(String publishAppversion) {
+		this.publishAppversion = publishAppversion;
+	}
+
+	public String getPublishDBversion() {
+		return publishDBversion;
+	}
+
+	public void setPublishDBversion(String publishDBversion) {
+		this.publishDBversion = publishDBversion;
+	}
+	
+	
 
 }
