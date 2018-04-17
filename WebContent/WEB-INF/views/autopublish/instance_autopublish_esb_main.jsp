@@ -90,13 +90,13 @@
 			<table class="easyui-datagrid" id="total_table" title="" style="width:100%;height:80%;"> 
 				<thead>
 	                <tr>
-	                    <th data-options="field:'total_id',width:'1%',checkbox:true">选择</th>
-	                    <th data-options="field:'total_ywtype',width:'15%'">发布时间</th>
-	                    <th data-options="field:'total_baktype',width:'19%'">发布类型</th>
-	                    <th data-options="field:'total_target',width:'21.3%'">发布节点</th>
-	                    <th data-options="field:'total_version',width:'15%'">发布员</th>
-	                    <th data-options="field:'total_status',width:'14%'">发布状态</th>
-	                    <th data-options="field:'total_ip',width:'15%'">日志</th>
+	                    <th data-options="field:'id',width:'1%',checkbox:true">选择</th>
+	                    <th data-options="field:'publishTime',width:'15%'">发布时间</th>
+	                    <th data-options="field:'publishType',width:'19%'">发布类型</th>
+	                    <th data-options="field:'publishNode',width:'21.3%'">发布节点</th>
+	                    <th data-options="field:'publishUser',width:'15%'">发布员</th>
+	                    <th data-options="field:'publishStatus',width:'14%'">发布状态</th>
+	                    <th data-options="field:'publishLog',width:'15%'">日志</th>
 	                </tr>
 				</thead>
 			</table>
@@ -127,7 +127,7 @@
         pageSize: 10,         //分页大小  
         pageNumber:1,         //第几页显示（默认第一页，可以省略）  
         pageList: [10,20,30],  //设置每页记录条数的列表   
-        url: 'getdailysms.do' 
+        url: 'getAllPubRecord.do' 
     });
 	
 	//分页中文显示设置 

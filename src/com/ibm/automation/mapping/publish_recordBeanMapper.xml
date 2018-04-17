@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibm.automation.core.dao.publish_recordBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.ibm.automation.domain.publish_recordBean" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="publish_time" property="publishTime" jdbcType="VARCHAR" />
+    <result column="publish_type" property="publishType" jdbcType="VARCHAR" />
+    <result column="publish_node" property="publishNode" jdbcType="VARCHAR" />
+    <result column="publish_user" property="publishUser" jdbcType="VARCHAR" />
+    <result column="publish_status" property="publishStatus" jdbcType="VARCHAR" />
+    <result column="publish_log" property="publishLog" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, publish_time, publish_type, publish_node, publish_user, publish_status, publish_log
+  </sql>
+  
+  <select id="selectAllRecords" resultMap="BaseResultMap">
+  	select * from publish_record
+  </select>
+  
+</mapper>

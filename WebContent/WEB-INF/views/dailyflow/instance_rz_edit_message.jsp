@@ -84,7 +84,7 @@
 		$('#add_form').form('clear');
 		$('#add_form').find('.easyui-combobox').combobox('reload','/getAllTaskID.do');
 		$("#add_form").find('#name').combobox('textbox').bind('focus',function(){  
-		    $("#add_form").find('#name').combobox('reload','/getLoginInfo.do');
+		$("#add_form").find('#name').combobox('reload','/getLoginInfo.do');
 		});
 	}
 	
