@@ -70,7 +70,7 @@
 						<label id="esb_version"></label>
 					</div>
 				</div>
-				<div class="divbott" style="height:auto;">
+				<div class="divbott" style="height:20px;">
 					<div class="inptext">
 						<label>发布节点 :&nbsp;&nbsp;&nbsp;</label>
 					</div>
