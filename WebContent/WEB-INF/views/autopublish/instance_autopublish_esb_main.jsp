@@ -127,7 +127,7 @@
 	$(function(){
 	    var dg = $('#total_table').datagrid().datagrid('enableFilter');
 	});
-	
+	  
 	//表格显示初始化
 	$('#total_table').datagrid({  
         pagination: true,     //开启分页  
