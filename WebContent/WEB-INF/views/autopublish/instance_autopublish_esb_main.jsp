@@ -114,7 +114,13 @@
 	
 	function backroll()
 	{
-		window.location.href = "toStepChange.do";
+		var row = $('#total_table').datagrid('getSelected');//选中一行否
+		if (row == null )
+	    {
+	       $.messager.alert('提示','请选择一行进行回滚!','error');   
+	        return;
+	    }
+		window.location.href = "toRollBack.do";
 	}
 </script>
 

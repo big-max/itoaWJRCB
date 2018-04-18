@@ -119,4 +119,8 @@ public class PublishController {
 		return "autopublish/instance_autopublish_esb_change";
 	}
 
+	@RequestMapping("/toRollBack.do")
+	public String toRollBack(HttpServletRequest request, HttpSession session) {
+		return "autopublish/instance_autopublish_esb_rollback";
+	}
 }

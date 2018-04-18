@@ -41,20 +41,12 @@
 	<div class="content">
 		<div class="breadcrumb">
 			<a href="getAllServers.do" class="current" style="position:relative;top:-3px;">
-			<i class="icon-home"></i>自动化发布 ESB</a>
+			<i class="icon-home"></i>自动化发布 ESB回滚</a>
 		</div>
 		
 		<div class="easyui-layout" style="width:99.8%;height:95%;margin:0 auto;">
-			<div data-options="region:'west'" title="步骤1：应用信息" style="width:30%;padding:10px">
-				<!-- <div class="divbott">
-					<div class="inptext">
-						<label>变更系统&nbsp;&nbsp;&nbsp;</label>
-					</div>
-					<div>
-						<input class="easyui-textbox" id="esb_os" name="esb_os" value="" readonly style="width:60%;height:30px;">
-					</div>
-				</div> -->
-				<form id="submits" action="postFormElement.do" enctype="multipart/form-data" method="post">
+			<div data-options="region:'west'" title="应用信息" style="width:30%;padding:10px">
+				<form id="submits" action="" enctype="multipart/form-data" method="post">
 				<div class="divbott" style="height:20px;">
 					<div class="inptext">
 						<label>变更类型&nbsp;&nbsp;&nbsp;</label>
