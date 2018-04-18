@@ -53,14 +53,14 @@
 					<div class="line1">节点：</div>
 					<div class="line2" id="app_node">${appList }</div>
 				</div>
-				<div class="line">
+				<!-- <div class="line">
 					<div class="line1">发布时间：</div>
 					<div class="line2" id="app_time">2018-11-12 20:30:00</div>
 				</div>
 				<div class="line">
 					<div class="line1">运行版本：</div>
 					<div class="line2" id="app_version">APP.war</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="par1_sub">
 				<div class="line">
@@ -70,14 +70,14 @@
 					<div class="line1">节点：</div>
 					<div class="line2" id="db_node">${dbList }</div>
 				</div>
-				<div class="line">
+				<!-- <div class="line">
 					<div class="line1">发布时间：</div>
 					<div class="line2" id="db_time">2018-11-12 20:30:00</div>
 				</div>
 				<div class="line">
 					<div class="line1">运行版本：</div>
 					<div class="line2" id="db_version">smartdb.sh</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		
