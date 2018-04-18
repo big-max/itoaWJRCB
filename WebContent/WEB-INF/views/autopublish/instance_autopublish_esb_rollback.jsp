@@ -110,14 +110,9 @@
 				</div>
 				</form>
 				
-				<div style="margin-top:60px;">
-					<div style="float:left;width:38%;margin-left:50px;">
-						<a id="retry" href="javascript:void(0)" class="easyui-linkbutton" style="padding:5px 0px;width:100%;">
-							<span style="font-size:14px;">提交</span>
-						</a>
-					</div>
-					<div style="float:right;width:38%;margin-right:20px;">
-						<a id="rollback" href="javascript:void(0)" class="easyui-linkbutton" style="padding:5px 0px;width:100%;" disabled>
+				<div style="margin-top:50px;">
+					<div style="float:right;width:85%;margin-right:20px;">
+						<a id="rollback" href="javascript:void(0)" class="easyui-linkbutton" style="padding:5px 0px;width:100%;">
 							<span style="font-size:14px;">回滚</span>
 						</a>
 					</div>
@@ -131,18 +126,7 @@
 	</div>
 </body>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#retry").click(function(){
-			$.messager.confirm('信息提示框', '请确认是否提交?', function(r){  
-				if (r){
-					//$("#submits").submit();
-					$("#rollback").linkbutton("enable");//确认提交之后，“回滚”按钮可点击  
-				}
-			});
-		})
-	})
-	
+<script type="text/javascript">	
 	function SelectRadioApp()
 	{
 		$("#application").show();

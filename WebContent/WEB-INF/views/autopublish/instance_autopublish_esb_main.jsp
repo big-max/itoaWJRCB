@@ -106,6 +106,12 @@
 </body>
 
 <script>
+	$(document).ready(function(){
+		$('#total_table').datagrid({
+			singleSelect: true   //设置表格只能选择一行进行操作
+		})
+	})
+	
 	function publish()
 	{
 		window.location.href = "toStepSelect.do";
