@@ -91,14 +91,13 @@
 				<thead>
 	                <tr>
 	                    <th data-options="field:'id',width:'1%',checkbox:true">选择</th>
-	                    <th data-options="field:'publishTime',width:'10%'">发布时间</th>
-	                    <th data-options="field:'publishType',width:'6%'">发布类型</th>
-	                    <th data-options="field:'publishAppversion',width:'15%'">APP版本</th>
-	                    <th data-options="field:'publishDBversion',width:'15%'">DB版本</th>
-	                    <th data-options="field:'publishNode',width:'20%'">发布节点</th>
-	                    <th data-options="field:'publishUser',width:'6%'">发布员</th>
-	                    <th data-options="field:'publishStatus',width:'6%'">发布状态</th>
-	                    <th data-options="field:'publishLog',width:'10%'">日志</th>
+	                    <th data-options="field:'publishTime',width:'15%'">发布时间</th>
+	                    <th data-options="field:'publishType',width:'10%'">发布类型</th>
+	                    <th data-options="field:'publishVersion',width:'15%'">发布版本</th>
+	                    <th data-options="field:'publishNode',width:'15%'">发布节点</th>
+	                    <th data-options="field:'publishUser',width:'16%'">发布员</th>
+	                    <th data-options="field:'publishStatus',width:'16%'">发布状态</th>
+	                    <th data-options="field:'publishLog',width:'12%'">日志</th>
 	                </tr>
 				</thead>
 			</table>

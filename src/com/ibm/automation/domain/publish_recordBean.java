@@ -17,9 +17,8 @@ public class publish_recordBean {
 
 	private String publishLog;
 	
-	private String publishAppversion;
+	private String publishVersion;
 	
-	private String publishDBversion;
 	
 
 	public Integer getId() {
@@ -78,22 +77,12 @@ public class publish_recordBean {
 		this.publishLog = publishLog == null ? null : publishLog.trim();
 	}
 
-	public String getPublishAppversion() {
-		return publishAppversion;
+	public String getPublishVersion() {
+		return publishVersion;
 	}
 
-	public void setPublishAppversion(String publishAppversion) {
-		this.publishAppversion = publishAppversion;
-	}
-
-	public String getPublishDBversion() {
-		return publishDBversion;
-	}
-
-	public void setPublishDBversion(String publishDBversion) {
-		this.publishDBversion = publishDBversion;
+	public void setPublishVersion(String publishVersion) {
+		this.publishVersion = publishVersion;
 	}
 	
-	
-
 }
