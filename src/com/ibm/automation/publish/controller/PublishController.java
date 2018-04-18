@@ -2,9 +2,7 @@ package com.ibm.automation.publish.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +15,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.ibm.automation.ams.service.AmsRestService;
+import com.ibm.automation.core.constants.PropertyKeyConst;
 import com.ibm.automation.core.service.PublishRecordService;
+import com.ibm.automation.core.service.ServerService;
 import com.ibm.automation.domain.publish_recordBean;
 
 import net.sf.json.JSONArray;
 
 @Controller
 public class PublishController {
+	@Autowired
+	private AmsRestService amsRestService;
+	@Autowired
+	private ServerService serverService;
 	@Autowired
 	public PublishRecordService publishRecordService;
 	public static final String APP_FILE_PATH = "/home/data/itoa/deploy/esb/app"; // APP保存的文件路径
@@ -80,7 +87,20 @@ public class PublishController {
 
 	@RequestMapping("/autopublishEsb.do")
 	public String autopublishEsb(HttpServletRequest request, HttpSession session) {
-
+		String strOrgUrl = serverService.createSendUrl(PropertyKeyConst.AMS2_HOST,
+				PropertyKeyConst.POST_ams2_autopublish);
+		ObjectNode myNode = amsRestService.getList_one(null, null, "/api/v1/autopublish?systype=esb");
+		System.out.println(myNode);
+		List<String> appList = new ArrayList<String>();
+		for (JsonNode jn : myNode.get("app")){
+			appList.add(jn.asText());
+		}
+		List<String> dbList = new ArrayList<String>();
+		for (JsonNode jn : myNode.get("db")){
+			dbList.add(jn.asText());
+		}
+		request.setAttribute("appList", appList);
+		request.setAttribute("dbList", dbList);
 		return "autopublish/instance_autopublish_esb_main";
 	}
 

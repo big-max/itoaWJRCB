@@ -51,7 +51,7 @@
 				</div>
 				<div class="line">
 					<div class="line1">节点：</div>
-					<div class="line2" id="app_node">166.3.22.1 , 166.3.22.2 , 166.3.22.3</div>
+					<div class="line2" id="app_node">${appList }</div>
 				</div>
 				<div class="line">
 					<div class="line1">发布时间：</div>
@@ -68,7 +68,7 @@
 				</div>
 				<div class="line">
 					<div class="line1">节点：</div>
-					<div class="line2" id="db_node">166.3.22.1 , 166.3.22.2 , 166.3.22.3</div>
+					<div class="line2" id="db_node">${dbList }</div>
 				</div>
 				<div class="line">
 					<div class="line1">发布时间：</div>

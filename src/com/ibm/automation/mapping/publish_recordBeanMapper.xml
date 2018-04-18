@@ -17,7 +17,7 @@
   </sql>
   
   <select id="selectAllRecords" resultMap="BaseResultMap">
-  	select * from publish_record
+  	select * from publish_record order by str_to_date(publish_time,'%Y-%m-%d %H:%i:%S') desc
   </select>
   
 </mapper>
